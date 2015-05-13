@@ -1,0 +1,2 @@
+# emacs
+My emacs configuration
