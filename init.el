@@ -105,6 +105,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; ggtags
+(global-set-key (kbd "M-,") 'pop-tag-mark)
 (add-hook 'c-mode-common-hook
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'php-mode)
@@ -193,12 +194,12 @@
 (setq save-interprogram-paste-before-kill t) ;; Push clipboard to the kill ring
 (setq confirm-nonexistent-file-or-buffer nil) ;; Don't ask to create a new file
 (global-set-key (kbd "C-c C-k") 'kill-this-buffer) ;; Don't prompt to kill a buffer
-;;(setq electric-indent-chars (remq ?\n electric-indent-chars)) ;; Don't indent on newline
 
 ;; Misc
 (winner-mode t)
 (recentf-mode t)
 (dtrt-indent-mode t)
+(setq ediff-split-window-function 'split-window-horizontally)
 (setq-default indent-tabs-mode nil)
 (global-visual-line-mode t)
 (delete-selection-mode t)
@@ -293,10 +294,3 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Monaco" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
  '(vertical-border ((t (:foreground "#1f1f1b")))))
-
-;; (custom-set-variables
-;;  ;; custom-set-variables was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(cursor-type (quote (bar . 1))))
