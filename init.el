@@ -26,7 +26,6 @@
         ido-vertical-mode
         js2-mode
         latex-preview-pane
-        linum-off
         lua-mode
         magit
         monokai-theme
@@ -39,7 +38,6 @@
         slime
         smartparens
         smex
-        sublimity
         tern
         sql-indent
         undo-tree
@@ -222,15 +220,6 @@
 (tooltip-mode -1)
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
-
-;; Line numbering on most major modes
-;; (global-linum-mode t)
-;; (require 'linum-off)
-;; (add-to-list 'linum-disabled-modes-list 'doc-view-mode)
-
-;; Sublime-like smooth scrolling
-;; (require 'sublimity-scroll) ;; This can be annoying on eshell, figure out how to fix
-;; (sublimity-mode 1)
 
 ;; Powerline mode
 (powerline-default-theme)
