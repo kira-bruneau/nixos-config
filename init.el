@@ -105,6 +105,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; ggtags
+;; (ggtags-update-on-save t) ;; Will be available in version 0.8.10
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (add-hook 'c-mode-common-hook
           (lambda ()
@@ -196,9 +197,12 @@
 (global-set-key (kbd "C-c C-k") 'kill-this-buffer) ;; Don't prompt to kill a buffer
 
 ;; Misc
+;; (bury-successful-compilation 1)
+(global-subword-mode t)
 (winner-mode t)
 (recentf-mode t)
 (dtrt-indent-mode t)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq-default indent-tabs-mode nil)
 (global-visual-line-mode t)
@@ -213,6 +217,17 @@
 
 ;; == Graphical settings == ;;
 (load-theme 'monokai t)
+
+;; Theme company-mode
+;; (require 'color)
+
+;; (let ((bg (face-attribute 'default :background)))
+;;   (custom-set-faces
+;;    `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 2)))))
+;;    `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
+;;    `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
+;;    `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
+;;    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
 
 ;; GUI cleanup
 (scroll-bar-mode -1)
