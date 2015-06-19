@@ -32,6 +32,7 @@
 
 ;; Misc
 ;; (bury-successful-compilation 1)
+(global-auto-revert-mode t)
 (global-subword-mode t)
 (winner-mode t)
 (recentf-mode t)
@@ -46,6 +47,7 @@
 (drag-stuff-global-mode t)
 (global-whitespace-cleanup-mode t)
 
+(global-set-key (kbd "C-c C-/") 'hide-lines)
 (global-set-key (kbd "C-x C--") 'goto-last-change)
 (global-set-key (kbd "C-=") 'er/expand-region)
 

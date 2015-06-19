@@ -29,9 +29,10 @@
 (require 'setup-org)
 (require 'language-c)
 (require 'language-javascript)
-(require 'language-sql)
 (require 'language-latex)
 (require 'language-lisp)
+(require 'language-php)
+(require 'language-sql)
 
 ;; Other
 (require 'setup-misc)

@@ -1,4 +1,5 @@
 ;; sudo pacman -S aspell-en
+(setq ispell-program-name "aspell")
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))

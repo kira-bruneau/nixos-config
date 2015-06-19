@@ -6,7 +6,6 @@
         auctex
         buffer-move
         company
-        ;; company-quickhelp
         company-tern
         ;; diminish
         drag-stuff
@@ -21,6 +20,7 @@
         git-gutter-fringe
         gitconfig-mode
         gitignore-mode
+        hide-lines
         ido-ubiquitous
         ido-vertical-mode
         js2-mode
