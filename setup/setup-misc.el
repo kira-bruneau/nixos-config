@@ -49,7 +49,4 @@
 (global-set-key (kbd "C-x C--") 'goto-last-change)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; Start frames maximized
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
 (provide 'setup-misc)

@@ -18,6 +18,9 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 
+;; Start frames maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Misc
 (setq-default tab-width 4)
 (setq column-number-mode t)
