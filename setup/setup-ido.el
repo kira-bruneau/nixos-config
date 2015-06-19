@@ -2,7 +2,7 @@
 (ido-mode 1)
 (ido-vertical-mode 1)
 (ido-everywhere 1)
-;; (ido-ubiquitous-mode t)
+(ido-ubiquitous-mode t)
 (setq ido-enable-flex-matching t)
 (setq ido-create-new-buffer 'always)
 (setq ido-use-virtual-buffers t)

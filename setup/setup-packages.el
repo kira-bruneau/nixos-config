@@ -18,12 +18,15 @@
         flx-isearch
         flycheck
         ggtags
+        git-gutter-fringe
+        gitconfig-mode
         gitignore-mode
-        ;; ido-ubiquitous
+        ido-ubiquitous
         ido-vertical-mode
         js2-mode
         latex-preview-pane
         lua-mode
+        paradox
         magit
         monokai-theme
         multiple-cursors
