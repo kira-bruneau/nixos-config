@@ -1,7 +1,11 @@
 *
-!init.el
-!setup/*
+!/init.el
+!/setup/
+!/setup/*
 
 !LICENSE
 !README.md
 !.gitignore
+
+[#]*[#]
+*~
