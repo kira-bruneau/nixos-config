@@ -1,5 +1,7 @@
 *
 !init.el
+!setup/*
+
 !LICENSE
 !README.md
 !.gitignore
