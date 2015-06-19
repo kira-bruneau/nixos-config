@@ -28,6 +28,7 @@
         lua-mode
         magit
         magit-filenotify
+        markdown-mode
         monokai-theme
         multiple-cursors
         paradox
