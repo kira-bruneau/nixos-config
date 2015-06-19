@@ -26,10 +26,11 @@
         js2-mode
         latex-preview-pane
         lua-mode
-        paradox
         magit
+        magit-filenotify
         monokai-theme
         multiple-cursors
+        paradox
         php-mode
         pkgbuild-mode
         powerline
@@ -38,8 +39,8 @@
         slime
         smartparens
         smex
-        tern
         sql-indent
+        tern
         undo-tree
         visual-regexp
         visual-regexp-steroids
