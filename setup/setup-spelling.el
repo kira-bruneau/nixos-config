@@ -1,4 +1,4 @@
-;; sudo pacman -S aspell-en
+;; sudo pacman -S aspell aspell-en
 (setq ispell-program-name "aspell")
 
 (dolist (hook '(text-mode-hook))

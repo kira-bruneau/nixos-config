@@ -24,6 +24,30 @@
 ;;  kept-old-versions 2
 ;;  version-control t)       ; use versioned backups
 
+;; Remove consecutive duplicates
+;; Source: http://www.emacswiki.org/emacs/DuplicateLines
+(defun uniquify-region-lines (beg end)
+  "Remove duplicate adjacent lines in region."
+  (interactive "*r")
+  (save-excursion
+    (goto-char beg)
+    (while (re-search-forward "^\\(.*\n\\)\\1+" end t)
+      (replace-match "\\1"))))
+
+(defun uniquify-buffer-lines ()
+  "Remove duplicate adjacent lines in the current buffer."
+  (interactive)
+  (uniquify-region-lines (point-min) (point-max)))
+
+(defun sudo-edit ()
+  "Re-open a file with elevated privileges"
+  (interactive)
+  (cond
+   ((not (file-writable-p buffer-file-name))
+    (write-file (format "/sudo::%s" buffer-file-name)))
+   (t
+    (message "current buffer is already writeable"))))
+
 ;; Minor modes
 (global-whitespace-cleanup-mode t)
 (winner-mode t)
@@ -41,7 +65,7 @@
 (setq confirm-nonexistent-file-or-buffer nil) ;; Don't ask to create a new file
 (global-set-key (kbd "C-c C-k") 'kill-this-buffer) ;; Don't prompt to kill a buffer
 
-;; Misc
+;; Default configuration
 (global-auto-revert-mode t)
 (global-subword-mode t)
 (setq-default indent-tabs-mode nil)

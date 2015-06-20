@@ -6,6 +6,7 @@
 ;; Init
 (require 'setup-packages)
 (require 'setup-ui)
+(require 'setup-misc)
 
 ;; Generic helpers
 (require 'setup-tagging)
@@ -34,7 +35,3 @@
 (require 'language-lisp)
 (require 'language-php)
 (require 'language-sql)
-
-;; Other
-(require 'setup-misc)
-(require 'setup-custom)
