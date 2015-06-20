@@ -24,6 +24,17 @@
 ;;  kept-old-versions 2
 ;;  version-control t)       ; use versioned backups
 
+;; Minor modes
+(global-whitespace-cleanup-mode t)
+(winner-mode t)
+(dtrt-indent-mode t)
+(windmove-default-keybindings)
+(drag-stuff-global-mode t)
+
+(global-set-key (kbd "C-c C-/") 'hide-lines)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-x C--") 'goto-last-change)
+
 ;; Fix annoyances
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Simplify all yes/no to y/n
 (setq save-interprogram-paste-before-kill t) ;; Push clipboard to the kill ring
@@ -31,24 +42,11 @@
 (global-set-key (kbd "C-c C-k") 'kill-this-buffer) ;; Don't prompt to kill a buffer
 
 ;; Misc
-;; (bury-successful-compilation 1)
 (global-auto-revert-mode t)
 (global-subword-mode t)
-(winner-mode t)
-(recentf-mode t)
-(dtrt-indent-mode t)
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-(setq ediff-split-window-function 'split-window-horizontally)
 (setq-default indent-tabs-mode nil)
 (global-visual-line-mode t)
 (delete-selection-mode t)
 (setq shift-select-mode nil)
-(windmove-default-keybindings)
-(drag-stuff-global-mode t)
-(global-whitespace-cleanup-mode t)
-
-(global-set-key (kbd "C-c C-/") 'hide-lines)
-(global-set-key (kbd "C-x C--") 'goto-last-change)
-(global-set-key (kbd "C-=") 'er/expand-region)
 
 (provide 'setup-misc)
