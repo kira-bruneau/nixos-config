@@ -1,3 +1,10 @@
+(extern-require
+ '(the_silver_searcher))
+
+(package-require
+ '(ag
+   projectile))
+
 (projectile-global-mode)
 (setq projectile-indexing-method 'alien)
 

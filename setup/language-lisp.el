@@ -1,3 +1,7 @@
+(package-require
+ '(elisp-slime-nav
+   slime))
+
 ;; Eval and replace any lisp expresison
 ;; Source: https://emacs.wordpress.com/2007/01/17/eval-and-replace-anywhere/
 (defun fc-eval-and-replace ()

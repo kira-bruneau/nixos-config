@@ -1,62 +1,28 @@
+(setq package-list
+      '(lua-mode
+        markdown-mode
+        paradox
+        pkgbuild-mode
+        rust-mode))
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(setq package-list
-      '(adaptive-wrap
-        ag
-        auctex
-        buffer-move
-        company
-        company-tern
-        ;; diminish
-        drag-stuff
-        dtrt-indent
-        elisp-slime-nav
-        expand-region
-        flx
-        flx-ido
-        flx-isearch
-        flycheck
-        ggtags
-        git-gutter-fringe
-        gitconfig-mode
-        gitignore-mode
-        hide-lines
-        ido-ubiquitous
-        ido-vertical-mode
-        js2-mode
-        latex-preview-pane
-        lua-mode
-        magit
-        magit-filenotify
-        markdown-mode
-        monokai-theme
-        multiple-cursors
-        paradox
-        php-mode
-        pkgbuild-mode
-        powerline
-        projectile
-        rust-mode
-        slime
-        smartparens
-        smex
-        sql-indent
-        tern
-        undo-tree
-        visual-regexp
-        visual-regexp-steroids
-        web-mode
-        whitespace-cleanup-mode))
-
 (package-initialize)
 
 ;; Refresh the archive
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Install missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+(defun package-require (packages)
+  (dolist (package packages)
+    (unless (package-installed-p package)
+      (package-install package))))
+
+(defun extern-require (externs)
+  (message (concat
+            "sudo pacman -S --needed "
+            (mapconcat 'symbol-name externs " "))))
+
+(package-require package-list)
 
 (provide 'setup-packages)

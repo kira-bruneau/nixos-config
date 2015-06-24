@@ -1,3 +1,6 @@
+(package-require
+ '(ggtags))
+
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (add-hook 'c-mode-common-hook
           (lambda ()

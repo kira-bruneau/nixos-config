@@ -1,3 +1,10 @@
+(package-require
+ '(drag-stuff
+   dtrt-indent
+   expand-region
+   hide-lines
+   whitespace-cleanup-mode))
+
 ;; Auto-indent yanked lines (try auto-indent instead)
 ;; Source: http://www.emacswiki.org/emacs/AutoIndentation
 (dolist (command '(yank yank-pop))
@@ -12,17 +19,6 @@
                                                      plain-tex-mode))
                 (let ((mark-even-if-inactive transient-mark-mode))
                   (indent-region (region-beginning) (region-end) nil))))))
-
-;; Centralized backups:
-;; Source http://www.emacswiki.org/emacs/BackupDirectory
-;; (setq
-;;  backup-by-copying t      ; don't clobber symlinks
-;;  backup-directory-alist
-;;  '(("." . "~/.saves"))    ; don't litter my fs tree
-;;  delete-old-versions t
-;;  kept-new-versions 6
-;;  kept-old-versions 2
-;;  version-control t)       ; use versioned backups
 
 ;; Remove consecutive duplicates
 ;; Source: http://www.emacswiki.org/emacs/DuplicateLines
@@ -47,6 +43,17 @@
     (write-file (format "/sudo::%s" buffer-file-name)))
    (t
     (message "current buffer is already writeable"))))
+
+;; Centralized backups:
+;; Source http://www.emacswiki.org/emacs/BackupDirectory
+;; (setq
+;;  backup-by-copying t      ; don't clobber symlinks
+;;  backup-directory-alist
+;;  '(("." . "~/.saves"))    ; don't litter my fs tree
+;;  delete-old-versions t
+;;  kept-new-versions 6
+;;  kept-old-versions 2
+;;  version-control t)       ; use versioned backups
 
 ;; Minor modes
 (global-whitespace-cleanup-mode t)

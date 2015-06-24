@@ -1,3 +1,8 @@
+(package-require
+ '(adaptive-wrap
+   monokai-theme
+   powerline))
+
 (load-theme 'monokai t)
 
 (custom-set-faces

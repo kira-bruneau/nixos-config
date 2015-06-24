@@ -1,3 +1,11 @@
+(package-require
+ '(flx
+   flx-ido
+   flx-isearch
+   ido-ubiquitous
+   ido-vertical-mode
+   smex))
+
 ;; Fuzzy find everywhere with ido
 (ido-mode 1)
 (ido-vertical-mode 1)

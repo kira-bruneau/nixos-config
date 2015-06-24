@@ -1,3 +1,6 @@
+(package-require
+ '(diminish))
+
 ;; (diminish 'smartparens-mode "")
 ;; (diminish 'undo-tree-mode "")
 ;; (diminish 'elisp-slime-nav-mode "")

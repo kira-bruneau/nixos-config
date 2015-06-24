@@ -1,9 +1,5 @@
-;; TODO: Package dependency management
-
-;; == Initialization == ;;
-(add-to-list 'load-path (concat user-emacs-directory "setup/"))
-
 ;; Init
+(add-to-list 'load-path (concat user-emacs-directory "setup/"))
 (require 'setup-packages)
 (require 'setup-ui)
 (require 'setup-misc)

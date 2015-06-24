@@ -1,3 +1,6 @@
+(package-require
+ '(smartparens))
+
 (require 'smartparens-config)
 (smartparens-global-mode t)
 ;; (global-set-key (kbd "M-F") 'sp-forward-symbol)
