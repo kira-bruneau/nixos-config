@@ -4,6 +4,8 @@
 !/setup/*
 !/conf/
 !/conf/*
+!/cache/
+!/cache/*
 
 !LICENSE
 !README.md

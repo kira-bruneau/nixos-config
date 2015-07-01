@@ -1,5 +1,9 @@
 ;; Init
-(add-to-list 'load-path (concat user-emacs-directory "setup/"))
+(setq dir/setup (concat user-emacs-directory "setup/")
+      dir/cache (concat user-emacs-directory "cache/"))
+
+(add-to-list 'load-path dir/setup)
+
 (require 'setup-packages)
 (require 'setup-ui)
 (require 'setup-misc)
