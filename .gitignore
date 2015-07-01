@@ -2,6 +2,8 @@
 !/init.el
 !/setup/
 !/setup/*
+!/conf/
+!/conf/*
 
 !LICENSE
 !README.md
