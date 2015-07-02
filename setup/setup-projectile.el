@@ -7,6 +7,22 @@
 
 (projectile-global-mode)
 (setq projectile-indexing-method 'alien)
+(setq projectile-find-dir-includes-top-level t)
+(setq projectile-switch-project-action 'projectile-find-file-or-dir)
+
+(defun projectile-find-file-or-dir (&optional arg)
+  "Jump to a project's file or directory using completion.
+With a prefix ARG invalidates the cache first."
+  (interactive "P")
+  (projectile-maybe-invalidate-cache arg)
+  (let ((file-or-dir (projectile-completing-read "Find file or directory: "
+                                                 (append
+                                                  (if projectile-find-dir-includes-top-level '("./"))
+                                                  (projectile-current-project-dirs)
+                                                  (projectile-current-project-files)))))
+    (find-file (expand-file-name file-or-dir (projectile-project-root))))
+  ;; TODO: Use existing hooks vs create new hook
+  )
 
 (add-hook 'ag-mode-hook
           (lambda ()
