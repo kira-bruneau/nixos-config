@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(flycheck))
 
 ;; (global-flycheck-mode t)

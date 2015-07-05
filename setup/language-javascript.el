@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(company-tern
    js2-mode
    json-mode ;; I prefer this over js2-mode for json files

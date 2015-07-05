@@ -1,4 +1,4 @@
-(extern-require
+(require-binary
  '(aspell
    aspell-en))
 

@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(sql-indent))
 
 (eval-after-load "sql"

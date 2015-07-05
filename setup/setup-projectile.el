@@ -1,7 +1,7 @@
-(extern-require
+(require-binary
  '(the_silver_searcher))
 
-(package-require
+(require-package
  '(ag
    projectile))
 

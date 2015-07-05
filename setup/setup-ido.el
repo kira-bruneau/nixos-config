@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(flx
    flx-ido
    flx-isearch

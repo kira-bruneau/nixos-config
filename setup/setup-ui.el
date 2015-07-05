@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(adaptive-wrap
    monokai-theme
    powerline))

@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(buffer-move))
 
 (global-set-key (kbd "<C-S-up>") 'buf-move-up)

@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(diminish))
 
 ;; (diminish 'smartparens-mode "")

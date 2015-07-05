@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(undo-tree))
 
 (global-undo-tree-mode t)

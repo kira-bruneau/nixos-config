@@ -1,4 +1,4 @@
-;; (package-require
+;; (require-package
 ;;  '(yasnippet))
 
 ;; (yas-global-mode 1)

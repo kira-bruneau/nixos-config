@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(drag-stuff
    dtrt-indent
    expand-region

@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(auctex
    latex-preview-pane))
 

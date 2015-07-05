@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(company))
 
 ;; (company-quickhelp-mode 1)

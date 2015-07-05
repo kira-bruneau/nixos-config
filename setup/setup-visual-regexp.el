@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(visual-regexp
    visual-regexp-steroids))
 

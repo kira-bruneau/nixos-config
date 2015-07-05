@@ -1,4 +1,4 @@
-(package-require
+(require-package
  '(ggtags))
 
 (global-set-key (kbd "M-,") 'pop-tag-mark)
