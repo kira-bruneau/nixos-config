@@ -2,7 +2,7 @@
  '(git-gutter-fringe
    gitconfig-mode
    gitignore-mode
-   magit-filenotify
+   ;; magit-filenotify
    magit))
 
 (require-binary
@@ -12,8 +12,8 @@
 (global-set-key (kbd "C-c C-v") 'magit-status)
 (global-git-gutter-mode t)
 
-(add-hook 'magit-status-mode-hook
-          (lambda ()
-            (magit-filenotify-mode t)))
+;; (add-hook 'magit-status-mode-hook
+;;           (lambda ()
+;;             (magit-filenotify-mode t)))
 
 (provide 'setup-git)
