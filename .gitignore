@@ -1,15 +1,11 @@
-*
-!/init.el
-!/setup/
-!/setup/*
-!/conf/
-!/conf/*
-!/cache/
-!/cache/*
-
-!LICENSE
-!README.md
-!.gitignore
+auto-save-list/
+elpa/
+eshell/
+ido.last
+projectile-bookmarks.eld
+projectile.cache
+recentf
+smex-items
 
 [#]*[#]
 *~
