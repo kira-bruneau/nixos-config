@@ -12,11 +12,11 @@
         end-of-visual-line
         forward-sexp
         indent-for-tab-command
+        kill-region
         kill-visual-line
+        wdired-finish-edit
         ))
 
 (setq mc/cmds-to-run-once
       '(
-
-
         ))
