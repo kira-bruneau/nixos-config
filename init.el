@@ -1,6 +1,7 @@
 ;; Init
 (setq dir/setup (concat user-emacs-directory "setup/")
-      dir/cache (concat user-emacs-directory "cache/"))
+      dir/cache (concat user-emacs-directory "cache/")
+      dir/conf (concat user-emacs-directory "conf/"))
 
 (add-to-list 'load-path dir/setup)
 
