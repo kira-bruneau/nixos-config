@@ -1,7 +1,7 @@
 (require-package
  '(flx
    flx-ido
-   flx-isearch
+   ;; flx-isearch
    ido-ubiquitous
    ido-vertical-mode
    smex))
@@ -22,8 +22,8 @@
 (setq flx-ido-use-faces t)
 
 ;; Fuzzy isearch using flx
-(global-set-key (kbd "C-M-s") #'flx-isearch-forward)
-(global-set-key (kbd "C-M-r") #'flx-isearch-backward)
+;; (global-set-key (kbd "C-M-s") #'flx-isearch-forward)
+;; (global-set-key (kbd "C-M-r") #'flx-isearch-backward)
 
 ;; Ido for M-x commands
 (smex-initialize)
