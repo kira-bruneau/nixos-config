@@ -5,6 +5,10 @@
       '(
         backward-sexp
         beginning-of-visual-line
+        c-electric-delete-forward
+        c-electric-semi&comma
+        c-electric-slash
+        c-electric-star
         dired-flag-file-deletion
         dired-mark
         dired-next-line
