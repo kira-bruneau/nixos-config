@@ -18,7 +18,6 @@
 ;; Minor modes
 (require 'setup-buffer-move)
 (require 'setup-company)
-(require 'setup-diminish)
 (require 'setup-git)
 (require 'setup-ido)
 (require 'setup-multiple-cursors)
@@ -36,3 +35,6 @@
 (require 'language-lisp)
 (require 'language-php)
 (require 'language-sql)
+
+;; Diminish modes
+(require 'setup-diminish)
