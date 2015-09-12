@@ -13,12 +13,19 @@
         dired-mark
         dired-next-line
         dired-previous-line
+        dired-unmark-all-files
+        dired-unmark-all-marks
         end-of-visual-line
+        eval-print-last-sexp
         forward-sexp
         indent-for-tab-command
         kill-region
         kill-visual-line
+        org-delete-char
+        org-self-insert-command
+        tab-to-tab-stop
         wdired-finish-edit
+        wdired-next-line
         ))
 
 (setq mc/cmds-to-run-once
