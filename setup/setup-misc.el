@@ -71,6 +71,7 @@
 (setq save-interprogram-paste-before-kill t) ;; Push clipboard to the kill ring
 (setq confirm-nonexistent-file-or-buffer nil) ;; Don't ask to create a new file
 (global-set-key (kbd "C-c C-k") 'kill-this-buffer) ;; Don't prompt to kill a buffer
+(add-hook 'dired-mode-hook 'auto-revert-mode) ;; Auto update dired
 
 ;; Default configuration
 (global-auto-revert-mode t)
