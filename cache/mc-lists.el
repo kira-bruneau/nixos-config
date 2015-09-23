@@ -3,9 +3,12 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        LaTeX-insert-left-brace
+        TeX-insert-backslash
         backward-sexp
         beginning-of-visual-line
         c-electric-delete-forward
+        c-electric-paren
         c-electric-semi&comma
         c-electric-slash
         c-electric-star
@@ -15,6 +18,7 @@
         dired-previous-line
         dired-unmark-all-files
         dired-unmark-all-marks
+        electric-newline-and-maybe-indent
         end-of-visual-line
         eval-print-last-sexp
         forward-sexp
