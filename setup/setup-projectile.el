@@ -34,5 +34,6 @@ With a prefix ARG invalidates the cache first."
 
 (global-set-key (kbd "C-c C-.") 'file-name-references)
 (define-key projectile-mode-map (kbd "<f12>") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "<f12> s") 'projectile-ag)
 
 (provide 'setup-projectile)
