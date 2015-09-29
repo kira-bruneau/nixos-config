@@ -1,5 +1,6 @@
 (require-package
  '(git-gutter-fringe
+   git-timemachine
    gitconfig-mode
    gitignore-mode
    magit))
