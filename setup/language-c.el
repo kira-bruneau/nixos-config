@@ -13,6 +13,6 @@
     (shell-command-to-string
      (concat
       "pkg-config --cflags-only-I "
-      (mapconcat 'symbol-name extern-libs " "))))))
+      (mapconcat 'identity extern-libs " "))))))
 
 (provide 'language-c)
