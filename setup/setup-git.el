@@ -10,6 +10,7 @@
 
 ;; Magit
 (setq magit-last-seen-setup-instructions "1.4.0")
+(setq magit-push-always-verify nil)
 (global-set-key (kbd "M-<f12>") 'magit-status)
 
 ;; Set custom order for magit-status
