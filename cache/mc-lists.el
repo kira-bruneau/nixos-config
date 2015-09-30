@@ -12,6 +12,7 @@
         c-electric-semi&comma
         c-electric-slash
         c-electric-star
+        comment-dwim
         dired-flag-file-deletion
         dired-mark
         dired-next-line
