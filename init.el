@@ -16,6 +16,7 @@
 (require 'setup-spelling)
 
 ;; Minor modes
+(require 'setup-astyle)
 (require 'setup-buffer-move)
 (require 'setup-company)
 (require 'setup-git)
