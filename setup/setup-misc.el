@@ -35,15 +35,6 @@
   (interactive)
   (uniquify-region-lines (point-min) (point-max)))
 
-(defun sudo-edit ()
-  "Re-open a file with elevated privileges"
-  (interactive)
-  (cond
-   ((not (file-writable-p buffer-file-name))
-    (write-file (format "/sudo::%s" buffer-file-name)))
-   (t
-    (message "current buffer is already writeable"))))
-
 ;; Centralized backups:
 ;; Source http://www.emacswiki.org/emacs/BackupDirectory
 ;; (setq

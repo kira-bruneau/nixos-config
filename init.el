@@ -23,6 +23,7 @@
 (require 'setup-multiple-cursors)
 (require 'setup-projectile)
 (require 'setup-smartparens)
+(require 'setup-sudo-edit)
 (require 'setup-undo-tree)
 (require 'setup-visual-regexp)
 
