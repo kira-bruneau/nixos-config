@@ -67,7 +67,7 @@
 (global-auto-revert-mode t)
 (global-subword-mode t)
 (setq-default indent-tabs-mode nil)
-(global-visual-line-mode t)
+(set-default 'truncate-lines t)
 (delete-selection-mode t)
 (setq shift-select-mode nil)
 
