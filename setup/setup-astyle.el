@@ -14,11 +14,13 @@
   (let ((lang (cadr (assoc major-mode astyle-mode-alist))))
     (if lang
         (if (or ignore-region-active (region-active-p))
-            (shell-command-on-region start end
-                                     (concat "astyle "
-                                             (mapconcat 'identity astyle-args " ")
-                                             (concat " --mode=" lang))
-                                     t t (get-buffer-create "*Astyle Errors*") t)
+            (progn
+              (shell-command-on-region start end
+                                       (concat "astyle "
+                                               (mapconcat 'identity astyle-args " ")
+                                               (concat " --mode=" lang))
+                                       t t (get-buffer-create "*Astyle Errors*") t)
+              (indent-region start end))
           (message "Nothing selected"))
       (message "Astyle doesn't support %s. See astyle-mode-alist to map a new major-mode to an astyle language." (symbol-name major-mode)))))
 
