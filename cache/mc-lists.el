@@ -5,6 +5,7 @@
       '(
         LaTeX-insert-left-brace
         TeX-insert-backslash
+        asm-comment
         backward-sexp
         beginning-of-visual-line
         c-electric-delete-forward
