@@ -3,7 +3,13 @@
 
 (defgroup astyle nil
   "Format code using astyle."
-  :group 'tools)
+  :group 'tools
+  :group 'convenience)
+
+(defcustom astyle-args nil
+  "List of arguments to pass to astyle"
+  :group 'astyle
+  :type 'plist)
 
 (defcustom astyle-mode-plist
   '(c-mode "c"
@@ -23,18 +29,18 @@ Valid values: c, java, cs"
 (defun astyle-region (start end &optional ignore-region-active)
   "Use astyle to format the selected region."
   (interactive "r")
-  (let ((lang (plist-get astyle-mode-plist major-mode))
+  (let ((lang (plist-get astyle-mode-plist major-mode)))
     (if lang
-        (if (or ignore-region-active (region-active-p))
-            (progn
-              (shell-command-on-region start end
-                                       (concat "astyle "
-                                               (mapconcat 'identity astyle-args " ")
-                                               (concat " --mode=" lang))
-                                       t t (get-buffer-create "*Astyle Errors*") t)
-              (when astyle-reindent (indent-region start end)))
-          (message "Nothing selected"))
-      (message "Astyle doesn't support %s. See astyle-mode-plist to map a new major-mode to an astyle language." (symbol-name major-mode))))))
+        (cond ((or ignore-region-active (region-active-p))
+               (apply 'call-process-region
+                      (append (list start end "astyle" t t nil)
+                              (list (concat "--mode=" lang))
+                              astyle-args))
+               (when astyle-reindent (indent-region (mark) (point))))
+              (t (message "Nothing selected")))
+      (message
+       "Astyle doesn't support %s. See astyle-mode-plist to map a new major-mode to an astyle language."
+       (symbol-name major-mode)))))
 
 (defun astyle-buffer ()
   "Use astyle to format the current buffer."
