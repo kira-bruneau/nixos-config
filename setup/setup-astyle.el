@@ -59,8 +59,7 @@ Valid values: c, java, cs"
       '("--style=attach"
         "--indent=spaces=2"
         "--align-pointer=middle"
-        "--pad-oper"
-        "--break-blocks=all"))
+        "--pad-oper"))
 
 (global-set-key (kbd "<f7>") 'astyle-dwim)
 
