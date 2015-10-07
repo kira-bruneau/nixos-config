@@ -36,7 +36,7 @@ Valid values: c, java, cs"
                       (append (list start end "astyle" t t nil)
                               (list (concat "--mode=" lang))
                               astyle-args))
-               (when astyle-reindent (indent-region (mark) (point))))
+               (when astyle-reindent (indent-region start (point))))
               (t (message "Nothing selected")))
       (message
        "Astyle doesn't support %s. See astyle-mode-plist to map a new major-mode to an astyle language."
