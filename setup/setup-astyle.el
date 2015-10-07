@@ -1,17 +1,29 @@
 (require-binary
  '(astyle))
 
-;; Package configuration
-(setq astyle-mode-alist
-      '((c-mode "c")
-        (c++-mode "c")
-        (java-mode "java")
-        (csharp-mode "cs")))
+(defgroup astyle nil
+  "Format code using astyle."
+  :group 'tools)
+
+(defcustom astyle-mode-plist
+  '(c-mode "c"
+    c++-mode "c"
+    java-mode "java"
+    csharp-mode "cs")
+  "A map of minor modes to astyle modes
+Valid values: c, java, cs"
+  :group 'astyle
+  :type 'plist)
+
+(defcustom astyle-reindent t
+  "Whether or not to reindent the formatted code with indent-region"
+  :group 'astyle
+  :type 'boolean)
 
 (defun astyle-region (start end &optional ignore-region-active)
   "Use astyle to format the selected region."
   (interactive "r")
-  (let ((lang (cadr (assoc major-mode astyle-mode-alist))))
+  (let ((lang (plist-get astyle-mode-plist major-mode))
     (if lang
         (if (or ignore-region-active (region-active-p))
             (progn
@@ -20,9 +32,9 @@
                                                (mapconcat 'identity astyle-args " ")
                                                (concat " --mode=" lang))
                                        t t (get-buffer-create "*Astyle Errors*") t)
-              (indent-region start end))
+              (when astyle-reindent (indent-region start end)))
           (message "Nothing selected"))
-      (message "Astyle doesn't support %s. See astyle-mode-alist to map a new major-mode to an astyle language." (symbol-name major-mode)))))
+      (message "Astyle doesn't support %s. See astyle-mode-plist to map a new major-mode to an astyle language." (symbol-name major-mode))))))
 
 (defun astyle-buffer ()
   "Use astyle to format the current buffer."
