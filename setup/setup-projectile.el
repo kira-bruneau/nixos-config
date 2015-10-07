@@ -32,8 +32,14 @@ With a prefix ARG invalidates the cache first."
   (interactive)
   (projectile-ag (file-name-sans-extension (buffer-name))))
 
+(defun projectile-new (directory)
+  (interactive "D")
+  (let ((projectile-file (concat directory ".projectile")))
+    (write-region "" nil projectile-file t)))
+
 (global-set-key (kbd "C-c C-.") 'file-name-references)
 (define-key projectile-mode-map (kbd "<f12>") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "<f12> s") 'projectile-ag)
+(define-key projectile-mode-map (kbd "<f12> n") 'projectile-new)
 
 (provide 'setup-projectile)
