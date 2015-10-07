@@ -23,7 +23,6 @@
         dired-unmark-all-marks
         electric-newline-and-maybe-indent
         end-of-visual-line
-        eval-print-last-sexp
         forward-sexp
         indent-for-tab-command
         kill-region
@@ -31,11 +30,11 @@
         org-delete-char
         org-self-insert-command
         tab-to-tab-stop
-        wdired-finish-edit
         wdired-next-line
         ))
 
 (setq mc/cmds-to-run-once
       '(
         smex
+        wdired-finish-edit
         ))
