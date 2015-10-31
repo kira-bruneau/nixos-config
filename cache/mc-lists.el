@@ -8,13 +8,18 @@
         asm-comment
         backward-sexp
         beginning-of-visual-line
+        c-beginning-of-defun
+        c-electric-brace
+        c-electric-colon
         c-electric-delete-forward
         c-electric-paren
         c-electric-semi&comma
         c-electric-slash
         c-electric-star
+        c-end-of-defun
         c-indent-line-or-region
         comment-dwim
+        dired-do-flagged-delete
         dired-flag-file-deletion
         dired-mark
         dired-next-line
@@ -35,6 +40,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        previous-buffer
         smex
         wdired-finish-edit
         ))
