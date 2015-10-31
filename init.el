@@ -31,6 +31,7 @@
 ;; Major modes
 (require 'setup-org)
 (require 'setup-ediff)
+(require 'setup-dired)
 (require 'language-c)
 (require 'language-javascript)
 (require 'language-latex)
