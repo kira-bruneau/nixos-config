@@ -38,6 +38,7 @@
 (require 'language-lisp)
 (require 'language-php)
 (require 'language-sql)
+(require 'language-go)
 
 ;; Diminish modes
 (require 'setup-diminish)
