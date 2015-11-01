@@ -16,15 +16,21 @@
     (shell-command-to-string
      (concat
       "pkg-config --cflags-only-I "
-      (mapconcat 'identity extern-libs " "))))))
+      (mapconcat #'shell-quote-argument extern-libs " "))))))
+
+(defun cproject-string-list-p (obj)
+  "Determine if OBJ is a list of strings."
+  (and (listp obj) (-all? #'stringp obj)))
 
 (defcustom cproject-pkg-config nil
   "A list of pkg-config libraries to include in your C project"
-  :type '(repeat string))
+  :type '(repeat string)
+  :safe #'cproject-string-list-p)
 
 (defcustom cproject-include-path nil
   "A list of include directories to use in your C project"
-  :type '(repeat string))
+  :type '(repeat string)
+  :safe #'cproject-string-list-p)
 
 ;; Read project configuration from .dir-locals.el
 (add-hook 'c-mode-hook 'cproject-configure-locals)
@@ -32,28 +38,25 @@
   (flycheck-mode t)
   (add-hook 'hack-local-variables-hook
             (lambda ()
-              ;; Add include paths to flycheck
-              (setq-local flycheck-clang-include-path
-                          (append
-                           (when (boundp 'flycheck-clang-include-path)
-                             flycheck-clang-include-path)
-                           (when (boundp 'cproject-include-path)
-                             (mapcar
-                              (lambda (include)
-                                (expand-file-name include (locate-dominating-file default-directory ".dir-locals.el")))
-                              cproject-include-path))
-                           (when (boundp 'cproject-pkg-config)
-                             (pkg-config-includes cproject-pkg-config))))
+              (cproject-configure-includes
+               (append
 
-              ;; Add include paths to company
-              (setq-local company-clang-arguments
-                          (append
-                           (when (boundp 'company-clang-arguments)
-                             company-clang-arguments)
-                           (when (boundp 'cproject-pkg-config)
-                             (mapcar
-                              (lambda (include)
-                                (concat "-I" include))
-                              (pkg-config-includes cproject-pkg-config))))))))
+                ;; Convert all `cproject-include-paths' to absolute paths
+                (when (boundp 'cproject-include-path)
+                  (mapcar
+                   (lambda (include)
+                     (expand-file-name
+                      include
+                      (locate-dominating-file
+                       default-directory ".dir-locals.el")))
+                   cproject-include-path))
+
+                ;; Obtain all `cproject-pkg-config' includes with pkg-config
+                (when (boundp 'cproject-pkg-config)
+                  (pkg-config-includes cproject-pkg-config)))))))
+
+(defun cproject-configure-includes (includes)
+  (setq-local flycheck-clang-include-path includes)
+  (setq-local company-clang-arguments includes))
 
 (provide 'language-c)
