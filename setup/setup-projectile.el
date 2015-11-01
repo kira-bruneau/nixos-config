@@ -9,6 +9,16 @@
 (setq projectile-indexing-method 'alien)
 (setq projectile-find-dir-includes-top-level t)
 (setq projectile-switch-project-action 'projectile-find-file-or-dir)
+(setq projectile-git-command "git ls-files -zco")
+
+(setq projectile-globally-ignored-file-suffixes
+      '("~" "#"))
+
+(setq projectile-globally-ignored-files
+      '("TAGS"
+        "GPATH"
+        "GRTAGS"
+        "GTAGS"))
 
 (defun projectile-find-file-or-dir (&optional arg)
   "Jump to a project's file or directory using completion.
