@@ -18,19 +18,13 @@
       "pkg-config --cflags-only-I "
       (mapconcat 'identity extern-libs " "))))))
 
-(defun cproject-string-list-p (obj)
-  "Determine if OBJ is a list of strings."
-  (and (listp obj) (-all? #'stringp obj)))
-
 (defcustom cproject-pkg-config nil
   "A list of pkg-config libraries to include in your C project"
-  :type '(repeat string)
-  :safe #'cproject-string-list-p)
+  :type '(repeat string))
 
 (defcustom cproject-include-path nil
   "A list of include directories to use in your C project"
-  :type '(repeat string)
-  :safe #'cproject-string-list-p)
+  :type '(repeat string))
 
 ;; Read project configuration from .dir-locals.el
 (add-hook 'c-mode-hook 'cproject-configure-locals)
