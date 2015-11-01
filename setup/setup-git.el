@@ -30,6 +30,4 @@
         magit-insert-unpulled-commits
         magit-insert-unpushed-commits))
 
-(global-git-gutter-mode t)
-
 (provide 'setup-git)
