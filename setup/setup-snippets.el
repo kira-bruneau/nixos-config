@@ -1,6 +1,6 @@
-;; (require-package
-;;  '(yasnippet))
+(require-package
+ '(yasnippet))
 
-;; (yas-global-mode 1)
+(yas-global-mode 1)
 
 (provide 'setup-snippets)
