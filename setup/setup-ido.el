@@ -13,7 +13,7 @@
 (ido-ubiquitous-mode t)
 (setq ido-enable-flex-matching t)
 (setq ido-create-new-buffer 'always)
-;; (setq ido-use-virtual-buffers t)
+(setq ido-use-virtual-buffers t)
 
 ;; Smarter flex matching for ido
 (require 'flx-ido)
