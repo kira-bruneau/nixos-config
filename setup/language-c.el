@@ -57,6 +57,10 @@
 
 (defun cproject-configure-includes (includes)
   (setq-local flycheck-clang-include-path includes)
-  (setq-local company-clang-arguments includes))
+  (setq-local company-clang-arguments
+              (mapcar
+               (lambda (include)
+                 (concat "-I" include))
+               includes)))
 
 (provide 'language-c)
