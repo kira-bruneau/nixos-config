@@ -28,6 +28,7 @@
         dired-unmark-all-marks
         electric-newline-and-maybe-indent
         end-of-visual-line
+        fc-eval-and-replace
         forward-sexp
         indent-for-tab-command
         kill-region
