@@ -37,6 +37,7 @@
         org-self-insert-command
         tab-to-tab-stop
         wdired-next-line
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once
