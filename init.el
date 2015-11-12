@@ -19,6 +19,7 @@
 (require 'setup-astyle)
 (require 'setup-buffer-move)
 (require 'setup-company)
+(require 'setup-drag-stuff)
 (require 'setup-git)
 (require 'setup-ido)
 (require 'setup-multiple-cursors)

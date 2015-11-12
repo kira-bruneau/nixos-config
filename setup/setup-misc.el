@@ -1,6 +1,5 @@
 (require-package
- '(drag-stuff
-   dtrt-indent
+ '(dtrt-indent
    expand-region
    hide-lines
    whitespace-cleanup-mode))
@@ -51,7 +50,6 @@
 (winner-mode t)
 (dtrt-indent-mode t)
 (windmove-default-keybindings)
-(drag-stuff-global-mode t)
 
 (global-set-key (kbd "C-c C-/") 'hide-lines)
 (global-set-key (kbd "C-=") 'er/expand-region)
