@@ -24,6 +24,7 @@
 (require 'setup-ido)
 (require 'setup-multiple-cursors)
 (require 'setup-projectile)
+(require 'setup-rainbow-delimiters)
 (require 'setup-smartparens)
 (require 'setup-sudo-edit)
 (require 'setup-undo-tree)
