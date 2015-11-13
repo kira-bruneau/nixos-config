@@ -51,6 +51,7 @@
 (dtrt-indent-mode t)
 (windmove-default-keybindings)
 
+(global-set-key (kbd "C-c C-r") 'revert-buffer)
 (global-set-key (kbd "C-c C-/") 'hide-lines)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-x C--") 'goto-last-change)
@@ -60,6 +61,7 @@
 (setq save-interprogram-paste-before-kill t) ;; Push clipboard to the kill ring
 (setq confirm-nonexistent-file-or-buffer nil) ;; Don't ask to create a new file
 (global-set-key (kbd "C-c C-k") 'kill-this-buffer) ;; Don't prompt to kill a buffer
+(setq revert-without-query '(".*")) ;; Don't prompt to revert a buffer
 (setq tramp-verbose 2) ;; Stop giving me annoying tramp messages
 
 ;; scroll one line at a time (less "jumpy" than defaults)
