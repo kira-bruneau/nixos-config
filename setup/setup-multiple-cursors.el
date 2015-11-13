@@ -9,4 +9,9 @@
 (global-set-key (kbd "C-^") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-'") 'mc-hide-unmatched-lines-mode)
 
+(with-eval-after-load 'multiple-cursors-core
+  (define-key mc/keymap (kbd "M-T") 'mc/reverse-regions)
+  (define-key mc/keymap (kbd "C-,") 'mc/skip-to-previous-like-this)
+  (define-key mc/keymap (kbd "C-.") 'mc/skip-to-next-like-this))
+
 (provide 'setup-multiple-cursors)
