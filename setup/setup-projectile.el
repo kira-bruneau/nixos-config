@@ -3,6 +3,7 @@
 
 (require-package
  '(ag
+   wgrep-ag
    projectile))
 
 (projectile-global-mode)
