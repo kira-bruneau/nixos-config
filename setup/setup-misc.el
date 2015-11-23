@@ -52,6 +52,8 @@
 (windmove-default-keybindings)
 
 (global-set-key (kbd "C-c C-r") 'revert-buffer)
+(global-set-key (kbd "C-c v") 'visual-line-mode)
+
 (global-set-key (kbd "C-c C-/") 'hide-lines)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-x C--") 'goto-last-change)
