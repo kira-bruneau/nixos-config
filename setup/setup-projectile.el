@@ -13,7 +13,7 @@
 (setq projectile-git-command "git ls-files -zco")
 
 (setq projectile-globally-ignored-file-suffixes
-      '(".o" "~" "#"))
+      '(".o" ".so" ".d" "~" "#"))
 
 (setq projectile-globally-ignored-files
       '("TAGS"
