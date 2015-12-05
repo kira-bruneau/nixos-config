@@ -3,9 +3,12 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        LaTeX-babel-insert-hyphen
         LaTeX-insert-item
         LaTeX-insert-left-brace
         TeX-insert-backslash
+        TeX-insert-dollar
+        TeX-insert-sub-or-superscript
         TeX-newline
         asm-comment
         backward-sexp
@@ -44,6 +47,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        overwrite-mode
         previous-buffer
         smex
         wdired-finish-edit
