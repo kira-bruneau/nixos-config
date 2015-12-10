@@ -81,8 +81,4 @@
 (delete-selection-mode t)
 (setq shift-select-mode nil)
 
-;; File used for customize
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(load custom-file)
-
 (provide 'setup-misc)
