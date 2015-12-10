@@ -19,7 +19,8 @@
       '("TAGS"
         "GPATH"
         "GRTAGS"
-        "GTAGS"))
+        "GTAGS"
+        "node_modules"))
 
 (defun projectile-find-file-or-dir (&optional arg)
   "Jump to a project's file or directory using completion.
