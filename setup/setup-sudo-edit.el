@@ -10,11 +10,11 @@
 ;; Try to open unwriteable files with sudo
 ;; TODO I should check the user ids
 ;; (eg. This file has been made unwritable by root, edit with sudo?)
-(add-hook 'find-file-hook
-          (lambda ()
-            (unless (file-writable-p (buffer-file-name))
-              (when (y-or-n-p "This file is unwriteable, open with sudo?")
-                (sudo-edit)))))
+;; (add-hook 'find-file-hook
+;;           (lambda ()
+;;             (unless (file-writable-p (buffer-file-name))
+;;               (when (y-or-n-p "This file is unwriteable, open with sudo?")
+;;                 (sudo-edit)))))
 
 ;; TODO Try to open unreadable files with sudo
 
