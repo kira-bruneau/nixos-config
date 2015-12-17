@@ -21,6 +21,7 @@
 (require 'setup-company)
 (require 'setup-drag-stuff)
 (require 'setup-git)
+(require 'setup-helm)
 (require 'setup-ido)
 (require 'setup-multiple-cursors)
 (require 'setup-projectile)
