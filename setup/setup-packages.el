@@ -2,8 +2,7 @@
       '(lua-mode
         markdown-mode
         paradox
-        pkgbuild-mode
-        rust-mode))
+        pkgbuild-mode))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)

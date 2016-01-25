@@ -32,16 +32,17 @@
 (require 'setup-visual-regexp)
 
 ;; Major modes
-(require 'setup-org)
-(require 'setup-ediff)
 (require 'setup-dired)
+(require 'setup-ediff)
+(require 'setup-org)
 (require 'language-c)
+(require 'language-go)
 (require 'language-javascript)
 (require 'language-latex)
 (require 'language-lisp)
 (require 'language-php)
+(require 'language-rust)
 (require 'language-sql)
-(require 'language-go)
 
 ;; Diminish modes
 (require 'setup-diminish)
