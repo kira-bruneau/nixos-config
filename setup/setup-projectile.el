@@ -1,10 +1,10 @@
-(require-binary
- '(the_silver_searcher))
-
 (require-package
  '(ag
    wgrep-ag
    projectile))
+
+(require-binary
+ '(the_silver_searcher))
 
 (projectile-global-mode)
 (setq projectile-indexing-method 'alien)

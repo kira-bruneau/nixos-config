@@ -10,10 +10,10 @@
 (require 'setup-misc)
 
 ;; Generic helpers
-(require 'setup-tagging)
-(require 'setup-snippets)
 (require 'setup-linting)
+(require 'setup-snippets)
 (require 'setup-spelling)
+(require 'setup-tagging)
 
 ;; Minor modes
 (require 'setup-astyle)
