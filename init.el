@@ -35,6 +35,7 @@
 (require 'setup-dired)
 (require 'setup-ediff)
 (require 'setup-org)
+(require 'setup-multi-term)
 (require 'language-c)
 (require 'language-go)
 (require 'language-javascript)
