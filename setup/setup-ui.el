@@ -32,5 +32,7 @@
 (show-paren-mode t)
 (setq-default word-wrap t)
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
+(setq-default cursor-type '(bar . 2)) ;; 2px since I have a high dpi monitor
+(blink-cursor-mode t)
 
 (provide 'setup-ui)
