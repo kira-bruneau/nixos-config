@@ -31,4 +31,6 @@ Version 2015-01-26"
           (lambda ()
             (define-key dired-mode-map (kbd "E") 'xah-open-in-external-app)))
 
+(setq dired-auto-revert-buffer t)
+
 (provide 'setup-dired)
