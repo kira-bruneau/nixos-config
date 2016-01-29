@@ -30,6 +30,7 @@
 (require 'setup-sudo-edit)
 (require 'setup-undo-tree)
 (require 'setup-visual-regexp)
+(require 'setup-workgroups2)
 
 ;; Major modes
 (require 'setup-dired)
