@@ -34,17 +34,6 @@
   (interactive)
   (uniquify-region-lines (point-min) (point-max)))
 
-;; Centralized backups:
-;; Source http://www.emacswiki.org/emacs/BackupDirectory
-;; (setq
-;;  backup-by-copying t      ; don't clobber symlinks
-;;  backup-directory-alist
-;;  '(("." . "~/.saves"))    ; don't litter my fs tree
-;;  delete-old-versions t
-;;  kept-new-versions 6
-;;  kept-old-versions 2
-;;  version-control t)       ; use versioned backups
-
 ;; Minor modes
 (global-whitespace-cleanup-mode t)
 (winner-mode t)
@@ -56,7 +45,6 @@
 
 (global-set-key (kbd "C-c C-/") 'hide-lines)
 (global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-x C--") 'goto-last-change)
 
 ;; Fix annoyances
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Simplify all yes/no to y/n

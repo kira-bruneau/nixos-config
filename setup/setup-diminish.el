@@ -1,9 +1,6 @@
 (require-package
  '(diminish))
 
-;; (eval-after-load "projectile"
-;;   '(diminish 'mode-projectile ""))
-
 (eval-after-load "company"
   '(diminish 'company-mode " ▶"))
 
