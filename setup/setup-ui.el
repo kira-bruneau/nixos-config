@@ -1,7 +1,8 @@
 (require-package
  '(adaptive-wrap
    monokai-theme
-   powerline))
+   powerline
+   linum-off))
 
 (load-theme 'monokai t)
 
@@ -25,6 +26,11 @@
 
 ;; Start frames maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Line numbers
+(require 'linum-off)
+(global-linum-mode)
+(setq linum-format " %d ")
 
 ;; Misc
 (setq-default tab-width 4)
