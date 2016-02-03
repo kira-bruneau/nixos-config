@@ -30,6 +30,8 @@
 ;; Line numbers
 (require 'linum-off)
 (global-linum-mode)
+(setq linum-disabled-modes-list
+      (append linum-disabled-modes-list '(doc-view)))
 (setq linum-format " %d ")
 
 ;; Misc
