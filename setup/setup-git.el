@@ -1,6 +1,5 @@
 (require-package
- '(git-gutter-fringe
-   git-timemachine
+ '(git-timemachine
    gitconfig-mode
    gitignore-mode
    magit))
@@ -9,8 +8,13 @@
  '(git))
 
 ;; Magit
-(setq magit-last-seen-setup-instructions "1.4.0")
-(setq magit-push-always-verify nil)
+(setq magit-save-repository-buffers nil)
 (global-set-key (kbd "M-<f12>") 'magit-status)
+(setq magit-status-sections-hook
+      (remove-duplicates
+       (append
+        magit-status-sections-hook
+        '(magit-insert-recent-commits))
+       :test 'eq))
 
 (provide 'setup-git)
