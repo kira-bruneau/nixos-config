@@ -7,7 +7,6 @@
 (require-binary
  '(racer))
 
-(setq racer-cmd "/home/kira/.cargo/bin/racer")
 (setq racer-rust-src-path "/home/kira/dev/public/rust/src/")
 
 (add-hook 'rust-mode-hook (lambda ()
