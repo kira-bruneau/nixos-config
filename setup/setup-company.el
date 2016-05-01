@@ -9,9 +9,10 @@
 (setq company-dabbrev-downcase nil)
 (setq company-dabbrev-ignore-case nil)
 
-(setq company-minimum-prefix-length 0)
+(setq company-minimum-prefix-length 1)
 (setq company-idle-delay 0)
 
+(setq company-flx-limit 100)
 (with-eval-after-load 'company
   (company-flx-mode t))
 
