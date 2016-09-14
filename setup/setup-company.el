@@ -2,8 +2,8 @@
  '(company
    company-flx))
 
-(setq company-global-modes '(not eshell-mode))
-(setq company-clang-insert-arguments nil)
+(setq company-global-modes '(not eshell-mode gud-mode))
+(setq company-clang-insert-arguments t)
 (add-hook 'after-init-hook 'global-company-mode)
 
 (setq company-dabbrev-downcase nil)
