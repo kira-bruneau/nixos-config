@@ -40,6 +40,7 @@
         kill-visual-line
         org-delete-char
         org-self-insert-command
+        sgml-slash
         tab-to-tab-stop
         wdired-next-line
         yas-expand
