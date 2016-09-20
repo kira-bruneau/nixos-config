@@ -13,4 +13,4 @@
 
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 
-(provide 'setup-tagging)
+(provide 'setup-ggtags)

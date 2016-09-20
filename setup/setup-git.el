@@ -8,7 +8,7 @@
  '(git))
 
 ;; Magit
-(setq magit-save-repository-buffers nil)
 (global-set-key (kbd "M-<f12>") 'magit-status)
+(setq magit-save-repository-buffers nil)
 
 (provide 'setup-git)

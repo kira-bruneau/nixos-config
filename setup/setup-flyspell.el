@@ -15,4 +15,4 @@
 
 (setq ispell-program-name "aspell")
 
-(provide 'setup-spelling)
+(provide 'setup-flyspell)

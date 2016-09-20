@@ -4,7 +4,7 @@
    projectile))
 
 (require-binary
- '(the_silver_searcher))
+ '(ag))
 
 (projectile-global-mode)
 (diminish 'projectile-mode) ;; ➴

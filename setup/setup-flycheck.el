@@ -3,4 +3,4 @@
 
 (diminish 'flycheck-mode " ✓")
 
-(provide 'setup-linting)
+(provide 'setup-flycheck)

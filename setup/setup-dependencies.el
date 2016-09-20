@@ -22,4 +22,4 @@
 
 (require-package package-list)
 
-(provide 'setup-packages)
+(provide 'setup-dependencies)
