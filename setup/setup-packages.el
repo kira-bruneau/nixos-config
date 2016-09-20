@@ -1,8 +1,5 @@
 (setq package-list
-      '(lua-mode
-        markdown-mode
-        paradox
-        pkgbuild-mode))
+      '(diminish))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)

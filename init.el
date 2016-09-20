@@ -44,6 +44,3 @@
 (require 'language-php)
 (require 'language-rust)
 (require 'language-sql)
-
-;; Diminish modes
-(require 'setup-diminish)

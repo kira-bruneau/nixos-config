@@ -1,3 +1,9 @@
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "E") 'xah-open-in-external-app)))
+
+(setq dired-auto-revert-buffer t)
+
 (defun xah-open-in-external-app ()
   "Open the current file or dired marked files in external app.
 The app is chosen from your OS's preference.
@@ -26,11 +32,5 @@ Version 2015-01-26"
        ((string-equal system-type "gnu/linux")
         (mapc
          (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "xdg-open" fPath))) ξfile-list))))))
-
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (define-key dired-mode-map (kbd "E") 'xah-open-in-external-app)))
-
-(setq dired-auto-revert-buffer t)
 
 (provide 'setup-dired)
