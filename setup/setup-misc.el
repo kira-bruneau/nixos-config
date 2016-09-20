@@ -53,6 +53,7 @@
 (global-set-key (kbd "C-c C-k") 'kill-this-buffer) ;; Don't prompt to kill a buffer
 (setq revert-without-query '(".*")) ;; Don't prompt to revert a buffer
 (setq tramp-verbose 2) ;; Stop giving me annoying tramp messages
+(setq ad-redefinition-action 'accept) ;; Stop warning `ido-completing-read' got redefined
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 ;; Source: http://www.emacswiki.org/emacs/SmoothScrolling
