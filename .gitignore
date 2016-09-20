@@ -1,14 +1,15 @@
 /auto-save-list/
+/custom.el
 /elpa/
 /eshell/
-/url/
 /ido.last
 /projectile-bookmarks.eld
 /projectile.cache
 /recentf
+/session*
 /smex-items
 /tramp
-/session*
+/url/
 
 [#]*[#]
 *~
