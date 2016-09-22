@@ -20,6 +20,7 @@
 (require 'language-php)
 (require 'language-rust)
 (require 'language-sql)
+(require 'language-typescript)
 (require 'setup-dired)
 (require 'setup-ediff)
 (require 'setup-org)

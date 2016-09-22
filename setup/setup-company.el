@@ -13,6 +13,7 @@
 (setq company-dabbrev-ignore-case nil)
 (setq company-minimum-prefix-length 1)
 (setq company-idle-delay 0)
+(setq company-tooltip-align-annotations t)
 
 (setq company-flx-limit 100)
 
