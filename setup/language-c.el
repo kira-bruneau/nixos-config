@@ -16,21 +16,21 @@
     (shell-command-to-string
      (concat
       "pkg-config --cflags-only-I "
-      (mapconcat #'shell-quote-argument extern-libs " "))))))
+      (mapconcat 'shell-quote-argument extern-libs " "))))))
 
 (defun cproject-string-list-p (obj)
   "Determine if OBJ is a list of strings."
-  (and (listp obj) (-all? #'stringp obj)))
+  (and (listp obj) (-all? 'stringp obj)))
 
 (defcustom cproject-pkg-config nil
   "A list of pkg-config libraries to include in your C project"
   :type '(repeat string)
-  :safe #'cproject-string-list-p)
+  :safe 'cproject-string-list-p)
 
 (defcustom cproject-include-path nil
   "A list of include directories to use in your C project"
   :type '(repeat string)
-  :safe #'cproject-string-list-p)
+  :safe 'cproject-string-list-p)
 
 ;; Read project configuration from .dir-locals.el
 (add-hook 'c-mode-hook 'cproject-configure-locals)

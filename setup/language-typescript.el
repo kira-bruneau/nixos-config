@@ -2,6 +2,6 @@
  '(tide
    typescript-mode))
 
-(add-hook 'typescript-mode-hook #'tide-setup)
+(add-hook 'typescript-mode-hook 'tide-setup)
 
 (provide 'language-typescript)
