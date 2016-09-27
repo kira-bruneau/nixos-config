@@ -48,6 +48,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        kmacro-end-or-call-macro
         overwrite-mode
         previous-buffer
         smex
