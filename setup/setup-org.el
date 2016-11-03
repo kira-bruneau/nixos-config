@@ -1,7 +1,7 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
-;;(setq org-log-done t)
 
+(setq org-hide-emphasis-markers t)
 (setq org-entities-user
       '("* Letters"
         "** Latin (blackboard bold face)"
@@ -57,5 +57,21 @@
         ("ybb" "\\mathbb{y}" nil "&#120170;" "y" "y" "𝕪")
         ("Zbb" "\\mathbb{Z}" nil "&#8484;" "Z" "Z" "ℤ")
         ("zbb" "\\mathbb{z}" nil "&#120171;" "z" "z" "𝕫")))
+
+(defcustom org-interpret-symbols nil
+  "Non-nil means never interpret symbols to mean something else.
+When nil, certain symbols are interpreted and displayed differently."
+  :group 'org-appearance
+  :version "24.1"
+  :type 'boolean)
+
+(defun org-toggle-vertatim ()
+  "Toggle between verbatim text and interpreted text.
+This is a hacky solution designed for only my use case"
+  (interactive)
+  (org-set-local 'org-interpret-symbols (not org-interpret-symbols))
+  (org-set-local 'org-pretty-entities org-interpret-symbols)
+  (org-set-local 'org-hide-emphasis-markers org-interpret-symbols)
+  (org-restart-font-lock))
 
 (provide 'setup-org)
