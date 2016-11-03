@@ -38,16 +38,24 @@
         indent-for-tab-command
         kill-region
         kill-visual-line
+        org-beginning-of-line
         org-delete-char
+        org-end-of-line
+        org-kill-line
+        org-open-line
         org-self-insert-command
+        org-yank
         sgml-slash
         tab-to-tab-stop
+        typescript-insert-and-indent
         wdired-next-line
         yas-expand
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        beginning-of-buffer
+        end-of-buffer
         kmacro-end-or-call-macro
         overwrite-mode
         previous-buffer
