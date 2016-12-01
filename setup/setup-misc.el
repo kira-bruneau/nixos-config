@@ -40,6 +40,7 @@
 (setq tramp-verbose 2) ;; Stop giving me annoying tramp messages
 (setq ad-redefinition-action 'accept) ;; Stop warning `ido-completing-read' got redefined
 (setq custom-file (concat user-emacs-directory "custom.el")) ;; Stop putting custom config in my init.el
+(setq ring-bell-function 'ignore) ;; Turn off the annoying bell
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 ;; Source: http://www.emacswiki.org/emacs/SmoothScrolling
