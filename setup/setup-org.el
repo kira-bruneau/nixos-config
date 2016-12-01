@@ -56,7 +56,10 @@
         ("Ybb" "\\mathbb{Y}" nil "&#120144;" "Y" "Y" "𝕐")
         ("ybb" "\\mathbb{y}" nil "&#120170;" "y" "y" "𝕪")
         ("Zbb" "\\mathbb{Z}" nil "&#8484;" "Z" "Z" "ℤ")
-        ("zbb" "\\mathbb{z}" nil "&#120171;" "z" "z" "𝕫")))
+        ("zbb" "\\mathbb{z}" nil "&#120171;" "z" "z" "𝕫")
+        "** Extra math symbols"
+        ("mid" "\\mid" nil "&#124;" "|" "|" "|")
+        ("nmid" "\\nmid" nil "&#8740;" "[not divides]" "[not divides]" "∤")))
 
 (defcustom org-interpret-symbols nil
   "Non-nil means never interpret symbols to mean something else.
