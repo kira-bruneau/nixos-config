@@ -12,6 +12,7 @@
 (require 'setup-misc)
 
 ;; Major Modes
+(require 'language-arduino)
 (require 'language-c)
 (require 'language-go)
 (require 'language-javascript)
