@@ -29,6 +29,7 @@
 ;; Minor Modes
 (require 'setup-buffer-move)
 (require 'setup-company)
+(require 'setup-doc-view)
 (require 'setup-drag-stuff)
 (require 'setup-flycheck)
 (require 'setup-flyspell)
