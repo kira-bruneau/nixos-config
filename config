@@ -152,4 +152,4 @@ bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
 
 # Screenshot
-bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshot\ from\ %Y-%m-%d\ %T.png
+bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshot\ from\ %Y-%m-%d\ %T.png && paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
