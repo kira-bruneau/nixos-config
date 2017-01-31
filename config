@@ -136,3 +136,6 @@ bindsym $mod+p mode "resize"
 bar {
         status_command i3status
 }
+
+# Hide window decorations
+new_window none
