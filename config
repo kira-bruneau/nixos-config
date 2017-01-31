@@ -139,3 +139,18 @@ bar {
 
 # Hide window decorations
 new_window none
+
+# Pulse Audio controls
+set $volume-change /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && paplay -n Volume $volume-change
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && paplay -n Volume $volume-change
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
+
+# Screenshot
+bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshot\ from\ %Y-%m-%d\ %T.png
