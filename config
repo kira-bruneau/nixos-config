@@ -152,7 +152,21 @@ bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
 
 # Screenshot
-bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshot\ from\ %Y-%m-%d\ %T.png && paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
+bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshot\ from\ %Y-%m-%d\ %T.png && \
+        paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
 
 # Wallpaper
 exec_always feh -z --bg-fill ~/Pictures/Wallpapers/
+
+# Launchers
+bindsym $mod+l exec xdg-open ~/
+bindsym $mod+u exec xdg-open ~/School/
+bindsym $mod+m exec emacsclient -c
+bindsym $mod+b exec firefox
+
+# Automatically start applications
+exec redshift
+exec firefox
+exec emacsclient -c
+assign [class="Firefox"] 1
+assign [class="Emacs"] 2
