@@ -32,7 +32,7 @@ font pango:monospace 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec terminix
 
 # kill focused window
 bindsym $mod+q kill
@@ -79,29 +79,36 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
+set $workspace1 "1:  Internet"
+set $workspace2 "2:  Editor"
+set $workspace3 "3:  Terminal"
+set $workspace4 "4:  Files"
+set $workspace9 "9:  Gaming"
+set $workspace10 "10:  Music"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -156,10 +163,10 @@ bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshot\ from\ %Y-%m-%d\ 
         paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
 
 # Wallpaper
-exec_always feh -z --bg-fill ~/Pictures/Wallpapers/
+exec_always --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/
 
 # Launchers
-bindsym $mod+l exec xdg-open ~/
+bindsym $mod+y exec xdg-open ~/
 bindsym $mod+u exec xdg-open ~/School/
 bindsym $mod+m exec emacsclient -c
 bindsym $mod+b exec firefox
@@ -168,5 +175,9 @@ bindsym $mod+b exec firefox
 exec redshift
 exec firefox
 exec emacsclient -c
-assign [class="Firefox"] 1
-assign [class="Emacs"] 2
+assign [class="Firefox"] $workspace1
+assign [class="Chromium"] $workspace1
+assign [class="Emacs"] $workspace2
+assign [class="Nautilus"] $workspace4
+assign [class="Steam"] $workspace9
+assign [class="Rhythmbox"] $workspace10
