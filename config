@@ -106,20 +106,20 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+  # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym n resize shrink width 10 px or 10 ppt
-        bindsym e resize grow height 10 px or 10 ppt
-        bindsym i resize shrink height 10 px or 10 ppt
-        bindsym o resize grow width 10 px or 10 ppt
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym n resize shrink width 10 px or 10 ppt
+  bindsym e resize grow height 10 px or 10 ppt
+  bindsym i resize shrink height 10 px or 10 ppt
+  bindsym o resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -127,7 +127,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+  status_command i3status
 }
 
 # Hide window decorations
@@ -146,8 +146,8 @@ bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
 
 # Screenshot
-bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/Screenshot\ from\ %Y-%m-%d\ %T.png && \
-        paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
+bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/Screenshot\ from\ %Y-%m-%d\ %T.png \
+  && paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
 
 # Lock
 bindsym $mod+l exec i3lock -i ~/Pictures/Wallpapers/lockscreen.png
