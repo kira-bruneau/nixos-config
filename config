@@ -181,3 +181,6 @@ assign [class="Emacs"] $workspace2
 assign [class="Nautilus"] $workspace4
 assign [class="Steam"] $workspace9
 assign [class="Rhythmbox"] $workspace10
+
+# Window compositing
+exec --no-startup-id compton -b
