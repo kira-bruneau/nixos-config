@@ -152,7 +152,7 @@ bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/Screenshot\ from
   && paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
 
 # Lock
-bindsym $mod+l exec i3lock -i ~/Pictures/Wallpapers/lockscreen.png
+bindsym $mod+l exec i3lock -ei ~/Pictures/Wallpapers/lockscreen.png
 
 # Wallpaper
 exec --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/
