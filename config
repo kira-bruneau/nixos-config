@@ -175,4 +175,4 @@ assign [class="Steam"] $gaming
 assign [class="Rhythmbox"] $music
 
 # Window compositing
-exec --no-startup-id compton -b
+exec --no-startup-id compton -b --backend glx --vsync opengl-swc
