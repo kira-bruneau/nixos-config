@@ -68,8 +68,8 @@ set $mail      "2:  Mail"
 set $editor    "3:  Emacs"
 set $terminals "4:  Terminals"
 set $files     "5:  Files"
-set $gaming    "6:  Gaming"
-set $music     "7:  Music"
+set $music     "6:  Music"
+set $gaming    "7:  Gaming"
 
 # switch to workspace
 bindsym $mod+1 workspace $internet
@@ -77,8 +77,8 @@ bindsym $mod+2 workspace $mail
 bindsym $mod+3 workspace $editor
 bindsym $mod+4 workspace $terminals
 bindsym $mod+5 workspace $files
-bindsym $mod+6 workspace $gaming
-bindsym $mod+7 workspace $music
+bindsym $mod+6 workspace $music
+bindsym $mod+7 workspace $gaming
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
@@ -89,8 +89,8 @@ bindsym $mod+Shift+2 move container to workspace $mail
 bindsym $mod+Shift+3 move container to workspace $editor
 bindsym $mod+Shift+4 move container to workspace $terminals
 bindsym $mod+Shift+5 move container to workspace $files
-bindsym $mod+Shift+6 move container to workspace $gaming
-bindsym $mod+Shift+7 move container to workspace $music
+bindsym $mod+Shift+6 move container to workspace $music
+bindsym $mod+Shift+7 move container to workspace $gaming
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
@@ -133,11 +133,22 @@ bar {
 # Hide window decorations
 new_window none
 
-# Pulse Audio controls
-set $volume-change /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && paplay -n Volume $volume-change
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && paplay -n Volume $volume-change
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+# Volume controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id \
+  pactl set-sink-mute 0 0 & \
+  pactl set-sink-volume 0 +5% & \
+  pkill -RTMIN+10 i3blocks & \
+  paplay -n Volume /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+
+bindsym XF86AudioLowerVolume exec --no-startup-id \
+  pactl set-sink-mute 0 0 & \
+  pactl set-sink-volume 0 -5% & \
+  pkill -RTMIN+10 i3blocks & \
+  paplay -n Volume /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+
+bindsym XF86AudioMute exec --no-startup-id \
+  pactl set-sink-mute 0 toggle & \
+  pkill -RTMIN+10 i3blocks
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
@@ -152,8 +163,9 @@ bindsym Mod1+Shift+XF86AudioRaiseVolume exec --no-startup-id light -S 100
 bindsym Mod1+Shift+XF86AudioLowerVolume exec --no-startup-id light -r -S 1
 
 # Screenshot
-bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/Screenshot\ from\ %Y-%m-%d\ %T.png \
-  && paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
+bindsym Print exec --no-startup-id \
+  scrot ~/Pictures/Screenshots/Screenshot\ from\ %Y-%m-%d\ %T.png & \
+  paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
 
 # Lock
 bindsym $mod+l exec loginctl lock-session
