@@ -98,7 +98,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # reload ~/.Xresources
-bindsym $mod+Shift+x exec xrdb ~/.Xresources
+bindsym $mod+Shift+x exec --no-startup-id xrdb ~/.Xresources
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -168,21 +168,22 @@ bindsym Print exec --no-startup-id \
   paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga
 
 # Lock
-bindsym $mod+l exec loginctl lock-session
-
-# Wallpaper
-exec --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/
+bindsym $mod+l exec --no-startup-id loginctl lock-session
 
 # Launchers
 bindsym $mod+y exec xdg-open ~/
 bindsym $mod+u exec xdg-open ~/School/
 
-# Automatically start applications
-exec xss-lock -- i3lock -nei ~/Pictures/Wallpapers/lockscreen.png
-exec redshift
+# Start deamons
+exec --no-startup-id compton -b --backend glx --vsync opengl-swc
+exec --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/
+exec --no-startup-id xss-lock -- i3lock -nei ~/Pictures/Wallpapers/lockscreen.png
+exec --no-startup-id redshift
+
+# Start applications
 exec firefox
 exec geary
-exec emacsclient -c
+exec --no-startup-id emacsclient -c
 
 # Assign applications to workspaces
 assign [class="Firefox"] $internet
@@ -191,6 +192,3 @@ assign [class="Geary"] $mail
 assign [class="Emacs"] $editor
 assign [class="Steam"] $gaming
 assign [class="Rhythmbox"] $music
-
-# Window compositing
-exec --no-startup-id compton -b --backend glx --vsync opengl-swc
