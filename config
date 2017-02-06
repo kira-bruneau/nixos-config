@@ -129,6 +129,7 @@ bindsym $mod+r mode "resize"
 bar {
   status_command i3blocks
   strip_workspace_numbers yes
+  tray_padding 0
 }
 
 # Hide window decorations
