@@ -21,9 +21,11 @@ bindsym $mod+Return exec terminix
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+a exec rofi -show drun -matching fuzzy
-bindsym $mod+w exec rofi -show window -matching fuzzy
+# start rofi
+bindsym $mod+a exec rofi -modi drun -show drun -matching fuzzy
+bindsym $mod+w exec rofi -modi window -show window -matching fuzzy
+bindsym $mod+x exec rofi -modi run -show run -matching fuzzy
+bindsym $mod+c exec rofi -modi ssh run -show ssh -matching fuzzy
 
 # change focus
 bindsym $mod+n focus left
