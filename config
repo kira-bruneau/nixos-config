@@ -65,13 +65,13 @@ bindsym $mod+comma focus parent
 # focus the child container
 bindsym $mod+period focus child
 
-set $www   "1:"
-set $email "2:"
-set $edit  "3:"
-set $term  "4:"
-set $files "5:"
-set $music "6:"
-set $games "7:"
+set $www   "1: "
+set $email "2: "
+set $edit  "3: "
+set $term  "4: "
+set $files "5: "
+set $music "6: "
+set $games "7: "
 
 # switch to workspace
 bindsym $mod+1 workspace $www
@@ -130,9 +130,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   status_command i3blocks
-  strip_workspace_numbers yes
   tray_padding 0
-
   colors {
     separator #666666
     background #222222
