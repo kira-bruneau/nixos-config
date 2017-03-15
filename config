@@ -72,6 +72,7 @@ set $term  "4: "
 set $files "5: "
 set $music "6: "
 set $games "7: "
+set $chat "8: "
 
 # switch to workspace
 bindsym $mod+1 workspace $www
@@ -81,7 +82,7 @@ bindsym $mod+4 workspace $term
 bindsym $mod+5 workspace $files
 bindsym $mod+6 workspace $music
 bindsym $mod+7 workspace $games
-bindsym $mod+8 workspace 8
+bindsym $mod+8 workspace $chat
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
@@ -93,7 +94,7 @@ bindsym $mod+Shift+4 move container to workspace $term
 bindsym $mod+Shift+5 move container to workspace $files
 bindsym $mod+Shift+6 move container to workspace $music
 bindsym $mod+Shift+7 move container to workspace $games
-bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+8 move container to workspace $chat
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
