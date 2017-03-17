@@ -72,7 +72,7 @@ set $term  "4: "
 set $files "5: "
 set $music "6: "
 set $games "7: "
-set $chat "8: "
+set $chat  "8: "
 
 # switch to workspace
 bindsym $mod+1 workspace $www
@@ -206,6 +206,8 @@ assign [class="Geary"] $email
 assign [class="Emacs"] $edit
 assign [class="Steam"] $games
 assign [class="Rhythmbox"] $music
+assign [class="Messenger for Desktop"] $chat
+assign [class="Slack"] $chat
 
 client.focused #0088CC #0088CC #ffffff #dddddd
 client.focused_inactive #333333 #333333 #888888 #292d2e
