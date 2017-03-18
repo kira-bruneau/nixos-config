@@ -197,6 +197,8 @@ exec --no-startup-id ~/dev/shared/dunst/dunst
 exec firefox
 exec geary
 exec --no-startup-id emacsclient -c
+exec messengerfordesktop
+exec slack
 
 # Assign windows to workspaces
 assign [class="Firefox"] $www
