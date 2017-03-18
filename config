@@ -3,6 +3,10 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $left n
+set $down e
+set $up i
+set $right o
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -28,16 +32,16 @@ bindsym $mod+x exec rofi -modi run -show run -matching fuzzy
 bindsym $mod+c exec rofi -modi ssh run -show ssh -matching fuzzy
 
 # change focus
-bindsym $mod+n focus left
-bindsym $mod+e focus down
-bindsym $mod+i focus up
-bindsym $mod+o focus right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 # move focused window
-bindsym $mod+Shift+n move left
-bindsym $mod+Shift+e move down
-bindsym $mod+Shift+i move up
-bindsym $mod+Shift+o move right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
