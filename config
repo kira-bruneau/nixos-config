@@ -21,6 +21,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+Return exec urxvt -cd "`xcwd`"
 
 # kill focused window
 bindsym $mod+q kill
