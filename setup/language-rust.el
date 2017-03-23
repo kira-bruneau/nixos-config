@@ -7,8 +7,6 @@
 (require-binary
  '(racer))
 
-(setq racer-rust-src-path "/home/kira/dev/shared/rust/src")
-
 (add-hook 'rust-mode-hook 'racer-mode)
 (add-hook 'rust-mode-hook 'flycheck-mode)
 (add-hook 'racer-mode-hook 'eldoc-mode)
