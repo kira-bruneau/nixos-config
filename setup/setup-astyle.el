@@ -58,7 +58,7 @@ Valid values: c, java, cs"
 (setq astyle-args
       '("--style=attach"
         "--indent=spaces=2"
-        "--align-pointer=middle"
+        "--align-pointer=name"
         "--pad-oper"))
 
 (global-set-key (kbd "<f7>") 'astyle-dwim)
