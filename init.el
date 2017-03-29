@@ -1,51 +1,39 @@
-;; Init
+(defvar dir/setup (concat user-emacs-directory "setup/"))
+(defvar dir/cache (concat user-emacs-directory "cache/"))
+(defvar dir/conf (concat user-emacs-directory "conf/"))
+
+(defvar setup-files
+  (append
+   (mapcar
+    (lambda (name)
+      (concat user-emacs-directory name))
+    '("ui.el"
+      "misc.el"))
+   (directory-files dir/setup t "^[^.].*\.el$" t)))
+
+(defun require-package (packages)
+  (dolist (package packages)
+    (unless (package-installed-p package)
+      (package-install package))))
+
+(defun require-binary (binaries)
+  ;; (message (concat
+  ;;           "sudo pacman -S --needed "
+  ;;           (mapconcat 'symbol-name binaries " ")))
+  )
+
+;; Load setup files
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-(setq dir/setup (concat user-emacs-directory "setup/")
-      dir/cache (concat user-emacs-directory "cache/")
-      dir/conf (concat user-emacs-directory "conf/"))
+;; Refresh the archive
+(unless package-archive-contents
+  (package-refresh-contents))
 
-(add-to-list 'load-path dir/setup)
+(require-package '(diminish))
 
-(require 'setup-dependencies)
-(require 'setup-ui)
-(require 'setup-misc)
-
-;; Major Modes
-(require 'language-arduino)
-(require 'language-c)
-(require 'language-go)
-(require 'language-javascript)
-(require 'language-latex)
-(require 'language-lisp)
-(require 'language-php)
-(require 'language-rust)
-(require 'language-sql)
-(require 'language-typescript)
-(require 'setup-dired)
-(require 'setup-ediff)
-(require 'setup-org)
-
-;; Minor Modes
-(require 'setup-buffer-move)
-(require 'setup-company)
-(require 'setup-doc-view)
-(require 'setup-drag-stuff)
-(require 'setup-flycheck)
-(require 'setup-flyspell)
-(require 'setup-ggtags)
-(require 'setup-git)
-(require 'setup-helm)
-(require 'setup-ido)
-(require 'setup-multi-term)
-(require 'setup-multiple-cursors)
-(require 'setup-projectile)
-(require 'setup-rainbow-delimiters)
-(require 'setup-smartparens)
-(require 'setup-undo-tree)
-(require 'setup-visual-regexp)
-(require 'setup-yasnippet)
-
-;; Custom
-(require 'setup-astyle)
-(require 'setup-sudo-edit)
+(dolist (setup setup-files)
+  (condition-case err
+      (load setup nil t)
+    (error (message "%s" (error-message-string err)))))
