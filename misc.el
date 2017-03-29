@@ -23,6 +23,7 @@
 (winner-mode t)
 (dtrt-indent-mode t)
 (windmove-default-keybindings)
+(savehist-mode t)
 
 (global-set-key (kbd "C-c C-r") 'revert-buffer)
 (global-set-key (kbd "C-c v") 'visual-line-mode)
