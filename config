@@ -20,8 +20,8 @@ font pango:cantarell 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
-bindsym $mod+Shift+Return exec urxvt -cd "`xcwd`"
+bindsym $mod+Return exec tilix -w $(xcwd)
+bindsym $mod+Shift+Return exec tilix -w $(xcwd)
 
 # kill focused window
 bindsym $mod+q kill
