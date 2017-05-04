@@ -69,7 +69,7 @@ bindsym $mod+comma focus parent
 # focus the child container
 bindsym $mod+period focus child
 
-set $www   "1: "
+set $www   "1: "
 set $edit  "2: "
 set $term  "3: "
 set $files "4: "
@@ -202,15 +202,16 @@ exec --no-startup-id redshift-gtk
 exec --no-startup-id ~/dev/shared/dunst/dunst
 
 # Start windowed applications
-exec firefox
-exec geary
+exec google-chrome-stable
+# exec geary
 exec --no-startup-id emacsclient -c
 exec messengerfordesktop
-exec slack
+# exec slack
 
 # Assign windows to workspaces
 assign [class="Firefox"] $www
 assign [class="Chromium"] $www
+assign [class="Google-chrome"] $www
 assign [class="Geary"] $email
 assign [class="Emacs"] $edit
 assign [class="Steam"] $games
