@@ -78,6 +78,10 @@ set $games "6: "
 set $email "9: "
 set $chat  "10: "
 
+# move across workspaces
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+
 # switch to workspace
 bindsym $mod+1 workspace $www
 bindsym $mod+2 workspace $edit
