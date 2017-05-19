@@ -1,9 +1,7 @@
 (require-package
  '(adaptive-wrap
-   all-the-icons
    doom-themes
    hl-line+
-   nlinum
    powerline))
 
 ;; Theme
@@ -14,10 +12,6 @@
 ;; (add-hook 'find-file-hook #'doom-buffer-mode-maybe)
 ;; (add-hook 'after-revert-hook #'doom-buffer-mode-maybe)
 ;; (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
-
-;; More doom!
-(doom-themes-nlinum-config)   ; requires nlinum and hl-line-mode
-(doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
 
 ;; Font
 (set-frame-font "Inconsolata 12" nil t)
