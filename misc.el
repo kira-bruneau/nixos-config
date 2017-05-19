@@ -42,6 +42,7 @@
 (setq ad-redefinition-action 'accept) ;; Stop warning `ido-completing-read' got redefined
 (setq custom-file (concat user-emacs-directory "custom.el")) ;; Stop putting custom config in my init.el
 (setq ring-bell-function 'ignore) ;; Turn off the annoying bell
+(setq custom-safe-themes t) ;; Disable warning about running lisp code in theme
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 ;; Source: http://www.emacswiki.org/emacs/SmoothScrolling
