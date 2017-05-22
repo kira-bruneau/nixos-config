@@ -40,6 +40,7 @@
         kill-region
         kill-visual-line
         org-beginning-of-line
+        org-ctrl-c-ctrl-c
         org-delete-char
         org-end-of-line
         org-kill-line
