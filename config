@@ -187,10 +187,8 @@ exec --no-startup-id ~/dev/shared/dunst/dunst
 
 # Start windowed applications
 exec google-chrome-stable
-# exec geary
-exec --no-startup-id emacsclient -c
+# exec --no-startup-id emacsclient -c
 exec messengerfordesktop
-# exec slack
 
 # Assign windows to workspaces
 assign [class="Firefox"] $www
