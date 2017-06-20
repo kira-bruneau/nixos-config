@@ -135,21 +135,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-  status_command i3blocks
-  tray_padding 0
-  colors {
-    separator #666666
-    background #222222
-    statusline #dddddd
-    focused_workspace #0088CC #0088CC #ffffff
-    active_workspace #333333 #333333 #ffffff
-    inactive_workspace #333333 #333333 #888888
-    urgent_workspace #2f343a #900000 #ffffff
-  }
-}
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Hide window decorations
 new_window none
@@ -158,18 +145,15 @@ new_window none
 bindsym XF86AudioRaiseVolume exec --no-startup-id \
   pactl set-sink-mute 0 0 & \
   pactl set-sink-volume 0 +5% & \
-  pkill -RTMIN+10 i3blocks & \
   paplay -n Volume /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
 bindsym XF86AudioLowerVolume exec --no-startup-id \
   pactl set-sink-mute 0 0 & \
   pactl set-sink-volume 0 -5% & \
-  pkill -RTMIN+10 i3blocks & \
   paplay -n Volume /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
 bindsym XF86AudioMute exec --no-startup-id \
-  pactl set-sink-mute 0 toggle & \
-  pkill -RTMIN+10 i3blocks
+  pactl set-sink-mute 0 toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
