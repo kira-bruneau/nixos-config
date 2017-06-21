@@ -45,6 +45,7 @@ modules-right = xbacklight volume xkeyboard cpu filesystem memory temperature ba
 
 tray-position = right
 tray-padding = 2
+tray-maxsize = 32
 ;tray-transparent = true
 ;tray-background = #0063ff
 
