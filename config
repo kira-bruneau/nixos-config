@@ -196,10 +196,9 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 format-connected-underline = #9f78e1
-format-prefix = " "
-label-connected = %upspeed% %downspeed%
+label-connected =  %upspeed%  %downspeed%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
