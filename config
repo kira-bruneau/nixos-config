@@ -236,13 +236,10 @@ format-disconnected =
 type = internal/date
 interval = 1
 
-date =
-date-alt = " %a %b %d"
+date = %a %b %d
+time = %H:%M:%S
 
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
