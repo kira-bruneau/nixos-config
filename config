@@ -292,15 +292,15 @@ format-spacing = 1
 
 label-open = 
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close =  Cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 =  reboot
-menu-0-0-exec = sudo reboot
-menu-0-1 =  power off
-menu-0-1-exec = sudo poweroff
+menu-0-0 =  Reboot
+menu-0-0-exec = systemctl reboot
+menu-0-1 =  Power Off
+menu-0-1-exec = systemctl poweroff
 
 [settings]
 screenchange-reload = true
