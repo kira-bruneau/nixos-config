@@ -1,8 +1,9 @@
 (require-package
  '(company-c-headers))
 
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-c-headers))
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-c-headers)
+  (add-to-list 'company-backends 'company-yasnippet))
 
 (setq gdb-many-windows t)
 
