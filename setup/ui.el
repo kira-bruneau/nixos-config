@@ -19,9 +19,6 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 
-;; Start frames maximized
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
 ;; Visual line mode
 (set-default 'truncate-lines t)
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
