@@ -12,8 +12,8 @@
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 (diminish 'tern-mode " ◎")
 
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-tern))
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-tern))
 
 (add-to-list 'auto-mode-alist '("\\.tern-project$" . json-mode))
 

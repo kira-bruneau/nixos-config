@@ -4,8 +4,8 @@
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 
-(eval-after-load "elisp-slime-nav"
-  '(diminish 'elisp-slime-nav-mode " ◎"))
+(with-eval-after-load "elisp-slime-nav"
+  (diminish 'elisp-slime-nav-mode " ◎"))
 
 (global-set-key (kbd "C-c e") 'fc-eval-and-replace)
 
