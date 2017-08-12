@@ -35,7 +35,6 @@
  ("helm" . "b951e7e2c5d2ee18d5d4ac957969bb2ce17c9981")
  ("helm-dash" . "9a230125a7a11f5fa90aa048b61abd95eb78ddfe")
  ("hide-lines" . "331122bf19361130351cfe55968c2a7820329eb3")
- ("hl-line-plus" . "8be50c1cf1fc6b52773a3537dbf88dbd63d9605f")
  ("ido-completing-read-plus" . "1a1f695eb8e7d4ae2035e506ea3ff5bd4e2d0533")
  ("ido-vertical-mode.el" . "b42e4227ed5d37b5d840a9d9d1cdaabf50e189b1")
  ("js2-mode" . "91c745ad062d454834f646dcd16be6856a1db8b3")
