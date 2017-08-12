@@ -3,7 +3,19 @@
 (defvar dir/conf (concat user-emacs-directory "conf/"))
 
 ;; Define setup files to load
-(defvar setup-files (directory-files dir/setup t "^[^.].*\.el$" t))
+;;
+;; TODO: Load files before recursing through directories so we don't
+;; have to be explict with load order
+(defvar setup-files
+  (delete-dups
+   (append
+    (mapcar
+     (lambda (name)
+       (concat dir/setup name))
+     '("ui.el"
+       "editing.el"
+       "fix-annoyances.el"))
+    (directory-files-recursively dir/setup "^[^.].*\.el$"))))
 
 ;; Bootstrap straight.el
 (let ((bootstrap-file (concat user-emacs-directory "straight/bootstrap.el"))
