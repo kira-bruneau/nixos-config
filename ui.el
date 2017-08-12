@@ -1,4 +1,5 @@
 (straight-use-package 'adaptive-wrap)
+(straight-use-package 'diminish)
 (straight-use-package 'doom-themes)
 (straight-use-package 'hl-line+)
 (straight-use-package 'powerline)
@@ -6,11 +7,6 @@
 ;; Theme
 (setq doom-one-padded-modeline 8)
 (load-theme 'doom-one t)
-
-;; Brighten thangs
-;; (add-hook 'find-file-hook #'doom-buffer-mode-maybe)
-;; (add-hook 'after-revert-hook #'doom-buffer-mode-maybe)
-;; (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
 
 ;; Font
 (set-frame-font "Inconsolata 12" nil t)
@@ -28,11 +24,13 @@
 ;; Start frames maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; Visual line mode
+(add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
+(global-set-key (kbd "C-c v") 'visual-line-mode)
+(diminish 'visual-line-mode "↩")
+
 ;; Misc
 (setq-default tab-width 4)
 (setq column-number-mode t)
 (show-paren-mode t)
 (setq-default word-wrap t)
-(add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
-;; (setq-default cursor-type '(bar . 2)) ;; 2px since I have a high dpi monitor
-(blink-cursor-mode t)
