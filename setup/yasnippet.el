@@ -1,5 +1,4 @@
-(require-package
- '(yasnippet))
+(straight-use-package 'yasnippet)
 
 (yas-global-mode 1)
 (diminish 'yas-minor-mode) ;; ✂

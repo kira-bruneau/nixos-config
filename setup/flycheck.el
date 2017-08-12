@@ -1,4 +1,3 @@
-(require-package
- '(flycheck))
+(straight-use-package 'flycheck)
 
 (diminish 'flycheck-mode " ✓")

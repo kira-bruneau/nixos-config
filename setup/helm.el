@@ -1,6 +1,5 @@
-(require-package
- '(helm
-   helm-dash))
+(straight-use-package 'helm)
+(straight-use-package 'helm-dash)
 
 (require 'helm-config)
 

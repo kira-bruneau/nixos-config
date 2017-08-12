@@ -1,8 +1,7 @@
-(require-package
- '(adaptive-wrap
-   doom-themes
-   hl-line+
-   powerline))
+(straight-use-package 'adaptive-wrap)
+(straight-use-package 'doom-themes)
+(straight-use-package 'hl-line+)
+(straight-use-package 'powerline)
 
 ;; Theme
 (setq doom-one-padded-modeline 8)

@@ -1,5 +1,4 @@
-(require-package
- '(drag-stuff))
+(straight-use-package 'drag-stuff)
 
 (drag-stuff-global-mode t)
 (diminish 'drag-stuff-mode) ;; ↕

@@ -1,6 +1,5 @@
-(require-package
- '(tide
-   typescript-mode))
+(straight-use-package 'tide)
+(straight-use-package 'typescript-mode)
 
 (defun setup-tide-mode ()
   (interactive)

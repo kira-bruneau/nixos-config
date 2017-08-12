@@ -1,5 +1,3 @@
-(require-package
- '(go-mode))
+(straight-use-package 'go-mode)
 
-(require-binary
- '(godef)) ;; go get github.com/rogpeppe/godef
+;; go get github.com/rogpeppe/godef

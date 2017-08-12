@@ -1,5 +1,4 @@
-(require-package
- '(company-c-headers))
+(straight-use-package 'company-c-headers)
 
 (with-eval-after-load 'company
   (add-to-list 'company-backends 'company-c-headers)

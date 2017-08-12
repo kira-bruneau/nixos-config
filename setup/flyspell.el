@@ -1,4 +1,4 @@
-(require-binary
+(pacaur-use-packages
  '(aspell
    aspell-en))
 

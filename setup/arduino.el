@@ -1,7 +1,6 @@
-(require-package
- '(arduino-mode))
+(straight-use-package 'arduino-mode)
 
-(require-binary
+(pacaur-use-packages
  '(arduino-mk))
 
 (setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))

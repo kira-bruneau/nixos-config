@@ -1,5 +1,4 @@
-(require-package
- '(multiple-cursors))
+(straight-use-package 'multiple-cursors)
 
 (setq mc/list-file (concat dir/cache "mc-lists.el"))
 

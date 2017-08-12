@@ -1,10 +1,9 @@
-(require-package
- '(ag
-   wgrep-ag
-   projectile))
+(straight-use-package 'ag)
+(straight-use-package 'projectile)
+(straight-use-package 'wgrep-ag)
 
-(require-binary
- '(ag))
+(pacaur-use-packages
+ '(the_silver_searcher))
 
 (projectile-global-mode)
 (diminish 'projectile-mode) ;; ➴

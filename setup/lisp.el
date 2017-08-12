@@ -1,6 +1,5 @@
-(require-package
- '(elisp-slime-nav
-   slime))
+(straight-use-package 'elisp-slime-nav)
+(straight-use-package 'slime)
 
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'turn-on-elisp-slime-nav-mode))

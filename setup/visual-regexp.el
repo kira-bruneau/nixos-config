@@ -1,6 +1,5 @@
-(require-package
- '(visual-regexp
-   visual-regexp-steroids))
+(straight-use-package 'visual-regexp)
+(straight-use-package 'visual-regexp-steroids)
 
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)

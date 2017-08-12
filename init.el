@@ -2,6 +2,7 @@
 (defvar dir/cache (concat user-emacs-directory "cache/"))
 (defvar dir/conf (concat user-emacs-directory "conf/"))
 
+;; Define setup files to load
 (defvar setup-files
   (append
    (mapcar
@@ -11,28 +12,25 @@
       "misc.el"))
    (directory-files dir/setup t "^[^.].*\.el$" t)))
 
-(defun require-package (packages)
-  (dolist (package packages)
-    (unless (package-installed-p package)
-      (package-install package))))
+;; Bootstrap straight.el
+(let ((bootstrap-file (concat user-emacs-directory "straight/bootstrap.el"))
+      (bootstrap-version 2))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(defun require-binary (binaries)
+(defun pacaur-use-packages (binaries)
   ;; (message (concat
-  ;;           "sudo pacman -S --needed "
+  ;;           "pacaur -S --needed "
   ;;           (mapconcat 'symbol-name binaries " ")))
   )
 
-;; Load setup files
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
-
-;; Refresh the archive
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(require-package '(diminish))
-
+;; Load setup files and isolate any errors
 (dolist (setup setup-files)
   (condition-case err
       (load setup nil t)

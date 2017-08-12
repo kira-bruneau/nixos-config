@@ -1,5 +1,4 @@
-(require-package
- '(undo-tree))
+(straight-use-package 'undo-tree)
 
 (global-undo-tree-mode t)
 (diminish 'undo-tree-mode) ;; ψ

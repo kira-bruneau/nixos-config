@@ -1,3 +1,2 @@
-(require-package
- '(auctex
-   latex-preview-pane))
+(straight-use-package 'auctex)
+(straight-use-package 'latex-preview-pane)

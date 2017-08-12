@@ -1,12 +1,12 @@
-(require-package
- '(dtrt-indent
-   expand-region
-   hide-lines
-   lua-mode
-   markdown-mode
-   paradox
-   pkgbuild-mode
-   whitespace-cleanup-mode))
+(straight-use-package 'diminish)
+(straight-use-package 'dtrt-indent)
+(straight-use-package 'expand-region)
+(straight-use-package 'hide-lines)
+(straight-use-package 'lua-mode)
+(straight-use-package 'markdown-mode)
+(straight-use-package 'paradox)
+(straight-use-package 'pkgbuild-mode)
+(straight-use-package 'whitespace-cleanup-mode)
 
 ;; Default configuration
 (global-auto-revert-mode t)

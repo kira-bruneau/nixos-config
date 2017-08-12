@@ -1,10 +1,9 @@
-(require-package
- '(git-timemachine
-   gitconfig-mode
-   gitignore-mode
-   magit))
+(straight-use-package 'git-timemachine)
+(straight-use-package 'gitconfig-mode)
+(straight-use-package 'gitignore-mode)
+(straight-use-package 'magit)
 
-(require-binary
+(pacaur-use-packages
  '(git))
 
 ;; Magit

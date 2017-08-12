@@ -1,5 +1,4 @@
-(require-package
- '(smartparens))
+(straight-use-package 'smartparens)
 
 (require 'smartparens-config)
 (smartparens-global-mode t)

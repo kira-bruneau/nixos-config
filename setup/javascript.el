@@ -1,8 +1,7 @@
-(require-package
- '(company-tern
-   js2-mode
-   json-mode ;; I prefer this over js2-mode for json files
-   tern))
+(straight-use-package 'company-tern)
+(straight-use-package 'js2-mode)
+(straight-use-package 'json-mode) ;; I prefer this over js2-mode for json files
+(straight-use-package 'tern)
 
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))

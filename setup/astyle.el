@@ -1,4 +1,4 @@
-(require-binary
+(pacaur-use-packages
  '(astyle))
 
 (defgroup astyle nil

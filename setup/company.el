@@ -1,6 +1,5 @@
-(require-package
- '(company
-   company-flx))
+(straight-use-package 'company)
+(straight-use-package 'company-flx)
 
 (add-hook 'after-init-hook 'global-company-mode)
 (with-eval-after-load 'company

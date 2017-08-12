@@ -1,7 +1,6 @@
-(require-package
- '(multi-term))
+(straight-use-package 'multi-term)
 
-(require-binary
+(pacaur-use-packages
  '(zsh))
 
 (setq multi-term-program "/bin/zsh")

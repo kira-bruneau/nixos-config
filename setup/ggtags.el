@@ -1,8 +1,8 @@
-(require-package
- '(ggtags))
+(straight-use-package 'ggtags)
 
-(require-binary
- '(global ctags))
+(pacaur-use-packages
+ '(global
+   ctags))
 
 (add-hook 'c-mode-common-hook
           (lambda ()

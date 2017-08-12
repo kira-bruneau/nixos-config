@@ -1,11 +1,10 @@
-(require-package
- '(rust-mode
-   racer
-   company-racer
-   flycheck-rust))
+(straight-use-package 'company-racer)
+(straight-use-package 'flycheck-rust)
+(straight-use-package 'racer)
+(straight-use-package 'rust-mode)
 
-(require-binary
- '(racer))
+(pacaur-use-packages
+ '(rust-racer))
 
 (add-hook 'rust-mode-hook 'racer-mode)
 (add-hook 'rust-mode-hook 'flycheck-mode)
