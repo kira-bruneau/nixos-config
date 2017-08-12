@@ -1,3 +1,4 @@
+;; NOTE: I never actually use this, is it worth keeping?
 (straight-use-package 'helm)
 (straight-use-package 'helm-dash)
 

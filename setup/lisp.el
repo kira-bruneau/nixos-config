@@ -1,4 +1,4 @@
-(straight-use-package 'elisp-slime-nav)
+(straight-use-package 'elisp-slime-nav) ;; I think this is now built into emacs
 (straight-use-package 'slime)
 
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))

@@ -23,6 +23,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Visual line mode
+(set-default 'truncate-lines t)
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
 (global-set-key (kbd "C-c v") 'visual-line-mode)
 (diminish 'visual-line-mode "↩")

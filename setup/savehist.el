@@ -1,0 +1,1 @@
+(savehist-mode t)

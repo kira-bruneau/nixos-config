@@ -3,14 +3,7 @@
 (defvar dir/conf (concat user-emacs-directory "conf/"))
 
 ;; Define setup files to load
-(defvar setup-files
-  (append
-   (mapcar
-    (lambda (name)
-      (concat user-emacs-directory name))
-    '("ui.el"
-      "misc.el"))
-   (directory-files dir/setup t "^[^.].*\.el$" t)))
+(defvar setup-files (directory-files dir/setup t "^[^.].*\.el$" t))
 
 ;; Bootstrap straight.el
 (let ((bootstrap-file (concat user-emacs-directory "straight/bootstrap.el"))
