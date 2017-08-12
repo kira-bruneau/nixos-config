@@ -32,6 +32,7 @@
 
 ;; Load setup files and isolate any errors
 (straight-transaction
+  (straight-use-package 'diminish)
   (dolist (setup setup-files)
     (condition-case err
         (load setup nil t)

@@ -1,5 +1,4 @@
 (straight-use-package 'adaptive-wrap)
-(straight-use-package 'diminish)
 (straight-use-package 'doom-themes)
 (straight-use-package 'hl-line+)
 (straight-use-package 'powerline)
