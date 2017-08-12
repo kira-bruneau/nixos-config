@@ -1,6 +1,7 @@
 /auto-save-list/
 /custom.el
-/straight
+/straight/*
+!/straight/versions/
 /eshell/
 /history
 /ido.last
@@ -11,6 +12,3 @@
 /smex-items
 /tramp
 /url/
-
-[#]*[#]
-*~
