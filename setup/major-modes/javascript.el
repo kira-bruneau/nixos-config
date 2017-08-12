@@ -1,11 +1,13 @@
 (straight-use-package 'company-tern)
 (straight-use-package 'js2-mode)
-(straight-use-package 'json-mode) ;; I prefer this over js2-mode for json files
+(straight-use-package 'json-mode)
 (straight-use-package 'tern)
 
-;; js2-mode
+;; js2-mode & json-mode
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
+(add-to-list 'auto-mode-alist '("\\.tern-project$" . json-mode))
+
 (setq js2-mode-show-strict-warnings nil)
 
 ;; tern
@@ -14,8 +16,6 @@
 
 (with-eval-after-load 'company
   (add-to-list 'company-backends 'company-tern))
-
-(add-to-list 'auto-mode-alist '("\\.tern-project$" . json-mode))
 
 (defun tern-setup-project-browser ()
   "Setup a new browser tern project"

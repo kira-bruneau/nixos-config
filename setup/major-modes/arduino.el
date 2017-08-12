@@ -3,5 +3,5 @@
 (pacaur-use-packages
  '(arduino-mk))
 
-(setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.\\(pde\\|ino\\)$" . arduino-mode))
 (autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
