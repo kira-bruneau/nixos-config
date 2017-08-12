@@ -31,7 +31,8 @@
   )
 
 ;; Load setup files and isolate any errors
-(dolist (setup setup-files)
-  (condition-case err
-      (load setup nil t)
-    (error (message "%s" (error-message-string err)))))
+(straight-transaction
+  (dolist (setup setup-files)
+    (condition-case err
+        (load setup nil t)
+      (error (message "%s" (error-message-string err))))))
