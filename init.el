@@ -11,7 +11,7 @@
    (append
     (mapcar
      (lambda (name)
-       (concat dir/setup name))
+       (expand-file-name (concat dir/setup name)))
      '("ui.el"
        "editing.el"
        "fix-annoyances.el"))
