@@ -4,9 +4,9 @@
 (straight-use-package 'tern)
 
 ;; js2-mode & json-mode
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
-(add-to-list 'auto-mode-alist '("\\.tern-project$" . json-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
+(add-to-list 'auto-mode-alist '("\\.tern-project\\'" . json-mode))
 
 (setq js2-mode-show-strict-warnings nil)
 

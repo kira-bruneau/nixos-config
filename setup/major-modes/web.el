@@ -1,7 +1,7 @@
 (straight-use-package 'web-beautify)
 (straight-use-package 'web-mode)
 
-(add-to-list 'auto-mode-alist '("\\.html?$\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (with-eval-after-load 'js2-mode
   (define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
