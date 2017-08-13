@@ -37,6 +37,7 @@
 
 ;; Load setup files and isolate any errors
 (straight-transaction
+  (straight-mark-transaction-as-init)
   (straight-use-package 'diminish)
   (dolist (setup setup-files)
     (condition-case err
