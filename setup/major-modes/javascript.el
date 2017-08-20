@@ -8,14 +8,18 @@
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 (add-to-list 'auto-mode-alist '("\\.tern-project\\'" . json-mode))
 
+(with-eval-after-load 'restclient
+  (add-to-list 'restclient-media-type-mode-alist '("\\`application/js\\'" . js2-mode))
+  (add-to-list 'restclient-media-type-mode-alist '("\\`application/json\\'" . json-mode)))
+
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-tern))
+
 (setq js2-mode-show-strict-warnings nil)
 
 ;; tern
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 (diminish 'tern-mode " ◎")
-
-(with-eval-after-load 'company
-  (add-to-list 'company-backends 'company-tern))
 
 (defun tern-setup-project-browser ()
   "Setup a new browser tern project"

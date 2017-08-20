@@ -17,3 +17,6 @@
 
 (with-eval-after-load 'css-mode
   (define-key css-mode-map (kbd "C-c b") 'web-beautify-css))
+
+(with-eval-after-load 'restclient
+  (add-to-list 'restclient-media-type-mode-alist '("\\`text/html\\'" . web-mode)))
