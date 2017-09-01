@@ -1,0 +1,76 @@
+* IDE-like features
+** C/C++
+- navigation: rtags,
+- completion:
+  - option 1: company + company-irony + company-irony-c-headers
+  - option 2: company + company-clang + company-c-headers **current**
+- syntax checker:
+  - option 1: flycheck (clang) **current**
+  - option 2: flycheck + flycheck-irony
+
+** Rust
+see racer documentation
+- navigation: racer
+- completion: company + ?
+- syntax checker: flycheck
+
+** Go
+godef?
+
+** TypeScript
+tide (navigation, completion)
+
+** JS
+- navigation + symbol renaming: tern,
+- completion: company-tern + company
+
+** Emacs Lisp
+- Auto completion broke at some point, figure out how to fix it
+
+* Packages to Try
+** use-package: cleaner package management
+Figure out how to setup hooks that can be reloaded!
+** avy: faster navigation
+replacement for ace-jump
+** ivy: replace ido
+** helm: nested filtering
+
+* Improve Emacs
+- Auto update dired
+- Horizontal scrolling
+- Modeline
+ - Don't care about minor modes
+ - Try to get it similar to the doom-theme screenshots
+- Inspect element for emacs (setting font faces, etc...)
+- Browse through online git repo (github) without download
+  - http + git protocols for tramp
+- Requries modifiying C mode
+  - Seperate the echo area and the minibuffer so I don't get interrupted while typing
+  - Pixel-level scrolling
+
+* Improve a Package
+** restclient
+- create content-type mappings from extension mappings
+  - eg. application/json => .js => js2-mode
+- provide option for custom content-type mappings
+- provide option for custom beautifiers
+
+** Doom Themes
+- Fix weird GUI bugs with emacsclient (possibly related to DPI scaling)
+- Compare theme in high dpi vs low dpi to improve scaling consistency
+
+** Straight
+- 2048-game (can't install, uses hg instead of git?)
+- slime & yasnippet repos seem to change when they are built
+- Repos checked out at a specific revision instead of on master
+- Updating packages:
+  - Do not prompt at all if there there are no changes made to the repo
+  - Make it less annoying to update packages installed with lockfile
+  - Automatically build packages after pull
+
+** ag-mode
+- Only open buffer temporarily when using 'next-error-follow-minor-mode'
+
+** Projectile
+- Don't hide currently opened repo when using projectile-find-file 
+  - This is confusing and inconsistent with find-file
