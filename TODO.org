@@ -70,7 +70,3 @@ replacement for ace-jump
 
 ** ag-mode
 - Only open buffer temporarily when using 'next-error-follow-minor-mode'
-
-** Projectile
-- Don't hide currently opened repo when using projectile-find-file 
-  - This is confusing and inconsistent with find-file

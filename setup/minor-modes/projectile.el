@@ -35,11 +35,17 @@ With a prefix ARG invalidates the cache first."
   ;; TODO: Use existing hooks vs create new hook
   )
 
-(defun file-name-references ()
-  (interactive)
-  (projectile-ag (file-name-sans-extension (buffer-name))))
-
 (defun projectile-new (directory)
   (interactive "D")
   (let ((projectile-file (concat directory ".projectile")))
     (write-region "" nil projectile-file t)))
+
+;; Don't hide currently opened project when using projectile-switch-project
+;; Source: https://github.com/bbatsov/projectile/issues/1016
+(defun projectile-relevant-known-projects () projectile-known-projects)
+(defun projectile-relevant-open-projects () (projectile-open-projects))
+
+;; Attempt to find any references to the currently opened buffer in a project
+(defun file-name-references ()
+  (interactive)
+  (projectile-ag (file-name-sans-extension (buffer-name))))
