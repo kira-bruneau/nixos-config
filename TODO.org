@@ -24,17 +24,17 @@ tide (navigation, completion)
 - navigation + symbol renaming: tern,
 - completion: company-tern + company
 
-** Emacs Lisp
+** Emacs Lisp :priority:
 - Auto completion broke at some point, figure out how to fix it
 
-* Packages to Try
+* Things to Try
 ** use-package: cleaner package management
 Figure out how to setup hooks that can be reloaded!
 ** avy: faster navigation
 replacement for ace-jump
 ** ivy: replace ido
 ** helm: nested filtering
-
+** remacs: Emacs ported to rust
 * Improve Emacs
 - Auto update dired
 - Horizontal scrolling
@@ -63,10 +63,10 @@ replacement for ace-jump
 - 2048-game (can't install, uses hg instead of git?)
 - slime & yasnippet repos seem to change when they are built
 - Repos checked out at a specific revision instead of on master
-- Updating packages:
-  - Do not prompt at all if there there are no changes made to the repo
-  - Make it less annoying to update packages installed with lockfile
-  - Automatically build packages after pull
+*** Updating packages                                              :priority:
+- Do not prompt at all if there there are no changes made to the repo
+- Make it less annoying to update packages installed with lockfile
+- Automatically build packages after pull
 
-** ag-mode
+** ag-mode :priority:
 - Only open buffer temporarily when using 'next-error-follow-minor-mode'
