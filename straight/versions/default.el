@@ -75,6 +75,5 @@
  ("web-beautify" . "e1b45321d8c11b404b12c8e55afe55eaa7c84ee9")
  ("web-mode" . "d29e48d66b7068ec933aa271320547d12cb37336")
  ("whitespace-cleanup-mode" . "d375bfb61cb70947a93004cba8ea17a0bc76f5a9")
- ("with-editor" . "241726118dee067a8d9880d53c6a781d580ba8a1")
- ("yasnippet" . "89eb7ab64d67e96646576dc0d551e8c23d50438a"))
+ ("with-editor" . "241726118dee067a8d9880d53c6a781d580ba8a1"))
 :venus
