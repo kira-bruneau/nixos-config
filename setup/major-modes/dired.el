@@ -1,3 +1,5 @@
+(setq dired-dwim-target t)
+
 (add-hook 'dired-mode-hook
           (lambda ()
             (define-key dired-mode-map (kbd "E") 'xah-open-in-external-app)
