@@ -44,6 +44,7 @@
         org-delete-char
         org-end-of-line
         org-kill-line
+        org-metaright
         org-open-line
         org-self-insert-command
         org-yank
@@ -51,6 +52,8 @@
         tab-to-tab-stop
         typescript-insert-and-indent
         wdired-next-line
+        yaml-electric-backspace
+        yaml-electric-dash-and-dot
         yas-expand
         ))
 
