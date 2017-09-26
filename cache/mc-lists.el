@@ -43,6 +43,7 @@
         org-ctrl-c-ctrl-c
         org-delete-char
         org-end-of-line
+        org-force-self-insert
         org-kill-line
         org-metaright
         org-open-line
@@ -62,6 +63,7 @@
         beginning-of-buffer
         end-of-buffer
         kmacro-end-or-call-macro
+        org-cycle
         overwrite-mode
         previous-buffer
         smex
