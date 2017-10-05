@@ -1,6 +1,7 @@
-(straight-use-package 'slime)
+(straight-use-package 'macrostep)
 
 (global-set-key (kbd "C-c e") 'fc-eval-and-replace)
+(define-key emacs-lisp-mode-map (kbd "C-c C-e") 'macrostep-expand)
 
 ;; Eval and replace any lisp expresison
 ;; Source: https://emacs.wordpress.com/2007/01/17/eval-and-replace-anywhere/
