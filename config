@@ -58,7 +58,7 @@ bindsym $mod+t layout tabbed
 bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
@@ -69,7 +69,7 @@ bindsym $mod+comma focus parent
 # focus the child container
 bindsym $mod+period focus child
 
-set $www   "1: "
+set $www   "1: "
 set $edit  "2: "
 set $term  "3: "
 set $files "4: "
@@ -201,7 +201,10 @@ assign [class="Rhythmbox"] $music
 assign [class="Messenger for Desktop"] $chat
 assign [class="Slack"] $chat
 
-client.focused #0088CC #0088CC #ffffff #dddddd
-client.focused_inactive #333333 #333333 #888888 #292d2e
-client.unfocused #333333 #333333 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
+client.focused #282c34 #282c34 #eee #dddddd
+client.focused_inactive #323234 #323234 #888888 #292d2e
+client.unfocused #21242b #21242b #888888 #292d2e
+client.urgent #2f343a #900000 #f9f9fa #900000
+
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
