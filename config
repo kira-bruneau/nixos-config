@@ -9,20 +9,21 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+background = #21242b
+background-alt = #282c34
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+foreground = #eee
 foreground-alt = #555
-primary = #ffb52a
+primary = #51afef
 secondary = #e60053
 alert = #bd2c40
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
+bottom = true
 dpi = 192
 width = 100%
-height = 48
+height = 56
 fixed-center = false
 
 background = ${colors.background}
@@ -34,9 +35,9 @@ line-color = #f00
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = FontAwesome:pixelsize=10;0
-font-1 = fixed:pixelsize=10;1
-font-2 = siji:pixelsize=10;1
+font-0 = FontAwesome:pixelsize=11;0
+font-1 = fixed:pixelsize=11;1
+font-2 = siji:pixelsize=11;1
 
 modules-left = bspwm i3
 modules-center = 
@@ -44,7 +45,7 @@ modules-right = xbacklight volume filesystem memory cpu wlan eth battery date po
 
 tray-position = right
 tray-padding = 2
-tray-maxsize = 32
+tray-maxsize = 40
 ;tray-transparent = true
 ;tray-background = #0063ff
 
