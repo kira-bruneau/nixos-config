@@ -32,6 +32,7 @@
         dired-previous-line
         dired-unmark-all-files
         dired-unmark-all-marks
+        drag-stuff-up
         electric-newline-and-maybe-indent
         end-of-visual-line
         fc-eval-and-replace
