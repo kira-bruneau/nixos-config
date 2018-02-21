@@ -7,7 +7,7 @@
 (load-theme 'doom-one t)
 
 ;; Font
-(set-frame-font "Inconsolata 12" nil t)
+(set-frame-font "DejaVu Sans Mono 9" nil t)
 
 ;; Powerline mode
 (powerline-default-theme)
