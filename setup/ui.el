@@ -3,8 +3,9 @@
 (straight-use-package 'powerline)
 
 ;; Theme
-(setq doom-one-padded-modeline 8)
-(load-theme 'doom-one t)
+(setq doom-vibrant-padded-modeline 8)
+(doom-themes-org-config)
+(load-theme 'doom-vibrant t)
 
 ;; Font
 (set-frame-font "DejaVu Sans Mono 9" nil t)

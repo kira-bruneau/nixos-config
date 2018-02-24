@@ -15,7 +15,7 @@
  ("dtrt-indent" . "3ea5136bde1240f93fbf3ce30fffc4f279a58d27")
  ("emacs-async" . "15bcbf6beae65d7606f0655711159ca56f050c6b")
  ("emacs-deferred" . "2239671d94b38d92e9b28d4e12fd79814cfb9c16")
- ("emacs-doom-themes" . "45ea2bd01f4f47935619ad07520001d9cdfe35f1")
+ ("emacs-doom-themes" . "aa57d222b65a4dc9dddd76f66adbe6ac003f57a6")
  ("emacs-memoize" . "636defefa9168f90bce6fc27431352ac7d01a890")
  ("emacs-racer" . "cb74060bbaff8e505ba36e20e4a3a763ee7dd4c8")
  ("epkgs" . "b9670d22f4a2272ff8118c2f627eb83274bdca39")
