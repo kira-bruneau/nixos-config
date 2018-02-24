@@ -8,7 +8,7 @@
 (load-theme 'doom-vibrant t)
 
 ;; Font
-(set-frame-font "DejaVu Sans Mono 9" nil t)
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono 9"))
 
 ;; Powerline mode
 (powerline-default-theme)
