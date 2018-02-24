@@ -1,5 +1,4 @@
 (("adaptive-wrap" . "b17b789221eacc75cb610093e44795efd1c6b3a8")
- ("ag.el" . "d00aa65ec2da6944f1ed81da440ad7a9024cfbf0")
  ("all-the-icons.el" . "52d1f2d36468146c93aaf11399f581401a233306")
  ("arduino-mode" . "3e2bad4569ad26e929e6db2cbcff0d6d36812698")
  ("auctex" . "ba79584eae4fccd9fd9af4752d2d7870eac881ea")
@@ -60,6 +59,7 @@
  ("projectile" . "c3562c3a182d3c9948db9c8f364e84da2e90c218")
  ("rainbow-delimiters" . "19b93892afa0494ba749c2ca9c154e04447ad778")
  ("restclient.el" . "66dc2ac95ff9fca80b94f832c3bdbdc0d3654f04")
+ ("rg.el" . "26413536ee71ac6ee07f193b94e60e544d800655")
  ("rust-mode" . "cc2435b9e5899c0787929a62dc6e6dcdb982febc")
  ("s.el" . "5e9a6857d42015c67681616aa3519f599f97b8d8")
  ("slime" . "bb663e97339d1ff217c674d649088493b82d08a9")

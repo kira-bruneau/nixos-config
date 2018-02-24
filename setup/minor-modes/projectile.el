@@ -1,15 +1,13 @@
-(straight-use-package 'ag)
 (straight-use-package 'projectile)
 
 (pacaur-use-packages
- '(the_silver_searcher))
+ '(ripgrep))
 
 (projectile-global-mode)
 (diminish 'projectile-mode) ;; ➴
 
 (global-set-key (kbd "C-c C-.") 'file-name-references)
 (define-key projectile-mode-map (kbd "<f12>") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "<f12> s") 'projectile-ag)
 (define-key projectile-mode-map (kbd "<f12> n") 'projectile-new)
 
 (setq projectile-indexing-method 'alien)
