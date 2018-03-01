@@ -1,12 +1,8 @@
 (straight-use-package 'projectile)
 
-(pacaur-use-packages
- '(ripgrep))
-
 (projectile-global-mode)
 (diminish 'projectile-mode) ;; ➴
 
-(global-set-key (kbd "C-c C-.") 'file-name-references)
 (define-key projectile-mode-map (kbd "<f12>") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "<f12> n") 'projectile-new)
 
@@ -37,8 +33,3 @@ With a prefix ARG invalidates the cache first."
   (interactive "D")
   (let ((projectile-file (concat directory ".projectile")))
     (write-region "" nil projectile-file t)))
-
-;; Attempt to find any references to the currently opened buffer in a project
-(defun file-name-references ()
-  (interactive)
-  (projectile-ag (file-name-sans-extension (buffer-name))))
