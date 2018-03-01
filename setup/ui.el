@@ -5,7 +5,21 @@
 ;; Theme
 (setq doom-vibrant-padded-modeline 8)
 (doom-themes-org-config)
-(load-theme 'doom-vibrant t)
+
+;; Fix blue modeline using emacsclient with doom theme
+;; Source: https://github.com/hlissner/emacs-doom-themes/issues/125
+(defun doom|init-theme ()
+  "Set the theme and load the font, in that order."
+  (load-theme 'doom-vibrant t)
+  (add-hook 'after-make-frame-functions #'doom|init-theme-in-frame))
+
+(defun doom|init-theme-in-frame (frame)
+  "Reloads the theme in new daemon or tty frames."
+  (when (or (daemonp) (not (display-graphic-p)))
+    (with-selected-frame frame
+      (doom|init-theme))))
+
+(add-hook 'emacs-startup-hook #'doom|init-theme)
 
 ;; Font
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono 9"))
