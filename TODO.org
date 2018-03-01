@@ -1,32 +1,3 @@
-* IDE-like features
-** C/C++
-- navigation: rtags,
-- completion:
-  - option 1: company + company-irony + company-irony-c-headers
-  - option 2: company + company-clang + company-c-headers **current**
-- syntax checker:
-  - option 1: flycheck (clang) **current**
-  - option 2: flycheck + flycheck-irony
-
-** Rust
-see racer documentation
-- navigation: racer
-- completion: company + ?
-- syntax checker: flycheck
-
-** Go
-godef?
-
-** TypeScript
-tide (navigation, completion)
-
-** JS
-- navigation + symbol renaming: tern,
-- completion: company-tern + company
-
-** Emacs Lisp :priority:
-- Auto completion broke at some point, figure out how to fix it
-
 * Things to Try
 ** use-package: cleaner package management
 Figure out how to setup hooks that can be reloaded!
@@ -34,7 +5,10 @@ Figure out how to setup hooks that can be reloaded!
 replacement for ace-jump
 ** ivy: replace ido
 ** helm: nested filtering
-** remacs: Emacs ported to rust
+** rtags: alternative to ggtags for C/C++
+** irony: better editing for C/C++
+** multifiles: view multiple files in one buffer
+
 * Improve Emacs
 - Auto update dired
 - Horizontal scrolling
@@ -55,18 +29,17 @@ replacement for ace-jump
 - provide option for custom content-type mappings
 - provide option for custom beautifiers
 
-** Doom Themes
-- Fix weird GUI bugs with emacsclient (possibly related to DPI scaling)
-- Compare theme in high dpi vs low dpi to improve scaling consistency
-
-** Straight
-- 2048-game (can't install, uses hg instead of git?)
-- slime & yasnippet repos seem to change when they are built
+** straight
 - Repos checked out at a specific revision instead of on master
 *** Updating packages                                              :priority:
 - Do not prompt at all if there there are no changes made to the repo
 - Make it less annoying to update packages installed with lockfile
 - Automatically build packages after pull
 
-** ag-mode :priority:
-- Only open buffer temporarily when using 'next-error-follow-minor-mode'
+** racer
+- Ignore private fields
+- Support completions for glob imports
+- Autofix flycheck errors: M-<Return>
+  - Missing import
+  - Missing implementation
+  - Other suggestions
