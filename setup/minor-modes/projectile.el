@@ -1,35 +1,39 @@
 (straight-use-package 'projectile)
 
+(setq projectile-keymap-prefix (kbd "<f12>"))
+(setq projectile-find-dir-includes-top-level t)
+
 (projectile-global-mode)
 (diminish 'projectile-mode) ;; ➴
 
-(define-key projectile-mode-map (kbd "<f12>") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "<f12> n") 'projectile-new)
-
-(setq projectile-indexing-method 'alien)
-(setq projectile-find-dir-includes-top-level t)
-(setq projectile-switch-project-action 'projectile-find-file-or-dir)
-
-;; Don't hide currently opened project when using projectile-switch-project
-;; Source: https://github.com/bbatsov/projectile/issues/1016
-(defun projectile-relevant-known-projects () projectile-known-projects)
-(defun projectile-relevant-open-projects () (projectile-open-projects))
-
-(defun projectile-find-file-or-dir (&optional arg)
-  "Jump to a project's file or directory using completion.
-With a prefix ARG invalidates the cache first."
-  (interactive "P")
-  (projectile-maybe-invalidate-cache arg)
-  (let ((file-or-dir (projectile-completing-read "Find file or directory: "
-                                                 (append
-                                                  (if projectile-find-dir-includes-top-level '("./"))
-                                                  (projectile-current-project-dirs)
-                                                  (projectile-current-project-files)))))
-    (find-file (expand-file-name file-or-dir (projectile-project-root))))
-  ;; TODO: Use existing hooks vs create new hook
-  )
+(define-key projectile-command-map (kbd "n") 'projectile-new)
 
 (defun projectile-new (directory)
   (interactive "D")
   (let ((projectile-file (concat directory ".projectile")))
     (write-region "" nil projectile-file t)))
+
+;; Patch projectile--find-file to also include directories
+(defun projectile--find-file (invalidate-cache &optional ff-variant)
+  "Jump to a project's file using completion.
+With INVALIDATE-CACHE invalidates the cache first.  With FF-VARIANT set to a
+defun, use that instead of `find-file'.   A typical example of such a defun
+would be `find-file-other-window' or `find-file-other-frame'"
+  (interactive "P")
+  (projectile-maybe-invalidate-cache invalidate-cache)
+  (let ((file (projectile-completing-read "Find file: "
+                                          (append
+                                           (if projectile-find-dir-includes-top-level (append '("./")))
+                                           (projectile-current-project-files)
+                                           (projectile-current-project-dirs))))
+        (ff (or ff-variant #'find-file)))
+    (funcall ff (expand-file-name file (projectile-project-root)))
+    (run-hooks 'projectile-find-file-hook)))
+
+;; Don't hide currently opened project when using projectile-switch-project
+;; Source: https://github.com/bbatsov/projectile/issues/1016
+(defun projectile-relevant-known-projects ()
+  projectile-known-projects)
+
+(defun projectile-relevant-open-projects ()
+  (projectile-open-projects))
