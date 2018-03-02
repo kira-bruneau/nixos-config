@@ -7,11 +7,23 @@
 (diminish 'projectile-mode) ;; ➴
 
 (define-key projectile-command-map (kbd "n") 'projectile-new)
+(define-key projectile-command-map (kbd "x m") 'projectile-run-multi-term)
 
 (defun projectile-new (directory)
   (interactive "D")
   (let ((projectile-file (concat directory ".projectile")))
     (write-region "" nil projectile-file t)))
+
+(defun projectile-run-multi-term ()
+  "Invoke `multi-term' in the project's root."
+  (interactive)
+  (let* ((buffer-name (concat "*multi-term " (projectile-project-name) "*"))
+         (buffer (get-buffer buffer-name)))
+    (if buffer (switch-to-buffer buffer)
+      (require 'multi-term)
+      (projectile-with-default-dir (projectile-project-root)
+        (multi-term)
+        (rename-buffer buffer-name)))))
 
 ;; Patch projectile--find-file to also include directories
 (defun projectile--find-file (invalidate-cache &optional ff-variant)
