@@ -35,6 +35,7 @@
         drag-stuff-up
         electric-newline-and-maybe-indent
         end-of-visual-line
+        eval-print-last-sexp
         fc-eval-and-replace
         forward-sexp
         indent-for-tab-command
