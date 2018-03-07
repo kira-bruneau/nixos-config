@@ -1,8 +1,6 @@
 * Things to Try
 ** use-package: cleaner package management
 Figure out how to setup hooks that can be reloaded!
-** avy: faster navigation
-replacement for ace-jump
 ** ivy: replace ido
 ** helm: nested filtering
 ** rtags: alternative to ggtags for C/C++
