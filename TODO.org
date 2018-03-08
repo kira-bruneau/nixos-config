@@ -2,10 +2,11 @@
 ** use-package: cleaner package management
 Figure out how to setup hooks that can be reloaded!
 ** ivy: replace ido
-** helm: nested filtering
 ** rtags: alternative to ggtags for C/C++
 ** irony: better editing for C/C++
 ** multifiles: view multiple files in one buffer
+** grizzl: indexed fuzzy searching
+** attrap: flycheck fix error at point
 
 * Improve Emacs
 - Auto update dired
@@ -35,9 +36,20 @@ Figure out how to setup hooks that can be reloaded!
 - Automatically build packages after pull
 
 ** racer
-- Ignore private fields
-- Support completions for glob imports
+- Extraneous Completions:
+  - private fields
+- Missing Completions:
+  - glob imports
+  - deref
+  - platform specific implementations
+  - primitive implementation
+  - macros
 - Autofix flycheck errors: M-<Return>
   - Missing import
   - Missing implementation
   - Other suggestions
+** company
+- Too slow
+
+** projectile
+- per frame projects using set-frame-parameter/frame-parameter
