@@ -1,4 +1,7 @@
-(global-auto-revert-mode t)
-
-(global-set-key (kbd "C-c C-r") 'revert-buffer)
-(setq auto-revert-verbose nil)
+(use-package autorevert
+  :demand t
+  :bind (("C-c C-r" . revert-buffer))
+  :config
+  (setq auto-revert-verbose nil)
+  (setq global-auto-revert-non-file-buffers t)
+  (global-auto-revert-mode t))

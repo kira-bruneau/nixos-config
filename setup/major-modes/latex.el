@@ -1,2 +1,6 @@
-(straight-use-package 'auctex)
-(straight-use-package 'latex-preview-pane)
+;; (use-package tex
+;;   :ensure auctex)
+
+(use-package latex-preview-pane
+  :straight t
+  :defer t)

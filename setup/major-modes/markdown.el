@@ -1,2 +1,4 @@
-(straight-use-package 'markdown-mode)
-(pacaur-use-packages '(markdown))
+(use-package markdown-mode
+  :straight t
+  ;; :ensure-system-package markdown
+  :defer t)

@@ -1,1 +1,3 @@
-(straight-use-package 'slime)
+(use-package slime
+  :straight t
+  :commands (slime))

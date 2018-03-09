@@ -1,3 +1,4 @@
-(straight-use-package 'flycheck)
-
-(diminish 'flycheck-mode " ✓")
+(use-package flycheck
+  :straight t
+  :defer t
+  :diminish " ✓")

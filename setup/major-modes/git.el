@@ -1,11 +1,18 @@
-(straight-use-package 'git-timemachine)
-(straight-use-package 'gitconfig-mode)
-(straight-use-package 'gitignore-mode)
-(straight-use-package 'magit)
+(use-package magit
+  :straight t
+  ;; :ensure-system-package git
+  :defer t
+  :config
+  (setq magit-save-repository-buffers nil))
 
-(pacaur-use-packages
- '(git))
+(use-package git-timemachine
+  :straight t
+  :defer t)
 
-;; Magit
-(global-set-key (kbd "M-<f12>") 'magit-status)
-(setq magit-save-repository-buffers nil)
+(use-package gitconfig-mode
+  :straight t
+  :defer t)
+
+(use-package gitignore-mode
+  :straight t
+  :defer t)
