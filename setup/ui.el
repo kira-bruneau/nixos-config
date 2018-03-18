@@ -33,7 +33,8 @@
   :bind (("C-c v" . 'visual-line-mode))
   :config
   (setq column-number-mode t)
-  (global-visual-line-mode))
+  ;;buffer
+  (set-default 'truncate-lines t))
 
 (use-package adaptive-wrap
   :straight t
