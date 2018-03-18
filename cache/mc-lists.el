@@ -12,6 +12,7 @@
         TeX-newline
         asm-comment
         backward-sexp
+        beginning-of-buffer
         beginning-of-visual-line
         c-beginning-of-defun
         c-electric-brace
@@ -25,15 +26,13 @@
         c-end-of-defun
         c-indent-line-or-region
         comment-dwim
-        dired-do-flagged-delete
         dired-flag-file-deletion
         dired-mark
         dired-next-line
         dired-previous-line
-        dired-unmark-all-files
-        dired-unmark-all-marks
         drag-stuff-up
         electric-newline-and-maybe-indent
+        end-of-buffer
         end-of-visual-line
         eval-print-last-sexp
         fc-eval-and-replace
@@ -41,8 +40,10 @@
         indent-for-tab-command
         kill-region
         kill-visual-line
+        markdown-outdent-or-delete
         org-beginning-of-line
         org-ctrl-c-ctrl-c
+        org-cycle
         org-delete-char
         org-end-of-line
         org-force-self-insert
@@ -52,6 +53,7 @@
         org-self-insert-command
         org-yank
         sgml-slash
+        slime-space
         tab-to-tab-stop
         typescript-insert-and-indent
         wdired-next-line
@@ -62,10 +64,10 @@
 
 (setq mc/cmds-to-run-once
       '(
-        beginning-of-buffer
-        end-of-buffer
+        dired-do-flagged-delete
+        dired-unmark-all-files
+        dired-unmark-all-marks
         kmacro-end-or-call-macro
-        org-cycle
         overwrite-mode
         previous-buffer
         smex
