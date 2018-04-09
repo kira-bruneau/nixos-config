@@ -12,6 +12,14 @@ set $right o
 # is used in the bar {} block below.
 font pango:cantarell 11
 
+default_border pixel 2
+hide_edge_borders smart
+
+client.focused #282c34 #282c34 #eee #dddddd
+client.focused_inactive #323234 #323234 #888888 #292d2e
+client.unfocused #21242b #21242b #888888 #292d2e
+client.urgent #2f343a #900000 #f9f9fa #900000
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -138,9 +146,6 @@ bindsym $mod+r mode "resize"
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Hide window decorations
-new_window none
-
 # Volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id \
   pactl set-sink-mute 0 0 & \
@@ -196,11 +201,6 @@ assign [class="Steam"] $games
 assign [class="Rhythmbox"] $music
 assign [class="Messenger for Desktop"] $chat
 assign [class="Slack"] $chat
-
-client.focused #282c34 #282c34 #eee #dddddd
-client.focused_inactive #323234 #323234 #888888 #292d2e
-client.unfocused #21242b #21242b #888888 #292d2e
-client.urgent #2f343a #900000 #f9f9fa #900000
 
 bindsym $mod+Shift+greater move container to output right
 bindsym $mod+Shift+less move container to output left
