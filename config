@@ -195,10 +195,14 @@ exec --no-startup-id keepassxc
 assign [class="Firefox"] $www
 assign [class="Chromium"] $www
 assign [class="Google-chrome"] $www
-assign [class="Geary"] $email
 assign [class="Emacs"] $edit
-assign [class="Steam"] $games
+assign [class="qBittorrent"] $files
 assign [class="Rhythmbox"] $music
+assign [class="Steam"] $games
+assign [class="MultiMC"] $games
+assign [class="Minecraft"] $games
+assign [class="Dolphin-emu"] $games
+assign [class="Geary"] $email
 assign [class="Messenger for Desktop"] $chat
 assign [class="Slack"] $chat
 
