@@ -18,7 +18,7 @@ primary = #51afef
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
+[bar/main]
 ;monitor = ${env:MONITOR:HDMI-1}
 bottom = true
 dpi = 192
@@ -29,18 +29,18 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 6
+line-size = 4
 line-color = #f00
 
 module-margin-left = 1
 module-margin-right = 2
 
 ; Priorize font awesome since other fonts conflict with it (eg. the music font icon)
-font-0 = "Font Awesome 5 Free:style=Solid:pixelsize=10"
-font-1 = "Font Awesome 5 Brands:pixelsize=10"
-font-2 = fixed:pixelsize=10
-font-3 = unifont:fontformat=truetype
-font-4 = siji:pixelsize=10
+font-0 = "Font Awesome 5 Free:style=Solid:pixelsize=10;5"
+font-1 = "Font Awesome 5 Brands:pixelsize=10;5"
+font-2 = fixed:pixelsize=10;5
+font-3 = unifont:fontformat=truetype;5
+font-4 = siji:pixelsize=10;5
 
 modules-left = bspwm i3
 modules-center = 
