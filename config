@@ -185,7 +185,7 @@ interval = 3.0
 
 format-connected = <label-connected>
 format-connected-underline = #9f78e1
-label-connected =  %upspeed%  %downspeed%
+label-connected =  %essid%   %upspeed%   %downspeed%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
