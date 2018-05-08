@@ -240,14 +240,16 @@ type = internal/volume
 
 format-volume = <ramp-volume> <bar-volume>
 ; format-volume = <ramp-volume> <label-volume>
-ramp-volume-0 = 
-ramp-volume-1 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+
+ramp-volume-2 = 
+ramp-volume-3 = 
 ramp-headphones-0 = 
 ramp-headphones-1 = 
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
-label-muted = sound muted
+label-muted =  sound muted
 format-muted-foreground = ${colors.foreground-alt}
 
 bar-volume-width = 10
