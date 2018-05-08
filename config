@@ -273,12 +273,17 @@ format-discharging-underline = ${self.format-charging-underline}
 format-full-prefix = " "
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-charging-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-framerate = 750
 
 [module/powermenu]
