@@ -38,6 +38,7 @@ bindsym $mod+a exec rofi -modi drun -show drun -matching fuzzy
 bindsym $mod+w exec rofi -modi window -show window -matching fuzzy
 bindsym $mod+x exec rofi -modi run -show run -matching fuzzy
 bindsym $mod+c exec rofi -modi ssh run -show ssh -matching fuzzy
+bindsym $mod+m exec rofi -modi emoji -show emoji
 
 # change focus
 bindsym $mod+$left focus left
