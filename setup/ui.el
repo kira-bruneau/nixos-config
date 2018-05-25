@@ -8,10 +8,26 @@
 ;; Theme
 (use-package doom-themes
   :straight t
-  :config
-  (setq doom-vibrant-padded-modeline 8) ;; 2x original value for high dpi scaling
-  (doom-themes-org-config)
-  (load-theme 'doom-vibrant t))
+  :init
+  ;; Fix blue modeline using emacsclient with doom theme
+  ;; Source: https://github.com/hlissner/emacs-doom-themes/issues/125
+  (defun doom|init-theme ()
+    (setq doom-vibrant-padded-modeline 8) ;; 2x original value for high dpi scaling
+    (doom-themes-org-config)
+    (load-theme 'doom-vibrant t))
+
+  (defun doom|init-theme-in-frame (frame)
+    (with-selected-frame frame
+      (doom|init-theme))
+
+    ;; Unregister this hook once its run
+    (remove-hook 'after-make-frame-functions
+                 'doom|init-theme-in-frame))
+
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions
+                'doom|init-theme-in-frame)
+    (doom|init-theme)))
 
 (use-package powerline
   :straight t
