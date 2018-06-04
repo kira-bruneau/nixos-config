@@ -59,7 +59,8 @@
         ("zbb" "\\mathbb{z}" nil "&#120171;" "z" "z" "𝕫")
         "** Extra math symbols"
         ("mid" "\\mid" nil "&#124;" "|" "|" "|")
-        ("nmid" "\\nmid" nil "&#8740;" "[not divides]" "[not divides]" "∤")))
+        ("nmid" "\\nmid" nil "&#8740;" "[not divides]" "[not divides]" "∤")
+        ("oint" "\\oint" t "&oint;" "[contour integral]" "[contour integral]" "∮")))
 
 (defcustom org-interpret-symbols nil
   "Non-nil means never interpret symbols to mean something else.
