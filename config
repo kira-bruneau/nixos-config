@@ -34,7 +34,7 @@ bindsym $mod+Shift+Return exec tilix -w $(xcwd)
 bindsym $mod+q kill
 
 # start rofi
-bindsym $mod+a exec rofi -modi drun -show drun -matching fuzzy
+bindsym $mod+a exec rofi -modi drun -show drun -matching fuzzy -show-icons
 bindsym $mod+w exec rofi -modi window -show window -matching fuzzy
 bindsym $mod+x exec rofi -modi run -show run -matching fuzzy
 bindsym $mod+c exec rofi -modi ssh run -show ssh -matching fuzzy
