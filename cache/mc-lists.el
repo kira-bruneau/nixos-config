@@ -40,6 +40,7 @@
         indent-for-tab-command
         kill-region
         kill-visual-line
+        markdown-cycle
         markdown-outdent-or-delete
         org-beginning-of-line
         org-ctrl-c-ctrl-c
@@ -55,6 +56,7 @@
         sgml-slash
         slime-space
         tab-to-tab-stop
+        tex-insert-quote
         typescript-insert-and-indent
         wdired-next-line
         yaml-electric-backspace
