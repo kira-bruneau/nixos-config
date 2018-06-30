@@ -12,7 +12,7 @@
   ;; Fix blue modeline using emacsclient with doom theme
   ;; Source: https://github.com/hlissner/emacs-doom-themes/issues/125
   (defun doom|init-theme ()
-    (setq doom-vibrant-padded-modeline 8) ;; 2x original value for high dpi scaling
+    (setq doom-themes-padded-modeline 8) ;; 2x original value for high dpi scaling
     (doom-themes-org-config)
     (load-theme 'doom-vibrant t))
 
