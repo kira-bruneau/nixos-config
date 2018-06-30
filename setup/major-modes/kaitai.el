@@ -1,3 +1,3 @@
 (use-package kaitai-mode
-  :straight (kaitai-mode :type git :host github :repo "MetaDark/kaitai-mode.el")
+  :straight (kaitai-mode :type git :host gitlab :repo "MetaDark/kaitai-mode.el")
   :defer t)

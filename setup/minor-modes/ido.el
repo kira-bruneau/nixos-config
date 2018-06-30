@@ -1,6 +1,6 @@
 (straight-use-package 'flx)
 (straight-use-package 'flx-ido)
-(straight-use-package 'ido-ubiquitous)
+(straight-use-package 'ido-completing-read+)
 (straight-use-package 'ido-vertical-mode)
 (straight-use-package 'smex)
 
@@ -8,7 +8,7 @@
 (ido-mode 1)
 (ido-vertical-mode 1)
 (ido-everywhere 1)
-(ido-ubiquitous-mode t)
+(ido-ubiquitous-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-create-new-buffer 'always)
 (setq ido-use-virtual-buffers t)

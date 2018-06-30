@@ -1,5 +1,6 @@
 (use-package magit
-  :straight t
+  :straight (magit :type git :host github :repo "MetaDark/magit"
+                   :upstream (:host github :repo "magit/magit"))
   ;; :ensure-system-package git
   :defer t
   :config

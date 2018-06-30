@@ -5,15 +5,15 @@
   :interpreter "node"
   :init
   (with-eval-after-load 'restclient
-    (add-to-list 'restclient-media-type-mode-alist '("\\`application/js\\'" . js2-mode))))
+    (add-to-list 'restclient-content-type-modes '("application/js" . js2-mode))))
 
 (use-package json-mode
-  :straight t
+  :straight (json-mode :type git :host github :repo "MetaDark/json-mode"
+                       :upstream (:host github :repo "joshwnj/json-mode"))
   :commands (json-mode)
-  :magic-fallback "^[{[]$" ;; TODO: push this as an autoload upstream
   :init
   (with-eval-after-load 'restclient
-    (add-to-list 'restclient-media-type-mode-alist '("\\`application/json\\'" . json-mode))))
+    (add-to-list 'restclient-content-type-modes '("application/json" . json-mode))))
 
 (use-package tern
   :straight t
