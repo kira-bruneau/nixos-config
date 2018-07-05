@@ -11,6 +11,7 @@
  ("company-racer" . "a00381c9d416f375f783fcb6ae8d40669ce1f567")
  ("company-restclient" . "19d819b14b7cd186a840369060963a08377d052e")
  ("company-tern" . "10ac058b065ae73c1f30e9fb7d969dd1a79387be")
+ ("counsel-projectile" . "5aa8a0bc8eb03ca213f794ff0fcdbdaca778b6e7")
  ("dash.el" . "a74f4cfcdc8d0642a9f602ad494f0354f27dacc9")
  ("diminish.el" . "565a983a39d2e2cffab5df13b34f3b6116723208")
  ("drag-stuff.el" . "6d06d846cd37c052d79acd0f372c13006aa7e7c8")

@@ -4,7 +4,6 @@
   (setq ivy-re-builders-alist
         '((t . ivy--regex-fuzzy)))
   (setq ivy-initial-inputs-alist nil)
-  (setq projectile-completion-system 'ivy)
   (ivy-mode))
 
 (use-package counsel
