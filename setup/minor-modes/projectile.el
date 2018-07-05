@@ -1,8 +1,8 @@
 (use-package projectile
   :straight t
   :bind (:map projectile-command-map
-              ("n" . 'projectile-new)
-              ("x m" .'projectile-run-multi-term))
+              ("n" . projectile-new)
+              ("x m" . projectile-run-multi-term))
   :config
   (setq projectile-keymap-prefix (kbd "<f12>"))
 
