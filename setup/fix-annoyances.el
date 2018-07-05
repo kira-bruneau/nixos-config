@@ -16,9 +16,6 @@
 ;; Stop giving me annoying tramp messages
 (setq tramp-verbose 2)
 
-;; Stop warning `ido-completing-read' got redefined
-(setq ad-redefinition-action 'accept)
-
 ;; Stop putting custom config in my init.el
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
