@@ -8,6 +8,8 @@
 
 (use-package counsel
   :straight t
+  :bind (:map counsel-describe-map
+              ("M-." . counsel-find-symbol))
   :bind (("M-x" . 'counsel-M-x)))
 
 ;; Used to sort counsel-M-x commands
