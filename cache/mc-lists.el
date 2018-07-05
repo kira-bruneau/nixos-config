@@ -55,6 +55,7 @@
         org-yank
         sgml-slash
         slime-space
+        swiper
         tab-to-tab-stop
         tex-insert-quote
         typescript-insert-and-indent
