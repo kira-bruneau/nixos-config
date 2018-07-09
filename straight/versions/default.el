@@ -54,6 +54,7 @@
  ("multi-term" . "f954e4e18b0a035151d34852387e724d87a3316f")
  ("multiple-cursors.el" . "9c49874fa444a4e7255ec05f62c01daed31c7b09")
  ("nix-mode" . "57ac40d53b4f4fe0d61fcabb41f8f3992384048e")
+ ("org-download" . "434447251343164e3aacd9db17e67dd2a10b6e65")
  ("page-break-lines" . "fd3b7e38ad8747cd009ead7ef1bb150849ccc693")
  ("php-mode" . "cf1907be2ddca079146ef258ba95d525f17787e3")
  ("pkg-info.el" . "76ba7415480687d05a4353b27fea2ae02b8d9d61")
