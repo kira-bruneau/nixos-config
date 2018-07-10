@@ -1,7 +1,6 @@
 * Things to Try
 ** use-package: cleaner package management
-Figure out how to setup hooks that can be reloaded!
-** ivy: replace ido
+Finish upgrading setup files to use-package
 ** rtags: alternative to ggtags for C/C++
 ** irony: better editing for C/C++
 ** multifiles: view multiple files in one buffer
@@ -23,9 +22,6 @@ Figure out how to setup hooks that can be reloaded!
 
 * Improve a Package
 ** restclient
-- create content-type mappings from extension mappings
-  - eg. application/json => .js => js2-mode
-- provide option for custom content-type mappings
 - provide option for custom beautifiers
 
 ** straight
@@ -48,8 +44,15 @@ Figure out how to setup hooks that can be reloaded!
   - Missing import
   - Missing implementation
   - Other suggestions
-** company
-- Too slow
 
 ** projectile
 - per frame projects using set-frame-parameter/frame-parameter
+
+** ivy
+- Use rg as only search feature for projectile
+- Quicker access to function help
+- Sort counsel-find-file results using ido.last
+- Option to show ingored results in projectile
+
+- Force ivy to select top result and not first result that matches
+- Fix counsel-descbinds
