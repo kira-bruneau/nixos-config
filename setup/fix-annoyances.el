@@ -24,3 +24,6 @@
 
 ;; Disable warning about running lisp code in theme
 (setq custom-safe-themes t)
+
+;; Don't prompt to follow git symlink
+(setq vc-follow-symlinks t)
