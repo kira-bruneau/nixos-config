@@ -11,7 +11,8 @@
   :straight t
   :bind (:map counsel-describe-map
               ("M-." . counsel-find-symbol))
-  :bind (("M-x" . counsel-M-x)))
+  :config
+  (counsel-mode))
 
 ;; Used to sort ivy fuzzy search results
 (use-package flx
