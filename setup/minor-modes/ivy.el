@@ -13,6 +13,10 @@
               ("M-." . counsel-find-symbol))
   :bind (("M-x" . counsel-M-x)))
 
-;; Used to sort counsel-M-x commands
+;; Used to sort ivy fuzzy search results
+(use-package flx
+  :straight t)
+
+;; Used to prioritize commonly used counsel-M-x commands
 (use-package amx
   :straight t)
