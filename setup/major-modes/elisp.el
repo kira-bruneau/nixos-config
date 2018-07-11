@@ -1,5 +1,4 @@
 (use-package elisp-mode
-  :demand t
   :bind (:map emacs-lisp-mode-map
               ("C-c e" . fc-eval-and-replace))
   :config

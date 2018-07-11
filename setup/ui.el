@@ -44,7 +44,6 @@
 
 ;; Line wrapping + misc
 (use-package simple
-  :demand t
   :diminish (visual-line-mode . " ↩")
   :bind (("C-c v" . visual-line-mode))
   :config
@@ -58,14 +57,12 @@
 
 ;; Highlight matching parenthesis
 (use-package paren
-  :demand t
   :config
   (show-paren-mode t))
 
 ;; Finer mouse/trackpad scrolling
 ;; Source: http://www.emacswiki.org/emacs/SmoothScrolling
 (use-package mwheel
-  :demand t
   :config
   ;; (setq scroll-step 1)
   ;; (setq scroll-conservatively 100)

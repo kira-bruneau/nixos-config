@@ -1,5 +1,4 @@
 (use-package cc-mode
-  :demand t
   ;; :ensure-system-package pkg-config
   :hook ((c-mode . cproject-configure-locals)
          (c-mode . flycheck-mode))

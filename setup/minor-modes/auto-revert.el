@@ -1,5 +1,4 @@
 (use-package autorevert
-  :demand t
   :bind (("C-c C-r" . revert-buffer))
   :config
   (setq auto-revert-verbose nil)

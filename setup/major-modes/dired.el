@@ -1,5 +1,4 @@
 (use-package dired
-  :demand t
   :bind (:map dired-mode-map
               ("E" . xah-open-in-external-app))
   :config
