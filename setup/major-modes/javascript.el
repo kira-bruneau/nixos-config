@@ -16,7 +16,7 @@
 
 (use-package tern
   :straight t
-  ;; :ensure-system-package tern
+  :ensure-system-package (tern . "npm i -g tern")
   :defer t
   :diminish " ◎"
   :init

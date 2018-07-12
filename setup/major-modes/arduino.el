@@ -1,4 +1,5 @@
 (use-package arduino-mode
   :straight t
-  ;; :ensure-system-package arduino-mk
   :defer t)
+
+;; use arduino-mk for creating Makefiles
