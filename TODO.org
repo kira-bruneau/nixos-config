@@ -49,7 +49,6 @@ Finish upgrading setup files to use-package
 - per frame projects using set-frame-parameter/frame-parameter
 
 ** ivy
-- Use rg as only search feature for projectile
 - Quicker access to function help
 - Sort counsel-find-file results using ido.last
 - Option to show ingored results in projectile
