@@ -9,4 +9,4 @@
 ;; Free up shift key for custom bindings
 (use-package simple
   :config
-  (setq shift-select-mode t))
+  (setq shift-select-mode nil))
