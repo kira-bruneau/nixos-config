@@ -1,6 +1,8 @@
-(straight-use-package 'buffer-move)
+(use-package buffer-move
+  :straight t
 
-(global-set-key (kbd "<C-S-up>") 'buf-move-up)
-(global-set-key (kbd "<C-S-down>") 'buf-move-down)
-(global-set-key (kbd "<C-S-left>") 'buf-move-left)
-(global-set-key (kbd "<C-S-right>") 'buf-move-right)
+  ;; Mirror i3 window move commands (vim-like + colemak layout)
+  :bind (("C-S-n" . buf-move-left)
+         ("C-S-e" . buf-move-down)
+         ("C-S-i" . buf-move-up)
+         ("C-S-o" . buf-move-right)))
