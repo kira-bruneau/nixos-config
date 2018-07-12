@@ -1,12 +1,15 @@
 (use-package projectile
   :straight t
+  :diminish "" ;; ➴
   :bind (:map projectile-command-map
               ("n" . projectile-new)
               ("s" . projectile-ripgrep)
               ("x" . projectile-run-multi-term))
+  :init
+  (projectile-global-mode)
+
   :config
   (setq projectile-keymap-prefix (kbd "<f12>"))
-  (diminish 'projectile-mode) ;; ➴
 
   (defun projectile-new (directory)
     (interactive "D")
@@ -29,14 +32,16 @@
     projectile-known-projects)
 
   (defun projectile-relevant-open-projects ()
-    (projectile-open-projects))
-
-  (projectile-global-mode))
+    (projectile-open-projects)))
 
 (use-package counsel-projectile
   :straight t
+  :after projectile
   :bind (:map counsel-projectile-command-map
               ("s" . 'counsel-projectile-rg))
+  :init
+  (counsel-projectile-mode)
+
   :config
   (setq counsel-projectile-switch-project-action
         '(1
@@ -59,6 +64,4 @@
   (defun counsel-projectile-switch-project-action-run-multi-term (project)
     "Invoke `multi-term' from PROJECT's root."
     (let ((projectile-switch-project-action 'projectile-run-multi-term))
-      (counsel-projectile-switch-project-by-name project)))
-
-  (counsel-projectile-mode))
+      (counsel-projectile-switch-project-by-name project))))
