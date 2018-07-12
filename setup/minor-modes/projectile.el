@@ -2,11 +2,10 @@
   :straight t
   :bind (:map projectile-command-map
               ("n" . projectile-new)
-              ("x m" . projectile-run-multi-term))
+              ("s" . projectile-ripgrep)
+              ("x" . projectile-run-multi-term))
   :config
   (setq projectile-keymap-prefix (kbd "<f12>"))
-
-  (projectile-global-mode)
   (diminish 'projectile-mode) ;; ➴
 
   (defun projectile-new (directory)
@@ -20,7 +19,6 @@
     (let* ((buffer-name (concat "*multi-term " (projectile-project-name) "*"))
            (buffer (get-buffer buffer-name)))
       (if buffer (switch-to-buffer buffer)
-        (require 'multi-term)
         (projectile-with-default-dir (projectile-project-root)
           (multi-term)
           (rename-buffer buffer-name)))))
@@ -31,7 +29,9 @@
     projectile-known-projects)
 
   (defun projectile-relevant-open-projects ()
-    (projectile-open-projects)))
+    (projectile-open-projects))
+
+  (projectile-global-mode))
 
 (use-package counsel-projectile
   :straight t
@@ -53,8 +53,12 @@
           ("E" counsel-projectile-switch-project-action-edit-dir-locals "edit project dir-locals")
           ("v" counsel-projectile-switch-project-action-vc "open project in vc-dir / magit / monky")
           ("s" counsel-projectile-switch-project-action-rg "search project with rg")
-          ("xs" counsel-projectile-switch-project-action-run-shell "invoke shell from project root")
-          ("xe" counsel-projectile-switch-project-action-run-eshell "invoke eshell from project root")
-          ("xt" counsel-projectile-switch-project-action-run-term "invoke term from project root")
+          ("x" counsel-projectile-switch-project-action-run-multi-term "invoke multi-term from project root")
           ("O" counsel-projectile-switch-project-action-org-capture "org-capture into project")))
+
+  (defun counsel-projectile-switch-project-action-run-multi-term (project)
+    "Invoke `multi-term' from PROJECT's root."
+    (let ((projectile-switch-project-action 'projectile-run-multi-term))
+      (counsel-projectile-switch-project-by-name project)))
+
   (counsel-projectile-mode))
