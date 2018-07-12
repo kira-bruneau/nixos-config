@@ -46,12 +46,14 @@ Finish upgrading setup files to use-package
   - Other suggestions
 
 ** projectile
-- per frame projects using set-frame-parameter/frame-parameter
+- Function to search ignored files / directories in projectile
 
 ** ivy
 - Quicker access to function help
 - Sort counsel-find-file results using ido.last
-- Option to show ingored results in projectile
-
 - Force ivy to select top result and not first result that matches
 - Fix counsel-descbinds
+
+** counsel-rg
+- Fix highlighting filename if filename also matches search result
+- Open highlighted buffer like in rg-mode
