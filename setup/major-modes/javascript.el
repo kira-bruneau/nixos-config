@@ -1,6 +1,5 @@
 (use-package js2-mode
   :straight t
-  :commands (js2-mode)
   :mode "\\.js\\'"
   :interpreter "node"
   :init
@@ -10,7 +9,7 @@
 (use-package json-mode
   :straight (json-mode :type git :host github :repo "MetaDark/json-mode"
                        :upstream (:host github :repo "joshwnj/json-mode"))
-  :commands (json-mode)
+  :defer t
   :init
   (with-eval-after-load 'restclient
     (add-to-list 'restclient-content-type-modes '("application/json" . json-mode))))
@@ -18,7 +17,7 @@
 (use-package tern
   :straight t
   ;; :ensure-system-package tern
-  :commands (tern-mode)
+  :defer t
   :diminish " ◎"
   :init
   (with-eval-after-load 'js2-mode
@@ -42,7 +41,7 @@
 
 (use-package company-tern
   :straight t
-  :commands (company-tern)
+  :defer t
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-tern)))
