@@ -1,1 +1,3 @@
-(straight-use-package 'pkgbuild-mode)
+(use-package pkgbuild-mode
+  :straight t
+  :defer t)

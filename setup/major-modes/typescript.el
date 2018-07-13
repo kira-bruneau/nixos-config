@@ -1,12 +1,13 @@
-(straight-use-package 'tide)
-(straight-use-package 'typescript-mode)
+(use-package typescript-mode
+  :straight t
+  :defer t)
 
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode t)
-  (company-mode t)
-  (eldoc-mode t)
-  (tide-hl-identifier-mode t))
-
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
+(use-package tide
+  :straight t
+  :after typescript-mode
+  :defer t
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (tide-mode . flycheck-mode)
+         (tide-mode . company-mode)
+         (tide-mode . eldoc-mode)))

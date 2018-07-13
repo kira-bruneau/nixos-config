@@ -17,12 +17,10 @@
 (use-package tern
   :straight t
   :ensure-system-package (tern . "npm i -g tern")
-  :defer t
+  :after js2-mode
   :diminish " ◎"
-  :init
-  (with-eval-after-load 'js2-mode
-    (add-hook 'js2-mode-hook 'tern-mode))
-
+  :hook (js2-mode . tern-mode)
+  :config
   (defun tern-setup-project-browser ()
     "Setup a new browser tern project"
     (interactive)
@@ -41,7 +39,7 @@
 
 (use-package company-tern
   :straight t
+  :after (company tern)
   :defer t
   :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-tern)))
+  (add-to-list 'company-backends 'company-tern))

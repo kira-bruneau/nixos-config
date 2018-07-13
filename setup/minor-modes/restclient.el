@@ -5,7 +5,7 @@
 
 (use-package company-restclient
   :straight t
+  :after company
   :defer t
   :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-restclient)))
+  (add-to-list 'company-backends 'company-restclient))

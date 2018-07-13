@@ -1,1 +1,3 @@
-(straight-use-package 'suggest)
+(use-package suggest
+  :straight t
+  :defer t)

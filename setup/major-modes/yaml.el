@@ -1,3 +1,4 @@
-(straight-use-package 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.ksy\\'" . yaml-mode))
+(use-package yaml-mode
+  :straight t
+  :defer t
+  :mode "\\.ksy\\'") ;; Kaitai Struct Language

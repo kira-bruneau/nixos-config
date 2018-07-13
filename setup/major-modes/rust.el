@@ -1,13 +1,17 @@
-(straight-use-package 'company-racer)
-(straight-use-package 'flycheck-rust)
-(straight-use-package 'racer)
-(straight-use-package 'rust-mode)
+(use-package rust-mode
+  :straight t
+  :defer t)
 
-(pacaur-use-packages
- '(rust-racer))
+(use-package flycheck-rust
+  :straight t
+  :after rust-mode
+  :hook ((flycheck-mode . flycheck-rust-setup)
+         (rust-mode . flycheck-mode)))
 
-(add-hook 'rust-mode-hook 'racer-mode)
-(add-hook 'rust-mode-hook 'flycheck-mode)
-(add-hook 'racer-mode-hook 'eldoc-mode)
-(add-hook 'racer-mode-hook 'company-mode)
-(add-hook 'flycheck-mode-hook 'flycheck-rust-setup)
+(use-package racer
+  :straight t
+  :ensure-system-package (racer . rust-racer)
+  :after rust-mode
+  :hook ((rust-mode . racer-mode)
+         (racer-mode . company-mode)
+         (racer-mode . eldoc-mode)))

@@ -60,7 +60,7 @@
 
 (use-package company-c-headers
   :straight t
+  :after company
   :defer t
   :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-c-headers)))
+  (add-to-list 'company-backends 'company-c-headers))
