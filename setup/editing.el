@@ -3,7 +3,7 @@
 
 ;; Delete selection when text is inserted
 (use-package delsel
-  :config
+  :init
   (delete-selection-mode t))
 
 ;; Free up shift key for custom bindings

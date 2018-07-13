@@ -16,6 +16,8 @@
 (use-package company-flx
   :straight t
   :after company
+  :init
+  (company-flx-mode)
+
   :config
-  (setq company-flx-limit 100)
-  (company-flx-mode t))
+  (setq company-flx-limit 100))

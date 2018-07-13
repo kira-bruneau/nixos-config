@@ -1,4 +1,4 @@
 (use-package vlf
   :straight t
-  :config
+  :init
   (require 'vlf-setup))

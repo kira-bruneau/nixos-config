@@ -31,7 +31,7 @@
 
 (use-package powerline
   :straight t
-  :config
+  :init
   (powerline-default-theme))
 
 ;; Font (current frame + future frames)
