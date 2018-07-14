@@ -9,7 +9,6 @@
 (use-package json-mode
   :straight (json-mode :type git :host github :repo "MetaDark/json-mode"
                        :upstream (:host github :repo "joshwnj/json-mode"))
-  :defer t
   :init
   (with-eval-after-load 'restclient
     (add-to-list 'restclient-content-type-modes '("application/json" . json-mode))))
@@ -40,6 +39,5 @@
 (use-package company-tern
   :straight t
   :after (company tern)
-  :defer t
   :init
   (add-to-list 'company-backends 'company-tern))

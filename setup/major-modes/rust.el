@@ -1,6 +1,5 @@
 (use-package rust-mode
-  :straight t
-  :defer t)
+  :straight t)
 
 (use-package flycheck-rust
   :straight t

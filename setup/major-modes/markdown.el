@@ -1,4 +1,3 @@
 (use-package markdown-mode
   :straight t
-  :ensure-system-package markdown
-  :defer t)
+  :ensure-system-package markdown)

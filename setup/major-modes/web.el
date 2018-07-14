@@ -7,7 +7,6 @@
 
 (use-package web-beautify
   :straight t
-  :defer t
   :init
   (with-eval-after-load 'js2-mode
     (define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))

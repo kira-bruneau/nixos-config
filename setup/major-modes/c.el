@@ -61,6 +61,5 @@
 (use-package company-c-headers
   :straight t
   :after company
-  :defer t
   :init
   (add-to-list 'company-backends 'company-c-headers))

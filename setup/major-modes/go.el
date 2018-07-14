@@ -1,5 +1,4 @@
 (use-package go-mode
-  :straight t
-  :defer t)
+  :straight t)
 
 ;; go get github.com/rogpeppe/godef
