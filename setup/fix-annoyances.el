@@ -8,7 +8,7 @@
 (setq confirm-nonexistent-file-or-buffer nil)
 
 ;; Don't prompt to kill a buffer
-(global-set-key (kbd "C-c C-k") 'kill-this-buffer)
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
 
 ;; Don't prompt to revert a buffer
 (setq revert-without-query '(".*"))
