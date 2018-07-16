@@ -1,6 +1,7 @@
 (use-package projectile
   :straight t
   :diminish "" ;; ➴
+  :ensure-system-package (rg . ripgrep)
   :bind (:map projectile-command-map
               ("n" . projectile-new)
               ("s" . projectile-ripgrep)
@@ -37,6 +38,7 @@
 (use-package counsel-projectile
   :straight t
   :after projectile
+  :ensure-system-package (rg . ripgrep)
   :bind (:map counsel-projectile-command-map
               ("s" . 'counsel-projectile-rg))
   :init
