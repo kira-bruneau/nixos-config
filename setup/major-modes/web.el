@@ -1,9 +1,15 @@
 (use-package web-mode
   :straight t
-  :mode "\\.html?\\'"
+  :mode ("\\.html?\\'"
+         "\\.vue\\'")
+  :bind (:map web-mode-map
+              ("C-c C-o" . browse-url-of-file))
   :init
   (with-eval-after-load 'restclient
-    (add-to-list 'restclient-content-type-modes '("text/html" . web-mode))))
+    (add-to-list 'restclient-content-type-modes '("text/html" . web-mode)))
+
+  :config
+  (setq web-mode-enable-current-element-highlight t))
 
 (use-package web-beautify
   :straight t
