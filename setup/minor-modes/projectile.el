@@ -22,7 +22,7 @@
     (interactive)
     (let* ((buffer-name (concat "*multi-term " (projectile-project-name) "*"))
            (buffer (get-buffer buffer-name)))
-      (if buffer (switch-to-buffer buffer)
+      (if buffer (switch-to-buffer-other-window buffer)
         (projectile-with-default-dir (projectile-project-root)
           (multi-term)
           (rename-buffer buffer-name)))))
