@@ -2,6 +2,9 @@
   :straight t
   :mode "\\.js\\'"
   :interpreter "node"
+  :bind (:map js2-mode-map
+              ("C-c C-t" . nil)
+              ("C-c c" . js2-mode-toggle-hide-comments))
   :init
   (with-eval-after-load 'restclient
     (add-to-list 'restclient-content-type-modes '("application/js" . js2-mode))))
