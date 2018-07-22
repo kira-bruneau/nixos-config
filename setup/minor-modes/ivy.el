@@ -7,7 +7,8 @@
   (setq ivy-re-builders-alist
         '((swiper . ivy--regex-plus)
           (t      . ivy--regex-fuzzy)))
-  (setq ivy-initial-inputs-alist nil))
+  (setq ivy-initial-inputs-alist nil)
+  (setq ivy-use-virtual-buffers t))
 
 (use-package counsel
   :straight t
