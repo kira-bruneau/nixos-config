@@ -1,7 +1,6 @@
+/amx-items
 /auto-save-list/
 /custom.el
-/straight/*
-!/straight/versions/
 /eshell/
 /history
 /ido.last
@@ -9,7 +8,9 @@
 /projectile.cache
 /recentf
 /session*
-/amx-items
 /smex-items
+/straight/*
+!/straight/versions/
 /tramp
+/tutorial/
 /url/
