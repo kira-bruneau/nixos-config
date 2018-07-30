@@ -30,6 +30,7 @@
         dired-mark
         dired-next-line
         dired-previous-line
+        downcase-region
         drag-stuff-up
         electric-newline-and-maybe-indent
         end-of-buffer
@@ -67,6 +68,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        counsel-M-x
         dired-do-flagged-delete
         dired-unmark-all-files
         dired-unmark-all-marks
