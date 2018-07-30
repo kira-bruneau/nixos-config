@@ -1,4 +1,5 @@
-(("all-the-icons.el" . "52d1f2d36468146c93aaf11399f581401a233306")
+(("Nameless" . "3cd4ade5433c8e2041dfff9d9624d9e676d9c5ee")
+ ("all-the-icons.el" . "52d1f2d36468146c93aaf11399f581401a233306")
  ("amx" . "260e7c013690d412ec8d965c282572505596636d")
  ("arduino-mode" . "e39cb1c02acb6676aea35f93fbd0d86badce6a38")
  ("avy" . "7c40f5e3811716b05d87a06096b190f7cf7bdc45")
