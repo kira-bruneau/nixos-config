@@ -14,3 +14,7 @@
 (use-package browse-at-remote
   :straight t
   :bind ("C-c o" . browse-at-remote))
+
+(when (eq system-type 'windows-nt)
+  (setq exec-path (add-to-list 'exec-path "C:/Program Files/Git/bin"))
+  (setenv "PATH" (concat "C:\\Program Files\\Git\\bin;" (getenv "PATH"))))
