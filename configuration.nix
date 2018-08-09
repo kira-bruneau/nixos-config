@@ -23,7 +23,7 @@
   # Select internationalisation properties.
   i18n = {
     # consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "colemak/en-latin9";
+    consoleKeyMap = "/etc/nixos/colemak.map";
     defaultLocale = "en_CA.UTF-8";
   };
 
@@ -33,9 +33,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    curl
     emacs
     firefox
     git
+    wget
+    chromium
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
