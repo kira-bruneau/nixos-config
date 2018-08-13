@@ -17,7 +17,8 @@
   services.xserver.xkbVariant = "colemak,";
   services.xserver.xkbOptions = "grp:win_space_toggle";
 
-  # Enable the KDE Desktop Environment.
+  # Enable SSDM and i3
   services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.xterm.enable = false;
+  services.xserver.windowManager.i3.enable = true;
 }
