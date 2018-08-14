@@ -1,18 +1,22 @@
 { config, pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
+  # TODO: Install cocktail
   environment.systemPackages = with pkgs; [
     apacheAnt
+    binutils
     bison
     clang
     gcc
     git
-    jdk
-    # junit (currently broken)
+    gnumake
+    javaPackages.junit_4_12
+    jdk7
     python2Full
     unzip
+
+    # Packages not necessary for building Klokwork
+    jetbrains.idea-community
     virtualbox
-    # TODO: intellij
   ];
 }
