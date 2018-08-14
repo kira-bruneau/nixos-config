@@ -5,6 +5,14 @@
     ../feature/text-editor.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    curl
+    htop
+    ripgrep
+    stow
+    wget
+  ];
+
   # Select internationalisation properties.
   i18n = {
     # consoleFont = "Lat2-Terminus16";

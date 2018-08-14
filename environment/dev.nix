@@ -6,11 +6,12 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    curl
+    binutils
+    clang
+    gcc
     git
+    gnumake
     nodejs
     pkgconfig
-    ripgrep
-    wget
   ];
 }

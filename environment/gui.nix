@@ -3,22 +3,21 @@
 {
   imports = [
     ./minimal.nix
+    ../feature/display-manager.nix
+    ../feature/window-manager.nix
     ../feature/web-browser.nix
   ];
 
   environment.systemPackages = with pkgs; [
-    keepassxc # TODO: Is a cli available for this? If so, move it to minimal.nix
+    keepassxc
     speedcrunch
   ];
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us,us";
-  services.xserver.xkbVariant = "colemak,";
-  services.xserver.xkbOptions = "grp:win_space_toggle";
-
-  # Enable SSDM and i3
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.xterm.enable = false;
-  services.xserver.windowManager.i3.enable = true;
+  services.xserver = {
+    enable = true;
+    layout = "us,us";
+    xkbVariant = "colemak,";
+    xkbOptions = "grp:win_space_toggle";
+  };
 }
