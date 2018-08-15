@@ -5,15 +5,6 @@
  (t
   (use-package ispell
     :ensure-system-package aspell
-
-    ;; Arch Linux Dictionaries
-    :ensure-system-package (aspell . aspell-en)
-
-    ;; NixOS Dictionaries
-    :ensure-system-package (aspell . aspell-dict-en)
-    :ensure-system-package (aspell . aspell-dict-en-computers)
-    :ensure-system-package (aspell . aspell-dict-en-science)
-
     :config
     (setq ispell-program-name "aspell"))))
 
