@@ -16,7 +16,6 @@
   # Select internationalisation properties.
   i18n = {
     # consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "/etc/nixos/colemak.map";
     defaultLocale = "en_CA.UTF-8";
   };
 
