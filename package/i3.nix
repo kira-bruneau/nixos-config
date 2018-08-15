@@ -7,7 +7,6 @@
     dunst
     feh
     font-awesome_5
-    geoclue2 # TODO: Allow redshift to use geoclue
     light
     polybar
     redshift
@@ -17,8 +16,11 @@
     xcwd
   ];
 
-  services.xserver = {
-    enable = true;
-    windowManager.i3.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      windowManager.i3.enable = true;
+    };
+    geoclue2.enable = true;
   };
 }
