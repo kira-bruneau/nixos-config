@@ -3,6 +3,7 @@
 {
   # TODO: Install cocktail
   environment.systemPackages = with pkgs; [
+    # Packages required for building Klocwork
     apacheAnt
     binutils
     bison
@@ -15,7 +16,8 @@
     python2Full
     unzip
 
-    # Packages not necessary for building Klokwork
+    # Other packages used for Klocwork development
+    git-review
     jetbrains.idea-community
     virtualbox
   ];
