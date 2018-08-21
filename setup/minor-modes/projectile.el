@@ -12,6 +12,9 @@
   :config
   (setq projectile-keymap-prefix (kbd "<f12>"))
 
+  (when (eq system-type 'windows-nt)
+    (setq projectile-indexing-method 'alien))
+
   (defun projectile-new (directory)
     (interactive "D")
     (let ((projectile-file (concat directory ".projectile")))
