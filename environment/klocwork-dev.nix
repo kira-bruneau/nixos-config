@@ -13,7 +13,7 @@
     gnumake
     javaPackages.junit_4_12
     jdk7
-    python2Full
+    python2
     unzip
 
     # Other packages used for Klocwork development
