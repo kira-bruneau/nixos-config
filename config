@@ -52,6 +52,12 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
+# Move workspace to monitor
+bindsym $mod+Control+Shift+$left move workspace to output left
+bindsym $mod+Control+Shift+$down move workspace to output down
+bindsym $mod+Control+Shift+$up move workspace to output up
+bindsym $mod+Control+Shift+$right move workspace to output right
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -208,6 +214,3 @@ assign [class="Dolphin-emu"] $games
 assign [class="Geary"] $email
 assign [class="Messenger for Desktop"] $chat
 assign [class="Slack"] $chat
-
-bindsym $mod+Shift+greater move container to output right
-bindsym $mod+Shift+less move container to output left
