@@ -19,7 +19,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/main]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP1}
 bottom = true
 dpi = 192
 width = 100%
