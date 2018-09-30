@@ -188,7 +188,7 @@ bindsym $mod+u exec xdg-open ~/School/
 
 # Start deamons
 exec --no-startup-id compton -b --backend glx --vsync opengl-swc
-exec --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/
+exec --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/ --bg-fill ~/Pictures/Wallpapers/
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk
 exec --no-startup-id ~/dev/shared/dunst/dunst
