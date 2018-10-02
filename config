@@ -228,7 +228,7 @@ input "1739:30381:DLL0665:01_06CB:76AD_To" {
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
     colors {
         statusline #ffffff
         background #323232
