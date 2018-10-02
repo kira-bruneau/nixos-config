@@ -38,6 +38,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input "1739:30381:DLL0665:01_06CB:76AD_To" {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    click_method button_areas
+}
 
 ### Key bindings
 #
