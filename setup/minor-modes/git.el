@@ -18,7 +18,9 @@
 
 (when (eq system-type 'windows-nt)
   (setq exec-path (add-to-list 'exec-path "C:/Program Files/Git/bin"))
+  (setq exec-path (add-to-list 'exec-path "C:/Program Files/Git/usr/bin"))
   (setenv "PATH" (concat "C:\\Program Files\\Git\\bin;" (getenv "PATH")))
+  (setenv "PATH" (concat "C:\\Program Files\\Git\\usr\\bin;" (getenv "PATH")))
   (setenv "SSH_ASKPASS" "git-gui--askpass")
   (use-package ssh-agency
     :straight t))
