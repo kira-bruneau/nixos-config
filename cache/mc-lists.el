@@ -35,10 +35,12 @@
         electric-newline-and-maybe-indent
         end-of-buffer
         end-of-visual-line
+        eval-last-sexp
         eval-print-last-sexp
         fc-eval-and-replace
         forward-sexp
         indent-for-tab-command
+        ispell-word
         kill-region
         kill-visual-line
         markdown-cycle
