@@ -39,8 +39,6 @@
                   '("%e"
                     (:eval
                      (let* ((active (powerline-selected-window-active))
-                            ;; (mode-line-buffer-id (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
-                            ;; (mode-line (if active 'mode-line 'mode-line-inactive))
                             (face0 (if active 'powerline-active0 'powerline-inactive0))
                             (face1 (if active 'powerline-active1 'powerline-inactive1))
                             (face2 (if active 'powerline-active2 'powerline-inactive2))
@@ -51,11 +49,11 @@
                                                              (powerline-current-separator)
                                                              (cdr powerline-default-separator-dir))))
                             (vc-mode-line (string-trim (format-mode-line '(vc-mode vc-mode))))
-                            (lhs (list (powerline-raw "%*" face0 'l)
-                                       (when powerline-display-buffer-size
+                            (lhs (list (when powerline-display-buffer-size
                                          (powerline-buffer-size face0 'l))
                                        (when powerline-display-mule-info
                                          (powerline-raw mode-line-mule-info face0 'l))
+                                       (powerline-raw "%*" face0)
                                        (when (and (boundp 'which-func-mode) which-func-mode)
                                          (powerline-raw which-func-format face0 'l))
                                        (funcall separator-left face0 face1)
