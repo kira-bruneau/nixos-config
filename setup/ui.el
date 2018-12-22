@@ -59,7 +59,7 @@
                                        (when (and (boundp 'which-func-mode) which-func-mode)
                                          (powerline-raw which-func-format face0 'l))
                                        (funcall separator-left face0 face1)
-                                       (powerline-raw (buffer-name) face1 'l)
+                                       (powerline-raw "%b" face1 'l)
                                        (powerline-raw " " face1)
                                        (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
                                          (powerline-raw erc-modified-channels-object face1 'l))
@@ -88,7 +88,10 @@
                        (concat (powerline-render lhs)
                                (powerline-fill face2 (powerline-width rhs))
                                (powerline-render rhs)))))))
-  (powerline-minimal-theme))
+  (powerline-minimal-theme)
+
+  :config
+  (setq powerline-display-buffer-size nil))
 
 ;; Font (current frame + future frames)
 (let ((font "DejaVu Sans Mono 9"))
