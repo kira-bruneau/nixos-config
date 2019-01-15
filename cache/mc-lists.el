@@ -74,6 +74,7 @@
         dired-do-flagged-delete
         dired-unmark-all-files
         dired-unmark-all-marks
+        ivy-switch-buffer
         kmacro-end-or-call-macro
         overwrite-mode
         previous-buffer
