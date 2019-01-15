@@ -11,8 +11,10 @@
 
 (use-package tern
   :straight t
-  :ensure-system-package npm
-  :ensure-system-package (tern . "npm i -g tern")
+  :ensure-system-package
+  ((npm . npm)
+   (npm . nodejs)
+   (tern . "npm i -g tern"))
   :after js2-mode
   :diminish " ◎"
   :hook (js2-mode . tern-mode)
