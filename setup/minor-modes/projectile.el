@@ -2,15 +2,14 @@
   :straight t
   :diminish "" ;; ➴
   :ensure-system-package (rg . ripgrep)
-  :bind (:map projectile-command-map
-              ("n" . projectile-new)
-              ("s" . projectile-ripgrep)
-              ("x" . projectile-run-multi-term))
+  :bind (:map projectile-mode-map
+         ("<f12>" . projectile-command-map)
+         :map projectile-command-map
+         ("n" . projectile-new)
+         ("s" . projectile-ripgrep) ;; Use rg as default search tool
+         ("x" . projectile-run-multi-term)) ;; Use multi-term as the default terminal
   :init
-  (projectile-global-mode)
-
-  :config
-  (setq projectile-keymap-prefix (kbd "<f12>"))
+  (projectile-mode)
 
   (defun projectile-new (directory)
     (interactive "D")
@@ -39,31 +38,51 @@
   :straight t
   :after projectile
   :ensure-system-package (rg . ripgrep)
-  :bind (:map counsel-projectile-command-map
-              ("s" . 'counsel-projectile-rg))
   :init
-  (counsel-projectile-mode)
+  (require 'counsel-projectile)
 
-  :config
+  ;; Use rg as default search tool
+  (setq counsel-projectile-key-bindings
+        (->> counsel-projectile-key-bindings
+          (seq-remove
+           (lambda (binding)
+             (and
+              (stringp (car binding))
+              (> (length (car binding)) 1)
+              (string-prefix-p "s" (car binding)))))))
+
   (setq counsel-projectile-switch-project-action
-        '(1
-          ("o" counsel-projectile-switch-project-action "jump to a project buffer or file")
-          ("f" counsel-projectile-switch-project-action-find-file "jump to a project file")
-          ("d" counsel-projectile-switch-project-action-find-dir "jump to a project directory")
-          ("b" counsel-projectile-switch-project-action-switch-to-buffer "jump to a project buffer")
-          ("m" counsel-projectile-switch-project-action-find-file-manually "find file manually from project root")
-          ("S" counsel-projectile-switch-project-action-save-all-buffers "save all project buffers")
-          ("k" counsel-projectile-switch-project-action-kill-buffers "kill all project buffers")
-          ("K" counsel-projectile-switch-project-action-remove-known-project "remove project from known projects")
-          ("c" counsel-projectile-switch-project-action-compile "run project compilation command")
-          ("C" counsel-projectile-switch-project-action-configure "run project configure command")
-          ("E" counsel-projectile-switch-project-action-edit-dir-locals "edit project dir-locals")
-          ("v" counsel-projectile-switch-project-action-vc "open project in vc-dir / magit / monky")
-          ("s" counsel-projectile-switch-project-action-rg "search project with rg")
-          ("x" counsel-projectile-switch-project-action-run-multi-term "invoke multi-term from project root")
-          ("O" counsel-projectile-switch-project-action-org-capture "org-capture into project")))
+        (->> counsel-projectile-switch-project-action
+          (seq-map
+           (lambda (action)
+             (if (and (listp action) (string= (car action) "sr"))
+                 (cons "s" (cdr action))
+               action)))
+          (seq-remove
+           (lambda (action)
+             (and
+              (listp action)
+              (> (length (car action)) 1)
+              (string-prefix-p "s" (car action)))))))
+
+  ;; Use multi-term as the default terminal
+  (setq counsel-projectile-switch-project-action
+        (->> counsel-projectile-switch-project-action
+          (seq-map
+           (lambda (action)
+             (if (and (listp action) (string= (car action) "xt"))
+                 (list "x" #'counsel-projectile-switch-project-action-run-multi-term "invoke multi-term from project root")
+               action)))
+          (seq-remove
+           (lambda (action)
+             (and
+              (listp action)
+              (> (length (car action)) 1)
+              (string-prefix-p "x" (car action)))))))
 
   (defun counsel-projectile-switch-project-action-run-multi-term (project)
     "Invoke `multi-term' from PROJECT's root."
     (let ((projectile-switch-project-action 'projectile-run-multi-term))
       (counsel-projectile-switch-project-by-name project))))
+
+  (counsel-projectile-mode)

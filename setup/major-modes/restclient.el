@@ -1,6 +1,6 @@
 (use-package restclient
   :straight (restclient :type git :host github :repo "MetaDark/restclient.el"
-                        :upstream (:host github :repo "pashky/restclient.el")))
+                        :fork (:host github :repo "pashky/restclient.el")))
 
 (use-package company-restclient
   :straight t

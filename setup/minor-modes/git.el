@@ -1,11 +1,12 @@
 (use-package magit
   :straight (magit :type git :host github :repo "MetaDark/magit"
-                   :upstream (:host github :repo "magit/magit"))
+                   :fork (:host github :repo "magit/magit"))
   :ensure-system-package git
   :bind (("C-c C-b" . magit-blame)
          ("C-c C-l" . magit-log-buffer-file))
-  :config
-  (setq magit-save-repository-buffers nil))
+  :init
+  (setq magit-save-repository-buffers nil)
+  (setq magit-no-message '("Turning on magit-auto-revert-mode...")))
 
 (use-package git-timemachine
   :straight t
