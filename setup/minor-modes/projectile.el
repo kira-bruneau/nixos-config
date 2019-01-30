@@ -6,7 +6,7 @@
          ("<f12>" . projectile-command-map)
          :map projectile-command-map
          ("n" . projectile-new)
-         ("s" . projectile-ripgrep) ;; Use rg as default search tool
+         ("s" . projectile-ripgrep) ;; Use rg as default search method
          ("x" . projectile-run-multi-term)) ;; Use multi-term as the default terminal
   :init
   (projectile-mode)
@@ -32,7 +32,10 @@
     projectile-known-projects)
 
   (defun projectile-relevant-open-projects ()
-    (projectile-open-projects)))
+    (projectile-open-projects))
+
+  :config
+  (setq projectile-find-dir-includes-top-level t))
 
 (use-package counsel-projectile
   :straight t
@@ -41,7 +44,23 @@
   :init
   (require 'counsel-projectile)
 
-  ;; Use rg as default search tool
+  ;; Use counsel-fzf in instead of counsel-projectile-find-file
+  (add-to-list 'counsel-projectile-key-bindings '("f" . counsel-projectile-fzf))
+
+  (counsel-projectile-modify-action
+   'counsel-projectile-switch-project-action
+   '((setfun 1 counsel-projectile-switch-project-action-fzf)))
+
+  (defun counsel-projectile-fzf (&optional initial-input)
+    (interactive)
+    (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: ")))
+
+  (defun counsel-projectile-switch-project-action-fzf (project)
+    "Jump to a file or buffer in PROJECT."
+    (let ((projectile-switch-project-action #'counsel-projectile-fzf))
+      (counsel-projectile-switch-project-by-name project)))
+
+  ;; Use rg as default search method
   (setq counsel-projectile-key-bindings
         (->> counsel-projectile-key-bindings
           (seq-remove
@@ -51,13 +70,12 @@
               (> (length (car binding)) 1)
               (string-prefix-p "s" (car binding)))))))
 
+  (counsel-projectile-modify-action
+   'counsel-projectile-switch-project-action
+   '((setkey "sr" "s")))
+
   (setq counsel-projectile-switch-project-action
         (->> counsel-projectile-switch-project-action
-          (seq-map
-           (lambda (action)
-             (if (and (listp action) (string= (car action) "sr"))
-                 (cons "s" (cdr action))
-               action)))
           (seq-remove
            (lambda (action)
              (and
@@ -66,13 +84,14 @@
               (string-prefix-p "s" (car action)))))))
 
   ;; Use multi-term as the default terminal
+  (counsel-projectile-modify-action
+   'counsel-projectile-switch-project-action
+   '((setkey "xt" "x")
+     (setfun "x" #'counsel-projectile-switch-project-action-run-multi-term)
+     (setname "x" "invoke multi-term from project root")))
+
   (setq counsel-projectile-switch-project-action
         (->> counsel-projectile-switch-project-action
-          (seq-map
-           (lambda (action)
-             (if (and (listp action) (string= (car action) "xt"))
-                 (list "x" #'counsel-projectile-switch-project-action-run-multi-term "invoke multi-term from project root")
-               action)))
           (seq-remove
            (lambda (action)
              (and
@@ -83,6 +102,6 @@
   (defun counsel-projectile-switch-project-action-run-multi-term (project)
     "Invoke `multi-term' from PROJECT's root."
     (let ((projectile-switch-project-action 'projectile-run-multi-term))
-      (counsel-projectile-switch-project-by-name project))))
+      (counsel-projectile-switch-project-by-name project)))
 
-  (counsel-projectile-mode)
+  (counsel-projectile-mode))
