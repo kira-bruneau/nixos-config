@@ -40,7 +40,10 @@
 (use-package counsel-projectile
   :straight t
   :after projectile
-  :ensure-system-package (rg . ripgrep)
+  :ensure-system-package
+  ((fzf . fzf)
+   (fd . fd)
+   (rg . ripgrep))
   :init
   (require 'counsel-projectile)
 
@@ -51,9 +54,11 @@
    'counsel-projectile-switch-project-action
    '((setfun 1 counsel-projectile-switch-project-action-fzf)))
 
-  (defun counsel-projectile-fzf (&optional initial-input)
-    (interactive)
-    (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: ")))
+  (defun counsel-projectile-fzf (&optional no-ignore initial-input)
+    (interactive "P")
+    (let ((process-environment
+           (cons (concat "FZF_DEFAULT_COMMAND=" (if no-ignore "fd -IH" "fd")) process-environment)))
+      (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: "))))
 
   (defun counsel-projectile-switch-project-action-fzf (project)
     "Jump to a file or buffer in PROJECT."
