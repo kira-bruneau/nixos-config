@@ -27,3 +27,6 @@
 
 ;; Don't prompt to follow git symlink
 (setq vc-follow-symlinks t)
+
+;; Disable bidirectional reordering to improve performance of file with long lines
+(setq-default bidi-display-reordering nil)
