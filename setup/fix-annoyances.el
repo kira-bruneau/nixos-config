@@ -33,3 +33,6 @@
 
 ;; Store all backup files in a single directory
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backup/"))))
+
+;; Improve performance opening file under version control
+(remove-hook 'find-file-hooks 'vc-find-file-hook)
