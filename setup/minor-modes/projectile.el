@@ -67,26 +67,26 @@
 
   ;; Use rg as default search method
   (setq counsel-projectile-key-bindings
-        (->> counsel-projectile-key-bindings
-          (seq-remove
-           (lambda (binding)
-             (and
-              (stringp (car binding))
-              (> (length (car binding)) 1)
-              (string-prefix-p "s" (car binding)))))))
+        (seq-remove
+         (lambda (binding)
+           (and
+            (stringp (car binding))
+            (> (length (car binding)) 1)
+            (string-prefix-p "s" (car binding))))
+         counsel-projectile-key-bindings))
 
   (counsel-projectile-modify-action
    'counsel-projectile-switch-project-action
    '((setkey "sr" "s")))
 
   (setq counsel-projectile-switch-project-action
-        (->> counsel-projectile-switch-project-action
-          (seq-remove
-           (lambda (action)
-             (and
-              (listp action)
-              (> (length (car action)) 1)
-              (string-prefix-p "s" (car action)))))))
+        (seq-remove
+         (lambda (action)
+           (and
+            (listp action)
+            (> (length (car action)) 1)
+            (string-prefix-p "s" (car action))))
+         counsel-projectile-switch-project-action))
 
   ;; Use multi-term as the default terminal
   (counsel-projectile-modify-action
@@ -96,13 +96,13 @@
      (setname "x" "invoke multi-term from project root")))
 
   (setq counsel-projectile-switch-project-action
-        (->> counsel-projectile-switch-project-action
-          (seq-remove
-           (lambda (action)
-             (and
-              (listp action)
-              (> (length (car action)) 1)
-              (string-prefix-p "x" (car action)))))))
+        (seq-remove
+         (lambda (action)
+           (and
+            (listp action)
+            (> (length (car action)) 1)
+            (string-prefix-p "x" (car action))))
+         counsel-projectile-switch-project-action))
 
   (defun counsel-projectile-switch-project-action-run-multi-term (project)
     "Invoke `multi-term' from PROJECT's root."
