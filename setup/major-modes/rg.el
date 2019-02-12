@@ -7,6 +7,7 @@
   :config
   (setq rg-group-result t)
   (setq rg-show-columns t)
+  (setq rg-default-alias-fallback "everything")
 
   (rg-define-search rg-buffer-name-project-dir
     "Search for buffer name (without extension) under the project
