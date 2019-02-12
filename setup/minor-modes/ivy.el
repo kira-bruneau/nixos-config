@@ -16,7 +16,10 @@
   :bind (:map counsel-describe-map
               ("M-." . counsel-find-symbol))
   :init
-  (counsel-mode))
+  (counsel-mode)
+
+  :config
+  (add-to-list 'ivy-sort-functions-alist '(counsel-fzf . nil)))
 
 ;; Used to sort ivy fuzzy search results
 (use-package flx

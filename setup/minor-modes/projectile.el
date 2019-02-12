@@ -49,6 +49,7 @@
 
   ;; Use counsel-fzf in instead of counsel-projectile-find-file
   (add-to-list 'counsel-projectile-key-bindings '("f" . counsel-projectile-fzf))
+  (add-to-list 'ivy-sort-functions-alist '(counsel-projectile-fzf . nil))
 
   (counsel-projectile-modify-action
    'counsel-projectile-switch-project-action
