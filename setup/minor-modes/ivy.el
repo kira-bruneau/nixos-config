@@ -13,6 +13,7 @@
 
 (use-package counsel
   :straight t
+  :after amx
   :bind (:map counsel-describe-map
               ("M-." . counsel-find-symbol))
   :init
