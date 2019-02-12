@@ -1,5 +1,6 @@
 (use-package ivy
   :straight t
+  :after flx
   :init
   (ivy-mode)
 
