@@ -1,6 +1,5 @@
 (use-package magit
-  :straight (magit :type git :host github :repo "MetaDark/magit"
-                   :fork (:host github :repo "magit/magit"))
+  :straight t
   :ensure-system-package git
   :bind (("C-c C-b" . magit-blame)
          ("C-c C-l" . magit-log-buffer-file))
