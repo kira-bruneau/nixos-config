@@ -1,3 +1,6 @@
 (use-package swiper
   :straight t
-  :bind (("C-s" . swiper)))
+  :after ivy
+  :bind (("C-s" . swiper))
+  :config
+  (add-to-list 'ivy-re-builders-alist '(swiper . ivy--regex-plus)))
