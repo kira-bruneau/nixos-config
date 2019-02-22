@@ -1,8 +1,6 @@
 * Things to Try
 ** use-package: cleaner package management
 Finish upgrading setup files to use-package
-** rtags: alternative to ggtags for C/C++
-** irony: better editing for C/C++
 ** multifiles: view multiple files in one buffer
 ** grizzl: indexed fuzzy searching
 ** attrap: flycheck fix error at point
@@ -15,6 +13,7 @@ Finish upgrading setup files to use-package
 - Requries modifiying C mode
   - Seperate the echo area and the minibuffer so I don't get interrupted while typing
   - Pixel-level scrolling (this is now available, but too slow)
+- Async delete in dired
 
 * Improve a Package
 ** restclient
@@ -37,12 +36,3 @@ Finish upgrading setup files to use-package
   - Missing implementation
   - Other suggestions
 
-** projectile
-- Function to search ignored files / directories in projectile
-
-** ivy
-- Sort counsel-find-file results using ido.last
-- Force ivy to select top result and not first result that matches
-
-** counsel-rg
-- Fix highlighting filename if filename also matches search result
