@@ -40,10 +40,6 @@
 (use-package counsel-projectile
   :straight t
   :after projectile
-  :ensure-system-package
-  ((fzf . fzf)
-   (fd . fd)
-   (rg . ripgrep))
   :init
   (require 'counsel-projectile)
 
@@ -56,8 +52,7 @@
 
   (defun counsel-projectile-fzf (&optional no-ignore initial-input)
     (interactive "P")
-    (let ((process-environment
-           (cons (concat "FZF_DEFAULT_COMMAND=" (if no-ignore "fd -IH" "fd")) process-environment)))
+    (let ((counsel-fzf-cmd (concat "fd" (if no-ignore " -IH") " | " "fzf -f \"%s\"")))
       (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: "))))
 
   (defun counsel-projectile-switch-project-action-fzf (project)

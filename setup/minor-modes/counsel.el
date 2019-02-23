@@ -4,6 +4,10 @@
 
 (use-package counsel
   :straight t
+  :ensure-system-package
+  ((fzf . fzf)
+   (fd . fd)
+   (rg . ripgrep))
   :bind (:map counsel-describe-map
               ("M-." . counsel-find-symbol))
   :init
@@ -11,6 +15,7 @@
   (counsel-mode)
 
   :config
+  (setq counsel-fzf-cmd "fd | fzf -f \"%s\"")
   (add-to-list 'ivy-re-builders-alist '(counsel-ag-function . ivy--regex))
   (add-to-list 'ivy-re-builders-alist '(counsel-fzf-function . ivy--regex))
   (add-to-list 'ivy-sort-functions-alist '(counsel-fzf-function . nil)))
