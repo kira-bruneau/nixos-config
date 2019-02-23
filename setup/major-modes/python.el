@@ -12,4 +12,6 @@
    (yapf . python3.7-yapf))
 
   :hook ((elpy-mode . flycheck-mode))
-  :init (elpy-enable))
+  :init (elpy-enable)
+  :config
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules)))
