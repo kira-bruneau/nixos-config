@@ -15,7 +15,7 @@
   (counsel-mode)
 
   :config
-  (setq counsel-fzf-cmd "fd | fzf -f \"%s\"")
+  (setq counsel-fzf-cmd "fd -H | fzf -f \"%s\"")
   (add-to-list 'ivy-re-builders-alist '(counsel-ag-function . ivy--regex))
   (add-to-list 'ivy-re-builders-alist '(counsel-fzf-function . ivy--regex))
   (add-to-list 'ivy-sort-functions-alist '(counsel-fzf-function . nil)))
