@@ -2,7 +2,7 @@
 
 {
   i18n = {
-    consoleKeyMap = "/etc/nixos/colemak.map";
+    consoleKeyMap = "colemak";
   };
 
   services.xserver = {
