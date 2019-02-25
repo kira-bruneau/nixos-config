@@ -2,15 +2,8 @@
 
 {
   imports = [
+    ../environment/cli.nix
     ../feature/text-editor.nix
-  ];
-
-  environment.systemPackages = with pkgs; [
-    curl
-    htop
-    ripgrep
-    stow
-    wget
   ];
 
   # Select internationalisation properties.

@@ -3,17 +3,20 @@
 {
   # Packages required by my i3 config
   environment.systemPackages = with pkgs; [
+    alacritty
     compton
     dunst
     feh
-    font-awesome_5
     light
     polybar
     redshift
     rofi
     scrot
-    tilix
     xcwd
+  ];
+
+  fonts.fonts = with pkgs; [
+    font-awesome_5
   ];
 
   services = {
