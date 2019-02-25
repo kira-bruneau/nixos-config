@@ -36,3 +36,6 @@
 
 ;; Improve performance opening file under version control
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
+
+;; Don't prompt to create a new buffer for multiple async shells
+(setq async-shell-command-buffer 'new-buffer)
