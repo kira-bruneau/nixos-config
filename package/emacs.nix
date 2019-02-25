@@ -11,4 +11,9 @@
     emacs
     git # required to clone system-packages.el
   ];
+
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
+  };
 }
