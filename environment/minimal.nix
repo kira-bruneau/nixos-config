@@ -41,4 +41,11 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Unlimited bash history
+  environment.variables = {
+    HISTSIZE = "";
+    HISTFILESIZE = "";
+    HISTCONTROL = "erasedups";
+  };
 }
