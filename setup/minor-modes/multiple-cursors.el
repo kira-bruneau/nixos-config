@@ -6,7 +6,6 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-^") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-'") 'mc-hide-unmatched-lines-mode)
 
 (with-eval-after-load 'multiple-cursors-core
   (define-key mc/keymap (kbd "M-T") 'mc/reverse-regions)
