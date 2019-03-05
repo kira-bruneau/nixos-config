@@ -7,8 +7,11 @@
 ;; Don't ask to create a new file
 (setq confirm-nonexistent-file-or-buffer nil)
 
-;; Don't prompt to kill a buffer
-(global-set-key (kbd "C-x k") 'kill-current-buffer)
+;; Fast keybinding for killing the current buffer
+(global-set-key (kbd "C-S-q") 'kill-current-buffer)
+
+;; Key binding for killing both a buffer and a window
+(global-set-key (kbd "C-S-M-q") 'kill-buffer-and-window)
 
 ;; Don't prompt to revert a buffer
 (setq revert-without-query '(".*"))

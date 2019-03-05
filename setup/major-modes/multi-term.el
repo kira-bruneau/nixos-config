@@ -1,6 +1,7 @@
 (use-package multi-term
   :straight t
-  :bind (("C-S-z" . multi-term-dedicated-toggle))
+  :bind (("C-S-z" . multi-term-dedicated-toggle)
+         ("C-S-t" . multi-term))
   :config
   (setq multi-term-dedicated-select-after-open-p t)
   (setq term-bind-key-alist
