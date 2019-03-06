@@ -2,4 +2,7 @@
   :straight t
   :ensure-system-package ccls
   :hook (((c-mode c++-mode objc-mode) .
-          (lambda () (require 'ccls) (lsp)))))
+          (lambda ()
+            (require 'ccls)
+            (lsp)
+            (flycheck-mode)))))
