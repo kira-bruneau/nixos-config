@@ -10,8 +10,6 @@ My nixos configuration
 | users       | Configuration for users on my system                                                                                                                                                                                                                          |
 
 ## Installation
-Warning: I have not yet tested these instructions on a fresh install.
-
 See the [NixOS Manual](https://nixos.org/nixos/manual/index.html#ch-installation)
 for detailed installation instructions.
 
