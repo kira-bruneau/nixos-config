@@ -4,7 +4,7 @@
   users.users.kira = {
     uid = 1000;
     description = "Kira Bruneau";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     isNormalUser = true;
   };
 
