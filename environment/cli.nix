@@ -7,6 +7,7 @@
     fd
     file
     fzf
+    gdb
     git
     htop
     jq
@@ -17,9 +18,12 @@
     python3
     ripgrep
     stow
+    strace
     sudo
+    tcpflow
     tmux
     unzip
+    valgrind
     wget
     xorg.lndir
     youtube-dl
