@@ -1,5 +1,6 @@
 ;; Source https://stackoverflow.com/questions/3860028/customizing-emacs-gdb#answer-41326527
 (use-package gdb-mi
+  :ensure-system-package gdb
   :config
   (setq gdb-many-windows nil)
 
