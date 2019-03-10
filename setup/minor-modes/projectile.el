@@ -87,7 +87,7 @@
   (counsel-projectile-modify-action
    'counsel-projectile-switch-project-action
    '((setkey "xt" "x")
-     (setfun "x" #'counsel-projectile-switch-project-action-run-multi-term)
+     (setfun "x" counsel-projectile-switch-project-action-run-multi-term)
      (setname "x" "invoke multi-term from project root")))
 
   (setq counsel-projectile-switch-project-action
@@ -101,7 +101,7 @@
 
   (defun counsel-projectile-switch-project-action-run-multi-term (project)
     "Invoke `multi-term' from PROJECT's root."
-    (let ((projectile-switch-project-action 'projectile-run-multi-term))
+    (let ((projectile-switch-project-action #'projectile-run-multi-term))
       (counsel-projectile-switch-project-by-name project)))
 
   (counsel-projectile-mode))
