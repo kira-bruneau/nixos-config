@@ -42,10 +42,14 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # Unlimited bash history
-  environment.variables = {
-    HISTSIZE = "";
-    HISTFILESIZE = "";
-    HISTCONTROL = "erasedups";
-  };
+  # Unlimited bash history synchronized between each terminal
+  programs.bash.interactiveShellInit = ''
+    export HISTSIZE=""
+    export HISTFILESIZE=""
+    export HISTCONTROL="ignoredups";
+    trap 'history -a' DEBUG            # Immediately append commands to history
+    export PROMPT_COMMAND='history -n' # Read unread history at every prompt
+    shopt -s histappend                # Append instead of rewrite history on exit
+    stty -ixon                         # Fix forward history searching
+  '';
 }
