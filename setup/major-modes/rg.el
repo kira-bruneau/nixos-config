@@ -5,7 +5,6 @@
   :bind (:map rg-global-map
               ("b" . rg-buffer-name-project-dir))
   :config
-  (setq rg-group-result t)
   (setq rg-show-columns t)
   (setq rg-default-alias-fallback "everything")
 
