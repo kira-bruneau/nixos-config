@@ -78,6 +78,7 @@
         kmacro-end-or-call-macro
         overwrite-mode
         previous-buffer
+        revert-buffer
         smex
         wdired-finish-edit
         ))
