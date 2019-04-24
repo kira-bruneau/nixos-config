@@ -1,14 +1,17 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./minimal.nix
-    ../feature/display-manager.nix
-    ../feature/window-manager.nix
-    ../feature/web-browser.nix
-  ];
+  # Services
+  services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true;
+    windowManager.i3.enable = true;
+  };
 
+  # Packages
   environment.systemPackages = with pkgs; [
+    chromium
+    firefox
     keepassxc
     speedcrunch
   ];
