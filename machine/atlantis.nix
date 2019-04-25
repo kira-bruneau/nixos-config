@@ -6,6 +6,7 @@
     ../environment/gui.nix
     ../environment/hidpi.nix
     ../environment/colemak.nix
+    ../environment/gaming.nix
     ../user/kira.nix
   ];
 
