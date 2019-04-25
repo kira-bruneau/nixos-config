@@ -18,10 +18,8 @@ primary = #51afef
 secondary = #e60053
 alert = #bd2c40
 
-[bar/main]
-monitor = ${env:MONITOR:eDP1}
+[bar/base]
 bottom = true
-dpi = 192
 width = 100%
 height = 56
 fixed-center = false
@@ -33,7 +31,7 @@ line-size = 4
 line-color = #f00
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
 ; Priorize font awesome since other fonts conflict with it (eg. the music font icon)
 font-0 = "Font Awesome 5 Free:style=Solid:pixelsize=10;5"
@@ -42,13 +40,10 @@ font-2 = fixed:pixelsize=10;5
 font-3 = unifont:fontformat=truetype;5
 font-4 = siji:pixelsize=10;5
 
-modules-left = bspwm i3
-modules-center = 
-modules-right = xbacklight volume filesystem memory cpu wlan eth battery date powermenu
-
 tray-position = right
 tray-padding = 2
-tray-maxsize = 40
+tray-maxsize = 32
+
 ;tray-transparent = true
 ;tray-background = #0063ff
 
@@ -62,6 +57,24 @@ tray-maxsize = 40
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
+
+[bar/gallifrey]
+inherit = bar/base
+monitor = ${env:MONITOR:eDP1}
+dpi = 192
+
+modules-left = i3
+modules-center =
+modules-right = xbacklight alsa filesystem memory cpu wlan-gallifrey eth-gallifrey battery date powermenu
+
+[bar/atlantis]
+inherit = bar/base
+monitor = ${env:MONITOR:HDMI-2}
+dpi = 192
+
+modules-left = i3
+modules-center =
+modules-right = alsa filesystem memory cpu wlan-atlantis eth-atlantis date powermenu
 
 [module/xwindow]
 type = internal/xwindow
@@ -178,9 +191,8 @@ format-prefix = " "
 format-underline = #4bffdc
 label = %percentage_used%%
 
-[module/wlan]
+[module/wlan-base]
 type = internal/network
-interface = wlp2s0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -200,9 +212,16 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/eth]
+[module/wlan-gallifrey]
+inherit = module/wlan-base
+interface = wlp2s0
+
+[module/wlan-atlantis]
+inherit = module/wlan-base
+interface = wlp5s0
+
+[module/eth-base]
 type = internal/network
-interface = net0
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -216,6 +235,14 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
+[module/eth-gallifrey]
+inherit = module/eth-base
+interface = net0
+
+[module/eth-atlantis]
+inherit = module/eth-base
+interface = enp6s0
+
 [module/date]
 type = internal/date
 interval = 1
@@ -228,8 +255,8 @@ format-underline = #0a6cf5
 
 label = %date% %time%
 
-[module/volume]
-type = internal/volume
+[module/alsa]
+type = internal/alsa
 ; headphone-id = 4
 
 format-volume = <ramp-volume> <bar-volume>
