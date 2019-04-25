@@ -22,8 +22,13 @@
     compton
     dunst
     feh
+    keepassxc
     light
-    polybar
+    pavucontrol
+    (polybar.override {
+      i3Support = true;
+      pulseSupport = true;
+    })
     redshift
     rofi
     scrot

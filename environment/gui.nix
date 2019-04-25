@@ -4,15 +4,35 @@
   # Services
   services.xserver = {
     enable = true;
+    useGlamor = true;
     displayManager.sddm.enable = true;
-    windowManager.i3.enable = true;
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = [];
+    };
   };
 
   # Packages
   environment.systemPackages = with pkgs; [
+    # Web
     chromium
     firefox
+
+    # Media & Documents
+    audacity
+    blender
+    evince
+    gimp
+    gnome3.file-roller
+    inkscape
+    libreoffice
+    lmms
+    mpv
+    qbittorrent
+
+    # Utility
     keepassxc
+    pavucontrol
     speedcrunch
   ];
 
@@ -28,4 +48,6 @@
     # Touchscreen support on Firefox
     MOZ_USE_XINPUT2 = "1";
   };
+
+  fonts.fontconfig.allowBitmaps = false;
 }
