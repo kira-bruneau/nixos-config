@@ -3,5 +3,8 @@
 # Terminate already running bar instances
 pkill polybar
 
-# Launch bar with matching hostname
-polybar $(hostname)
+# Find wlan interface
+export WLAN_INTERFACE=$(ip link show | grep wlp | awk -F':' '{print $2}' | awk '{print $1}')
+
+# Launch bar
+polybar --reload main
