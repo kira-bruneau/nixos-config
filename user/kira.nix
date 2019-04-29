@@ -10,12 +10,22 @@
 
   environment.systemPackages = with pkgs; [
     # Packages required by my emacs config.
-    # Most system packages will be automatically installed through
-    # system-packages.el.
+    aspell
     aspellDicts.en
     aspellDicts.en-computers
     aspellDicts.en-science
-    git # required to clone system-packages.el
+    ccls
+    fd
+    fzf
+    gdb
+    git
+    nodejs
+    pandoc
+    python37Packages.autopep8
+    python37Packages.flake8
+    python37Packages.yapf
+    ripgrep
+    rustracer
 
     # Packages required by my i3 config.
     alacritty
