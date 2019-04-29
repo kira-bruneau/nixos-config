@@ -59,7 +59,7 @@ font-2 = Font Awesome 5 Brands:pixelsize=10;3
 
 modules-left = i3
 modules-center = filesystem memory cpu temperature wlan eth battery
-modules-right = alsa xkeyboard date powermenu
+modules-right = pulseaudio xkeyboard date powermenu
 
 tray-position = right
 tray-padding = 8
@@ -279,12 +279,16 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volumee = <label-volume>
-label-volume = VOL %percentage%%
+format-volume = %{A3:pavucontrol&:}<ramp-volume> <label-volume>%{A}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
-label-muted-foreground = #666
+format-muted = %{A3:pavucontrol&:} <label-muted>%{A}
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = %percentage%%
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -306,14 +310,14 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 [module/alsa]
 type = internal/alsa
 
-format-volume = %{A3:pavucontrol&:}<ramp-volume> <label-volume>%{A}
+format-volume = <ramp-volume> <label-volume>
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
-format-muted = %{A3:pavucontrol&:} <label-muted>%{A}
+format-muted =  <label-muted>
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = %percentage%%
 
