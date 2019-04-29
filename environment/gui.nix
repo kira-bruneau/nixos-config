@@ -5,7 +5,14 @@
   services.xserver = {
     enable = true;
     useGlamor = true;
+
     displayManager.sddm.enable = true;
+
+    desktopManager = {
+      xterm.enable = false;
+      default = "none";
+    };
+
     windowManager.i3 = {
       enable = true;
       extraPackages = [];
