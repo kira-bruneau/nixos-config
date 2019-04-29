@@ -52,7 +52,7 @@
 
   (defun counsel-projectile-fzf (&optional no-ignore initial-input)
     (interactive "P")
-    (let ((counsel-fzf-cmd (concat "fd -H" (if no-ignore " -I") " | " "fzf -f \"%s\"")))
+    (let ((counsel-fzf-cmd (concat "fd" (if no-ignore " -IH") " | " "fzf -f \"%s\"")))
       (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: "))))
 
   (defun counsel-projectile-switch-project-action-fzf (project)
