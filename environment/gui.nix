@@ -5,19 +5,25 @@
   services.xserver = {
     enable = true;
     useGlamor = true;
-
     displayManager.sddm.enable = true;
 
+    # Disable xterm
     desktopManager = {
       xterm.enable = false;
       default = "none";
     };
 
+    # Enable i3-gaps
     windowManager.i3 = {
       enable = true;
+      package = pkgs.i3-gaps;
       extraPackages = [];
     };
   };
+
+  # Enable DConf
+  programs.dconf.enable = true;
+  services.dbus.packages = [ pkgs.gnome3.dconf ];
 
   # Packages
   environment.systemPackages = with pkgs; [
@@ -43,6 +49,7 @@
     speedcrunch
   ];
 
+  # Environment
   environment.variables = {
     # Use GTK 3 settings in Qt 5
     # https://wiki.archlinux.org/index.php/Uniform_look_for_Qt_and_GTK_applications
@@ -56,5 +63,6 @@
     MOZ_USE_XINPUT2 = "1";
   };
 
+  # Disable bitmap fonts
   fonts.fontconfig.allowBitmaps = false;
 }
