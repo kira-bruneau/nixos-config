@@ -42,6 +42,7 @@
     redshift
     rofi
     scrot
+    sound-theme-freedesktop
     xcwd
   ];
 
