@@ -1,0 +1,3 @@
+[submodule "i3"]
+	path = i3
+	url = https://gitlab.com/MetaDark/i3wm-config.git

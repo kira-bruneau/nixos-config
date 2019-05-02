@@ -1,0 +1,27 @@
+[user]
+	email = kira.bruneau@gmail.com
+	name = MetaDark
+	signingKey = 1176DC0CE57E804C7038A3A0FD0452E7FE574C0E
+[core]
+	excludesfile = ~/.gitignore_global
+	whitespace = cr-at-eol
+[push]
+	default = simple
+[diff]
+	algorithm = histogram
+[tag]
+	gpgsign = true
+[github]
+	user = MetaDark
+[url "git@gitlab.com:"]
+	pushInsteadOf = https://gitlab.com/
+	pushInsteadOf = git://gitlab.com/
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+	pushInsteadOf = git://github.com/
+[sendemail]
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = kira.bruneau@gmail.com
+	smtpServerPort = 587
+	# ibwftyxokayfmwdx

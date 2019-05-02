@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Use QtWayland
+# export QT_QPA_PLATFORM=wayland
+
+# Use GTK 3 settings in Qt 5
+# https://wiki.archlinux.org/index.php/Uniform_look_for_Qt_and_GTK_applications
+export QT_QPA_PLATFORMTHEME=gtk3
+
+# Improve appearance of Java applications
+# https://wiki.archlinux.org/index.php/Java#Tips_and_tricks
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
+# Configure keyboard layouts
+export XKB_DEFAULT_LAYOUT=us,us;
+export XKB_DEFAULT_VARIANT=colemak,;
+export XKB_DEFAULT_OPTIONS=grp:win_space_toggle
+
+# Start sway
+exec /usr/bin/sway

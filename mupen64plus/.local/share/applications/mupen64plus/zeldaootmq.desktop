@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zelda Ocarina of Time Master Quest
+Exec=mupen64plus --fullscreen --resolution $(xrandr | grep "*" | awk '{print $1}') "/home/kira/Documents/ROMs/Zelda - Ocarina of Time Master Quest.v64"
+Terminal=false
+Type=Application
+Icon=master-quest
+Comment=Zelda Ocarina of Time Master Quest
+Categories=Game;Emulator;

@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+
+import glob
+import random
+print(random.choice(glob.glob("/home/kira/Pictures/Wallpapers/*.*")))

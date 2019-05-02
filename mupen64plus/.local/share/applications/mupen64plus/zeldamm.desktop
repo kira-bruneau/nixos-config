@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zelda Majora's Mask
+Exec=mupen64plus --fullscreen --resolution $(xrandr | grep "*" | awk '{print $1}') "/home/kira/Documents/ROMs/Zelda - Majora's Mask.z64"
+Terminal=false
+Type=Application
+Icon=majoras-mask
+Comment=Zelda Majora's Mask
+Categories=Game;Emulator;

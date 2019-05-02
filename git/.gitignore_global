@@ -1,0 +1,13 @@
+# Emacs backup files
+[#]*[#]
+*~
+
+# Project Management
+.ccls-cache
+.mypy_cache
+.tern-port
+.tern-project
+GPATH
+GRTAGS
+GTAGS
+TAGS
