@@ -1,0 +1,8 @@
+#!/bin/sh
+
+monitor=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).output')
+if [ $monitor = 'eDP1' -o $monitor = 'DP1' ]; then
+    GDK_SCALE=2 WINIT_HIDPI_FACTOR=2 $@
+else
+    GDK_SCALE=1 WINIT_HIDPI_FACTOR=1 $@
+fi
