@@ -52,7 +52,16 @@
 
   (defun counsel-projectile-fzf (&optional no-ignore initial-input)
     (interactive "P")
-    (let ((counsel-fzf-cmd (concat "fd" (if no-ignore " -IH") " | " "fzf -f \"%s\"")))
+    (let* ((global-ignores
+            (if no-ignore '("-I")
+              (append
+               (mapcar
+                (lambda (exclude) (string-join `("-E" ,exclude) " "))
+                (append projectile-globally-ignored-files projectile-globally-ignored-directories))
+               '("--ignore-file ~/.gitignore_global"))))
+           (counsel-fzf-cmd
+            (string-join `("fd -H" ,(string-join global-ignores " ")  "|" "fzf -f \"%s\"") " ")))
+      (print counsel-fzf-cmd)
       (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: "))))
 
   (defun counsel-projectile-switch-project-action-fzf (project)
