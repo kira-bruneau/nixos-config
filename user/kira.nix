@@ -29,7 +29,6 @@
 
     # Packages required by my i3 config.
     alacritty
-    compton
     dunst
     feh
     keepassxc
@@ -39,7 +38,6 @@
       i3Support = true;
       pulseSupport = true;
     })
-    redshift
     rofi
     scrot
     sound-theme-freedesktop
@@ -52,7 +50,29 @@
   ];
 
   # Services required by my i3 config.
-  services.geoclue2.enable = true;
+  services.compton = {
+    enable = true;
+    backend = "glx";
+    shadow = true;
+    shadowExclude = [
+      "class_i = 'i3-frame'" # titlebars
+      "name = 'Polybar tray window'" # polybar tray
+      "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'" # background windows in tabbed layout
+    ];
+    fade = true;
+    fadeDelta = 10; # 100 steps per second
+    fadeSteps = [ "0.0666" "0.0444" ]; # ~150ms ~225ms
+    extraOptions = ''
+      clear-shadow = true;
+      blur-background = true;
+      no-fading-destroyed-argb = true;
+    '';
+  };
+
+  services.redshift = {
+    enable = true;
+    provider = "geoclue2";
+  };
 
   # TODO: automatically clone dotfiles / emacs config to home
   # See: https://github.com/rycee/home-manager
