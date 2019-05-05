@@ -92,8 +92,6 @@ set $games "6: "
 set $email "9: "
 set $chat  "10: "
 
-workspace_layout tabbed
-
 # move across workspaces
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
