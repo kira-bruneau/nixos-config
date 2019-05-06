@@ -227,7 +227,7 @@ type = internal/network
 interface = ${env:WLAN_INTERFACE:}
 interval = 3.0
 
-format-connected = %{A1:alacritty -e nethogs&:}<ramp-signal> <label-connected>%{A}
+format-connected = %{A1:alacritty -e nethogs&:}<label-connected>%{A}
 ;format-connected-underline = #9f78e1
 label-connected =  %upspeed%   %downspeed%
 
