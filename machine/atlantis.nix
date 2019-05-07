@@ -37,6 +37,9 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Use amdgpu driver
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
   # Force 192 DPI on LG 27UK650-W
   services.xserver.xrandrHeads = [
     {
