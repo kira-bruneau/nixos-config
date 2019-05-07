@@ -44,6 +44,10 @@
     xcwd
   ];
 
+  environment.variables = {
+    RUST_SRC_PATH = "${pkgs.rustPlatform.rustcSrc}";
+  };
+
   # Fonts required by my i3 config.
   fonts.fonts = with pkgs; [
     font-awesome_5
