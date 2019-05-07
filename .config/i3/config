@@ -149,9 +149,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 # Volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id \
   pactl set-sink-volume @DEFAULT_SINK@ +5% & \
@@ -192,7 +189,8 @@ bindsym $mod+y exec i3-autoscale xdg-open ~/
 bindsym $mod+u exec i3-autoscale xdg-open ~/School/
 
 # Start deamons
-exec --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/ --bg-fill ~/Pictures/Wallpapers/
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/ --bg-fill ~/Pictures/Wallpapers/
 exec --no-startup-id ~/dev/shared/dunst/dunst
 exec --no-startup-id keepassxc
 
