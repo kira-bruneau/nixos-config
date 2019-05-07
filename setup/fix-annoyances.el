@@ -42,3 +42,6 @@
 
 ;; Don't prompt to create a new buffer for multiple async shells
 (setq async-shell-command-buffer 'new-buffer)
+
+;; Allow narrowing to region
+(put 'narrow-to-region 'disabled nil)
