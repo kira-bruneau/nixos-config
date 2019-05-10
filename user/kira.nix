@@ -38,10 +38,12 @@
       i3Support = true;
       pulseSupport = true;
     })
+    python
     rofi
     scrot
     sound-theme-freedesktop
     xcwd
+    xorg.xdpyinfo
   ];
 
   environment.variables = {
