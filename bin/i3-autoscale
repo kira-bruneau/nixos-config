@@ -1,8 +1,72 @@
-#!/bin/sh
+#!/usr/bin/env python3
 
-monitor=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).output')
-if [ $monitor = 'eDP1' -o $monitor = 'DP1' ]; then
-    GDK_SCALE=2 WINIT_HIDPI_FACTOR=2 $@
-else
-    GDK_SCALE=1 WINIT_HIDPI_FACTOR=1 $@
-fi
+import json
+import os
+import re
+import subprocess
+import sys
+
+base_dpi = 96
+
+
+def i3_focused_display_scale():
+    return round(i3_focused_display_dpi() / base_dpi) * 0.75
+
+
+def i3_focused_display_dpi():
+    return dimensions_to_dpi(*display_dimensions(i3_focused_display(i3_workspaces())))
+
+
+def i3_workspaces():
+    return json.loads(subprocess.check_output([
+        'i3-msg', '-t' 'get_workspaces'
+    ]))
+
+
+def i3_focused_display(i3_workspaces):
+    return next(workspace['output']
+                for workspace in i3_workspaces
+                if workspace['focused'] is True)
+
+
+def display_dimensions(display):
+    xrandr = subprocess.Popen('xrandr', stdout=subprocess.PIPE)
+    for line in xrandr.stdout:
+        match = re.match(re.escape(display) + r' connected.*?([0-9]+)x([0-9]+).*?([0-9]+)mm x ([0-9]+)mm$', line.decode('utf-8'))
+        if match is not None:
+            return [int(dim) for dim in match.groups()]
+
+    raise LookupError
+
+
+def xserver_dpi():
+    xdpyinfo = subprocess.Popen('xdpyinfo', stdout=subprocess.PIPE)
+    for line in xdpyinfo.stdout:
+        match = re.search(r'resolution:\s+([0-9]+)x([0-9]+)', line.decode('utf-8'))
+        if match is not None:
+            xdpi, ydpi = (int(dim) for dim in match.groups())
+            return (xdpi + ydpi) / 2
+
+    return LookupError
+
+
+def dimensions_to_dpi(xpixels, ypixels, xmm, ymm):
+    xdpi = xpixels / mm_to_inches(xmm)
+    ydpi = ypixels / mm_to_inches(ymm)
+    return (xdpi + ydpi) / 2
+
+
+def mm_to_inches(mm):
+    return mm * 0.03937008
+
+
+# Round display scale until GDK supports fractional scaling
+display_scale = i3_focused_display_scale()
+text_scale = xserver_dpi() / base_dpi
+subprocess.Popen(sys.argv[1:], env={
+    **os.environ,
+    'GDK_SCALE': str(display_scale),
+    'GDK_DPI_SCALE': str(1 / text_scale),  # Reverses text scaling derived from X server DPI
+    'QT_AUTO_SCREEN_SCALE_FACTOR': '1',
+    'WINIT_HIDPI_FACTOR': str(display_scale),
+})
