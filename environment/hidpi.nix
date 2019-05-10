@@ -2,7 +2,7 @@
 
 {
   i18n.consoleFont = "${pkgs.terminus_font}/share/consolefonts/ter-132n";
-  # services.xserver.dpi = 192;
+  services.xserver.dpi = 192;
   # fonts.fontconfig.dpi = 192;
 
   environment.variables = {

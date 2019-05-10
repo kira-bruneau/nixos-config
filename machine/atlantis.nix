@@ -39,16 +39,4 @@
 
   # Use amdgpu driver
   services.xserver.videoDrivers = [ "amdgpu" ];
-
-  # Force 192 DPI on LG 27UK650-W
-  services.xserver.xrandrHeads = [
-    {
-      output = "HDMI-2";
-      primary = true;
-      monitorConfig = ''
-        # Real: DisplaySize 597 355
-        DisplaySize 508 286
-      '';
-    }
-  ];
 }
