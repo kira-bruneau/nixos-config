@@ -187,7 +187,6 @@ bindsym $mod+l exec --no-startup-id loginctl lock-session
 
 # Launchers
 bindsym $mod+y exec i3-autoscale xdg-open ~/
-bindsym $mod+u exec i3-autoscale xdg-open ~/School/
 
 # Start deamons
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
