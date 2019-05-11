@@ -21,9 +21,14 @@
     };
   };
 
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [ swaylock swayidle xwayland ];
+  };
+
   # Enable DConf
   programs.dconf.enable = true;
-  services.dbus.packages = [ pkgs.gnome3.dconf ];
+  services.dbus.packages = with pkgs; [ gnome3.dconf ];
 
   # Packages
   environment.systemPackages = with pkgs; [
