@@ -1,7 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
@@ -9,15 +5,24 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+set $left n
+set $down e
+set $up i
+set $right o
 # Your preferred terminal emulator
-set $term urxvt
+set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec
+set $menu rofi -modi drun -show drun -matching fuzzy
+
+set $ws_www   "1: "
+set $ws_edit  "2: "
+set $ws_term  "3: "
+set $ws_files "4: "
+set $ws_music "5: "
+set $ws_games "6: "
+set $ws_email "9: "
+set $ws_chat  "10: "
 
 ### Output configuration
 #
@@ -29,6 +34,7 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+output * bg `random-wallpaper` fill
 
 ### Idle configuration
 #
@@ -57,19 +63,29 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input * xkb_layout "us,us"
+input * xkb_variant "colemak,"
+input * xkb_options "grp:win_space_toggle"
 
 ### Key bindings
 #
 # Basics:
 #
+    # System font
+    font pango:cantarell 11
+
     # start a terminal
     bindsym $mod+Return exec $term
 
     # kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+a exec $menu
+    bindsym $mod+x exec rofi -modi run -show run -matching fuzzy
+    bindsym $mod+w exec rofi -modi window -show window -matching fuzzy
+    Bindsym $mod+c exec rofi -modi ssh -show ssh -matching fuzzy
+    bindsym $mod+m exec rofi -modi emoji -show emoji
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -82,7 +98,10 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
     bindsym $mod+Shift+c reload
 
     # exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    default_border pixel 2
+    gaps inner 4
 #
 # Moving around:
 #
@@ -111,29 +130,34 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
 # Workspaces:
 #
     # switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
+    bindsym $mod+1 workspace $ws_www
+    bindsym $mod+2 workspace $ws_edit
+    bindsym $mod+3 workspace $ws_term
+    bindsym $mod+4 workspace $ws_files
+    bindsym $mod+5 workspace $ws_music
+    bindsym $mod+6 workspace $ws_games
     bindsym $mod+7 workspace 7
     bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
+    bindsym $mod+9 workspace $ws_email
+    bindsym $mod+0 workspace $ws_chat
+
     # move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+1 move container to workspace $ws_www
+    bindsym $mod+Shift+2 move container to workspace $ws_edit
+    bindsym $mod+Shift+3 move container to workspace $ws_term
+    bindsym $mod+Shift+4 move container to workspace $ws_files
+    bindsym $mod+Shift+5 move container to workspace $ws_music
+    bindsym $mod+Shift+6 move container to workspace $ws_games
     bindsym $mod+Shift+7 move container to workspace 7
     bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+    bindsym $mod+Shift+9 move container to workspace $ws_email
+    bindsym $mod+Shift+0 move container to workspace $ws_chat
+
+    # move workspace to monitor
+    bindsym $mod+Control+Shift+$left move workspace to output left
+    bindsym $mod+Control+Shift+$down move workspace to output down
+    bindsym $mod+Control+Shift+$up move workspace to output up
+    bindsym $mod+Control+Shift+$right move workspace to output right
 #
 # Layout stuff:
 #
@@ -145,8 +169,8 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+t layout tabbed
+    bindsym $mod+p layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -158,7 +182,10 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
     bindsym $mod+space focus mode_toggle
 
     # move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym $mod+comma focus parent
+
+    # move focus to the child container
+    bindsym $mod+period focus child
 #
 # Scratchpad:
 #
@@ -213,3 +240,61 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+#
+# Screenshot:
+#
+    bindsym Print exec --no-startup-id \
+      grim - | wl-copy && \
+      (paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga || \
+       paplay -n Screenshot /run/current-system/sw/share/sounds/freedesktop/stereo/screen-capture.oga)
+
+    bindsym Ctrl+Print exec --no-startup-id \
+      grim -g "$(slurp)" - | wl-copy && \
+      (paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga || \
+       paplay -n Screenshot /run/current-system/sw/share/sounds/freedesktop/stereo/screen-capture.oga)
+
+    bindsym Mod1+Print exec --no-startup-id \
+      grim "$(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" && \
+      (paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga || \
+       paplay -n Screenshot /run/current-system/sw/share/sounds/freedesktop/stereo/screen-capture.oga)
+
+    bindsym Ctrl+Mod1+Print exec --no-startup-id \
+      grim -g "$(slurp)" "$(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" && \
+      (paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga || \
+       paplay -n Screenshot /run/current-system/sw/share/sounds/freedesktop/stereo/screen-capture.oga)
+#
+# Volume:
+#
+    bindsym XF86AudioRaiseVolume exec --no-startup-id \
+      pactl set-sink-volume @DEFAULT_SINK@ +5% && \
+      (paplay -n Volume /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga || \
+       paplay -n Volume /run/current-system/sw/share/sounds/freedesktop/stereo/audio-volume-change.oga)
+
+    bindsym XF86AudioLowerVolume exec --no-startup-id \
+      pactl set-sink-volume @DEFAULT_SINK@ -5% && \
+      (paplay -n Volume /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga || \
+       paplay -n Volume /run/current-system/sw/share/sounds/freedesktop/stereo/audio-volume-change.oga)
+
+    bindsym XF86AudioMute exec --no-startup-id \
+      pactl set-sink-mute @DEFAULT_SINK@ toggle
+#
+# Sreen brightness:
+#
+    bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+    bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+    bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
+    bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
+    # using volume scroller (really nice with the Corsair Vengeance K95)
+    bindsym Mod1+XF86AudioRaiseVolume exec --no-startup-id light -A 10
+    bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id light -U 10
+    bindsym Mod1+Shift+XF86AudioRaiseVolume exec --no-startup-id light -S 100
+    bindsym Mod1+Shift+XF86AudioLowerVolume exec --no-startup-id light -r -S 1
+#
+# Start daemons:
+#
+    exec --no-startup-id keepassxc
+#
+# Launch application keybindings:
+#
+    bindsym $mod+y exec xdg-open ~/
