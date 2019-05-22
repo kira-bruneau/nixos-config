@@ -15,15 +15,6 @@ set $term alacritty
 # Note: it's recommended that you pass the final command to sway
 set $menu rofi -modi drun -show drun -matching fuzzy
 
-set $ws_www   "1: "
-set $ws_edit  "2: "
-set $ws_term  "3: "
-set $ws_files "4: "
-set $ws_music "5: "
-set $ws_games "6: "
-set $ws_email "9: "
-set $ws_chat  "10: "
-
 ### Output configuration
 #
 # Default wallpaper
@@ -130,28 +121,28 @@ input * xkb_options "grp:win_space_toggle"
 # Workspaces:
 #
     # switch to workspace
-    bindsym $mod+1 workspace $ws_www
-    bindsym $mod+2 workspace $ws_edit
-    bindsym $mod+3 workspace $ws_term
-    bindsym $mod+4 workspace $ws_files
-    bindsym $mod+5 workspace $ws_music
-    bindsym $mod+6 workspace $ws_games
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
     bindsym $mod+7 workspace 7
     bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace $ws_email
-    bindsym $mod+0 workspace $ws_chat
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
 
     # move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace $ws_www
-    bindsym $mod+Shift+2 move container to workspace $ws_edit
-    bindsym $mod+Shift+3 move container to workspace $ws_term
-    bindsym $mod+Shift+4 move container to workspace $ws_files
-    bindsym $mod+Shift+5 move container to workspace $ws_music
-    bindsym $mod+Shift+6 move container to workspace $ws_games
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
     bindsym $mod+Shift+7 move container to workspace 7
     bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace $ws_email
-    bindsym $mod+Shift+0 move container to workspace $ws_chat
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
 
     # move workspace to monitor
     bindsym $mod+Control+Shift+$left move workspace to output left
