@@ -16,6 +16,7 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
+    cargo
     cloc
     curl
     fd
@@ -39,6 +40,7 @@
     unzip
     valgrind
     wget
+    whois
     xorg.lndir
     youtube-dl
   ];

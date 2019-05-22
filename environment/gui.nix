@@ -41,7 +41,9 @@
     blender
     evince
     gimp
+    gnome3.eog
     gnome3.file-roller
+    gnome3.nautilus
     inkscape
     libreoffice
     lmms

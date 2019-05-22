@@ -44,6 +44,23 @@
     sound-theme-freedesktop
     xcwd
     xorg.xdpyinfo
+
+    # Packages required by my sway config.
+    alacritty
+    dunst
+    grim
+    keepassxc
+    light
+    pavucontrol
+    rofi
+    slurp
+    sound-theme-freedesktop
+    wl-clipboard
+    # (waybar.override {
+    #   pulseSupport = true;
+    #   mpdSupport = false;
+    # })
+    xdg-user-dirs
   ];
 
   environment.variables = {
