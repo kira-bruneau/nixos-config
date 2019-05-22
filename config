@@ -72,7 +72,7 @@ input * xkb_options "grp:win_space_toggle"
 # Basics:
 #
     # System font
-    font pango:cantarell 11
+    font pango:cantarell 10
 
     # start a terminal
     bindsym $mod+Return exec $term
