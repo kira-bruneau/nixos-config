@@ -39,4 +39,7 @@
 
   # Use amdgpu driver
   services.xserver.videoDrivers = [ "amdgpu" ];
+
+  # Enable docker
+  virtualisation.docker.enable = true;
 }
