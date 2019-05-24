@@ -61,7 +61,6 @@
                (list (concat "--ignore-file " (getenv "HOME") ".gitignore_global")))))
            (counsel-fzf-cmd
             (string-join `("fd -H" ,(string-join global-ignores " ")  "|" "fzf -f \"%s\"") " ")))
-      (print counsel-fzf-cmd)
       (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: "))))
 
   (defun counsel-projectile-switch-project-action-fzf (project)
