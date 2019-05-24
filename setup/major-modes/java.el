@@ -4,5 +4,4 @@
   :hook (java-mode .
          (lambda ()
            (require 'lsp-java)
-           (lsp)
-           (flycheck-mode))))
+           (lsp))))

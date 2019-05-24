@@ -4,5 +4,4 @@
   :hook (((c-mode c++-mode objc-mode) .
           (lambda ()
             (require 'ccls)
-            (lsp)
-            (flycheck-mode)))))
+            (lsp)))))
