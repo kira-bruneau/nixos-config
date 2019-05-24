@@ -6,7 +6,7 @@
 
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (when (derived-mode-p 'java-mode 'php-mode)
+            (when (derived-mode-p 'php-mode)
               (ggtags-mode 1))))
 
 (diminish 'ggtags-mode " ◎")

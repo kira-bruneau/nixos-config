@@ -5,6 +5,7 @@
 /backup
 /bookmarks
 /custom.el
+/eclipse.jdt.ls/
 /eshell/
 /history
 /ido.last
@@ -20,3 +21,4 @@
 /transient/
 /tutorial/
 /url/
+/workspace/
