@@ -13,6 +13,8 @@
   ((racer . rustracer) ;; NixOS
    (racer . rust-racer)) ;; Arch Linux
   :after rust-mode
-  :hook ((rust-mode . racer-mode)
-         (racer-mode . company-mode)
-         (racer-mode . eldoc-mode)))
+  :hook
+  ((rust-mode . racer-mode)
+   (racer-mode . (lambda ()
+                   (company-mode)
+                   (eldoc-mode)))))
