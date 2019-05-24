@@ -1,17 +1,17 @@
-(use-package elpy
-  :straight t
+(use-package python
   :ensure-system-package
-  (;; Arch Linux
-   (autopep8 . autopep8)
-   (flake8 . flake8)
+  (;; NixOS
+   (pyls . python3.7-python-language-server) ;; language server
+   (pyflakes . python3.7-pyflakes)           ;; error linter
+   (pycodestyle . python3.7-pycodestyle)     ;; style linter
+   (yapf . python3.7-yapf)                   ;; code formatting
+   ;; (??? . python3.7-rope)                 ;; completions and renaming
+
+   ;; Arch Linux
+   (pyls . python-language-server)
+   (pyflakes . python-pyflakes)
+   (pycodestyle . python-pycodestyle)
    (yapf . yapf)
-
-   ;; NixOS
-   (autopep8 . python3.7-autopep8)
-   (flake8 . python3.7-flake8)
-   (yapf . python3.7-yapf))
-
-  :hook (elpy-mode . flycheck-mode)
-  :init (elpy-enable)
-  :config
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules)))
+   ;; (??? . python-rope)
+   )
+  :hook (python-mode . lsp))

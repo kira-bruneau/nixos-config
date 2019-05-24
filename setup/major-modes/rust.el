@@ -10,8 +10,8 @@
 (use-package racer
   :straight t
   :ensure-system-package
-  ((racer . rust-racer) ;; Arch Linux
-   (racer . rustracer)) ;; NixOS
+  ((racer . rustracer) ;; NixOS
+   (racer . rust-racer)) ;; Arch Linux
   :after rust-mode
   :hook ((rust-mode . racer-mode)
          (racer-mode . company-mode)
