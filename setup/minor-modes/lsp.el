@@ -1,7 +1,8 @@
 (use-package lsp-mode
   :straight t
   :config
-  (setq lsp-prefer-flymake nil))
+  (setq lsp-prefer-flymake nil)
+  (setq lsp-enable-snippet nil))
 
 (use-package lsp-ui
   :straight t
