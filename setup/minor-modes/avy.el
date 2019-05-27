@@ -1,7 +1,7 @@
 (straight-use-package 'avy)
 
 ;; Colemak optimized  keys
-(setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o ?w ?f ?p ?l ?u ?y))
+(setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
 
 (global-set-key (kbd "C-:") 'avy-goto-char)
 (global-set-key (kbd "C-'") 'avy-goto-char-2)
