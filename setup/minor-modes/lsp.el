@@ -2,7 +2,8 @@
   :straight t
   :config
   (setq lsp-prefer-flymake nil)
-  (setq lsp-enable-snippet nil))
+  (setq lsp-enable-snippet nil)
+  (setq lsp-auto-guess-root t))
 
 (use-package lsp-ui
   :straight t
