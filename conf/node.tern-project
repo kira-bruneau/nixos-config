@@ -1,9 +1,0 @@
-{
-  "libs": [
-  ],
-  "loadEagerly": [
-  ],
-  "plugins": {
-    "node": {}
-  }
-}
