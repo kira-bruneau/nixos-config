@@ -16,32 +16,56 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    cargo
-    cloc
-    curl
-    fd
-    file
-    fzf
-    gdb
-    git
+    # Administration utils
     htop
-    jq
     nethogs
-    nix-index
-    nix-prefetch-scripts
-    nmap
-    python3
-    ripgrep
     stow
-    strace
     sudo
-    tcpflow
     tmux
-    unzip
-    valgrind
+    xorg.lndir
+
+    # Search utils
+    fd
+    fzf
+    ripgrep
+
+    # Networking utils
+    curl
+    nmap
+    openconnect
     wget
     whois
-    xorg.lndir
+
+    # Data conversion & manipulation utils
+    ffmpeg
+    jq
+    unzip
+    xmlstarlet
+
+    # General dev utils
+    cloc
+    file
+    git
+    nix-index
+    nix-prefetch-scripts
+
+    # Build systems & compilers
+    cargo
+    cargo-edit
+    clang
+    llvmPackages.bintools
+    rustc
+
+    # Debuggers
+    lldb
+    strace
+    tcpflow
+    valgrind
+
+    # Interpreters
+    python3
+
+    # Misc
     youtube-dl
   ];
 

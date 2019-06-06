@@ -50,6 +50,9 @@
     mpv
     qbittorrent
 
+    # Remote Desktop
+    remmina
+
     # Utility
     keepassxc
     pavucontrol

@@ -3,10 +3,12 @@
 {
   environment.systemPackages = with pkgs; [
     discord
-    dolphinEmu
+    dolphinEmuMaster
     multimc
     mupen64plus
+    protontricks
     steam
+    steam-run
   ];
 
   nixpkgs.config.allowUnfree = true;

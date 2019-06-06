@@ -15,16 +15,22 @@
     aspellDicts.en-computers
     aspellDicts.en-science
     ccls
+    diffutils
     fd
     fzf
     gdb
     git
+    jdk
     nodejs
     pandoc
-    python37Packages.autopep8
-    python37Packages.flake8
+    python37Packages.pycodestyle
+    python37Packages.pyflakes
+    python37Packages.python-language-server
+    python37Packages.rope
     python37Packages.yapf
     ripgrep
+    rls
+    rustc
     rustracer
 
     # Packages required by my i3 config.
@@ -38,7 +44,7 @@
       i3Support = true;
       pulseSupport = true;
     })
-    python
+    python3
     rofi
     scrot
     sound-theme-freedesktop
@@ -55,11 +61,11 @@
     rofi
     slurp
     sound-theme-freedesktop
+    (waybar.override {
+      pulseSupport = true;
+      mpdSupport = false;
+    })
     wl-clipboard
-    # (waybar.override {
-    #   pulseSupport = true;
-    #   mpdSupport = false;
-    # })
     xdg-user-dirs
   ];
 
