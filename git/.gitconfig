@@ -27,3 +27,5 @@
 	smtpUser = kira.bruneau@gmail.com
 	smtpServerPort = 587
 	# ibwftyxokayfmwdx
+[gitlab]
+	user = MetaDark
