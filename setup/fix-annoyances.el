@@ -45,3 +45,6 @@
 
 ;; Allow narrowing to region
 (put 'narrow-to-region 'disabled nil)
+
+;; Recursive minibuffers (support counsel-yank-pop within minibuffer)
+(setq enable-recursive-minibuffers t)
