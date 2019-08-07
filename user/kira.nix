@@ -91,11 +91,11 @@
     fade = true;
     fadeDelta = 10; # 100 steps per second
     fadeSteps = [ "0.0666" "0.0444" ]; # ~150ms ~225ms
-    extraOptions = ''
+    settings = {
       clear-shadow = true;
       blur-background = true;
       no-fading-destroyed-argb = true;
-    '';
+    };
   };
 
   services.redshift = {
