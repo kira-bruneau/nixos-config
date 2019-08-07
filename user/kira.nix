@@ -40,10 +40,7 @@
     keepassxc
     light
     pavucontrol
-    (polybar.override {
-      i3Support = true;
-      pulseSupport = true;
-    })
+    polybarFull
     python3
     rofi
     scrot
