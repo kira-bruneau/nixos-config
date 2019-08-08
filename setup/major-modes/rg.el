@@ -4,6 +4,9 @@
   :bind-keymap ("M-s" . rg-global-map)
   :bind (:map rg-global-map
               ("b" . rg-buffer-name-project-dir))
+  :init
+  (require 'rg)
+
   :config
   (setq rg-show-columns t)
   (setq rg-default-alias-fallback "everything")
