@@ -9,24 +9,6 @@
 (use-package doom-themes
   :straight t
   :init
-  ;; Colourful ediffs
-  (require 'doom-themes-common)
-  (setq doom-themes-common-faces
-        (append
-         doom-themes-common-faces
-         '((ediff-fine-diff-A    :background (doom-blend red bg 0.2) :weight 'bold)
-           (ediff-fine-diff-B    :background (doom-blend green bg 0.2) :weight 'bold)
-           (ediff-fine-diff-C    :background (doom-blend yellow bg 0.2) :weight 'bold)
-           (ediff-current-diff-A :background (doom-blend red bg 0.1))
-           (ediff-current-diff-B :background (doom-blend green bg 0.1))
-           (ediff-current-diff-C :background (doom-blend yellow bg 0.1))
-           (ediff-even-diff-A    :background (doom-blend grey bg 0.1))
-           (ediff-even-diff-B    :inherit 'ediff-even-diff-A)
-           (ediff-even-diff-C    :inherit 'ediff-even-diff-A)
-           (ediff-odd-diff-A     :inherit 'ediff-even-diff-A)
-           (ediff-odd-diff-B     :inherit 'ediff-odd-diff-A)
-           (ediff-odd-diff-C     :inherit 'ediff-odd-diff-A))))
-
   ;; Fix blue modeline using emacsclient with doom theme
   ;; Source: https://github.com/hlissner/emacs-doom-themes/issues/125
   (defun doom|init-theme ()

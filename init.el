@@ -37,19 +37,18 @@
   ;;           (mapconcat 'symbol-name binaries " ")))
   )
 
+;; Setup core packages
+(straight-use-package 'use-package)
+(setq use-package-always-defer t)
+
+(use-package use-package-ensure-system-package
+  :straight t)
+
+(use-package diminish
+  :straight t)
+
 ;; Load setup files and isolate any errors
-(straight-transaction
-  (straight-mark-transaction-as-init)
-  (straight-use-package 'use-package)
-  (setq use-package-always-defer t)
-
-  (use-package use-package-ensure-system-package
-    :straight t)
-
-  (use-package diminish
-    :straight t)
-
-  (dolist (setup setup-files)
-    (condition-case err
-        (load setup nil t)
-      (error (message "%s" (error-message-string err))))))
+(dolist (setup setup-files)
+  (condition-case err
+      (load setup nil t)
+    (error (message "%s" (error-message-string err)))))
