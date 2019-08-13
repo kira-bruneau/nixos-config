@@ -95,10 +95,8 @@
     };
   };
 
-  services.redshift = {
-    enable = true;
-    provider = "geoclue2";
-  };
+  services.redshift.enable = true;
+  location.provider = "geoclue2";
 
   # TODO: automatically clone dotfiles / emacs config to home
   # See: https://github.com/rycee/home-manager
