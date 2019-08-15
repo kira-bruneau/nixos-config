@@ -19,7 +19,8 @@
 /straight/*
 !/straight/versions/
 /tramp
-/transient/
+/transient/*
+!/transient/values.el
 /tutorial/
 /url/
 /workspace/
