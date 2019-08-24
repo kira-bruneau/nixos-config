@@ -2,13 +2,21 @@
 
 {
   environment.systemPackages = with pkgs; [
-    discord
-    dolphinEmuMaster
+    # Games & Launchers
     multimc
-    mupen64plus
-    protontricks
     steam
     steam-run
+    protontricks
+
+    # Emulators
+    dolphinEmuMaster
+    mupen64plus
+
+    # Controllers
+    xwiimote
+
+    # Chat
+    discord
   ];
 
   nixpkgs.config.allowUnfree = true;

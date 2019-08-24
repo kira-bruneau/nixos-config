@@ -37,6 +37,9 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+
   # Use amdgpu driver
   services.xserver.videoDrivers = [ "amdgpu" ];
 
