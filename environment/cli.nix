@@ -46,8 +46,11 @@
     cloc
     file
     git
+
+    # Nix dev utils
     nix-index
     nix-prefetch-scripts
+    patchelf
 
     # Build systems & compilers
     cargo
