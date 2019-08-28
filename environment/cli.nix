@@ -39,6 +39,8 @@
     # Data conversion & manipulation utils
     ffmpeg
     jq
+    p7zip
+    unrar
     unzip
     xmlstarlet
 
