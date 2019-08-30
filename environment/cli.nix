@@ -17,6 +17,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # Administration utils
+    evtest
     htop
     nethogs
     stow
