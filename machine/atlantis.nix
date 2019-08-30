@@ -38,6 +38,7 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
+  environment.systemPackages = with pkgs; [ blueman ];
 
   # Use amdgpu driver
   services.xserver.videoDrivers = [ "amdgpu" ];
