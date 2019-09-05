@@ -3,14 +3,14 @@
 {
   environment.systemPackages = with pkgs; [
     # Games & Launchers
+    lutris
     multimc
-    steam
-    steam-run
-    protontricks
+    steam steam-run protontricks
 
     # Emulators
     dolphinEmuMaster
     mupen64plus
+    wineWowPackages.staging winetricks
 
     # Controllers
     xwiimote
