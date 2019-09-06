@@ -21,6 +21,8 @@
     gdb
     git
     jdk
+    nodePackages.bash-language-server
+    nodePackages.typescript-language-server
     nodejs
     pandoc
     python37Packages.pycodestyle
