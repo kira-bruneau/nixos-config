@@ -49,6 +49,7 @@
     cloc
     file
     git
+    man-pages
 
     # Nix dev utils
     nix-index
@@ -59,6 +60,7 @@
     cargo
     cargo-edit
     clang
+    clang-manpages
     llvmPackages.bintools
     rustc
 
