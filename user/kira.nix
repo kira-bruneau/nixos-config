@@ -39,7 +39,9 @@
     alacritty
     dunst
     feh
+    firefox
     keepassxc
+    liferea
     light
     pavucontrol
     polybarFull
