@@ -192,7 +192,9 @@ bindsym $mod+y exec i3-autoscale xdg-open ~/
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/ --bg-fill ~/Pictures/Wallpapers/
 exec --no-startup-id ~/dev/shared/dunst/dunst
+exec --no-startup-id firefox
 exec --no-startup-id keepassxc
+exec --no-startup-id liferea
 
 # Assign windows to workspaces
 assign [class="Firefox"] $www
@@ -206,5 +208,6 @@ assign [class="MultiMC"] $games
 assign [class="Minecraft"] $games
 assign [class="Dolphin-emu"] $games
 assign [class="Geary"] $email
+assign [class="Liferea"] $email
 assign [class="Messenger for Desktop"] $chat
 assign [class="Slack"] $chat
