@@ -33,8 +33,12 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  hardware.pulseaudio.enable = true;
+  # Enable sound
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraModules = with pkgs; [ pulseaudio-modules-bt ];
+  };
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
