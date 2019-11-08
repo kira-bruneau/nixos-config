@@ -1,7 +1,7 @@
 (require 'lsp-mode)
 
 (lsp-register-client
- (make-lsp-client :new-connection (lsp-stdio-connection "/tmp/nix/texlab/target/release/texlab")
+ (make-lsp-client :new-connection (lsp-stdio-connection "texlab")
                   :major-modes '(latex-mode bibtex-mode)
                   :server-id 'texlab))
 
