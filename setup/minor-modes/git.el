@@ -5,7 +5,8 @@
          ("C-c C-l" . magit-log-buffer-file))
   :init
   (setq magit-save-repository-buffers nil)
-  (setq magit-no-message '("Turning on magit-auto-revert-mode...")))
+  (setq magit-no-message '("Turning on magit-auto-revert-mode..."))
+  (setq transient-enable-popup-navigation t))
 
 (use-package git-timemachine
   :straight t
