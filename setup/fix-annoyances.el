@@ -48,3 +48,4 @@
 
 ;; Recursive minibuffers (support counsel-yank-pop within minibuffer)
 (setq enable-recursive-minibuffers t)
+(minibuffer-depth-indicate-mode)
