@@ -49,3 +49,11 @@
 ;; Recursive minibuffers (support counsel-yank-pop within minibuffer)
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode)
+
+;; Support ANSI colours in compilation output
+;; Source: https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
+(require 'ansi-color)
+(defun colourize-compilation-buffer ()
+  (when (eq major-mode 'compilation-mode)
+    (ansi-color-apply-on-region compilation-filter-start (point-max))))
+(add-hook 'compilation-filter-hook 'colourize-compilation-buffer)
