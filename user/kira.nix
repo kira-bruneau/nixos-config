@@ -33,7 +33,6 @@
     ripgrep
     rls
     rustc
-    rustracer
     texlab
 
     # Packages required by my i3 config.
