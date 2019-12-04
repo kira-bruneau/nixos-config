@@ -5,7 +5,7 @@
   services.xserver = {
     enable = true;
     useGlamor = true;
-    displayManager.sddm.enable = true;
+    displayManager.lightdm.enable = true;
 
     # Disable xterm
     desktopManager = {
