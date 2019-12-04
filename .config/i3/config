@@ -195,6 +195,7 @@ exec --no-startup-id ~/dev/shared/dunst/dunst
 exec --no-startup-id firefox
 exec --no-startup-id keepassxc
 exec --no-startup-id liferea
+exec --no-startup-id blueman-applet
 
 # Assign windows to workspaces
 assign [class="Firefox"] $www
