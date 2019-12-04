@@ -79,6 +79,9 @@
     youtube-dl
   ];
 
+  # Add home bin to PATH
+  environment.homeBinInPath = true;
+
   # Unlimited bash history synchronized between each terminal
   programs.bash.interactiveShellInit = ''
     export HISTSIZE=""
