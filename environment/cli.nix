@@ -52,8 +52,10 @@
     man-pages
 
     # Nix dev utils
+    carnix
     nix-index
     nix-prefetch-scripts
+    nodePackages.node2nix
     patchelf
 
     # Build systems & compilers
