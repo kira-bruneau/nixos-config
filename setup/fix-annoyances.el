@@ -57,3 +57,6 @@
   (when (eq major-mode 'compilation-mode)
     (ansi-color-apply-on-region compilation-filter-start (point-max))))
 (add-hook 'compilation-filter-hook 'colourize-compilation-buffer)
+
+;; Infinite history
+(setq history-length t)
