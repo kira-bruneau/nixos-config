@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=firefox --new-tab %U
+Terminal=false
+Name=Firefox
+Categories=Application;Network;WebBrowser;
+Icon=firefox
+Comment=
+GenericName=Web Browser
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp
