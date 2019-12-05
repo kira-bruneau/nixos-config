@@ -7,7 +7,6 @@
     ../environment/hidpi.nix
     ../environment/colemak.nix
     ../environment/gaming.nix
-    ../environment/rock64-media-client.nix
     ../user/kira.nix
   ];
 
