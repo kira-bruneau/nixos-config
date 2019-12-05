@@ -37,7 +37,11 @@
     firefox
 
     # Media & Documents
-    audacity
+    (audacity.override {
+      wxGTK30 = wxGTK30.override {
+        withGtk2 = false;
+      };
+    })
     blender
     evince
     gimp
