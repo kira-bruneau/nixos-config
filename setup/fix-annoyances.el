@@ -60,3 +60,6 @@
 
 ;; Infinite history
 (setq history-length t)
+
+;; Use interactive shell for access to bash aliases and functions
+(setq shell-command-switch "-ic")
