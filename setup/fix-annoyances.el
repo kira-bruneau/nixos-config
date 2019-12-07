@@ -58,8 +58,9 @@
     (ansi-color-apply-on-region compilation-filter-start (point-max))))
 (add-hook 'compilation-filter-hook 'colourize-compilation-buffer)
 
-;; Infinite history
+;; Infinite history without duplicates
 (setq history-length t)
+(setq history-delete-duplicates t)
 
 ;; Use interactive shell for access to bash aliases and functions
 (setq shell-command-switch "-ic")
