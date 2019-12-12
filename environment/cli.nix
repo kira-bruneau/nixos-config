@@ -92,4 +92,11 @@
     shopt -s histappend                # Append instead of rewrite history on exit
     stty -ixon                         # Fix forward history searching
   '';
+
+  # Convenience aliases for common nixos commands
+  programs.bash.shellAliases = {
+    nbuild="sudo nixos-rebuild switch";
+    nup="sudo nixos-rebuild --upgrade switch";
+    ntest="sudo nixos-rebuild test";
+  };
 }
