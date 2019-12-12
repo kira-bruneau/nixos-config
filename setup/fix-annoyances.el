@@ -64,3 +64,6 @@
 
 ;; Use interactive shell for access to bash aliases and functions
 (setq shell-command-switch "-ic")
+
+;; Use case insensitive sorting by default
+(setq sort-fold-case t)
