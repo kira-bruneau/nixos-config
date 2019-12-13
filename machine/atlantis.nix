@@ -48,4 +48,7 @@
 
   # Enable docker
   virtualisation.docker.enable = true;
+
+  # Disable power button
+  services.logind.extraConfig = "HandlePowerKey=ignore";
 }
