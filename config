@@ -59,7 +59,7 @@ font-2 = Font Awesome 5 Brands:pixelsize=10;3
 
 modules-left = i3
 modules-center = filesystem memory cpu temperature wlan eth battery
-modules-right = pulseaudio xkeyboard date powermenu
+modules-right = pulseaudio xkeyboard date
 
 tray-position = right
 tray-padding = 8
@@ -397,25 +397,6 @@ ramp-2 = 
 ramp-3 = 
 ramp-4 = 
 ;ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = false
-
-format-spacing = 0
-
-label-open = 
-label-open-foreground = ${colors.foreground}
-label-close = 
-label-close-foreground = ${colors.secondary}
-label-separator = "  |  "
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = 
-menu-0-0-exec = systemctl reboot
-menu-0-1 = 
-menu-0-1-exec = systemctl poweroff
 
 [settings]
 screenchange-reload = true
