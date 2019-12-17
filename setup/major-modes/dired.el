@@ -3,7 +3,7 @@
               ("E" . xah-open-in-external-app))
   :config
   (setq dired-dwim-target t)
-  (setq dired-listing-switches "-Alh")
+  (setq dired-listing-switches "-alh")
 
   (defun xah-open-in-external-app ()
     "Open the current file or dired marked files in external app.
