@@ -3,7 +3,7 @@
 {
   i18n.consoleFont = "${pkgs.terminus_font}/share/consolefonts/ter-132n";
   services.xserver.dpi = 192;
-  environment.variables = {
+  environment.sessionVariables = {
     # GDK 3+ virtual pixel scaling
     GDK_SCALE = "2";
     GDK_DPI_SCALE = "0.5";
