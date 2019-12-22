@@ -1,0 +1,8 @@
+* TODO Fix environment variables loaded from ~/.bash_profile
+
+* TODO environment.homeBinInPath = true;
+* TODO Import based on $HOME (not important)
+* TODO Add README
+* TODO [0/2] Update home-manager
+** TODO Use emacseditor when service is enabled
+** TODO Use settings instead of extraOptions in compton
