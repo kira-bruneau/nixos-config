@@ -51,4 +51,7 @@
 
   # Disable power button
   services.logind.extraConfig = "HandlePowerKey=ignore";
+
+  # Enable adb
+  programs.adb.enable = true;
 }
