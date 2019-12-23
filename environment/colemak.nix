@@ -7,5 +7,5 @@
     xkbOptions = "grp:win_space_toggle";
   };
 
-  i18n.consoleUseXkbConfig = true;
+  console.useXkbConfig = true;
 }

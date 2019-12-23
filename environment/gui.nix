@@ -5,13 +5,13 @@
   services.xserver = {
     enable = true;
     useGlamor = true;
-    displayManager.lightdm.enable = true;
-
-    # Disable xterm
-    desktopManager = {
-      xterm.enable = false;
-      default = "none";
+    displayManager = {
+      lightdm.enable = true;
+      defaultSession = "none+i3";
     };
+
+    # This is the default behaviour for stateVersion >= 19.09
+    desktopManager.xterm.enable = false;
 
     # Enable i3-gaps
     windowManager.i3 = {
