@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../environment/nur.nix
     ../environment/cli.nix
     ../environment/gui.nix
     ../environment/hidpi.nix
