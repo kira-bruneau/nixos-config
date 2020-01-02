@@ -2,11 +2,18 @@
 
 {
   # Services
+  services.gnome3.at-spi2-core.enable = true; # Required by lightdm-webkit2-greeter
   services.xserver = {
     enable = true;
     useGlamor = true;
     displayManager = {
-      lightdm.enable = true;
+      lightdm = {
+        enable = true;
+        greeter = {
+          package = pkgs.nur.repos.metadark.lightdm-webkit2-greeter.xgreeters;
+          name = "lightdm-webkit2-greeter";
+        };
+      };
       defaultSession = "none+i3";
     };
 
