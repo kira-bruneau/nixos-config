@@ -1,13 +1,19 @@
 { config, pkgs, ... }:
 
 let
-  nur = builtins.fetchTarball {
-    url = "https://github.com/nix-community/NUR/archive/c1fbd5f1901322935da00d17c6dc09a92b90bb10.tar.gz";
-    sha256 = "0940qcsflnaljgxjy84b6amc07zy4g5lpb3jyy2vjaj9p5r2ldq6";
+  nur = import (builtins.fetchTarball {
+    url = "https://github.com/nix-community/NUR/archive/02b1fdc4d33180d0f9cf03e7249353b75236a59e.tar.gz";
+    sha256 = "04g9c78wjgqcj7h0gzlbdghkzc2mzq3iyl2p9ljzn5jjmi94yf67";
+  }) {
+    inherit pkgs;
   };
-in {
-  imports = [ ../cachix.nix ];
+in rec {
+  imports = [
+    ../cachix.nix
+    nur.repos.metadark.modules.lightdm-webkit2-greeter
+  ];
+
   nixpkgs.config.packageOverrides = pkgs: {
-    nur = import nur { inherit pkgs; };
+    inherit nur;
   };
 }
