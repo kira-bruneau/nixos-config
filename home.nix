@@ -54,6 +54,7 @@ in {
     nodePackages.bash-language-server
     nodePackages.typescript
     nodePackages.typescript-language-server
+    nur.repos.arc.pkgs.rust-analyzer
     pandoc
     python37Packages.pycodestyle
     python37Packages.pyflakes
@@ -61,8 +62,12 @@ in {
     python37Packages.rope
     python37Packages.yapf
     ripgrep
-    rls
     rustc
     texlab
   ];
+
+  pam.sessionVariables = {
+    # Set rust source path for rust-analyzer
+    RUST_SRC_PATH = pkgs.rustPackages.rustPlatform.rustcSrc;
+  };
 }
