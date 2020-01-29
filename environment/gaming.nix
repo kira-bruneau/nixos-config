@@ -1,26 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    # Games & Launchers
-    lutris
-    multimc
-    steam steam-run protontricks
-
-    # Emulators
-    dolphinEmuMaster
-    mupen64plus
-    wineWowPackages.staging
-    (winetricks.override { wine = wineWowPackages.staging; })
-
-    # Controllers
-    xwiimote
-
-    # Chat
-    discord
-  ];
-
-  nixpkgs.config.allowUnfree = true;
+  # Support for running 32bit games
+  # See https://nixos.wiki/wiki/Steam
   hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
   hardware.pulseaudio.support32Bit = true;
 }
