@@ -44,9 +44,6 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  # Use amdgpu driver
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
   # Enable docker
   virtualisation.docker.enable = true;
 
