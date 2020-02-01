@@ -3,7 +3,6 @@
   :config
   (setq lsp-prefer-flymake nil)
   (setq lsp-enable-snippet nil)
-  (setq lsp-auto-guess-root t)
   (setq lsp-enable-file-watchers nil)) ;; file watchers cause emacs to hang on large projects
 
 (use-package lsp-ui
