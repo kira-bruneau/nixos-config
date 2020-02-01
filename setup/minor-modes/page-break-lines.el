@@ -1,6 +1,8 @@
-(straight-use-package 'page-break-lines)
+(use-package page-break-lines
+  :straight t
+  :init
+  (require 'page-break-lines)
+  (dolist (mode '(c-mode magit-mode))
+    (add-to-list 'page-break-lines-modes mode))
 
-(dolist (mode '(c-mode magit-mode))
-  (add-to-list 'page-break-lines-modes mode))
-
-(global-page-break-lines-mode)
+  (global-page-break-lines-mode))
