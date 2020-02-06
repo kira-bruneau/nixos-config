@@ -5,7 +5,8 @@
   :config
   (setq lsp-enable-file-watchers nil) ;; file watchers cause emacs to hang on large projects
   (setq lsp-enable-snippet nil)
-  (setq lsp-prefer-flymake nil))
+  (setq lsp-prefer-flymake nil)
+  (setq lsp-response-timeout 1.0e+INF))
 
 (use-package lsp-ui
   :straight t
