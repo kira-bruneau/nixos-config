@@ -29,9 +29,9 @@ alert = #bd2c40
 
 [bar/main]
 ;monitor = ${env:MONITOR:HDMI-1}
-dpi = -1
+dpi = ${env:POLYBAR_DPI:96}
 width = 100%
-height = 64
+height = ${env:POLYBAR_HEIGHT:32}
 bottom = true
 ;offset-x = 1%
 ;offset-y = 1%
@@ -41,7 +41,7 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = ${env:POLYBAR_LINE_SIZE:1.5}
 line-color = #f00
 
 ;border-size = 4
@@ -62,8 +62,8 @@ modules-center = filesystem memory cpu temperature wlan eth battery
 modules-right = pulseaudio xkeyboard date
 
 tray-position = right
-tray-padding = 8
-tray-maxsize = 32
+tray-padding = ${env:POLYBAR_TRAY_PADDING:4}
+tray-maxsize = ${env:POLYBAR_TRAY_MAXSIZE:16}
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
