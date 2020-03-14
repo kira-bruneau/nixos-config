@@ -197,20 +197,22 @@ exec --no-startup-id liferea
 exec --no-startup-id blueman-applet
 
 # Assign windows to workspaces
-assign [class="Firefox"] $www
-assign [class="Chromium"] $www
-assign [class="Google-chrome"] $www
-assign [class="Emacs"] $edit
-assign [class="qBittorrent"] $files
-assign [class="Rhythmbox"] $media
-assign [class="Steam"] $games
-assign [class="MultiMC"] $games
-assign [class="Minecraft"] $games
-assign [class="Dolphin-emu"] $games
-assign [class="Geary"] $email
-assign [class="Liferea"] $email
-assign [class="Messenger for Desktop"] $chat
-assign [class="Slack"] $chat
+assign [class="^Firefox$"] $www
+assign [class="^Chromium-browser$"] $www
+assign [class="^Google-chrome$"] $www
+assign [class="^Emacs$"] $edit
+assign [class="^qBittorrent$"] $files
+assign [class="^Rhythmbox$"] $media
+assign [class="^Steam$"] $games
+assign [class="^MultiMC$"] $games
+assign [class="^Minecraft$"] $games
+assign [class="^Dolphin-emu$"] $games
+assign [class="^Geary$"] $email
+assign [class="^Liferea$"] $email
+for_window [title="https://mail\.google\.com"] move container to workspace $email
+for_window [title="https://outlook\.office\.com"] move container to workspace $email
+assign [class="^Slack$"] $chat
+for_window [title="https://app\.slack\.com"] move container to workspace $chat
 
 set $mode_power l̲ogout | s̲hutdown | r̲eboot
 mode "$mode_power" {
