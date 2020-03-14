@@ -27,6 +27,7 @@
  ("emacs-async" . "86aef2c38e7d35e8509b7feeee3e989d825eba91")
  ("emacs-ccls" . "e5cc4c3e6f40c9c9f0f53e99154c08018eb36944")
  ("emacs-doom-themes" . "e53b83c9106c76e54996ba2d1b70a8288a379572")
+ ("emacs-presentation-mode" . "f53f67aeab97e8eea6d1f12df5f7ce3b1b03b879")
  ("emacs-request" . "216d570a58d05ef1307edb63d2539bafa5f688c6")
  ("emacs-which-key" . "8b49ae978cceca65967f3544c236f32964ddbed0")
  ("emacsmirror-mirror" . "dc63379119beca60cc76f5b55a07be10636fa89d")
@@ -99,6 +100,5 @@
  ("web-mode" . "b0bb4ab82ba64b6fa789212f03ad808bdaf77d68")
  ("whitespace-cleanup-mode" . "5fac49636cd72a0043e2473c9a09a788cfd68d5f")
  ("with-editor" . "4fe66d4d55c8eacebda53a13cc38e01d32bdaaa2")
- ("yaml-mode" . "cecf4b106b0c4236931b14919fdf87ff3546e2c9")
- ("yasnippet" . "3bf9a3b1af37174a004798b7195826af0123fa6a"))
+ ("yaml-mode" . "cecf4b106b0c4236931b14919fdf87ff3546e2c9"))
 :alpha
