@@ -15,13 +15,9 @@
   # };
 
   home.packages = with pkgs; [
-    blueman # TODO: Run as service
     dunst # TODO: Run as service
     feh # TODO: Use services.random-background instead
-    firefox
     font-awesome_5
-    keepassxc # TODO: Run as service
-    liferea
     light
     pavucontrol
     polybarFull # TODO: Run as service
