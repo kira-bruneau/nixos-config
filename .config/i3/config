@@ -13,7 +13,6 @@ set $right o
 font pango:cantarell 10
 
 default_border pixel 2
-gaps inner 4
 
 client.focused #282c34 #282c34 #eee #dddddd
 client.focused_inactive #323234 #323234 #888888 #292d2e
