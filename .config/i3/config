@@ -163,16 +163,16 @@ bindsym XF86AudioMute exec --no-startup-id \
   pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightnessctl set 100%
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1
 
 # Screen brightness controls using volume scroller (really nice with the Corsair Vengeance K95)
-bindsym Mod1+XF86AudioRaiseVolume exec --no-startup-id light -A 10
-bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id light -U 10
-bindsym Mod1+Shift+XF86AudioRaiseVolume exec --no-startup-id light -S 100
-bindsym Mod1+Shift+XF86AudioLowerVolume exec --no-startup-id light -r -S 1
+bindsym Mod1+XF86AudioRaiseVolume exec --no-startup-id brightnessctl set +10%
+bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id brightnessctl set 10%-
+bindsym Mod1+Shift+XF86AudioRaiseVolume exec --no-startup-id brightnessctl set 100%
+bindsym Mod1+Shift+XF86AudioLowerVolume exec --no-startup-id brightnessctl set 1
 
 # Screenshot
 bindsym Print exec --no-startup-id \

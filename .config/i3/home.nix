@@ -17,7 +17,7 @@
     dunst # TODO: Run as service
     feh # TODO: Use services.random-background instead
     font-awesome_5
-    light
+    brightnessctl
     pavucontrol
     polybarFull # TODO: Run as service
     python3
