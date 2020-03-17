@@ -187,7 +187,7 @@ bindsym $mod+l exec --no-startup-id loginctl lock-session
 bindsym $mod+y exec i3-autoscale xdg-open ~/
 
 # Start deamons
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id i3-autoscale $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/ --bg-fill ~/Pictures/Wallpapers/
 exec --no-startup-id ~/dev/shared/dunst/dunst
 exec --no-startup-id firefox
