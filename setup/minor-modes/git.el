@@ -6,7 +6,34 @@
   :init
   (setq magit-save-repository-buffers nil)
   (setq magit-no-message '("Turning on magit-auto-revert-mode..."))
-  (setq transient-enable-popup-navigation t))
+  (setq transient-enable-popup-navigation t)
+
+  (setq
+   magit-repolist-columns
+   '(("Name" 15 magit-repolist-column-ident nil)
+     ("B<U" 3 magit-repolist-column-unpulled-from-upstream
+      ((:right-align t)
+       (:help-echo "Upstream changes not in branch")))
+     ("B>U" 3 magit-repolist-column-unpushed-to-upstream
+      ((:right-align t)
+       (:help-echo "Local changes not in upstream")))
+     ("Flag" 3 magit-repolist-column-flag
+      ((:right-align t)))
+     ("Version" 35 magit-repolist-column-version nil)
+     ("Path" 99 magit-repolist-column-path nil)))
+
+  (setq
+   magit-repository-directories
+   '(("/etc/nixos" . 0)
+     ("~/.dotfiles" . 0)
+     ("~/.dotfiles/emacs/.emacs.d" . 0)
+     ("~/.dotfiles/i3" . 0)
+     ("~/.dotfiles/polybar/.config/polybar" . 0)
+     ("~/.dotfiles/sway/.config/sway" . 0)
+     ("~/.dotfiles/waybar/.config/waybar" . 0)
+     ("~/Repos" . 5)
+     ("~/Dev" . 5)
+     ("~/dev" . 5))))
 
 (use-package git-timemachine
   :straight t
