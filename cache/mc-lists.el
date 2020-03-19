@@ -10,6 +10,8 @@
         TeX-insert-dollar
         TeX-insert-sub-or-superscript
         TeX-newline
+        antlr-electric-character
+        antlr-indent-command
         asm-comment
         backward-sexp
         beginning-of-buffer
@@ -18,6 +20,7 @@
         c-electric-brace
         c-electric-colon
         c-electric-delete-forward
+        c-electric-lt-gt
         c-electric-paren
         c-electric-pound
         c-electric-semi&comma
@@ -26,6 +29,7 @@
         c-end-of-defun
         c-indent-line-or-region
         comment-dwim
+        counsel-yank-pop
         dired-flag-file-deletion
         dired-mark
         dired-next-line
