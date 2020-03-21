@@ -67,7 +67,7 @@ in {
     texlab
   ];
 
-  pam.sessionVariables = {
+  home.sessionVariables = {
     # Set rust source path for rust-analyzer
     RUST_SRC_PATH = pkgs.rustPackages.rustPlatform.rustcSrc;
   };
