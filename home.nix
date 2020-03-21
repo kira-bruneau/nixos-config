@@ -62,6 +62,7 @@ in {
     python37Packages.rope
     python37Packages.yapf
     ripgrep
+    rnix-lsp
     rustc
     texlab
   ];

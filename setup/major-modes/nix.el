@@ -1,9 +1,9 @@
 (require 'lsp-mode)
 
 (lsp-register-client
- (make-lsp-client :new-connection (lsp-stdio-connection "nix-lsp")
+ (make-lsp-client :new-connection (lsp-stdio-connection "rnix-lsp")
                   :major-modes '(nix-mode)
-                  :server-id 'nix-lsp))
+                  :server-id 'nix))
 
 (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix"))
 
