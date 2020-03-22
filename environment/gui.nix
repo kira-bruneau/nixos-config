@@ -33,6 +33,17 @@
     };
   };
 
+  # Source ~/.profile on login to properly set 'home.sessionVariables'
+  # with home-manager.
+  #
+  # See https://github.com/rycee/home-manager/issues/1011
+  environment.loginShellInit = ''
+    if [ -e $HOME/.profile ]; then
+      . $HOME/.profile
+    fi
+  '';
+
+  # Redshift
   # TODO: Start at login
   services.redshift.enable = true;
   location.provider = "geoclue2";
