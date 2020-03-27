@@ -35,6 +35,9 @@
     };
   };
 
+  # Direnv
+  programs.direnv.enable = true;
+
   # Packages
   home.packages = with pkgs; [
     # Administration utils
