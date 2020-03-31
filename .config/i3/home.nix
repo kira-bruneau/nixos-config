@@ -24,7 +24,6 @@
     rofi
     scrot
     sound-theme-freedesktop
-    xcwd
     xorg.xdpyinfo
   ];
 

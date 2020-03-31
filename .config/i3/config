@@ -27,8 +27,8 @@ client.urgent #2f343a #900000 #f9f9fa #900000
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-autoscale alacritty --working-directory $(xcwd)
-bindsym $mod+Shift+Return exec i3-autoscale alacritty --working-directory $(xcwd)
+bindsym $mod+Return exec i3-autoscale alacritty
+bindsym $mod+Shift+Return exec i3-autoscale alacritty
 
 # kill focused window
 bindsym $mod+q kill
