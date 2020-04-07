@@ -211,6 +211,7 @@ assign [class="^Minecraft$"] $games
 assign [class="^MultiMC$"] $games
 assign [class="^Steam$"] $games
 assign [instance="^cemu.exe$"] $games
+assign [class="Remmina"] $remote
 assign [class="^Com.gitlab.newsflash$"] $email
 assign [class="^Geary$"] $email
 for_window [title="https://mail\.google\.com"] move container to workspace $email
