@@ -1,3 +1,11 @@
+[submodule "emacs"]
+	path = emacs/.emacs.d
+	url = https://gitlab.com/MetaDark/emacs.git
+
 [submodule "i3"]
 	path = i3
 	url = https://gitlab.com/MetaDark/i3wm-config.git
+
+[submodule "polybar"]
+	path = polybar/.config/polybar
+	url = https://gitlab.com/MetaDark/polybar-config.git
