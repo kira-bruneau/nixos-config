@@ -12,6 +12,6 @@
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
 
     # winit virtual pixel scaling
-    WINIT_HIDPI_FACTOR = "2";
+    WINIT_X11_SCALE_FACTOR = "2";
   };
 }
