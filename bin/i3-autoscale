@@ -83,5 +83,5 @@ subprocess.Popen(sys.argv[1:], env={
     'GDK_SCALE': str(display_scale),
     'GDK_DPI_SCALE': str(1 / text_scale),  # Reverses text scaling derived from X server DPI
     'QT_AUTO_SCREEN_SCALE_FACTOR': '1',
-    'WINIT_HIDPI_FACTOR': str(display_scale),
+    'WINIT_X11_SCALE_FACTOR': str(display_scale),
 })
