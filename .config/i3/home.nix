@@ -27,7 +27,7 @@
     xorg.xdpyinfo
   ];
 
-  services.compton = {
+  services.picom = {
     enable = true;
     backend = "glx";
     shadow = true;
