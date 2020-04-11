@@ -6,7 +6,7 @@
     lutris
     multimc
     nur.repos.metadark.clonehero
-    nur.repos.metadark.vvvvvv
+    nur.repos.metadark.VVVVVV
     runelite
     steam steam-run protontricks
 
