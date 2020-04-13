@@ -34,16 +34,17 @@
     # Remote Desktop
     remmina
 
-    # Utility
-    keepassxc
-    pavucontrol
-    speedcrunch
-
     # Theme
     arc-theme
     arc-icon-theme
     gnome3.adwaita-icon-theme
     lxappearance-gtk3
+
+    # Other
+    gnucash
+    keepassxc
+    pavucontrol
+    speedcrunch
   ];
 
   # Environment
