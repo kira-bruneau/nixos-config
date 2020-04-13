@@ -57,6 +57,7 @@
 
     # Networking utils
     curl
+    netcat
     nmap
     openconnect
     wget
