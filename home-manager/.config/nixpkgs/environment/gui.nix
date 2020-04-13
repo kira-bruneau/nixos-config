@@ -11,6 +11,7 @@
     # Web
     chromium
     firefox
+    liferea
 
     # Media & Documents
     (audacity.override{
