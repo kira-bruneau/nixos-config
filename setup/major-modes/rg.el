@@ -1,11 +1,9 @@
 (use-package rg
   :straight t
   :ensure-system-package (rg . ripgrep)
-  :bind-keymap ("M-s" . rg-global-map)
-  :bind (:map rg-global-map
-              ("b" . rg-buffer-name-project-dir))
   :init
   (require 'rg)
+  (rg-enable-menu)
 
   :config
   (setq rg-show-columns t)
