@@ -56,11 +56,7 @@ in {
     nodePackages.typescript
     nodePackages.typescript-language-server
     pandoc
-    python37Packages.pycodestyle
-    python37Packages.pyflakes
     python37Packages.python-language-server
-    python37Packages.rope
-    python37Packages.yapf
     ripgrep
     rnix-lsp
     rust-analyzer
