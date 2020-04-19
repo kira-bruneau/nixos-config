@@ -54,7 +54,6 @@ in {
     nodePackages.bash-language-server
     nodePackages.typescript
     nodePackages.typescript-language-server
-    nur.repos.arc.pkgs.rust-analyzer
     pandoc
     python37Packages.pycodestyle
     python37Packages.pyflakes
@@ -63,6 +62,7 @@ in {
     python37Packages.yapf
     ripgrep
     rnix-lsp
+    rust-analyzer
     rustc
     texlab
   ];
