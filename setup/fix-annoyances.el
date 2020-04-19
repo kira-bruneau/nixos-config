@@ -43,9 +43,6 @@
 ;; Don't prompt to create a new buffer for multiple async shells
 (setq async-shell-command-buffer 'new-buffer)
 
-;; Allow narrowing to region
-(put 'narrow-to-region 'disabled nil)
-
 ;; Recursive minibuffers (support counsel-yank-pop within minibuffer)
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode)
@@ -64,6 +61,3 @@
 
 ;; Use interactive shell for access to bash aliases and functions
 (setq shell-command-switch "-ic")
-
-;; Use case insensitive sorting by default
-(setq sort-fold-case t)
