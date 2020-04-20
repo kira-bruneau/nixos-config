@@ -68,5 +68,8 @@ in {
   home.sessionVariables = {
     # Set rust source path for rust-analyzer
     RUST_SRC_PATH = pkgs.rustPackages.rustPlatform.rustcSrc;
+
+    # Install ptvsd
+    PYTHONPATH = "${pkgs.nur.repos.metadark.ptvsd}/lib/python3.7/site-packages:$PYTHONPATH";
   };
 }

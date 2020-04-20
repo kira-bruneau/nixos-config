@@ -2,7 +2,6 @@
 ** use-package: cleaner package management
 Finish upgrading setup files to use-package
 ** multifiles: view multiple files in one buffer
-** dap: debug adapter protocol
 
 * Improve Emacs
 - Horizontal scrolling

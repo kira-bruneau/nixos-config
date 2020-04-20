@@ -1,4 +1,6 @@
 /.cache
+/.dap-breakpoints
+/.extension/
 /.lsp-session-v1
 /.stignore
 /amx-items
