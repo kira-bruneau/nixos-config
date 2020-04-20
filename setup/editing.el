@@ -2,9 +2,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Delete selection when text is inserted
-(use-package delsel
-  :init
-  (delete-selection-mode t))
+(delete-selection-mode t)
 
 ;; Free up shift key for custom navigation bindings
 (use-package simple
