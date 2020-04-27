@@ -64,6 +64,7 @@ in {
     rnix-lsp
     rust-analyzer
     rustc
+    tectonic
     texlab
   ];
 
