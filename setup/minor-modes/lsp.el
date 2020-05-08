@@ -2,6 +2,7 @@
   :straight t
   :hook ((c++-mode . lsp)
          (c-mode . lsp)
+         (csharp-mode . lsp)
          (java-mode . lsp)
          (js2-mode . lsp)
          (latex-mode . lsp)

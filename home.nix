@@ -24,6 +24,7 @@
           nodePackages.bash-language-server
           nodePackages.typescript
           nodePackages.typescript-language-server
+          omnisharp-roslyn
           pandoc
           (python3.withPackages(pkgs: with pkgs; [
             nur.repos.metadark.ptvsd
