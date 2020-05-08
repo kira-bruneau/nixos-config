@@ -3,5 +3,4 @@
   :ensure-system-package
   ((npm . npm)
    (npm . nodejs)
-   (intelephense . "npm i -g intelephense"))
-  :hook (php-mode . lsp))
+   (intelephense . "npm i -g intelephense")))

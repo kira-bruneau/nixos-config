@@ -12,6 +12,5 @@
    (pyflakes . python-pyflakes)
    (pycodestyle . python-pycodestyle)
    (yapf . yapf))
-  :hook (python-mode . lsp)
   :config
   (setq lsp-pyls-plugins-pycodestyle-max-line-length 99))

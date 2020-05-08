@@ -6,7 +6,6 @@
    (intelephense . "npm i -g intelephense"))
   :mode ("\\.html?\\'"
          "\\.vue\\'")
-  :hook (web-mode . lsp)
   :bind (:map web-mode-map
               ("C-c C-o" . browse-url-of-file))
   :init

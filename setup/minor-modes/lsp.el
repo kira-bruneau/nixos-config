@@ -1,12 +1,32 @@
 (use-package lsp-mode
   :straight t
+  :hook ((c++-mode . lsp)
+         (c-mode . lsp)
+         (java-mode . lsp)
+         (js2-mode . lsp)
+         (latex-mode . lsp)
+         (nix-mode . lsp)
+         (objc-mode . lsp)
+         (php-mode . lsp)
+         (python-mode . lsp)
+         (rust-mode . lsp)
+         (sh-mode . lsp)
+         (typescript-mode . lsp)
+         (web-mode . lsp))
   :bind (:map lsp-mode-map
               ("C-r" . lsp-rename))
   :config
   (setq lsp-enable-file-watchers nil) ;; file watchers cause emacs to hang on large projects
   (setq lsp-enable-snippet nil)
   (setq lsp-prefer-flymake nil)
-  (setq lsp-response-timeout 1.0e+INF))
+  (setq lsp-response-timeout 1.0e+INF)
+
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "rnix-lsp")
+                    :major-modes '(nix-mode)
+                    :server-id 'nix))
+
+  (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix")))
 
 (use-package lsp-ui
   :straight t

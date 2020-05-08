@@ -1,3 +1,3 @@
-(straight-use-package 'rainbow-delimiters)
-
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+(use-package rainbow-delimiters
+  :straight t
+  :hook (emacs-lisp-mode . rainbow-delimiters-mode))
