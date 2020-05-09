@@ -49,6 +49,7 @@ in {
     fzf
     gdb
     git
+    imagemagick
     jdk
     nodejs
     nodePackages.bash-language-server
