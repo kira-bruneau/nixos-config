@@ -37,11 +37,6 @@
           texlab
         ];
       };
-
-      makeWrapperArgs = [
-        # Set default rust source path for rust-analyzer
-        "--set-default RUST_SRC_PATH=${pkgs.rustPackages.rustPlatform.rustcSrc}"
-      ];
     };
   };
 
