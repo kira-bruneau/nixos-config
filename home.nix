@@ -13,6 +13,7 @@
             en-science
           ]))
           ccls
+          cmake
           diffutils
           fd
           fzf
@@ -24,6 +25,7 @@
           nodePackages.bash-language-server
           nodePackages.typescript
           nodePackages.typescript-language-server
+          nur.repos.metadark.cmake-language-server
           omnisharp-roslyn
           pandoc
           (python3.withPackages(pkgs: with pkgs; [
