@@ -46,6 +46,11 @@ _Q_: Disconnect     _sS_: List sessions      _bl_: Set log message
     ("q" nil "quit" :color blue)
     ("Q" dap-disconnect :color red))
 
+  (defun dap-hydra--self-insert ()
+    (interactive)
+    (message "self-insert disabled in dap-hydra"))
+
+  (define-key dap-hydra/keymap [remap self-insert-command] #'dap-hydra--self-insert)
   (defun dap-hydra ()
     "Run `dap-hydra/body'."
     (interactive)
