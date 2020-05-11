@@ -44,7 +44,7 @@ _Q_: Disconnect     _sS_: List sessions      _bl_: Set log message
     ("er" dap-eval-region)
     ("es" dap-eval-thing-at-point)
     ("q" nil "quit" :color blue)
-    ("Q" dap-disconnect :color red))
+    ("Q" dap-disconnect :color blue))
 
   (defun dap-hydra--self-insert ()
     (interactive)
