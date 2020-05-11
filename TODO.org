@@ -17,23 +17,6 @@ Finish upgrading setup files to use-package
 ** restclient
 - provide option for custom beautifiers
 
-** straight
-- Completely build all packages without having to restart multiple times
-
-** racer
-- Extraneous Completions:
-  - private fields
-- Missing Completions:
-  - glob imports
-  - deref
-  - platform specific implementations
-  - primitive implementation
-  - macros
-- Autofix flycheck errors: M-<Return>
-  - Missing import
-  - Missing implementation
-  - Other suggestions
-
 ** counsel-fzf
 - create server around fzf, so I don't have to use a tty interface for fast results
   - results should load incrementally like they do in ripgrep
