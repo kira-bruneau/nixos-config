@@ -5,5 +5,4 @@
               ("M-p" . latex-preview-pane-mode)))
 
 (use-package latex-preview-pane
-  :straight t
-  :defer t)
+  :straight t)

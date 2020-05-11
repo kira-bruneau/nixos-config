@@ -1,3 +1,2 @@
 (use-package powershell
-  :straight t
-  :defer t)
+  :straight t)
