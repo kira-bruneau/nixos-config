@@ -1,5 +1,6 @@
-(straight-use-package 'smartparens)
-
-(require 'smartparens-config)
-(smartparens-global-mode t)
-(diminish 'smartparens-mode " ()")
+(use-package smartparens
+  :straight t
+  :diminish " ()"
+  :init
+  (require 'smartparens-config)
+  (smartparens-global-mode t))

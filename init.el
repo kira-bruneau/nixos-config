@@ -31,12 +31,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(defun pacaur-use-packages (binaries)
-  ;; (message (concat
-  ;;           "pacaur -S --needed "
-  ;;           (mapconcat 'symbol-name binaries " ")))
-  )
-
 ;; Setup core packages
 (straight-use-package 'use-package)
 (setq use-package-always-defer t)

@@ -1,6 +1,3 @@
-(pacaur-use-packages
- '(astyle))
-
 (defgroup astyle nil
   "Format code using astyle."
   :group 'tools

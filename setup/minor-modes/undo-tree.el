@@ -1,4 +1,5 @@
-(straight-use-package 'undo-tree)
-
-(global-undo-tree-mode t)
-(diminish 'undo-tree-mode) ;; ψ
+(use-package undo-tree
+  :straight t
+  :diminish "" ;; ψ
+  :init
+  (global-undo-tree-mode t))

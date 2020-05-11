@@ -1,8 +1,8 @@
-(straight-use-package 'visual-regexp)
-(straight-use-package 'visual-regexp-steroids)
+(use-package visual-regexp
+  :straight t
+  :bind (("C-c r" . vr/replace)
+         ("C-c q" . vr/query-replace)
+         ("C-c m" . vr/mc-mark)))
 
-(define-key global-map (kbd "C-c r") 'vr/replace)
-(define-key global-map (kbd "C-c q") 'vr/query-replace)
-(define-key global-map (kbd "C-c m") 'vr/mc-mark)
-;; (define-key esc-map (kbd "M-r") 'vr/isearch-backward) ;; C-M-r
-;; (define-key esc-map (kbd "M-s") 'vr/isearch-forward) ;; C-M-s
+(use-package visual-regexp-steroids
+  :straight t)

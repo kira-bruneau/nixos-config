@@ -1,6 +1,4 @@
 * Things to Try
-** use-package: cleaner package management
-Finish upgrading setup files to use-package
 ** multifiles: view multiple files in one buffer
 
 * Improve Emacs

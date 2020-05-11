@@ -1,7 +1,7 @@
-(straight-use-package 'drag-stuff)
-
-(drag-stuff-global-mode t)
-(diminish 'drag-stuff-mode) ;; ↕
-
-(global-set-key (kbd "M-p") 'drag-stuff-up)
-(global-set-key (kbd "M-n") 'drag-stuff-down)
+(use-package drag-stuff
+  :straight t
+  :diminish "" ;; ↕
+  :bind (("M-p" . drag-stuff-up)
+         ("M-n" . drag-stuff-down))
+  :init
+  (drag-stuff-global-mode t))

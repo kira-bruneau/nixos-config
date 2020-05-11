@@ -1,4 +1,5 @@
-(straight-use-package 'whitespace-cleanup-mode)
-
-(global-whitespace-cleanup-mode t)
-(diminish 'whitespace-cleanup-mode) ;; ⌫
+(use-package whitespace-cleanup-mode
+  :straight t
+  :diminish "" ;; ⌫
+  :init
+  (global-whitespace-cleanup-mode t))
