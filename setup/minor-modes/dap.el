@@ -20,19 +20,22 @@ _i_: Step in        _st_: Thread             _bd_: Delete            _er_: Eval 
 _o_: Step out       _sf_: Stack frame        _ba_: Add               _es_: Eval thing at point
 _c_: Continue       _sl_: List locals        _bc_: Set condition     _ea_: Add expression.
 _r_: Restart        _sb_: List breakpoints   _bh_: Set hit count
-_Q_: Disconnect     _sS_: List sessions      _bl_: Set log message
+_f_: Restart frame  _sS_: List sessions      _bl_: Set log message
+_Q_: Disconnect     _so_: Output buffer
 "
     ("n" dap-next)
     ("i" dap-step-in)
     ("o" dap-step-out)
     ("c" dap-continue)
     ("r" dap-debug-restart)
+    ("f" dap-restart-frame)
     ("ss" dap-switch-session)
     ("st" dap-switch-thread)
     ("sf" dap-switch-stack-frame)
     ("sl" dap-ui-locals)
     ("sb" dap-ui-breakpoints)
     ("sS" dap-ui-sessions)
+    ("so" dap-go-to-output-buffer)
     ("bb" dap-breakpoint-toggle)
     ("ba" dap-breakpoint-add)
     ("bd" dap-breakpoint-delete)
