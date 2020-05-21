@@ -29,3 +29,7 @@
 	# ibwftyxokayfmwdx
 [gitlab]
 	user = MetaDark
+[pull]
+	rebase = merges
+[rebase]
+	autostash = true
