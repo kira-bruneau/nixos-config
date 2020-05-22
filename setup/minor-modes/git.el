@@ -1,8 +1,7 @@
 (use-package magit
   :straight t
   :ensure-system-package git
-  :bind (("C-c C-b" . magit-blame)
-         ("C-c C-l" . magit-log-buffer-file))
+  :bind (("<f10>" . magit-file-dispatch))
   :init
   (setq magit-save-repository-buffers nil)
   (setq magit-no-message '("Turning on magit-auto-revert-mode..."))
@@ -34,10 +33,6 @@
      ("~/Repos" . 5)
      ("~/Dev" . 5)
      ("~/dev" . 5))))
-
-(use-package git-timemachine
-  :straight t
-  :bind ("C-c C-t" . git-timemachine))
 
 (use-package browse-at-remote
   :straight t

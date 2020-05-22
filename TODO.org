@@ -20,6 +20,5 @@
   - results should load incrementally like they do in ripgrep
 
 ** magit
-- faster access to magit-blame, magit-log-buffer-file, git-timemachine and other git commands (f11 -> magit transient window)
 - provide a way to easily switch to buffer interface from transient interface
 - switch between find file and search in file in projectile

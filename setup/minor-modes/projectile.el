@@ -3,7 +3,7 @@
   :diminish "" ;; ➴
   :ensure-system-package (rg . ripgrep)
   :bind (:map projectile-mode-map
-         ("<f12>" . projectile-command-map)
+         ("<f9>" . projectile-command-map)
          :map projectile-command-map
          ("n" . projectile-new)
          ("s" . projectile-ripgrep) ;; Use rg as default search method
