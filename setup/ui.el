@@ -9,25 +9,16 @@
 (use-package doom-themes
   :straight t
   :init
-  ;; Fix blue modeline using emacsclient with doom theme
-  ;; Source: https://github.com/hlissner/emacs-doom-themes/issues/125
-  (defun doom|init-theme ()
-    (setq doom-themes-padded-modeline 6) ;; 2x original value for high dpi scaling
-    (doom-themes-org-config)
-    (load-theme 'doom-vibrant t))
+  (setq doom-themes-padded-modeline 6) ;; 2x original value for high dpi scaling
+  (load-theme 'doom-vibrant t)
 
-  (defun doom|init-theme-in-frame (frame)
-    (with-selected-frame frame
-      (doom|init-theme))
-
-    ;; Unregister this hook once its run
-    (remove-hook 'after-make-frame-functions
-                 'doom|init-theme-in-frame))
-
-  (if (daemonp)
-      (add-hook 'after-make-frame-functions
-                'doom|init-theme-in-frame)
-    (doom|init-theme)))
+  :config
+  (setq org-todo-keyword-faces
+        `(("TODO" :foreground ,(doom-color 'green) :weight bold)
+          ("INPROGRESS" :foreground ,(doom-color 'blue) :weight bold)
+          ("WAITING" :foreground ,(doom-color 'yellow) :weight bold)
+          ("DONE" :foreground ,(doom-color 'grey)  :weight bold)
+          ("CANCELLED" :foreground ,(doom-color 'grey) :weight bold))))
 
 (use-package powerline
   :straight t

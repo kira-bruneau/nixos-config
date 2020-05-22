@@ -2,6 +2,7 @@
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda))
   :config
+  (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
   (setq org-hide-emphasis-markers t)
   (setq org-startup-indented t)
   (setq org-entities-user
