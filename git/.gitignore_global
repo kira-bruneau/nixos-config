@@ -1,13 +1,28 @@
 # Emacs backup files
-[#]*[#]
 *~
+[#]*[#]
 
 # Project Management
 .ccls-cache
+.idea
 .mypy_cache
+
+## Tern
 .tern-port
 .tern-project
+
+## GNU Global
 GPATH
 GRTAGS
+GSYMS
 GTAGS
 TAGS
+
+## Eclipse JDT Language Server
+.classpath
+.project
+.settings
+.factorypath
+
+# Direnv
+.direnv
