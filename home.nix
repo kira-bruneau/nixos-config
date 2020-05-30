@@ -12,6 +12,7 @@
             en-computers
             en-science
           ]))
+          bear
           ccls
           cmake
           diffutils
