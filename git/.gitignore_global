@@ -4,8 +4,10 @@
 
 # Project Management
 .ccls-cache
+.direnv
 .idea
 .mypy_cache
+compile_commands.json
 
 ## Tern
 .tern-port
@@ -23,6 +25,3 @@ TAGS
 .project
 .settings
 .factorypath
-
-# Direnv
-.direnv
