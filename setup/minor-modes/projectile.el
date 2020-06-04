@@ -38,7 +38,15 @@
     (projectile-open-projects))
 
   :config
-  (setq projectile-find-dir-includes-top-level t))
+  (setq projectile-find-dir-includes-top-level t)
+  (projectile-register-project-type 'cmake '("CMakeLists.txt")
+                                    :configure "cmake %s -B %sbuild"
+                                    :compile "cmake --build build"
+                                    :test "cd build && ctest")
+  (projectile-register-project-type 'meson '("meson.build")
+                                    :configure "meson %s"
+                                    :compile "ninja -C build"
+                                    :test "ninja -C build test"))
 
 (use-package counsel-projectile
   :straight t
