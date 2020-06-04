@@ -1,5 +1,6 @@
 (use-package js2-mode
   :straight t
+  :ensure-system-package typescript-language-server
   :mode "\\.js\\'"
   :interpreter "node"
   :init

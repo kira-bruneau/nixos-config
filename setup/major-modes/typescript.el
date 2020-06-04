@@ -1,2 +1,3 @@
 (use-package typescript-mode
-  :straight t)
+  :straight t
+  :ensure-system-package typescript-language-server)
