@@ -197,6 +197,11 @@ exec --no-startup-id firefox
 exec --no-startup-id keepassxc
 exec --no-startup-id slack
 
+# Assign workspaces to monitors
+workspace $edit output primary
+workspace $email output secondary
+workspace $chat output secondary
+
 # Assign windows to workspaces
 assign [class="^Chromium-browser$"] $www
 assign [class="^Firefox$"] $www
