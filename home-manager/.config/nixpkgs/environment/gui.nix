@@ -39,7 +39,7 @@
     arc-theme
     arc-icon-theme
     gnome3.adwaita-icon-theme
-    lxappearance-gtk3
+    lxappearance
 
     # Other
     gnucash
