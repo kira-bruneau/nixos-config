@@ -14,7 +14,7 @@
     liferea
 
     # Media & Documents
-    (audacity.override{
+    (audacity.override {
       wxGTK30 = wxGTK30.override {
         # Build with GTK3 for HiDPI scaling
         withGtk2 = false;
