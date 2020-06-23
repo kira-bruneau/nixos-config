@@ -1,5 +1,6 @@
 (use-package dap-mode
-  :straight t
+  :straight (dap-mode :type git :host github :repo "emacs-lsp/dap-mode"
+                      :fork (:host github :repo "MetaDark/dap-mode"))
   :hook (dap-stopped . (lambda (arg) (call-interactively #'my-dap-hydra)))
   :init
   (require 'dap-gdb-lldb)

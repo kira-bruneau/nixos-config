@@ -31,8 +31,8 @@
           nodePackages.typescript-language-server
           omnisharp-roslyn
           pandoc
-          (python3.withPackages(pkgs: with pkgs; [
-            nur.repos.metadark.ptvsd
+          (python3.withPackages (pkgs: with pkgs; [
+            debugpy
             python-language-server
           ]))
           ripgrep
