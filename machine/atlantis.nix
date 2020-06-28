@@ -11,6 +11,8 @@
     ../user/kira.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   networking.hostName = "atlantis";
   networking.firewall.enable = false;
   networking.wireless.enable = true;
