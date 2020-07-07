@@ -52,6 +52,9 @@
   # Disable power button
   services.logind.extraConfig = "HandlePowerKey=ignore";
 
-  # Enable adb
+  # Android debugging
   programs.adb.enable = true;
+
+  # Better driver for Xbox One controllers
+  hardware.xpadneo.enable = true;
 }
