@@ -7,7 +7,7 @@
   ];
 
   # Packages
-  home.packages = with pkgs; [
+  home.packages = with pkgs; with nur.repos.metadark; [
     # Web
     chromium
     firefox
@@ -31,6 +31,9 @@
     lmms
     mpv
     qbittorrent
+
+    # Chat
+    caprine
 
     # Remote Desktop
     remmina

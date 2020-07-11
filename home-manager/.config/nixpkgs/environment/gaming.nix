@@ -1,25 +1,32 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; with nur.repos.metadark; [
     # Games & Launchers
+    clonehero
     lutris
     multimc
-    nur.repos.metadark.clonehero
-    nur.repos.metadark.VVVVVV
     runelite
+    runescape-launcher
     steam steam-run protontricks
+    VVVVVV
 
     # Emulators
     dolphinEmuMaster
     mupen64plus
-    wineWowPackages.staging
     (winetricks.override { wine = wineWowPackages.staging; })
+    wineWowPackages.staging
 
     # Controllers
     xwiimote
 
     # Chat
     discord
+
+    # Recording
+    obs-studio
+
+    # Overlay / Post-processing
+    vkBasalt
   ];
 }
