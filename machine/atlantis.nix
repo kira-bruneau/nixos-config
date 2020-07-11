@@ -58,4 +58,7 @@
 
   # Better driver for Xbox One controllers
   hardware.xpadneo.enable = true;
+
+  # Power management
+  services.upower.enable = true;
 }
