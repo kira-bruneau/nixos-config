@@ -190,11 +190,12 @@ bindsym $mod+y exec i3-autoscale xdg-open ~/
 exec_always --no-startup-id i3-autoscale $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/ --bg-fill ~/Pictures/Wallpapers/
 exec --no-startup-id ~/dev/shared/dunst/dunst
+exec --no-startup-id blueman-applet
+exec --no-startup-id caprine
 exec --no-startup-id firefox
 exec --no-startup-id keepassxc
 exec --no-startup-id liferea
 exec --no-startup-id slack
-exec --no-startup-id blueman-applet
 
 # Assign windows to workspaces
 assign [class="^Chromium-browser$"] $www
@@ -214,6 +215,7 @@ assign [class="^Geary$"] $email
 assign [class="^Liferea$"] $email
 for_window [title="https://mail\.google\.com"] move container to workspace $email
 for_window [title="https://outlook\.office\.com"] move container to workspace $email
+assign [class="^Caprine$"] $chat
 assign [class="^Slack$"] $chat
 for_window [title="https://app\.slack\.com"] move container to workspace $chat
 
