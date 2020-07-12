@@ -63,6 +63,10 @@
     wget
     whois
 
+    # Shell utils
+    bash-completion
+    nix-bash-completions
+
     # Data conversion & manipulation utils
     ffmpeg
     jq
@@ -72,6 +76,7 @@
     xmlstarlet
 
     # General dev utils
+    binutils
     cloc
     file
     git # TODO: Generate configuration from Nix
@@ -85,15 +90,8 @@
     nodePackages.node2nix
     patchelf
 
-    # Build systems & compilers
-    binutils
-    cargo
-    cargo-edit
-    clang
-    clang-manpages
-    rustc
-
     # Debuggers
+    gdb
     lldb
     strace
     tcpflow
