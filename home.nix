@@ -14,6 +14,7 @@
             en-science
           ]))
           bear
+          cargo-edit
           ccls
           cmake
           cmake-language-server
