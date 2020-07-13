@@ -1,0 +1,17 @@
+game:
+  arch: win64
+  exe: /home/kira/Games/cemu/drive_c/Cemu/Cemu.exe
+  prefix: /home/kira/Games/cemu
+system:
+  disable_compositor: true
+  env:
+    R600_DEBUG: nohyperz
+    __GL_THREADED_OPTIMIZATIONS: '1'
+    mesa_glthread: 'true'
+    vblank_mode: '0'
+wine:
+  esync: true
+  overrides:
+    dbghelp: native,builtin
+    mscoree: disabled
+    mshtml: disabled

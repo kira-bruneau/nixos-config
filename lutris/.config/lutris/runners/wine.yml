@@ -1,0 +1,4 @@
+system: {}
+wine:
+  dxvk: true
+  vkd3d: true

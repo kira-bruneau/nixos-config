@@ -1,0 +1,4 @@
+mupen64plus:
+  runner_executable: /home/kira/.nix-profile/bin/mupen64plus
+system:
+  disable_runtime: true

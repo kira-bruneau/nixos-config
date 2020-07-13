@@ -1,0 +1,4 @@
+dolphin:
+  runner_executable: /home/kira/.nix-profile/bin/dolphin-emu
+system:
+  disable_runtime: true

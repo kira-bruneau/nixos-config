@@ -1,0 +1,5 @@
+dolphin: {}
+game:
+  main_file: /home/kira/Documents/ROMs/s3-zeltw.gcm
+  platform: '0'
+system: {}
