@@ -1,8 +1,8 @@
 {
   packageOverrides = pkgs: {
     nur = import (builtins.fetchTarball {
-      url = "https://github.com/nix-community/NUR/archive/78ded507ecebe72cd5634e772a1d9fd1f4bf15fb.tar.gz";
-      sha256 = "1f455i1vsg7hj96lkwq7w9yrd3f8w8hydgjschm1af3f454w15sg";
+      url = "https://github.com/nix-community/NUR/archive/1313ec5bc0d925b16eb58c40999af9044ac40d0d.tar.gz";
+      sha256 = "1wzhzzi0213dnck2zqarajqa5fmxraqmlqvmj97mw1b4h84615w2";
     }) {
       inherit pkgs;
     };

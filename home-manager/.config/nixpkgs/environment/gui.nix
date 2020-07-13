@@ -31,6 +31,7 @@
     lmms
     mpv
     qbittorrent
+    zynaddsubfx
 
     # Chat
     caprine

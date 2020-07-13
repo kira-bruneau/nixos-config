@@ -27,6 +27,7 @@
     obs-studio
 
     # Overlay / Post-processing
+    goverlay
     vkBasalt
   ];
 }
