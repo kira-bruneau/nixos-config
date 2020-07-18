@@ -1,10 +1,7 @@
 (use-package rg
   :straight t
   :ensure-system-package (rg . ripgrep)
-  :init
-  (require 'rg)
-  (rg-enable-menu)
-
+  :bind (("C-c s" . rg-menu))
   :config
   (setq rg-show-columns t)
   (setq rg-default-alias-fallback "everything")
