@@ -11,7 +11,7 @@
   (dap-tooltip-mode t)
   (dap-ui-mode t)
 
-  (defhydra dap-hydra (:color pink :hint nil :foreign-keys run)
+  (defhydra dap-hydra (:hint nil)
     "
 ^Stepping^          ^Switch^                 ^Breakpoints^           ^Eval
 ^^^^^^^^-----------------------------------------------------------------------------------------
@@ -49,11 +49,6 @@ _Q_: Quit session   _so_: Output buffer
     ("q" nil "quit" :color blue)
     ("Q" dap-delete-session :color blue))
 
-  (defun dap-hydra--self-insert ()
-    (interactive)
-    (message "self-insert disabled in dap-hydra"))
-
-  (define-key dap-hydra/keymap [remap self-insert-command] #'dap-hydra--self-insert)
   (defun dap-hydra ()
     "Run `dap-hydra/body'."
     (interactive)
