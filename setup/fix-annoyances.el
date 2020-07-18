@@ -61,3 +61,12 @@
 
 ;; Use interactive shell for access to bash aliases and functions
 (setq shell-command-switch "-ic")
+
+;; Don't require final newline for specific files
+(defun no-final-newline ()
+  (dolist (regexp '("\\.csproj\\'"
+                    "\\.vcx?proj\\'"))
+    (when (string-match regexp (buffer-name))
+      (setq require-final-newline nil))))
+
+(add-hook #'find-file-hook #'no-final-newline)
