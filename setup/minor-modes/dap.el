@@ -1,6 +1,6 @@
 (use-package dap-mode
   :straight t
-  :hook (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
+  :hook (dap-stopped . (lambda (arg) (call-interactively #'my-dap-hydra)))
   :init
   (require 'dap-gdb-lldb)
   (require 'dap-python)
@@ -11,7 +11,7 @@
   (dap-tooltip-mode t)
   (dap-ui-mode t)
 
-  (defhydra dap-hydra (:hint nil)
+  (defhydra my-dap-hydra (:hint nil)
     "
 ^Stepping^          ^Switch^                 ^Breakpoints^           ^Eval
 ^^^^^^^^-----------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ _Q_: Quit session   _so_: Output buffer
     ("q" nil "quit" :color blue)
     ("Q" dap-delete-session :color blue))
 
-  (defun dap-hydra ()
-    "Run `dap-hydra/body'."
+  (defun my-dap-hydra ()
+    "Run `my-dap-hydra/body'."
     (interactive)
-    (dap-hydra/body)))
+    (my-dap-hydra/body)))

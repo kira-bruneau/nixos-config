@@ -7,7 +7,7 @@
          :map projectile-command-map
          ("n" . projectile-new)
          ("s" . projectile-ripgrep) ;; Use rg as default search method
-         ("h" . dap-hydra)
+         ("h" . my-dap-hydra)
          ("W" . dap-debug)
          ("w" . dap-debug-last)
          ("x" . projectile-run-multi-term)) ;; Use multi-term as the default terminal
