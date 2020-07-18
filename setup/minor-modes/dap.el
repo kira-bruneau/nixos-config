@@ -21,7 +21,7 @@ _o_: Step out       _sf_: Stack frame        _ba_: Add               _es_: Eval 
 _c_: Continue       _sl_: List locals        _bc_: Set condition     _ea_: Add expression.
 _r_: Restart        _sb_: List breakpoints   _bh_: Set hit count
 _f_: Restart frame  _sS_: List sessions      _bl_: Set log message
-_Q_: Disconnect     _so_: Output buffer
+_Q_: Quit session   _so_: Output buffer
 "
     ("n" dap-next)
     ("i" dap-step-in)
@@ -47,7 +47,7 @@ _Q_: Disconnect     _so_: Output buffer
     ("er" dap-eval-region)
     ("es" dap-eval-thing-at-point)
     ("q" nil "quit" :color blue)
-    ("Q" dap-disconnect :color blue))
+    ("Q" dap-delete-session :color blue))
 
   (defun dap-hydra--self-insert ()
     (interactive)
