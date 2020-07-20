@@ -1,7 +1,6 @@
 game:
   arch: win64
-  args: -g "C:\wiiu\games\The Legend of Zelda Breath of the Wild\code\U-King.rpx"
-    -f
+  args: -g "C:\wiiu\games\The Legend of Zelda Breath of the Wild\code\U-King.rpx" -f
   exe: /home/kira/Games/cemu/drive_c/Cemu/Cemu.exe
   prefix: /home/kira/Games/cemu
 system:
@@ -11,7 +10,6 @@ system:
     __GL_THREADED_OPTIMIZATIONS: '1'
     mesa_glthread: 'true'
     vblank_mode: '0'
-  prefix_command: mangohud
 wine:
   esync: true
   overrides:
