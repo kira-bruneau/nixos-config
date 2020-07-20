@@ -15,10 +15,8 @@
 
     # Media & Documents
     (audacity.override {
-      wxGTK30 = wxGTK30.override {
-        # Build with GTK3 for HiDPI scaling
-        withGtk2 = false;
-      };
+      # Build with GTK3 for HiDPI scaling
+      wxGTK30 = wxGTK30-gtk3;
     })
     blender
     evince
