@@ -87,6 +87,7 @@
     carnix
     nix-index
     nix-prefetch-scripts
+    nixpkgs-fmt
     nodePackages.node2nix
     patchelf
 
