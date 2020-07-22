@@ -9,7 +9,7 @@
 (use-package doom-themes
   :straight t
   :init
-  (setq doom-themes-padded-modeline 3)
+  (setq doom-themes-padded-modeline 6) ;; 2x original value for high dpi scaling
   (load-theme 'doom-vibrant t)
 
   :config
