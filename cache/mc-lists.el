@@ -59,6 +59,10 @@
         org-metaright
         org-open-line
         org-self-insert-command
+        org-shiftleft
+        org-shiftmetaleft
+        org-shiftmetaright
+        org-shiftright
         org-yank
         sgml-slash
         slime-space
