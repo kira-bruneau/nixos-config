@@ -1,6 +1,9 @@
 (use-package org
   :bind (("C-c l" . org-store-link)
-         ("C-c a" . org-agenda))
+         ("C-c a" . org-agenda)
+         :map org-mode-map
+         ("M-p" . org-metaup)
+         ("M-n" . org-metadown))
   :config
   (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
   (setq org-hide-emphasis-markers t)
