@@ -21,6 +21,7 @@
           diffutils
           fd
           fzf
+          gcc
           gdb
           git
           imagemagick

@@ -34,6 +34,13 @@
      ("~/Dev" . 5)
      ("~/dev" . 5))))
 
+(use-package forge
+  :after magit
+  :straight t
+  :ensure-system-package gcc
+  :init
+  (require 'forge))
+
 (use-package browse-at-remote
   :straight t
   :bind ("C-c o" . browse-at-remote))
