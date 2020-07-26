@@ -14,6 +14,7 @@
             en-science
           ]))
           bear
+          cargo
           cargo-edit
           ccls
           cmake
