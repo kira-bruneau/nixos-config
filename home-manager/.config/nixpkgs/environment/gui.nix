@@ -12,6 +12,7 @@
     chromium
     firefox
     liferea
+    newsflash
 
     # Media & Documents
     (audacity.override {
