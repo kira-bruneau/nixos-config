@@ -192,6 +192,7 @@ exec_always --no-startup-id feh -z --bg-fill ~/Pictures/Wallpapers/ --bg-fill ~/
 exec --no-startup-id ~/dev/shared/dunst/dunst
 exec --no-startup-id blueman-applet
 exec --no-startup-id caprine
+exec --no-startup-id com.gitlab.newsflash
 exec --no-startup-id firefox
 exec --no-startup-id keepassxc
 exec --no-startup-id liferea
