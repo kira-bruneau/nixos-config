@@ -39,6 +39,7 @@
     lmms
     mpv
     qbittorrent
+    sqlitebrowser
     zynaddsubfx
 
     # Remote Desktop
