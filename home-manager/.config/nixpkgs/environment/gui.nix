@@ -8,11 +8,20 @@
 
   # Packages
   home.packages = with pkgs; with nur.repos.metadark; [
+    # Administration
+    pavucontrol
+
+    # Authentication
+    keepassxc
+
     # Web
     chromium
     firefox
     liferea
     newsflash
+
+    # Social
+    caprine
 
     # Media & Documents
     (audacity.override {
@@ -32,9 +41,6 @@
     qbittorrent
     zynaddsubfx
 
-    # Chat
-    caprine
-
     # Remote Desktop
     remmina
 
@@ -46,8 +52,6 @@
 
     # Other
     gnucash
-    keepassxc
-    pavucontrol
     speedcrunch
   ];
 
