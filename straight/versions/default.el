@@ -57,7 +57,7 @@
  ("latex-preview-pane" . "5297668a89996b50b2b62f99cba01cc544dbed2e")
  ("let-alist" . "b299c78897cc307f9d5521927376fbd06a26f123")
  ("loop.el" . "e22807f83a0890dc8a904c51ee0742c34efccc6c")
- ("lsp-java" . "260016236fa0520b5b6ec7f51ca2086288524cba")
+ ("lsp-java" . "caafb6c0b7b9ea45a9e81d70d31aaa23326dae51")
  ("lsp-mode" . "8e0f3f945e912572653d6d458ed2de428ebe439c")
  ("lsp-treemacs" . "57e49627e58f026de99ed84e394fb5eedbf06a93")
  ("lsp-ui" . "1f3e9700395f4fae024ca45ca64c8d70e99b39d2")
