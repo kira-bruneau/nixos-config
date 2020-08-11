@@ -35,6 +35,7 @@
       "class_g = 'i3-frame'" # titlebars
       "class_g = 'Polybar'" # polybar tray
       "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'" # background windows in tabbed layout
+      "name = 'cpt_frame_window'" # fix shadow overlaying zoom call
     ];
     opacityRule = [
       "90:name = 'Picture-in-Picture'"
