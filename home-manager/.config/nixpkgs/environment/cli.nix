@@ -14,6 +14,7 @@
     pciutils
     stow
     tmux
+    topgrade
     xorg.lndir
 
     # Authentication
