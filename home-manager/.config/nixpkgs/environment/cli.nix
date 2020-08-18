@@ -79,7 +79,7 @@
   # Add home bin to PATH
   # environment.homeBinInPath = true;
 
-  pam.sessionVariables = {
+  home.sessionVariables = {
     EDITOR = "emacseditor";
   };
 

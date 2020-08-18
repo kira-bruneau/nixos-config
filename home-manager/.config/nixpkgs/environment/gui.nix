@@ -57,7 +57,7 @@
   ];
 
   # Environment
-  pam.sessionVariables = {
+  home.sessionVariables = {
     # Launch Firefox with Wayland
     MOZ_ENABLE_WAYLAND = "1";
 
