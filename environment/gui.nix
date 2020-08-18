@@ -45,7 +45,11 @@
 
   # Redshift
   # TODO: Start at login
-  services.redshift.enable = true;
+  services.redshift = {
+    enable = true;
+    package = pkgs.redshift-wlr;
+  };
+
   location.provider = "geoclue2";
 
   programs.sway = {
