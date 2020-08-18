@@ -58,6 +58,9 @@
 
   # Environment
   pam.sessionVariables = {
+    # Launch Firefox with Wayland
+    MOZ_ENABLE_WAYLAND = "1";
+
     # Use GTK 3 settings in Qt 5
     # https://wiki.archlinux.org/index.php/Uniform_look_for_Qt_and_GTK_applications
     QT_QPA_PLATFORMTHEME = "gtk3";
