@@ -121,29 +121,39 @@ input * xkb_options "grp:win_space_toggle"
 #
 # Workspaces:
 #
+    set $www 1
+    set $edit 2
+    set $term 3
+    set $files 4
+    set $media 5
+    set $games 6
+    set $remote 8
+    set $email 9
+    set $chat 10
+
     # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
+    bindsym $mod+1 workspace $www
+    bindsym $mod+2 workspace $edit
+    bindsym $mod+3 workspace $term
+    bindsym $mod+4 workspace $files
+    bindsym $mod+5 workspace $media
+    bindsym $mod+6 workspace $games
     bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+8 workspace $remote
+    bindsym $mod+9 workspace $email
+    bindsym $mod+0 workspace $chat
 
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+1 move container to workspace $www
+    bindsym $mod+Shift+2 move container to workspace $edit
+    bindsym $mod+Shift+3 move container to workspace $term
+    bindsym $mod+Shift+4 move container to workspace $files
+    bindsym $mod+Shift+5 move container to workspace $media
+    bindsym $mod+Shift+6 move container to workspace $games
     bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+8 move container to workspace $remote
+    bindsym $mod+Shift+9 move container to workspace $email
+    bindsym $mod+Shift+0 move container to workspace $chat
 
     # Move workspace to monitor
     bindsym $mod+Control+Shift+$left move workspace to output left
@@ -272,14 +282,56 @@ bar {
     bindsym Mod1+Shift+XF86AudioRaiseVolume exec --no-startup-id light -S 100
     bindsym Mod1+Shift+XF86AudioLowerVolume exec --no-startup-id light -r -S 1
 #
-# Start daemons:
+# Start daemons & applications:
 #
+    exec --no-startup-id blueman-applet
+    exec --no-startup-id caprine
+    exec --no-startup-id com.gitlab.newsflash
+    exec --no-startup-id firefox
     exec --no-startup-id keepassxc
 #
 # Launch application keybindings:
 #
     bindsym $mod+y exec xdg-open ~/
+#
+# Assign windows to workspaces:
+#
+    # WWW
+    assign [app_id="^firefox$"] $www
+    assign [class="^Chromium-browser$"] $www
+    assign [class="^Google-chrome$"] $www
 
+    # Edit
+    # Emacs GTK3 fork: https://github.com/masm11/emacs
+    assign [app_id="^emacs"] $edit
+    assign [class="^Emacs$"] $edit
+
+    # Files
+    assign [app_id="^org.qbittorrent.qBittorrent$"] $files
+
+    # Media
+    assign [app_id="^rhythmbox$"] $media
+
+    # Games
+    assign [app_id="^lutris$"] $games
+    assign [app_id="^org.dolphin-emu.$"] $games
+    # Non-master Dolphin still uses X11
+    assign [class="^dolphin-emu$"] $games
+    assign [app_id="^org.multimc.$"] $games
+    assign [class="^cemu.exe$"] $games
+    assign [class="^Minecraft$"] $games
+    assign [class="^Steam$"] $games
+
+    # Email & Feeds
+    assign [app_id="^geary$"] $email
+    assign [app_id="^NewsFlashGTK$"] $email
+    for_window [title="https://mail\.google\.com"] move container to workspace $email
+    for_window [title="https://outlook\.office\.com"] move container to workspace $email
+
+    # Chat
+    assign [class="^Caprine$"] $chat
+    assign [class="^Slack$"] $chat
+    for_window [title="https://app\.slack\.com"] move container to workspace $chat
 #
 # Power controls:
 #
