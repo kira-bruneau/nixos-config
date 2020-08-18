@@ -93,7 +93,6 @@ input * xkb_options "grp:win_space_toggle"
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     default_border pixel 2
-    gaps inner 4
 #
 # Moving around:
 #
