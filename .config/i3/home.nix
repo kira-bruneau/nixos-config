@@ -32,9 +32,12 @@
     backend = "glx";
     shadow = true;
     shadowExclude = [
-      "class_i = 'i3-frame'" # titlebars
+      "class_i = 'i3-frame'" # title bars
       "name = 'Polybar tray window'" # polybar tray
       "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'" # background windows in tabbed layout
+    ];
+    opacityRule = [
+      "90:name = 'Picture-in-Picture'"
     ];
     fade = true;
     fadeDelta = 10; # 100 steps per second

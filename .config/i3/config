@@ -221,6 +221,9 @@ assign [class="^Caprine$"] $chat
 assign [class="^Slack$"] $chat
 for_window [title="https://app\.slack\.com"] move container to workspace $chat
 
+# Configure picture-in-picture
+for_window [title="Picture-in-Picture"] sticky enable, move up 64, border pixel 0
+
 set $mode_power l̲ogout | s̲hutdown | r̲eboot
 mode "$mode_power" {
   bindsym l exec i3-msg exit
