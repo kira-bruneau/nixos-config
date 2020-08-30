@@ -61,4 +61,8 @@
 
   # Power management
   services.upower.enable = true;
+
+  # Enable flatpak
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
 }
