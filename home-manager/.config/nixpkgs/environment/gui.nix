@@ -17,7 +17,6 @@
     # Web
     chromium
     firefox
-    liferea
     newsflash
 
     # Social
