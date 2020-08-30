@@ -195,7 +195,6 @@ exec --no-startup-id caprine
 exec --no-startup-id com.gitlab.newsflash
 exec --no-startup-id firefox
 exec --no-startup-id keepassxc
-exec --no-startup-id liferea
 exec --no-startup-id slack
 
 # Assign windows to workspaces
@@ -214,7 +213,6 @@ assign [class="^Steam$"] $games
 assign [instance="^cemu.exe$"] $games
 assign [class="^Com.gitlab.newsflash$"] $email
 assign [class="^Geary$"] $email
-assign [class="^Liferea$"] $email
 for_window [title="https://mail\.google\.com"] move container to workspace $email
 for_window [title="https://outlook\.office\.com"] move container to workspace $email
 assign [class="^Caprine$"] $chat
