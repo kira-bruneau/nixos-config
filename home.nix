@@ -33,6 +33,7 @@
           nodePackages.typescript-language-server
           omnisharp-roslyn
           pandoc
+          perl
           (python3.withPackages (pkgs: with pkgs; [
             debugpy
             python-language-server
