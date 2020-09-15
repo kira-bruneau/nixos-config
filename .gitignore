@@ -1,6 +1,7 @@
 /.cache
 /.dap-breakpoints
 /.extension/
+/.log
 /.lsp-session-v1
 /.stignore
 /amx-items
@@ -9,6 +10,7 @@
 /bookmarks
 /custom.el
 /eclipse.jdt.ls/
+/elpa
 /eshell/
 /forge-database.sqlite
 /history
