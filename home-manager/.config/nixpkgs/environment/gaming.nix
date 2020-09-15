@@ -6,6 +6,7 @@
     clonehero
     lutris
     multimc
+    pokemmo-installer
     runelite
     runescape-launcher
     steam steam-run protontricks
