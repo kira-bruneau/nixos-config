@@ -84,6 +84,7 @@
         dired-unmark-all-marks
         ivy-switch-buffer
         kmacro-end-or-call-macro
+        lsp-ui-doc-mode
         overwrite-mode
         previous-buffer
         revert-buffer
