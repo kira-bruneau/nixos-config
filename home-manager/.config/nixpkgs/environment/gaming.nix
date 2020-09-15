@@ -3,14 +3,16 @@
 {
   home.packages = with pkgs; with nur.repos.metadark; [
     # Games & Launchers
-    clonehero
-    lutris
+    clonehero # unfree
+    lutris # unfreeRedistributable with steamSupport = true
     multimc
     pokemmo-installer
+    protontricks
     runelite
-    runescape-launcher
-    steam steam-run protontricks
-    VVVVVV
+    runescape-launcher # unfree
+    steam # unfreeRedistributable
+    steam-run # unfreeRedistributable
+    VVVVVV # unfree
 
     # Emulators
     dolphinEmuMaster
@@ -22,7 +24,7 @@
     xwiimote
 
     # Chat
-    discord
+    discord # unfree
 
     # Recording
     obs-studio

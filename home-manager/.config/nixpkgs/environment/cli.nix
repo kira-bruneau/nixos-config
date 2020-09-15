@@ -42,7 +42,7 @@
     ffmpeg
     jq
     p7zip
-    unrar
+    unrar # unfreeRedistributable
     unzip
     xmlstarlet
 
