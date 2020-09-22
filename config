@@ -59,6 +59,11 @@ input * xkb_layout "us,us"
 input * xkb_variant "colemak,"
 input * xkb_options "grp:win_space_toggle"
 
+input type:touchpad {
+    natural_scroll enabled
+    tap enabled
+}
+
 ### Key bindings
 #
 # Basics:
