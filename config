@@ -342,7 +342,7 @@ bar {
 #
     set $mode_power l̲ogout | s̲hutdown | r̲eboot
     mode "$mode_power" {
-      bindsym l exec i3-msg exit
+      bindsym l exec swaymsg exit
       bindsym s exec systemctl poweroff
       bindsym r exec systemctl reboot
       bindsym --release XF86PowerOff exec systemctl poweroff
