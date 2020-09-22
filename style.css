@@ -1,8 +1,8 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: DejaVu Sans;
+    font-size: 9pt;
     min-height: 0;
 }
 
@@ -38,7 +38,7 @@ window#waybar.chromium {
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 8px;
     background: transparent;
     color: #ffffff;
     border-bottom: 3px solid transparent;
@@ -59,18 +59,9 @@ window#waybar.chromium {
 }
 
 #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
-    padding: 0 10px;
+    padding: 0 5px;
     margin: 0 5px;
     color: #ffffff;
-}
-
-#clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
 }
 
 #battery.charging {
@@ -99,37 +90,6 @@ label:focus {
     background-color: #000000;
 }
 
-#cpu {
-    background: #2ecc71;
-    color: #000000;
-}
-
-#memory {
-    background: #9b59b6;
-}
-
-#backlight {
-    background: #90b1b1;
-}
-
-#network {
-    background: #2980b9;
-}
-
-#network.disconnected {
-    background: #f53c3c;
-}
-
-#pulseaudio {
-    background: #f1c40f;
-    color: #000000;
-}
-
-#pulseaudio.muted {
-    background: #90b1b1;
-    color: #2a5c45;
-}
-
 #custom-media {
     background: #66cc99;
     color: #2a5c45;
@@ -144,20 +104,8 @@ label:focus {
     background: #ffa000;
 }
 
-#temperature {
-    background: #f0932b;
-}
-
 #temperature.critical {
     background: #eb4d4b;
-}
-
-#tray {
-    background-color: #2980b9;
-}
-
-#idle_inhibitor {
-    background-color: #2d3436;
 }
 
 #idle_inhibitor.activated {
