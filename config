@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-center": ["cpu", "memory", "temperature", "network"],
+    "modules-center": ["cpu", "memory", "disk", "temperature", "network"],
     "modules-right": ["mpd", "idle_inhibitor", "backlight", "battery", "battery#bat2", "pulseaudio", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
@@ -76,6 +76,9 @@
     },
     "memory": {
         "format": "{}% "
+    },
+    "disk": {
+        "format": "{}% "
     },
     "temperature": {
         // "thermal-zone": 2,
