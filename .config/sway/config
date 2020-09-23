@@ -264,6 +264,10 @@ bar {
       (paplay -n Screenshot /usr/share/sounds/freedesktop/stereo/screen-capture.oga || \
        paplay -n Screenshot /run/current-system/sw/share/sounds/freedesktop/stereo/screen-capture.oga)
 #
+# Lock:
+#
+    bindsym $mod+l exec --no-startup-id swaylock --image `random-wallpaper`
+#
 # Volume:
 #
     bindsym XF86AudioRaiseVolume exec --no-startup-id \
