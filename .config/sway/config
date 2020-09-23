@@ -339,13 +339,13 @@ bar {
     # Email & Feeds
     assign [app_id="^geary$"] $email
     assign [app_id="^NewsFlashGTK$"] $email
-    for_window [title="https://mail\.google\.com"] move container to workspace $email
-    for_window [title="https://outlook\.office\.com"] move container to workspace $email
+    for_window [title="Gmail - Mozilla Firefox"] move container to workspace $email
+    for_window [title="Mail - .* - Outlook - Mozilla Firefox"] move container to workspace $email
 
     # Chat
     assign [class="^Caprine$"] $chat
     assign [class="^Slack$"] $chat
-    for_window [title="https://app\.slack\.com"] move container to workspace $chat
+    for_window [title="Slack .* - Mozilla Firefox"] move container to workspace $chat
 #
 # Power controls:
 #
