@@ -6,8 +6,9 @@
   ];
 
   # Packages
-  home.packages = with pkgs; [
+  home.packages = with pkgs; with nur.repos.metadark; [
     # Administration
+    bluetooth-autoconnect
     evtest
     htop
     nethogs
@@ -51,6 +52,7 @@
     cloc
     file
     git # TODO: Generate configuration from Nix
+    linuxPackages.perf
     man-pages
 
     # Nix development
