@@ -5,10 +5,17 @@
 [submodule "i3"]
 	path = i3
 	url = https://gitlab.com/MetaDark/i3wm-config.git
-
 [submodule "polybar"]
 	path = polybar/.config/polybar
 	url = https://gitlab.com/MetaDark/polybar-config.git
+
+[submodule "sway"]
+	path = sway
+	url = https://gitlab.com/MetaDark/sway-config.git
+[submodule "waybar"]
+	path = waybar/.config/waybar
+	url = https://gitlab.com/MetaDark/waybar-config.git
+
 [submodule "nix-direnv"]
 	path = home-manager/.nix-direnv
 	url = https://github.com/nix-community/nix-direnv.git
