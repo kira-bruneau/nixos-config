@@ -1,4 +1,7 @@
-system: {}
+system:
+  postexit_command: /home/kira/bin/scale-up
+  prelaunch_command: /home/kira/bin/scale-down
+  prelaunch_wait: true
 wine:
   dxvk: true
   vkd3d: true

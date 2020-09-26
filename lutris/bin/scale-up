@@ -1,0 +1,3 @@
+#!/bin/sh
+
+swaymsg 'output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2'

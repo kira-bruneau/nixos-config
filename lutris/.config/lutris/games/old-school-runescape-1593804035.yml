@@ -1,4 +1,9 @@
 game:
   exe: runelite
 linux: {}
-system: {}
+system:
+  env:
+    GDK_SCALE: '2'
+  postexit_command: /home/kira/bin/scale-up
+  prelaunch_command: /home/kira/bin/scale-down
+  prelaunch_wait: true

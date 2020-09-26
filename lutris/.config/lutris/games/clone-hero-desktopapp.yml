@@ -2,4 +2,7 @@ game:
   appid: clonehero
   exe: clonehero
 linux: {}
-system: {}
+system:
+  postexit_command: /home/kira/bin/scale-up
+  prelaunch_command: /home/kira/bin/scale-down
+  prelaunch_wait: true

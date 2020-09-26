@@ -9,6 +9,9 @@ system:
     __GL_THREADED_OPTIMIZATIONS: '1'
     mesa_glthread: 'true'
     vblank_mode: '0'
+  postexit_command: ''
+  prelaunch_command: ''
+  prelaunch_wait: false
 wine:
   esync: true
   overrides:

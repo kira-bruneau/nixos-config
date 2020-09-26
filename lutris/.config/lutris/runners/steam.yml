@@ -1,0 +1,4 @@
+steam: {}
+system:
+  prelaunch_command: /home/kira/bin/scale-up
+  prelaunch_wait: true
