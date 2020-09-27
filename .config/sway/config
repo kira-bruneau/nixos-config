@@ -340,6 +340,7 @@ bar {
     assign [app_id="^geary$"] $email
     assign [app_id="^NewsFlashGTK$"] $email
     for_window [title="Gmail - Mozilla Firefox"] move container to workspace $email
+    for_window [title="Google Calendar - .* - Mozilla Firefox"] move container to workspace $email
     for_window [title="Mail - .* - Outlook - Mozilla Firefox"] move container to workspace $email
 
     # Chat
