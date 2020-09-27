@@ -55,6 +55,7 @@
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [ swaylock swayidle xwayland ];
+    wrapperFeatures.gtk = true;
   };
 
   # Enable DConf
