@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; with nur.repos.metadark; [
     dunst
+    glib.bin # gsettings
     grim
     keepassxc
     light
