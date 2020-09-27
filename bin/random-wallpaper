@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+
+import glob
+import os
+import random
+from pathlib import Path
+
+wallpapers = os.path.join(Path.home(), 'Pictures/Wallpapers')
+print(random.choice(glob.glob("{}/*.*".format(wallpapers))))
