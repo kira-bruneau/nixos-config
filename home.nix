@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  programs.emacs = {
+  programs.emacs = with pkgs; with nur.repos.metadark; {
     enable = true;
-    package = pkgs.callPackage ./wrapper.nix {
-      emacs = pkgs.nur.repos.metadark.emacs-pure-gtk3;
+    package = callPackage ./wrapper.nix {
+      emacs = emacs-pure-gtk3;
       profile = pkgs.buildEnv {
         name = "emacs-profile";
-        paths = with pkgs; with nur.repos.metadark; [
+        paths = [
           (aspellWithDicts (dicts: with dicts; [
             en
             en-computers
