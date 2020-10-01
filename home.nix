@@ -7,7 +7,7 @@
       emacs = pkgs.nur.repos.metadark.emacs-pure-gtk3;
       profile = pkgs.buildEnv {
         name = "emacs-profile";
-        paths = with pkgs; [
+        paths = with pkgs; with nur.repos.metadark; [
           (aspellWithDicts (dicts: with dicts; [
             en
             en-computers
@@ -34,7 +34,7 @@
           omnisharp-roslyn
           pandoc
           perl
-          (python3.withPackages (pkgs: with pkgs; [
+          (python3.withPackages (pkgs: with pkgs; with nur.repos.metadark; [
             debugpy
             python-language-server
           ]))
