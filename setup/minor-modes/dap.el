@@ -1,10 +1,11 @@
 (use-package dap-mode
-  :straight (dap-mode :type git :host github :repo "emacs-lsp/dap-mode"
-                      :fork (:host github :repo "MetaDark/dap-mode"))
+  :straight t
   :hook (dap-stopped . (lambda (arg) (call-interactively #'my-dap-hydra)))
   :init
   (require 'dap-gdb-lldb)
+
   (require 'dap-python)
+  (setq dap-python-debugger 'debugpy)
 
   (setq treemacs-show-cursor t)
 
