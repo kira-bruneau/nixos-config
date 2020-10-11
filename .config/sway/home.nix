@@ -6,10 +6,10 @@
   ];
 
   home.packages = with pkgs; with nur.repos.metadark; [
-    dunst
     glib.bin # gsettings
     grim
     keepassxc
+    libnotify
     light
     pavucontrol
     rofi-wayland
@@ -22,4 +22,9 @@
     wl-clipboard
     xdg-user-dirs
   ];
+
+  programs.mako = {
+    enable = true;
+    defaultTimeout = 10000;
+  };
 }
