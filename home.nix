@@ -4,7 +4,7 @@
   programs.emacs = with pkgs; with nur.repos.metadark; {
     enable = true;
     package = callPackage ./wrapper.nix {
-      emacs = emacs-pure-gtk3;
+      emacs = emacs-pgtk-nativecomp;
       profile = pkgs.buildEnv {
         name = "emacs-profile";
         paths = [
