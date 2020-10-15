@@ -1,4 +1,4 @@
-(use-package rust-mode
+(use-package rustic
   :straight t
   :ensure-system-package
   ((rust-analyzer . rust-analyzer)
