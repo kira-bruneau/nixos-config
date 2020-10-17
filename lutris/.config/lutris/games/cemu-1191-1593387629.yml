@@ -13,7 +13,6 @@ system:
   prelaunch_command: ''
   prelaunch_wait: false
 wine:
-  esync: true
   overrides:
     dbghelp: native,builtin
     mscoree: disabled

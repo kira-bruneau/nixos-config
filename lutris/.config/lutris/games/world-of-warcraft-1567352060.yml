@@ -2,6 +2,4 @@ game:
   exe: /home/kira/Games/battle-net/drive_c/Program Files (x86)/World of Warcraft/_retail_/Wow.exe
   prefix: /home/kira/Games/battle-net
 system: {}
-wine:
-  dxvk: true
-  version: lutris-5.6-2-x86_64
+wine: {}

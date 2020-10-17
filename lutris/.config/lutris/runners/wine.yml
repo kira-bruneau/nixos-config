@@ -4,4 +4,6 @@ system:
   prelaunch_wait: true
 wine:
   dxvk: true
+  esync: true
+  version: lutris-5.7-11-x86_64
   vkd3d: true

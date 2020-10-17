@@ -12,7 +12,6 @@ system:
     mesa_glthread: 'true'
     vblank_mode: '0'
 wine:
-  esync: true
   overrides:
     dbghelp: native,builtin
     mscoree: disabled
