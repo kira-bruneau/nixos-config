@@ -1,0 +1,4 @@
+game:
+  appid: pokemmo
+  exe: pokemmo-launcher
+linux: {}
