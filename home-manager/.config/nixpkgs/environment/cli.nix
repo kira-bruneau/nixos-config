@@ -113,4 +113,30 @@
 
   # Enable gpg agent
   services.gpg-agent.enable = true;
+
+  # LanguageTool Server
+  systemd.user.services.languagetool = {
+    Unit = {
+      Description = "LanguageTool embedded HTTP Server";
+      Documentation = [ "https://dev.languagetool.org/http-server" ];
+    };
+    Service = {
+      ExecStart = ''
+        ${pkgs.languagetool}/bin/languagetool-http-server \
+          --allow-origin '*' \
+          --languageModel ${pkgs.linkFarm "languageModel" [
+            {
+              name = "en";
+              path = pkgs.fetchzip {
+                url = "https://languagetool.org/download/ngram-data/ngrams-en-20150817.zip";
+                sha256 = "1hgjilpgdzbs9kgksq1jl0f6y8ff76mn6vlicc1d8zj943l2cxmz";
+                extraPostFetch = "chmod -R a-w $out";
+              };
+            }
+          ]}
+      '';
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "default.target" ];
+  };
 }
