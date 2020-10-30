@@ -1,6 +1,6 @@
 [user]
 	email = kira.bruneau@gmail.com
-	name = MetaDark
+	name = Kira Bruneau
 	signingKey = 1176DC0CE57E804C7038A3A0FD0452E7FE574C0E
 [core]
 	excludesfile = ~/.gitignore_global
