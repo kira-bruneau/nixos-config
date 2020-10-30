@@ -27,6 +27,7 @@
           git
           imagemagick
           jdk
+          libnotify
           nodejs
           nodePackages.bash-language-server
           nodePackages.typescript
