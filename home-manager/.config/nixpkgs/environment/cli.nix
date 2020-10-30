@@ -52,6 +52,7 @@
     cloc
     file
     git # TODO: Generate configuration from Nix
+    gitAndTools.git-bug
     linuxPackages.perf
     man-pages
 
