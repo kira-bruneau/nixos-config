@@ -35,7 +35,7 @@
           omnisharp-roslyn
           pandoc
           perl
-          (python3.withPackages (pkgs: with pkgs; with nur.repos.metadark; [
+          (python3.withPackages (pkgs: with pkgs; with nur.repos.metadark.python3Packages; [
             debugpy
             python-language-server
           ]))
