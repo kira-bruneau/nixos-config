@@ -1,14 +1,13 @@
 { config, pkgs, ... }:
 
 let
-  nur = import <nur> {
-    inherit pkgs;
-  };
+  nur-no-pkgs = import <nur> { pkgs = null; };
+  nur = import <nur> { inherit pkgs; };
 in rec {
   imports = [
     ../cachix.nix
-    nur.repos.metadark.modules.bluetooth-autoconnect
-    nur.repos.metadark.modules.lightdm-webkit2-greeter
+    nur-no-pkgs.repos.metadark.modules.bluetooth-autoconnect
+    nur-no-pkgs.repos.metadark.modules.lightdm-webkit2-greeter
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
