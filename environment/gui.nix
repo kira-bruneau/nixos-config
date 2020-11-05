@@ -52,10 +52,18 @@
 
   location.provider = "geoclue2";
 
+  # Enable sway
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [ swaylock swayidle xwayland ];
     wrapperFeatures.gtk = true;
+  };
+
+  # Enable xdg-desktop-portal (screen sharing)
+  services.pipewire.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
   };
 
   # Enable DConf
