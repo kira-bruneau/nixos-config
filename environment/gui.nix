@@ -8,6 +8,7 @@
     enable = true;
     useGlamor = true;
     displayManager = {
+      defaultSession = "sway";
       lightdm = {
         enable = true;
         greeters.webkit2 = {
@@ -19,7 +20,6 @@
           branding.backgroundImages = "${pkgs.gnome3.gnome-backgrounds}/share/backgrounds/gnome";
         };
       };
-      defaultSession = "none+i3";
     };
 
     # This is the default behaviour for stateVersion >= 19.09
