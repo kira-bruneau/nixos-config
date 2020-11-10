@@ -19,9 +19,14 @@
 
   (setq
    counsel-rg-base-command
-   (if (memq system-type '(ms-dos windows-nt))
-       "rg --hidden --with-filename --no-heading --line-number --path-separator / --color never %s ."
-     "rg --hidden --with-filename --no-heading --line-number --color never %s"))
+   '("rg"
+     "--hidden"
+     "--with-filename"
+     "--no-heading"
+     "--line-number"
+     "--color" "never"
+     "--path-separator" "/"
+     "%s"))
 
   (with-eval-after-load 'ivy
     ;; Use faster filtering & disable sorting for counsel-ag-function
