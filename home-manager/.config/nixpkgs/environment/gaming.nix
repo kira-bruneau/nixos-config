@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; with nur.repos.metadark; [
     # Games & Launchers
+    bcml
     clonehero # unfree
     lutris # unfreeRedistributable with steamSupport = true
     multimc
