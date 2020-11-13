@@ -5,5 +5,5 @@ system:
 wine:
   dxvk: true
   esync: true
-  version: lutris-5.7-11-x86_64
+  version: lutris-5.21-x86_64
   vkd3d: true
