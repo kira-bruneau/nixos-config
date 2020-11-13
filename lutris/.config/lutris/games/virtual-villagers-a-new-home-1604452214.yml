@@ -1,0 +1,7 @@
+game:
+  exe: /home/kira/Games/virtual-villagers/drive_c/Program Files (x86)/Virtual Villagers/VirtualVillagers.exe
+  prefix: /home/kira/Games/virtual-villagers
+system:
+  postexit_command: ''
+  prelaunch_command: ''
+wine: {}
