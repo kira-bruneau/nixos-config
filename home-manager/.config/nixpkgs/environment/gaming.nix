@@ -11,6 +11,11 @@
     protontricks
     runelite
     runescape-launcher # unfree
+    (sm64ex.override {
+      compileFlags = [
+        "BETTERCAMERA=1"
+      ];
+    })
     steam # unfreeRedistributable
     steam-run # unfreeRedistributable
     VVVVVV # unfree
