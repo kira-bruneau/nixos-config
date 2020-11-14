@@ -1,5 +1,5 @@
 game:
-  exe: sm64pc
-  working_dir: /home/kira/Games/sm64pc
+  args: --savepath /home/kira/Games/sm64ex
+  exe: sm64ex
 linux: {}
 system: {}
