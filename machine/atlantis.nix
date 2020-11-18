@@ -65,4 +65,14 @@
   # Enable flatpak
   services.flatpak.enable = true;
   xdg.portal.enable = true;
+
+  # Set higher file limit for wine esync support
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      item = "nofile";
+      type = "-";
+      value = "524288";
+    }
+  ];
 }
