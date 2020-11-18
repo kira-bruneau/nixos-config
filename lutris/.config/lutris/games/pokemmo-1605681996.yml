@@ -1,4 +1,4 @@
 game:
-  appid: pokemmo
   exe: pokemmo-installer
 linux: {}
+system: {}
