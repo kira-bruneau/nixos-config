@@ -62,6 +62,7 @@
     nix-index
     nix-prefetch-scripts
     nixpkgs-fmt
+    nixpkgs-review
     nodePackages.node2nix
     patchelf
 
