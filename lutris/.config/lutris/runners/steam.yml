@@ -1,5 +1,5 @@
 steam:
-  quit_steam_on_exit: true
+  quit_steam_on_exit: false
 system:
   prelaunch_command: /home/kira/bin/scale-up
   prelaunch_wait: true
