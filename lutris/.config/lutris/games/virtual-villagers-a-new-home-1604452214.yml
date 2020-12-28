@@ -4,4 +4,5 @@ game:
 system:
   postexit_command: ''
   prelaunch_command: ''
+  prelaunch_wait: false
 wine: {}

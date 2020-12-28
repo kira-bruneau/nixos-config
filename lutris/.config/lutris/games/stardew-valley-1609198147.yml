@@ -1,0 +1,7 @@
+game:
+  appid: '413150'
+steam: {}
+system:
+  postexit_command: ''
+  prelaunch_command: ''
+  prelaunch_wait: false
