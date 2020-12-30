@@ -1,5 +1,5 @@
 game:
-  exe: /home/kira/Games/battle-net/drive_c/Program Files (x86)/World of Warcraft/_retail_/Wow.exe
-  prefix: /home/kira/Games/battle-net
+  exe: /home/kira/Games/wow/drive_c/Program Files (x86)/World of Warcraft/_retail_/Wow.exe
+  prefix: /home/kira/Games/wow
 system: {}
 wine: {}

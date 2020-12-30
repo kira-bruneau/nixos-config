@@ -1,0 +1,9 @@
+game:
+  exe: /home/kira/Games/battle-net/drive_c/Program Files (x86)/Battle.net/Battle.net
+    Launcher.exe
+  prefix: /home/kira/Games/battle-net
+system:
+  postexit_command: ''
+  prelaunch_command: ''
+  prelaunch_wait: false
+wine: {}
