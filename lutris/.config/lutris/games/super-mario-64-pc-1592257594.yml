@@ -2,4 +2,6 @@ game:
   args: --savepath /home/kira/Games/sm64ex
   exe: sm64ex
 linux: {}
-system: {}
+system:
+  env:
+    SDL_VIDEODRIVER: wayland

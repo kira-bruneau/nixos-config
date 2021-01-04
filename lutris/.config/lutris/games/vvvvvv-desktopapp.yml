@@ -2,4 +2,6 @@ game:
   appid: VVVVVV
   exe: VVVVVV
 linux: {}
-system: {}
+system:
+  env:
+    SDL_VIDEODRIVER: wayland
