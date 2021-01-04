@@ -16,7 +16,7 @@
     })
     multimc
     pokemmo-installer
-    protontricks
+    protontricks # unfreeRedistributable (from steam-run)
     runelite
     runescape-launcher # unfree
     (sm64ex.override {
