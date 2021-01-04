@@ -21,6 +21,7 @@
 
     # Social
     caprine
+    slack
 
     # Media & Documents
     (audacity.override {
