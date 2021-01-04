@@ -52,6 +52,7 @@
     lxappearance
 
     # Other
+    gnome3.gnome-clocks
     gnucash
     speedcrunch
   ];
