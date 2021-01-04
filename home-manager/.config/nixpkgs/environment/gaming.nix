@@ -1,11 +1,19 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; with nur.repos.metadark; [
+  home.packages = with pkgs; with nur.repos.metadark; let
+    wineWowStagingFull = wineWowPackages.full.override {
+      wineRelease = "staging";
+    };
+  in [
     # Games & Launchers
     bcml
     clonehero # unfree
-    lutris # unfreeRedistributable with steamSupport = true
+    (lutris.override { # unfreeRedistributable with steamSupport = true
+      lutris-unwrapped = lutris-unwrapped.override {
+        wine = wineWowStagingFull;
+      };
+    })
     multimc
     pokemmo-installer
     protontricks
@@ -23,8 +31,8 @@
     # Emulators
     dolphinEmuMaster
     mupen64plus
-    (winetricks.override { wine = wineWowPackages.staging; })
-    wineWowPackages.staging
+    wineWowStagingFull
+    (winetricks.override { wine = wineWowStagingFull; })
 
     # Controllers
     xwiimote
