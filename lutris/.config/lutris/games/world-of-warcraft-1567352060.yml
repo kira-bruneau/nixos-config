@@ -1,5 +1,5 @@
 game:
-  exe: /home/kira/Games/World of Warcraft/drive_c/Program Files/World of Warcraft/_retail_/Wow.exe
+  exe: Wow.exe
   prefix: /home/kira/Games/World of Warcraft
 system: {}
 wine: {}

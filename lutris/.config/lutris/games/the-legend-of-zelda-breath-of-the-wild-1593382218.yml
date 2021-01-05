@@ -2,7 +2,7 @@ game:
   arch: win64
   args: -g "C:\wiiu\games\The Legend of Zelda Breath of the Wild\code\U-King.rpx"
     -f
-  exe: /home/kira/Games/Cemu/drive_c/Cemu/Cemu.exe
+  exe: Cemu.exe
   prefix: /home/kira/Games/Cemu
 system:
   disable_compositor: true

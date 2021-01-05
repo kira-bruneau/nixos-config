@@ -1,6 +1,5 @@
 game:
-  exe: /home/kira/Games/Battle.net/drive_c/Program Files (x86)/Battle.net/Battle.net
-    Launcher.exe
+  exe: Battle.net Launcher.exe
   prefix: /home/kira/Games/Battle.net
 system:
   postexit_command: ''
