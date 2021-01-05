@@ -1,7 +1,7 @@
 game:
-  exe: /home/kira/Games/battle-net/drive_c/Program Files (x86)/Battle.net/Battle.net
+  exe: /home/kira/Games/Battle.net/drive_c/Program Files (x86)/Battle.net/Battle.net
     Launcher.exe
-  prefix: /home/kira/Games/battle-net
+  prefix: /home/kira/Games/Battle.net
 system:
   postexit_command: ''
   prelaunch_command: ''

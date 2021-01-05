@@ -1,7 +1,7 @@
 game:
   arch: win64
-  exe: /home/kira/Games/cemu/drive_c/Cemu/Cemu.exe
-  prefix: /home/kira/Games/cemu
+  exe: /home/kira/Games/Cemu/drive_c/Cemu/Cemu.exe
+  prefix: /home/kira/Games/Cemu
 system:
   disable_compositor: true
   env:
