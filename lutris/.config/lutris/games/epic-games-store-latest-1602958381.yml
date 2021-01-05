@@ -4,11 +4,6 @@ game:
   exe: drive_c/Program Files (x86)/Epic Games/Launcher/Portal/Binaries/Win32/EpicGamesLauncher.exe
   prefix: /home/kira/Games/epic-games-store
 system:
-  env:
-    DXVK_HUD: compiler
-    MESA_GL_VERSION_OVERRIDE: 4.4COMPAT
-    __GL_SHADER_DISK_CACHE: '1'
-    __GL_SHADER_DISK_CACHE_PATH: /home/kira/Games/epic-games-store
   postexit_command: ''
   prelaunch_command: ''
   prelaunch_wait: false
