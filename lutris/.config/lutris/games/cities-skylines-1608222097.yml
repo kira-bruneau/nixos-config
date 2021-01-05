@@ -1,9 +1,6 @@
 game:
   arch: win64
-  args: com.epicgames.launcher://apps/C%3A/Program%20Files/Epic%20Games/CitiesSkylines/?action=launch&silent=true
-  exe: EpicGamesLauncher.exe
-  prefix: /home/kira/Games/Epic Games Store
-system:
-  postexit_command: ''
-wine:
-  version: system
+  exe: Cities.exe
+  prefix: /home/kira/Games/Cities Skylines
+system: {}
+wine: {}
