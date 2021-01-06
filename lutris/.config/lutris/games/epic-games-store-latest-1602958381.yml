@@ -1,5 +1,4 @@
 game:
-  arch: win64
   args: -opengl -SkipBuildPatchPrereq
   exe: EpicGamesLauncher.exe
   prefix: /home/kira/Games/Epic Games Store

@@ -1,5 +1,4 @@
 game:
-  arch: win64
   exe: Cemu.exe
   prefix: /home/kira/Games/Cemu
 system:

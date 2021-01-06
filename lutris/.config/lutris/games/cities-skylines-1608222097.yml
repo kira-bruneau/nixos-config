@@ -1,5 +1,4 @@
 game:
-  arch: win64
   exe: Cities.exe
   prefix: /home/kira/Games/Cities Skylines
 system: {}

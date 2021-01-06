@@ -1,5 +1,4 @@
 game:
-  arch: win64
   args: com.epicgames.launcher://apps/C%3A/Program%20Files/Epic%20Games/rocketleague/Binaries/Win64/?action=launch&silent=true
   exe: EpicGamesLauncher.exe
   prefix: /home/kira/Games/Rocket League

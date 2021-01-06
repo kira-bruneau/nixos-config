@@ -1,5 +1,4 @@
 game:
-  arch: win64
   args: -g "C:\wiiu\games\The Legend of Zelda Breath of the Wild\code\U-King.rpx"
     -f
   exe: Cemu.exe
