@@ -27,8 +27,8 @@ set $menu rofi -modi drun -show drun -matching fuzzy # | xargs swaymsg exec --
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output * bg `random-wallpaper` fill
-output "Sharp Corporation 0x1453 0x00000000" pos 0,0
-output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 1920,0
+#output "Sharp Corporation 0x1453 0x00000000" pos 0,0
+output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 0,0
 
 bindsym $mod+equal exec swaymsg 'output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2'
 bindsym $mod+minus exec swaymsg 'output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 1'
@@ -354,6 +354,10 @@ bar {
     assign [class="^Caprine$"] $chat
     assign [class="^Slack$"] $chat
     for_window [title="Slack .* (-|—) Mozilla Firefox"] move container to workspace $chat
+#
+# Configure picture-in-picture
+    for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 0, move position 1340 722
+#
 #
 # Power controls:
 #
