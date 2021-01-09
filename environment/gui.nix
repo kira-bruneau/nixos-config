@@ -66,6 +66,9 @@
     extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
   };
 
+  # Enable flatpak
+  services.flatpak.enable = true;
+
   # Enable DConf
   programs.dconf.enable = true;
   services.dbus.packages = with pkgs; [ gnome3.dconf ];
