@@ -16,6 +16,7 @@
     rofi-wayland
     slurp
     sound-theme-freedesktop
+    sox
     (waybar.override {
       pulseSupport = true;
       mpdSupport = false;
