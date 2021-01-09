@@ -6,6 +6,7 @@
   ];
 
   home.packages = with pkgs; with nur.repos.metadark; [
+    alsaUtils
     glib.bin # gsettings
     grim
     keepassxc
