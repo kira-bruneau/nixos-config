@@ -76,7 +76,9 @@
     # Interpreters
     python3
 
-    # Misc
+    # Multimedia
+    yabridge
+    yabridgectl
     youtube-dl
   ];
 
