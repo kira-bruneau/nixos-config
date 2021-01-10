@@ -1,4 +1,5 @@
 game:
   appid: '8930'
 steam: {}
-system: {}
+system:
+  prelaunch_command: ''
