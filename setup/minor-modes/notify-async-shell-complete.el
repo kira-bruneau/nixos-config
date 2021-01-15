@@ -1,7 +1,12 @@
 (defun notify-async-shell-complete (process signal)
   (when (and
          (memq (process-status process) '(exit signal))
-         (not (eq (process-buffer process) (window-buffer (selected-window)))))
+         ;; Don't notify if following end of output
+         (not
+          (and
+           (frame-focus-state)
+           (eq (process-buffer process) (window-buffer))
+           (>= (window-end) (point-max)))))
     (make-process
      :name "notify-async-shell-complete"
      :command (list
