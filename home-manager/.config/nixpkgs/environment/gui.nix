@@ -24,10 +24,7 @@
     slack
 
     # Media & Documents
-    (audacity.override {
-      # Build with GTK3 for HiDPI scaling
-      wxGTK30 = wxGTK30-gtk3;
-    })
+    audacity-gtk3
     blender
     evince
     gimp
