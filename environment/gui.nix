@@ -75,19 +75,4 @@
 
   # Disable bitmap fonts
   fonts.fontconfig.allowBitmaps = false;
-
-  # Enable debug symbols on sway & wlroots
-  # https://github.com/swaywm/sway/wiki/Development-Setup#compiling-as-a-subproject
-  nixpkgs.overlays = [
-    (self: super:
-      {
-        sway-unwrapped = (super.enableDebugging super.sway-unwrapped).overrideAttrs (attrs: {
-          mesonFlags = attrs.mesonFlags ++ [ "-Db_sanitize=address,undefined" ];
-        });
-
-        wlroots = (super.enableDebugging super.wlroots).overrideAttrs (attrs: {
-          mesonFlags = attrs.mesonFlags ++ [ "-Db_sanitize=address,undefined" ];
-        });
-      })
-  ];
 }
