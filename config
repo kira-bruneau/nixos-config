@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
     "modules-center": ["cpu", "memory", "disk", "temperature", "network"],
-    "modules-right": ["mpd", "idle_inhibitor", "backlight", "battery", "battery#bat2", "pulseaudio", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "backlight", "battery", "battery#bat2", "pulseaudio", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "all-outputs": true,
