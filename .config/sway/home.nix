@@ -17,10 +17,7 @@
     slurp
     sound-theme-freedesktop
     sox
-    (waybar.override {
-      pulseSupport = true;
-      mpdSupport = false;
-    })
+    waybar
     wl-clipboard
     xdg-user-dirs
   ];
