@@ -18,9 +18,6 @@
     topgrade
     xorg.lndir
 
-    # Authentication
-    gnupg
-
     # Search
     broot
     fd
@@ -116,8 +113,15 @@
   # Direnv
   programs.direnv.enable = true;
 
-  # Enable gpg agent
-  services.gpg-agent.enable = true;
+  # Enable gpg & gpg agent
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    defaultCacheTtl = 240;
+    defaultCacheTtlSsh = 240;
+    pinentryFlavor = "gnome3";
+  };
 
   # LanguageTool Server
   systemd.user.services.languagetool = {
