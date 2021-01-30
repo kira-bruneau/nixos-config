@@ -69,9 +69,9 @@
   # Enable flatpak
   services.flatpak.enable = true;
 
-  # Enable DConf
+  # Enable DConf & GNOME crypto services
   programs.dconf.enable = true;
-  services.dbus.packages = with pkgs; [ gnome3.dconf ];
+  services.dbus.packages = with pkgs; [ gcr gnome3.dconf ];
 
   # Disable bitmap fonts
   fonts.fontconfig.allowBitmaps = false;
