@@ -48,8 +48,11 @@
   # services.printing.enable = true;
 
   # Enable pipewire (sound & video)
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    media-session.enable = true;
+
     alsa.enable = true;
     jack.enable = true;
     pulse.enable = true;
