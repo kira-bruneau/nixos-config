@@ -8,6 +8,7 @@
     ../environment/hidpi.nix
     ../environment/colemak.nix
     ../environment/gaming.nix
+    ../user/builder.nix
     ../user/kira.nix
   ];
 
