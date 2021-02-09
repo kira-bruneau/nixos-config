@@ -11,8 +11,6 @@
 	autostash = true
 [diff]
 	algorithm = histogram
-[tag]
-	gpgsign = true
 [github]
 	user = MetaDark
 [url "git@gitlab.com:"]
