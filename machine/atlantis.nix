@@ -11,7 +11,13 @@
     ../user/kira.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    # KVM Virtualisation
+    kernelModules = [ "kvm-amd" ];
+    kernelParams = [ "amd_iommu=on" ];
+  };
 
   networking.hostName = "atlantis";
   networking.firewall.enable = false;
