@@ -11,6 +11,7 @@
          (objc-mode . lsp)
          (php-mode . lsp)
          (python-mode . lsp)
+         (ruby-mode . lsp)
          (rust-mode . lsp)
          (sh-mode . lsp)
          (typescript-mode . lsp)

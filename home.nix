@@ -43,6 +43,7 @@
           rnix-lsp
           rust-analyzer
           rustc
+          solargraph
           tectonic
           texlab
         ];
