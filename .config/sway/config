@@ -349,6 +349,7 @@ bar {
     for_window [title="Gmail (-|—) Mozilla Firefox"] move container to workspace $email
     for_window [title="Google Calendar (-|—) .* (-|—) Mozilla Firefox"] move container to workspace $email
     for_window [title="Mail (-|—) .* (-|—) Outlook (-|—) Mozilla Firefox"] move container to workspace $email
+    for_window [title="ProtonMail (-|—) Mozilla Firefox"] move container to workspace $email
 
     # Chat
     assign [class="^Caprine$"] $chat
