@@ -2,8 +2,8 @@
 
 {
   users.users.builder = {
-    uid = 1001;
-    shell = pkgs.bashInteractive;
+    isSystemUser = true;
+    useDefaultShell = true;
     createHome = true;
     home = "/home/builder";
   };
