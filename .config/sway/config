@@ -346,18 +346,18 @@ bar {
     # Email & Feeds
     assign [app_id="^geary$"] $email
     assign [app_id="^NewsFlashGTK$"] $email
-    for_window [title="Gmail (-|—) Mozilla Firefox"] move container to workspace $email
-    for_window [title="Google Calendar (-|—) .* (-|—) Mozilla Firefox"] move container to workspace $email
-    for_window [title="Mail (-|—) .* (-|—) Outlook (-|—) Mozilla Firefox"] move container to workspace $email
-    for_window [title="ProtonMail (-|—) Mozilla Firefox"] move container to workspace $email
+    for_window [app_id="^firefox$" title="^(Inbox - .*? - )?Gmail (-|—) Mozilla Firefox$"] move container to workspace $email
+    for_window [app_id="^firefox$" title="^Google Calendar - .*? (-|—) Mozilla Firefox$"] move container to workspace $email
+    for_window [app_id="^firefox$" title="^Mail - .*? - Outlook (-|—) Mozilla Firefox$"] move container to workspace $email
+    for_window [app_id="^firefox$" title="^(Login|Inbox \| .*?) \| ProtonMail (-|—) Mozilla Firefox$"] move container to workspace $email
 
     # Chat
     assign [class="^Caprine$"] $chat
     assign [class="^Slack$"] $chat
-    for_window [title="Slack .* (-|—) Mozilla Firefox"] move container to workspace $chat
+    for_window [app_id="^firefox$" title="^Slack (-|—) Mozilla Firefox$"] move container to workspace $chat
 #
 # Configure picture-in-picture
-    for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 0, move position 1340 722
+    for_window [app_id="^firefox$" title="^Picture-in-Picture$"] floating enable, sticky enable, border pixel 0, move position 1340 722
 #
 #
 # Power controls:
