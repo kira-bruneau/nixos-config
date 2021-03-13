@@ -352,7 +352,7 @@ bar {
     for_window [app_id="^firefox$" title="^(Login|Inbox \| .*?) \| ProtonMail (-|—) Mozilla Firefox$"] move container to workspace $email
 
     # Chat
-    assign [class="^Caprine$"] $chat
+    assign [app_id="^Caprine$"] $chat
     assign [class="^Slack$"] $chat
     for_window [app_id="^firefox$" title="^Slack (-|—) Mozilla Firefox$"] move container to workspace $chat
 #
