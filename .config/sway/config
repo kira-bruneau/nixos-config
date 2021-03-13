@@ -358,7 +358,7 @@ bar {
     for_window [app_id="^firefox$" title="^Slack (-|—) Mozilla Firefox$"] move container to workspace $chat
 #
 # Configure picture-in-picture
-    for_window [app_id="^firefox$" title="^Picture-in-Picture$"] floating enable, sticky enable, border pixel 0, move position 1340 722
+    for_window [app_id="^firefox$" title="^Picture-in-Picture$"] floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95
 #
 #
 # Power controls:
