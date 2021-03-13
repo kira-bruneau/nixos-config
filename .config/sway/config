@@ -324,9 +324,8 @@ bar {
     assign [class="^Google-chrome$"] $www # Remove when Ozone is used by default
 
     # Edit
-    # Emacs GTK3 fork: https://github.com/masm11/emacs
+    # Emacs GTK3 fork: https://git.savannah.gnu.org/cgit/emacs.git/log/?h=feature/pgtk
     assign [app_id="^emacs"] $edit
-    assign [class="^Emacs$"] $edit
 
     # Files
     assign [app_id="^org.qbittorrent.qBittorrent$"] $files
