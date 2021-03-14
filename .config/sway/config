@@ -320,8 +320,10 @@ bar {
     # WWW
     assign [app_id="^firefox$"] $www
     assign [app_id="^Chromium-browser$"] $www
-    assign [class="^Chromium-browser$"] $www # Remove when Ozone is used by default
-    assign [class="^Google-chrome$"] $www # Remove when Ozone is used by default
+    # Remove when Ozone is used by default
+    assign [class="^Chromium-browser$"] $www
+    # Remove when Ozone is used by default
+    assign [class="^Google-chrome$"] $www
 
     # Edit
     # Emacs GTK3 fork: https://git.savannah.gnu.org/cgit/emacs.git/log/?h=feature/pgtk
@@ -354,7 +356,8 @@ bar {
     # Chat
     assign [app_id="^Caprine$"] $chat
     assign [app_id="^Slack$"] $chat
-    assign [class="^Slack$"] $chat # Remove when Ozone is used by default
+    # Remove when Ozone is used by default
+    assign [class="^Slack$"] $chat
     for_window [app_id="^firefox$" title="^Slack (-|—) Mozilla Firefox$"] move container to workspace $chat
 #
 # Configure picture-in-picture
