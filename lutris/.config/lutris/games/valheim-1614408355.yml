@@ -1,4 +1,7 @@
 game:
   appid: '892970'
+  args: -force-glcore
 steam: {}
-system: {}
+system:
+  prelaunch_command: ''
+  prelaunch_wait: false
