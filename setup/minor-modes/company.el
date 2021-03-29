@@ -21,6 +21,3 @@
 
   :config
   (setq company-flx-limit 100))
-
-(use-package company-lsp
-  :straight t)
