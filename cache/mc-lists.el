@@ -41,6 +41,9 @@
         end-of-visual-line
         eval-last-sexp
         eval-print-last-sexp
+        evil-backward-word-begin
+        evil-delete-char
+        evil-first-non-blank
         fc-eval-and-replace
         forward-sexp
         indent-for-tab-command
@@ -82,6 +85,8 @@
         dired-do-flagged-delete
         dired-unmark-all-files
         dired-unmark-all-marks
+        evil-next-line
+        evil-previous-line
         ivy-switch-buffer
         kmacro-end-or-call-macro
         lsp-ui-doc-mode
