@@ -348,10 +348,10 @@ bar {
     # Email & Feeds
     assign [app_id="^geary$"] $email
     assign [app_id="^NewsFlashGTK$"] $email
-    for_window [app_id="^firefox$" title="^(Inbox - .*? - )?Gmail (-|—) Mozilla Firefox$"] move container to workspace $email
-    for_window [app_id="^firefox$" title="^Google Calendar - .*? (-|—) Mozilla Firefox$"] move container to workspace $email
-    for_window [app_id="^firefox$" title="^Mail - .*? - Outlook (-|—) Mozilla Firefox$"] move container to workspace $email
-    for_window [app_id="^firefox$" title="^(Login|Inbox \| .*?) \| ProtonMail (-|—) Mozilla Firefox$"] move container to workspace $email
+    for_window [app_id="^firefox$" title="https://mail.google.com"] move container to workspace $email
+    for_window [app_id="^firefox$" title="https://calendar.google.com"] move container to workspace $email
+    for_window [app_id="^firefox$" title="https://outlook.office.com"] move container to workspace $email
+    for_window [app_id="^firefox$" title="https://mail.protonmail.com"] move container to workspace $email
 
     # Chat
     assign [app_id="^Caprine$"] $chat
