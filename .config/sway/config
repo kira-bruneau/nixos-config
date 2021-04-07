@@ -304,7 +304,6 @@ bar {
         cursor-theme:gtk-cursor-theme-name
 
     exec --no-startup-id blueman-applet
-    exec --no-startup-id caprine
     exec --no-startup-id com.gitlab.newsflash
     exec --no-startup-id firefox
     exec --no-startup-id keepassxc
