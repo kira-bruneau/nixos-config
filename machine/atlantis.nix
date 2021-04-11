@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../environment/colemak.nix
     ../environment/desktop.nix
     ../environment/gaming.nix
     ../environment/hidpi.nix
