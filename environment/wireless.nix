@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  # Enable wireless support
+  # Enable wifi support
   networking.wireless.enable = true;
 
   # Enable bluetooth support

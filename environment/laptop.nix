@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./desktop.nix
     ./wireless.nix
   ];
 

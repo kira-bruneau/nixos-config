@@ -2,12 +2,10 @@
 
 {
   imports = [
-    ../environment/nur.nix
-    ../environment/cli.nix
-    ../environment/gui.nix
-    ../environment/hidpi.nix
     ../environment/colemak.nix
+    ../environment/desktop.nix
     ../environment/gaming.nix
+    ../environment/hidpi.nix
     ../environment/wireless.nix
     ../user/builder.nix
     ../user/kira.nix
@@ -37,22 +35,8 @@
     permitRootLogin = "no";
   };
 
-  # Enable pipewire (sound & video)
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    media-session.enable = true;
-
-    alsa.enable = true;
-    jack.enable = true;
-    pulse.enable = true;
-  };
-
   # Enable docker
   virtualisation.docker.enable = true;
-
-  # Disable power button
-  services.logind.extraConfig = "HandlePowerKey=ignore";
 
   # Android debugging
   programs.adb.enable = true;

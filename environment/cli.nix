@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./nur.nix
+  ];
+
   # Add home bin to PATH
   environment.homeBinInPath = true;
 

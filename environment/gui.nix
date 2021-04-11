@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./nur.nix ];
+  imports = [
+    ./nur.nix
+  ];
 
   # Services
   services.xserver = {
