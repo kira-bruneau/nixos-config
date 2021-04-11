@@ -37,7 +37,4 @@
 
   # Android debugging
   programs.adb.enable = true;
-
-  # Power management
-  services.upower.enable = true;
 }
