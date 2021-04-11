@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
+  imports = [
+    ./wireless.nix
+  ];
 
-  # Enable wireless support.
-  networking.wireless.enable = true;
+  # Enable touchpad support
+  services.xserver.libinput.enable = true;
 }

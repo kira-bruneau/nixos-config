@@ -8,6 +8,7 @@
     ../environment/hidpi.nix
     ../environment/colemak.nix
     ../environment/gaming.nix
+    ../environment/wireless.nix
     ../user/builder.nix
     ../user/kira.nix
   ];
@@ -23,14 +24,13 @@
 
   networking.hostName = "atlantis";
   networking.firewall.enable = false;
-  networking.wireless.enable = true;
 
   # Locale & Timezone
   i18n.defaultLocale = "en_CA.UTF-8";
   time.timeZone = "Canada/Eastern";
   services.localtime.enable = true;
 
-  # Enable the OpenSSH daemon.
+  # Enable the OpenSSH daemon
   services.openssh = {
     enable = true;
     passwordAuthentication = false;
@@ -46,21 +46,6 @@
     alsa.enable = true;
     jack.enable = true;
     pulse.enable = true;
-  };
-
-  # Enable bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-  services.bluetooth-autoconnect.enable = true;
-
-  # Enable bluetooth MPRIS proxy
-  systemd.user.services.mpris-proxy = {
-    description = "MPRIS proxy";
-    wantedBy = [ "default.target" ];
-    after = [ "network.target" "sound.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
-    };
   };
 
   # Enable docker
