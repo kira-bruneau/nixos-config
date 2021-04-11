@@ -5,6 +5,7 @@
     ../environment/desktop.nix
     ../environment/gaming.nix
     ../environment/hidpi.nix
+    ../environment/home.nix
     ../environment/ssh-server.nix
     ../environment/wireless.nix
     ../user/builder.nix
@@ -24,11 +25,6 @@
     hostName = "atlantis";
     firewall.enable = false;
   };
-
-  # Locale & Timezone
-  i18n.defaultLocale = "en_CA.UTF-8";
-  time.timeZone = "Canada/Eastern";
-  services.localtime.enable = true;
 
   # Android debugging
   programs.adb.enable = true;
