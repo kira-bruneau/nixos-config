@@ -30,22 +30,12 @@
   time.timeZone = "Canada/Eastern";
   services.localtime.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-
-  # List services that you want to enable:
-
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
     passwordAuthentication = false;
     permitRootLogin = "no";
   };
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # Enable pipewire (sound & video)
   security.rtkit.enable = true;
