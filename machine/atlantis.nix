@@ -19,8 +19,10 @@
     binfmt.emulatedSystems = [ "armv7l-linux" "aarch64-linux" ];
   };
 
-  networking.hostName = "atlantis";
-  networking.firewall.enable = false;
+  networking = {
+    hostName = "atlantis";
+    firewall.enable = false;
+  };
 
   # Locale & Timezone
   i18n.defaultLocale = "en_CA.UTF-8";
