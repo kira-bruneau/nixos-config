@@ -5,6 +5,7 @@
     ../environment/desktop.nix
     ../environment/gaming.nix
     ../environment/hidpi.nix
+    ../environment/ssh-server.nix
     ../environment/wireless.nix
     ../user/builder.nix
     ../user/kira.nix
@@ -28,13 +29,6 @@
   i18n.defaultLocale = "en_CA.UTF-8";
   time.timeZone = "Canada/Eastern";
   services.localtime.enable = true;
-
-  # Enable the OpenSSH daemon
-  services.openssh = {
-    enable = true;
-    passwordAuthentication = false;
-    permitRootLogin = "no";
-  };
 
   # Android debugging
   programs.adb.enable = true;
