@@ -82,23 +82,10 @@
   # Android debugging
   programs.adb.enable = true;
 
-  # Better driver for Xbox One controllers
-  hardware.xpadneo.enable = true;
-
   # Power management
   services.upower.enable = true;
 
   # Enable flatpak
   services.flatpak.enable = true;
   xdg.portal.enable = true;
-
-  # Set higher file limit for wine esync support
-  security.pam.loginLimits = [
-    {
-      domain = "*";
-      item = "nofile";
-      type = "-";
-      value = "524288";
-    }
-  ];
 }
