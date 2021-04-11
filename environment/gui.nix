@@ -68,9 +68,6 @@
     extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
   };
 
-  # Enable flatpak
-  services.flatpak.enable = true;
-
   # Enable DConf & GNOME crypto services
   programs.dconf.enable = true;
   services.dbus.packages = with pkgs; [ gcr gnome3.dconf ];

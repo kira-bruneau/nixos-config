@@ -35,16 +35,9 @@
     permitRootLogin = "no";
   };
 
-  # Enable docker
-  virtualisation.docker.enable = true;
-
   # Android debugging
   programs.adb.enable = true;
 
   # Power management
   services.upower.enable = true;
-
-  # Enable flatpak
-  services.flatpak.enable = true;
-  xdg.portal.enable = true;
 }
