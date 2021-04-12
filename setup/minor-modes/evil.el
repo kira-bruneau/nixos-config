@@ -159,6 +159,10 @@
   :init
   (evil-collection-init)
 
+  ;; Default to normal mode in shell-mode like in compilation-mode
+  ;; shell-mode derives from comint-mode which defaults to insert mode
+  (evil-set-initial-state 'shell-mode 'normal)
+
   ;; "j" -> "n" colemak remap conflicts with binding for next-error-no-select in compilation mode
   (dolist (keymap '(compilation-mode-map compilation-minor-mode-map))
     (evil-collection-define-key nil keymap
