@@ -31,8 +31,9 @@
       ("zL" . "zI")
       ("M-l" . "M-i")
       ("M-L" . "M-I")
-      ("C-l" . "C-i")
-      ("C-S-l" . "C-S-i")
+      ;; C-i is usually used for "TAB" bindings and shouldn't be remapped
+      ;; ("C-l" . "C-i")
+      ;; ("C-S-l" . "C-S-i")
       ;; Remap nei commands to their equivalent qwerty position (in colemak)
       ("n" . "k")
       ("N" . "K")
@@ -62,6 +63,9 @@
       ("zI" . "zU")
       ("M-i" . "M-u")
       ("M-I" . "M-U")
+      ;; C-u is the universal argument prefix key and shouldn't be remapped
+      ;; ("C-i" . "C-u")
+      ;; ("C-S-i" . "C-S-u")
       ;; Remap fu commands to their equivalent qwerty position (in colemak)
       ("f" . "t")
       ("F" . "T")
@@ -81,6 +85,9 @@
       ("zU" . "zL")
       ("M-u" . "M-l")
       ("M-U" . "M-L")
+      ;; Evil shouldn't have any commands mapped to C-u
+      ;; ("C-u" . "C-l")
+      ;; ("C-S-u" . "C-S-l")
       ;; Remap t to j (not qwerty equivalent, but the remaining key in the rotation)
       ("t" . "j")
       ("T" . "J")
