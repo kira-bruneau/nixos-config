@@ -157,4 +157,10 @@
   :straight t
   :after evil
   :init
-  (evil-collection-init))
+  (evil-collection-init)
+
+  ;; "j" -> "n" colemak remap conflicts with binding for next-error-no-select in compilation mode
+  (dolist (keymap '(compilation-mode-map compilation-minor-mode-map))
+    (evil-collection-define-key nil keymap
+      "p" nil
+      "j" nil)))
