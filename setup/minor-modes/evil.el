@@ -174,4 +174,9 @@
   (dolist (keymap '(compilation-mode-map compilation-minor-mode-map))
     (evil-collection-define-key nil keymap
       "p" nil
-      "j" nil)))
+      "j" nil))
+
+  ;; Undo "t" -> "j" mapping in rg-mode-map
+  (evil-collection-define-key 'normal 'rg-mode-map
+    "t" nil
+    "f" 'rg-rerun-change-literal))
