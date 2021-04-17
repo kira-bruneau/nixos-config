@@ -170,13 +170,18 @@
   ;; shell-mode derives from comint-mode which defaults to insert mode
   (evil-set-initial-state 'shell-mode 'normal)
 
-  ;; "j" -> "n" colemak remap conflicts with binding for next-error-no-select in compilation mode
-  (dolist (keymap '(compilation-mode-map compilation-minor-mode-map))
-    (evil-collection-define-key nil keymap
-      "p" nil
-      "j" nil))
+  ;; Workaround colemak remapping conflicts in compilation mode
+  (with-eval-after-load 'compile
+    (dolist (keymap '(compilation-mode-map compilation-minor-mode-map))
+      (evil-collection-define-key nil keymap
+        "p" nil
+        "j" nil)))
 
-  ;; Undo "t" -> "j" mapping in rg-mode-map
-  (evil-collection-define-key 'normal 'rg-mode-map
-    "t" nil
-    "f" 'rg-rerun-change-literal))
+  ;; Workaround colemak remapping conflicts in rg mode
+  (with-eval-after-load 'rg
+    (evil-collection-define-key 'normal 'rg-mode-map
+      "f" 'rg-rerun-change-literal
+      "p" 'rg-rerun-change-files
+      "t" nil)
+
+    (transient-suffix-put 'rg-menu 'rg-rerun-change-files--transient :key "p")))
