@@ -34,8 +34,8 @@
         greeters.webkit2 = {
           enable = true;
           webkitTheme = fetchTarball {
-            url = "https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases/download/v3.0.0/lightdm-webkit-theme-litarvan-3.0.0.tar.gz";
-            sha256 = "0q0r040vxg1nl51wb3z3r0pl7ymhyhp1lbn2ggg7v3pa563m4rrv";
+            url = "https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases/download/v3.2.0/lightdm-webkit-theme-litarvan-3.2.0.tar.gz";
+            sha256 = "sha256-TfNhwM8xVAEWQa5bBdv8WlmE3Q9AkpworEDDGsLbR4I=";
           };
           branding.backgroundImages = "${pkgs.gnome3.gnome-backgrounds}/share/backgrounds/gnome";
         };
