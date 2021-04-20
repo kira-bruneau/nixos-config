@@ -2,16 +2,14 @@
 
 {
   home.packages = with pkgs; with nur.repos.metadark; let
-    wineWowStagingFull = wineWowPackages.full.override {
-      wineRelease = "staging";
-    };
+    wineWowStaging = wineWowPackages.staging;
   in [
     # Games & Launchers
     bcml
     clonehero # unfree
     (lutris.override { # unfreeRedistributable with steamSupport = true
       lutris-unwrapped = lutris-unwrapped.override {
-        wine = wineWowStagingFull;
+        wine = wineWowStaging;
       };
     })
     multimc
@@ -31,8 +29,8 @@
     # Emulators
     dolphinEmuMaster
     mupen64plus
-    wineWowStagingFull
-    (winetricks.override { wine = wineWowStagingFull; })
+    wineWowStaging
+    (winetricks.override { wine = wineWowStaging; })
 
     # Controllers
     xwiimote
