@@ -76,7 +76,12 @@
                (mapcar
                 (lambda (exclude) (string-join `("-E" ,exclude) " "))
                 (append projectile-globally-ignored-files projectile-globally-ignored-directories))
-               (list (concat "--ignore-file " (expand-file-name ".gitignore_global" (getenv "HOME")))))))
+               (let ((ignore-file (string-trim (shell-command-to-string "git config core.excludesfile"))))
+                 (when (not (string-empty-p ignore-file))
+                   (list
+                    (concat
+                     "--ignore-file "
+                     (expand-file-name ignore-file (getenv "HOME")))))))))
            (counsel-fzf-cmd
             (string-join `("fd -H" ,(string-join global-ignores " ")  "|" "fzf -f \"%s\"") " ")))
       (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: "))))
