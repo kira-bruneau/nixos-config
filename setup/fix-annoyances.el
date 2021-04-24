@@ -59,9 +59,6 @@
 (setq history-length t)
 (setq history-delete-duplicates t)
 
-;; Use interactive shell for access to bash aliases and functions
-(setq shell-command-switch "-ic")
-
 ;; Don't require final newline for specific files
 (defun no-final-newline ()
   (dolist (regexp '("\\.csproj\\'"
