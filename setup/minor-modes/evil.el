@@ -177,6 +177,13 @@
         "p" nil
         "j" nil)))
 
+  ;; Workaround colemak remapping conflicts in Info-mode
+  (with-eval-after-load 'info
+    (evil-collection-define-key nil 'Info-mode-map
+      "j" nil
+      "k" nil
+      "F" nil))
+
   ;; Workaround colemak remapping conflicts in rg mode
   (with-eval-after-load 'rg
     (evil-collection-define-key 'normal 'rg-mode-map
