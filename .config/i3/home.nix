@@ -14,10 +14,10 @@
   # };
 
   home.packages = with pkgs; with nur.repos.metadark; [
+    brightnessctl
     dunst # TODO: Run as service
     feh # TODO: Use services.random-background instead
     font-awesome_5
-    brightnessctl
     pavucontrol
     polybarFull # TODO: Run as service
     python3
