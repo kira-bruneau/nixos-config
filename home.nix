@@ -30,7 +30,6 @@
           libnotify
           nodejs
           nodePackages.bash-language-server
-          nodePackages.typescript
           nodePackages.typescript-language-server
           omnisharp-roslyn
           pandoc
