@@ -96,9 +96,14 @@
     historyControl = [ "ignoredups" ];
 
     initExtra = ''
-      trap 'history -a' DEBUG            # Immediately append commands to history
-      export PROMPT_COMMAND='history -n' # Read unread history at every prompt
-      stty -ixon                         # Fix forward history searching
+      # Immediately append commands to history
+      trap 'history -a' DEBUG
+
+      # Read unread history at every prompt
+      export PROMPT_COMMAND='history -n''\'''${PROMPT_COMMAND:+';'}$PROMPT_COMMAND
+
+      # Fix forward history searching
+      stty -ixon
     '';
 
     shellAliases = {
