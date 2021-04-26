@@ -29,14 +29,6 @@
           (multi-term)
           (rename-buffer buffer-name)))))
 
-  ;; Don't hide currently opened project when using projectile-switch-project
-  ;; Source: https://github.com/bbatsov/projectile/issues/1016
-  (defun projectile-relevant-known-projects ()
-    projectile-known-projects)
-
-  (defun projectile-relevant-open-projects ()
-    (projectile-open-projects))
-
   ;; Source: https://github.com/bbatsov/projectile/issues/1637#issuecomment-812478103
   ;; Should be deleted when merged into projectile
   (defvar savehist-additional-variables)
