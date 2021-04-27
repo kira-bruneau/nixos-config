@@ -1,5 +1,9 @@
 # Read `man 5 sway` for a complete reference.
 
+# Workaround WAYLAND_DISPLAY regression in sway 1.6
+# https://github.com/NixOS/nixpkgs/issues/119445#issuecomment-820507505
+exec dbus-update-activation-environment WAYLAND_DISPLAY
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
