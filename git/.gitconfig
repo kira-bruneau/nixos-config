@@ -7,10 +7,14 @@
 	whitespace = cr-at-eol
 [push]
 	default = simple
+[pull]
+	rebase = merges
 [rebase]
 	autostash = true
 [diff]
 	algorithm = histogram
+[gitlab]
+	user = MetaDark
 [github]
 	user = MetaDark
 [url "git@gitlab.com:"]
@@ -19,15 +23,3 @@
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
 	pushInsteadOf = git://github.com/
-[sendemail]
-	smtpEncryption = tls
-	smtpServer = smtp.gmail.com
-	smtpUser = kira.bruneau@gmail.com
-	smtpServerPort = 587
-	# ibwftyxokayfmwdx
-[gitlab]
-	user = MetaDark
-[pull]
-	rebase = merges
-[rebase]
-	autostash = true
