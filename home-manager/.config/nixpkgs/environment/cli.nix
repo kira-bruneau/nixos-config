@@ -116,7 +116,10 @@
   };
 
   # Direnv
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableNixDirenvIntegration = true;
+  };
 
   # Enable gpg & gpg agent
   programs.gpg.enable = true;
