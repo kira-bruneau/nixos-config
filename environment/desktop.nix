@@ -19,8 +19,11 @@
       fi
     '';
 
-    systemPackages = with pkgs; [
+    systemPackages = with pkgs; with pkgs.nur.repos.metadark; [
       sudo
+      (themes.sddm.clairvoyance.override {
+        autoFocusPassword = true;
+      })
     ];
   };
 
@@ -29,16 +32,9 @@
     enable = true;
     displayManager = {
       defaultSession = "sway";
-      lightdm = {
+      sddm = {
         enable = true;
-        greeters.webkit2 = {
-          enable = true;
-          webkitTheme = fetchTarball {
-            url = "https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases/download/v3.2.0/lightdm-webkit-theme-litarvan-3.2.0.tar.gz";
-            sha256 = "sha256-TfNhwM8xVAEWQa5bBdv8WlmE3Q9AkpworEDDGsLbR4I=";
-          };
-          branding.backgroundImages = "${pkgs.gnome3.gnome-backgrounds}/share/backgrounds/gnome";
-        };
+        theme = "clairvoyance";
       };
     };
   };
