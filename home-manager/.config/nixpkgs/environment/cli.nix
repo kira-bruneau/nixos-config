@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../../../emacs/.emacs.d/home.nix
+    ../../../../emacs/.config/emacs/home.nix
   ];
 
   # Packages

@@ -1,5 +1,5 @@
 [submodule "emacs"]
-	path = emacs/.emacs.d
+	path = emacs/.config/emacs
 	url = https://gitlab.com/MetaDark/emacs.git
 
 [submodule "i3"]
