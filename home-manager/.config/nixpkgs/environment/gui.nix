@@ -37,6 +37,7 @@
     mpv
     qbittorrent
     sqlitebrowser
+    xournalpp
     zynaddsubfx
 
     # Remote Desktop
