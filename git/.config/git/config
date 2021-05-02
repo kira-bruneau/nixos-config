@@ -3,7 +3,7 @@
 	name = Kira Bruneau
 	signingKey = 1176DC0CE57E804C7038A3A0FD0452E7FE574C0E
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.config/git/gitignore
 	whitespace = cr-at-eol
 [push]
 	default = simple
