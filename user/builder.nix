@@ -9,4 +9,5 @@
   };
 
   nix.trustedUsers = [ "builder" ];
+  services.xserver.displayManager.hiddenUsers = [ "builder" ];
 }
