@@ -24,7 +24,7 @@
     slack
 
     # Media & Documents
-    audacity-gtk3
+    audacity
     blender
     evince
     gimp
