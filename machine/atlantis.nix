@@ -28,4 +28,7 @@
 
   # Android debugging
   programs.adb.enable = true;
+
+  # Automatically hard-link duplicate files in /nix/store
+  nix.autoOptimiseStore = true;
 }
