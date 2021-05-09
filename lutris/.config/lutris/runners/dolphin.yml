@@ -6,6 +6,7 @@ system:
   env:
     QT_AUTO_SCREEN_SCALE_FACTOR: '1'
     QT_QPA_PLATFORM: xcb
+    MANGOHUD_CONFIGFILE: /home/kira/.config/MangoHud/MangoHud-HiDPI.conf
   postexit_command: /home/kira/bin/scale-up
   prelaunch_command: /home/kira/bin/scale-down
   prelaunch_wait: true

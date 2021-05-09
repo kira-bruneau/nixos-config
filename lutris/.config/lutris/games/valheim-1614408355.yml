@@ -2,5 +2,7 @@ game:
   appid: '892970'
 steam: {}
 system:
+  env:
+    MANGOHUD_CONFIGFILE: '/home/kira/.config/MangoHud/MangoHud.conf'
   prelaunch_command: ''
   prelaunch_wait: false

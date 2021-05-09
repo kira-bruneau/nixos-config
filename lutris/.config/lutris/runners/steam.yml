@@ -1,5 +1,7 @@
 steam:
   quit_steam_on_exit: false
 system:
+  env:
+    MANGOHUD_CONFIGFILE: /home/kira/.config/MangoHud/MangoHud-HiDPI.conf
   prelaunch_command: /home/kira/bin/scale-down
   prelaunch_wait: true

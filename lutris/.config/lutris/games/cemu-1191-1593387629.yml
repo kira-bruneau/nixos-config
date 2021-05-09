@@ -8,6 +8,7 @@ system:
     __GL_THREADED_OPTIMIZATIONS: '1'
     mesa_glthread: 'true'
     vblank_mode: '0'
+    MANGOHUD_CONFIGFILE: '/home/kira/.config/MangoHud/MangoHud.conf'
   postexit_command: ''
   prelaunch_command: ''
   prelaunch_wait: false

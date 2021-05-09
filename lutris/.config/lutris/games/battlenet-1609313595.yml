@@ -2,6 +2,8 @@ game:
   exe: Battle.net Launcher.exe
   prefix: /home/kira/Games/Battle.net
 system:
+  env:
+    MANGOHUD_CONFIGFILE: '/home/kira/.config/MangoHud/MangoHud.conf'
   postexit_command: ''
   prelaunch_command: ''
   prelaunch_wait: false

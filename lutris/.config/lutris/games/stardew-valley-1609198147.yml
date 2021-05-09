@@ -2,6 +2,8 @@ game:
   appid: '413150'
 steam: {}
 system:
+  env:
+    MANGOHUD_CONFIGFILE: '/home/kira/.config/MangoHud/MangoHud.conf'
   postexit_command: ''
   prelaunch_command: ''
   prelaunch_wait: false
