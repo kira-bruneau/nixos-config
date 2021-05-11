@@ -7,5 +7,5 @@
     xkbOptions = "grp:win_space_toggle";
   };
 
-  console.useXkbConfig = true;
+  console.keyMap = ./colemak.map;
 }
