@@ -43,6 +43,7 @@
 
     # Overlay / Post-processing
     goverlay
+    mangohud
     vkBasalt
   ];
 }
