@@ -1,0 +1,14 @@
+[remote "gitlab"]
+	url = https://gitlab.com/MetaDark/emacs-config.git
+	fetch = +refs/heads/*:refs/remotes/gitlab/*
+	fetch = +refs/merge-requests/*/head:refs/pullreqs/*
+[remote "github"]
+	url = https://github.com/MetaDark/emacs-config.git
+	fetch = +refs/heads/*:refs/remotes/github/*
+[remote "all"]
+	url = https://gitlab.com/MetaDark/emacs-config.git
+	fetch = +refs/heads/*:refs/remotes/all/*
+	pushurl = git@gitlab.com:MetaDark/emacs-config.git
+	pushurl = git@github.com:MetaDark/emacs-config.git
+[remote]
+	pushDefault = all
