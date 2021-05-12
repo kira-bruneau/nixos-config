@@ -51,6 +51,7 @@ in runCommand
       makeWrapper "${emacs}/bin/$bin" "$out/bin/$bin" \
         --prefix NIX_PROFILES ' ' "${profile}" \
         --prefix PATH : "${profile}/bin" \
+        --run 'if [ -e $HOME/.profile ]; then . $HOME/.profile; fi' \
         ${lib.concatStringsSep " " makeWrapperArgs}
     done
 
