@@ -89,7 +89,7 @@
 
   # Enable DConf & GNOME crypto services
   programs.dconf.enable = true;
-  services.dbus.packages = with pkgs; [ gcr gnome3.dconf ];
+  services.dbus.packages = with pkgs; [ gcr gnome.dconf ];
 
   # Disable bitmap fonts
   fonts.fontconfig.allowBitmaps = false;
