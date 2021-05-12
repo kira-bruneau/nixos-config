@@ -20,7 +20,6 @@
     '';
 
     systemPackages = with pkgs; with pkgs.nur.repos.metadark; [
-      sudo
       (themes.sddm.clairvoyance.override {
         autoFocusPassword = true;
       })
