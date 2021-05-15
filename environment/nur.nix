@@ -5,10 +5,19 @@ let
     inherit pkgs;
   };
 in rec {
-  imports = [
+  disabledModules = [
+    "hardware/xpadneo.nix"
+    "programs/bash/undistract-me.nix"
+    "services/video/replay-sorcery.nix"
+  ];
+
+  imports = with nur.repos.metadark.modules; [
     ../cachix.nix
-    nur.repos.metadark.modules.bluetooth-autoconnect
-    nur.repos.metadark.modules.lightdm-webkit2-greeter
+    bluetooth-autoconnect
+    lightdm-webkit2-greeter
+    replay-sorcery
+    undistract-me
+    xpadneo
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
