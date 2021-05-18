@@ -8,12 +8,14 @@ in rec {
   disabledModules = [
     "hardware/xpadneo.nix"
     "programs/bash/undistract-me.nix"
+    "programs/gamemode.nix"
     "services/video/replay-sorcery.nix"
   ];
 
   imports = with nur.repos.metadark.modules; [
     ../cachix.nix
     bluetooth-autoconnect
+    gamemode
     lightdm-webkit2-greeter
     replay-sorcery
     undistract-me
