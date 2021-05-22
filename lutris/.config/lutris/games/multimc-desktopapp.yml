@@ -2,4 +2,5 @@ game:
   appid: multimc
   exe: multimc
 linux: {}
-system: {}
+system:
+  gamemode: false

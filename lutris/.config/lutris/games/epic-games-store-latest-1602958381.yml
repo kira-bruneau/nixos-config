@@ -4,7 +4,8 @@ game:
   prefix: /home/kira/Games/Epic Games Store
 system:
   env:
-    MANGOHUD_CONFIGFILE: '/home/kira/.config/MangoHud/MangoHud.conf'
+    MANGOHUD_CONFIGFILE: /home/kira/.config/MangoHud/MangoHud.conf
+  gamemode: false
   postexit_command: ''
   prelaunch_command: ''
   prelaunch_wait: false
