@@ -14,9 +14,9 @@
 [diff]
 	algorithm = histogram
 [gitlab]
-	user = MetaDark
+	user = kira-bruneau
 [github]
-	user = MetaDark
+	user = kira-bruneau
 [url "git@gitlab.com:"]
 	pushInsteadOf = https://gitlab.com/
 	pushInsteadOf = git://gitlab.com/
