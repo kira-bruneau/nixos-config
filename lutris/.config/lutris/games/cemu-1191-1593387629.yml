@@ -10,9 +10,7 @@ system:
     mesa_glthread: 'true'
     vblank_mode: '0'
   gamemode: false
-  postexit_command: ''
-  prelaunch_command: ''
-  prelaunch_wait: false
+  prefix_command: ''
 wine:
   overrides:
     dbghelp: native,builtin
