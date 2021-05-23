@@ -1,4 +1,5 @@
 game:
   exe: pokemmo-installer
 linux: {}
-system: {}
+system:
+  prefix_command: env MANGOHUD_DLSYM=1 mangohud

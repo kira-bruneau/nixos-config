@@ -2,4 +2,5 @@ game:
   appid: runescape-launcher
   exe: runescape-launcher
 linux: {}
-system: {}
+system:
+  prefix_command: mangohud

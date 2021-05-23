@@ -3,4 +3,4 @@ game:
   exe: clonehero
 linux: {}
 system:
-  prefix_command: wrap-scale-off
+  prefix_command: wrap-scale-off env MANGOHUD_DLSYM=1 mangohud
