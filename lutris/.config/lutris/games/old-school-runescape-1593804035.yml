@@ -4,5 +4,4 @@ linux: {}
 system:
   env:
     GDK_SCALE: '2'
-    MANGOHUD_CONFIGFILE: /home/kira/.config/MangoHud/MangoHud-HiDPI.conf
   prefix_command: wrap-scale-off

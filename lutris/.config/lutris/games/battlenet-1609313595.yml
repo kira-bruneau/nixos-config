@@ -3,7 +3,6 @@ game:
   prefix: /home/kira/Games/Battle.net
 system:
   env:
-    MANGOHUD_CONFIGFILE: /home/kira/.config/MangoHud/MangoHud.conf
   gamemode: false
   prefix_command: ''
 wine: {}

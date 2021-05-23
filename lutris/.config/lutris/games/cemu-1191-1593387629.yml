@@ -4,7 +4,6 @@ game:
 system:
   disable_compositor: true
   env:
-    MANGOHUD_CONFIGFILE: /home/kira/.config/MangoHud/MangoHud.conf
     R600_DEBUG: nohyperz
     __GL_THREADED_OPTIMIZATIONS: '1'
     mesa_glthread: 'true'

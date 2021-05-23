@@ -2,7 +2,5 @@ game:
   exe: VirtualVillagers.exe
   prefix: /home/kira/Games/Virtual Villagers A New Home
 system:
-  env:
-    MANGOHUD_CONFIGFILE: /home/kira/.config/MangoHud/MangoHud.conf
   prefix_command: ''
 wine: {}

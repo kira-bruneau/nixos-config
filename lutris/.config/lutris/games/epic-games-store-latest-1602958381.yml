@@ -3,8 +3,6 @@ game:
   exe: EpicGamesLauncher.exe
   prefix: /home/kira/Games/Epic Games Store
 system:
-  env:
-    MANGOHUD_CONFIGFILE: /home/kira/.config/MangoHud/MangoHud.conf
   gamemode: false
   prefix_command: ''
 wine: {}
