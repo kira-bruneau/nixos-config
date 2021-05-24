@@ -5,6 +5,9 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 
+;; Maximize window
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Theme
 (use-package doom-themes
   :straight t
