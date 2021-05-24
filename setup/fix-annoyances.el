@@ -67,3 +67,8 @@
       (setq require-final-newline nil))))
 
 (add-hook #'find-file-hook #'no-final-newline)
+
+;; Use command modifier for meta on macOS
+(when (eq system-type 'darwin)
+  (setq mac-option-modifier 'nil)
+  (setq mac-command-modifier 'meta))
