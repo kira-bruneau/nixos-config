@@ -1,0 +1,83 @@
+{
+  "nodes": {
+    "emacs-overlay": {
+      "locked": {
+        "lastModified": 1624813630,
+        "narHash": "sha256-LBS2GuRX5G7Mpv/+kBx4zWhIO11cwb+U80Od42FppkI=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "f2ec87b0af1694a7e93fa539d7c73a4087324d33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1623875721,
+        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "my-nur": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1624824431,
+        "narHash": "sha256-V4a50up/GpwRMSyUBr+eB5cjL7nRi3fqcGV8A/btqaM=",
+        "owner": "kira-bruneau",
+        "repo": "nur-packages",
+        "rev": "5430186288deb86ee3ad3a339ccd071545484b77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kira-bruneau",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1624668028,
+        "narHash": "sha256-FUxvXMBPQ5jrGhS47jwBFZQte0yDkMCBI5M24mJi5X0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e85975942742a3728226ac22a3415f2355bfc897",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "emacs-overlay": "emacs-overlay",
+        "flake-utils": "flake-utils",
+        "my-nur": "my-nur",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
