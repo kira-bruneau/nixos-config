@@ -21,6 +21,7 @@ callPackage ./wrapper.nix {
       ccls
       cmake
       diffutils
+      direnv
       fd
       fzf
       gcc
