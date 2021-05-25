@@ -2,8 +2,7 @@
   :straight t
   :ensure-system-package
   ((npm . npm)
-   (npm . nodejs)
-   (intelephense . "npm i -g intelephense"))
+   (npm . nodejs))
   :mode ("\\.html?\\'"
          "\\.vue\\'"
          "\\.tsx\\'")
