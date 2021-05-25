@@ -5,7 +5,8 @@
    (npm . nodejs)
    (intelephense . "npm i -g intelephense"))
   :mode ("\\.html?\\'"
-         "\\.vue\\'")
+         "\\.vue\\'"
+         "\\.tsx\\'")
   :bind (:map web-mode-map
               ("C-c C-o" . browse-url-of-file))
   :init
