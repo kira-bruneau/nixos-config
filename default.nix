@@ -31,6 +31,7 @@ callPackage ./wrapper.nix {
       libnotify
       nodejs
       nodePackages.bash-language-server
+      nodePackages.prettier
       nodePackages.typescript
       nodePackages.typescript-language-server
       pandoc

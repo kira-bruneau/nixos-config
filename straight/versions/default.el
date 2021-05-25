@@ -85,6 +85,7 @@
  ("posframe" . "739d8fd1081bdd0d20dee9e437d64df58747b871")
  ("powerline" . "346de84be53cae3663b4e2512222c279933846d4")
  ("powershell.el" . "d1b3f95669343399f199f291ef76c09a0ede5e60")
+ ("prettier-emacs" . "e9b73e81d3e1642aec682195f127a42dfb0b5774")
  ("project" . "4072f35d85bf0a1c669329d66633e4819f497c1c")
  ("projectile" . "b63d03532b0efe536ed140d57bbdf150e37cc64c")
  ("queue" . "130c2d656cd5d7376552272fab9e50a7c37d0c4a")
