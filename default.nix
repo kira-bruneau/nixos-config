@@ -3,7 +3,11 @@
 with pkgs;
 
 callPackage ./wrapper.nix {
-  emacs = emacsPgtkGcc;
+  emacs =
+    if stdenv.hostPlatform.isDarwin
+    then emacsGcc
+    else emacsPgtkGcc;
+
   profile = buildEnv {
     name = "emacs-profile";
     paths = [
@@ -12,12 +16,10 @@ callPackage ./wrapper.nix {
         en-computers
         en-science
       ]))
-      bear
       cargo
       cargo-edit
       ccls
       cmake
-      cmake-language-server
       diffutils
       fd
       fzf
@@ -25,12 +27,10 @@ callPackage ./wrapper.nix {
       gdb
       git
       imagemagick
-      jdk
       libnotify
       nodejs
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
-      omnisharp-roslyn
       pandoc
       perl
       (python3.withPackages (ps: with ps; [
@@ -42,8 +42,14 @@ callPackage ./wrapper.nix {
       rust-analyzer
       rustc
       solargraph
-      tectonic
       texlab
+    ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+      # Currently doesn't built on Darwin
+      bear
+      cmake-language-server
+      jdk
+      omnisharp-roslyn
+      tectonic
     ];
   };
 }
