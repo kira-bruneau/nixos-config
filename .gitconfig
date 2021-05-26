@@ -1,3 +1,4 @@
+# git config include.../.gitconfig
 [remote "gitlab"]
 	url = https://gitlab.com/MetaDark/emacs-config.git
 	fetch = +refs/heads/*:refs/remotes/gitlab/*
