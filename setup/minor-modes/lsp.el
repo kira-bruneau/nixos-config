@@ -24,6 +24,10 @@
   (setq lsp-prefer-flymake nil)
   (setq lsp-response-timeout 1.0e+INF)
 
+  ;; Use typescript-language-server & tsserver from PATH
+  (lsp-dependency 'typescript-language-server `(:system ,(executable-find "typescript-language-server")))
+  (lsp-dependency 'typescript `(:system ,(executable-find "tsserver")))
+
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection "rnix-lsp")
                     :major-modes '(nix-mode)
