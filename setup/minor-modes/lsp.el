@@ -19,10 +19,10 @@
   :bind (:map lsp-mode-map
               ("C-r" . lsp-rename))
   :config
+  (setq lsp-eldoc-enable-hover nil)
   (setq lsp-enable-file-watchers nil) ;; file watchers cause emacs to hang on large projects
   (setq lsp-enable-snippet nil)
-  (setq lsp-prefer-flymake nil)
-  (setq lsp-response-timeout 1.0e+INF)
+  (setq lsp-response-timeout 1.0e+INF) ;; can always ctrl+g my way out of this
 
   ;; Use typescript-language-server & tsserver from PATH
   (lsp-dependency 'typescript-language-server `(:system ,(executable-find "typescript-language-server")))
