@@ -1,0 +1,64 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1623875721,
+        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "my-nur": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1624133416,
+        "narHash": "sha256-n9Ux5QJvPoSgh2s3YZRS5DzbzSaVhQrQM+ZDUauvRNI=",
+        "owner": "kira-bruneau",
+        "repo": "nur-packages",
+        "rev": "bcd6b65e9929ebf3703b1542079cbf532d1e4751",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kira-bruneau",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1623580589,
+        "narHash": "sha256-Ayp1cjXpwFCkAiWUE46rj9APTltsiEBdIs2+cj+U7+c=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fa0326ce5233f7d592271df52c9d0812bec47b84",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "my-nur": "my-nur",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

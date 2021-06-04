@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./nur.nix
-  ];
-
   environment = {
     # Add home bin to PATH
     homeBinInPath = true;
@@ -19,7 +15,7 @@
       fi
     '';
 
-    systemPackages = with pkgs; with pkgs.nur.repos.metadark; [
+    systemPackages = with pkgs; [
       (themes.sddm.clairvoyance.override {
         autoFocusPassword = true;
       })
