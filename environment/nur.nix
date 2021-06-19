@@ -14,7 +14,6 @@ in rec {
 
   imports = with nur.repos.metadark.modules; [
     ../cachix.nix
-    bluetooth-autoconnect
     gamemode
     lightdm-webkit2-greeter
     replay-sorcery

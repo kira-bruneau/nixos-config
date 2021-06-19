@@ -7,7 +7,6 @@
   # Enable bluetooth support
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-  services.bluetooth-autoconnect.enable = true;
 
   # Enable bluetooth MPRIS proxy
   systemd.user.services.mpris-proxy = {
