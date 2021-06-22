@@ -83,7 +83,7 @@
   (setq powerline-display-buffer-size nil))
 
 ;; Font (current frame + future frames)
-(let ((font "DejaVu Sans Mono 9"))
+(let ((font (if (eq system-type 'darwin) "Monaco 12" "DejaVu Sans Mono 9")))
   (set-frame-font font)
   (add-to-list 'default-frame-alist (cons 'font font)))
 
