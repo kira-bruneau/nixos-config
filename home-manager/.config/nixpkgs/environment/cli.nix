@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../../../../emacs/.config/emacs/home.nix
-  ];
-
   # Packages
   home.packages = with pkgs; with nur.repos.metadark; [
     # Administration
