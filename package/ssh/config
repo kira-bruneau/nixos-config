@@ -11,11 +11,3 @@ Host rock64
      User kira
      HostName 23.233.24.136
      Port 2222
-
-Host work-ubuntu
-     User kbruneau
-     HostName 10.82.4.136
-
-HOST work-linux-ami
-     User ec2-user
-     HostName 10.250.18.137
