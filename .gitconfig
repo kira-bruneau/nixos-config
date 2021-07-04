@@ -1,4 +1,4 @@
-# git config include.../.gitconfig
+# git config include.path ../.gitconfig
 [remote "gitlab"]
 	url = https://gitlab.com/kira-bruneau/emacs-config.git
 	fetch = +refs/heads/*:refs/remotes/gitlab/*
