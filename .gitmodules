@@ -2,10 +2,6 @@
 	path = emacs/.config/emacs
 	url = https://gitlab.com/kira-bruneau/emacs.git
 
-[submodule "waybar"]
-	path = waybar/.config/waybar
-	url = https://gitlab.com/kira-bruneau/waybar-config.git
-
 [submodule "rofi"]
 	path = rofi/.config/rofi
 	url = https://gitlab.com/kira-bruneau/rofi-config.git
