@@ -1,8 +1,3 @@
 [submodule "emacs"]
 	path = emacs/.config/emacs
 	url = https://gitlab.com/kira-bruneau/emacs.git
-
-[submodule "rofi"]
-	path = rofi/.config/rofi
-	url = https://gitlab.com/kira-bruneau/rofi-config.git
-
