@@ -1,0 +1,384 @@
+# Read `man 5 sway` for a complete reference.
+
+# Workaround WAYLAND_DISPLAY regression in sway 1.6
+# https://github.com/NixOS/nixpkgs/issues/119445#issuecomment-820507505
+exec dbus-update-activation-environment WAYLAND_DISPLAY
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down n
+set $up e
+set $right i
+# Your preferred terminal emulator
+set $term alacritty
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu rofi -modi drun -show drun -matching fuzzy # | xargs swaymsg exec --
+
+### Output configuration
+#
+# Default wallpaper
+#output * bg ~/.config/sway/backgrounds/Sway_Wallpaper_Blue_1920x1080.png fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output * bg `random-wallpaper` fill
+#output "Sharp Corporation 0x1453 0x00000000" pos 0,0
+output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 0,0
+
+bindsym $mod+equal exec scale-on
+bindsym $mod+minus exec scale-off
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+input * xkb_layout "us,us"
+input * xkb_variant "colemak,"
+input * xkb_options "grp:win_space_toggle"
+
+input type:touchpad {
+    natural_scroll enabled
+    tap enabled
+    scroll_factor 0.5
+}
+
+### Key bindings
+#
+# Basics:
+#
+    # System font
+    font pango:cantarell 10
+
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+q kill
+
+    # Start your launcher
+    bindsym $mod+a exec $menu
+    bindsym $mod+x exec rofi -modi run -show run -matching fuzzy
+    bindsym $mod+w exec rofi -modi window -show window -matching fuzzy
+    Bindsym $mod+c exec rofi -modi ssh -show ssh -matching fuzzy
+    bindsym $mod+m exec rofi -modi emoji -show emoji
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    default_border pixel 2
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    set $www 1
+    set $edit 2
+    set $term 3
+    set $files 4
+    set $media 5
+    set $games 6
+    set $remote 8
+    set $email 9
+    set $chat 10
+
+    # Switch to workspace
+    bindsym $mod+1 workspace $www
+    bindsym $mod+2 workspace $edit
+    bindsym $mod+3 workspace $term
+    bindsym $mod+4 workspace $files
+    bindsym $mod+5 workspace $media
+    bindsym $mod+6 workspace $games
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace $remote
+    bindsym $mod+9 workspace $email
+    bindsym $mod+0 workspace $chat
+
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace $www
+    bindsym $mod+Shift+2 move container to workspace $edit
+    bindsym $mod+Shift+3 move container to workspace $term
+    bindsym $mod+Shift+4 move container to workspace $files
+    bindsym $mod+Shift+5 move container to workspace $media
+    bindsym $mod+Shift+6 move container to workspace $games
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace $remote
+    bindsym $mod+Shift+9 move container to workspace $email
+    bindsym $mod+Shift+0 move container to workspace $chat
+
+    # Move workspace to monitor
+    bindsym $mod+Control+Shift+$left move workspace to output left
+    bindsym $mod+Control+Shift+$down move workspace to output down
+    bindsym $mod+Control+Shift+$up move workspace to output up
+    bindsym $mod+Control+Shift+$right move workspace to output right
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+t layout tabbed
+    bindsym $mod+p layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+f floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+Control+f focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+comma focus parent
+
+    # Move focus to the child container
+    bindsym $mod+period focus child
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+slash move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+slash scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#
+# Status Bar:
+#
+bar {
+    swaybar_command waybar
+}
+
+#
+# Screenshot:
+#
+    bindsym Print exec --no-startup-id \
+      grim - | wl-copy & \
+      (play /home/kira/.nix-profile/share/sounds/freedesktop/stereo/screen-capture.oga || \
+       play /usr/share/sounds/freedesktop/stereo/screen-capture.oga)
+
+    bindsym Ctrl+Print exec --no-startup-id \
+      grim -g "$(slurp)" - | wl-copy & \
+      (play /home/kira/.nix-profile/share/sounds/freedesktop/stereo/screen-capture.oga || \
+       play /usr/share/sounds/freedesktop/stereo/screen-capture.oga)
+
+    bindsym Mod1+Print exec --no-startup-id \
+      grim "$(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" & \
+      (play /home/kira/.nix-profile/share/sounds/freedesktop/stereo/screen-capture.oga || \
+       play /usr/share/sounds/freedesktop/stereo/screen-capture.oga)
+
+    bindsym Ctrl+Mod1+Print exec --no-startup-id \
+      grim -g "$(slurp)" "$(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" & \
+      (play /home/kira/.nix-profile/share/sounds/freedesktop/stereo/screen-capture.oga || \
+       play /usr/share/sounds/freedesktop/stereo/screen-capture.oga)
+#
+# Lock:
+#
+    bindsym $mod+l exec --no-startup-id swaylock --image `random-wallpaper`
+#
+# Volume:
+#
+    bindsym XF86AudioRaiseVolume exec --no-startup-id \
+      amixer sset Master 5%+ && \
+      (play /home/kira/.nix-profile/share/sounds/freedesktop/stereo/audio-volume-change.oga || \
+       play /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga)
+
+    bindsym XF86AudioLowerVolume exec --no-startup-id \
+      amixer sset Master 5%- && \
+      (play /home/kira/.nix-profile/share/sounds/freedesktop/stereo/audio-volume-change.oga || \
+       play /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga)
+
+    bindsym XF86AudioMute exec --no-startup-id \
+      amixer sset Master toggle
+#
+# Screen brightness:
+#
+    bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+    bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+    bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
+    bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
+    # using volume scroller (really nice with the Corsair Vengeance K95)
+    bindsym Mod1+XF86AudioRaiseVolume exec --no-startup-id light -A 10
+    bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id light -U 10
+    bindsym Mod1+Shift+XF86AudioRaiseVolume exec --no-startup-id light -S 100
+    bindsym Mod1+Shift+XF86AudioLowerVolume exec --no-startup-id light -r -S 1
+#
+# Start daemons & applications:
+#
+    # https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
+    exec_always import-gsettings \
+        gtk-theme:gtk-theme-name \
+        icon-theme:gtk-icon-theme-name \
+        cursor-theme:gtk-cursor-theme-name
+
+    exec --no-startup-id blueman-applet
+    exec --no-startup-id com.gitlab.newsflash
+    exec --no-startup-id firefox
+    exec --no-startup-id keepassxc
+    exec --no-startup-id mako
+    exec --no-startup-id slack
+#
+# Launch application keybindings:
+#
+    bindsym $mod+y exec xdg-open ~/
+#
+# Assign windows to workspaces:
+#
+    # WWW
+    assign [app_id="^firefox$"] $www
+    assign [app_id="^Chromium-browser$"] $www
+    # Remove when Ozone is used by default
+    assign [class="^Chromium-browser$"] $www
+    # Remove when Ozone is used by default
+    assign [class="^Google-chrome$"] $www
+
+    # Edit
+    # Emacs GTK3 fork: https://git.savannah.gnu.org/cgit/emacs.git/log/?h=feature/pgtk
+    assign [app_id="^emacs"] $edit
+
+    # Files
+    assign [app_id="^org.qbittorrent.qBittorrent$"] $files
+
+    # Media
+    assign [app_id="^rhythmbox$"] $media
+
+    # Games
+    assign [app_id="^lutris$"] $games
+    assign [app_id="^org.dolphin-emu.$"] $games
+    # Non-master Dolphin still uses X11
+    assign [class="^dolphin-emu$"] $games
+    assign [app_id="^org.multimc.$"] $games
+    assign [class="^cemu.exe$"] $games
+    assign [class="^Minecraft$"] $games
+    assign [class="^Steam$"] $games
+
+    # Email & Feeds
+    assign [app_id="^geary$"] $email
+    assign [app_id="^NewsFlashGTK$"] $email
+    for_window [app_id="^firefox$" title="https://mail.google.com"] move container to workspace $email
+    for_window [app_id="^firefox$" title="https://calendar.google.com"] move container to workspace $email
+    for_window [app_id="^firefox$" title="https://outlook.office.com"] move container to workspace $email
+    for_window [app_id="^firefox$" title="https://mail.protonmail.com"] move container to workspace $email
+
+    # Chat
+    assign [app_id="^Caprine$"] $chat
+    assign [app_id="^Slack$"] $chat
+    # Remove when Ozone is used by default
+    assign [class="^Slack$"] $chat
+    for_window [app_id="^firefox$" title="^Slack (-|—) Mozilla Firefox$"] move container to workspace $chat
+#
+# Configure picture-in-picture
+    for_window [app_id="^firefox$" title="^Picture-in-Picture$"] floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95
+#
+#
+# Power controls:
+#
+    set $mode_power l̲ogout | s̲hutdown | r̲eboot
+    mode "$mode_power" {
+      bindsym l exec swaymsg exit
+      bindsym s exec systemctl poweroff
+      bindsym r exec systemctl reboot
+      bindsym --release XF86PowerOff exec systemctl poweroff
+      bindsym Control+Mod1+Delete exec systemctl reboot
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+    }
+
+    bindsym --release XF86PowerOff mode "$mode_power"
+    bindsym Control+Mod1+Delete mode "$mode_power"

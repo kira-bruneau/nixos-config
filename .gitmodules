@@ -2,9 +2,6 @@
 	path = emacs/.config/emacs
 	url = https://gitlab.com/kira-bruneau/emacs.git
 
-[submodule "sway"]
-	path = sway/.config/sway
-	url = https://gitlab.com/kira-bruneau/sway-config.git
 [submodule "waybar"]
 	path = waybar/.config/waybar
 	url = https://gitlab.com/kira-bruneau/waybar-config.git
