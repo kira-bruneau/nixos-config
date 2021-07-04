@@ -19,7 +19,6 @@ in
   # Packages
   home.packages = with pkgs; with nur.repos.kira-bruneau; [
     # Administration
-    bluetooth-autoconnect
     evtest
     htop
     nethogs
