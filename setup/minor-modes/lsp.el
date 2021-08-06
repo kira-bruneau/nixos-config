@@ -42,6 +42,7 @@
   (setq lsp-ui-doc-enable t)
   (setq lsp-ui-flycheck-enable t)
   (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-doc-max-width 80)
 
   (defun lsp-ui-doc-enable-focus-frame ()
     (interactive)
