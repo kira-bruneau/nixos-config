@@ -36,7 +36,7 @@ callPackage ./wrapper.nix {
       nodePackages.typescript-language-server
       pandoc
       perl
-      (python3.withPackages (ps: with ps; [
+      (python38.withPackages (ps: with ps; [
         debugpy
         python-language-server
       ]))
