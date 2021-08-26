@@ -21,6 +21,7 @@
    counsel-rg-base-command
    '("rg"
      "--hidden"
+     "--max-columns" "240"
      "--with-filename"
      "--no-heading"
      "--line-number"
