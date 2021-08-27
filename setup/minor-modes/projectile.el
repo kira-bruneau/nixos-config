@@ -38,6 +38,13 @@
 
   :config
   (setq projectile-find-dir-includes-top-level t)
+  (setq projectile-configure-use-comint-mode t)
+  (setq projectile-compile-use-comint-mode t)
+  (setq projectile-test-use-comint-mode t)
+  (setq projectile-install-use-comint-mode t)
+  (setq projectile-package-use-comint-mode t)
+  (setq projectile-run-use-comint-mode t)
+
   (projectile-register-project-type 'cmake '("CMakeLists.txt")
                                     :configure "cmake %s -B %sbuild"
                                     :compile "cmake --build build"
