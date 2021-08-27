@@ -44,6 +44,7 @@
   (setq projectile-install-use-comint-mode t)
   (setq projectile-package-use-comint-mode t)
   (setq projectile-run-use-comint-mode t)
+  (setq projectile-per-project-compilation-buffer t)
 
   (projectile-register-project-type 'cmake '("CMakeLists.txt")
                                     :configure "cmake %s -B %sbuild"
