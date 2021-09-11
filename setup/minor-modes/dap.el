@@ -7,6 +7,8 @@
   (require 'dap-python)
   (setq dap-python-debugger 'debugpy)
 
+  (require 'dap-node)
+
   (setq treemacs-show-cursor t)
 
   (dap-mode t)
