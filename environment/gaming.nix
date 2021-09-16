@@ -24,10 +24,20 @@
     };
   };
 
+  security.wrappers.gamemoded = {
+    owner = "root";
+    group = "root";
+  };
+
   # Enable ReplaySorcery for background screen recording & instant replays
   services.replay-sorcery = {
     enable = true;
     enableSysAdminCapability = true;
+  };
+
+  security.wrappers.replay-sorcery = {
+    owner = "root";
+    group = "root";
   };
 
   # Set higher file limit for wine esync support
