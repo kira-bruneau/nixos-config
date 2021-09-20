@@ -29,6 +29,7 @@ callPackage ./wrapper.nix {
       git
       imagemagick
       libnotify
+      lldb
       nodejs
       nodePackages.bash-language-server
       nodePackages.prettier
