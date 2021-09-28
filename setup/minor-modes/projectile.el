@@ -2,9 +2,8 @@
   :straight t
   :diminish "" ;; ➴
   :ensure-system-package (rg . ripgrep)
-  :bind (:map projectile-mode-map
-         ("<f9>" . projectile-command-map)
-         :map projectile-command-map
+  :bind-keymap ("<f7>" . projectile-command-map)
+  :bind (:map projectile-command-map
          ("n" . projectile-new)
          ("s" . projectile-ripgrep) ;; Use rg as default search method
          ("h" . my-dap-hydra)

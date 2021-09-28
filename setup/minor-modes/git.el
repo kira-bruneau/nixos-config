@@ -1,7 +1,7 @@
 (use-package magit
   :straight t
   :ensure-system-package git
-  :bind (("<f10>" . magit-file-dispatch))
+  :bind (("<f8>" . magit-file-dispatch))
   :init
   (setq magit-save-repository-buffers nil)
   (setq magit-no-message '("Turning on magit-auto-revert-mode..."))

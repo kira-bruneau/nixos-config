@@ -16,8 +16,8 @@
          (sh-mode . lsp)
          (typescript-mode . lsp)
          (web-mode . lsp))
-  :bind (:map lsp-mode-map
-              ("C-r" . lsp-rename))
+  :bind-keymap (("<f6>" . lsp-command-map))
+  :bind (:map lsp-mode-map ("C-r" . lsp-rename))
   :config
   (setq lsp-eldoc-enable-hover nil)
   (setq lsp-enable-file-watchers nil) ;; file watchers cause emacs to hang on large projects

@@ -9,4 +9,4 @@
     (setq ispell-program-name "aspell"))))
 
 (use-package ispell
-  :bind (("<f8>" . ispell-word)))
+  :bind (("<f5>" . ispell-word)))
