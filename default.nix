@@ -17,6 +17,8 @@ callPackage ./wrapper.nix {
         en-science
       ]))
       cargo
+      bear
+      tectonic
       cargo-edit
       ccls
       cmake
@@ -39,6 +41,7 @@ callPackage ./wrapper.nix {
       perl
       (python38.withPackages (ps: with ps; [
         debugpy
+      ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
         python-language-server
       ]))
       ripgrep
@@ -49,11 +52,9 @@ callPackage ./wrapper.nix {
       texlab
     ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
       # Currently doesn't built on Darwin
-      bear
       cmake-language-server
       jdk
       omnisharp-roslyn
-      tectonic
     ];
   };
 }
