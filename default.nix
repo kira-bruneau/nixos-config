@@ -39,10 +39,9 @@ callPackage ./wrapper.nix {
       nodePackages.typescript-language-server
       pandoc
       perl
-      (python38.withPackages (ps: with ps; [
+      (python3.withPackages (ps: with ps; [
         debugpy
-      ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-        python-language-server
+        # python-language-server (currently broken)
       ]))
       ripgrep
       rnix-lsp
