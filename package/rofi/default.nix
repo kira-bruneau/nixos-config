@@ -3,7 +3,7 @@
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.nur.repos.kira-bruneau.rofi-wayland;
+    package = pkgs.rofi-wayland;
   };
 
   # TODO: Generate configuration from Nix

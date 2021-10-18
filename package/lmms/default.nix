@@ -1,18 +1,22 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../environment/config.nix
+  ];
+
   home = {
-    packages = with pkgs; with nur.repos.kira-bruneau; [
+    packages = with pkgs; [
       lmms
     ];
 
     file = {
       # Manage lmms config outside of home-manager (synced with Syncthing)
       ".lmms".source = config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/.config/nixpkgs/package/lmms/.lmms";
+        "${config.home.configDirectory}/package/lmms/.lmms";
 
       ".lmmsrc.xml".source = config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/.config/nixpkgs/package/lmms/.lmmsrc.xml";
+        "${config.home.configDirectory}/package/lmms/.lmmsrc.xml";
     };
   };
 }

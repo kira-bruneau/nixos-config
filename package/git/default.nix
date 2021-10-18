@@ -3,7 +3,7 @@
 {
   programs.git.enable = true;
 
-  home.packages = with pkgs; with nur.repos.kira-bruneau; [
+  home.packages = with pkgs; [
     gitAndTools.git-bug
   ];
 

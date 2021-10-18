@@ -1,0 +1,110 @@
+{
+  "nodes": {
+    "emacs-config": {
+      "inputs": {
+        "emacs-overlay": "emacs-overlay",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "my-nur": [
+          "my-nur"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1635255482,
+        "narHash": "sha256-izAAop2FDxwx1WJqxsDl+DFlMLty8Zlq33O7tI7hxlw=",
+        "owner": "kira-bruneau",
+        "repo": "emacs-config",
+        "rev": "d53b66c69c529a5ac641f3dbf9461cf3e8b78e2c",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "kira-bruneau",
+        "repo": "emacs-config",
+        "type": "gitlab"
+      }
+    },
+    "emacs-overlay": {
+      "locked": {
+        "lastModified": 1635240081,
+        "narHash": "sha256-gbEoroC3+WycQjxaUKJAkdh7x37xoIHK3wemE/0EWK4=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "d85de72c5e913d0a84f816f4949ee799b0996e8f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1634851050,
+        "narHash": "sha256-N83GlSGPJJdcqhUxSCS/WwW5pksYf3VP1M13cDRTSVA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c91f3de5adaf1de973b797ef7485e441a65b8935",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "my-nur": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1635254934,
+        "narHash": "sha256-D2TacnpH4cMEuqRbIuQR8d3NGbwMp91AcXrg8UVB3To=",
+        "owner": "kira-bruneau",
+        "repo": "nur-packages",
+        "rev": "6718dad0c560971ac09c3f71bf6166b37e88bc06",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "kira-bruneau",
+        "repo": "nur-packages",
+        "type": "gitlab"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1635214691,
+        "narHash": "sha256-65D0Q6fAKzX3ZGlJSTZGj4jbIB7fttZ8FD754AOYeiQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "30f73c6493b4877753da54bfafd1aef90f0eebdf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "emacs-config": "emacs-config",
+        "flake-utils": "flake-utils",
+        "my-nur": "my-nur",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

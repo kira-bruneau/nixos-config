@@ -10,6 +10,7 @@ in
     ../package/aspell
     ../package/bash
     ../package/direnv
+    ../package/emacs
     ../package/git
     ../package/gpg
     ../package/ssh
@@ -17,7 +18,7 @@ in
   ];
 
   # Packages
-  home.packages = with pkgs; with nur.repos.kira-bruneau; [
+  home.packages = with pkgs; [
     # Administration
     evtest
     htop

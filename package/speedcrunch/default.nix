@@ -1,11 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; with nur.repos.kira-bruneau; [
+  imports = [
+    ../../environment/config.nix
+  ];
+
+  home.packages = with pkgs; [
     speedcrunch
   ];
 
   # Manage SpeedCrunch config outside of home-manager (synced with Syncthing)
   xdg.configFile.SpeedCrunch.source = config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/.config/nixpkgs/package/speedcrunch/config";
+    "${config.home.configDirectory}/package/speedcrunch/config";
 }

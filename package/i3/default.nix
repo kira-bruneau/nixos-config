@@ -17,7 +17,7 @@
   # };
 
   home = {
-    packages = with pkgs; with nur.repos.kira-bruneau; [
+    packages = with pkgs; [
       brightnessctl
       dunst # TODO: Run as service
       feh # TODO: Use services.random-background instead

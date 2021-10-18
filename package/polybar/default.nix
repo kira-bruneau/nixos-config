@@ -2,7 +2,7 @@
 
 {
   # TODO: Run as service
-  home.packages = with pkgs; with nur.repos.kira-bruneau; [
+  home.packages = with pkgs; [
     polybarFull
   ];
 

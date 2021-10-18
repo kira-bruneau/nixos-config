@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -8,4 +8,22 @@
   ];
 
   services.syncthing.enable = true;
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "bcml"
+    "clonehero"
+    "clonehero-unwrapped"
+    "discord"
+    "runescape-launcher"
+    "slack"
+    "sm64ex"
+    "steam"
+    "steam-original"
+    "steam-runtime"
+    "unrar"
+    "VVVVVV"
+    "VVVVVV-unwrapped"
+  ];
+
+  home.stateVersion = "21.05";
 }
