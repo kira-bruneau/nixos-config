@@ -13,6 +13,7 @@ in
     ../package/emacs
     ../package/git
     ../package/gpg
+    ../package/htop
     ../package/ssh
     ../package/tmux
   ];
@@ -21,7 +22,6 @@ in
   home.packages = with pkgs; [
     # Administration
     evtest
-    htop
     nethogs
     pciutils
     stow
