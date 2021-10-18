@@ -9,5 +9,6 @@
     isNormalUser = true;
     description = "Kira Bruneau";
     extraGroups = [ "wheel" "adbusers" ];
+    initialPassword = "kira";
   };
 }
