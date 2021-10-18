@@ -28,12 +28,12 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ad0f2168-1be3-4236-8f24-cf9e408ef611";
-    fsType = "btrfs";
+    device = "/dev/disk/by-uuid/0d378b34-55a4-425c-ad10-3ed140d3cf54";
+    fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D986-7692";
+    device = "/dev/disk/by-uuid/47AE-E9C6";
     fsType = "vfat";
   };
 
@@ -66,5 +66,5 @@
     amd_performance_level = "high";
   };
 
-  system.stateVersion = "19.03";
+  system.stateVersion = "21.05";
 }

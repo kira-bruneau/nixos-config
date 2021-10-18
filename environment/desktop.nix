@@ -51,10 +51,6 @@
     };
   };
 
-  # Disable xterm desktop manager
-  # This is the default behaviour for stateVersion >= 19.09
-  services.xserver.desktopManager.xterm.enable = false;
-
   # Redshift
   # TODO: Start at login
   location.provider = "geoclue2";
