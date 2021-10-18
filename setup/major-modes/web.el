@@ -2,7 +2,8 @@
   :straight t
   :mode ("\\.html?\\'"
          "\\.vue\\'"
-         "\\.tsx\\'")
+         "\\.tsx\\'"
+         "\\.ejs\\'")
   :bind (:map web-mode-map
               ("C-c C-o" . browse-url-of-file))
   :init
