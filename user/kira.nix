@@ -10,6 +10,4 @@
     description = "Kira Bruneau";
     extraGroups = [ "wheel" "adbusers" ];
   };
-
-  # TODO: Automatically clone Home Manager configuration
 }
