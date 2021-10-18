@@ -5,6 +5,7 @@
     ../package/firefox
     ../package/gtk
     ../package/i3
+    ../package/keepassxc
     ../package/lmms
     ../package/speedcrunch
     ../package/sway
@@ -13,9 +14,6 @@
   home.packages = with pkgs; [
     # Administration
     pavucontrol
-
-    # Authentication
-    keepassxc
 
     # Web
     chromium
