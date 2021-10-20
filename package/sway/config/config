@@ -312,7 +312,6 @@ bar {
     exec --no-startup-id firefox
     exec --no-startup-id keepassxc
     exec --no-startup-id mako
-    exec --no-startup-id slack
 #
 # Launch application keybindings:
 #
