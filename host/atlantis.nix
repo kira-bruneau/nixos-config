@@ -48,9 +48,8 @@
   networking = {
     hostName = "atlantis";
     firewall.enable = false;
-    wireless.interfaces = [
-      "wlp6s0"
-    ];
+    wireless.interfaces = [ "wlp6s0" ];
+    supplicant."wlp6s0".configFile.path = "/home/kira/Auth/wpa_supplicant.conf";
   };
 
   # Android debugging
