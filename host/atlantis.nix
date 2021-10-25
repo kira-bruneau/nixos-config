@@ -37,6 +37,8 @@
     fsType = "vfat";
   };
 
+  services.fstrim.enable = true;
+
   nix = {
     package = pkgs.nixUnstable;
     maxJobs = 12;
