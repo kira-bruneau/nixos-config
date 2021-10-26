@@ -1,4 +1,4 @@
-{ pkgs }:
+{ lib, pkgs }:
 
 with pkgs;
 
@@ -31,7 +31,7 @@ callPackage ./wrapper.nix {
       git
       imagemagick
       libnotify
-      lldb
+      (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
       nodejs
       nodePackages.bash-language-server
       nodePackages.prettier
@@ -41,7 +41,8 @@ callPackage ./wrapper.nix {
       perl
       (python3.withPackages (ps: with ps; [
         debugpy
-        # python-language-server (currently broken)
+      ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+        python-lsp-server
       ]))
       ripgrep
       rnix-lsp

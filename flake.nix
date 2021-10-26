@@ -28,6 +28,7 @@
     ] (system:
       rec {
         defaultPackage = import ./. {
+          lib = nixpkgs.lib;
           pkgs = applyOverlays nixpkgs.legacyPackages.${system};
         };
 
