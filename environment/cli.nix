@@ -24,13 +24,10 @@ in
     evtest
     nethogs
     pciutils
-    stow
     topgrade
     whichf
-    xorg.lndir
 
     # Search
-    broot
     fd
     fzf
     ripgrep
@@ -39,7 +36,6 @@ in
     curl
     netcat
     nmap
-    openconnect
     wget
     whois
 
@@ -61,7 +57,6 @@ in
     cloc
     file
     linuxPackages.perf
-    man-pages
 
     # Nix development
     cachix
@@ -74,18 +69,15 @@ in
     patchelf
 
     # Debuggers
-    gdb
-    lldb
     strace
     tcpflow
     valgrind
-
-    # Interpreters
-    python3
 
     # Multimedia
     yabridge
     yabridgectl
     youtube-dl
   ];
+
+  programs.man.enable = true;
 }
