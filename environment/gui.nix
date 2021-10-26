@@ -9,6 +9,7 @@
     ../package/lmms
     ../package/speedcrunch
     ../package/sway
+    ../package/newsflash
   ];
 
   home.packages = with pkgs; [
@@ -17,7 +18,6 @@
 
     # Web
     chromium
-    newsflash
 
     # Social
     caprine

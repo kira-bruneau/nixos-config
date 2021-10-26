@@ -1,0 +1,52 @@
+{
+  "general": {
+    "keep_running_in_background": false,
+    "sync_every": "QuaterHour",
+    "prefer_dark_theme": false
+  },
+  "advanced": {
+    "proxy": [],
+    "accept_invalid_certs": false,
+    "accept_invalid_hostnames": false
+  },
+  "feed_list": {
+    "only_show_relevant": false
+  },
+  "article_list": {
+    "order": "NewestFirst",
+    "show_thumbnails": true
+  },
+  "article_view": {
+    "theme": "Default",
+    "allow_select": false
+  },
+  "keybindings": {
+    "general": {
+      "shortcut": "F1",
+      "refresh": "F5",
+      "search": "<ctl>F",
+      "quit": "<ctl>Q",
+      "all_articles": "<Alt>1",
+      "only_unread": "<Alt>2",
+      "only_starred": "<Alt>3"
+    },
+    "article_view": {
+      "scroll_up": "u",
+      "scroll_down": "l",
+      "scrap_content": "C"
+    },
+    "article_list": {
+      "next": "n",
+      "prev": "e",
+      "read": "R",
+      "mark": "M",
+      "open": "O"
+    },
+    "feed_list": {
+      "next": "<Primary>n",
+      "prev": "<Primary>e",
+      "toggle_expanded": "Tab",
+      "read": "<Shift>A"
+    }
+  }
+}
