@@ -2,13 +2,13 @@
 
 {
   imports = [
+    ../package/bcml
     ../package/lutris
     ../package/mupen64plus
   ];
 
   home.packages = with pkgs; [
     # Games & Launchers
-    bcml
     clonehero # unfree
     multimc
     pokemmo-installer
