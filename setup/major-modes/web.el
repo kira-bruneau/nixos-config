@@ -1,8 +1,5 @@
 (use-package web-mode
   :straight t
-  :ensure-system-package
-  ((npm . npm)
-   (npm . nodejs))
   :mode ("\\.html?\\'"
          "\\.vue\\'"
          "\\.tsx\\'")

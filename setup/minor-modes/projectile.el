@@ -1,7 +1,6 @@
 (use-package projectile
   :straight t
   :diminish "" ;; ➴
-  :ensure-system-package (rg . ripgrep)
   :bind-keymap ("<f7>" . projectile-command-map)
   :bind (:map projectile-command-map
          ("n" . projectile-new)

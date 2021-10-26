@@ -1,5 +1,4 @@
 (use-package ediff
-  :ensure-system-package (diff . diffutils)
   :hook ((ediff-before-setup . my-store-pre-ediff-winconfig)
          (ediff-quit . my-restore-pre-ediff-winconfig))
   :config

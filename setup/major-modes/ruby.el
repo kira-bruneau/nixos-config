@@ -1,2 +1,1 @@
-(use-package ruby-mode
-  :ensure-system-package solargraph)
+(use-package ruby-mode)

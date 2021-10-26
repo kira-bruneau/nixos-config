@@ -4,10 +4,6 @@
 
 (use-package counsel
   :straight t
-  :ensure-system-package
-  ((fzf . fzf)
-   (fd . fd)
-   (rg . ripgrep))
   :bind (:map counsel-describe-map
               ("M-." . counsel-find-symbol))
   :init

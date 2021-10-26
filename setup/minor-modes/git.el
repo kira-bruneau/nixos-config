@@ -1,6 +1,5 @@
 (use-package magit
   :straight t
-  :ensure-system-package git
   :bind (("<f8>" . magit-file-dispatch))
   :init
   (setq magit-save-repository-buffers nil)
@@ -37,7 +36,6 @@
 (use-package forge
   :after magit
   :straight t
-  :ensure-system-package gcc
   :init
   (require 'forge))
 

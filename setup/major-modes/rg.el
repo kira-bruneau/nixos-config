@@ -1,6 +1,5 @@
 (use-package rg
   :straight t
-  :ensure-system-package (rg . ripgrep)
   :bind (("C-c s" . rg-menu))
   :config
   (setq rg-show-columns t)
