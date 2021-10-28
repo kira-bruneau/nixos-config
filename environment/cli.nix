@@ -16,6 +16,7 @@ in
     ../package/htop
     ../package/ssh
     ../package/tmux
+    ../package/fzf
   ];
 
   # Packages
@@ -29,7 +30,6 @@ in
 
     # Search
     fd
-    fzf
     ripgrep
 
     # Networking
