@@ -40,7 +40,7 @@
   services.fstrim.enable = true;
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nix;
     maxJobs = 12;
     extraOptions = ''
       experimental-features = nix-command flakes
