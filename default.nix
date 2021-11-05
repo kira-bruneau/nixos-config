@@ -29,6 +29,9 @@ callPackage ./wrapper.nix {
       gcc
       gdb
       git
+      go
+      godef
+      gopls
       imagemagick
       libnotify
       (lib.lowPrio lldb) # collides with six.py required by python-lsp-server

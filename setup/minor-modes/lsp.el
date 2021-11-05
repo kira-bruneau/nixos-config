@@ -4,6 +4,7 @@
          (c-mode . lsp)
          (cmake-mode . lsp)
          (csharp-mode . lsp)
+         (go-mode . lsp)
          (java-mode . lsp)
          (js2-mode . lsp)
          (latex-mode . lsp)
