@@ -22,7 +22,7 @@
     "steam-runtime"
     "unrar"
     "VVVVVV"
-    "VVVVVV-unwrapped"
+    "VVVVVV-with-assets"
   ];
 
   home.stateVersion = "21.05";
