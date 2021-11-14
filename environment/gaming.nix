@@ -27,7 +27,7 @@
     # Emulators
     dolphinEmuMaster
     wineWowPackages.staging
-    (winetricks.override { wine = wineWowPackages.staging; })
+    winetricks
 
     # Controllers
     xwiimote
