@@ -16,12 +16,11 @@ callPackage ./wrapper.nix {
         en-computers
         en-science
       ]))
-      cargo
       bear
-      tectonic
+      cargo
       cargo-edit
-      ccls
       cmake
+      cmake-language-server
       diffutils
       direnv
       fd
@@ -33,8 +32,8 @@ callPackage ./wrapper.nix {
       godef
       gopls
       imagemagick
+      jdk
       libnotify
-      (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
       nodejs
       nodePackages.bash-language-server
       nodePackages.prettier
@@ -44,7 +43,6 @@ callPackage ./wrapper.nix {
       perl
       (python3.withPackages (ps: with ps; [
         debugpy
-      ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
         python-lsp-server
       ]))
       ripgrep
@@ -52,11 +50,12 @@ callPackage ./wrapper.nix {
       rust-analyzer
       rustc
       solargraph
+      tectonic
       texlab
     ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
       # Currently doesn't built on Darwin
-      cmake-language-server
-      jdk
+      ccls
+      (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
       omnisharp-roslyn
     ];
   };
