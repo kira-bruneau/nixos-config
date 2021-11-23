@@ -1,2 +1,3 @@
 (use-package dockerfile-mode
-  :straight t)
+  :straight t
+  :mode ("\\Layerfile\\'"))
