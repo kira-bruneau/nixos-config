@@ -21,12 +21,19 @@ in
 
   # Packages
   home.packages = with pkgs; [
+    # Core utils
+    bat
+    du-dust
+    exa
+    sd
+    tealdeer
+    whichf
+
     # Administration
     evtest
     nethogs
     pciutils
     topgrade
-    whichf
 
     # Search
     fd
@@ -57,6 +64,7 @@ in
     cloc
     file
     linuxPackages.perf
+    tokei
 
     # Nix development
     cachix

@@ -24,7 +24,6 @@
       nbuild = "sudo nixos-rebuild switch && home-manager switch";
       nup = "sudo nixos-rebuild --upgrade switch && nix-channel --update && home-manager switch";
       ntest = "sudo nixos-rebuild test && home-manager switch";
-      br = "broot";
     };
   };
 }
