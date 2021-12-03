@@ -27,6 +27,7 @@
     audacity
     blender
     evince
+    freetube
     gimp
     gnome3.eog
     gnome3.file-roller
