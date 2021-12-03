@@ -20,7 +20,9 @@
     chromium
 
     # Social
-    caprine
+    (caprine.override {
+      electron = electron-wayland;
+    })
     slack
 
     # Media & Documents

@@ -67,11 +67,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1638345126,
-        "narHash": "sha256-EikhumbLHzS9o9ynAQ9TxbHblTt9772WEUI3j/s1C8U=",
+        "lastModified": 1638506723,
+        "narHash": "sha256-ma6+tHGy1XIBDT85RZrAVSEpyRWOsETAA/810x83ixE=",
         "owner": "kira-bruneau",
         "repo": "nur-packages",
-        "rev": "3211eb63bc17a46adb9ea1e8cf8c6b637b41eba8",
+        "rev": "6c3dc1166fb764228cc00ea6875dea9d52ada622",
         "type": "gitlab"
       },
       "original": {
