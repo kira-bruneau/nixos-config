@@ -49,6 +49,7 @@ callPackage ./wrapper.nix {
       rnix-lsp
       rust-analyzer
       rustc
+      rustfmt
       solargraph
       tectonic
       texlab
