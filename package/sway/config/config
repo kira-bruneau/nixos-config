@@ -286,6 +286,9 @@ bar {
 
     bindsym XF86AudioMute exec --no-startup-id \
       amixer sset Master toggle
+
+    bindsym Mod1+XF86AudioMute exec --no-startup-id \
+      amixer sset Capture toggle
 #
 # Screen brightness:
 #
