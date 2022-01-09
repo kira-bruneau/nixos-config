@@ -29,8 +29,11 @@
         system = "x86_64-linux";
         modules = [
           {
-            # Pin nixpkgs flake to the one used to build this config
-            nix.registry.nixpkgs.flake = nixpkgs;
+            nix = {
+              # Pin nixpkgs flake to the one used to build this config
+              registry.nixpkgs.flake = nixpkgs;
+              nixPath = [ "nixpkgs=${nixpkgs}" ];
+            };
           }
           {
             # Add my NUR overlay
