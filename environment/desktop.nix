@@ -56,7 +56,8 @@
   location.provider = "geoclue2";
   services.redshift = {
     enable = true;
-    package = pkgs.redshift-wlr;
+    package = pkgs.gammastep;
+    executable = "/bin/gammastep";
   };
 
   # Enable pipewire (sound & video)
