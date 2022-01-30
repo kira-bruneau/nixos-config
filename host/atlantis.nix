@@ -39,12 +39,10 @@
 
   services.fstrim.enable = true;
 
-  nix = {
-    package = pkgs.nix;
-    maxJobs = 12;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+  nix.settings = {
+    auto-optimise-store = true;
+    max-jobs = 12;
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
   networking = {
@@ -56,9 +54,6 @@
 
   # Android debugging
   programs.adb.enable = true;
-
-  # Automatically hard-link duplicate files in /nix/store
-  nix.autoOptimiseStore = true;
 
   # Configure GPU optimisations for gamemode
   programs.gamemode.settings.gpu = {

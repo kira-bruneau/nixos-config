@@ -80,9 +80,11 @@
   # Enable automatic device mounting
   services.devmon.enable = true;
 
-  # Enable DConf & GNOME crypto services
+  # Enable DConf
   programs.dconf.enable = true;
-  services.dbus.packages = with pkgs; [ gcr gnome.dconf ];
+
+  # Enable GNOME crypto services
+  services.dbus.packages = with pkgs; [ gcr ];
 
   # Disable bitmap fonts
   fonts.fontconfig.allowBitmaps = false;
