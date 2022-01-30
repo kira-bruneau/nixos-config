@@ -345,7 +345,7 @@ bar {
     assign [app_id="^org.dolphin-emu.$"] $games
     # Non-master Dolphin still uses X11
     assign [class="^dolphin-emu$"] $games
-    assign [app_id="^org.multimc.$"] $games
+    assign [app_id="^com/PolyMC.github.$"] $games
     assign [class="^cemu.exe$"] $games
     assign [class="^Minecraft$"] $games
     assign [class="^Steam$"] $games

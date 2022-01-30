@@ -10,7 +10,7 @@
   home.packages = with pkgs; [
     # Games & Launchers
     clonehero # unfree
-    multimc
+    polymc
     pokemmo-installer
     protontricks # unfreeRedistributable (from steam-run)
     runelite
