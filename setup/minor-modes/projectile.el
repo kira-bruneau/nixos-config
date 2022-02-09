@@ -1,5 +1,6 @@
 (use-package projectile
   :straight t
+  :after savehist
   :diminish "" ;; ➴
   :bind-keymap ("<f7>" . projectile-command-map)
   :bind (:map projectile-command-map
@@ -26,13 +27,6 @@
         (projectile-with-default-dir (projectile-project-root)
           (multi-term)
           (rename-buffer buffer-name)))))
-
-  ;; Source: https://github.com/bbatsov/projectile/issues/1637#issuecomment-812478103
-  ;; Should be deleted when merged into projectile
-  (defvar savehist-additional-variables)
-  (add-hook 'savehist-mode-hook
-            (lambda nil
-              (add-to-list 'savehist-additional-variables 'projectile-project-command-history)))
 
   :config
   (setq projectile-find-dir-includes-top-level t)

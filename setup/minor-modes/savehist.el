@@ -1,1 +1,3 @@
-(savehist-mode t)
+(use-package savehist
+  :init
+ (savehist-mode t))
