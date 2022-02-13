@@ -23,6 +23,7 @@
   (setq lsp-enable-file-watchers nil) ;; file watchers cause emacs to hang on large projects
   (setq lsp-enable-snippet nil)
   (setq lsp-response-timeout 1.0e+INF) ;; can always ctrl+g my way out of this
+  (setq lsp--show-message nil)
 
   ;; Use typescript-language-server & tsserver from PATH
   (lsp-dependency 'typescript-language-server `(:system ,(executable-find "typescript-language-server")))
