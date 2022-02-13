@@ -10,7 +10,8 @@
   (setq company-dabbrev-downcase nil)
   (setq company-dabbrev-ignore-case nil)
   (setq company-minimum-prefix-length 1)
-  (setq company-tooltip-align-annotations t))
+  (setq company-tooltip-align-annotations t)
+  (setq company-idle-delay 0))
 
 (use-package company-flx
   :straight t
