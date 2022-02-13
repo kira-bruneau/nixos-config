@@ -21,6 +21,7 @@ callPackage ./wrapper.nix {
       cargo-edit
       cmake
       cmake-language-server
+      coreutils
       diffutils
       direnv
       fd
