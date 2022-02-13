@@ -45,6 +45,7 @@
  ("flycheck" . "784f184cdd9f9cb4e3dbb997c09d93e954142842")
  ("forge" . "2e70af4d4386afab27c74b9a673b674a65fe1e21")
  ("ghub" . "e0d0bc7d97d1410d2a1cfc32007215328df1c361")
+ ("git-modes" . "433e1c57a63c88855fc41a942e29d7bc8c9c16c7")
  ("gnu-elpa-mirror" . "9a086d60a1052c8aa7689734e42849a57cc1423f")
  ("go-mode.el" . "3273fcece5d9ab7edd4f15b2d6bce61f4e5a0666")
  ("goto-chg" . "278cd3e6d5107693aa2bb33189ca503f22f227d0")
