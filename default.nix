@@ -44,6 +44,7 @@ callPackage ./wrapper.nix {
       imagemagick
       jdk
       libnotify
+      nixpkgs-fmt
       nodejs
       nodePackages.bash-language-server
       nodePackages.prettier
