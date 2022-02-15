@@ -2,6 +2,7 @@
 /.dap-breakpoints
 /.extension/
 /.log
+/.lsp-eslint-choices
 /.lsp-session-v1
 /.pijul
 /.stignore
