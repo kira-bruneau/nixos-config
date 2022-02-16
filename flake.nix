@@ -27,7 +27,7 @@
       "x86_64-darwin"
     ] (system:
       rec {
-        defaultPackage = import ./. {
+        defaultPackage = import ./nix {
           lib = nixpkgs.lib;
           pkgs = applyOverlays nixpkgs.legacyPackages.${system};
         };
