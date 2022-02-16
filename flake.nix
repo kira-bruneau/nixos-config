@@ -20,17 +20,17 @@
         let
           withEmacsOverlay = pkgs // (emacs-overlay.overlay final pkgs);
           final = withEmacsOverlay // (my-nur.overlay final withEmacsOverlay);
-        in final;
+        in final // { callPackage = pkgs.newScope final; };
     in
     flake-utils.lib.eachSystem [
       "x86_64-linux"
       "x86_64-darwin"
     ] (system:
+      let
+        pkgs = (applyOverlays nixpkgs.legacyPackages.${system});
+      in
       rec {
-        defaultPackage = import ./nix {
-          lib = nixpkgs.lib;
-          pkgs = applyOverlays nixpkgs.legacyPackages.${system};
-        };
+        defaultPackage = pkgs.callPackage ./nix {};
 
         defaultApp = flake-utils.lib.mkApp {
           drv = defaultPackage;

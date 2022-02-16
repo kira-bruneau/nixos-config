@@ -1,8 +1,50 @@
-{ lib, pkgs }:
+{ lib
+, stdenv
+, fetchpatch
+, emacsGcc
+, emacsPgtkGcc
+, callPackage
+, buildEnv
+, aspellWithDicts
+, bear
+, cargo
+, cargo-edit
+, ccls
+, cmake
+, cmake-language-server
+, coreutils
+, diffutils
+, direnv
+, fd
+, fzf
+, gcc
+, gdb
+, git
+, go
+, godef
+, gopls
+, imagemagick
+, jdk
+, libnotify
+, lldb
+, nixpkgs-fmt
+, nodejs
+, nodePackages
+, omnisharp-roslyn
+, pandoc
+, perl
+, python3
+, ripgrep
+, rnix-lsp
+, rust-analyzer
+, rustc
+, rustfmt
+, solargraph
+, tectonic
+, texlab
+}:
 
-with pkgs;
-
-callPackage ./wrapper.nix {
+let
   emacs =
     if stdenv.hostPlatform.isDarwin
     then emacsGcc.overrideAttrs (attrs: {
@@ -16,7 +58,9 @@ callPackage ./wrapper.nix {
       ];
     })
     else emacsPgtkGcc;
-
+in
+callPackage ./wrapper.nix {
+  inherit emacs;
   profile = buildEnv {
     name = "emacs-profile";
     paths = [
