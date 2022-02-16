@@ -1,4 +1,5 @@
 { lib
+, pkgs
 , stdenv
 , fetchpatch
 , emacsGcc
@@ -29,7 +30,6 @@
 , lldb
 , nixpkgs-fmt
 , nodejs
-, nodePackages
 , omnisharp-roslyn
 , pandoc
 , perl
@@ -58,6 +58,11 @@ let
       ];
     })
     else emacsPgtkGcc;
+
+  nodePackages = import ./node-packages/node-composition.nix {
+    inherit pkgs;
+    inherit (stdenv.hostPlatform) system;
+  };
 in
 callPackage ./wrapper.nix {
   inherit emacs;
