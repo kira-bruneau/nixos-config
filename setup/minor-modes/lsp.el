@@ -24,6 +24,7 @@
   (setq lsp-response-timeout 1.0e+INF) ;; can always ctrl+g my way out of this
   (setq lsp--show-message nil)
   (setq lsp-idle-delay 0)
+  (setq lsp-auto-execute-action nil)
 
   ;; Use typescript-language-server & tsserver from PATH
   (lsp-dependency 'typescript-language-server `(:system ,(executable-find "typescript-language-server")))
