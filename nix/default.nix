@@ -5,6 +5,7 @@
 , emacsGcc
 , emacsPgtkGcc
 , callPackage
+, writeShellScriptBin
 , buildEnv
 , aspellWithDicts
 , bear
@@ -63,6 +64,15 @@ let
     inherit pkgs;
     inherit (stdenv.hostPlatform) system;
   };
+
+  prettierc = writeShellScriptBin "prettierc" ''
+    if [ ! -f ~/.prettierd ]; then
+       ${nodePackages."@fsouza/prettierd"}/bin/prettierd start
+    fi
+
+    read port token < ~/.prettierd
+    ${coreutils}/bin/cat <(echo "$token $PWD $@") - | nc localhost "$port"
+  '';
 in
 callPackage ./wrapper.nix {
   inherit emacs;
@@ -96,11 +106,12 @@ callPackage ./wrapper.nix {
       nixpkgs-fmt
       nodejs
       nodePackages.bash-language-server
-      nodePackages.prettier
+      nodePackages."@fsouza/prettierd"
       nodePackages.typescript
       nodePackages.typescript-language-server
       pandoc
       perl
+      prettierc
       (python3.withPackages (ps: with ps; [
         debugpy
         python-lsp-server

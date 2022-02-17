@@ -1,6 +1,6 @@
 [
+  "@fsouza/prettierd",
   "bash-language-server",
-  "prettier",
   "typescript",
   "typescript-language-server"
 ]

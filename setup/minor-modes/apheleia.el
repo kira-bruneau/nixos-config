@@ -1,2 +1,4 @@
 (use-package apheleia
-  :straight t)
+  :straight t
+  :config
+  (add-to-list 'apheleia-formatters '(prettier . ("prettierc" filepath))))

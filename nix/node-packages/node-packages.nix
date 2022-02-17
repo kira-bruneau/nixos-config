@@ -265,6 +265,15 @@ let
         sha1 = "b5fd54220aa2bc5ab57aab7140c940754503c1a7";
       };
     };
+    "core_d-3.2.0" = {
+      name = "core_d";
+      packageName = "core_d";
+      version = "3.2.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/core_d/-/core_d-3.2.0.tgz";
+        sha512 = "waKkgHU2P19huhuMjCqCDWTYjxCIHoB+nnYjI7pVMUOC1giWxMNDrXkPw9QjWY+PWCFm49bD3wA/J+c7BGZ+og==";
+      };
+    };
     "crypto-random-string-2.0.0" = {
       name = "crypto-random-string";
       packageName = "crypto-random-string";
@@ -589,6 +598,15 @@ let
         sha512 = "nmT2T0lljbxdQZfspsno9hgrG3Uir6Ks5afism62poxqBM6sDnMEuPmzTq8XN0OEwqKLLdh1jQI3qyE66Nzb3w==";
       };
     };
+    "has-flag-4.0.0" = {
+      name = "has-flag";
+      packageName = "has-flag";
+      version = "4.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz";
+        sha512 = "EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==";
+      };
+    };
     "html-encoding-sniffer-1.0.2" = {
       name = "html-encoding-sniffer";
       packageName = "html-encoding-sniffer";
@@ -895,6 +913,15 @@ let
         sha512 = "J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==";
       };
     };
+    "nanolru-1.0.0" = {
+      name = "nanolru";
+      packageName = "nanolru";
+      version = "1.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/nanolru/-/nanolru-1.0.0.tgz";
+        sha512 = "GyQkE8M32pULhQk7Sko5raoIbPalAk90ICG+An4fq6fCsFHsP6fB2K46WGXVdoJpy4SGMnZ/EKbo123fZJomWg==";
+      };
+    };
     "nwsapi-2.2.0" = {
       name = "nwsapi";
       packageName = "nwsapi";
@@ -1057,6 +1084,15 @@ let
         sha1 = "21932a549f5e52ffd9a827f570e04be62a97da54";
       };
     };
+    "prettier-2.5.1" = {
+      name = "prettier";
+      packageName = "prettier";
+      version = "2.5.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/prettier/-/prettier-2.5.1.tgz";
+        sha512 = "vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==";
+      };
+    };
     "psl-1.8.0" = {
       name = "psl";
       packageName = "psl";
@@ -1217,6 +1253,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/stealthy-require/-/stealthy-require-1.1.1.tgz";
         sha1 = "35b09875b4ff49f26a777e509b3090a3226bf24b";
+      };
+    };
+    "supports-color-8.1.1" = {
+      name = "supports-color";
+      packageName = "supports-color";
+      version = "8.1.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/supports-color/-/supports-color-8.1.1.tgz";
+        sha512 = "MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==";
       };
     };
     "symbol-tree-3.2.4" = {
@@ -1555,6 +1600,31 @@ let
   };
 in
 {
+  "@fsouza/prettierd" = nodeEnv.buildNodePackage {
+    name = "_at_fsouza_slash_prettierd";
+    packageName = "@fsouza/prettierd";
+    version = "0.18.1";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.18.1.tgz";
+      sha512 = "W2H1E09e1B31MuyOlpXOtemxZ+9qZk7TTOzebVDh5WqHB7+jo1WOJtGwwTyp1k9irlvqqF/FpRzIUrKBR4KGqA==";
+    };
+    dependencies = [
+      sources."core_d-3.2.0"
+      sources."has-flag-4.0.0"
+      sources."nanolru-1.0.0"
+      sources."prettier-2.5.1"
+      sources."supports-color-8.1.1"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "prettier, as a daemon";
+      homepage = "https://github.com/fsouza/prettierd#readme";
+      license = "ISC";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
   bash-language-server = nodeEnv.buildNodePackage {
     name = "bash-language-server";
     packageName = "bash-language-server";
@@ -1689,24 +1759,6 @@ in
     meta = {
       description = "A language server for Bash";
       homepage = "https://github.com/bash-lsp/bash-language-server#readme";
-      license = "MIT";
-    };
-    production = true;
-    bypassCache = true;
-    reconstructLock = true;
-  };
-  prettier = nodeEnv.buildNodePackage {
-    name = "prettier";
-    packageName = "prettier";
-    version = "2.5.1";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/prettier/-/prettier-2.5.1.tgz";
-      sha512 = "vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==";
-    };
-    buildInputs = globalBuildInputs;
-    meta = {
-      description = "Prettier is an opinionated code formatter";
-      homepage = "https://prettier.io";
       license = "MIT";
     };
     production = true;
