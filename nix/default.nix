@@ -65,14 +65,12 @@ let
     inherit (stdenv.hostPlatform) system;
   };
 
-  prettierc = writeShellScriptBin "prettierc" ''
-    if [ ! -f ~/.prettierd ]; then
-       ${nodePackages."@fsouza/prettierd"}/bin/prettierd start
-    fi
-
-    read port token < ~/.prettierd
-    ${coreutils}/bin/cat <(echo "$token $PWD $@") - | nc localhost "$port"
-  '';
+  # A lightweight wrapper for prettierd to avoid the overhead of node
+  prettierc = (callPackage ./core_d_client.nix {
+    name = "prettierc";
+    serverPath = ''${nodePackages."@fsouza/prettierd"}/bin/prettierd'';
+    configFile = ".prettierd";
+  });
 in
 callPackage ./wrapper.nix {
   inherit emacs;
