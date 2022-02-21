@@ -71,6 +71,13 @@ let
     serverPath = ''${nodePackages."@fsouza/prettierd"}/bin/prettierd'';
     configFile = ".prettierd";
   });
+
+  # A lightweight wrapper for eslint_d to avoid the overhead of node
+  eslint_c = (callPackage ./core_d_client.nix {
+    name = "eslint_c";
+    serverPath = ''${nodePackages.eslint_d}/bin/eslint_d'';
+    configFile = ".eslint_d";
+  });
 in
 callPackage ./wrapper.nix {
   inherit emacs;
@@ -90,6 +97,7 @@ callPackage ./wrapper.nix {
       coreutils
       diffutils
       direnv
+      eslint_c
       fd
       fzf
       gcc
@@ -103,8 +111,9 @@ callPackage ./wrapper.nix {
       libnotify
       nixpkgs-fmt
       nodejs
-      nodePackages.bash-language-server
       nodePackages."@fsouza/prettierd"
+      nodePackages.bash-language-server
+      nodePackages.eslint_d
       nodePackages.typescript
       nodePackages.typescript-language-server
       pandoc
