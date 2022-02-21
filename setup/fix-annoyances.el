@@ -21,7 +21,7 @@
 
 ;; Stop putting custom config in my init.el
 (setq custom-file (concat user-emacs-directory "custom.el"))
-(load custom-file)
+(load custom-file t)
 
 ;; Turn off the annoying bell
 (setq ring-bell-function 'ignore)
