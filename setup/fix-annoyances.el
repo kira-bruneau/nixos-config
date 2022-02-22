@@ -27,7 +27,8 @@
 (setq vc-follow-symlinks t)
 
 ;; Disable bidirectional reordering to improve performance of file with long lines
-(setq-default bidi-display-reordering nil)
+(setq bidi-inhibit-bpa t)
+(setq-default bidi-paragraph-direction 'left-to-right)
 
 ;; Store all backup files in a single directory
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backup/"))))
