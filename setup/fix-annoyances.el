@@ -20,9 +20,6 @@
 ;; Turn off the annoying bell
 (setq ring-bell-function 'ignore)
 
-;; Disable warning about running lisp code in theme
-(setq custom-safe-themes t)
-
 ;; Don't prompt to follow git symlink
 (setq vc-follow-symlinks t)
 
