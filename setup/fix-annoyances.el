@@ -69,3 +69,11 @@
 ;; Trade memory for higher performance
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024))
+
+;; Prevent *Warnings* buffer from taking over existing buffer
+(setq
+ display-buffer-alist
+ '(("\\`\\*Warnings\\*\\'"
+    (display-buffer-in-side-window)
+    (window-width . 0.25)
+    (side . right))))
