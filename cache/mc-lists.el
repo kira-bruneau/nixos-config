@@ -41,9 +41,28 @@
         end-of-visual-line
         eval-last-sexp
         eval-print-last-sexp
+        evil-append
+        evil-append-line
+        evil-backward-char
         evil-backward-word-begin
+        evil-delete
+        evil-delete-backward-char-and-join
         evil-delete-char
+        evil-end-of-line
+        evil-find-char
         evil-first-non-blank
+        evil-forward-char
+        evil-insert
+        evil-insert-line
+        evil-next-line
+        evil-open-below
+        evil-paste-after
+        evil-paste-before
+        evil-paste-pop
+        evil-paste-pop-next
+        evil-previous-line
+        evil-shift-right-line
+        evil-substitute
         fc-eval-and-replace
         forward-sexp
         indent-for-tab-command
@@ -85,11 +104,19 @@
         dired-do-flagged-delete
         dired-unmark-all-files
         dired-unmark-all-marks
-        evil-next-line
-        evil-previous-line
+        evil-force-normal-state
+        evil-mouse-drag-region
+        evil-normal-state
+        evil-scroll-down
+        evil-scroll-page-up
+        evil-undo
+        evil-use-register
+        evil-visual-char
         ivy-switch-buffer
         kmacro-end-or-call-macro
+        lsp-ui-doc--handle-mouse-movement
         lsp-ui-doc-mode
+        mouse-set-region
         overwrite-mode
         previous-buffer
         revert-buffer
