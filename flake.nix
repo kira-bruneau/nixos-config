@@ -15,7 +15,7 @@
     };
 
     home-config-kira = {
-      url = "/home/kira/Dev/home-config";
+      url = "gitlab:kira-bruneau/home-config";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         my-nur.follows = "my-nur";
