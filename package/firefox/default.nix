@@ -73,6 +73,7 @@
               "languagetool-webextension_languagetool_org-browser-action"
               "popupwindow_ettoolong-browser-action"
               "ublock0_raymondhill_net-browser-action"
+              "_762f9885-5a13-4abd-9c77-433dcd38b8fd_-browser-action" # Return YouTube Dislike
             ];
             dirtyAreaCache = [
               "nav-bar"
