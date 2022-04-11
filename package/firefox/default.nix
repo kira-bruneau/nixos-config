@@ -89,6 +89,8 @@
           "devtools.selfxss.count" = 5; # Allow pasting into console
           "dom.security.https_only_mode" = true;
           "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+          "extensions.formautofill.creditCards.available" = false;
+          "extensions.formautofill.creditCards.enabled" = false;
           "layout.spellcheckDefault" = 1;
           "media.eme.enabled" = true;
           "services.sync.username" = "kira.bruneau@pm.me";
