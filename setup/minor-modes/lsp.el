@@ -25,6 +25,7 @@
   (setq lsp--show-message nil)
   (setq lsp-idle-delay 0)
   (setq lsp-auto-execute-action nil)
+  (setq lsp-lens-enable nil) ;; lenses are really laggy right now, re-enable this if the lag is ever fixed
 
   ;; Use typescript-language-server & tsserver from PATH
   (lsp-dependency 'typescript-language-server `(:system ,(executable-find "typescript-language-server")))
