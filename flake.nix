@@ -4,6 +4,7 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     my-nur = {
       url = "gitlab:kira-bruneau/nur-packages";
       inputs = {
@@ -11,24 +12,17 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    emacs-config = {
-      url = "gitlab:kira-bruneau/emacs-config";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-        my-nur.follows = "my-nur";
-      };
-    };
   };
 
-  outputs = { self, flake-utils, nixpkgs, my-nur, emacs-config }: {
+  outputs = { self, flake-utils, nixpkgs, emacs-overlay, my-nur }: {
     nixosModules = {
       atlantis = { pkgs, ... }: {
         imports = [ ./host/atlantis.nix ];
         nixpkgs.overlays = [
+          emacs-overlay.overlay
           my-nur.overlay
           (self: super: {
-            emacs = emacs-config.defaultPackage.${super.stdenv.hostPlatform.system};
+            my-emacs = pkgs.callPackage ./package/emacs/config/nix { };
           })
         ];
       };

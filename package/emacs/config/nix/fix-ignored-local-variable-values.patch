@@ -1,0 +1,16 @@
+diff --git a/lisp/files.el b/lisp/files.el
+index a0501cffa1..eafb950343 100644
+--- a/lisp/files.el
++++ b/lisp/files.el
+@@ -3803,10 +3803,7 @@ DIR-NAME is the name of the associated directory.  Otherwise it is nil."
+ 	(cond ((memq var ignored-local-variables)
+ 	       ;; Ignore any variable in `ignored-local-variables'.
+ 	       nil)
+-              ((seq-some (lambda (elem)
+-                           (and (eq (car elem) var)
+-                                (eq (cdr elem) val)))
+-                         ignored-local-variable-values)
++              ((member elt ignored-local-variable-values)
+                nil)
+ 	      ;; Obey `enable-local-eval'.
+ 	      ((eq var 'eval)
