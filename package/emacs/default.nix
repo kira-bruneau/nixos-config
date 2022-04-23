@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../environment/config.nix
+  ];
+
   programs.emacs = {
     enable = true;
     package = pkgs.my-emacs;
