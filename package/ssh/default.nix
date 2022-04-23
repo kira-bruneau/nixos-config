@@ -5,14 +5,15 @@
     ../../environment/config.nix
   ];
 
-  programs.ssh.enable = true;
+  programs.ssh = {
+    enable = true;
 
-  home.file = {
-    # TODO: Generate configuration from Nix
-    ".ssh/config".source = ./config;
+    # Share SSH connections
+    controlMaster = "auto";
+    controlPersist = "5m";
 
     # Manage known_hosts outside of home-manager (synced with Syncthing)
-    ".ssh/known_hosts".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/package/ssh/known_hosts";
+    userKnownHostsFile = builtins.toString (config.lib.file.mkOutOfStoreSymlink
+      "${config.home.configDirectory}/package/ssh/known_hosts");
   };
 }
