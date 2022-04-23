@@ -21,9 +21,6 @@
         nixpkgs.overlays = [
           emacs-overlay.overlay
           my-nur.overlay
-          (self: super: {
-            my-emacs = pkgs.callPackage ./package/emacs/config/nix { };
-          })
         ];
       };
     };

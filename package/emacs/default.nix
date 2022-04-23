@@ -7,7 +7,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.my-emacs;
+    package = pkgs.callPackage ./package.nix { };
   };
 
   home.sessionVariables = {
