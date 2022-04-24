@@ -13,8 +13,6 @@
     polymc
     pokemmo-installer
     protontricks # unfreeRedistributable (from steam-run)
-    runelite
-    runescape-launcher # unfree
     (sm64ex.override {
       compileFlags = [
         "BETTERCAMERA=1"
