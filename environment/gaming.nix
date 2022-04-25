@@ -9,18 +9,18 @@
 
   home.packages = with pkgs; [
     # Games & Launchers
-    clonehero # unfree
+    clonehero
     polymc
     pokemmo-installer
-    protontricks # unfreeRedistributable (from steam-run)
+    protontricks
     (sm64ex.override {
       compileFlags = [
         "BETTERCAMERA=1"
       ];
     })
-    steam # unfreeRedistributable
-    steam-run # unfreeRedistributable
-    VVVVVV # unfree
+    steam
+    steam-run
+    VVVVVV
 
     # Emulators
     dolphinEmuMaster
@@ -31,7 +31,7 @@
     xwiimote
 
     # Chat
-    discord # unfree
+    discord
 
     # Recording
     obs-studio

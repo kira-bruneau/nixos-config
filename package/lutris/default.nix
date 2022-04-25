@@ -6,7 +6,7 @@
   ];
 
   home.packages = with pkgs; [
-    (lutris.override { # unfreeRedistributable with steamSupport = true
+    (lutris.override {
       lutris-unwrapped = lutris-unwrapped.override {
         wine = wineWowPackages.staging;
       };

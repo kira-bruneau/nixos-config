@@ -55,7 +55,7 @@ in
     jq
     p7zip
     poke
-    unrar # unfreeRedistributable
+    unrar
     unzip
     xmlstarlet
 
