@@ -54,6 +54,7 @@
         evil-forward-char
         evil-insert
         evil-insert-line
+        evil-join
         evil-next-line
         evil-open-below
         evil-paste-after
