@@ -1,8 +1,0 @@
-game:
-  exe: Battle.net Launcher.exe
-  prefix: /home/kira/Games/Battle.net
-system:
-  env:
-  gamemode: false
-  prefix_command: ''
-wine: {}
