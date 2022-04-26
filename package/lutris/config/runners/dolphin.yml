@@ -1,9 +1,0 @@
-dolphin:
-  nogui: true
-  runner_executable: /home/kira/.nix-profile/bin/dolphin-emu
-system:
-  disable_runtime: true
-  env:
-    QT_AUTO_SCREEN_SCALE_FACTOR: '1'
-    QT_QPA_PLATFORM: xcb
-  prefix_command: wrap-scale-off
