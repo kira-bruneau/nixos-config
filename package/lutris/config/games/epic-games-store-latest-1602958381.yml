@@ -1,7 +1,7 @@
 game:
   args: -opengl -SkipBuildPatchPrereq
   exe: EpicGamesLauncher.exe
-  prefix: /home/kira/Games/Epic Games Store
+  prefix: ~/Games/Epic Games Store
 system:
   gamemode: false
   prefix_command: ''

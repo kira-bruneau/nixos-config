@@ -2,7 +2,7 @@ game:
   args: -g "C:\wiiu\games\fk-mk8.wud"
     -f
   exe: Cemu.exe
-  prefix: /home/kira/Games/Cemu
+  prefix: ~/Games/Cemu
 system:
   disable_compositor: true
   env:

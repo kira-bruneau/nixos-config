@@ -1,6 +1,6 @@
 game:
   exe: Cemu.exe
-  prefix: /home/kira/Games/Cemu
+  prefix: ~/Games/Cemu
 system:
   disable_compositor: true
   env:
