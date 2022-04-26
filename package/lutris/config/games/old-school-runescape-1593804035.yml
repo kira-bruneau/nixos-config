@@ -1,7 +1,0 @@
-game:
-  exe: runelite
-linux: {}
-system:
-  env:
-    GDK_SCALE: '2'
-  prefix_command: wrap-scale-off
