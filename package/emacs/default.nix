@@ -3,6 +3,7 @@
 {
   imports = [
     ../../environment/config.nix
+    ../gpg
   ];
 
   programs.emacs = {

@@ -88,3 +88,6 @@
     (display-buffer-in-side-window)
     (window-width . 0.25)
     (side . right))))
+
+;; Read auth source from XDG_DATA_HOME
+(setq auth-sources (list (expand-file-name "authinfo/authinfo.gpg" (xdg-data-home))))

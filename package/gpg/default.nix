@@ -14,13 +14,11 @@
     pinentryFlavor = "gnome3";
   };
 
-  # Manage gpg keys outside of home-manager (synced with Syncthing)
-  home.file = {
-    ".authinfo.gpg".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/Auth/.authinfo.gpg";
-  };
-
+  # Manage authinfo & gpg keys outside of home-manager (synced with Syncthing)
   xdg.dataFile = {
+    "authinfo/authinfo.gpg".source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/Auth/.authinfo.gpg";
+
     "gnupg/openpgp-revocs.d".source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/Auth/gnupg/openpgp-revocs.d";
 
