@@ -1,6 +1,11 @@
+# Emacs lock files
+.[#]*
+
+# Emacs autosave files
+[#]*[#]
+
 # Emacs backup files
 *~
-[#]*[#]
 
 # Project Management
 .ccls-cache
