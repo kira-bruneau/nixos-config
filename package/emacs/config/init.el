@@ -1,6 +1,7 @@
-(defvar dir/setup (concat user-emacs-directory "setup/"))
+(defvar dir/aux (concat user-emacs-directory "aux/"))
 (defvar dir/cache (concat user-emacs-directory "cache/"))
 (defvar dir/conf (concat user-emacs-directory "conf/"))
+(defvar dir/setup (concat user-emacs-directory "setup/"))
 
 ;; Define setup files to load
 ;;

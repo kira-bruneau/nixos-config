@@ -27,8 +27,19 @@
 (setq bidi-inhibit-bpa t)
 (setq-default bidi-paragraph-direction 'left-to-right)
 
-;; Store all backup files in a single directory
-(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backup/"))))
+;; Write auxiliary files somewhere else
+;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Not-writing-files-to-the-current-directory.html
+(setq
+ lock-file-name-transforms
+ `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat dir/aux "\\2") t)))
+
+(setq
+ auto-save-file-name-transforms
+ `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat dir/aux "\\2") t)))
+
+(setq
+ backup-directory-alist
+ `(("." . ,dir/aux)))
 
 ;; Improve performance opening file under version control
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
