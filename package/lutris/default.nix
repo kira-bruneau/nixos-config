@@ -62,9 +62,7 @@ in {
     };
 
     "lutris/runners/steam.yml".source = settingsFormat.generate "steam.yml" {
-      steam = {
-        quit_steam_on_exit = false;
-      };
+      steam = {};
 
       system = {
         # I've configured steam to only run gamemode while a game is running
@@ -73,11 +71,7 @@ in {
     };
 
     "lutris/runners/wine.yml".source = settingsFormat.generate "wine.yml" {
-      wine = {
-        dxvk = true;
-        esync = true;
-        vkd3d = true;
-      };
+      wine = {};
 
       system = {
         prefix_command = "wrap-scale-off";
