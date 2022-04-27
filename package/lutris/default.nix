@@ -65,6 +65,8 @@ in {
       steam = {};
 
       system = {
+        disable_runtime = true;
+
         # I've configured steam to only run gamemode while a game is running
         gamemode = false;
       };
