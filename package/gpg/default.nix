@@ -1,7 +1,11 @@
 { config, ... }:
 
 {
-  programs.gpg.enable = true;
+  programs.gpg = {
+    enable = true;
+    homedir = "${config.xdg.dataHome}/gnupg";
+  };
+
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
@@ -14,14 +18,16 @@
   home.file = {
     ".authinfo.gpg".source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/Auth/.authinfo.gpg";
+  };
 
-    ".gnupg/openpgp-revocs.d".source = config.lib.file.mkOutOfStoreSymlink
+  xdg.dataFile = {
+    "gnupg/openpgp-revocs.d".source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/Auth/gnupg/openpgp-revocs.d";
 
-    ".gnupg/private-keys-v1.d".source = config.lib.file.mkOutOfStoreSymlink
+    "gnupg/private-keys-v1.d".source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/Auth/gnupg/private-keys-v1.d";
 
-    ".gnupg/pubring.kbx".source = config.lib.file.mkOutOfStoreSymlink
+    "gnupg/pubring.kbx".source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/Auth/gnupg/pubring.kbx";
   };
 }
