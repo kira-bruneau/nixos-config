@@ -1,13 +1,11 @@
 # nixos-configuration
-My nixos configuration
+My NixOS configuration
 
 ## Overiew
 | Directory   | Description                                                                                                                                                                                                                                                   |
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | environment | Collection of features and packages that configure a specific environment.<br>Ex. `./environment/laptop.nix` installs WiFi and touchpad drivers.                                                                                                              |
-| feature     | Single package or a collection of packages to perform a common action.<br>Ex. `./feature/text-editor.nix` will install my favourite text editor.                                                                                                              |
-| package     | Custom configuration for a specific package.<br>Ex. `./feature/emacs.nix` will install emacs with my custom configuration.<br><br>If I don't configure a package, I will use `environment.systemPackages` instead of creating a seperate package file for it. |
-| users       | Configuration for users on my system                                                                                                                                                                                                                          |
+| user        | Configuration for users on my system                                                                                                                                                                                                                          |
 
 ## Installation
 See the [NixOS Manual](https://nixos.org/nixos/manual/index.html#ch-installation)
