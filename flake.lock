@@ -57,11 +57,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1651072453,
-        "narHash": "sha256-LJX9tnKJLrvOaXfZ8a8wRrfO0gbV2/Ywkaraf03ecfo=",
+        "lastModified": 1651728868,
+        "narHash": "sha256-m1RbMp2y6gK8qJap+150QBXGBcarYcD5PrQHnMmUGqw=",
         "owner": "kira-bruneau",
         "repo": "home-config",
-        "rev": "c4ba7c38377e55d86745a43f53d0ba077e67884b",
+        "rev": "c383b58e01e0ed02167978c47f97239662de32f9",
         "type": "gitlab"
       },
       "original": {
@@ -111,6 +111,57 @@
         "type": "gitlab"
       }
     },
+    "nixlib": {
+      "locked": {
+        "lastModified": 1636849918,
+        "narHash": "sha256-nzUK6dPcTmNVrgTAC1EOybSMsrcx+QrVPyqRdyKLkjA=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "28a5b0557f14124608db68d3ee1f77e9329e9dd5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixos-generators": {
+      "inputs": {
+        "nixlib": "nixlib",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1650997411,
+        "narHash": "sha256-r4a3qsSv5UTtx+pxTUEdOphBkwTx1+AAVog3c457A0M=",
+        "owner": "nix-community",
+        "repo": "nixos-generators",
+        "rev": "3cdf22c79bc80910e2b610cd59fcb8408354ddbc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixos-generators",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1650522846,
+        "narHash": "sha256-SxWHXRI3qJwswyXAtzsi6PKVY3KLNNnb072KaJthII8=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "6b4ebea9093c997c5f275c820e679108de4871ab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1651558728,
@@ -132,6 +183,8 @@
         "home-config-kira": "home-config-kira",
         "home-manager": "home-manager",
         "my-nur": "my-nur",
+        "nixos-generators": "nixos-generators",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"
       }
     }
