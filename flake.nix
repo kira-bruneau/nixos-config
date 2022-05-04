@@ -21,45 +21,83 @@
         my-nur.follows = "my-nur";
       };
     };
-  };
 
-  outputs = { self, nixpkgs, my-nur, home-manager, home-config-kira }: {
-    nixosConfigurations = {
-      atlantis = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          {
-            nix = {
-              # Pin nixpkgs flake to the one used to build this config
-              registry.nixpkgs.flake = nixpkgs;
-              nixPath = [ "nixpkgs=${nixpkgs}" ];
-            };
-          }
-          {
-            # Add my NUR overlay
-            nixpkgs.overlays = [ my-nur.overlay ];
-            disabledModules = [
-              "hardware/xpadneo.nix"
-              "programs/bash/undistract-me.nix"
-              "programs/gamemode.nix"
-              "services/video/replay-sorcery.nix"
-            ];
-          }
-          my-nur.nixosModules.gamemode
-          my-nur.nixosModules.replay-sorcery
-          my-nur.nixosModules.undistract-me
-          my-nur.nixosModules.xpadneo
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              users.kira = home-config-kira.nixosModules.atlantis;
-            };
-          }
-          ./cachix.nix
-          ./host/atlantis.nix
-        ];
-      };
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = { self, nixpkgs, my-nur, home-manager, home-config-kira, nixos-hardware, nixos-generators }:
+    let
+      common-modules = host: [
+        {
+          nix = {
+            # Pin nixpkgs flake to the one used to build this config
+            registry.nixpkgs.flake = nixpkgs;
+            nixPath = [ "nixpkgs=${nixpkgs}" ];
+          };
+        }
+        {
+          # Add my NUR overlay
+          nixpkgs.overlays = [ my-nur.overlay ];
+          disabledModules = [
+            "hardware/xpadneo.nix"
+            "programs/bash/undistract-me.nix"
+            "programs/gamemode.nix"
+            "services/video/replay-sorcery.nix"
+          ];
+        }
+        my-nur.nixosModules.gamemode
+        my-nur.nixosModules.replay-sorcery
+        my-nur.nixosModules.undistract-me
+        my-nur.nixosModules.xpadneo
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useUserPackages = true;
+            users.kira = home-config-kira.nixosModules.${host};
+          };
+        }
+        ./cachix.nix
+      ];
+
+      atlantis-modules = (common-modules "atlantis") ++ [
+        ./host/atlantis.nix
+      ];
+
+      framework-modules = (common-modules "framework") ++ [
+        nixos-hardware.nixosModules.framework
+        ./host/framework.nix
+      ];
+    in
+    {
+      nixosConfigurations = {
+        atlantis = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs.self = self;
+          modules = atlantis-modules;
+        };
+        framework = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs.self = self;
+          modules = framework-modules;
+        };
+      };
+
+      packages.x86_64-linux = {
+        framework-iso = nixos-generators.nixosGenerate {
+          format = "install-iso";
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          specialArgs.self = self;
+          modules = framework-modules ++ [
+            {
+              installer.cloneConfig = false;
+            }
+          ];
+        };
+      };
+    };
 }
