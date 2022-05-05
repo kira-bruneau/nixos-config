@@ -26,6 +26,16 @@
           my-nur.overlay
         ];
       };
+      framework = { pkgs, ... }: {
+        imports = [
+          { _module.args.self = self; }
+          ./host/framework.nix
+        ];
+        nixpkgs.overlays = [
+          emacs-overlay.overlay
+          my-nur.overlay
+        ];
+      };
     };
   };
 }
