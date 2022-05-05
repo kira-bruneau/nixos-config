@@ -7,7 +7,13 @@
   ];
 
   # Enable touchpad support
-  services.xserver.libinput.enable = true;
+  services.xserver.libinput = {
+    enable = true;
+    touchpad = {
+      accelProfile = "flat";
+      naturalScrolling = true;
+    };
+  };
 
   # Automatically control frequency of CPU to save power
   powerManagement.cpuFreqGovernor = "powersave";
