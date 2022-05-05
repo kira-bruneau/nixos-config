@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../environment/config.nix
     ../environment/desktop.nix
     ../environment/gaming.nix
     ../environment/hidpi.nix
