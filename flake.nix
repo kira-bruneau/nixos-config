@@ -17,7 +17,10 @@
   outputs = { self, flake-utils, nixpkgs, emacs-overlay, my-nur }: {
     nixosModules = {
       atlantis = { pkgs, ... }: {
-        imports = [ ./host/atlantis.nix ];
+        imports = [
+          { _module.args.self = self; }
+          ./host/atlantis.nix
+        ];
         nixpkgs.overlays = [
           emacs-overlay.overlay
           my-nur.overlay
