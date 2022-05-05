@@ -15,8 +15,6 @@
     cpu.intel.updateMicrocode = true;
   };
 
-  powerManagement.cpuFreqGovernor = "powersave";
-
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
     kernelPackages = pkgs.linuxPackages_latest;
