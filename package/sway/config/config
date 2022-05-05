@@ -72,7 +72,7 @@ input * xkb_options "grp:win_space_toggle"
 input type:touchpad {
     natural_scroll enabled
     tap enabled
-    scroll_factor 0.5
+    scroll_factor 0.25
 }
 
 ### Key bindings
