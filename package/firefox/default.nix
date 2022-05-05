@@ -8,6 +8,7 @@
       kira = {
         settings = {
           "app.shield.optoutstudies.enabled" = false;
+          "apz.overscroll.enabled" = true;
           "browser.aboutConfig.showWarning" = false;
           "browser.aboutwelcome.enabled" = false;
           "browser.contentblocking.category" = "strict";
