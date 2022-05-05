@@ -85,6 +85,7 @@
             currentVersion = 17;
             newElementCount = 2;
           };
+          "browser.warnOnQuit" = false;
           "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionEnabled" = false;
           "devtools.selfxss.count" = 5; # Allow pasting into console
