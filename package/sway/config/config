@@ -33,6 +33,8 @@ set $menu rofi -modi drun -show drun -matching fuzzy # | xargs swaymsg exec --
 output * bg `random-wallpaper` fill
 #output "Sharp Corporation 0x1453 0x00000000" pos 0,0
 output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 0,0
+output "Unknown 0x095F 0x00000000" scale 1.5 pos 0,0
+output "Unknown HP Z27k G3 CN41223C6P" scale 2 pos -208 -1080
 
 bindsym $mod+equal exec scale-on
 bindsym $mod+minus exec scale-off
