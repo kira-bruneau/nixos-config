@@ -9,7 +9,7 @@
   users.users.kira = {
     isNormalUser = true;
     description = "Kira Bruneau";
-    extraGroups = [ "wheel" "adbusers" "audio" ];
+    extraGroups = [ "wheel" "adbusers" "audio" "video" ];
     initialPassword = "kira";
   };
 }
