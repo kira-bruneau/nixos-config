@@ -18,6 +18,9 @@
   # Automatically control frequency of CPU to save power
   powerManagement.cpuFreqGovernor = "powersave";
 
+  # Automatically suspend on low power
+  services.upower.enable = true;
+
   # Enable light for controlling backlight
   programs.light.enable = true;
 }
