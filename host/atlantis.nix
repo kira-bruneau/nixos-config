@@ -50,8 +50,11 @@
     hostName = "atlantis";
     firewall.enable = false;
     wireless.interfaces = [ "wlp6s0" ];
-    supplicant."wlp6s0".configFile.path = "/home/kira/Auth/wpa_supplicant.conf";
   };
+
+  environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
+    ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
+  '';
 
   # Android debugging
   programs.adb.enable = true;

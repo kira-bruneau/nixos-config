@@ -48,8 +48,11 @@
     firewall.enable = false;
     useDHCP = false;
     interfaces.wlp170s0.useDHCP = true;
-    supplicant.wlp170s0.configFile.path = "/home/kira/Auth/wpa_supplicant.conf";
   };
+
+  environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
+    ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
+  '';
 
   nix.settings = {
     auto-optimise-store = true;
