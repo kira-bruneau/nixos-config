@@ -16,12 +16,13 @@
   };
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-intel" ];
-
     # Use the systemd-boot EFI boot loader
     loader.systemd-boot.enable = true;
+
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernel.sysctl = { "vm.swappiness" = 1; };
+    initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
+    kernelModules = [ "kvm-intel" ];
   };
 
   fileSystems."/" = {
@@ -33,6 +34,14 @@
     device = "/dev/disk/by-uuid/6C1A-F6EA";
     fsType = "vfat";
   };
+
+  # Used for hibernation (eg. when upower detects a critical battery percent)
+  swapDevices = [
+    {
+      device = "/swap";
+      size = 31898;
+    }
+  ];
 
   networking = {
     hostName = "framework";
