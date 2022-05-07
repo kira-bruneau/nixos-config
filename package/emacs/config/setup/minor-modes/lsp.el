@@ -26,6 +26,7 @@
   (setq lsp-idle-delay 0)
   (setq lsp-auto-execute-action nil)
   (setq lsp-lens-enable nil) ;; lenses are really laggy right now, re-enable this if the lag is ever fixed
+  (setq lsp-headerline-breadcrumb-enable nil) ;; headerline laggy with pixel precision scrolling
 
   ;; Use typescript-language-server & tsserver from PATH
   (lsp-dependency 'typescript-language-server `(:system ,(executable-find "typescript-language-server")))
