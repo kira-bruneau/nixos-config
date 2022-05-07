@@ -112,11 +112,12 @@
   :config
   (show-paren-mode t))
 
-;; Finer mouse/trackpad scrolling
-;; Source: http://www.emacswiki.org/emacs/SmoothScrolling
-(use-package mwheel
+;; Pixel precision scrolling
+(use-package pixel-scroll
+  :init
+  (pixel-scroll-precision-mode)
+
   :config
-  ;; (setq scroll-step 1)
-  ;; (setq scroll-conservatively 100)
-  (setq mouse-wheel-scroll-amount '(4 ((shift) . 1)))
-  (setq mouse-wheel-progressive-speed nil))
+  (setq pixel-scroll-precision-use-momentum t)
+  (setq pixel-scroll-precision-momentum-tick 0.0167) ;; ~60fps
+  (setq pixel-scroll-precision-momentum-seconds 1.0))
