@@ -43,7 +43,6 @@
               ("C-M-?" . lsp-ui-doc-enable-focus-frame))
   :config
   (setq lsp-ui-doc-enable t)
-  (setq lsp-ui-flycheck-enable t)
   (setq lsp-ui-sideline-enable t)
   (setq lsp-ui-sideline-delay 0)
   (setq lsp-ui-sideline-show-code-actions t)
