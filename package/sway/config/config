@@ -140,35 +140,33 @@ input type:touchpad {
     set $www 1
     set $edit 2
     set $term 3
-    set $files 4
-    set $media 5
-    set $games 6
-    set $remote 8
+    set $media 4
+    set $games 5
+    set $calendar 7
+    set $tasks 8
     set $email 9
     set $chat 10
 
     # Switch to workspace
-    bindsym $mod+1 workspace $www
-    bindsym $mod+2 workspace $edit
-    bindsym $mod+3 workspace $term
-    bindsym $mod+4 workspace $files
-    bindsym $mod+5 workspace $media
-    bindsym $mod+6 workspace $games
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace $remote
-    bindsym $mod+9 workspace $email
+    bindsym $mod+$www workspace $www
+    bindsym $mod+$edit workspace $edit
+    bindsym $mod+$term workspace $term
+    bindsym $mod+$media workspace $media
+    bindsym $mod+$games workspace $games
+    bindsym $mod+$calendar workspace $calendar
+    bindsym $mod+$tasks workspace $tasks
+    bindsym $mod+$email workspace $email
     bindsym $mod+0 workspace $chat
 
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace $www
-    bindsym $mod+Shift+2 move container to workspace $edit
-    bindsym $mod+Shift+3 move container to workspace $term
-    bindsym $mod+Shift+4 move container to workspace $files
-    bindsym $mod+Shift+5 move container to workspace $media
-    bindsym $mod+Shift+6 move container to workspace $games
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace $remote
-    bindsym $mod+Shift+9 move container to workspace $email
+    bindsym $mod+Shift+$www move container to workspace $www
+    bindsym $mod+Shift+$edit move container to workspace $edit
+    bindsym $mod+Shift+$term move container to workspace $term
+    bindsym $mod+Shift+$media move container to workspace $media
+    bindsym $mod+Shift+$games move container to workspace $games
+    bindsym $mod+Shift+$calendar move container to workspace $calendar
+    bindsym $mod+Shift+$tasks move container to workspace $tasks
+    bindsym $mod+Shift+$email move container to workspace $email
     bindsym $mod+Shift+0 move container to workspace $chat
 
     # Move workspace to monitor
@@ -337,10 +335,8 @@ bar {
     # Emacs GTK3 fork: https://git.savannah.gnu.org/cgit/emacs.git/log/?h=feature/pgtk
     assign [app_id="^emacs"] $edit
 
-    # Files
-    assign [app_id="^org.qbittorrent.qBittorrent$"] $files
-
     # Media
+    assign [app_id="^org.qbittorrent.qBittorrent$"] $media
     assign [app_id="^rhythmbox$"] $media
 
     # Games
@@ -353,20 +349,23 @@ bar {
     assign [class="^Minecraft$"] $games
     assign [class="^Steam$"] $games
 
+    # Calendar
+    for_window [app_id="^firefox$" title="https://calendar.google.com"] move container to workspace $calendar
+
+    # Tasks
+    for_window [app_id="^firefox$" title="https://linear.app"] move container to workspace $tasks
+
     # Email & Feeds
     assign [app_id="^geary$"] $email
     assign [app_id="^NewsFlashGTK$"] $email
     for_window [app_id="^firefox$" title="https://mail.google.com"] move container to workspace $email
-    for_window [app_id="^firefox$" title="https://calendar.google.com"] move container to workspace $email
-    for_window [app_id="^firefox$" title="https://outlook.office.com"] move container to workspace $email
     for_window [app_id="^firefox$" title="https://mail.protonmail.com"] move container to workspace $email
+    for_window [app_id="^firefox$" title="https://outlook.office.com"] move container to workspace $email
 
     # Chat
     assign [app_id="^Caprine$"] $chat
     assign [app_id="^Slack$"] $chat
-    # Remove when Ozone is used by default
-    assign [class="^Slack$"] $chat
-    for_window [app_id="^firefox$" title="^Slack (-|—) Mozilla Firefox$"] move container to workspace $chat
+    for_window [app_id="^firefox$" title="https://app.slack.com"] move container to workspace $chat
 #
 # Configure picture-in-picture
     for_window [app_id="^firefox$" title="^Picture-in-Picture$"] floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95
