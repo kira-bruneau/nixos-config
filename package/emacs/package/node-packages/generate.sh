@@ -5,4 +5,5 @@ node2nix \
   --input node-packages.json \
   --output node-packages.nix \
   --composition node-composition.nix \
-  --node-env node-env.nix
+  --node-env node-env.nix \
+  --nodejs-14

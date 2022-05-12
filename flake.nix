@@ -23,7 +23,7 @@
         ];
         nixpkgs.overlays = [
           emacs-overlay.overlay
-          my-nur.overlay
+          my-nur.overlays.default
         ];
       };
       framework = { pkgs, ... }: {
@@ -33,7 +33,7 @@
         ];
         nixpkgs.overlays = [
           emacs-overlay.overlay
-          my-nur.overlay
+          my-nur.overlays.default
         ];
       };
     };
