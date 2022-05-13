@@ -60,5 +60,8 @@
     # Improve appearance of Java applications
     # https://wiki.archlinux.org/index.php/Java#Tips_and_tricks
     _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+
+    # Use Wayland for Chrome & Electron apps
+    NIXOS_OZONE_WL = 1;
   };
 }
