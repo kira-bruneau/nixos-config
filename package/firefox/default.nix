@@ -12,6 +12,7 @@
           "browser.aboutConfig.showWarning" = false;
           "browser.aboutwelcome.enabled" = false;
           "browser.contentblocking.category" = "strict";
+          "browser.discovery.enabled" = false;
           "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
           "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
           "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
