@@ -7,6 +7,7 @@
     profiles = {
       kira = {
         settings = {
+          "accessibility.typeaheadfind.flashBar" = 0;
           "app.shield.optoutstudies.enabled" = false;
           "apz.overscroll.enabled" = true;
           "browser.aboutConfig.showWarning" = false;
