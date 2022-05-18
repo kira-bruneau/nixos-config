@@ -90,4 +90,5 @@
     (side . right))))
 
 ;; Read auth source from XDG_DATA_HOME
+(require 'xdg)
 (setq auth-sources (list (expand-file-name "authinfo/authinfo.gpg" (xdg-data-home))))
