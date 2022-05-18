@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   programs.firefox = {
@@ -137,8 +137,89 @@
     };
   };
 
-  home.sessionVariables = {
-    # Touchscreen support on Firefox
-    MOZ_USE_XINPUT2 = "1";
+  home = {
+    # There's no way to overlay `search.json.mozlz4`, so use an activation script to force replace it
+    activation.firefoxSearchEngine = let
+      appName = "Firefox";
+      profile = "kira";
+      current = "DuckDuckGo";
+
+      # Firefox REALLY doesn't want to let me configure my search engine outside of Firefox... oh well, too bad!
+      disclaimer =
+        "By modifying this file, I agree that I am doing so " +
+        "only within $appName itself, using official, user-driven search " +
+        "engine selection processes, and in a way which does not circumvent " +
+        "user consent. I acknowledge that any attempt to change this file " +
+        "from outside of $appName is a malicious act, and will be responded " +
+        "to accordingly.";
+
+      # Hashing algorithm derived from ./toolkit/components/search/SearchUtils.jsm:getVerificationHash
+      salt = profile + current + (builtins.replaceStrings [ "$appName" ] [ appName ] disclaimer);
+      hash = builtins.readFile (pkgs.runCommandNoCC "${appName}-${profile}-${current}-hash" { inherit salt; } ''
+        echo -n "$salt" | ${pkgs.openssl}/bin/openssl dgst -sha256 -binary | base64 | tr -d '\n' > "$out"
+      '');
+
+      profilePath = "${config.home.homeDirectory}/.mozilla/firefox/${profile}";
+    in
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD mkdir -p $VERBOSE_ARG ${lib.escapeShellArg profilePath}
+        $DRY_RUN_CMD ln -sf $VERBOSE_ARG ${pkgs.runCommandNoCC "search.json.mozlz4" {} ''
+          ${pkgs.mozlz4a}/bin/mozlz4a ${pkgs.writeText "search.json" (builtins.toJSON {
+            version = 6;
+            engines = [
+              {
+                _name = "Google";
+                _isAppProvided = true;
+                _metaData = {};
+              }
+              {
+                _name = "Wikipedia (en)";
+                _isAppProvided = true;
+                _metaData = {};
+              }
+              {
+                _name = "Bing";
+                _isAppProvided = true;
+               _metaData = {};
+              }
+              {
+                _name = "Amazon.ca";
+                _isAppProvided = true;
+                _metaData = {};
+              }
+              {
+                _name = "DuckDuckGo";
+                _isAppProvided = true;
+                _metaData = {};
+              }
+              {
+                _name = "eBay";
+                _isAppProvided = true;
+                _metaData = {};
+              }
+              {
+                _name = "Amazon.com";
+                _isAppProvided = true;
+                _metaData = {};
+              }
+            ];
+            metaData = {
+              locale = "en-US";
+              region = "CA";
+              channel = "default";
+              distroID = "";
+              experiment = "";
+              current = current;
+              hash = hash;
+              useSavedOrder = false;
+            };
+          })} "$out"
+        ''} ${lib.escapeShellArg profilePath}/search.json.mozlz4
+      '';
+
+    sessionVariables = {
+      # Touchscreen support
+      MOZ_USE_XINPUT2 = "1";
+    };
   };
 }
