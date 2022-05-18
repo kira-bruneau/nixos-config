@@ -3,7 +3,7 @@
 , stdenv
 , fetchpatch
 , emacsGcc
-, emacsPgtkGcc
+, emacsPgtkNativeComp
 , callPackage
 , writeShellScriptBin
 , buildEnv
@@ -60,7 +60,7 @@ let
         ./fix-ignored-local-variable-values.patch
       ];
     })
-    else emacsPgtkGcc.overrideAttrs (attrs: {
+    else emacsPgtkNativeComp.overrideAttrs (attrs: {
       patches = attrs.patches ++ [
         ./fix-ignored-local-variable-values.patch
       ];
