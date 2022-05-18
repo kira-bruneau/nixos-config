@@ -13,6 +13,7 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
+    opengl.extraPackages = with pkgs; [ vaapiIntel ];
   };
 
   boot = {
