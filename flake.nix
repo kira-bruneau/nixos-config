@@ -42,7 +42,7 @@
         }
         {
           # Add my NUR overlay
-          nixpkgs.overlays = [ my-nur.overlay ];
+          nixpkgs.overlays = [ my-nur.overlays.default ];
           disabledModules = [
             "hardware/xpadneo.nix"
             "programs/bash/undistract-me.nix"
