@@ -122,7 +122,6 @@
           "x-scheme-handler/https"
         ];
         name = "Firefox";
-        terminal = false;
         type = "Application";
       };
     };
