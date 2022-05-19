@@ -15,8 +15,8 @@
     };
   };
 
-  # Automatically control frequency of CPU to save power
-  powerManagement.cpuFreqGovernor = "powersave";
+  # Power management for saving laptop battery
+  services.tlp.enable = true;
 
   # Automatically suspend on low power
   services.upower.enable = true;
