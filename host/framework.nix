@@ -24,7 +24,6 @@
     kernel.sysctl = { "vm.swappiness" = 1; };
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
     kernelModules = [ "kvm-intel" ];
-    kernelParams = [ "i915.enable_psr=0" ];
   };
 
   fileSystems."/" = {
