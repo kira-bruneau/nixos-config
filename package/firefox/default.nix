@@ -30,6 +30,7 @@
           "browser.safebrowsing.malware.enabled" = false;
           "browser.safebrowsing.phishing.enabled" = false;
           "browser.search.suggest.enabled" = false;
+          "browser.shell.checkDefaultBrowser" = false;
           "browser.startup.homepage" = "about:home";
           "browser.startup.page" = 3; # Restore previous session
           "browser.tabs.warnOnClose" = false;
