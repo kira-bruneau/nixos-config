@@ -1,7 +1,5 @@
-(use-package js2-mode
-  :straight t
+(use-package js-mode
   :mode "\\.js\\'"
-  :interpreter "node"
   :init
   (with-eval-after-load 'flycheck
     (setq flycheck-javascript-eslint-executable "eslint_c")
@@ -17,4 +15,4 @@
     (add-to-list 'apheleia-formatters '(eslint . ("eslint_c" "--stdin" "--fix-to-stdout" "--stdin-filename" filepath))))
 
   (with-eval-after-load 'restclient
-    (add-to-list 'restclient-content-type-modes '("application/js" . js2-mode))))
+    (add-to-list 'restclient-content-type-modes '("application/js" . js-mode))))

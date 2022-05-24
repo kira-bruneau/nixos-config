@@ -53,7 +53,6 @@
  ("graphql-mode" . "9740e4027bd9313697d5cac5caaa5b15626ab1da")
  ("ht.el" . "c4c1be487d6ecb353d07881526db05d7fc90ea87")
  ("hydra" . "9e9e00cb240ea1903ffd36a54956b3902c379d29")
- ("js2-mode" . "fed41615b26404e0bfd7e4f64643981ca798a34b")
  ("json-mode" . "eedb4560034f795a7950fa07016bd4347c368873")
  ("json-snatcher" . "b28d1c0670636da6db508d03872d96ffddbc10f2")
  ("kaitai-mode.el" . "267801a1bb028c5135fa00967f334ac600ae5dbf")
