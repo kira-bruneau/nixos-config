@@ -21,6 +21,7 @@
           "browser.newtabpage.activity-stream.feeds.snippets" = false;
           "browser.newtabpage.activity-stream.feeds.telemetry" = false;
           "browser.newtabpage.activity-stream.feeds.topsites" = true;
+          "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "google"; # Don't autopin google on first run
           "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
           "browser.newtabpage.activity-stream.showSponsored" = false;
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
