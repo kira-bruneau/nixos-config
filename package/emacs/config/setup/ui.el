@@ -92,7 +92,7 @@
   (add-to-list 'default-frame-alist (cons 'font font)))
 
 ;; Buffer settings
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 
 ;; Line wrapping + misc
 (use-package simple
