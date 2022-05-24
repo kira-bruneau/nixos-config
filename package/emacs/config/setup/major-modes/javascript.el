@@ -1,5 +1,6 @@
 (use-package js-mode
   :mode "\\.js\\'"
+  :interpreter "zx"
   :init
   (with-eval-after-load 'flycheck
     (setq flycheck-javascript-eslint-executable "eslint_c")
