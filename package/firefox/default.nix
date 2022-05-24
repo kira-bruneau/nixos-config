@@ -26,6 +26,15 @@
           "browser.newtabpage.activity-stream.showSponsored" = false;
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
           "browser.newtabpage.activity-stream.telemetry" = false;
+          "browser.newtabpage.blocked" = builtins.toJSON {
+            # Dismiss builtin shortcuts
+            "26UbzFJ7qT9/4DhodHKA1Q==" = 1;
+            "4gPpjkxgZzXPVtuEoAL9Ig==" = 1;
+            "eV8/WsSLxHadrTL1gAxhug==" = 1;
+            "gLv0ja2RYVgxKdp0I5qwvA==" = 1;
+            "oYry01JR5qiqP3ru9Hdmtg==" = 1;
+            "T9nJot5PurhJSy8n038xGA==" = 1;
+          };
           "browser.newtabpage.enabled" = true;
           "browser.newtabpage.pinned" = builtins.toJSON [ ];
           "browser.safebrowsing.malware.enabled" = false;
