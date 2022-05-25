@@ -338,6 +338,7 @@ bar {
     # Media
     assign [app_id="^org.qbittorrent.qBittorrent$"] $media
     assign [app_id="^rhythmbox$"] $media
+    for_window [app_id="^firefox$" title="https://www.youtube.com"] move container to workspace $media
 
     # Games
     assign [app_id="^lutris$"] $games
