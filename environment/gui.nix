@@ -19,12 +19,6 @@
     # Web
     chromium
 
-    # Social
-    (caprine.override {
-      electron = electron-wayland;
-    })
-    slack
-
     # Media & Documents
     audacity
     blender
