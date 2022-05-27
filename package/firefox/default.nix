@@ -171,52 +171,9 @@ in
       in pkgs.runCommandNoCC "search.json.mozlz4" {} ''
         ${pkgs.mozlz4a}/bin/mozlz4a ${pkgs.writeText "search.json" (builtins.toJSON {
           version = 6;
-          engines = [
-            {
-              _name = "Google";
-              _isAppProvided = true;
-              _metaData = {};
-            }
-            {
-              _name = "Wikipedia (en)";
-              _isAppProvided = true;
-              _metaData = {};
-            }
-            {
-              _name = "Bing";
-              _isAppProvided = true;
-             _metaData = {};
-            }
-            {
-              _name = "Amazon.ca";
-              _isAppProvided = true;
-              _metaData = {};
-            }
-            {
-              _name = "DuckDuckGo";
-              _isAppProvided = true;
-              _metaData = {};
-            }
-            {
-              _name = "eBay";
-              _isAppProvided = true;
-              _metaData = {};
-            }
-            {
-              _name = "Amazon.com";
-              _isAppProvided = true;
-              _metaData = {};
-            }
-          ];
           metaData = {
-            locale = "en-US";
-            region = "CA";
-            channel = "default";
-            distroID = "";
-            experiment = "";
             current = current;
             hash = hash;
-            useSavedOrder = false;
           };
         })} "$out"
       '';
