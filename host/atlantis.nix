@@ -15,7 +15,6 @@
     "clonehero-unwrapped"
     "discord"
     "runescape-launcher"
-    "slack"
     "sm64ex"
     "steam"
     "steam-original"
