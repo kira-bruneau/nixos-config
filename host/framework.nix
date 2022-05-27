@@ -61,5 +61,8 @@
     experimental-features = [ "nix-command" "flakes" ];
   };
 
+  # Required by arctype to manage passwords
+  services.gnome.gnome-keyring.enable = true;
+
   system.stateVersion = "21.11";
 }
