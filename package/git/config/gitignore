@@ -10,6 +10,7 @@
 # Project Management
 .ccls-cache
 .direnv
+.envrc
 .idea
 .mypy_cache
 compile_commands.json
