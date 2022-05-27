@@ -59,5 +59,10 @@
     NIXOS_OZONE_WL = 1;
   };
 
-  xdg.mimeApps.enable = true;
+  xdg = {
+    mimeApps.enable = true;
+
+    # mimeapps.list often gets overwritten by applications adding mimetype associations
+    configFile."mimeapps.list".force = true;
+  };
 }
