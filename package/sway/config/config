@@ -334,6 +334,7 @@ bar {
     # Edit
     # Emacs GTK3 fork: https://git.savannah.gnu.org/cgit/emacs.git/log/?h=feature/pgtk
     assign [app_id="^emacs"] $edit
+    assign [app_id="^VSCodium"] $edit
 
     # Media
     assign [app_id="^mpv$"] $media

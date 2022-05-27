@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     arctype
+    vscodium
   ];
 
   services.syncthing.enable = true;
