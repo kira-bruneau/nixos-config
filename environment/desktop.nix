@@ -89,4 +89,15 @@
 
   # Let the desktop environment handle the power key
   services.logind.extraConfig = "HandlePowerKey=ignore";
+
+  # Quiet boot
+  # FIXME: This still shows fsck messages & NixOS messages from stage-1-init.sh & stage-2-init.sh scripts
+  boot = {
+    initrd.verbose = false;
+    consoleLogLevel = 3;
+    kernelParams = [
+      "quiet"
+      "rd.udev.log_level=3"
+    ];
+  };
 }
