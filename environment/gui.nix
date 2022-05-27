@@ -58,4 +58,6 @@
     # Use Wayland for Chrome & Electron apps
     NIXOS_OZONE_WL = 1;
   };
+
+  xdg.mimeApps.enable = true;
 }
