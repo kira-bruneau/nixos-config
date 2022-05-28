@@ -1,15 +1,57 @@
 { lib, config, pkgs, ... }:
 
-let
-  appName = "Firefox";
-  profile = "kira";
-in
 {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
     profiles = {
-      ${profile} = {
+      ${config.home.username} = {
+        search = {
+          enable = true;
+          default = "DuckDuckGo";
+          order = [ "DuckDuckGo" "Google" ];
+          engines = {
+            "Amazon.ca".metaData.alias = "@a";
+            "Bing".metaData.hidden = true;
+            "eBay".metaData.hidden = true;
+            "Google".metaData.alias = "@g";
+            "Wikipedia (en)".metaData.alias = "@w";
+
+            "Nix Packages" = {
+              urls = [{
+                template = "https://search.nixos.org/packages";
+                params = [
+                  { name = "channel"; value = "unstable"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+
+            "NixOS Wiki" = {
+              urls = [{
+                template = "https://nixos.wiki/index.php";
+                params = [ { name = "search"; value = "{searchTerms}"; }];
+              }];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@nw" ];
+            };
+
+            "Youtube" = {
+              urls = [{
+                template = "https://www.youtube.com/results";
+                params = [ { name = "search_query"; value = "{searchTerms}"; }];
+              }];
+              icon = "${pkgs.fetchurl {
+                url = "www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
+                sha256 = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
+              }}";
+              definedAliases = [ "@yt" ];
+            };
+          };
+        };
+
         settings = {
           "accessibility.typeaheadfind.flashBar" = 0;
           "app.shield.optoutstudies.enabled" = false;
@@ -44,6 +86,7 @@ in
           "browser.safebrowsing.malware.enabled" = false;
           "browser.safebrowsing.phishing.enabled" = false;
           "browser.search.suggest.enabled" = false;
+          "browser.search.update" = false;
           "browser.shell.checkDefaultBrowser" = false;
           "browser.startup.homepage" = "about:home";
           "browser.startup.page" = 3; # Restore previous session
@@ -148,40 +191,8 @@ in
     };
   };
 
-  home = {
-    file.".mozilla/firefox/${profile}/search.json.mozlz4" = {
-      force = true;
-      source = let
-        current = "DuckDuckGo";
-
-        # Firefox REALLY doesn't want to let me configure my search engine outside of Firefox... oh well, too bad!
-        disclaimer =
-          "By modifying this file, I agree that I am doing so " +
-          "only within $appName itself, using official, user-driven search " +
-          "engine selection processes, and in a way which does not circumvent " +
-          "user consent. I acknowledge that any attempt to change this file " +
-          "from outside of $appName is a malicious act, and will be responded " +
-          "to accordingly.";
-
-        # Hashing algorithm derived from ./toolkit/components/search/SearchUtils.jsm:getVerificationHash
-        salt = profile + current + (builtins.replaceStrings [ "$appName" ] [ appName ] disclaimer);
-        hash = builtins.readFile (pkgs.runCommandNoCC "${appName}-${profile}-${current}-hash" { inherit salt; } ''
-          echo -n "$salt" | ${pkgs.openssl}/bin/openssl dgst -sha256 -binary | base64 | tr -d '\n' > "$out"
-        '');
-      in pkgs.runCommandNoCC "search.json.mozlz4" {} ''
-        ${pkgs.mozlz4a}/bin/mozlz4a ${pkgs.writeText "search.json" (builtins.toJSON {
-          version = 6;
-          metaData = {
-            current = current;
-            hash = hash;
-          };
-        })} "$out"
-      '';
-    };
-
-    sessionVariables = {
-      # Touchscreen support
-      MOZ_USE_XINPUT2 = "1";
-    };
+  home.sessionVariables = {
+    # Touchscreen support
+    MOZ_USE_XINPUT2 = "1";
   };
 }
