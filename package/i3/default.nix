@@ -30,9 +30,7 @@
     ];
 
     file = {
-      ".xinitrc".source = ./.xinitrc;
       ".Xresources".source = ./.Xresources;
-      ".Xresources-HiDPI".source = ./.Xresources-HiDPI;
       "bin/i3-autoscale".source = ./bin/i3-autoscale;
     };
   };
