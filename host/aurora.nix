@@ -63,6 +63,13 @@
     ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
   '';
 
+  # Sleep on low power
+  services.upower = {
+    noPollBatteries = true;
+    usePercentageForPolicy = false;
+    timeAction = 240;
+  };
+
   # Manage firmware updates
   services.fwupd.enable = true;
 }
