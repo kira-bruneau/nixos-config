@@ -40,9 +40,6 @@
     options = [ "noatime" "nodiratime" ];
   };
 
-  # Periodically trim mounted SSD partitions in the background
-  services.fstrim.enable = true;
-
   nix.settings = {
     auto-optimise-store = true;
     max-jobs = 12;

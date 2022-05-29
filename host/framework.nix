@@ -10,11 +10,7 @@
     ../user/kira.nix
   ];
 
-  hardware = {
-    enableRedistributableFirmware = true;
-    cpu.intel.updateMicrocode = true;
-    opengl.extraPackages = with pkgs; [ vaapiIntel ];
-  };
+  hardware.enableRedistributableFirmware = true;
 
   boot = {
     # Use the systemd-boot EFI boot loader
@@ -37,9 +33,6 @@
     fsType = "vfat";
     options = [ "noatime" "nodiratime" ];
   };
-
-  # Periodically trim mounted SSD partitions in the background
-  services.fstrim.enable = true;
 
   # Used for hibernation (eg. when upower detects a critical battery percent)
   swapDevices = [

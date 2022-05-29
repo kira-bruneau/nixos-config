@@ -64,14 +64,17 @@
         ./cachix.nix
       ];
 
-      atlantis-modules = (common-modules "atlantis") ++ [
+      atlantis-modules = (common-modules "atlantis") ++ (with nixos-hardware.nixosModules; [
+        common-cpu-amd
+        common-gpu-amd
+        common-pc-ssd
         ./host/atlantis.nix
-      ];
+      ]);
 
-      framework-modules = (common-modules "framework") ++ [
-        nixos-hardware.nixosModules.framework
+      framework-modules = (common-modules "framework") ++ (with nixos-hardware.nixosModules; [
+        framework
         ./host/framework.nix
-      ];
+      ]);
     in
     {
       nixosConfigurations = {
