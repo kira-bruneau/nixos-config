@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   environment = {
@@ -16,12 +16,42 @@
     '';
   };
 
+  # Quiet boot
+  # FIXME: This still shows fsck messages & NixOS messages from stage-1-init.sh & stage-2-init.sh scripts
+  boot = {
+    initrd.verbose = false;
+    consoleLogLevel = 3;
+    kernelParams = [
+      "quiet"
+      "rd.udev.log_level=3"
+    ];
+  };
+
+  # Let the desktop environment handle the power key
+  services.logind.extraConfig = "HandlePowerKey=ignore";
+
   # Enable Sway Wayland compositor
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [ swaylock swayidle ];
     wrapperFeatures.gtk = true;
   };
+
+  environment.etc."sway/config.d/power-controls.conf".text = ''
+    set $mode_power l̲ogout | s̲hutdown | r̲eboot
+    mode "$mode_power" {
+      bindsym l exec swaymsg exit
+      bindsym s exec systemctl poweroff
+      bindsym r exec systemctl reboot
+      bindsym --release XF86PowerOff exec systemctl poweroff
+      bindsym Control+Mod1+Delete exec systemctl reboot
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+    }
+
+    bindsym --release XF86PowerOff mode "$mode_power"
+    bindsym Control+Mod1+Delete mode "$mode_power"
+  '';
 
   # Enable i3-gaps X11 window manager
   services.xserver = {
@@ -97,38 +127,6 @@
 
           gtkgreet-sway-config = pkgs.writeText "gtkgreet-sway-config" ''
             output * bg ${background} fill
-            output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 1712,1003
-            output "Unknown 0x095F 0x00000000" scale 1.5 pos 208,1080
-            output "Unknown HP Z27k G3 CN41223C6P" scale 2 pos 0 0
-
-            input * xkb_layout "us,us"
-            input * xkb_variant "colemak,"
-            input * xkb_options "grp:win_space_toggle"
-
-            bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
-            bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
-            bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
-            bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
-            # using volume scroller (really nice with the Corsair Vengeance K95)
-            bindsym Mod1+XF86AudioRaiseVolume exec --no-startup-id light -A 10
-            bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id light -U 10
-            bindsym Mod1+Shift+XF86AudioRaiseVolume exec --no-startup-id light -S 100
-            bindsym Mod1+Shift+XF86AudioLowerVolume exec --no-startup-id light -r -S 1
-
-            set $mode_power l̲ogout | s̲hutdown | r̲eboot
-            mode "$mode_power" {
-              bindsym l exec swaymsg exit
-              bindsym s exec systemctl poweroff
-              bindsym r exec systemctl reboot
-              bindsym --release XF86PowerOff exec systemctl poweroff
-              bindsym Control+Mod1+Delete exec systemctl reboot
-              bindsym Return mode "default"
-              bindsym Escape mode "default"
-            }
-
-            bindsym --release XF86PowerOff mode "$mode_power"
-            bindsym Control+Mod1+Delete mode "$mode_power"
-
             exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}; ${pkgs.sway}/bin/swaymsg exit"
             include /etc/sway/config.d/*
           '';
@@ -184,18 +182,4 @@
 
   # Disable bitmap fonts
   fonts.fontconfig.allowBitmaps = false;
-
-  # Let the desktop environment handle the power key
-  services.logind.extraConfig = "HandlePowerKey=ignore";
-
-  # Quiet boot
-  # FIXME: This still shows fsck messages & NixOS messages from stage-1-init.sh & stage-2-init.sh scripts
-  boot = {
-    initrd.verbose = false;
-    consoleLogLevel = 3;
-    kernelParams = [
-      "quiet"
-      "rd.udev.log_level=3"
-    ];
-  };
 }

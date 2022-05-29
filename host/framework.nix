@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -44,6 +44,19 @@
     }
   ];
 
+  nix.settings = {
+    auto-optimise-store = true;
+    max-jobs = 8;
+    experimental-features = [ "nix-command" "flakes" ];
+  };
+
+  # Sway output configuration
+  environment.etc."sway/config.d/output.conf".text = ''
+    output "Unknown HP Z27k G3 CN41223C6P" scale 2 pos 0 0
+    output "Unknown 0x095F 0x00000000" scale 1.5 pos 208,1080
+    output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 1712,1003
+  '';
+
   networking = {
     hostName = "framework";
     firewall.enable = false;
@@ -54,12 +67,6 @@
   environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
     ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
   '';
-
-  nix.settings = {
-    auto-optimise-store = true;
-    max-jobs = 8;
-    experimental-features = [ "nix-command" "flakes" ];
-  };
 
   # Required by arctype to manage passwords
   services.gnome.gnome-keyring.enable = true;
