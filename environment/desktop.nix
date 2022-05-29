@@ -129,16 +129,24 @@
             bindsym --release XF86PowerOff mode "$mode_power"
             bindsym Control+Mod1+Delete mode "$mode_power"
 
-            exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
             exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}; ${pkgs.sway}/bin/swaymsg exit"
+            include /etc/sway/config.d/*
           '';
         in "sway --config ${gtkgreet-sway-config}";
     };
   };
 
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "wayland-session" ''
+      /run/current-system/systemd/bin/systemctl --user start graphical-session.target
+      "$@"
+      /run/current-system/systemd/bin/systemctl --user stop graphical-session.target
+    '')
+  ];
+
   # TODO: Add X + i3
   environment.etc."greetd/environments".text = ''
-    sway
+    wayland-session sway
   '';
 
   # Redshift
