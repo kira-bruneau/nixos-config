@@ -52,6 +52,21 @@
               definedAliases = [ "@nw" ];
             };
 
+            # A good way to find genuine discussion
+            "Reddit" = {
+              urls = [{
+                template = "https://www.reddit.com/search";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = "${pkgs.fetchurl {
+                url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
+                sha256 = "sha256-WiXqffmuCVCOJ/rpqyhFK59bz1lKnUOp9/aoEAYRsn0=";
+              }}";
+              definedAliases = [ "@r" ];
+            };
+
             "Youtube" = {
               urls = [{
                 template = "https://www.youtube.com/results";
