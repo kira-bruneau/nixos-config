@@ -17,6 +17,20 @@
             "Google".metaData.alias = "@g";
             "Wikipedia (en)".metaData.alias = "@w";
 
+            "GitHub" = {
+              urls = [{
+                template = "https://github.com/search";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = "${pkgs.fetchurl {
+                url = "https://github.githubassets.com/favicons/favicon.svg";
+                sha256 = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
+              }}";
+              definedAliases = [ "@gh" ];
+            };
+
             "Nix Packages" = {
               urls = [{
                 template = "https://search.nixos.org/packages";
