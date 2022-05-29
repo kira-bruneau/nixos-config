@@ -29,11 +29,13 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ae7476d3-f5b1-4bc7-9be8-eecf330212ba";
     fsType = "ext4";
+    options = [ "noatime" "nodiratime" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/6C1A-F6EA";
     fsType = "vfat";
+    options = [ "noatime" "nodiratime" ];
   };
 
   # Used for hibernation (eg. when upower detects a critical battery percent)

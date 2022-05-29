@@ -31,11 +31,13 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/0d378b34-55a4-425c-ad10-3ed140d3cf54";
     fsType = "ext4";
+    options = [ "noatime" "nodiratime" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/47AE-E9C6";
     fsType = "vfat";
+    options = [ "noatime" "nodiratime" ];
   };
 
   services.fstrim.enable = true;
