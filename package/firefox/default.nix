@@ -87,7 +87,7 @@
                 url = "www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
                 sha256 = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
               }}";
-              definedAliases = [ "@yt" ];
+              definedAliases = [ "@y" ];
             };
           };
         };
