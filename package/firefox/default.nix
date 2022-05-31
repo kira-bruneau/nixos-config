@@ -7,7 +7,7 @@
     profiles = {
       ${config.home.username} = {
         search = {
-          enable = true;
+          force = true;
           default = "DuckDuckGo";
           order = [ "DuckDuckGo" "Google" ];
           engines = {
