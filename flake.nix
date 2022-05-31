@@ -10,7 +10,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:kira-bruneau/home-manager/firefox-search";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

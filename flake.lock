@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1653585116,
-        "narHash": "sha256-eIWvzjuajMLTG4jzxexuAtSiLFdxZvkd7bYJkx1Rdqs=",
+        "lastModified": 1653765690,
+        "narHash": "sha256-W34uZuE/QgVPvuO3xlg4BH/O50DIQUPz6NfFlU3sKcM=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "7a5353c3d27749912df89d1083e9b675f70accb4",
+        "rev": "e3994fc8b0cf4a1dc1080e697a09d33d9faa5e39",
         "type": "github"
       },
       "original": {
@@ -49,38 +49,19 @@
         "type": "github"
       }
     },
-    "flake-utils_3": {
-      "locked": {
-        "lastModified": 1652776076,
-        "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "04c1b180862888302ddfb2e3ad9eaa63afc60cf8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "home-config-kira": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
-        "flake-utils": "flake-utils_2",
         "my-nur": [
           "my-nur"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1653690721,
-        "narHash": "sha256-0DL/l7PVUC22seM0Ub1t2ar/OFEwgOaiYCglTE7f2ls=",
+        "lastModified": 1653862103,
+        "narHash": "sha256-gc5DaU3BKH/H/+2FsmTdL9OinaU3lTa6lWLtxWbAaOo=",
         "owner": "kira-bruneau",
         "repo": "home-config",
-        "rev": "dea3e1ddb17feb0c5a937ef4ba5f50daa7b284f8",
+        "rev": "0a24e1aa2d1425ab5eccc4ee615b8b8bbf687bac",
         "type": "gitlab"
       },
       "original": {
@@ -96,22 +77,23 @@
         ]
       },
       "locked": {
-        "lastModified": 1653518057,
-        "narHash": "sha256-cam3Nfae5ADeEs6mRPzr0jXB7+DhyMIXz0/0Q13r/yk=",
-        "owner": "nix-community",
+        "lastModified": 1653852047,
+        "narHash": "sha256-ZB69qcjMm90HFDxEGFXlg8d48ONQmmSfkrDkABTpuNo=",
+        "owner": "kira-bruneau",
         "repo": "home-manager",
-        "rev": "64831f938bd413cefde0b0cf871febc494afaa4f",
+        "rev": "16dc28a6a89a766b5ac60807f92bffac9edeeb39",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "kira-bruneau",
+        "ref": "firefox-search",
         "repo": "home-manager",
         "type": "github"
       }
     },
     "my-nur": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -195,11 +177,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1653407748,
-        "narHash": "sha256-g9puJaILRTb9ttlLQ7IehpV7Wcy0n+vs8LOFu6ylQcM=",
+        "lastModified": 1653845079,
+        "narHash": "sha256-7ghaQZ+7JXLI9FgNH8+RQHAt3/ubT92j8NtjZleP6t4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5ce6597eca7d7b518c03ecda57d45f9404b5e060",
+        "rev": "b62ada430501de88dfbb08cea4eb98ead3a5e3e7",
         "type": "github"
       },
       "original": {
