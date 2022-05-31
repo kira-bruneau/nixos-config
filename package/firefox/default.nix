@@ -52,6 +52,17 @@
               definedAliases = [ "@nw" ];
             };
 
+            "Nixpkgs Issues" = {
+              urls = [{
+                template = "https://github.com/NixOS/nixpkgs/issues";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@ni" ];
+            };
+
             # A good way to find genuine discussion
             "Reddit" = {
               urls = [{
