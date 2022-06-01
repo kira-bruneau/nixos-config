@@ -201,6 +201,7 @@
           "services.sync.engine.prefs" = false;
           "services.sync.username" = "kira.bruneau@pm.me";
           "signon.rememberSignons" = false; # Use keepassxc instead
+          "toolkit.telemetry.pioneer-new-studies-available" = false;
         };
       };
     };
