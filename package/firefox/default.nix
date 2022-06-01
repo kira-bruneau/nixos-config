@@ -195,6 +195,8 @@
           "extensions.formautofill.creditCards.enabled" = false;
           "layout.spellcheckDefault" = 1;
           "media.eme.enabled" = true;
+          "services.sync.engine.creditcards" = false;
+          "services.sync.engine.passwords" = false;
           "services.sync.engine.prefs" = false;
           "services.sync.username" = "kira.bruneau@pm.me";
           "signon.rememberSignons" = false; # Use keepassxc instead
