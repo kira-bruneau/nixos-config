@@ -123,6 +123,7 @@
           };
           "browser.newtabpage.enabled" = true;
           "browser.newtabpage.pinned" = builtins.toJSON [ ];
+          "browser.places.importBookmarksHTML" = true;
           "browser.safebrowsing.malware.enabled" = false;
           "browser.safebrowsing.phishing.enabled" = false;
           "browser.search.suggest.enabled" = false;
