@@ -52,6 +52,7 @@
   environment.etc."sway/config.d/output.conf".text = ''
     output "Unknown HP Z27k G3 CN41223C6P" scale 2 pos 0 0
     output "Unknown 0x095F 0x00000000" scale 1.5 pos 208,1080
+    output "Unknown HP Z27k G3 CN41223C6V" scale 2 transform 270 pos 1920,0
     output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 1712,1003
   '';
 
