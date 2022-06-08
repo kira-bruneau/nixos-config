@@ -236,22 +236,8 @@
     };
   };
 
-  home = {
-    # KeePassXC integration
-    # Fixes situations where path points to an old version of keepassxc removed from the nix store
-    file.".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json".text = builtins.toJSON {
-      allowed_extensions = [
-        "keepassxc-browser@keepassxc.org"
-      ];
-      description = "KeePassXC integration with native messaging support";
-      name = "org.keepassxc.keepassxc_browser";
-      path = "${pkgs.keepassxc}/bin/keepassxc-proxy";
-      type = "stdio";
-    };
-
+  home.sessionVariables = {
     # Touchscreen support
-    sessionVariables = {
-      MOZ_USE_XINPUT2 = "1";
-    };
+    MOZ_USE_XINPUT2 = "1";
   };
 }
