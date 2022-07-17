@@ -13,11 +13,11 @@
     polymc
     pokemmo-installer
     protontricks
-    (sm64ex.override {
-      compileFlags = [
+    (sm64ex.overrideAttrs (attrs: {
+      makeFlags = attrs.makeFlags ++ [
         "BETTERCAMERA=1"
       ];
-    })
+    }))
     steam
     steam-run
     VVVVVV
