@@ -312,6 +312,7 @@ bar {
 
     # Calendar
     for_window [app_id="^firefox$" title="https://calendar.google.com"] move container to workspace $calendar
+    for_window [app_id="^firefox$" title="https://calendar.proton.me"] move container to workspace $calendar
 
     # Tasks
     for_window [app_id="^firefox$" title="https://linear.app"] move container to workspace $tasks
