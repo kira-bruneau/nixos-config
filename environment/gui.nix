@@ -17,7 +17,7 @@
     pavucontrol
 
     # Web
-    chromium
+    ungoogled-chromium
 
     # Media & Documents
     audacity
