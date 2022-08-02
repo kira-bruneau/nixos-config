@@ -46,10 +46,6 @@ in
     wget
     whois
 
-    # Shell
-    bash-completion
-    nix-bash-completions
-
     # Data conversion & manipulation
     ffmpeg
     jq

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.bash = {
@@ -26,4 +26,9 @@
       ntest = "sudo nixos-rebuild test && home-manager switch";
     };
   };
+
+  home.packages = with pkgs; [
+    bash-completion
+    nix-bash-completions
+  ];
 }
