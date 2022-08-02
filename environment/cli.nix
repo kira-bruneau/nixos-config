@@ -22,18 +22,14 @@ in
   # Packages
   home.packages = with pkgs; [
     # Core utils
-    bat
     du-dust
-    exa
     sd
     tealdeer
     whichf
 
     # Administration
-    evtest
     nethogs
     pciutils
-    topgrade
 
     # Search
     fd
@@ -57,19 +53,14 @@ in
 
     # General development
     binutils
-    cloc
     file
     linuxPackages.perf
     tokei
 
     # Nix development
     cachix
-    carnix
     nix-index
-    nix-prefetch-scripts
-    nixpkgs-fmt
     nixpkgs-review
-    nodePackages.node2nix
     patchelf
 
     # Debuggers
