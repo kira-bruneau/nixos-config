@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import json
 import os
 import re
@@ -10,6 +8,7 @@ base_dpi = 96
 display_scales = {
     '4d10211400000000': 2,  # gallifrey
 }
+
 
 def i3_focused_display_scale():
     workspaces = i3_workspaces()
@@ -37,10 +36,18 @@ def i3_focused_display(i3_workspaces):
 
 class DisplayInfo:
     def __init__(self, display):
-        xrandr = subprocess.Popen(['xrandr', '--props'], stdout=subprocess.PIPE)
+        xrandr = subprocess.Popen(
+            ['xrandr', '--props'],
+            stdout=subprocess.PIPE
+        )
+
         lines = iter(xrandr.stdout.readline, None)
         for line in lines:
-            match = re.match(re.escape(display) + r' connected.*?([0-9]+)x([0-9]+).*?([0-9]+)mm x ([0-9]+)mm$', line.decode('utf-8'))
+            match = re.match(
+                re.escape(display) +
+                r' connected.*?([0-9]+)x([0-9]+).*?([0-9]+)mm x ([0-9]+)mm$',
+                line.decode('utf-8'))
+
             if match is not None:
                 self.xpixels = int(match.group(1))
                 self.ypixels = int(match.group(2))
@@ -49,7 +56,8 @@ class DisplayInfo:
 
                 next(lines)
                 edid = next(lines).decode('utf-8')
-                self.uid = re.search(r'00ffffffffffff00([0-9a-f]{16})', edid).group(1)
+                match = re.search(r'00ffffffffffff00([0-9a-f]{16})', edid)
+                self.uid = match.group(1)
                 return
 
         raise LookupError
@@ -63,7 +71,11 @@ class DisplayInfo:
 def xserver_dpi():
     xdpyinfo = subprocess.Popen('xdpyinfo', stdout=subprocess.PIPE)
     for line in xdpyinfo.stdout:
-        match = re.search(r'resolution:\s+([0-9]+)x([0-9]+)', line.decode('utf-8'))
+        match = re.search(
+            r'resolution:\s+([0-9]+)x([0-9]+)',
+            line.decode('utf-8')
+        )
+
         if match is not None:
             xdpi, ydpi = (int(dim) for dim in match.groups())
             return (xdpi + ydpi) / 2
@@ -81,7 +93,10 @@ text_scale = xserver_dpi() / base_dpi
 subprocess.Popen(sys.argv[1:], env={
     **os.environ,
     'GDK_SCALE': str(display_scale),
-    'GDK_DPI_SCALE': str(1 / text_scale),  # Reverses text scaling derived from X server DPI
+
+    # Reverses text scaling derived from X server DPI
+    'GDK_DPI_SCALE': str(1 / text_scale),
+
     'QT_AUTO_SCREEN_SCALE_FACTOR': '1',
     'WINIT_X11_SCALE_FACTOR': str(display_scale),
 })
