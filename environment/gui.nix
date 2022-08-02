@@ -2,14 +2,15 @@
 
 {
   imports = [
+    ../package/emacs
     ../package/firefox
     ../package/gtk
     ../package/i3
     ../package/keepassxc
     ../package/lmms
+    ../package/newsflash
     ../package/speedcrunch
     ../package/sway
-    ../package/newsflash
   ];
 
   home.packages = with pkgs; [
@@ -21,9 +22,7 @@
 
     # Media & Documents
     audacity
-    blender
     evince
-    freetube
     gimp
     gnome3.eog
     gnome3.file-roller
@@ -36,14 +35,10 @@
     xournalpp
     zynaddsubfx
 
-    # Remote Desktop
-    remmina
-
     # Theme
     arc-theme
     arc-icon-theme
     gnome3.adwaita-icon-theme
-    lxappearance
 
     # Other
     gnome3.gnome-clocks
