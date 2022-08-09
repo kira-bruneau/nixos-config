@@ -51,17 +51,18 @@ in
     unzip
     xmlstarlet
 
+    # Nix
+    cachix
+    comma
+    nix-index
+    nixpkgs-review
+    patchelf
+
     # General development
     binutils
     file
     linuxPackages.perf
     tokei
-
-    # Nix development
-    cachix
-    nix-index
-    nixpkgs-review
-    patchelf
 
     # Debuggers
     strace
