@@ -3,6 +3,7 @@
 {
   imports = [
     ../package/emacs
+    ../package/eog
     ../package/firefox
     ../package/gtk
     ../package/i3
@@ -24,7 +25,6 @@
     audacity
     evince
     gimp
-    gnome3.eog
     gnome3.file-roller
     gnome3.nautilus
     inkscape
