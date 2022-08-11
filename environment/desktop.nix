@@ -54,13 +54,10 @@
   '';
 
   # Enable i3-gaps X11 window manager
-  services.xserver = {
-    useGlamor = true;
-    windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
-      extraPackages = [];
-    };
+  services.xserver.windowManager.i3 = {
+    enable = true;
+    package = pkgs.i3-gaps;
+    extraPackages = [];
   };
 
   # Enable gtkgreet greeter (using Sway as the Wayland compositor)
