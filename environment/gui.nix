@@ -10,6 +10,7 @@
     ../package/i3
     ../package/keepassxc
     ../package/lmms
+    ../package/mpv
     ../package/newsflash
     ../package/speedcrunch
     ../package/sway
@@ -29,7 +30,6 @@
     gnome3.nautilus
     inkscape
     libreoffice
-    mpv
     qbittorrent
     sqlitebrowser
     xournalpp
