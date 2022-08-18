@@ -18,9 +18,5 @@
     "unrar"
   ];
 
-  programs.firefox.profiles.kira.settings = {
-    "media.ffmpeg.vaapi.enabled" = true;
-  };
-
   home.stateVersion = "21.11";
 }
