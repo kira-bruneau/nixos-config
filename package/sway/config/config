@@ -327,6 +327,7 @@ bar {
     # Chat
     assign [app_id="^Caprine$"] $chat
     assign [app_id="^Slack$"] $chat
+    for_window [app_id="^firefox$" title="https://app.element.io"] move container to workspace $chat
     for_window [app_id="^firefox$" title="https://app.slack.com"] move container to workspace $chat
 #
 # Picture-in-picture
