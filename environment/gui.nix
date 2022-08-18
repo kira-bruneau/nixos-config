@@ -4,6 +4,7 @@
   imports = [
     ../package/emacs
     ../package/eog
+    ../package/evince
     ../package/firefox
     ../package/gtk
     ../package/i3
@@ -23,7 +24,6 @@
 
     # Media & Documents
     audacity
-    evince
     gimp
     gnome3.file-roller
     gnome3.nautilus
