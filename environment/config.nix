@@ -4,7 +4,7 @@ with lib;
 {
   options.home.configDirectory = mkOption {
     type = types.path;
-    default = "${config.home.homeDirectory}/Dev/home-config";
+    default = "${config.home.homeDirectory}/Dev/public/home-config";
   };
 
   config.home.activation.createHomeConfigGitRepo =
