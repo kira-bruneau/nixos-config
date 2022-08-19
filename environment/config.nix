@@ -3,7 +3,7 @@
 {
   system.activationScripts.createNixOSConfigGitRepo =
     ''
-    if [ ! -e /etc/nixos -o -z $(ls -A /etc/nixos) ]; then
+    if [ ! -e /etc/nixos -o -z "$(ls -A /etc/nixos)" ]; then
       mkdir -p /etc
       cp -RT --no-preserve=ownership ${self} /etc/nixos
       chmod -R +w /etc/nixos
