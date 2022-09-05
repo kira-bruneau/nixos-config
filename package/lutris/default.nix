@@ -2,7 +2,8 @@
 
 let
   settingsFormat = pkgs.formats.yaml { };
-in {
+in
+{
   imports = [
     ../../environment/config.nix
   ];
@@ -44,7 +45,7 @@ in {
     };
 
     "lutris/runners/linux.yml".source = settingsFormat.generate "linux.yml" {
-      linux = {};
+      linux = { };
 
       system = {
         disable_runtime = true;
@@ -62,7 +63,7 @@ in {
     };
 
     "lutris/runners/steam.yml".source = settingsFormat.generate "steam.yml" {
-      steam = {};
+      steam = { };
 
       system = {
         disable_runtime = true;
@@ -73,7 +74,7 @@ in {
     };
 
     "lutris/runners/wine.yml".source = settingsFormat.generate "wine.yml" {
-      wine = {};
+      wine = { };
 
       system = {
         prefix_command = "wrap-scale-off";

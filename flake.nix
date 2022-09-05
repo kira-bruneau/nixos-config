@@ -2,11 +2,37 @@
   description = "My home-manager configuration";
 
   inputs = {
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    my-nur.url = "gitlab:kira-bruneau/nur-packages";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    flake-checker = {
+      url = "gitlab:kira-bruneau/flake-checker";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    my-nur = {
+      url = "gitlab:kira-bruneau/nur-packages";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        flake-checker.follows = "flake-checker";
+      };
+    };
   };
 
-  outputs = { self, emacs-overlay, my-nur }: {
+  outputs = { self, flake-utils, nixpkgs, flake-checker, emacs-overlay, my-nur }: {
     nixosModules = {
       atlantis = { pkgs, ... }: {
         imports = [
@@ -29,5 +55,41 @@
         ];
       };
     };
-  };
+  } // flake-utils.lib.eachDefaultSystem (system:
+    let
+      pkgs = nixpkgs.legacyPackages.${system};
+
+      paths = flake-checker.lib.partitionToAttrs
+        flake-checker.lib.commonFlakePaths
+        (flake-checker.lib.walkFlake ./.);
+
+      checker = flake-checker.lib.makeFlakeChecker {
+        root = ./.;
+
+        settings = {
+          markdownlint.paths = paths.markdown;
+
+          nixpkgs-fmt.paths = (builtins.filter
+            (path:
+              (builtins.all
+                (ignore: !(nixpkgs.lib.hasSuffix ignore path))
+                [
+                  "node-composition.nix"
+                  "node-env.nix"
+                  "node-packages.nix"
+                ]))
+            paths.nix);
+
+          prettier.paths = paths.markdown;
+        };
+
+        inherit pkgs;
+      };
+    in
+    {
+      apps = {
+        inherit (checker) fix;
+      };
+    }
+  );
 }

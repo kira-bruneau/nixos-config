@@ -46,7 +46,7 @@
             "NixOS Wiki" = {
               urls = [{
                 template = "https://nixos.wiki/index.php";
-                params = [ { name = "search"; value = "{searchTerms}"; }];
+                params = [{ name = "search"; value = "{searchTerms}"; }];
               }];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@nw" ];
@@ -81,7 +81,7 @@
             "Youtube" = {
               urls = [{
                 template = "https://www.youtube.com/results";
-                params = [ { name = "search_query"; value = "{searchTerms}"; }];
+                params = [{ name = "search_query"; value = "{searchTerms}"; }];
               }];
               icon = "${pkgs.fetchurl {
                 url = "www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";

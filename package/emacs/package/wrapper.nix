@@ -7,7 +7,7 @@
 , makeWrapper
 , emacs
 , profile
-, makeWrapperArgs ? [],
+, makeWrapperArgs ? [ ]
 }:
 
 let
@@ -50,7 +50,8 @@ let
       done < <("$SHELL" -ilc '${coreutils}/bin/env -0')
     fi
   '';
-in runCommand
+in
+runCommand
   "${emacs.name}-profile-wrapper"
   {
     nativeBuildInputs = [ makeWrapper ];

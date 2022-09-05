@@ -48,16 +48,18 @@
 let
   emacs =
     if stdenv.hostPlatform.isDarwin
-    then emacsGcc.overrideAttrs (attrs: {
-      patches = attrs.patches ++ [
-        # Removes titlebar
-        # TODO: When Emacs 29 is released, replace with: (add-to-list 'default-frame-alist '(undecorated . t))
-        (fetchpatch {
-          url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/no-titlebar.patch";
-          sha256 = "sha256-NI2Xpy/BJHk3dqZgGchA1FO/4shbybQcVl4rbGEg2i8=";
+    then
+      emacsGcc.overrideAttrs
+        (attrs: {
+          patches = attrs.patches ++ [
+            # Removes titlebar
+            # TODO: When Emacs 29 is released, replace with: (add-to-list 'default-frame-alist '(undecorated . t))
+            (fetchpatch {
+              url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/no-titlebar.patch";
+              sha256 = "sha256-NI2Xpy/BJHk3dqZgGchA1FO/4shbybQcVl4rbGEg2i8=";
+            })
+          ];
         })
-      ];
-    })
     else emacsPgtkNativeComp;
 
   nodePackages = import ./node-packages/node-composition.nix {

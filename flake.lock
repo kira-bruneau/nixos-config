@@ -2,8 +2,12 @@
   "nodes": {
     "emacs-overlay": {
       "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1663044482,
@@ -22,20 +26,18 @@
     "flake-checker": {
       "inputs": {
         "flake-utils": [
-          "my-nur",
           "flake-utils"
         ],
         "nixpkgs": [
-          "my-nur",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1662344938,
-        "narHash": "sha256-XIi7FFzUhfiEnXW4sJg/TBQQy3gm0x4v1zqMpUZOops=",
+        "lastModified": 1662483990,
+        "narHash": "sha256-4rBVFvhboxJsRDzFyvC3aqRsVJIX1bpRvVYzccvw6no=",
         "owner": "kira-bruneau",
         "repo": "flake-checker",
-        "rev": "c6182624e0e4524426d3c3d0b603ef782d6848b2",
+        "rev": "3f03b787925eab154ebefb9f226b6bf14ebbede7",
         "type": "gitlab"
       },
       "original": {
@@ -59,26 +61,17 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
-      "locked": {
-        "lastModified": 1659877975,
-        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "my-nur": {
       "inputs": {
-        "flake-checker": "flake-checker",
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_2"
+        "flake-checker": [
+          "flake-checker"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1663006292,
@@ -95,19 +88,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1662019588,
-        "narHash": "sha256-oPEjHKGGVbBXqwwL+UjsveJzghWiWV0n9ogo1X6l4cw=",
-        "path": "/nix/store/8x9s4zv7dzmwxmm8lhsxk3nf8lxlh52q-source",
-        "rev": "2da64a81275b68fdad38af669afeda43d401e94b",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1662934689,
         "narHash": "sha256-mXi8hmhiunOVTeHiuouWXb0vTqjzp9v9kshMmI561Us=",
@@ -126,7 +106,10 @@
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
-        "my-nur": "my-nur"
+        "flake-checker": "flake-checker",
+        "flake-utils": "flake-utils",
+        "my-nur": "my-nur",
+        "nixpkgs": "nixpkgs"
       }
     }
   },

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  i3-autoscale = pkgs.writers.writePython3Bin "i3-autoscale" {} ./bin/i3-autoscale.py;
+  i3-autoscale = pkgs.writers.writePython3Bin "i3-autoscale" { } ./bin/i3-autoscale.py;
 in
 {
   imports = [
