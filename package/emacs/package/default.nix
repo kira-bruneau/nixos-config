@@ -56,15 +56,9 @@ let
           url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/no-titlebar.patch";
           sha256 = "sha256-NI2Xpy/BJHk3dqZgGchA1FO/4shbybQcVl4rbGEg2i8=";
         })
-
-        ./fix-ignored-local-variable-values.patch
       ];
     })
-    else emacsPgtkNativeComp.overrideAttrs (attrs: {
-      patches = attrs.patches ++ [
-        ./fix-ignored-local-variable-values.patch
-      ];
-    });
+    else emacsPgtkNativeComp;
 
   nodePackages = import ./node-packages/node-composition.nix {
     inherit pkgs;
