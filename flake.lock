@@ -23,7 +23,7 @@
         "type": "github"
       }
     },
-    "flake-checker": {
+    "flake-linter": {
       "inputs": {
         "flake-utils": [
           "flake-utils"
@@ -33,16 +33,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1662483990,
-        "narHash": "sha256-4rBVFvhboxJsRDzFyvC3aqRsVJIX1bpRvVYzccvw6no=",
+        "lastModified": 1663096025,
+        "narHash": "sha256-SJZIGSBm6RW/ftkeOopFkrpMJSFBU6kYOLyGf35rAcw=",
         "owner": "kira-bruneau",
-        "repo": "flake-checker",
-        "rev": "3f03b787925eab154ebefb9f226b6bf14ebbede7",
+        "repo": "flake-linter",
+        "rev": "fe5dc4800f1774c4f4aad0be1cb7ca58436b0877",
         "type": "gitlab"
       },
       "original": {
         "owner": "kira-bruneau",
-        "repo": "flake-checker",
+        "repo": "flake-linter",
         "type": "gitlab"
       }
     },
@@ -63,8 +63,8 @@
     },
     "my-nur": {
       "inputs": {
-        "flake-checker": [
-          "flake-checker"
+        "flake-linter": [
+          "flake-linter"
         ],
         "flake-utils": [
           "flake-utils"
@@ -74,11 +74,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1663006292,
-        "narHash": "sha256-vz+52XvJSvL4bukUNHFLW/3mdNBobo6Ub1UXqPbaZrI=",
+        "lastModified": 1663099964,
+        "narHash": "sha256-SAsTNgFQqIubJdK8s/jxtDWGvbJZQ7f1Rzrv1SXp/Ns=",
         "owner": "kira-bruneau",
         "repo": "nur-packages",
-        "rev": "1d73656b0aa385e60a5abfff7169721e04192d39",
+        "rev": "35efe2356bb59c2976282850e7d7ced90da752ba",
         "type": "gitlab"
       },
       "original": {
@@ -106,7 +106,7 @@
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
-        "flake-checker": "flake-checker",
+        "flake-linter": "flake-linter",
         "flake-utils": "flake-utils",
         "my-nur": "my-nur",
         "nixpkgs": "nixpkgs"
