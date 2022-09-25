@@ -13,6 +13,14 @@
 
   services.syncthing.enable = true;
 
+  programs.mpv.config = {
+    # Hardware acceleration
+    hwdec = "vaapi";
+
+    # Fix stuttering playing 4k video
+    hdr-compute-peak = "no";
+  };
+
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "arctype"
     "unrar"
