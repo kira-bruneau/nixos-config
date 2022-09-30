@@ -177,6 +177,9 @@
   # Enable GNOME crypto services
   services.dbus.packages = with pkgs; [ gcr ];
 
+  # Enable GNOME virtual file system
+  services.gvfs.enable = true;
+
   # Disable bitmap fonts
   fonts.fontconfig.allowBitmaps = false;
 }
