@@ -7,8 +7,8 @@
     ../environment/gaming.nix
     ../environment/hidpi.nix
     ../environment/locale
-    ../environment/ssh-server.nix
     ../environment/wireless.nix
+    ../service/ssh.nix
     ../user/builder.nix
     ../user/kira.nix
   ];

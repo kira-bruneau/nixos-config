@@ -6,7 +6,7 @@
     ../environment/hidpi.nix
     ../environment/laptop.nix
     ../environment/locale
-    ../environment/ssh-server.nix
+    ../service/ssh.nix
     ../user/kira.nix
   ];
 
