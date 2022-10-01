@@ -3,7 +3,7 @@
 {
   imports = [
     ./desktop.nix
-    ./wireless.nix
+    ./portable.nix
   ];
 
   # Enable touchpad support

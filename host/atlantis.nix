@@ -6,7 +6,7 @@
     ../environment/desktop.nix
     ../environment/gaming.nix
     ../environment/hidpi.nix
-    ../environment/home.nix
+    ../environment/locale
     ../environment/ssh-server.nix
     ../environment/wireless.nix
     ../user/builder.nix

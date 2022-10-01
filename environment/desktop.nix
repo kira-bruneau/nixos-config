@@ -143,7 +143,6 @@
 
   # Redshift
   # TODO: Start at login
-  location.provider = "geoclue2";
   services.redshift = {
     enable = true;
     package = pkgs.gammastep;

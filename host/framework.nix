@@ -4,8 +4,8 @@
   imports = [
     ../environment/config.nix
     ../environment/hidpi.nix
-    ../environment/home.nix
     ../environment/laptop.nix
+    ../environment/locale
     ../environment/ssh-server.nix
     ../user/kira.nix
   ];
