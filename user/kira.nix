@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../environment/colemak.nix
+    ../environment/colemak
     ../group/audio.nix
   ];
 
