@@ -2,9 +2,6 @@
 
 {
   environment = {
-    # Add home bin to PATH
-    homeBinInPath = true;
-
     # Source ~/.profile on login to properly set 'home.sessionVariables'
     # with home-manager.
     #
