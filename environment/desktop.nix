@@ -159,6 +159,9 @@
     pulse.enable = true;
   };
 
+  # Enable GUI for managing bluetooth
+  services.blueman.enable = config.hardware.bluetooth.enable;
+
   # Enable xdg-desktop-portal (screen sharing)
   xdg.portal = {
     enable = true;
