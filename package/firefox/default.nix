@@ -196,6 +196,7 @@
           "extensions.formautofill.creditCards.enabled" = false;
           "layout.spellcheckDefault" = 1;
           "media.eme.enabled" = true;
+          "network.proxy.type" = 0;
           "services.sync.engine.creditcards" = false;
           "services.sync.engine.passwords" = false;
           "services.sync.engine.prefs" = false;
