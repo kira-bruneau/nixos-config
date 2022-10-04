@@ -16,7 +16,7 @@
     # Use the systemd-boot EFI boot loader
     loader.systemd-boot.enable = true;
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages;
     kernel.sysctl = { "vm.swappiness" = 1; };
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
     kernelModules = [ "kvm-intel" ];
