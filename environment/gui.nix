@@ -26,8 +26,8 @@
     # Media & Documents
     audacity
     gimp
-    gnome3.file-roller
-    gnome3.nautilus
+    gnome.file-roller
+    gnome.nautilus
     inkscape
     libreoffice
     qbittorrent
@@ -38,10 +38,10 @@
     # Theme
     arc-theme
     arc-icon-theme
-    gnome3.adwaita-icon-theme
+    gnome.adwaita-icon-theme
 
     # Other
-    gnome3.gnome-clocks
+    gnome.gnome-clocks
     gnucash
   ];
 

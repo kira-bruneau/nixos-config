@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    gnome3.eog
+    gnome.eog
   ];
 
   xdg.mimeApps.defaultApplications = {

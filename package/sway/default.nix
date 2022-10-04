@@ -51,7 +51,7 @@ in
   ];
 
   home.packages = with pkgs; [
-    alsaUtils
+    alsa-utils
     grim
     import-gsettings
     keepassxc
