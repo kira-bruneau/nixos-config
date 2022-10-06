@@ -23,7 +23,6 @@
   (setq lsp-enable-snippet nil)
   (setq lsp-response-timeout 1.0e+INF) ;; can always ctrl+g my way out of this
   (setq lsp--show-message nil)
-  (setq lsp-idle-delay 0)
   (setq lsp-auto-execute-action nil)
   (setq lsp-lens-enable nil) ;; lenses are really laggy right now, re-enable this if the lag is ever fixed
   (setq lsp-headerline-breadcrumb-enable nil) ;; headerline laggy with pixel precision scrolling
@@ -45,7 +44,6 @@
   :config
   (setq lsp-ui-doc-enable t)
   (setq lsp-ui-sideline-enable t)
-  (setq lsp-ui-sideline-delay 0)
   (setq lsp-ui-sideline-show-code-actions t)
   (setq lsp-ui-doc-max-width 80)
   (setq lsp-ui-doc-border (doom-color 'vertical-bar))
