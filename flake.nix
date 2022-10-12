@@ -30,18 +30,42 @@
     };
   };
 
-  outputs = { self, nixpkgs, my-nur, home-manager, home-config-kira, nixos-hardware, nixos-generators }:
+  outputs = { nixpkgs, my-nur, nixos-generators, ... } @ inputs:
     let
-      common-modules = host: [
+      hostsDir = ./host;
+      hosts = builtins.listToAttrs
+        (builtins.concatMap
+          (host:
+            if nixpkgs.lib.hasSuffix ".nix" host
+            then [
+              {
+                name = nixpkgs.lib.removeSuffix ".nix" host;
+                value = hostsDir + "/${host}";
+              }
+            ]
+            else [ ])
+          (builtins.attrNames (builtins.readDir hostsDir)));
+
+      commonModules = [
+        ./cachix.nix
+
         {
           nix = {
-            # Pin nixpkgs flake to the one used to build this config
+            settings = {
+              auto-optimise-store = true;
+              experimental-features = [ "nix-command" "flakes" ];
+            };
+
+            # Pin nixpkgs in flake registry
             registry.nixpkgs.flake = nixpkgs;
+
+            # Pin nixpkgs channel (for backwards compatibility with nix2 cli)
             nixPath = [ "nixpkgs=${nixpkgs}" ];
           };
         }
+
+        # Overlay my nur packages & modules
         {
-          # Add my NUR overlay
           nixpkgs.overlays = [ my-nur.overlays.default ];
           disabledModules = [
             "hardware/xpadneo.nix"
@@ -50,57 +74,49 @@
             "services/video/replay-sorcery.nix"
           ];
         }
-        my-nur.nixosModules.gamemode
-        my-nur.nixosModules.replay-sorcery
-        my-nur.nixosModules.undistract-me
-        my-nur.nixosModules.xpadneo
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useUserPackages = true;
-            users.kira = home-config-kira.nixosModules.${host};
-          };
-        }
-        ./cachix.nix
-      ];
-
-      atlantis-modules = (common-modules "atlantis") ++ (with nixos-hardware.nixosModules; [
-        common-cpu-amd
-        common-gpu-amd
-        common-pc-ssd
-        ./host/atlantis.nix
-      ]);
-
-      framework-modules = (common-modules "framework") ++ (with nixos-hardware.nixosModules; [
-        framework
-        ./host/framework.nix
-      ]);
+      ] ++ builtins.attrValues my-nur.nixosModules;
     in
     {
-      nixosConfigurations = {
-        atlantis = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs.self = self;
-          modules = atlantis-modules;
-        };
-        framework = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs.self = self;
-          modules = framework-modules;
-        };
-      };
+      nixosConfigurations = builtins.mapAttrs
+        (host: path:
+          nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs; };
+            modules = commonModules ++ [
+              {
+                networking.hostName = host;
+              }
+              path
+            ];
+          })
+        hosts;
 
-      packages.x86_64-linux = {
-        framework-iso = nixos-generators.nixosGenerate {
-          format = "install-iso";
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          specialArgs.self = self;
-          modules = framework-modules ++ [
-            {
-              installer.cloneConfig = false;
-            }
-          ];
-        };
-      };
+      packages = builtins.foldl'
+        (packages: host:
+          let
+            path = hosts.${host};
+            system = (import path {
+              inputs = null;
+              pkgs = null;
+            }).nixpkgs.hostPlatform.system;
+          in
+            packages // {
+              ${system} = (packages.${system} or {}) // {
+                "${host}-install-iso" = nixos-generators.nixosGenerate {
+                  pkgs = nixpkgs.legacyPackages.${system};
+                  format = "install-iso";
+                  specialArgs = { inherit inputs; };
+                  modules = commonModules ++ [
+                    {
+                      networking.hostName = host;
+                      installer.cloneConfig = false;
+                      services.openssh.permitRootLogin = nixpkgs.lib.mkForce "no";
+                    }
+                    path
+                  ];
+                };
+              };
+            })
+        {}
+        (builtins.attrNames hosts);
     };
 }

@@ -1,7 +1,11 @@
-{ config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
-  imports = [
+  imports = (with inputs.nixos-hardware.nixosModules; [
+    common-cpu-amd
+    common-gpu-amd
+    common-pc-ssd
+  ]) ++ [
     ../environment/config.nix
     ../environment/desktop.nix
     ../environment/gaming.nix
@@ -13,14 +17,18 @@
     ../user/kira.nix
   ];
 
+  system.stateVersion = "22.05";
+
+  nixpkgs.hostPlatform.system = "x86_64-linux";
+
   hardware.enableRedistributableFirmware = true;
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-    kernelPackages = pkgs.linuxPackages_latest;
-
     # Use the systemd-boot EFI boot loader
     loader.systemd-boot.enable = true;
+
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
 
     # KVM Virtualisation
     kernelModules = [ "kvm-amd" ];
@@ -40,21 +48,12 @@
     options = [ "noatime" "nodiratime" ];
   };
 
-  nix.settings = {
-    auto-optimise-store = true;
-    max-jobs = 12;
-    experimental-features = [ "nix-command" "flakes" ];
-  };
-
   # Sway output configuration
   environment.etc."sway/config.d/output.conf".text = ''
     output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 0,0
   '';
 
-  networking = {
-    hostName = "atlantis";
-    firewall.enable = false;
-  };
+  networking.firewall.enable = false;
 
   environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
     ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
@@ -69,6 +68,4 @@
     gpu_device = 0;
     amd_performance_level = "high";
   };
-
-  system.stateVersion = "22.05";
 }

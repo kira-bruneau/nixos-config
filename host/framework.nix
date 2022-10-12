@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
-  imports = [
+  imports = (with inputs.nixos-hardware.nixosModules; [
+    framework
+  ]) ++ [
     ../environment/config.nix
     ../environment/hidpi.nix
     ../environment/laptop.nix
@@ -9,6 +11,10 @@
     ../service/ssh.nix
     ../user/kira.nix
   ];
+
+  system.stateVersion = "22.05";
+
+  nixpkgs.hostPlatform.system = "x86_64-linux";
 
   hardware.enableRedistributableFirmware = true;
 
@@ -42,12 +48,6 @@
     }
   ];
 
-  nix.settings = {
-    auto-optimise-store = true;
-    max-jobs = 8;
-    experimental-features = [ "nix-command" "flakes" ];
-  };
-
   # Sway output configuration
   environment.etc."sway/config.d/output.conf".text = ''
     output "Unknown HP Z27k G3 CN41223C6P" scale 2 pos 0 400
@@ -56,10 +56,7 @@
     output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 1712 1403
   '';
 
-  networking = {
-    hostName = "framework";
-    firewall.enable = false;
-  };
+  networking.firewall.enable = false;
 
   environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
     ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
@@ -67,6 +64,4 @@
 
   # Required by arctype to manage passwords
   services.gnome.gnome-keyring.enable = true;
-
-  system.stateVersion = "22.05";
 }
