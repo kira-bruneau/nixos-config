@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./colemak.nix
     ./ottawa.nix
   ];
 
