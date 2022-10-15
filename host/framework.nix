@@ -59,8 +59,6 @@
   networking = {
     hostName = "framework";
     firewall.enable = false;
-    useDHCP = false;
-    interfaces.wlp170s0.useDHCP = true;
   };
 
   environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''

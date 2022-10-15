@@ -54,8 +54,6 @@
   networking = {
     hostName = "atlantis";
     firewall.enable = false;
-    useDHCP = false;
-    interfaces.wlp6s0.useDHCP = true;
   };
 
   environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
