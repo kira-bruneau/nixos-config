@@ -60,7 +60,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
 
       paths = flake-linter.lib.partitionToAttrs
-        flake-linter.lib.commonFlakePaths
+        flake-linter.lib.commonPaths
         (builtins.filter
           (path:
             (builtins.all
