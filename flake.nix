@@ -97,7 +97,7 @@
             system = (import path {
               inputs = null;
               pkgs = null;
-            }).nixpkgs.hostPlatform.system;
+            }).nixpkgs.hostPlatform;
           in
             packages // {
               ${system} = (packages.${system} or {}) // {
