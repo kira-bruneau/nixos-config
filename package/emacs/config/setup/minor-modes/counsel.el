@@ -1,6 +1,8 @@
 ;; Used to prioritize commonly used counsel-M-x commands
 (use-package amx
-  :straight t)
+  :straight t
+  :config
+  (setq amx-history-length 10000))
 
 (use-package counsel
   :straight t
