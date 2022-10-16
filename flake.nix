@@ -32,14 +32,17 @@
 
   outputs = { nixpkgs, my-nur, nixos-generators, ... } @ inputs:
     let
+      lib = nixpkgs.lib;
+
       hostsDir = ./host;
+
       hosts = builtins.listToAttrs
         (builtins.concatMap
           (host:
-            if nixpkgs.lib.hasSuffix ".nix" host
+            if lib.hasSuffix ".nix" host
             then [
               {
-                name = nixpkgs.lib.removeSuffix ".nix" host;
+                name = lib.removeSuffix ".nix" host;
                 value = hostsDir + "/${host}";
               }
             ]
@@ -79,7 +82,7 @@
     {
       nixosConfigurations = builtins.mapAttrs
         (host: path:
-          nixpkgs.lib.nixosSystem {
+          lib.nixosSystem {
             specialArgs = { inherit inputs; };
             modules = commonModules ++ [
               {
@@ -109,7 +112,14 @@
                     {
                       networking.hostName = host;
                       installer.cloneConfig = false;
-                      services.openssh.permitRootLogin = nixpkgs.lib.mkForce "no";
+
+                      # Resolve conflict between install iso config and my host configs
+                      services.openssh.permitRootLogin = lib.mkForce "no";
+
+                      # Disable ZFS support, it may not be compatible
+                      # with the configured kernel version
+                      boot.supportedFilesystems = lib.mkForce
+                        [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];
                     }
                     path
                   ];
