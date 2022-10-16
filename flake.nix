@@ -53,6 +53,9 @@
         ./cachix.nix
         ./environment/seed-nixos-config.nix
 
+        # Overlay my nur packages & modules
+        my-nur.nixosModules.overlay
+
         {
           nix = {
             settings = {
@@ -67,18 +70,7 @@
             nixPath = [ "nixpkgs=${nixpkgs}" ];
           };
         }
-
-        # Overlay my nur packages & modules
-        {
-          nixpkgs.overlays = [ my-nur.overlays.default ];
-          disabledModules = [
-            "hardware/xpadneo.nix"
-            "programs/bash/undistract-me.nix"
-            "programs/gamemode.nix"
-            "services/video/replay-sorcery.nix"
-          ];
-        }
-      ] ++ builtins.attrValues my-nur.nixosModules;
+      ];
     in
     {
       nixosConfigurations = builtins.mapAttrs
