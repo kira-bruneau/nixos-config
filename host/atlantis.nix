@@ -25,7 +25,10 @@
 
   boot = {
     # Use the systemd-boot EFI boot loader
-    loader.systemd-boot.enable = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
 
     kernelPackages = pkgs.linuxPackages_latest;
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];

@@ -20,7 +20,10 @@
 
   boot = {
     # Use the systemd-boot EFI boot loader
-    loader.systemd-boot.enable = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
 
     kernelPackages = pkgs.linuxPackages;
     kernel.sysctl = { "vm.swappiness" = 1; };
