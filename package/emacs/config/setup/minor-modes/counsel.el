@@ -13,12 +13,13 @@
   (counsel-mode)
 
   :config
-  (setq counsel-fzf-cmd "fd -H | fzf -f \"%s\"")
+  (setq counsel-fzf-cmd "fd --hidden --exclude .git | fzf --filter \"%s\"")
 
   (setq
    counsel-rg-base-command
    '("rg"
      "--hidden"
+     "--glob" "!.git"
      "--max-columns" "240"
      "--with-filename"
      "--no-heading"

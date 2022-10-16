@@ -56,27 +56,22 @@
   ;; Use counsel-fzf in instead of counsel-projectile-find-file
   (add-to-list 'counsel-projectile-key-bindings '("f" . counsel-projectile-fzf))
 
+  (counsel-projectile-mode)
+
+  :config
   (counsel-projectile-modify-action
    'counsel-projectile-switch-project-action
    '((setfun 1 counsel-projectile-switch-project-action-fzf)))
 
-  (defun counsel-projectile-fzf (&optional no-ignore initial-input)
+  (defun counsel-projectile-fzf (&optional arg dwim)
     (interactive "P")
-    (let* ((global-ignores
-            (if no-ignore '("-I")
-              (append
-               (mapcar
-                (lambda (exclude) (string-join `("-E" ,exclude) " "))
-                (append projectile-globally-ignored-files projectile-globally-ignored-directories))
-               (let ((ignore-file (string-trim (shell-command-to-string "git config core.excludesfile"))))
-                 (when (not (string-empty-p ignore-file))
-                   (list
-                    (concat
-                     "--ignore-file "
-                     (expand-file-name ignore-file (getenv "HOME")))))))))
-           (counsel-fzf-cmd
-            (string-join `("fd -H" ,(string-join global-ignores " ")  "|" "fzf -f \"%s\"") " ")))
-      (counsel-fzf initial-input nil (projectile-prepend-project-name "Find file: "))))
+    (let ((counsel-fzf-cmd
+           (if arg "fzf --filter \"%s\""
+             "fd --hidden --exclude .git | fzf --filter \"%s\"")))
+      (counsel-fzf
+       nil
+       (projectile-project-root)
+       (projectile-prepend-project-name "Find file: "))))
 
   (defun counsel-projectile-switch-project-action-fzf (project)
     "Jump to a file or buffer in PROJECT."
@@ -125,6 +120,4 @@
   (defun counsel-projectile-switch-project-action-run-multi-term (project)
     "Invoke `multi-term' from PROJECT's root."
     (let ((projectile-switch-project-action #'projectile-run-multi-term))
-      (counsel-projectile-switch-project-by-name project)))
-
-  (counsel-projectile-mode))
+      (counsel-projectile-switch-project-by-name project))))
