@@ -1,10 +1,6 @@
 { config, ... }:
 
 {
-  imports = [
-    ../../environment/config.nix
-  ];
-
   home = {
     sessionVariables = {
       # Use GTK 3 settings in Qt 5

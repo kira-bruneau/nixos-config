@@ -4,10 +4,6 @@ let
   settingsFormat = pkgs.formats.yaml { };
 in
 {
-  imports = [
-    ../../environment/config.nix
-  ];
-
   home.packages = with pkgs; [
     (lutris.override {
       lutris-unwrapped = lutris-unwrapped.override {

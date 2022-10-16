@@ -1,17 +1,18 @@
 { self, lib, config, pkgs, ... }:
 
 with lib;
+
 {
   options.home.configDirectory = mkOption {
     type = types.path;
     default = "${config.home.homeDirectory}/Dev/public/home-config";
   };
 
-  config.home.activation.createHomeConfigGitRepo =
+  config.home.activation.seedHomeConfig =
     let
-      configDirectory = lib.escapeShellArg config.home.configDirectory;
+      configDirectory = escapeShellArg config.home.configDirectory;
     in
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    hm.dag.entryAfter [ "writeBoundary" ] ''
       if [ ! -e ${configDirectory} ]; then
         $DRY_RUN_CMD mkdir -p $VERBOSE_ARG $(dirname ${configDirectory})
         $DRY_RUN_CMD cp -R --no-preserve=ownership $VERBOSE_ARG ${self} ${configDirectory}

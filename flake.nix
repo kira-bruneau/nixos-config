@@ -37,6 +37,7 @@
       atlantis = { pkgs, ... }: {
         imports = [
           { _module.args.self = self; }
+          ./environment/seed-home-config.nix
           ./host/atlantis.nix
         ];
         nixpkgs.overlays = [
@@ -47,6 +48,7 @@
       framework = { pkgs, ... }: {
         imports = [
           { _module.args.self = self; }
+          ./environment/seed-home-config.nix
           ./host/framework.nix
         ];
         nixpkgs.overlays = [
