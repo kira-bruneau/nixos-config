@@ -2,13 +2,7 @@
   description = "My home-manager configuration";
 
   inputs = {
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     my-nur = {
       url = "gitlab:kira-bruneau/nur-packages";
@@ -29,66 +23,81 @@
       };
     };
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-  };
-
-  outputs = { self, emacs-overlay, my-nur, flake-utils, flake-linter, nixpkgs }: {
-    nixosModules = {
-      atlantis = { pkgs, ... }: {
-        imports = [
-          { _module.args.self = self; }
-          ./environment/seed-home-config.nix
-          ./host/atlantis.nix
-        ];
-        nixpkgs.overlays = [
-          emacs-overlay.overlay
-          my-nur.overlays.default
-        ];
-      };
-      framework = { pkgs, ... }: {
-        imports = [
-          { _module.args.self = self; }
-          ./environment/seed-home-config.nix
-          ./host/framework.nix
-        ];
-        nixpkgs.overlays = [
-          emacs-overlay.overlay
-          my-nur.overlays.default
-        ];
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
       };
     };
-  } // flake-utils.lib.eachDefaultSystem (system:
+  };
+
+  outputs = { nixpkgs, my-nur, flake-utils, flake-linter, ... } @ inputs:
     let
-      pkgs = nixpkgs.legacyPackages.${system};
+      lib = nixpkgs.lib;
 
-      paths = flake-linter.lib.partitionToAttrs
-        flake-linter.lib.commonPaths
-        (builtins.filter
-          (path:
-            (builtins.all
-              (ignore: !(nixpkgs.lib.hasSuffix ignore path))
-              [
-                "node-composition.nix"
-                "node-env.nix"
-                "node-packages.nix"
-              ]))
-          (flake-linter.lib.walkFlake ./.));
+      hostsDir = ./host;
 
-      linter = flake-linter.lib.makeFlakeLinter {
-        root = ./.;
+      hosts = builtins.listToAttrs
+        (builtins.concatMap
+          (host:
+            if lib.hasSuffix ".nix" host
+            then [
+              {
+                name = lib.removeSuffix ".nix" host;
+                value = hostsDir + "/${host}";
+              }
+            ]
+            else [ ])
+          (builtins.attrNames (builtins.readDir hostsDir)));
 
-        settings = {
-          markdownlint.paths = paths.markdown;
-          nixpkgs-fmt.paths = paths.nix;
-        };
+      commonModules = [
+        ./environment/seed-home-config.nix
+        {
+          nixpkgs.overlays = [
+            my-nur.overlays.default
+          ];
 
-        inherit pkgs;
-      };
+          _module.args = { inherit inputs; };
+        }
+      ];
     in
     {
-      apps = {
-        inherit (linter) fix;
-      };
-    }
-  );
+      nixosModules = builtins.mapAttrs
+        (host: path: { imports = commonModules ++ [ path ]; })
+        hosts;
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+
+        paths = flake-linter.lib.partitionToAttrs
+          flake-linter.lib.commonPaths
+          (builtins.filter
+            (path:
+              (builtins.all
+                (ignore: !(lib.hasSuffix ignore path))
+                [
+                  "node-composition.nix"
+                  "node-env.nix"
+                  "node-packages.nix"
+                ]))
+            (flake-linter.lib.walkFlake ./.));
+
+        linter = flake-linter.lib.makeFlakeLinter {
+          root = ./.;
+
+          settings = {
+            markdownlint.paths = paths.markdown;
+            nixpkgs-fmt.paths = paths.nix;
+          };
+
+          inherit pkgs;
+        };
+      in
+      {
+        apps = {
+          inherit (linter) fix;
+        };
+      }
+    );
 }

@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
+let
+  emacsOverlayPkgs = inputs.emacs-overlay.overlays.default (pkgs // emacsOverlayPkgs) pkgs;
+  callPackage = pkgs.newScope emacsOverlayPkgs;
+in
 {
   imports = [
     ../aspell
@@ -8,7 +12,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.callPackage ./package { };
+    package = callPackage ./package { };
   };
 
   home.sessionVariables = {
