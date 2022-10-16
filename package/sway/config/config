@@ -319,7 +319,7 @@ bar {
 
     # Email & Feeds
     assign [app_id="^geary$"] $email
-    assign [app_id="^NewsFlashGTK$"] $email
+    assign [app_id="^com.gitlab.newsflash$"] $email
     for_window [app_id="^firefox$" title="https://mail.google.com"] move container to workspace $email
     for_window [app_id="^firefox$" title="https://mail.proton.me"] move container to workspace $email
     for_window [app_id="^firefox$" title="https://outlook.office.com"] move container to workspace $email
