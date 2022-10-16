@@ -51,6 +51,7 @@
 
       commonModules = [
         ./cachix.nix
+        ./environment/seed-nixos-config.nix
 
         {
           nix = {
@@ -111,6 +112,8 @@
                   modules = commonModules ++ [
                     {
                       networking.hostName = host;
+
+                      # /etc/nixos is seeded with the contents of this flake
                       installer.cloneConfig = false;
 
                       # Resolve conflict between install iso config and my host configs

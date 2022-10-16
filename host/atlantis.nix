@@ -6,7 +6,6 @@
     common-gpu-amd
     common-pc-ssd
   ]) ++ [
-    ../environment/config.nix
     ../environment/desktop.nix
     ../environment/gaming.nix
     ../environment/hidpi.nix
