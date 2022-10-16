@@ -175,25 +175,14 @@
   ;; shell-mode derives from comint-mode which defaults to insert mode
   (evil-set-initial-state 'shell-mode 'normal)
 
-  ;; Workaround colemak remapping conflicts in compilation mode
-  (with-eval-after-load 'compile
-    (dolist (keymap '(compilation-mode-map compilation-minor-mode-map))
-      (evil-collection-define-key nil keymap
-        "p" nil
-        "j" nil)))
+  (with-eval-after-load 'magit-files
+    (evil-collection-define-key nil 'magit-blob-mode-map
+      "p" nil ;; p (originally bound to magit-blob-previous, can use <f8>-p instead)
+      "j" nil)) ;; n (originally bound to magit-blob-next, can use <f8>-n instead)
 
-  ;; Workaround colemak remapping conflicts in Info-mode
-  (with-eval-after-load 'info
-    (evil-collection-define-key nil 'Info-mode-map
-      "j" nil
-      "k" nil
-      "F" nil))
-
-  ;; Workaround colemak remapping conflicts in rg mode
-  (with-eval-after-load 'rg
+  (with-eval-after-load 'rg-result
     (evil-collection-define-key 'normal 'rg-mode-map
-      "f" 'rg-rerun-change-literal
-      "p" 'rg-rerun-change-files
-      "t" nil)
+      "f" 'rg-rerun-change-literal ;; t (originally bound to rg-rerun-change-files)
+      "p" 'rg-rerun-change-files) ;; p
 
     (transient-suffix-put 'rg-menu 'rg-rerun-change-files--transient :key "p")))
