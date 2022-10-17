@@ -185,4 +185,11 @@
       "f" 'rg-rerun-change-literal ;; t (originally bound to rg-rerun-change-files)
       "p" 'rg-rerun-change-files) ;; p
 
-    (transient-suffix-put 'rg-menu 'rg-rerun-change-files--transient :key "p")))
+    (transient-suffix-put 'rg-menu 'rg-rerun-change-files--transient :key "p"))
+
+  (with-eval-after-load 'comint
+    (evil-collection-define-key 'normal 'comint-mode-map
+      (kbd "C-j") #'next-error-no-select
+      (kbd "C-k") #'previous-error-no-select
+      (kbd "gj") #'next-error-no-select
+      (kbd "gk") #'previous-error-no-select)))
