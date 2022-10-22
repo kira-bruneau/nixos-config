@@ -42,6 +42,7 @@
 
     # Other
     gnome.gnome-clocks
+    gnome.pomodoro
     gnucash
   ];
 
