@@ -1,15 +1,15 @@
 ;; Used to prioritize commonly used counsel-M-x commands
-(use-package amx
-  :straight t
-  :config
-  (setq amx-history-length 10000))
+;; (use-package amx
+;;   :straight t
+;;   :config
+;;   (setq amx-history-length 10000))
 
 (use-package counsel
   :straight t
   :bind (:map counsel-describe-map
               ("M-." . counsel-find-symbol))
   :init
-  (require 'amx)
+  ;; (require 'amx)
   (counsel-mode)
 
   :config
