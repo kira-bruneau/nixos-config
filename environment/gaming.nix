@@ -10,8 +10,8 @@
   home.packages = with pkgs; [
     # Games & Launchers
     clonehero
-    polymc
     pokemmo-installer
+    prismlauncher
     protontricks
     (sm64ex.overrideAttrs (attrs: {
       makeFlags = attrs.makeFlags ++ [

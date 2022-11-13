@@ -303,10 +303,10 @@ bar {
     # Games
     assign [app_id="^lutris$"] $games
     assign [app_id="^org.dolphin-emu.$"] $games
+    assign [app_id="^org.prismlauncher.PrismLauncher$"] $games
+    assign [class="^cemu.exe$"] $games
     # Non-master Dolphin still uses X11
     assign [class="^dolphin-emu$"] $games
-    assign [app_id="^com/PolyMC.github.$"] $games
-    assign [class="^cemu.exe$"] $games
     assign [class="^Minecraft$"] $games
     assign [class="^Steam$"] $games
 
