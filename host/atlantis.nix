@@ -18,7 +18,7 @@
     "sm64ex"
     "steam"
     "steam-original"
-    "steam-runtime"
+    "steam-run"
     "unrar"
     "VVVVVV"
     "VVVVVV-with-assets"
