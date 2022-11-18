@@ -1,3 +1,7 @@
+;; Start server
+(load "server")
+(unless (server-running-p) (server-start))
+
 ;; Use spaces for indentation
 (setq-default indent-tabs-mode nil)
 
