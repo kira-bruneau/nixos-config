@@ -8,6 +8,7 @@
     ../environment/laptop.nix
     ../environment/locale
     ../service/ssh.nix
+    ../service/syncthing.nix
     ../user/kira.nix
   ];
 

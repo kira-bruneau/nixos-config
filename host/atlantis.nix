@@ -12,6 +12,7 @@
     ../environment/locale
     ../environment/wireless.nix
     ../service/ssh.nix
+    ../service/syncthing.nix
     ../user/builder.nix
     ../user/kira.nix
   ];
