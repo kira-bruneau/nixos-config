@@ -9,8 +9,6 @@
 
   programs.waybar.settings.mainBar.temperature.thermal-zone = 5;
 
-  services.syncthing.enable = true;
-
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "bcml"
     "clonehero"

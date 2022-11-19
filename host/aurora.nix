@@ -10,8 +10,6 @@
     vscodium
   ];
 
-  services.syncthing.enable = true;
-
   programs = {
     mpv.config = {
       # Hardware acceleration
