@@ -4,7 +4,6 @@
   imports = [
     ../environment/cli.nix
     ../environment/gui.nix
-    ../package/arctype
   ];
 
   home.packages = with pkgs; [
@@ -22,7 +21,6 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "arctype"
     "unrar"
   ];
 
