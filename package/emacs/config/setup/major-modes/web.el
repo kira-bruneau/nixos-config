@@ -2,6 +2,7 @@
   :straight t
   :mode ("\\.html?\\'"
          "\\.vue\\'"
+         "\\.jsx\\'"
          "\\.tsx\\'"
          "\\.ejs\\'")
   :bind (:map web-mode-map
