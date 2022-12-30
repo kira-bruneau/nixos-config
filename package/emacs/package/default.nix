@@ -3,7 +3,7 @@
 , stdenv
 , fetchpatch
 , emacsGcc
-, emacsPgtkNativeComp
+, emacsPgtk
 , callPackage
 , writeShellScriptBin
 , buildEnv
@@ -60,7 +60,7 @@ let
             })
           ];
         })
-    else emacsPgtkNativeComp;
+    else emacsPgtk;
 
   nodePackages = import ./node-packages/node-composition.nix {
     inherit pkgs;
