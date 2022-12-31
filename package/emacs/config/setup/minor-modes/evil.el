@@ -175,6 +175,10 @@
   ;; shell-mode derives from comint-mode which defaults to insert mode
   (evil-set-initial-state 'shell-mode 'normal)
 
+  ;; evil-collection-forge-setup automatically sets up bindings for
+  ;; forge, and this prevents errors remapping over default keys
+  (setq forge-add-default-bindings nil)
+
   (with-eval-after-load 'magit-files
     (evil-collection-define-key nil 'magit-blob-mode-map
       "p" nil ;; p (originally bound to magit-blob-previous, can use <f8>-p instead)
