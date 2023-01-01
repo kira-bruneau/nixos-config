@@ -7,7 +7,6 @@ let
 in
 {
   imports = [
-    ../package/aspell
     ../package/bash
     ../package/direnv
     ../package/emacs
