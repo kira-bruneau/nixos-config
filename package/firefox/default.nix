@@ -132,6 +132,7 @@
             "browser.shell.checkDefaultBrowser" = false;
             "browser.startup.homepage" = "about:home";
             "browser.startup.page" = 3; # Restore previous session
+            "browser.tabs.firefox-view" = false;
             "browser.tabs.warnOnClose" = false;
             "browser.toolbars.bookmarks.visibility" = "newtab";
             "browser.uiCustomization.state" = builtins.toJSON {
