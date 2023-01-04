@@ -138,6 +138,7 @@
             "browser.uiCustomization.state" = builtins.toJSON {
               placements = {
                 widget-overflow-fixed-list = [ ];
+                unified-extensions-area = [ ];
                 nav-bar = [
                   "back-button"
                   "forward-button"
@@ -185,7 +186,7 @@
                 "TabsToolbar"
                 "PersonalToolbar"
               ];
-              currentVersion = 17;
+              currentVersion = 18;
               newElementCount = 2;
             };
             "browser.warnOnQuit" = false;
