@@ -1,29 +1,32 @@
 # Read `man 5 sway` for a complete reference.
 
-gaps outer 10
-gaps inner 5
-default_border none
-
 ### Variables
-#
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
 # Home row direction keys, like vim
 set $left h
 set $down n
 set $up e
 set $right i
+
 # Your preferred terminal emulator
 set $term alacritty
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu rofi -modi drun -show drun -matching fuzzy # | xargs swaymsg exec --
 
+### UI
+
+gaps outer 10
+gaps inner 5
+default_border none
+font pango:cantarell 10
+
 ### Output configuration
-#
-# Default wallpaper
-#output * bg ~/.config/sway/backgrounds/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
@@ -41,20 +44,31 @@ bindsym $mod+minus exec scale-off
 #
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
 ### Key bindings
 #
 # Basics:
 #
-    # System font
-    font pango:cantarell 10
-
     # Start a terminal
     bindsym $mod+Return exec $term
 
@@ -208,14 +222,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-#
-# Status Bar:
-#
-bar {
-    swaybar_command waybar
-}
-
 #
 # Screenshot:
 #
@@ -260,76 +266,76 @@ bar {
 
     bindsym Mod1+XF86AudioMute exec --no-startup-id \
       amixer sset Capture toggle
+
+### Start daemons & applications:
 #
-# Start daemons & applications:
+# https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
+exec_always import-gsettings \
+    gtk-theme:gtk-theme-name \
+    icon-theme:gtk-icon-theme-name \
+    cursor-theme:gtk-cursor-theme-name
+
+exec --no-startup-id blueman-applet
+exec --no-startup-id com.gitlab.newsflash
+exec --no-startup-id firefox
+exec --no-startup-id keepassxc
+exec --no-startup-id mako
+
+### Assign windows to workspaces
 #
-    # https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-    exec_always import-gsettings \
-        gtk-theme:gtk-theme-name \
-        icon-theme:gtk-icon-theme-name \
-        cursor-theme:gtk-cursor-theme-name
+# WWW
+assign [app_id="^firefox$"] $www
+assign [app_id="^Chromium-browser$"] $www
 
-    exec --no-startup-id blueman-applet
-    exec --no-startup-id com.gitlab.newsflash
-    exec --no-startup-id firefox
-    exec --no-startup-id keepassxc
-    exec --no-startup-id mako
-#
-# Launch application keybindings:
-#
-    bindsym $mod+y exec xdg-open ~/
-#
-# Assign windows to workspaces:
-#
-    # WWW
-    assign [app_id="^firefox$"] $www
-    assign [app_id="^Chromium-browser$"] $www
+# Edit
+# Emacs GTK3 fork: https://git.savannah.gnu.org/cgit/emacs.git/log/?h=feature/pgtk
+assign [app_id="^emacs"] $edit
+assign [app_id="^VSCodium"] $edit
 
-    # Edit
-    # Emacs GTK3 fork: https://git.savannah.gnu.org/cgit/emacs.git/log/?h=feature/pgtk
-    assign [app_id="^emacs"] $edit
-    assign [app_id="^VSCodium"] $edit
+# Media
+assign [app_id="^mpv$"] $media
+assign [app_id="^org.qbittorrent.qBittorrent$"] $media
+assign [app_id="^rhythmbox$"] $media
+for_window [app_id="^firefox$" title="https://www.youtube.com"] move container to workspace $media
 
-    # Media
-    assign [app_id="^mpv$"] $media
-    assign [app_id="^org.qbittorrent.qBittorrent$"] $media
-    assign [app_id="^rhythmbox$"] $media
-    for_window [app_id="^firefox$" title="https://www.youtube.com"] move container to workspace $media
+# Games
+assign [app_id="^lutris$"] $games
+assign [app_id="^org.dolphin-emu.$"] $games
+assign [app_id="^org.prismlauncher.PrismLauncher$"] $games
+assign [class="^cemu.exe$"] $games
+# Non-master Dolphin still uses X11
+assign [class="^dolphin-emu$"] $games
+assign [class="^Minecraft$"] $games
+assign [class="^Steam$"] $games
 
-    # Games
-    assign [app_id="^lutris$"] $games
-    assign [app_id="^org.dolphin-emu.$"] $games
-    assign [app_id="^org.prismlauncher.PrismLauncher$"] $games
-    assign [class="^cemu.exe$"] $games
-    # Non-master Dolphin still uses X11
-    assign [class="^dolphin-emu$"] $games
-    assign [class="^Minecraft$"] $games
-    assign [class="^Steam$"] $games
+# Calendar
+for_window [app_id="^firefox$" title="https://calendar.google.com"] move container to workspace $calendar
+for_window [app_id="^firefox$" title="https://calendar.proton.me"] move container to workspace $calendar
 
-    # Calendar
-    for_window [app_id="^firefox$" title="https://calendar.google.com"] move container to workspace $calendar
-    for_window [app_id="^firefox$" title="https://calendar.proton.me"] move container to workspace $calendar
+# Tasks
+for_window [app_id="^firefox$" title="https://linear.app"] move container to workspace $tasks
 
-    # Tasks
-    for_window [app_id="^firefox$" title="https://linear.app"] move container to workspace $tasks
+# Email & Feeds
+assign [app_id="^geary$"] $email
+assign [app_id="^com.gitlab.newsflash$"] $email
+for_window [app_id="^firefox$" title="https://mail.google.com"] move container to workspace $email
+for_window [app_id="^firefox$" title="https://mail.proton.me"] move container to workspace $email
+for_window [app_id="^firefox$" title="https://outlook.office.com"] move container to workspace $email
 
-    # Email & Feeds
-    assign [app_id="^geary$"] $email
-    assign [app_id="^com.gitlab.newsflash$"] $email
-    for_window [app_id="^firefox$" title="https://mail.google.com"] move container to workspace $email
-    for_window [app_id="^firefox$" title="https://mail.proton.me"] move container to workspace $email
-    for_window [app_id="^firefox$" title="https://outlook.office.com"] move container to workspace $email
+# Chat
+assign [app_id="^Caprine$"] $chat
+assign [app_id="^Slack$"] $chat
+for_window [app_id="^firefox$" title="https://app.element.io"] move container to workspace $chat
+for_window [app_id="^firefox$" title="https://app.slack.com"] move container to workspace $chat
 
-    # Chat
-    assign [app_id="^Caprine$"] $chat
-    assign [app_id="^Slack$"] $chat
-    for_window [app_id="^firefox$" title="https://app.element.io"] move container to workspace $chat
-    for_window [app_id="^firefox$" title="https://app.slack.com"] move container to workspace $chat
-#
 # Picture-in-picture
+for_window [app_id="^firefox$" title="^Picture-in-Picture$"] floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95
+
+### Status Bar
 #
-    for_window [app_id="^firefox$" title="^Picture-in-Picture$"] floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95
-#
-# System configuration:
-#
-    include /etc/sway/config.d/*
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    swaybar_command waybar
+}
+
+include /etc/sway/config.d/*
