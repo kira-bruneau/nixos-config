@@ -230,12 +230,12 @@ bar {
        play /usr/share/sounds/freedesktop/stereo/screen-capture.oga)
 
     bindsym Mod1+Print exec --no-startup-id \
-      grim -t png "$(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" & \
+      grim -t png "$HOME/Pictures/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" & \
       (play /home/kira/.nix-profile/share/sounds/freedesktop/stereo/screen-capture.oga || \
        play /usr/share/sounds/freedesktop/stereo/screen-capture.oga)
 
     bindsym Ctrl+Mod1+Print exec --no-startup-id \
-      grim -t png -g "$(slurp)" "$(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" & \
+      grim -t png -g "$(slurp)" "$HOME/Pictures/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" & \
       (play /home/kira/.nix-profile/share/sounds/freedesktop/stereo/screen-capture.oga || \
        play /usr/share/sounds/freedesktop/stereo/screen-capture.oga)
 #
