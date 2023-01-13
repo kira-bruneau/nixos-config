@@ -6,16 +6,13 @@
 
     settings = {
       mainBar = {
-        layer = "top"; # Waybar at top layer
-        position = "bottom"; # Waybar position (top|bottom|left|right)
-        height = 32; # Waybar height (to be removed for auto height)
-        # width = 1280; # Waybar width
-        # Choose the order of the modules
-        modules-left = [ "sway/workspaces" "sway/mode" "custom/media" ];
+        layer = "top";
+        position = "bottom";
+        height = 32;
+        modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "cpu" "memory" "disk" "temperature" "network" ];
-        modules-right = [ "idle_inhibitor" "backlight" "battery" "battery#bat2" "pulseaudio" "clock" "tray" ];
+        modules-right = [ "idle_inhibitor" "backlight" "battery" "pulseaudio" "clock" "tray" ];
 
-        # Modules configuration
         "sway/workspaces" = {
           all-outputs = true;
           format = "{icon}";
@@ -39,33 +36,6 @@
           format = "<span style=\"italic\">{}</span>";
         };
 
-        "mpd" = {
-          format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ";
-          format-disconnected = "Disconnected ";
-          format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
-          unknown-tag = "N/A";
-          interval = 2;
-          consume-icons = {
-            on = " ";
-          };
-          random-icons = {
-            off = "<span color=\"#f53c3c\"></span> ";
-            on = " ";
-          };
-          repeat-icons = {
-            on = " ";
-          };
-          single-icons = {
-            on = "1 ";
-          };
-          state-icons = {
-            paused = "";
-            playing = "";
-          };
-          tooltip-format = "MPD (connected)";
-          tooltip-format-disconnected = "MPD (disconnected)";
-        };
-
         "idle_inhibitor" = {
           format = "{icon}";
           format-icons = {
@@ -75,7 +45,6 @@
         };
 
         "tray" = {
-          # icon-size = 21;
           spacing = 10;
         };
 
@@ -100,45 +69,32 @@
         };
 
         "temperature" = {
-          # thermal-zone = 2;
-          # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
           critical-threshold = 80;
-          # format-critical = "{temperatureC}°C {icon}";
           format = "{temperatureC}°C {icon}";
           format-icons = [ "" "" "" "" "" ];
         };
 
         "backlight" = {
-          # device = "acpi_video1";
           format = "{percent}% {icon}";
           format-icons = [ "" "" ];
         };
 
         "battery" = {
           states = {
-            # good = 95;
             warning = 30;
             critical = 10;
           };
           format = "{capacity}% {icon}";
-          # format-good = ""; # An empty format will hide the module
-          # format-full = "";
           format-icons = [ "" "" "" "" "" ];
         };
 
-        "battery#bat2" = {
-          bat = "BAT2";
-        };
-
         "network" = {
-          # interface = "wlp2s0"; # (Optional) To force the use of this interface
           format-wifi = "{essid} ({signalStrength}%) ";
           format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
           format-disconnected = "Disconnected ⚠";
         };
 
         "pulseaudio" = {
-          #scroll-step = 1;
           format = "{volume}% {icon}";
           format-bluetooth = "{volume}% {icon}";
           format-muted = "";
@@ -152,18 +108,6 @@
             default = [ "" "" ];
           };
           on-click = "pavucontrol";
-        };
-
-        "custom/media" = {
-          format = "{icon} {}";
-          return-type = "json";
-          max-length = 40;
-          format-icons = {
-            spotify = "";
-            default = "🎜";
-          };
-          escape = true;
-          exec = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources folder
         };
       };
     };
