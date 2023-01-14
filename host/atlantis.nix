@@ -53,7 +53,7 @@
 
   # Sway output configuration
   environment.etc."sway/config.d/output.conf".text = ''
-    output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2 pos 0,0
+    output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 0,0
   '';
 
   networking.firewall.enable = false;
