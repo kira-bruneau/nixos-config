@@ -103,18 +103,23 @@
                   specialArgs = { inherit inputs; };
                   modules = commonModules ++ [
                     {
-                      networking.hostName = host;
-
                       # /etc/nixos is seeded with the contents of this flake
                       installer.cloneConfig = false;
-
-                      # Resolve conflict between install iso config and my host configs
-                      services.openssh.permitRootLogin = lib.mkForce "no";
 
                       # Disable ZFS support, it may not be compatible
                       # with the configured kernel version
                       boot.supportedFilesystems = lib.mkForce
                         [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];
+
+                      networking = {
+                        hostName = host;
+
+                        # I prefer manual wpa_supplicant configuration
+                        wireless.userControlled.enable = lib.mkForce false;
+                      };
+
+                      # Resolve conflict between install iso config and my host configs
+                      services.openssh.permitRootLogin = lib.mkForce "no";
                     }
                     path
                   ];
