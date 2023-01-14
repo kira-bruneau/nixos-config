@@ -23,6 +23,7 @@
 
     # Utils
     ../package/speedcrunch
+    ../package/gnome-pomodoro
   ];
 
   home.packages = with pkgs; [
@@ -48,7 +49,6 @@
 
     # Utils
     gnome.gnome-clocks
-    gnome.pomodoro
   ];
 
   home.sessionVariables = {
