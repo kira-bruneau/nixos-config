@@ -2,18 +2,27 @@
 
 {
   imports = [
+    # Window managers
+    ../package/sway
+    ../package/i3
+
+    # Web
+    ../package/firefox
+    ../package/newsflash
+
+    # Media & Documents
     ../package/emacs
     ../package/eog
     ../package/evince
-    ../package/firefox
-    ../package/gtk
-    ../package/i3
     ../package/keepassxc
     ../package/lmms
     ../package/mpv
-    ../package/newsflash
+
+    # Themes
+    ../package/gtk
+
+    # Utils
     ../package/speedcrunch
-    ../package/sway
   ];
 
   home.packages = with pkgs; [
@@ -29,6 +38,7 @@
     gimp
     gnome.file-roller
     gnome.nautilus
+    gnucash
     inkscape
     libreoffice
     qbittorrent
@@ -36,15 +46,14 @@
     xournalpp
     zynaddsubfx
 
-    # Theme
+    # Themes
     arc-theme
     arc-icon-theme
     gnome.adwaita-icon-theme
 
-    # Other
+    # Utils
     gnome.gnome-clocks
     gnome.pomodoro
-    gnucash
   ];
 
   home.sessionVariables = {
