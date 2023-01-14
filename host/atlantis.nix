@@ -7,7 +7,10 @@
     ../environment/gui.nix
   ];
 
-  programs.waybar.settings.mainBar.temperature.thermal-zone = 5;
+  programs.waybar.settings.mainBar.temperature = {
+    hwmon-path-abs = "/sys/devices/platform/asus-ec-sensors/hwmon";
+    input-filename = "temp2_input";
+  };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "bcml"
