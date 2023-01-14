@@ -1,7 +1,13 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   home = {
+    packages = with pkgs; [
+      arc-theme
+      arc-icon-theme
+      gnome.adwaita-icon-theme
+    ];
+
     sessionVariables = {
       # Use GTK 3 settings in Qt 5
       # https://wiki.archlinux.org/index.php/Uniform_look_for_Qt_and_GTK_applications

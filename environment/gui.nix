@@ -46,11 +46,6 @@
     xournalpp
     zynaddsubfx
 
-    # Themes
-    arc-theme
-    arc-icon-theme
-    gnome.adwaita-icon-theme
-
     # Utils
     gnome.gnome-clocks
     gnome.pomodoro
