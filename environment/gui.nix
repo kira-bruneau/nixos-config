@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
     # Administration
+    gnome.dconf-editor
     pavucontrol
 
     # Web
