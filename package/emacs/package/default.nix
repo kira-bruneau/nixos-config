@@ -43,6 +43,7 @@
 , solargraph
 , tectonic
 , texlab
+, vala-language-server
 }:
 
 let
@@ -133,6 +134,7 @@ callPackage ./wrapper.nix {
       solargraph
       tectonic
       texlab
+      vala-language-server
     ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
       # Currently doesn't built on Darwin
       ccls

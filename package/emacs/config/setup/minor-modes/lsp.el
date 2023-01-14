@@ -15,6 +15,7 @@
          (rust-mode . lsp)
          (sh-mode . lsp)
          (typescript-mode . lsp)
+         (vala-mode . lsp)
          (web-mode . lsp))
   :bind-keymap (("<f6>" . lsp-command-map))
   :config
