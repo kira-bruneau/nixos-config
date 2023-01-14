@@ -20,7 +20,7 @@
     }))
     steam
     steam-run
-    VVVVVV
+    vvvvvv
 
     # Emulators
     dolphinEmuMaster
