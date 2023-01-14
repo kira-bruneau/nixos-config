@@ -1,5 +1,4 @@
 (use-package evil
-  :straight t
   :init
   (defvar evil-key-rotation
     '(;; Remap jkl commands to their equivalent colemak position
@@ -166,7 +165,6 @@
   (evil-set-undo-system 'undo-tree))
 
 (use-package evil-collection
-  :straight t
   :after evil
   :init
   (evil-collection-init)

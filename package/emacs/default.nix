@@ -10,13 +10,12 @@ in
     ../gpg
   ];
 
-  programs.emacs = {
-    enable = true;
-    package = callPackage ./package { };
-  };
+  home = {
+    packages = with pkgs; [
+      (callPackage ./package { })
+    ];
 
-  home.sessionVariables = {
-    EDITOR = "emacseditor";
+    sessionVariables.EDITOR = "emacseditor";
   };
 
   # Manage emacs config outside of home-manager while keeping track of the files in this git repo

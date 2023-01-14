@@ -1,5 +1,4 @@
 (use-package js2-mode
-  :straight t
   :mode "\\.js\\'"
   :interpreter ("node" "zx")
   :init

@@ -1,5 +1,4 @@
 (use-package company
-  :straight t
   :diminish " ▶"
   :init
   (global-company-mode)
@@ -14,7 +13,6 @@
   (setq company-idle-delay 0))
 
 (use-package company-flx
-  :straight t
   :after company
   :init
   (company-flx-mode))

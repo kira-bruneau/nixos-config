@@ -1,9 +1,4 @@
-;; Used to sort ivy fuzzy search results
-(use-package flx
-  :straight t)
-
 (use-package ivy
-  :straight t
   :init
   (require 'flx)
   (ivy-mode)

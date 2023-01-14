@@ -1,5 +1,4 @@
 (use-package web-mode
-  :straight t
   :mode ("\\.html?\\'"
          "\\.vue\\'"
          "\\.jsx\\'"

@@ -1,5 +1,4 @@
 (use-package swiper
-  :straight t
   :after ivy
   :bind (("C-s" . swiper)
          ("C-r" . nil)

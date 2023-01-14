@@ -1,5 +1,4 @@
 (use-package avy
-  :straight t
   :bind (("C-:" . avy-goto-char)
          ("C-'" . avy-goto-char-2)
          ("M-g w" . avy-goto-word-1)

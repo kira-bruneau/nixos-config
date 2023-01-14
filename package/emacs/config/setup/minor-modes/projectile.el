@@ -1,5 +1,4 @@
 (use-package projectile
-  :straight t
   :after savehist
   :diminish "" ;; ➴
   :bind-keymap ("<f7>" . projectile-command-map)
@@ -48,7 +47,6 @@
                                     :test "ninja -C build test"))
 
 (use-package counsel-projectile
-  :straight t
   :after projectile
   :init
   (require 'counsel-projectile)

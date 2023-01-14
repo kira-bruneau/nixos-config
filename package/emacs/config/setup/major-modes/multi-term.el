@@ -1,5 +1,4 @@
 (use-package multi-term
-  :straight t
   :bind (("C-S-z" . multi-term-dedicated-toggle)
          ("C-S-t" . multi-term))
   :config

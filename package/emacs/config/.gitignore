@@ -26,8 +26,6 @@
 /server/
 /session*
 /smex-items
-/straight/*
-!/straight/versions/
 /tramp
 /transient/*
 !/transient/values.el

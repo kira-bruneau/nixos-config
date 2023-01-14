@@ -11,7 +11,6 @@
 
 ;; Theme
 (use-package doom-themes
-  :straight t
   :init
   (setq doom-themes-padded-modeline 3)
   (load-theme 'doom-vibrant t)
@@ -25,7 +24,6 @@
           ("CANCELLED" :foreground ,(doom-color 'grey) :weight bold))))
 
 (use-package powerline
-  :straight t
   :init
   (defun powerline-minimal-theme ()
     "Setup the minimal mode-line."
@@ -104,7 +102,6 @@
   (set-default 'truncate-lines t))
 
 (use-package adaptive-wrap
-  :straight t
   :hook (visual-line-mode . adaptive-wrap-prefix-mode))
 
 ;; Highlight matching parenthesis

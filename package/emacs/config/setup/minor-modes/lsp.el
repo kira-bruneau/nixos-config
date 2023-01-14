@@ -1,5 +1,4 @@
 (use-package lsp-mode
-  :straight t
   :hook ((c++-mode . lsp)
          (c-mode . lsp)
          (cmake-mode . lsp)
@@ -34,7 +33,6 @@
   (lsp-dependency 'typescript `(:system ,(executable-find "tsserver"))))
 
 (use-package lsp-ui
-  :straight t
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
               ("M-." . lsp-ui-peek-find-definitions)

@@ -1,5 +1,4 @@
 (use-package dap-mode
-  :straight t
   :hook (dap-stopped . (lambda (arg) (call-interactively #'my-dap-hydra)))
   :init
   (require 'dap-gdb-lldb)

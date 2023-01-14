@@ -83,7 +83,86 @@ let
   });
 in
 callPackage ./wrapper.nix {
-  inherit emacs;
+  emacs = emacs.pkgs.withPackages (epkgs: [
+    epkgs.adaptive-wrap
+    epkgs.amx
+    epkgs.apheleia
+    epkgs.arduino-mode
+    epkgs.async
+    epkgs.avy
+    epkgs.beacon
+    epkgs.browse-at-remote
+    epkgs.buffer-move
+    epkgs.ccls
+    epkgs.cider
+    epkgs.cmake-font-lock
+    epkgs.cmake-mode
+    epkgs.company
+    epkgs.company-flx
+    epkgs.company-restclient
+    epkgs.counsel
+    epkgs.counsel-projectile
+    epkgs.csharp-mode
+    epkgs.dap-mode
+    epkgs.diminish
+    epkgs.direnv
+    epkgs.dockerfile-mode
+    epkgs.doom-themes
+    epkgs.drag-stuff
+    epkgs.dtrt-indent
+    epkgs.editorconfig
+    epkgs.evil
+    epkgs.evil-collection
+    epkgs.flx
+    epkgs.flycheck
+    epkgs.forge
+    epkgs.git-modes
+    epkgs.go-mode
+    epkgs.graphql-mode
+    epkgs.ivy
+    epkgs.js2-mode
+    epkgs.json-mode
+    epkgs.latex-preview-pane
+    epkgs.lsp-java
+    epkgs.lsp-mode
+    epkgs.lsp-ui
+    epkgs.lua-mode
+    epkgs.macrostep
+    epkgs.magit
+    epkgs.markdown-mode
+    epkgs.mermaid-mode
+    epkgs.multi-term
+    epkgs.multiple-cursors
+    epkgs.nameless
+    epkgs.nix-mode
+    epkgs.org-download
+    epkgs.page-break-lines
+    epkgs.php-mode
+    epkgs.pkgbuild-mode
+    epkgs.powerline
+    epkgs.powershell
+    epkgs.presentation
+    epkgs.projectile
+    epkgs.rainbow-delimiters
+    epkgs.restclient
+    epkgs.rg
+    epkgs.rustic
+    epkgs.slime
+    epkgs.smartparens
+    epkgs.suggest
+    epkgs.swiper
+    epkgs.typescript-mode
+    epkgs.undo-tree
+    epkgs.vala-mode
+    epkgs.visual-regexp
+    epkgs.visual-regexp-steroids
+    epkgs.vlf
+    epkgs.web-mode
+    epkgs.which-key
+    epkgs.whitespace-cleanup-mode
+    epkgs.yaml-mode
+  ]);
+
   profile = buildEnv {
     name = "emacs-profile";
     paths = [
