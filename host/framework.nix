@@ -12,12 +12,16 @@
 
   services.syncthing.enable = true;
 
-  programs.mpv.config = {
-    # Hardware acceleration
-    hwdec = "vaapi";
+  programs = {
+    mpv.config = {
+      # Hardware acceleration
+      hwdec = "vaapi";
 
-    # Fix stuttering playing 4k video
-    hdr-compute-peak = "no";
+      # Fix stuttering playing 4k video
+      hdr-compute-peak = "no";
+    };
+
+    waybar.settings.mainBar.temperature.thermal-zone = 5;
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
