@@ -7,7 +7,7 @@
 
   dconf.settings = {
     "org/gnome/pomodoro/preferences" = {
-      enabled-plugins = ["sounds" "dark-theme"];
+      enabled-plugins = [ "sounds" "dark-theme" ];
     };
   };
 }

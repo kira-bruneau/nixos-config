@@ -70,8 +70,10 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        paths = flake-linter.lib.partitionToAttrs
-          flake-linter.lib.commonPaths
+        flake-linter-lib = flake-linter.lib.${system};
+
+        paths = flake-linter-lib.partitionToAttrs
+          flake-linter-lib.commonPaths
           (builtins.filter
             (path:
               (builtins.all
@@ -81,17 +83,14 @@
                   "node-env.nix"
                   "node-packages.nix"
                 ]))
-            (flake-linter.lib.walkFlake ./.));
+            (flake-linter-lib.walkFlake ./.));
 
-        linter = flake-linter.lib.makeFlakeLinter {
+        linter = flake-linter-lib.makeFlakeLinter {
           root = ./.;
-
           settings = {
             markdownlint.paths = paths.markdown;
             nixpkgs-fmt.paths = paths.nix;
           };
-
-          inherit pkgs;
         };
       in
       {
