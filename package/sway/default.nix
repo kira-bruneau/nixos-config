@@ -93,6 +93,14 @@ in
   programs.mako = {
     enable = true;
     defaultTimeout = 10000;
+    extraConfig = ''
+      [mode=invisible]
+      invisible=1
+
+      [mode=sticky]
+      ignore-timeout=true
+      default-timeout=0
+    '';
   };
 
   # TODO: Generate configuration from Nix

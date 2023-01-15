@@ -1,13 +1,50 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     gnome.pomodoro
   ];
 
-  dconf.settings = {
-    "org/gnome/pomodoro/preferences" = {
-      enabled-plugins = [ "sounds" "dark-theme" ];
-    };
-  };
+  dconf.settings = lib.mkMerge [
+    {
+      "org/gnome/pomodoro/preferences" = {
+        enabled-plugins = [
+          "dark-theme"
+          "sounds"
+        ];
+      };
+    }
+    (lib.mkIf config.programs.mako.enable {
+      "org/gnome/pomodoro/preferences" = {
+        enabled-plugins = [
+          "actions"
+        ];
+      };
+
+      "org/gnome/pomodoro/plugins/actions" = {
+        actions-list = [
+          "/org/gnome/pomodoro/plugins/actions/action0/"
+          "/org/gnome/pomodoro/plugins/actions/action1/"
+        ];
+      };
+
+      "org/gnome/pomodoro/plugins/actions/action0" =
+        let
+          timeout = toString (config.programs.mako.defaultTimeout / 1000);
+        in
+        {
+          name = "Start Pomodoro";
+          states = [ "pomodoro" ];
+          triggers = [ "start" "resume" ];
+          command = "sh -c 'makoctl mode -a sticky & sleep ${timeout} && makoctl mode -a invisible'";
+        };
+
+      "org/gnome/pomodoro/plugins/actions/action1" = {
+        name = "Stop Pomodoro";
+        states = [ "pomodoro" ];
+        triggers = [ "complete" "skip" "pause" ];
+        command = "makoctl mode -r sticky -r invisible";
+      };
+    })
+  ];
 }
