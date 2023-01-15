@@ -59,8 +59,6 @@
     output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 1712 1403
   '';
 
-  networking.firewall.enable = false;
-
   environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
     ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
   '';
