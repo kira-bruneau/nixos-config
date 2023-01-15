@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = (with inputs.nixos-hardware.nixosModules; [
@@ -69,14 +69,6 @@
     };
   };
 
-  # Used for hibernation (eg. when upower detects a critical battery percent)
-  swapDevices = [
-    {
-      device = "/swap";
-      size = 31898;
-    }
-  ];
-
   # Sway output configuration
   environment.etc."sway/config.d/output.conf".text = ''
     output "BOE 0x095F Unknown" scale 1.5 pos 0 77
@@ -84,12 +76,18 @@
     output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos -1920 0
   '';
 
-  # Sleep on low power
-  services.upower = {
-    noPollBatteries = true;
-    usePercentageForPolicy = false;
-    timeAction = 240;
+  # Power management
+  services.upower.noPollBatteries = true;
+  swapDevices = [ { device = "/swapfile"; size = 64102; }];
+  boot = {
+    resumeDevice = config.fileSystems."/".device;
+
+    # Obtained from: sudo filefrag -v /swapfile
+    kernelParams = [ "resume_offset=70049792" ];
   };
+
+  # Compress hibernation image as much as possible
+  systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];
 
   # Manage firmware updates
   services.fwupd.enable = true;

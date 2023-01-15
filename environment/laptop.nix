@@ -6,14 +6,15 @@
     ./portable.nix
   ];
 
+  # Power management
+  services.upower.enable = true;
+  systemd.services.upower.wantedBy = [ "multi-user.target" ];
+
   # Automatically control frequency of CPU to save power
   services.auto-cpufreq.enable = true;
 
   # Disable tlp being enabled from common-pc-laptop in nixos-hardware
   services.tlp.enable = false;
-
-  # Automatically suspend on low power
-  services.upower.enable = true;
 
   # Enable touchpad support
   services.xserver.libinput = {
