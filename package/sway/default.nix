@@ -26,22 +26,43 @@ let
   '';
 
   # Turn off scaling on all displays
-  scale-off = pkgs.writeShellScriptBin "scale-off" ''
-    ${pkgs.sway}/bin/swaymsg 'output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 1'
-  '';
+  scale-off = pkgs.writeShellApplication {
+    name = "scale-off";
+    runtimeInputs = with pkgs; [ sway jq ];
+    text = ''
+      rm -rf /tmp/scale-on
+      mkdir /tmp/scale-on
+
+      while read -r scale name; do
+        echo "$scale" > "/tmp/scale-on/$name";
+      done < <(swaymsg -r -t get_outputs | jq -r '.[] | "\(.scale) \(.make) \(.model) \(.serial)"')
+
+      swaymsg 'output * scale 1'
+    '';
+  };
 
   # Turn on scaling on all displays
-  scale-on = pkgs.writeShellScriptBin "scale-on" ''
-    ${pkgs.sway}/bin/swaymsg 'output "Goldstar Company Ltd LG HDR 4K 0x0000B721" scale 2'
-  '';
+  scale-on = pkgs.writeShellApplication {
+    name = "scale-on";
+    runtimeInputs = with pkgs; [ coreutils sway jq ];
+    text = ''
+      for scale_file in /tmp/scale-on/*; do
+        swaymsg "output \"$(basename "$scale_file")\" scale $(cat "$scale_file")"
+      done
+    '';
+  };
 
   # Turn off scaling on all displays for the duration of the wrapped program
-  wrap-scale-off = pkgs.writeShellScriptBin "wrap-scale-off" ''
-    ${scale-off}/bin/scale-off
-    export MANGOHUD_CONFIGFILE=$HOME/.config/MangoHud/MangoHud-HiDPI.conf
-    "$1" "''${@:2}"
-    ${scale-on}/bin/scale-on
-  '';
+  wrap-scale-off = pkgs.writeShellApplication {
+    name = "wrap-scale-off";
+    runtimeInputs = [ scale-off scale-on ];
+    text = ''
+      scale-off
+      export MANGOHUD_CONFIGFILE=$HOME/.config/MangoHud/MangoHud-HiDPI.conf
+      "$1" "''${@:2}"
+      scale-on
+    '';
+  };
 in
 {
   imports = [
