@@ -65,9 +65,6 @@
     ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
   '';
 
-  # Required by arctype to manage passwords
-  services.gnome.gnome-keyring.enable = true;
-
   # Manage firmware updates
   services.fwupd.enable = true;
 }
