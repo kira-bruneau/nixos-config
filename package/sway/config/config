@@ -84,7 +84,7 @@ exec swayidle -w \
     bindsym $mod+x exec rofi -modi run -show run -matching fuzzy
     bindsym $mod+w exec rofi -modi window -show window -matching fuzzy
     Bindsym $mod+c exec rofi -modi ssh -show ssh -matching fuzzy
-    bindsym $mod+m exec rofi -modi emoji -show emoji
+    bindsym $mod+m exec rofimoji
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
