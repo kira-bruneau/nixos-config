@@ -39,18 +39,8 @@ bindsym $mod+equal exec scale-on
 bindsym $mod+minus exec scale-off
 
 ### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
+    timeout 30 'makoctl mode -a sticky' resume 'sh -c \'makoctl mode | grep -q invisible || makoctl mode -r sticky\'' \
     timeout 300 'swaylock -f --image `random-wallpaper`' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f --image `random-wallpaper`'
