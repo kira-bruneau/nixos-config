@@ -1,2 +1,4 @@
 (use-package rustic
-  :straight t)
+  :straight t
+  :init
+  (setq rustic-lsp-setup-p nil))
