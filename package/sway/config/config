@@ -41,6 +41,7 @@ bindsym $mod+minus exec scale-off
 ### Idle configuration
 exec swayidle -w \
     timeout 30 'makoctl mode -a sticky' resume 'sh -c \'makoctl mode | grep -q invisible || makoctl mode -r sticky\'' \
+    timeout 60 'gnome-pomodoro --pause' resume 'gnome-pomodoro --resume' \
     timeout 300 'swaylock -f --image `random-wallpaper`' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f --image `random-wallpaper`'
@@ -164,7 +165,7 @@ exec swayidle -w \
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+t layout tabbed
-    bindsym $mod+p layout toggle split
+    bindsym $mod+d layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -260,6 +261,11 @@ bindsym $mod+r mode "resize"
 
     bindsym Mod1+XF86AudioMute exec --no-startup-id \
       amixer sset Capture toggle
+#
+# Pomodoro:
+#
+    bindsym $mod+p exec gnome-pomodoro --start-stop
+    bindsym $mod+Shift+p exec gnome-pomodoro --pause-resume
 
 ### Start daemons & applications:
 #
