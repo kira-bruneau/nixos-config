@@ -68,6 +68,8 @@
           ("nmid" "\\nmid" nil "&#8740;" "[not divides]" "[not divides]" "∤")
           ("oint" "\\oint" t "&oint;" "[contour integral]" "[contour integral]" "∮")))
 
+  (setq org-agenda-files (directory-files-recursively "~/Documents/Notes" "\.org$"))
+
   (defcustom org-interpret-symbols nil
     "Non-nil means never interpret symbols to mean something else.
 When nil, certain symbols are interpreted and displayed differently."
