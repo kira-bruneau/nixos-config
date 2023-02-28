@@ -20,18 +20,7 @@
      ("Version" 35 magit-repolist-column-version nil)
      ("Path" 99 magit-repolist-column-path nil)))
 
-  (setq
-   magit-repository-directories
-   '(("/etc/nixos" . 0)
-     ("~/.dotfiles" . 0)
-     ("~/.dotfiles/emacs/.emacs.d" . 0)
-     ("~/.dotfiles/i3" . 0)
-     ("~/.dotfiles/polybar/.config/polybar" . 0)
-     ("~/.dotfiles/sway/.config/sway" . 0)
-     ("~/.dotfiles/waybar/.config/waybar" . 0)
-     ("~/Repos" . 5)
-     ("~/Dev" . 5)
-     ("~/dev" . 5))))
+  (setq magit-repository-directories '(("~/Dev" . 4))))
 
 (use-package forge
   :after magit
