@@ -14,7 +14,7 @@
         ];
       };
     }
-    (lib.mkIf config.programs.mako.enable {
+    (lib.mkIf config.services.mako.enable {
       "org/gnome/pomodoro/preferences" = {
         enabled-plugins = [
           "actions"
@@ -32,7 +32,7 @@
 
       "org/gnome/pomodoro/plugins/actions/action0" =
         let
-          timeout = toString (config.programs.mako.defaultTimeout / 1000);
+          timeout = toString (config.services.mako.defaultTimeout / 1000);
         in
         {
           name = "Start Pomodoro";

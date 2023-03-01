@@ -90,7 +90,7 @@ in
     xdg-user-dirs
   ];
 
-  programs.mako = {
+  services.mako = {
     enable = true;
     defaultTimeout = 10000;
     extraConfig = ''

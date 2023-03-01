@@ -23,8 +23,8 @@
     "steam-original"
     "steam-run"
     "unrar"
+    "data.zip"
     "vvvvvv"
-    "vvvvvv-with-assets"
   ];
 
   home.stateVersion = "21.05";
