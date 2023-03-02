@@ -272,8 +272,106 @@
     };
   };
 
-  home.sessionVariables = {
+  home = {
+    activation.firefoxPermissions =
+      let
+        permissions = {
+          "https://app.element.io" = {
+            "desktop-notification" = "allow";
+          };
+          "https://calendar.proton.me" = {
+            "desktop-notification" = "allow";
+          };
+          "https://discord.com" = {
+            "desktop-notification" = "allow";
+          };
+          "https://mail.proton.me" = {
+            "desktop-notification" = "allow";
+          };
+        };
+
+        db = "${config.home.homeDirectory}/.mozilla/firefox/${config.home.username}/permissions.sqlite";
+
+        schemaSQL = pkgs.writeText "schema.sql" ''
+          BEGIN TRANSACTION;
+
+          PRAGMA user_version = 12;
+
+          CREATE TABLE moz_perms(
+            id INTEGER,
+            origin TEXT,
+            type TEXT,
+            permission INTEGER,
+            expireType INTEGER,
+            expireTime INTEGER,
+            modificationTime INTEGER,
+            PRIMARY KEY(id)
+          );
+
+          CREATE TABLE moz_hosts(
+            id INTEGER,
+            host TEXT,
+            type TEXT,
+            permission INTEGER,
+            expireType INTEGER,
+            expireTime INTEGER,
+            modificationTime INTEGER,
+            isInBrowserElement INTEGER,
+            PRIMARY KEY(id)
+          );
+
+          COMMIT;
+        '';
+
+        sqlString = str: "'${builtins.replaceStrings [ "'" ] [ "''" ] str}'";
+        sqlInt = int: toString int;
+
+        permissionValue = {
+          allow = 1;
+          deny = 2;
+          prompt = 3;
+        };
+
+        dataSQL = pkgs.writeText "data.sql" ''
+          BEGIN TRANSACTION;
+
+          CREATE UNIQUE INDEX IF NOT EXISTS moz_perms_uniqueness ON moz_perms(origin, type);
+
+          WITH now(unix_ms) AS (SELECT CAST((julianday('now') - 2440587.5) * 86400000 AS INTEGER))
+          INSERT INTO moz_perms(origin, type, permission, expireType, expireTime, modificationTime)
+          VALUES
+          ${lib.concatStringsSep ",\n"
+            (builtins.concatMap
+              (origin:
+                let
+                  originPermissions = permissions.${origin};
+                in
+                (builtins.map
+                  (type:
+                    let
+                      permission = permissionValue.${originPermissions.${type}};
+                    in
+                      "  (${sqlString origin}, ${sqlString type}, ${sqlInt permission}, 0, 0, (SELECT unix_ms FROM now))")
+                  (builtins.attrNames originPermissions)))
+              (builtins.attrNames permissions))}
+          ON CONFLICT(origin, type) DO UPDATE SET
+            permission=excluded.permission,
+            expireType=excluded.expireType,
+            expireTime=excluded.expireTime,
+            modificationTime=excluded.modificationTime;
+
+          COMMIT;
+        '';
+      in
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if [ ! -e ${db} ]; then
+          ${pkgs.sqlite}/bin/sqlite3 ${db} < ${schemaSQL} || :
+        fi
+
+        ${pkgs.sqlite}/bin/sqlite3 ${db} < ${dataSQL} || :
+      '';
+
     # Touchscreen support
-    MOZ_USE_XINPUT2 = "1";
+    sessionVariables.MOZ_USE_XINPUT2 = "1";
   };
 }
