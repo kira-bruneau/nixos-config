@@ -365,7 +365,7 @@
       in
       lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [ ! -e ${db} ]; then
-          ${pkgs.sqlite}/bin/sqlite3 ${db} < ${schemaSQL} || :
+          ${pkgs.sqlite}/bin/sqlite3 ${db} < ${schemaSQL}
         fi
 
         ${pkgs.sqlite}/bin/sqlite3 ${db} < ${dataSQL} || :
