@@ -369,6 +369,7 @@
       in
       lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [ ! -e ${db} ]; then
+          mkdir -p $(dirname ${db})
           ${pkgs.sqlite}/bin/sqlite3 ${db} < ${schemaSQL}
         fi
 
