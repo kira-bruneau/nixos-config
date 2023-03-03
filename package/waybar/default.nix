@@ -6,6 +6,7 @@
 
     settings = {
       mainBar = {
+        ipc = true;
         layer = "top";
         position = "bottom";
         height = 32;
