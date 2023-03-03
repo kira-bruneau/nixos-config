@@ -35,14 +35,14 @@
         {
           name = "Start Pomodoro";
           states = [ "pomodoro" ];
-          triggers = [ "start" "resume" ];
+          triggers = [ "start" ];
           command = "sh -c 'makoctl mode -a sticky & sleep ${timeout} && makoctl mode -a invisible'";
         };
 
       "org/gnome/pomodoro/plugins/actions/action1" = {
-        name = "Stop Pomodoro";
+        name = "End Pomodoro";
         states = [ "pomodoro" ];
-        triggers = [ "complete" "skip" "pause" ];
+        triggers = [ "complete" "skip" ];
         command = "makoctl mode -r sticky -r invisible";
       };
     })
