@@ -36,14 +36,23 @@
           name = "Start Pomodoro";
           states = [ "pomodoro" ];
           triggers = [ "start" ];
-          command = "sh -c 'makoctl mode -a sticky & sleep ${timeout} && makoctl mode -a invisible'";
+          command = toString (pkgs.writeShellScript "start-pomodoro.sh" ''
+            set -eu -o pipefail
+            swaymsg 'gaps outer all set 0; gaps inner all set 0' &
+            makoctl mode -a sticky &
+            sleep ${timeout} && makoctl mode -a invisible &
+          '');
         };
 
       "org/gnome/pomodoro/plugins/actions/action1" = {
         name = "End Pomodoro";
         states = [ "pomodoro" ];
         triggers = [ "complete" "skip" ];
-        command = "makoctl mode -r sticky -r invisible";
+        command = toString (pkgs.writeShellScript "end-pomodoro.sh" ''
+          set -eu -o pipefail
+          swaymsg 'gaps outer all set 10; gaps inner all set 5' &
+          makoctl mode -r sticky -r invisible &
+        '');
       };
     })
   ];
