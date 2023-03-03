@@ -325,46 +325,47 @@
           COMMIT;
         '';
 
-        sqlString = str: "'${builtins.replaceStrings [ "'" ] [ "''" ] str}'";
-        sqlInt = int: toString int;
+        dataSQL =
+          let
+            escapeString = str: "'${builtins.replaceStrings [ "'" ] [ "''" ] str}'";
+            escapeInt = int: toString int;
+            permissionValue = {
+              allow = 1;
+              deny = 2;
+              prompt = 3;
+            };
+          in
+          pkgs.writeText "data.sql" ''
+            BEGIN TRANSACTION;
 
-        permissionValue = {
-          allow = 1;
-          deny = 2;
-          prompt = 3;
-        };
+            -- Add a unique index on moz_perms(origin, type), to support upserts
+            CREATE UNIQUE INDEX IF NOT EXISTS moz_perms_upsert_index ON moz_perms(origin, type);
 
-        dataSQL = pkgs.writeText "data.sql" ''
-          BEGIN TRANSACTION;
+            WITH now(unix_ms) AS (SELECT CAST((julianday('now') - 2440587.5) * 86400000 AS INTEGER))
+            INSERT INTO moz_perms(origin, type, permission, expireType, expireTime, modificationTime)
+            VALUES
+            ${lib.concatStringsSep ",\n"
+              (builtins.concatMap
+                (origin:
+                  let
+                    originPermissions = permissions.${origin};
+                  in
+                  (builtins.map
+                    (type:
+                      let
+                        permission = permissionValue.${originPermissions.${type}};
+                      in
+                        "  (${escapeString origin}, ${escapeString type}, ${escapeInt permission}, 0, 0, (SELECT unix_ms FROM now))")
+                    (builtins.attrNames originPermissions)))
+                (builtins.attrNames permissions))}
+            ON CONFLICT(origin, type) DO UPDATE SET
+              permission=excluded.permission,
+              expireType=excluded.expireType,
+              expireTime=excluded.expireTime,
+              modificationTime=excluded.modificationTime;
 
-          -- Add a unique index on moz_perms(origin, type), to support upserts
-          CREATE UNIQUE INDEX IF NOT EXISTS moz_perms_upsert_index ON moz_perms(origin, type);
-
-          WITH now(unix_ms) AS (SELECT CAST((julianday('now') - 2440587.5) * 86400000 AS INTEGER))
-          INSERT INTO moz_perms(origin, type, permission, expireType, expireTime, modificationTime)
-          VALUES
-          ${lib.concatStringsSep ",\n"
-            (builtins.concatMap
-              (origin:
-                let
-                  originPermissions = permissions.${origin};
-                in
-                (builtins.map
-                  (type:
-                    let
-                      permission = permissionValue.${originPermissions.${type}};
-                    in
-                      "  (${sqlString origin}, ${sqlString type}, ${sqlInt permission}, 0, 0, (SELECT unix_ms FROM now))")
-                  (builtins.attrNames originPermissions)))
-              (builtins.attrNames permissions))}
-          ON CONFLICT(origin, type) DO UPDATE SET
-            permission=excluded.permission,
-            expireType=excluded.expireType,
-            expireTime=excluded.expireTime,
-            modificationTime=excluded.modificationTime;
-
-          COMMIT;
-        '';
+            COMMIT;
+          '';
       in
       lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [ ! -e ${db} ]; then
