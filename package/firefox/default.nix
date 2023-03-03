@@ -291,7 +291,7 @@
           };
         };
 
-        db = "${config.home.homeDirectory}/.mozilla/firefox/${config.home.username}/permissions.sqlite";
+        db = lib.escapeShellArg "${config.home.homeDirectory}/.mozilla/firefox/${config.home.username}/permissions.sqlite";
 
         schemaSQL = pkgs.writeText "schema.sql" ''
           BEGIN TRANSACTION;
