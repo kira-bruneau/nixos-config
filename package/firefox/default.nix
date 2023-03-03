@@ -308,6 +308,7 @@
             PRIMARY KEY(id)
           );
 
+          -- Deprecated table, for backwards compatibility
           CREATE TABLE moz_hosts(
             id INTEGER,
             host TEXT,
@@ -335,7 +336,8 @@
         dataSQL = pkgs.writeText "data.sql" ''
           BEGIN TRANSACTION;
 
-          CREATE UNIQUE INDEX IF NOT EXISTS moz_perms_uniqueness ON moz_perms(origin, type);
+          -- Add a unique index on moz_perms(origin, type), to support upserts
+          CREATE UNIQUE INDEX IF NOT EXISTS moz_perms_upsert_index ON moz_perms(origin, type);
 
           WITH now(unix_ms) AS (SELECT CAST((julianday('now') - 2440587.5) * 86400000 AS INTEGER))
           INSERT INTO moz_perms(origin, type, permission, expireType, expireTime, modificationTime)
@@ -368,6 +370,7 @@
           ${pkgs.sqlite}/bin/sqlite3 ${db} < ${schemaSQL}
         fi
 
+        # Ignore errors, firefox enforces an exclusive lock on the db while running
         ${pkgs.sqlite}/bin/sqlite3 ${db} < ${dataSQL} || :
       '';
 
