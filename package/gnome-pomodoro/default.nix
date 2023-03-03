@@ -38,7 +38,7 @@
           triggers = [ "start" ];
           command = toString (pkgs.writeShellScript "start-pomodoro.sh" ''
             set -eu -o pipefail
-            swaymsg 'gaps outer all set 0; gaps inner all set 0' &
+            swaymsg 'gaps inner all set 0' &
             makoctl mode -a sticky &
             sleep ${timeout} && makoctl mode | grep -q sticky && makoctl mode -a invisible &
           '');
@@ -50,7 +50,7 @@
         triggers = [ "complete" "skip" ];
         command = toString (pkgs.writeShellScript "end-pomodoro.sh" ''
           set -eu -o pipefail
-          swaymsg 'gaps outer all set 10; gaps inner all set 5' &
+          swaymsg 'gaps inner all set 10' &
           makoctl mode -r sticky -r invisible &
         '');
       };

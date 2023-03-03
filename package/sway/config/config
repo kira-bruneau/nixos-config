@@ -21,8 +21,7 @@ set $menu rofi -modi drun -show drun -matching fuzzy # | xargs swaymsg exec --
 
 ### UI
 
-gaps outer 10
-gaps inner 5
+gaps inner 10
 default_border none
 font pango:cantarell 10
 
