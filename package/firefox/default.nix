@@ -369,12 +369,12 @@
       in
       lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [ ! -e ${db} ]; then
-          mkdir -p $(dirname ${db})
-          ${pkgs.sqlite}/bin/sqlite3 ${db} < ${schemaSQL}
+          $DRY_RUN_CMD mkdir -p $VERBOSE_ARG $(dirname ${db})
+          $DRY_RUN_CMD ${pkgs.sqlite}/bin/sqlite3 ${db} < ${schemaSQL}
         fi
 
         # Ignore errors, firefox enforces an exclusive lock on the db while running
-        ${pkgs.sqlite}/bin/sqlite3 ${db} < ${dataSQL} || :
+        $DRY_RUN_CMD ${pkgs.sqlite}/bin/sqlite3 ${db} < ${dataSQL} || :
       '';
 
     # Touchscreen support
