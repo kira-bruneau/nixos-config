@@ -40,7 +40,7 @@
             set -eu -o pipefail
             swaymsg 'gaps outer all set 0; gaps inner all set 0' &
             makoctl mode -a sticky &
-            sleep ${timeout} && makoctl mode -a invisible &
+            sleep ${timeout} && makoctl mode | grep -q sticky && makoctl mode -a invisible &
           '');
         };
 
