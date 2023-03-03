@@ -278,6 +278,7 @@
         permissions = {
           "https://app.element.io" = {
             "desktop-notification" = "allow";
+            "persistent-storage" = "allow";
           };
           "https://calendar.proton.me" = {
             "desktop-notification" = "allow";
