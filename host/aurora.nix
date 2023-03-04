@@ -4,6 +4,7 @@
   imports = (with inputs.nixos-hardware.nixosModules; [
     framework
   ]) ++ [
+    ../environment/distributed-build.nix
     ../environment/hidpi.nix
     ../environment/laptop.nix
     ../environment/locale
