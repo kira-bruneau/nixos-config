@@ -1,7 +1,12 @@
 { pkgs, ... }:
 
 {
-  programs.mpv.enable = true;
+  programs.mpv = {
+    enable = true;
+    config = {
+      save-position-on-quit = true;
+    };
+  };
 
   xdg.mimeApps.defaultApplications = {
     "application/mxf" = "mpv.desktop";
