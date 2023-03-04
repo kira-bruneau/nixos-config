@@ -43,7 +43,7 @@
             then [
               {
                 name = lib.removeSuffix ".nix" host;
-                value = hostsDir + "/${host}";
+                value = /${hostsDir}/${host};
               }
             ]
             else [ ])
