@@ -196,6 +196,7 @@
             "dom.security.https_only_mode" = true;
             "extensions.formautofill.creditCards.available" = false;
             "extensions.formautofill.creditCards.enabled" = false;
+            "extensions.unifiedExtensions.enabled" = false;
             "layout.spellcheckDefault" = 1;
             "media.eme.enabled" = true;
             "services.sync.engine.creditcards" = false;
