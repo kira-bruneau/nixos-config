@@ -113,7 +113,9 @@
       evil-read-key-map
       evil-replace-state-map
       evil-visual-state-map
-      evil-window-map))
+      evil-window-map
+      lsp-bridge-call-hierarchy-mode-map
+      lsp-bridge-ref-mode-map))
 
   (defvar evil-key-rotation--force nil)
 

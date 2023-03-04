@@ -16,7 +16,6 @@
   diffutils,
   direnv,
   dockerfile-language-server-nodejs,
-  emacs-lsp-booster,
   eslint_d,
   fd,
   fzf,
@@ -55,17 +54,10 @@
 
 let
   emacs = if stdenv.hostPlatform.isDarwin then emacs29 else emacs29-pgtk;
-
-  emacsPackages = emacs.pkgs.overrideScope (
-    final: prev: {
-      lsp-mode = prev.lsp-mode.overrideAttrs (attrs: {
-        LSP_USE_PLISTS = true;
-      });
-    }
-  );
 in
 callPackage ./wrapper.nix {
-  emacs = emacsPackages.emacsWithPackages (epkgs: [
+  emacs = emacs.pkgs.emacsWithPackages (epkgs: [
+    epkgs.acm-terminal
     epkgs.adaptive-wrap
     epkgs.amx
     epkgs.apheleia
@@ -75,12 +67,9 @@ callPackage ./wrapper.nix {
     epkgs.beacon
     epkgs.browse-at-remote
     epkgs.buffer-move
-    epkgs.ccls
     epkgs.cider
     epkgs.cmake-font-lock
-    epkgs.company
-    epkgs.company-flx
-    epkgs.company-restclient
+    epkgs.cmake-mode
     epkgs.counsel
     epkgs.dap-mode
     epkgs.diminish
@@ -102,9 +91,7 @@ callPackage ./wrapper.nix {
     epkgs.haskell-mode
     epkgs.ivy
     epkgs.latex-preview-pane
-    epkgs.lsp-java
-    epkgs.lsp-mode
-    epkgs.lsp-ui
+    epkgs.lsp-bridge
     epkgs.lua-mode
     epkgs.macrostep
     epkgs.magit
@@ -186,7 +173,6 @@ callPackage ./wrapper.nix {
         diffutils
         direnv
         dockerfile-language-server-nodejs
-        emacs-lsp-booster
         eslint_d
         fd
         fzf

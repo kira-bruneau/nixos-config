@@ -5,14 +5,7 @@
                 ("zx" . js-ts-mode))
   :init
   (with-eval-after-load 'flycheck
-    (setq flycheck-javascript-eslint-executable "eslint_d")
-    (add-hook
-     'lsp-diagnostics-mode-hook
-     (lambda ()
-      (flycheck-add-next-checker 'lsp 'javascript-eslint))))
-
-  (with-eval-after-load 'lsp-mode
-    (delete 'lsp-eslint lsp-client-packages))
+    (setq flycheck-javascript-eslint-executable "eslint_d"))
 
   (with-eval-after-load 'apheleia
     (add-to-list 'apheleia-formatters '(eslint . ("eslint_d" "--stdin" "--fix-to-stdout" "--stdin-filename" filepath))))

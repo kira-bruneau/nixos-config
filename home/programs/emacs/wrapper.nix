@@ -57,7 +57,6 @@ let
     "--prefix NIX_PROFILES ' ' ${profile}"
     "--prefix PATH : ${profile}/bin"
     "--add-flags '--init-directory=${config}'"
-    "--set LSP_USE_PLISTS 1"
   ];
 in
 runCommand "${emacs.name}-profile-wrapper"

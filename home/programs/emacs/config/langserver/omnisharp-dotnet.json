@@ -1,0 +1,7 @@
+{
+  "name": "omnisharp-dotnet",
+  "languageId": "c#",
+  "command": ["OmniSharp", "-lsp"],
+  "settings": {},
+  "support-single-file": false
+}
