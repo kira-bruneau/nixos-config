@@ -9,7 +9,7 @@
   bear,
   cargo,
   cargo-edit,
-  ccls,
+  clang-tools,
   cmake,
   cmake-language-server,
   coreutils,
@@ -166,6 +166,7 @@ callPackage ./wrapper.nix {
         bear
         cargo
         cargo-edit
+        clang-tools
         cmake
         cmake-language-server
         coreutils
@@ -227,7 +228,6 @@ callPackage ./wrapper.nix {
       ]
       ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
         # Currently doesn't built on Darwin
-        ccls
         (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
         omnisharp-roslyn
       ];

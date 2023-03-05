@@ -41,7 +41,6 @@
       "*~"
 
       # Project Management
-      ".ccls-cache"
       ".direnv"
       ".envrc"
       ".idea"
