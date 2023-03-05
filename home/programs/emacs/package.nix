@@ -64,7 +64,6 @@ callPackage ./wrapper.nix {
     epkgs.arduino-mode
     epkgs.async
     epkgs.avy
-    epkgs.beacon
     epkgs.browse-at-remote
     epkgs.buffer-move
     epkgs.cider
