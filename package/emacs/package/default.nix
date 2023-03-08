@@ -102,7 +102,6 @@ callPackage ./wrapper.nix {
     epkgs.company-restclient
     epkgs.counsel
     epkgs.counsel-projectile
-    epkgs.csharp-mode
     epkgs.dap-mode
     epkgs.diminish
     epkgs.direnv
