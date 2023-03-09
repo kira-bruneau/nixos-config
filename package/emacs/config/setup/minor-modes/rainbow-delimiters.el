@@ -1,2 +1,2 @@
 (use-package rainbow-delimiters
-  :hook (lisp-data-mode . rainbow-delimiters-mode))
+  :hook lisp-data-mode)

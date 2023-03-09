@@ -1,2 +1,2 @@
 (use-package nameless
-  :hook (emacs-lisp-mode . nameless-mode))
+  :hook emacs-lisp-mode)

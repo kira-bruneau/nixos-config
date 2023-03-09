@@ -1,5 +1,5 @@
 (use-package whitespace
-  :hook (diff-mode . whitespace-mode)
+  :hook diff-mode
   :config
   (setq whitespace-style
         '(face
