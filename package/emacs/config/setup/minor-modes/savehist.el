@@ -1,3 +1,4 @@
 (use-package savehist
-  :init
- (savehist-mode t))
+  ;; To avoid history corruption, only enable save-histmode on a
+  ;; successful init
+  :hook after-successful-init)

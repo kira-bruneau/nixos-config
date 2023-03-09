@@ -1,5 +1,4 @@
 (use-package projectile
-  :after savehist
   :diminish "" ;; ➴
   :bind-keymap ("<f7>" . projectile-command-map)
   :bind (:map projectile-command-map

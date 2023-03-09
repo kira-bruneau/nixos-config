@@ -18,9 +18,15 @@
        "fix-annoyances.el"))
     (directory-files-recursively dir/setup "^[^.].*\.el$"))))
 
-;; Load setup files and isolate any errors
+;; Load setup files and isolate errors
 (setq use-package-always-defer t)
-(dolist (setup setup-files)
-  (condition-case err
-      (load setup nil t)
-    (error (message "%s" (error-message-string err)))))
+(defvar after-successful-init-hook nil)
+(let ((error? nil))
+  (dolist (setup setup-files)
+    (condition-case err
+        (load setup nil t)
+      (error
+       (setq error? t)
+       (message "%s" (error-message-string err)))))
+  (unless error?
+    (run-hooks 'after-successful-init-hook)))
