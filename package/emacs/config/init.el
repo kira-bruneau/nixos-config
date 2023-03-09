@@ -12,6 +12,7 @@
        (lambda (name) (concat dir/setup name))
        ;; Prioritize loading these files first
        '("ui.el"
+         "evil.el"
          "editing.el"
          "fix-annoyances.el"))
       (directory-files-recursively dir/setup "^[^.].*\.el$"))))
