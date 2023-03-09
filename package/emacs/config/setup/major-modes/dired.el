@@ -12,3 +12,6 @@
 (use-package image-dired
   :config
   (setq image-dired-thumbnail-storage 'standard-large))
+
+(use-package async
+  :hook (dired-mode . dired-async-mode))

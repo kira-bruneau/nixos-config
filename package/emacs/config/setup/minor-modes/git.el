@@ -1,9 +1,11 @@
 (use-package magit
   :bind (("<f8>" . magit-file-dispatch))
   :init
-  (setq magit-save-repository-buffers nil)
   (setq magit-no-message '("Turning on magit-auto-revert-mode..."))
+
+  :config
   (setq transient-enable-popup-navigation t)
+  (setq magit-save-repository-buffers nil)
 
   (setq
    magit-repolist-columns
