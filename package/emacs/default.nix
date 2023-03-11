@@ -17,6 +17,13 @@
   };
 
   # Manage emacs config outside of home-manager while keeping track of the files in this git repo
-  xdg.configFile.emacs.source = config.lib.file.mkOutOfStoreSymlink
-    "${config.home.configDirectory}/package/emacs/config";
+  xdg = {
+    configFile.emacs.source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.configDirectory}/package/emacs/config";
+
+    mimeApps.defaultApplications = {
+      "text/plain" = "emacsclient.desktop";
+      "inode/directory" = "emacsclient.desktop";
+    };
+  };
 }
