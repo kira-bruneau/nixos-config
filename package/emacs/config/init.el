@@ -4,15 +4,12 @@
 (defvar dir/setup (concat user-emacs-directory "setup/"))
 
 ;; Define setup files to load
-;;
-;; TODO: Load files before recursing through directories so we don't
-;; have to be explict with load order
 (defvar setup-files
   (delete-dups
    (append
     (mapcar
-     (lambda (name)
-       (expand-file-name (concat dir/setup name)))
+     (lambda (name) (concat dir/setup name))
+     ;; Prioritize loading these files first
      '("ui.el"
        "editing.el"
        "fix-annoyances.el"))
