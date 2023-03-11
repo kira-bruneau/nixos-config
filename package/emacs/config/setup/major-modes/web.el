@@ -4,7 +4,6 @@
          "\\.jsx\\'"
          "\\.tsx\\'"
          "\\.ejs\\'")
-  :hook (sgml-electric-tag-pair-mode . web-mode)
   :bind (:map web-mode-map
               ("C-c C-o" . browse-url-of-file))
   :init
