@@ -11,6 +11,38 @@
         . $HOME/.profile
       fi
     '';
+
+    systemPackages = with pkgs; [
+      xdg-utils
+      (writeShellScriptBin "wayland-session" ''
+        /run/current-system/systemd/bin/systemctl --user start graphical-session.target
+        "$@"
+        /run/current-system/systemd/bin/systemctl --user stop graphical-session.target
+      '')
+    ];
+
+    etc = {
+      "sway/config.d/power-controls.conf".text = ''
+        set $mode_power l̲ogout | s̲hutdown | r̲eboot
+        mode "$mode_power" {
+          bindsym l exec swaymsg exit
+          bindsym s exec systemctl poweroff
+          bindsym r exec systemctl reboot
+          bindsym --release XF86PowerOff exec systemctl poweroff
+          bindsym Control+Mod1+Delete exec systemctl reboot
+          bindsym Return mode "default"
+          bindsym Escape mode "default"
+        }
+
+        bindsym --release XF86PowerOff mode "$mode_power"
+        bindsym Control+Mod1+Delete mode "$mode_power"
+      '';
+
+      # TODO: Add X + i3
+      "greetd/environments".text = ''
+        wayland-session sway
+      '';
+    };
   };
 
   # Quiet boot
@@ -33,22 +65,6 @@
     extraPackages = with pkgs; [ swaylock swayidle ];
     wrapperFeatures.gtk = true;
   };
-
-  environment.etc."sway/config.d/power-controls.conf".text = ''
-    set $mode_power l̲ogout | s̲hutdown | r̲eboot
-    mode "$mode_power" {
-      bindsym l exec swaymsg exit
-      bindsym s exec systemctl poweroff
-      bindsym r exec systemctl reboot
-      bindsym --release XF86PowerOff exec systemctl poweroff
-      bindsym Control+Mod1+Delete exec systemctl reboot
-      bindsym Return mode "default"
-      bindsym Escape mode "default"
-    }
-
-    bindsym --release XF86PowerOff mode "$mode_power"
-    bindsym Control+Mod1+Delete mode "$mode_power"
-  '';
 
   # Enable i3-gaps X11 window manager
   services.xserver.windowManager.i3 = {
@@ -127,19 +143,6 @@
         in "sway --config ${gtkgreet-sway-config}";
     };
   };
-
-  environment.systemPackages = [
-    (pkgs.writeShellScriptBin "wayland-session" ''
-      /run/current-system/systemd/bin/systemctl --user start graphical-session.target
-      "$@"
-      /run/current-system/systemd/bin/systemctl --user stop graphical-session.target
-    '')
-  ];
-
-  # TODO: Add X + i3
-  environment.etc."greetd/environments".text = ''
-    wayland-session sway
-  '';
 
   # Redshift
   # TODO: Start at login
