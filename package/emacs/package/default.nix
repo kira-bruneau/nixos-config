@@ -115,6 +115,7 @@ callPackage ./wrapper.nix {
     epkgs.flx
     epkgs.flycheck
     epkgs.forge
+    epkgs.gcmh
     epkgs.git-modes
     epkgs.go-mode
     epkgs.graphql-mode

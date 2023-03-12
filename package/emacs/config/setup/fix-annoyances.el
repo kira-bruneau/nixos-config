@@ -77,10 +77,6 @@
   (setq mac-option-modifier 'nil)
   (setq mac-command-modifier 'meta))
 
-;; Trade memory for higher performance
-(setq gc-cons-threshold 100000000)
-(setq read-process-output-max (* 1024 1024))
-
 ;; Prevent *Warnings* buffer from taking over existing buffer
 (setq
  display-buffer-alist
