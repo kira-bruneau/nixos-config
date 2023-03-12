@@ -9,8 +9,6 @@
          ("w" . dap-debug-last)
          ("x" . projectile-run-multi-term)) ;; Use multi-term as the default terminal
   :init
-  (projectile-mode)
-
   (defun projectile-new (directory)
     (interactive "D")
     (let ((projectile-file (concat directory ".projectile")))
