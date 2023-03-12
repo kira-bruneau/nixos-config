@@ -7,13 +7,14 @@
     common-pc-ssd
   ]) ++ [
     ../environment/desktop.nix
+    ../environment/distributed-nix.nix
     ../environment/gaming.nix
     ../environment/hidpi.nix
     ../environment/locale
+    ../environment/nix-ssh.nix
     ../environment/wireless.nix
     ../service/ssh.nix
     ../service/syncthing.nix
-    ../user/builder.nix
     ../user/kira.nix
   ];
 

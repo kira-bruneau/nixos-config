@@ -4,10 +4,11 @@
   imports = (with inputs.nixos-hardware.nixosModules; [
     framework
   ]) ++ [
-    ../environment/distributed-build.nix
+    ../environment/distributed-nix.nix
     ../environment/hidpi.nix
     ../environment/laptop.nix
     ../environment/locale
+    ../environment/nix-ssh.nix
     ../service/ssh.nix
     ../service/syncthing.nix
     ../user/kira.nix

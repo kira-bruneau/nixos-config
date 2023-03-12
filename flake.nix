@@ -51,25 +51,11 @@
 
       commonModules = [
         ./cachix.nix
+        ./environment/nix.nix
         ./environment/seed-nixos-config.nix
 
         # Overlay my nur packages & modules
         my-nur.nixosModules.overlay
-
-        {
-          nix = {
-            settings = {
-              auto-optimise-store = true;
-              experimental-features = [ "nix-command" "flakes" ];
-            };
-
-            # Pin nixpkgs in flake registry
-            registry.nixpkgs.flake = nixpkgs;
-
-            # Pin nixpkgs channel (for backwards compatibility with nix2 cli)
-            nixPath = [ "nixpkgs=${nixpkgs}" ];
-          };
-        }
       ];
     in
     {
