@@ -12,5 +12,9 @@
 
     # Pin nixpkgs channel (for backwards compatibility with nix2 cli)
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+    extraOptions = ''
+      keep-going = true
+    '';
   };
 }
