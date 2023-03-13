@@ -38,6 +38,8 @@
     kernelModules = [ "kvm-amd" ];
     kernelParams = [ "amd_iommu=on" ];
     binfmt.emulatedSystems = [ "armv7l-linux" "aarch64-linux" ];
+
+    tmpOnTmpfs = true;
   };
 
   fileSystems."/" = {
