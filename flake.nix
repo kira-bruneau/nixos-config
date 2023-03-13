@@ -105,7 +105,7 @@
                       };
 
                       # Resolve conflict between install iso config and my host configs
-                      services.openssh.permitRootLogin = lib.mkForce "no";
+                      services.openssh.settings.PermitRootLogin = lib.mkForce "no";
                     }
                     path
                   ];
