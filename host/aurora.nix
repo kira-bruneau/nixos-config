@@ -10,7 +10,6 @@
     ../environment/locale
     ../environment/nix-ssh.nix
     ../service/ssh.nix
-    ../service/syncthing.nix
     ../user/kira.nix
   ];
 

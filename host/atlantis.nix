@@ -14,7 +14,6 @@
     ../environment/nix-ssh.nix
     ../environment/bluetooth.nix
     ../service/ssh.nix
-    ../service/syncthing.nix
     ../user/kira.nix
   ];
 
