@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  networking.wireless.enable = true;
+}

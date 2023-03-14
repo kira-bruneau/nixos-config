@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./wireless.nix
+    ./wifi.nix
+    ./bluetooth.nix
   ];
 
   location.provider = "geoclue2";

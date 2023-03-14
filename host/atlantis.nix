@@ -12,7 +12,7 @@
     ../environment/hidpi.nix
     ../environment/locale
     ../environment/nix-ssh.nix
-    ../environment/wireless.nix
+    ../environment/bluetooth.nix
     ../service/ssh.nix
     ../service/syncthing.nix
     ../user/kira.nix
