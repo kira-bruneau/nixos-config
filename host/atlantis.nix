@@ -27,5 +27,5 @@
     "vvvvvv"
   ];
 
-  home.stateVersion = "21.05";
+  home.stateVersion = "22.11";
 }
