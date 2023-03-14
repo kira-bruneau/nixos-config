@@ -69,8 +69,6 @@ in
     valgrind
 
     # Multimedia
-    yabridge
-    yabridgectl
     youtube-dl
   ];
 

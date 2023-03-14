@@ -49,6 +49,8 @@
 
     # Utils
     gnome.gnome-clocks
+    yabridge
+    yabridgectl
   ];
 
   home.sessionVariables = {
