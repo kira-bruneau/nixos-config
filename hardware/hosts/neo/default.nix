@@ -1,14 +1,11 @@
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
-    ../../drivers/logitech-wireless.nix
-    ../../environments/cec
-    ../../environments/laptop.nix
+    ../../environments/bluetooth.nix
+    ../../environments/wifi.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [
-    common-cpu-intel-cpu-only
-    common-gpu-nvidia-nonprime
-    common-pc-laptop-hdd
+    dell-xps-13-9343
   ]);
 
   boot = {
@@ -18,13 +15,11 @@
       efi.canTouchEfiVariables = true;
       timeout = 0;
     };
-
-    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   disko.devices = {
     disk.main = {
-      device = "/dev/disk/by-id/ata-HGST_HTS721075A9E630_JR12006QG0WSKE";
+      device = "/dev/disk/by-id/wwn-0x5002538844584d30";
       content = {
         type = "gpt";
         partitions = {
@@ -46,8 +41,20 @@
             content = {
               type = "btrfs";
               extraArgs = [ "-L" "nixos" ];
-              mountpoint = "/persist";
-              mountOptions = [ "noatime" ];
+              subvolumes = {
+                "/persist" = {
+                  mountpoint = "/persist";
+                  mountOptions = [ "compress=zstd" "noatime" ];
+                };
+                "/nix" = {
+                  mountpoint = "/nix";
+                  mountOptions = [ "compress=zstd" "noatime" ];
+                };
+                "/home" = {
+                  mountpoint = "/home";
+                  mountOptions = [ "compress=zstd" "noatime" ];
+                };
+              };
             };
           };
         };
@@ -61,20 +68,4 @@
       };
     };
   };
-
-  environment.persistence."/persist".directories = [
-    "/home"
-    "/nix"
-  ];
-
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
-
-    # Modesetting is required for wayland
-    modesetting.enable = true;
-  };
-
-  nixpkgs.config.nvidia.acceptLicense = true;
-
-  services.auto-cpufreq.enable = lib.mkForce false;
 }

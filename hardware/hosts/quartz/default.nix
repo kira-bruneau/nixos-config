@@ -107,12 +107,12 @@
     };
   };
 
-  environment.persistence."/persist" = {
-    directories = [
-      "/var/lib/minecraft"
-      "/var/lib/private/ollama"
-    ];
-  };
+  environment.persistence."/persist".directories = [
+    "/home"
+    "/nix"
+    "/var/lib/minecraft"
+    "/var/lib/private/ollama"
+  ];
 
   # Sway I/O configuration
   environment.etc."sway/config.d/io.conf".text = ''

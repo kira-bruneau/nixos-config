@@ -64,6 +64,11 @@
     };
   };
 
+  environment.persistence."/persist".directories = [
+    "/home"
+    "/nix"
+  ];
+
   # Hibernation swapfile
   swapDevices = [{ device = "/persist/swapfile"; size = 64102; }];
 

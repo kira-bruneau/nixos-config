@@ -26,6 +26,9 @@
       "jakira.space" = {
         user = "root";
       };
+      "neo" = {
+        user = "kira";
+      };
       "quartz" = {
         user = "kira";
       };

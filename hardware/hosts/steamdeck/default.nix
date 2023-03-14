@@ -58,6 +58,8 @@
 
   environment.persistence."/persist" = {
     directories = [
+      "/home"
+      "/nix"
       "/var/lib/decky-loader"
       "/var/lib/jupiter-biosupdate"
     ];

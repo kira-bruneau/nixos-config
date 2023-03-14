@@ -10,8 +10,6 @@
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
-      "/home"
-      "/nix"
       "/var/lib/nix-daemon"
       "/var/lib/nixos"
       "/var/lib/systemd"

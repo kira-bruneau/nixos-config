@@ -2,7 +2,7 @@
 
 {
   services.syncthing = {
-    enable = builtins.elem config.system.name [ "aurora" "luna" "quartz" ];
+    enable = builtins.elem config.system.name [ "aurora" "luna" "neo" "quartz" ];
     user = "kira";
     group = "users";
     dataDir = "/home/kira";
@@ -13,13 +13,14 @@
       devices = {
         "aurora" = { id = "ODCDVEV-I63ZAW6-MV27YBB-W5MDOAU-YZ3RK23-DMXCWAN-STJOSEF-EFXFRQP"; };
         "luna" = { id = "O4NQTDT-NWV3GEZ-67BW33I-BQ454SI-42G2RK3-F53W4L4-RUG47VK-5VXLFA7"; };
+        "neo" = { id = "2PIQVSQ-2N77DGJ-XNTHNQF-PREKTRC-SCP6LFV-DRG3WK7-WFPT56T-NYWIAQG"; };
         "quartz" = { id = "64ZDVRR-2DZB475-3IWMGU6-OU46FZQ-P44AXVI-OYI6TO3-VOCUVRT-L62KBAE"; };
       };
 
       folders = {
         "Auth" = {
-          enable = builtins.elem config.system.name [ "aurora" "luna" "quartz" ];
-          devices = [ "aurora" "luna" "quartz" ];
+          enable = builtins.elem config.system.name [ "aurora" "luna" "neo" "quartz" ];
+          devices = [ "aurora" "luna" "neo" "quartz" ];
           path = "~/Auth";
           ignorePerms = false;
           rescanIntervalS = 86400;
@@ -31,8 +32,8 @@
         };
 
         "Dev" = {
-          enable = builtins.elem config.system.name [ "aurora" "quartz" ];
-          devices = [ "aurora" "quartz" ];
+          enable = builtins.elem config.system.name [ "aurora" "neo" "quartz" ];
+          devices = [ "aurora" "neo" "quartz" ];
           path = "~/Dev";
           ignorePerms = false;
           rescanIntervalS = 86400;
@@ -44,8 +45,8 @@
         };
 
         "Documents" = {
-          enable = builtins.elem config.system.name [ "aurora" "quartz" ];
-          devices = [ "aurora" "quartz" ];
+          enable = builtins.elem config.system.name [ "aurora" "neo" "quartz" ];
+          devices = [ "aurora" "neo" "quartz" ];
           path = "~/Documents";
           ignorePerms = false;
           rescanIntervalS = 86400;
@@ -57,8 +58,8 @@
         };
 
         "Pictures" = {
-          enable = builtins.elem config.system.name [ "aurora" "quartz" ];
-          devices = [ "aurora" "quartz" ];
+          enable = builtins.elem config.system.name [ "aurora" "neo" "quartz" ];
+          devices = [ "aurora" "neo" "quartz" ];
           path = "~/Pictures";
           ignorePerms = false;
           rescanIntervalS = 86400;
@@ -70,8 +71,8 @@
         };
 
         "Videos" = {
-          enable = builtins.elem config.system.name [ "aurora" "quartz" ];
-          devices = [ "aurora" "quartz" ];
+          enable = builtins.elem config.system.name [ "aurora" "neo" "quartz" ];
+          devices = [ "aurora" "neo" "quartz" ];
           path = "~/Videos";
           ignorePerms = false;
           rescanIntervalS = 86400;
