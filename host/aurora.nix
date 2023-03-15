@@ -57,10 +57,8 @@
 
   # Sway output configuration
   environment.etc."sway/config.d/output.conf".text = ''
-    output "HP Inc. HP Z27k G3 CN41223C6P" scale 2 pos 0 400
-    output "BOE 0x095F Unknown" scale 1.5 pos 208 1480
-    output "HP Inc. HP Z27k G3 CN41223C6V" scale 2 transform 270 pos 1920 0
-    output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 1712 1403
+    output "BOE 0x095F Unknown" scale 1.5 pos 0 77
+    output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 1504 0
   '';
 
   environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
