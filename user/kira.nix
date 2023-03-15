@@ -19,6 +19,6 @@
 
   home-manager = {
     useUserPackages = true;
-    users.kira = inputs.home-config-kira.nixosModules.${config.system.name};
+    users.kira = inputs.kira-home-config.nixosModules.${config.system.name};
   };
 }

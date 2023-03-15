@@ -3,11 +3,11 @@
     "emacs-overlay": {
       "inputs": {
         "flake-utils": [
-          "home-config-kira",
+          "kira-home-config",
           "flake-utils"
         ],
         "nixpkgs": [
-          "home-config-kira",
+          "kira-home-config",
           "nixpkgs"
         ]
       },
@@ -28,11 +28,11 @@
     "flake-linter": {
       "inputs": {
         "flake-utils": [
-          "home-config-kira",
+          "kira-home-config",
           "flake-utils"
         ],
         "nixpkgs": [
-          "home-config-kira",
+          "kira-home-config",
           "nixpkgs"
         ]
       },
@@ -53,11 +53,11 @@
     "flake-linter_2": {
       "inputs": {
         "flake-utils": [
-          "my-nur",
+          "kira-nur",
           "flake-utils"
         ],
         "nixpkgs": [
-          "my-nur",
+          "kira-nur",
           "nixpkgs"
         ]
       },
@@ -105,32 +105,6 @@
         "type": "github"
       }
     },
-    "home-config-kira": {
-      "inputs": {
-        "emacs-overlay": "emacs-overlay",
-        "flake-linter": "flake-linter",
-        "flake-utils": "flake-utils",
-        "my-nur": [
-          "my-nur"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1678720760,
-        "narHash": "sha256-JHIgtf2/bpa5FUA29RrWQwzYnYgolFwFFI7cut3ECsA=",
-        "owner": "kira-bruneau",
-        "repo": "home-config",
-        "rev": "f0015460669f9017e61b460422475c9432f83cbc",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "kira-bruneau",
-        "repo": "home-config",
-        "type": "gitlab"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -152,7 +126,33 @@
         "type": "github"
       }
     },
-    "my-nur": {
+    "kira-home-config": {
+      "inputs": {
+        "emacs-overlay": "emacs-overlay",
+        "flake-linter": "flake-linter",
+        "flake-utils": "flake-utils",
+        "my-nur": [
+          "kira-nur"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1678720760,
+        "narHash": "sha256-JHIgtf2/bpa5FUA29RrWQwzYnYgolFwFFI7cut3ECsA=",
+        "owner": "kira-bruneau",
+        "repo": "home-config",
+        "rev": "f0015460669f9017e61b460422475c9432f83cbc",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "kira-bruneau",
+        "repo": "home-config",
+        "type": "gitlab"
+      }
+    },
+    "kira-nur": {
       "inputs": {
         "flake-linter": "flake-linter_2",
         "flake-utils": "flake-utils_2",
@@ -243,9 +243,9 @@
     },
     "root": {
       "inputs": {
-        "home-config-kira": "home-config-kira",
         "home-manager": "home-manager",
-        "my-nur": "my-nur",
+        "kira-home-config": "kira-home-config",
+        "kira-nur": "kira-nur",
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"

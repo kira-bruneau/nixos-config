@@ -4,8 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    my-nur = {
-      url = "gitlab:kira-bruneau/nur-packages";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -14,23 +16,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-config-kira = {
+    kira-nur = {
+      url = "gitlab:kira-bruneau/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kira-home-config = {
       url = "gitlab:kira-bruneau/home-config";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        my-nur.follows = "my-nur";
+        my-nur.follows = "kira-nur";
       };
-    };
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, my-nur, nixos-generators, ... } @ inputs:
+  outputs = { nixpkgs, nixos-generators, ... } @ inputs:
     let
       lib = nixpkgs.lib;
 
@@ -49,13 +49,11 @@
             else [ ])
           (builtins.attrNames (builtins.readDir hostsDir)));
 
-      commonModules = [
+      commonModules = with inputs; [
+        kira-nur.nixosModules.overlay
         ./cachix.nix
         ./environment/nix.nix
         ./environment/seed-nixos-config.nix
-
-        # Overlay my nur packages & modules
-        my-nur.nixosModules.overlay
       ];
     in
     {
