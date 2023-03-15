@@ -37,20 +37,49 @@
     kernelModules = [ "kvm-amd" ];
     kernelParams = [ "amd_iommu=on" ];
     binfmt.emulatedSystems = [ "armv7l-linux" "aarch64-linux" ];
-
-    tmpOnTmpfs = true;
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0d378b34-55a4-425c-ad10-3ed140d3cf54";
-    fsType = "ext4";
-    options = [ "noatime" "nodiratime" ];
-  };
+  disko.devices = {
+    disk.main = {
+      device = "/dev/disk/by-id/nvme-nvme.1987-3231323337393038303030313330333734364145-436f7273616972204d5036303020434f5245-00000001";
+      content = {
+        type = "table";
+        format = "gpt";
+        partitions = [
+          {
+            name = "boot";
+            start = "1MiB";
+            end = "512MiB";
+            bootable = true;
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              extraArgs = [ "-F" "32" "-n" "boot" ];
+              mountpoint = "/boot";
+              mountOptions = [ "noatime" ];
+            };
+          }
+          {
+            name = "nixos";
+            start = "512MiB";
+            end = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              extraArgs = [ "-L" "nixos" ];
+              mountpoint = "/";
+              mountOptions = [ "noatime" ];
+            };
+          }
+        ];
+      };
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/47AE-E9C6";
-    fsType = "vfat";
-    options = [ "noatime" "nodiratime" ];
+    nodev = {
+      "/tmp" = {
+        fsType = "tmpfs";
+      };
+    };
   };
 
   # Sway output configuration

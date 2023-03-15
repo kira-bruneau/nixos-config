@@ -6,6 +6,11 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +55,7 @@
           (builtins.attrNames (builtins.readDir hostsDir)));
 
       commonModules = with inputs; [
+        disko.nixosModules.disko
         kira-nur.nixosModules.overlay
         ./cachix.nix
         ./environment/nix.nix
@@ -94,6 +100,8 @@
                       # with the configured kernel version
                       boot.supportedFilesystems = lib.mkForce
                         [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];
+
+                      disko.enableConfig = false;
 
                       networking = {
                         hostName = host;

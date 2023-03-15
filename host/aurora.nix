@@ -26,24 +26,53 @@
       efi.canTouchEfiVariables = true;
     };
 
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernel.sysctl = { "vm.swappiness" = 1; };
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
     kernelModules = [ "kvm-intel" ];
-
-    tmpOnTmpfs = true;
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ae7476d3-f5b1-4bc7-9be8-eecf330212ba";
-    fsType = "ext4";
-    options = [ "noatime" "nodiratime" ];
-  };
+  disko.devices = {
+    disk.main = {
+      device = "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b45507c59";
+      content = {
+        type = "table";
+        format = "gpt";
+        partitions = [
+          {
+            name = "boot";
+            start = "1MiB";
+            end = "513MiB";
+            bootable = true;
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              extraArgs = [ "-F" "32" "-n" "boot" ];
+              mountpoint = "/boot";
+              mountOptions = [ "noatime" ];
+            };
+          }
+          {
+            name = "nixos";
+            start = "513MiB";
+            end = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              extraArgs = [ "-L" "nixos" ];
+              mountpoint = "/";
+              mountOptions = [ "noatime" ];
+            };
+          }
+        ];
+      };
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6C1A-F6EA";
-    fsType = "vfat";
-    options = [ "noatime" "nodiratime" ];
+    nodev = {
+      "/tmp" = {
+        fsType = "tmpfs";
+      };
+    };
   };
 
   # Used for hibernation (eg. when upower detects a critical battery percent)

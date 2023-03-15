@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1678791830,
+        "narHash": "sha256-MV2ZqMAIEO03nHQzp2gMRW1i+JNqifMC+F+Uu7FvTJ8=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "90eb730691453f25d1a1cd6090ef74d019fb6bec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": [
@@ -243,6 +263,7 @@
     },
     "root": {
       "inputs": {
+        "disko": "disko",
         "home-manager": "home-manager",
         "kira-home-config": "kira-home-config",
         "kira-nur": "kira-nur",
