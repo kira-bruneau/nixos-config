@@ -19,6 +19,9 @@
       ];
 
     settings = {
+      builders-use-substitutes = true;
+      fallback = true;
+
       substituters = builtins.concatMap
         (hostName:
           if hostName != config.networking.hostName
@@ -34,11 +37,6 @@
         "aurora-1:B5Zp+k4JzGIXTC30BYTxfGsWgnlmA2nY6qlrx1uTc6s="
       ];
     };
-
-    extraOptions = ''
-      builders-use-substitutes = true
-      fallback = true
-    '';
   };
 
   programs.ssh = {

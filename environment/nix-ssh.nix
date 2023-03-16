@@ -24,10 +24,9 @@
       ];
     };
 
-    settings.trusted-users = [ "nix-ssh" ];
-
-    extraOptions = ''
-      secret-key-files = /etc/nix/private-key
-    '';
+    settings = {
+      secret-key-files = "/etc/nix/private-key";
+      trusted-users = [ "nix-ssh" ];
+    };
   };
 }
