@@ -11,14 +11,6 @@ in
     ../rofi
   ];
 
-  # TODO: Use Home Manager to manage X session
-  # xsession = {
-  #   enable = true;
-  #   windowManager.i3 = {
-  #     enable = true;
-  #   };
-  # };
-
   home = {
     packages = with pkgs; [
       brightnessctl
