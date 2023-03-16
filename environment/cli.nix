@@ -20,13 +20,12 @@ in
 
   # Packages
   home.packages = with pkgs; [
-    # Core utils
+    # Extra "core utils"
     du-dust
-    sd
     tealdeer
     whichf
 
-    # Administration
+    # System administration
     nethogs
     pciutils
 
@@ -45,6 +44,7 @@ in
     jq
     p7zip
     poke
+    sd
     unrar
     unzip
     xmlstarlet
