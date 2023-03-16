@@ -38,7 +38,6 @@ in
     curl
     netcat
     nmap
-    wget
     whois
 
     # Data conversion & manipulation
@@ -52,7 +51,6 @@ in
 
     # Nix
     cachix
-    comma
     nix-index
     nixpkgs-review
     patchelf
