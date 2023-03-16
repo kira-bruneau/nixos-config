@@ -281,8 +281,6 @@ in
     };
   };
 
-  services.gpg-agent.pinentryFlavor = "gnome3";
-
   programs.gnome-pomodoro = {
     onstart = [ "${swaymsg} 'gaps inner all set 0, bar mode hide'" ];
     onend = [ "${swaymsg} 'gaps inner all set 10, bar mode dock'" ];
