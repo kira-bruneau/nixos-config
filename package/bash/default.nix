@@ -17,6 +17,8 @@
 
       # Fix forward history searching
       stty -ixon
+
+      export PINENTRY_USER_DATA=tty
     '';
 
     shellAliases = {

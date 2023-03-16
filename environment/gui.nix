@@ -68,6 +68,4 @@
     # mimeapps.list often gets overwritten by applications adding mimetype associations
     configFile."mimeapps.list".force = true;
   };
-
-  services.gpg-agent.pinentryFlavor = "gnome3";
 }
