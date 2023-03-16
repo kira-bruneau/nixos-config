@@ -95,24 +95,10 @@
 
           settings = {
             "accessibility.typeaheadfind.flashBar" = 0;
-            "app.shield.optoutstudies.enabled" = false;
             "apz.overscroll.enabled" = true;
             "browser.aboutConfig.showWarning" = false;
             "browser.aboutwelcome.enabled" = false;
             "browser.contentblocking.category" = "strict";
-            "browser.discovery.enabled" = false;
-            "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
-            "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
-            "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
-            "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-            "browser.newtabpage.activity-stream.feeds.snippets" = false;
-            "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-            "browser.newtabpage.activity-stream.feeds.topsites" = true;
-            "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "google"; # Don't autopin google on first run
-            "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
-            "browser.newtabpage.activity-stream.showSponsored" = false;
-            "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-            "browser.newtabpage.activity-stream.telemetry" = false;
             "browser.newtabpage.blocked" = builtins.toJSON {
               # Dismiss builtin shortcuts
               "26UbzFJ7qT9/4DhodHKA1Q==" = 1;
@@ -125,10 +111,6 @@
             "browser.newtabpage.enabled" = true;
             "browser.newtabpage.pinned" = builtins.toJSON [ ];
             "browser.places.importBookmarksHTML" = true;
-            "browser.safebrowsing.malware.enabled" = false;
-            "browser.safebrowsing.phishing.enabled" = false;
-            "browser.search.suggest.enabled" = false;
-            "browser.search.update" = false;
             "browser.shell.checkDefaultBrowser" = false;
             "browser.startup.homepage" = "about:home";
             "browser.startup.page" = 3; # Restore previous session
@@ -190,8 +172,6 @@
               newElementCount = 2;
             };
             "browser.warnOnQuit" = false;
-            "datareporting.healthreport.uploadEnabled" = false;
-            "datareporting.policy.dataSubmissionEnabled" = false;
             "devtools.selfxss.count" = 5; # Allow pasting into console
             "dom.security.https_only_mode" = true;
             "extensions.formautofill.creditCards.available" = false;
@@ -203,7 +183,67 @@
             "services.sync.engine.passwords" = false;
             "services.sync.engine.prefs" = false;
             "signon.rememberSignons" = false; # Use keepassxc instead
-            "toolkit.telemetry.pioneer-new-studies-available" = false;
+
+            # Search
+            "browser.search.suggest.enabled" = false;
+            "browser.search.update" = false;
+            "browser.urlbar.merino.enabled" = false;
+            "browser.urlbar.merino.endpointURL" = "https://127.0.0.1";
+
+            # Activity stream
+            "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
+            "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+            "browser.newtabpage.activity-stream.feeds.snippets" = false;
+            "browser.newtabpage.activity-stream.feeds.topsites" = true;
+            "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "google"; # Don't autopin google on first run
+            "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+            "browser.newtabpage.activity-stream.showSponsored" = false;
+            "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+
+            # Extension recommendation
+            "browser.discovery.enabled" = false;
+            "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+            "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+
+            # Normandy preference rollout
+            "app.normandy.api_url" = "https://127.0.0.1";
+            "app.normandy.enabled" = false;
+
+            # Safe browsing
+            "browser.safebrowsing.downloads.enabled" = false;
+            "browser.safebrowsing.downloads.remote.url" = "https://127.0.0.1";
+            "browser.safebrowsing.malware.enabled" = false;
+            "browser.safebrowsing.phishing.enabled" = false;
+            "browser.safebrowsing.provider.google.gethashURL" = "https://127.0.0.1";
+            "browser.safebrowsing.provider.google.updateURL" = "https://127.0.0.1";
+            "browser.safebrowsing.provider.google4.gethashURL" = "https://127.0.0.1";
+            "browser.safebrowsing.provider.google4.updateURL" = "https://127.0.0.1";
+            "browser.safebrowsing.provider.mozilla.gethashURL" = "https://127.0.0.1";
+            "browser.safebrowsing.provider.mozilla.updateURL" = "https://127.0.0.1";
+
+            # Telemetry
+            "app.shield.optoutstudies.enabled" = false;
+            "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+            "browser.newtabpage.activity-stream.telemetry" = false;
+            "browser.ping-centre.telemetry" = false;
+            "datareporting.healthreport.uploadEnabled" = false;
+            "datareporting.policy.dataSubmissionEnabled" = false;
+            "dom.security.unexpected_system_load_telemetry_enabled" = false;
+            "network.trr.confirmation_telemetry_enabled" = false;
+            "security.app_menu.recordEventTelemetry" = false;
+            "security.certerrors.recordEventTelemetry" = false;
+            "security.identitypopup.recordEventTelemetry" = false;
+            "security.protectionspopup.recordEventTelemetry" = false;
+            "toolkit.telemetry.archive.enabled" = false;
+            "toolkit.telemetry.bhrPing.enabled" = false;
+            "toolkit.telemetry.enabled" = false;
+            "toolkit.telemetry.firstShutdownPing.enabled" = false;
+            "toolkit.telemetry.newProfilePing.enabled" = false;
+            "toolkit.telemetry.reportingpolicy.firstRun" = false;
+            "toolkit.telemetry.server" = "https://127.0.0.1";
+            "toolkit.telemetry.shutdownPingSender.enabled" = false;
+            "toolkit.telemetry.unified" = false;
+            "toolkit.telemetry.updatePing.enabled" = false;
           };
         };
       in
