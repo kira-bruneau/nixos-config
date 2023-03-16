@@ -51,6 +51,7 @@ in
 
     # Nix
     cachix
+    nix-bisect
     nix-index
     nixpkgs-review
     patchelf
