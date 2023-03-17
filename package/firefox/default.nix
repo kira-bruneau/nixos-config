@@ -178,7 +178,6 @@
             "extensions.formautofill.creditCards.enabled" = false;
             "extensions.unifiedExtensions.enabled" = false;
             "layout.spellcheckDefault" = 1;
-            "media.eme.enabled" = true;
             "services.sync.engine.creditcards" = false;
             "services.sync.engine.passwords" = false;
             "services.sync.engine.prefs" = false;
@@ -244,6 +243,11 @@
             "toolkit.telemetry.shutdownPingSender.enabled" = false;
             "toolkit.telemetry.unified" = false;
             "toolkit.telemetry.updatePing.enabled" = false;
+
+            # EME extension (for DRM media)
+            "browser.eme.ui.enabled" = false;
+            "media.eme.enabled" = false;
+            "media.gmp-widevinecdm.enabled" = false;
           };
         };
       in
