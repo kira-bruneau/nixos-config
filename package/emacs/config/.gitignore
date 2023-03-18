@@ -15,7 +15,7 @@
 /eln-cache
 /elpa
 /eshell/
-/forge-database.sqlite
+/forge-database*.sqlite
 /history
 /ido.last
 /image-dired/
