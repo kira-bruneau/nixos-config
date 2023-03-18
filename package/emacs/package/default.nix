@@ -43,6 +43,7 @@
 , solargraph
 , tectonic
 , texlab
+, yarn
 , vala-language-server
 }:
 
@@ -194,6 +195,7 @@ callPackage ./wrapper.nix {
       nixpkgs-fmt
       nodejs
       nodePackages."@fsouza/prettierd"
+      nodePackages."@gadgetinc/ggt"
       nodePackages.bash-language-server
       nodePackages.eslint_d
       nodePackages.typescript
@@ -213,6 +215,7 @@ callPackage ./wrapper.nix {
       solargraph
       tectonic
       texlab
+      yarn
       vala-language-server
     ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
       # Currently doesn't built on Darwin
