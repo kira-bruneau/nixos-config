@@ -6,13 +6,14 @@
     common-gpu-amd
     common-pc-ssd
   ]) ++ [
+    ../environment/bluetooth.nix
     ../environment/desktop.nix
     ../environment/distributed-nix.nix
     ../environment/gaming.nix
     ../environment/hidpi.nix
     ../environment/locale
     ../environment/nix-ssh.nix
-    ../environment/bluetooth.nix
+    ../service/dnscrypt.nix
     ../service/ssh.nix
     ../user/kira.nix
   ];
