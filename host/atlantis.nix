@@ -88,10 +88,6 @@
     output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 0,0
   '';
 
-  environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
-    ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
-  '';
-
   # Android debugging
   programs.adb.enable = true;
 

@@ -90,10 +90,6 @@
     output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 1504 0
   '';
 
-  environment.etc."wpa_supplicant.conf".source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
-    ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
-  '';
-
   # Sleep on low power
   services.upower = {
     noPollBatteries = true;

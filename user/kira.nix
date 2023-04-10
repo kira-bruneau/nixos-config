@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = [
@@ -111,5 +111,12 @@
         urAccepted = -1;
       };
     };
+  };
+
+  environment.etc."wpa_supplicant.conf" = {
+    enable = config.networking.wireless.enable;
+    source = pkgs.runCommandLocal "wpa_supplicant.conf" {} ''
+      ln -s /home/kira/Auth/wpa_supplicant.conf "$out"
+    '';
   };
 }
