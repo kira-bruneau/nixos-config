@@ -5,11 +5,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    (lutris.override {
-      lutris-unwrapped = lutris-unwrapped.override {
-        wine = wineWowPackages.staging;
-      };
-    })
+    lutris
   ];
 
   xdg.configFile = {
