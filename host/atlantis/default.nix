@@ -20,6 +20,10 @@
 
   system.stateVersion = "22.11";
 
+  hardware.firmware = with pkgs; [
+    rtl8761b-firmware
+  ];
+
   boot = {
     # Use the systemd-boot EFI boot loader
     loader = {
