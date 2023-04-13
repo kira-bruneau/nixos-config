@@ -42,16 +42,11 @@
       hostsDir = ./host;
 
       hosts = builtins.listToAttrs
-        (builtins.concatMap
-          (host:
-            if lib.hasSuffix ".nix" host
-            then [
-              {
-                name = lib.removeSuffix ".nix" host;
-                value = /${hostsDir}/${host};
-              }
-            ]
-            else [ ])
+        (builtins.map
+          (host: {
+            name = host;
+            value = hostsDir + "/${host}";
+          })
           (builtins.attrNames (builtins.readDir hostsDir)));
 
       commonModules = with inputs; [
@@ -71,6 +66,7 @@
               {
                 networking.hostName = host;
               }
+              (path + "/hardware.nix")
               path
             ];
           })
@@ -80,10 +76,13 @@
         (packages: host:
           let
             path = hosts.${host};
-            system = (import path {
-              inputs = null;
-              pkgs = null;
-            }).nixpkgs.hostPlatform;
+            config = (import (path + "/hardware.nix") {
+              pkgs = nixpkgs.legacyPackages.${system};
+              modulesPath = nixpkgs + "/modules";
+              inherit config lib;
+            });
+
+            system = config.nixpkgs.hostPlatform.content;
           in
             packages // {
               ${system} = (packages.${system} or {}) // {
