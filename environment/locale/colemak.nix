@@ -1,8 +1,9 @@
-{ lib, config, ... }:
+{ config, ... }:
 
 {
-  environment.etc = lib.mkIf config.programs.sway.enable {
-    "sway/config.d/colemak.conf".text = ''
+  environment.etc."sway/config.d/colemak.conf" = {
+    enable = config.programs.sway.enable;
+    text = ''
       input * xkb_layout "us,us"
       input * xkb_variant "colemak,"
       input * xkb_options "grp:win_space_toggle"
