@@ -54,7 +54,7 @@
         kira-nur.nixosModules.overlay
         ./cachix.nix
         ./environment/nix.nix
-        ./environment/seed-nixos-config.nix
+        ./environment/custom-nixos-generate-config.nix
       ];
     in
     {
