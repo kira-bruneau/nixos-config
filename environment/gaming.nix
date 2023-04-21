@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../package/bcml
     ../package/lutris
     ../package/mupen64plus
   ];
@@ -20,6 +19,7 @@
     }))
     steam
     steam-run
+    ukmm
     vvvvvv
 
     # Emulators

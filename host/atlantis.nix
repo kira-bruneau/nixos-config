@@ -13,7 +13,6 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "bcml"
     "clonehero"
     "clonehero-unwrapped"
     "discord"
