@@ -53,7 +53,9 @@ in
     cachix
     nix-bisect
     nix-index
+    nix-init
     nixpkgs-review
+    nurl
     patchelf
 
     # General development
