@@ -34,11 +34,12 @@ let
       fi
 
       if [ -z "$(ls -A "$dir" 2>/dev/null)" ]; then
-        echo "writing $dir..." >&2
         mkdir -p "$dir"
         cp -RT --no-preserve=ownership ${inputs.self} "$dir"
         chmod -R +w "$dir"
-        git -C "$dir" init -b main
+        git -C "$dir" init --initial-branch main
+        git -C "$dir" add --all
+        git -C "$dir" -c user.name='Kira Bruneau' -c user.email='kira.bruneau@pm.me' commit -m 'nixos-generate-config'
         git -C "$dir" config include.path ../.gitconfig
       else
         echo "warning: not overwriting existing flake at $dir" >&2
