@@ -38,12 +38,10 @@ let
         mkdir -p "$dir"
         cp -RT --no-preserve=ownership ${inputs.self} "$dir"
         chmod -R +w "$dir"
-        cd "$dir"
-        git init -b main
-        git config include.path ../.gitconfig
+        git -C "$dir" init -b main
+        git -C "$dir" config include.path ../.gitconfig
       else
         echo "warning: not overwriting existing flake at $dir" >&2
-        cd "$dir"
       fi
 
       if [ -n "$root" ]; then
@@ -61,7 +59,7 @@ let
       if [ $show_hardware_config -ne 0 ]; then
         nixos-generate-config "''${args[@]}"
       else
-        out="./host/$(hostname)/hardware.nix"
+        out="$dir/host/$(hostname)/hardware.nix"
         echo "writing $out..." >&2
         mkdir -p "$(dirname "$out")"
         nixos-generate-config "''${args[@]}" > "$out"
