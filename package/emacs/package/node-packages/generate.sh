@@ -6,4 +6,4 @@ node2nix \
   --output node-packages.nix \
   --composition node-composition.nix \
   --node-env node-env.nix \
-  --nodejs-14
+  --nodejs-18
