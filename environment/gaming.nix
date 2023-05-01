@@ -27,9 +27,6 @@
     wineWowPackages.staging
     winetricks
 
-    # Controllers
-    xwiimote
-
     # Chat
     discord
 
