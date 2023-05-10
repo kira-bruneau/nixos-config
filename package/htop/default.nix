@@ -8,7 +8,6 @@
       highlight_base_name = 1;
       show_cpu_temperature = 1;
       show_program_path = 0;
-      tree_view = 1;
     };
   };
 }
