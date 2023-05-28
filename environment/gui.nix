@@ -4,7 +4,7 @@
   imports = [
     # Window managers
     ../package/sway
-    ../package/i3
+    #../package/i3
 
     # Web
     ../package/firefox
