@@ -3106,10 +3106,10 @@ in
   "@fsouza/prettierd" = nodeEnv.buildNodePackage {
     name = "_at_fsouza_slash_prettierd";
     packageName = "@fsouza/prettierd";
-    version = "0.23.3";
+    version = "0.23.4";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.23.3.tgz";
-      sha512 = "O253Z26eX0u2mwVkLQVIOO8+ll69kHGLdzw9P/LWd9OUIs8v4GnL5av4vfahpqYiFdVXnVGBcJwhFSyUJ3eFLg==";
+      url = "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.23.4.tgz";
+      sha512 = "Kl1udnEO6Pz2teme/bhmW8PuaQrJI4q+b3YckYNL8EShGSo/cK3KpIIkx0OMS+vv/M5G2J/vNK6GD92cITp9fw==";
     };
     dependencies = [
       sources."core_d-5.0.1"
