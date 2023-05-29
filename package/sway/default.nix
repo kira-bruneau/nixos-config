@@ -78,6 +78,7 @@ in
 
   home.packages = with pkgs; [
     alsa-utils
+    font-awesome_5
     grim
     import-gsettings
     keepassxc
