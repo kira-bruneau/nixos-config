@@ -7,7 +7,11 @@
     userEmail = "kira.bruneau@pm.me";
     extraConfig = {
       init.defaultBranch = "main";
-      core.whitespace = "cr-at-eol";
+
+      core = {
+        fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
+        whitespace = "cr-at-eol";
+      };
 
       pull.rebase = "merges";
       rebase.autostash = true;
