@@ -72,6 +72,7 @@ in
 {
   imports = [
     ../alacritty
+    ../keepassxc
     ../rofi
     ../waybar
   ];
@@ -81,9 +82,6 @@ in
     font-awesome_5
     grim
     import-gsettings
-    keepassxc
-    libnotify
-    light
     pavucontrol
     random-wallpaper
     scale-off

@@ -49,6 +49,7 @@
 
     # Utils
     gnome.gnome-clocks
+    libnotify
     yabridge
     yabridgectl
   ];
