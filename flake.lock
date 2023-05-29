@@ -10,17 +10,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1684260652,
-        "narHash": "sha256-WHlAnZ4lnuI1s9IaHTGyZP/QLDbvjosDvbcHLF4Wrmc=",
+        "lastModified": 1685356689,
+        "narHash": "sha256-ZGqqwO7N9Moqf210kA0eDlxrJiBo7yJmSOmF41hPvYU=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "338da822b1506c26c18e6fced9527a8de4f08665",
+        "rev": "0c1a3b4d76ceb3898afbe083f6b75ff132a00e54",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "338da822b1506c26c18e6fced9527a8de4f08665",
         "type": "github"
       }
     },
@@ -78,11 +77,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1685298819,
-        "narHash": "sha256-1K4fxmkm7ffmOyQccsZkYG7ak6o0tSuePOlRWp9Y87A=",
+        "lastModified": 1685371352,
+        "narHash": "sha256-12oEoFS4wtQpfwX2/tAKAdgn30ZzZji7R4SZE6Pz7k4=",
         "owner": "kira-bruneau",
         "repo": "nur-packages",
-        "rev": "2496863b5e75c9033f2262843f245c953802120e",
+        "rev": "cd031c061656e6e40ad7a0d2562d95da45959f1f",
         "type": "gitlab"
       },
       "original": {
@@ -93,11 +92,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1685012353,
-        "narHash": "sha256-U3oOge4cHnav8OLGdRVhL45xoRj4Ppd+It6nPC9nNIU=",
+        "lastModified": 1685347552,
+        "narHash": "sha256-9woSppRyUFo26yUffORTzttJ+apOt8MmCv6RxpPNTU4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "aeb75dba965e790de427b73315d5addf91a54955",
+        "rev": "f2f1ec390714d303cf84ba086e34e45b450dd8c4",
         "type": "github"
       },
       "original": {
