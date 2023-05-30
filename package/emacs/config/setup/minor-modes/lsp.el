@@ -7,6 +7,7 @@
          (java-mode . lsp)
          (js2-mode . lsp)
          (latex-mode . lsp)
+         (nix-mode . lsp)
          (objc-mode . lsp)
          (php-mode . lsp)
          (python-mode . lsp)

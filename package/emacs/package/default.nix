@@ -29,6 +29,7 @@
 , jdk
 , libnotify
 , lldb
+, nixd
 , nixpkgs-fmt
 , nodejs
 , omnisharp-roslyn
@@ -36,7 +37,6 @@
 , perl
 , python3
 , ripgrep
-, rnix-lsp
 , rust-analyzer
 , rustc
 , rustfmt
@@ -192,6 +192,7 @@ callPackage ./wrapper.nix {
       imagemagick
       jdk
       libnotify
+      nixd
       nixpkgs-fmt
       nodejs
       nodePackages."@fsouza/prettierd"
@@ -208,7 +209,6 @@ callPackage ./wrapper.nix {
         python-lsp-server
       ]))
       ripgrep
-      rnix-lsp
       rust-analyzer
       rustc
       rustfmt

@@ -12,7 +12,9 @@ in
 
   home = {
     packages = with pkgs; [
-      (callPackage ./package { })
+      (callPackage ./package {
+        nixd = inputs.nixd.packages.${pkgs.stdenv.system}.default;
+      })
     ];
 
     sessionVariables.EDITOR = "emacseditor";
