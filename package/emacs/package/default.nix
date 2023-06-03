@@ -2,8 +2,8 @@
 , pkgs
 , stdenv
 , fetchpatch
-, emacsGcc
-, emacsPgtk
+, emacs-git
+, emacs-pgtk
 , callPackage
 , writeShellScriptBin
 , buildEnv
@@ -51,7 +51,7 @@ let
   emacs =
     if stdenv.hostPlatform.isDarwin
     then
-      emacsGcc.overrideAttrs
+      emacs-git.overrideAttrs
         (attrs: {
           patches = attrs.patches ++ [
             # Removes titlebar
@@ -62,7 +62,7 @@ let
             })
           ];
         })
-    else emacsPgtk;
+    else emacs-pgtk;
 
   nodePackages = import ./node-packages/node-composition.nix {
     inherit pkgs;
