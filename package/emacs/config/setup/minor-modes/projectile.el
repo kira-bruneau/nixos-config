@@ -3,7 +3,6 @@
   :bind-keymap ("<f7>" . projectile-command-map)
   :bind (:map projectile-command-map
          ("n" . projectile-new)
-         ("s" . projectile-ripgrep) ;; Use rg as default search method
          ("h" . my-dap-hydra)
          ("W" . dap-debug)
          ("w" . dap-debug-last)
@@ -45,6 +44,8 @@
 
 (use-package counsel-projectile
   :after projectile
+  :bind (:map projectile-command-map
+         ("s" . projectile-ripgrep)) ;; Use rg as default search method
   :init
   (require 'counsel-projectile)
 
