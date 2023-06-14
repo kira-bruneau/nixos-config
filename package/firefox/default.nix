@@ -248,6 +248,9 @@
             "browser.eme.ui.enabled" = false;
             "media.eme.enabled" = false;
             "media.gmp-widevinecdm.enabled" = false;
+
+            # Trusted Recursive Resolver: I use dnscrypt-proxy instead
+            "network.trr.mode" = 5;
           };
         };
       in
