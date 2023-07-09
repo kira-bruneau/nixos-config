@@ -290,6 +290,10 @@ in
               criteria = { app_id = "^firefox$"; title = "^Picture-in-Picture$"; };
               command = "floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95";
             }
+            {
+              criteria = { app_id = "^discord$"; title = "^$"; };
+              command = "floating enable, sticky enable, border pixel 0, resize set 480 270, move position 1004 680, opacity 0.8";
+            }
           ];
 
           bars = [
