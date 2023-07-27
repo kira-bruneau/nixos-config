@@ -30,8 +30,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
-    nixd.url = "github:nix-community/nixd";
   };
 
   outputs = { nixpkgs, my-nur, flake-utils, flake-linter, ... } @ inputs:
