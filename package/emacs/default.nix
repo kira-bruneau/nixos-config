@@ -1,9 +1,5 @@
-{ inputs, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
-let
-  emacsOverlayPkgs = inputs.emacs-overlay.overlays.default (pkgs // emacsOverlayPkgs) pkgs;
-  callPackage = pkgs.newScope emacsOverlayPkgs;
-in
 {
   imports = [
     ../aspell
@@ -12,7 +8,7 @@ in
 
   home = {
     packages = with pkgs; [
-      (callPackage ./package {})
+      (pkgs.callPackage ./package {})
     ];
 
     sessionVariables.EDITOR = "emacseditor";
