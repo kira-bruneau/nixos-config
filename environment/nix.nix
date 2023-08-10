@@ -14,4 +14,6 @@
       keep-going = true;
     };
   };
+
+  programs.git.enable = true;
 }
