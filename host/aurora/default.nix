@@ -82,6 +82,7 @@
   environment.etc."sway/config.d/output.conf".text = ''
     output "BOE 0x095F Unknown" scale 1.5 pos 0 77
     output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 1504 0
+    output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos -1920 0
   '';
 
   # Sleep on low power
