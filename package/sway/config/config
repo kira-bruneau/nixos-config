@@ -273,6 +273,7 @@ exec_always import-gsettings
 
 exec --no-startup-id blueman-applet
 exec --no-startup-id com.gitlab.newsflash
+exec --no-startup-id emacs
 exec --no-startup-id firefox
 exec --no-startup-id gnome-pomodoro --no-default-window --stop
 exec --no-startup-id keepassxc
