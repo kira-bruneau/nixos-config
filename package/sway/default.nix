@@ -201,6 +201,7 @@ in
           };
 
           startup = [
+            { command = "${pkgs.anytype}/bin/anytype"; }
             { command = "${pkgs.blueman}/bin/blueman-applet"; }
             { command = "emacs"; }
             { command = "${config.programs.firefox.package}/bin/firefox"; }
@@ -231,6 +232,9 @@ in
               { class = "^dolphin-emu$"; } # Non-master Dolphin still uses X11
               { class = "^Minecraft$"; }
               { class = "^Steam$"; }
+            ];
+            "8" = [
+              { app_id = "^anytype$"; }
             ];
             "9" = [
               { app_id = "^io.gitlab.news_flash.NewsFlash$"; }

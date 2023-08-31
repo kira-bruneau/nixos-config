@@ -35,6 +35,7 @@
     ungoogled-chromium
 
     # Media & Documents
+    anytype
     audacity
     gimp
     gnome.file-roller

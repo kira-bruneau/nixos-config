@@ -13,8 +13,10 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "Anytype"
     "clonehero"
     "clonehero-unwrapped"
+    "data.zip"
     "discord"
     "runescape-launcher"
     "sm64ex"
@@ -22,7 +24,6 @@
     "steam-original"
     "steam-run"
     "unrar"
-    "data.zip"
     "vvvvvv"
   ];
 
