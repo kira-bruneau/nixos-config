@@ -192,8 +192,8 @@ exec_always --no-startup-id feh --no-fehbg -z --bg-fill ~/Pictures/Wallpapers/ -
 exec --no-startup-id ~/dev/shared/dunst/dunst
 exec --no-startup-id blueman-applet
 exec --no-startup-id caprine
-exec --no-startup-id com.gitlab.newsflash
 exec --no-startup-id firefox
+exec --no-startup-id io.gitlab.news_flash.NewsFlash
 exec --no-startup-id keepassxc
 
 # Assign workspaces to monitors
@@ -216,7 +216,7 @@ assign [class="^MultiMC$"] $games
 assign [class="^Steam$"] $games
 assign [instance="^cemu.exe$"] $games
 assign [class="Remmina"] $remote
-assign [class="^Com.gitlab.newsflash$"] $email
+assign [class="^io.gitlab.news_flash.NewsFlash$"] $email
 assign [class="^Geary$"] $email
 for_window [title="https://mail\.google\.com"] move container to workspace $email
 for_window [title="https://outlook\.office\.com"] move container to workspace $email

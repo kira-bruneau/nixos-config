@@ -272,10 +272,10 @@ bindsym $mod+r mode "resize"
 exec_always import-gsettings
 
 exec --no-startup-id blueman-applet
-exec --no-startup-id com.gitlab.newsflash
 exec --no-startup-id emacs
 exec --no-startup-id firefox
 exec --no-startup-id gnome-pomodoro --no-default-window --stop
+exec --no-startup-id io.gitlab.news_flash.NewsFlash
 exec --no-startup-id keepassxc
 exec --no-startup-id mako
 
@@ -315,7 +315,7 @@ for_window [app_id="^firefox$" title="https://linear.app"] move container to wor
 
 # Email & Feeds
 assign [app_id="^geary$"] $email
-assign [app_id="^com.gitlab.newsflash$"] $email
+assign [app_id="^io.gitlab.news_flash.NewsFlash$"] $email
 for_window [app_id="^firefox$" title="https://mail.google.com"] move container to workspace $email
 for_window [app_id="^firefox$" title="https://mail.proton.me"] move container to workspace $email
 for_window [app_id="^firefox$" title="https://outlook.office.com"] move container to workspace $email
