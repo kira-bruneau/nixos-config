@@ -19,6 +19,7 @@
       ];
 
     settings = {
+      builders-use-substitutes = true;
       fallback = true;
 
       substituters = builtins.concatMap
