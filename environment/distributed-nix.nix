@@ -21,21 +21,6 @@
     settings = {
       builders-use-substitutes = true;
       fallback = true;
-
-      substituters = builtins.concatMap
-        (hostName:
-          if hostName != config.networking.hostName
-          then [ "ssh-ng://nix-ssh@${hostName}" ]
-          else [ ])
-        [
-          "atlantis"
-          "aurora"
-        ];
-
-      trusted-public-keys = [
-        "atlantis-1:ZqUz/vZRVnnDhElFo9yuuw7Tclny356pJ68bG5JBYOM="
-        "aurora-1:B5Zp+k4JzGIXTC30BYTxfGsWgnlmA2nY6qlrx1uTc6s="
-      ];
     };
   };
 
