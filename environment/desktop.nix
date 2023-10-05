@@ -186,6 +186,10 @@
   # Enable GNOME virtual file system
   services.gvfs.enable = true;
 
+  # Enable GNOME password manager
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
+
   # Disable bitmap fonts
   fonts.fontconfig.allowBitmaps = false;
 
