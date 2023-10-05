@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   programs.gpg = {
@@ -18,15 +18,5 @@
     enableSshSupport = true;
     defaultCacheTtl = 240;
     defaultCacheTtlSsh = 240;
-    pinentryFlavor = null;
-    extraConfig = ''
-      pinentry-program ${pkgs.writeShellScript "pinentry" ''
-        case "$PINENTRY_USER_DATA" in
-          tty) exec ${pkgs.pinentry.tty}/bin/pinentry "$@";;
-          emacs) exec ${pkgs.pinentry.emacs}/bin/pinentry "$@";;
-          *) exec ${pkgs.pinentry.gnome3}/bin/pinentry "$@";;
-        esac
-      ''}
-    '';
   };
 }

@@ -68,7 +68,6 @@ runCommand
       makeWrapper ${emacs}/bin/"$bin" "$out"/bin/"$bin" \
         --prefix NIX_PROFILES ' ' ${profile} \
         --prefix PATH : ${profile}/bin \
-        --set PINENTRY_USER_DATA emacs \
         ${lib.concatStringsSep " " makeWrapperArgs}
     done
 

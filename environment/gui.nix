@@ -70,5 +70,7 @@
     configFile."mimeapps.list".force = true;
   };
 
+  services.gpg-agent.pinentryFlavor = "gnome3";
+
   services.easyeffects.enable = true;
 }
