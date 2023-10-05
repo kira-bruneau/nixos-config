@@ -12,10 +12,10 @@
     ../../environment/gaming.nix
     ../../environment/hidpi.nix
     ../../environment/locale
-    ../../environment/nix-ssh.nix
     ../../service/dnscrypt.nix
     ../../service/kubo.nix
     ../../service/ssh.nix
+    ../../user/builder.nix
     ../../user/kira.nix
   ];
 

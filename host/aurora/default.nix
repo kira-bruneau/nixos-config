@@ -8,7 +8,6 @@
     ../../environment/hidpi.nix
     ../../environment/laptop.nix
     ../../environment/locale
-    ../../environment/nix-ssh.nix
     ../../service/dnscrypt.nix
     ../../service/ssh.nix
     ../../user/kira.nix

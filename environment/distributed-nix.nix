@@ -10,7 +10,7 @@
         {
           hostName = "atlantis";
           protocol = "ssh-ng";
-          sshUser = "nix-ssh";
+          sshUser = "builder";
           systems = [ "x86_64-linux" "i686-linux" ];
           maxJobs = 12; # 6 cores, each with 2 threads
           speedFactor = 3900; # MHz, max "boost" clock speed
