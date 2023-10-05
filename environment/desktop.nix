@@ -14,16 +14,12 @@
 
     systemPackages = with pkgs; [
       xdg-utils
-      (writeShellScriptBin "wayland-session" ''
-        /run/current-system/systemd/bin/systemctl --user start graphical-session.target
-        "$@"
-        /run/current-system/systemd/bin/systemctl --user stop graphical-session.target
-      '')
     ];
 
     etc = {
       "sway/config.d/nixos.conf".text = lib.mkForce ''
-        exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP PATH
+        exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+        exec systemctl --user start sway-session.target
       '';
 
       "sway/config.d/power-controls.conf".text = ''
@@ -44,9 +40,16 @@
 
       # TODO: Add X + i3
       "greetd/environments".text = ''
-        wayland-session sway
+        sway
       '';
     };
+  };
+
+  systemd.user.targets.sway-session = {
+    description = "Sway session";
+    bindsTo = [ "graphical-session.target" ];
+    wants = [ "graphical-session-pre.target" ];
+    after = [ "graphical-session-pre.target" ];
   };
 
   # Quiet boot
