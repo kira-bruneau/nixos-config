@@ -80,4 +80,15 @@
       };
     })
   ];
+
+  wayland.windowManager.sway.config =
+    let
+      cfg = config.wayland.windowManager.sway.config;
+    in
+    {
+      keybindings = lib.mkOptionDefault {
+        "${cfg.modifier}+p" = "exec ${pkgs.gnome.pomodoro}/bin/gnome-pomodoro --start-stop";
+        "${cfg.modifier}+Shift+p" = "exec ${pkgs.gnome.pomodoro}/bin/gnome-pomodoro --pause-resume";
+      };
+    };
 }

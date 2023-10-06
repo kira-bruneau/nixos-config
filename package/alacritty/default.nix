@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs.alacritty = {
@@ -45,4 +45,6 @@
       };
     };
   };
+
+  wayland.windowManager.sway.config.terminal = "${config.programs.alacritty.package}/bin/alacritty";
 }

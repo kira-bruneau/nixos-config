@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.waybar = {
@@ -106,11 +106,15 @@
             car = "";
             default = [ "" "" ];
           };
-          on-click = "pavucontrol";
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
       };
     };
 
     style = ./style.css;
   };
+
+  home.packages = with pkgs; [
+    font-awesome_5
+  ];
 }
