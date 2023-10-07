@@ -15,8 +15,8 @@
     };
 
     cursorTheme = {
-      package = pkgs.vanilla-dmz;
-      name = "DMZ-Black";
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
       size = 24;
     };
   };
