@@ -1,7 +1,12 @@
 { ... }:
 
 {
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+
+    # Disable plugins that require experimental features
+    disabledPlugins = [ "bap" "mcp" "vcp" ];
+  };
 
   # ConfigurationDirectory 'bluetooth' already exists but the mode is different. (File system: 755 ConfigurationDirectoryMode: 555)
   systemd.services.bluetooth.serviceConfig.ConfigurationDirectoryMode = "0755";
