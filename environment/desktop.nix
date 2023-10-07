@@ -19,7 +19,6 @@
     etc = {
       "sway/config.d/nixos.conf".text = lib.mkForce ''
         exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-        exec systemctl --user start sway-session.target
       '';
 
       "sway/config.d/power-controls.conf".text = ''
@@ -43,13 +42,6 @@
         sway
       '';
     };
-  };
-
-  systemd.user.targets.sway-session = {
-    description = "Sway session";
-    bindsTo = [ "graphical-session.target" ];
-    wants = [ "graphical-session-pre.target" ];
-    after = [ "graphical-session-pre.target" ];
   };
 
   # Quiet boot
