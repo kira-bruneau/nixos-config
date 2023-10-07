@@ -267,10 +267,6 @@ bindsym $mod+r mode "resize"
     bindsym $mod+Shift+p exec gnome-pomodoro --pause-resume
 
 ### Start daemons & applications:
-#
-# https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-exec_always import-gsettings
-
 exec --no-startup-id blueman-applet
 exec --no-startup-id emacs
 exec --no-startup-id firefox
