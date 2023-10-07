@@ -58,13 +58,13 @@ let
         sha512 = "+wvgpDsrB1YqAMdEUCcnTlpfVBH7Vqn6A/NT3D8WVXFIaKMlErPIZT3oCIAVCOtarRpMtelZLqJeU3t7WY6X6g==";
       };
     };
-    "@eslint/js-8.50.0" = {
+    "@eslint/js-8.51.0" = {
       name = "_at_eslint_slash_js";
       packageName = "@eslint/js";
-      version = "8.50.0";
+      version = "8.51.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@eslint/js/-/js-8.50.0.tgz";
-        sha512 = "NCC3zz2+nvYd+Ckfh87rA47zfu2QsQpvc6k1yzTk+b9KzRj0wkGa8LSoGOXN6Zv4lRf/EIoZ80biDh9HOI+RNQ==";
+        url = "https://registry.npmjs.org/@eslint/js/-/js-8.51.0.tgz";
+        sha512 = "HxjQ8Qn+4SI3/AFv6sOrDB+g6PpUTDwSJiQqOrnneEk8L71161srI9gjzzZvYVbzHiVg/BvcH95+cK/zfIt4pg==";
       };
     };
     "@humanwhocodes/config-array-0.11.11" = {
@@ -265,13 +265,13 @@ let
         sha512 = "9F4ys4C74eSTEUNndnER3VJ15oru2NumfQxS8geE+f3eB5xvfxpWyqE5XlVnxb/R14uoXi6SLbBwwiDSkv+XEw==";
       };
     };
-    "@swc/helpers-0.5.2" = {
+    "@swc/helpers-0.5.3" = {
       name = "_at_swc_slash_helpers";
       packageName = "@swc/helpers";
-      version = "0.5.2";
+      version = "0.5.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.2.tgz";
-        sha512 = "E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==";
+        url = "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.3.tgz";
+        sha512 = "FaruWX6KdudYloq1AHD/4nU+UsMTdNE8CKyrseXWEcgjDAbvkwJg2QGPAnfIJLIWsjZOSPLOAykK6fuYp4vp4A==";
       };
     };
     "@swc/types-0.1.5" = {
@@ -355,13 +355,13 @@ let
         sha512 = "FD+nQWA2zJjh4L9+pFXqWOi0Hs1ryBCfI+985NjluQ1p8EYtoLvjLOKidXBtZ4/IcxDX4o8/E8qDS3540tNliw==";
       };
     };
-    "@types/node-20.8.2" = {
+    "@types/node-20.8.3" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "20.8.2";
+      version = "20.8.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-20.8.2.tgz";
-        sha512 = "Vvycsc9FQdwhxE3y3DzeIxuEJbWGDsnrxvMADzTDF/lcdR9/K+AQIeAghTQsHtotg/q0j3WEOYS/jQgSdWue3w==";
+        url = "https://registry.npmjs.org/@types/node/-/node-20.8.3.tgz";
+        sha512 = "jxiZQFpb+NlH5kjW49vXxvxTjeeqlbsnTAdBTKpzEdPs9itay7MscYXz3Fo9VYFEsfQ6LJFitHad3faerLAjCw==";
       };
     };
     "acorn-8.10.0" = {
@@ -778,15 +778,6 @@ let
         sha512 = "YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==";
       };
     };
-    "core_d-5.0.1" = {
-      name = "core_d";
-      packageName = "core_d";
-      version = "5.0.1";
-      src = fetchurl {
-        url = "https://registry.npmjs.org/core_d/-/core_d-5.0.1.tgz";
-        sha512 = "37lZyhJY1hzgFbfU4LzY4zL09QPwPfV2W/3YBOtN7mkdvVaeP1OVnDZI6zxggtlPwG/BuE5wIr0xptlVJk5EPA==";
-      };
-    };
     "core_d-6.0.0" = {
       name = "core_d";
       packageName = "core_d";
@@ -994,13 +985,13 @@ let
         sha512 = "/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==";
       };
     };
-    "eslint-8.50.0" = {
+    "eslint-8.51.0" = {
       name = "eslint";
       packageName = "eslint";
-      version = "8.50.0";
+      version = "8.51.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/eslint/-/eslint-8.50.0.tgz";
-        sha512 = "FOnOGSuFuFLv/Sa+FDVRZl4GGVAAFFi8LecRsI5a1tMO5HIE8nCm4ivAlzt4dT3ol/PaaGC0rJEEXQmHJBGoOg==";
+        url = "https://registry.npmjs.org/eslint/-/eslint-8.51.0.tgz";
+        sha512 = "2WuxRZBrlwnXi+/vFSJyjMqrNjtJqiasMzehF0shoLaW7DzS3/9Yvrmq5JiT66+pNjiX4UBnLDiKHcWAr/OInA==";
       };
     };
     "eslint-scope-7.2.2" = {
@@ -1228,13 +1219,13 @@ let
         sha512 = "78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==";
       };
     };
-    "flat-cache-3.1.0" = {
+    "flat-cache-3.1.1" = {
       name = "flat-cache";
       packageName = "flat-cache";
-      version = "3.1.0";
+      version = "3.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/flat-cache/-/flat-cache-3.1.0.tgz";
-        sha512 = "OHx4Qwrrt0E4jEIcI5/Xb+f+QmJYNj2rrK8wiIdQOIrB9WrrJL8cjZvXdXuBTkkEwEqLycb5BeZDV1o2i9bTew==";
+        url = "https://registry.npmjs.org/flat-cache/-/flat-cache-3.1.1.tgz";
+        sha512 = "/qM2b3LUIaIgviBQovTLvijfyOQXPtSRnRK26ksj2J7rzPIecePUIpJsZ4T02Qg+xiAEKIs5K8dsHEd+VaKa/Q==";
       };
     };
     "flatted-3.2.9" = {
@@ -1813,13 +1804,13 @@ let
         sha512 = "5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==";
       };
     };
-    "keyv-4.5.3" = {
+    "keyv-4.5.4" = {
       name = "keyv";
       packageName = "keyv";
-      version = "4.5.3";
+      version = "4.5.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/keyv/-/keyv-4.5.3.tgz";
-        sha512 = "QCiSav9WaX1PgETJ+SpNnx2PRRapJ/oRSXM4VO5OGYGSjrxbKPVFVhB3l2OCbLCk329N8qyAtsJjSjvVBWzEug==";
+        url = "https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz";
+        sha512 = "oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==";
       };
     };
     "levn-0.4.1" = {
@@ -3181,7 +3172,7 @@ in
       sources."@sindresorhus/is-5.6.0"
       sources."@swc/core-1.3.92"
       sources."@swc/counter-0.1.2"
-      sources."@swc/helpers-0.5.2"
+      sources."@swc/helpers-0.5.3"
       sources."@swc/types-0.1.5"
       sources."@swc/wasm-1.3.92"
       sources."@szmarczak/http-timer-5.0.1"
@@ -3191,7 +3182,7 @@ in
       sources."@tsconfig/node16-1.0.4"
       sources."@types/cli-progress-3.11.3"
       sources."@types/http-cache-semantics-4.0.2"
-      sources."@types/node-20.8.2"
+      sources."@types/node-20.8.3"
       sources."acorn-8.10.0"
       sources."acorn-walk-8.2.0"
       sources."agent-base-6.0.2"
@@ -3344,7 +3335,7 @@ in
       sources."json-buffer-3.0.1"
       sources."json-parse-better-errors-1.0.2"
       sources."jsonfile-4.0.0"
-      sources."keyv-4.5.3"
+      sources."keyv-4.5.4"
       sources."lodash-4.17.21"
       sources."lodash._reinterpolate-3.0.0"
       sources."lodash.template-4.5.0"
@@ -3554,17 +3545,17 @@ in
   eslint_d = nodeEnv.buildNodePackage {
     name = "eslint_d";
     packageName = "eslint_d";
-    version = "12.2.1";
+    version = "13.0.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/eslint_d/-/eslint_d-12.2.1.tgz";
-      sha512 = "qOJ9cTi5AaH5bOgEoCkv41DJ637mHgzffbOLojwU4wadwC6qbR+OxVJRvVzH0v2XYmQOvw4eiJK7ivrr5SvzsA==";
+      url = "https://registry.npmjs.org/eslint_d/-/eslint_d-13.0.0.tgz";
+      sha512 = "j9QABrJYIIm2hheAs5PbyTYtONP1dOYOJ1Nn007XxyEmsw1oplR0c+S8SxxIcL87UEAFB+q0/IiwFKm37oUnFQ==";
     };
     dependencies = [
       sources."@aashutoshrathi/word-wrap-1.2.6"
       sources."@eslint-community/eslint-utils-4.4.0"
       sources."@eslint-community/regexpp-4.9.1"
       sources."@eslint/eslintrc-2.1.2"
-      sources."@eslint/js-8.50.0"
+      sources."@eslint/js-8.51.0"
       sources."@humanwhocodes/config-array-0.11.11"
       sources."@humanwhocodes/module-importer-1.0.1"
       sources."@humanwhocodes/object-schema-1.2.1"
@@ -3588,13 +3579,13 @@ in
       sources."color-convert-2.0.1"
       sources."color-name-1.1.4"
       sources."concat-map-0.0.1"
-      sources."core_d-5.0.1"
+      sources."core_d-6.0.0"
       sources."cross-spawn-7.0.3"
       sources."debug-4.3.4"
       sources."deep-is-0.1.4"
       sources."doctrine-3.0.0"
       sources."escape-string-regexp-4.0.0"
-      sources."eslint-8.50.0"
+      sources."eslint-8.51.0"
       sources."eslint-scope-7.2.2"
       sources."eslint-visitor-keys-3.4.3"
       sources."espree-9.6.1"
@@ -3608,7 +3599,7 @@ in
       sources."fastq-1.15.0"
       sources."file-entry-cache-6.0.1"
       sources."find-up-5.0.0"
-      sources."flat-cache-3.1.0"
+      sources."flat-cache-3.1.1"
       sources."flatted-3.2.9"
       sources."fs.realpath-1.0.0"
       sources."glob-7.2.3"
@@ -3629,7 +3620,7 @@ in
       sources."json-buffer-3.0.1"
       sources."json-schema-traverse-0.4.1"
       sources."json-stable-stringify-without-jsonify-1.0.1"
-      sources."keyv-4.5.3"
+      sources."keyv-4.5.4"
       sources."levn-0.4.1"
       sources."locate-path-6.0.0"
       sources."lodash.merge-4.6.2"
