@@ -92,6 +92,14 @@ in
             };
           };
 
+          seat = {
+            "*" = {
+              # TODO: Fractional scaling size doesn't match other app cursors
+              # https://github.com/swaywm/sway/issues/5202
+              xcursor_theme = "${config.gtk.cursorTheme.name} ${toString config.gtk.cursorTheme.size}";
+            };
+          };
+
           keybindings = lib.mkOptionDefault {
             "${cfg.modifier}+a" = "exec ${cfg.menu}";
             "${cfg.modifier}+q" = "kill";

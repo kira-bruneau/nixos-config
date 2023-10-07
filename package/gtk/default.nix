@@ -3,13 +3,21 @@
 {
   gtk = {
     enable = true;
+
     theme = {
       package = pkgs.arc-theme;
       name = "Arc";
     };
+
     iconTheme = {
       package = pkgs.arc-icon-theme;
       name = "Arc";
+    };
+
+    cursorTheme = {
+      package = pkgs.vanilla-dmz;
+      name = "DMZ-Black";
+      size = 24;
     };
   };
 
