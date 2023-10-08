@@ -17,10 +17,6 @@
     ];
 
     etc = {
-      "sway/config.d/nixos.conf".text = lib.mkForce ''
-        exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-      '';
-
       "sway/config.d/power-controls.conf".text = ''
         set $mode_power l̲ogout | s̲hutdown | r̲eboot
         mode "$mode_power" {
