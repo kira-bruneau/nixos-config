@@ -42,6 +42,7 @@
     gnome.nautilus
     gnucash
     inkscape
+    jellyfin-media-player
     libreoffice
     qbittorrent
     sqlitebrowser

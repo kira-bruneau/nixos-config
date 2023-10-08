@@ -221,8 +221,8 @@ in
             ];
             "4" = [
               { app_id = "^mpv$"; }
+              { app_id = "^org.jellyfin.$"; }
               { app_id = "^org.qbittorrent.qBittorrent$"; }
-              #
             ];
             "5" = [
               { app_id = "^lutris$"; }
