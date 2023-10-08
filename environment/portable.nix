@@ -11,8 +11,7 @@
   # Disable unused geoclue sources
   services.geoclue2 = {
     # WiFi (requires wpa_supplicant)
-    # Failed to query location: No WiFi networks found
-    enableWifi = false;
+    enableWifi = true;
 
     # GPS (requires Avahi)
     enableNmea = false;
@@ -22,6 +21,10 @@
     enableCDMA = false;
     enableModemGPS = false;
   };
+
+  systemd.services.geoclue.wants = [ "network-online.target" ];
+
+  systemd.user.services.geoclue-agent.wants = [ "network-online.target" ];
 
   services.localtimed.enable = true;
 }
