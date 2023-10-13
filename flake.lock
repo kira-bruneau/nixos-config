@@ -54,11 +54,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696711527,
-        "narHash": "sha256-Gob2PJq3q46U0iZyBD+rrifb/Ep8idJaMX1LlaMSoq8=",
+        "lastModified": 1697232646,
+        "narHash": "sha256-6aGptKjQ13t7rRoiOl3SFg9hf3YwcLE/tSIcXn/l06M=",
         "owner": "kira-bruneau",
         "repo": "nur-packages",
-        "rev": "3c7ffd69ef1ccdb553c4106c5ec2e54a26df1557",
+        "rev": "e1b8b70c3f6dbdc4a77011f42a7dd49d0934fde4",
         "type": "gitlab"
       },
       "original": {
@@ -69,11 +69,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1696661029,
-        "narHash": "sha256-GIB5VTkvsDIqfMpdtuetOzpm64P8wm8nBSv5Eo8XM3Y=",
+        "lastModified": 1697009197,
+        "narHash": "sha256-viVRhBTFT8fPJTb1N3brQIpFZnttmwo3JVKNuWRVc3s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2de1be5b51c3d6fa833f1c1f222dc867dd054b31",
+        "rev": "01441e14af5e29c9d27ace398e6dd0b293e25a54",
         "type": "github"
       },
       "original": {
