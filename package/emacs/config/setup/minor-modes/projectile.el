@@ -23,6 +23,9 @@
           (multi-term)
           (rename-buffer buffer-name)))))
 
+  ;; Always load projectile to preserve command history
+  (require 'projectile)
+
   :config
   (setq projectile-find-dir-includes-top-level t)
   (setq projectile-configure-use-comint-mode t)
