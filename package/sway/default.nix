@@ -303,7 +303,6 @@ in
       shadows enable
       shadows_on_csd enable
       layer_effects 'waybar' 'blur enable; shadows enable'
-      layer_effects 'rofi' 'blur enable; shadows enable'
       include /etc/sway/config.d/*
       exec "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd XCURSOR_PATH XCURSOR_NAME XCURSOR_SIZE"
     '';

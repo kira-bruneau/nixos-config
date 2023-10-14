@@ -6,6 +6,10 @@ let
   };
 in
 {
+  imports = [
+    ./themes.nix
+  ];
+
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -15,20 +19,23 @@ in
     rofimoji
   ];
 
-  # TODO: Generate configuration from Nix
-  xdg.configFile.rofi.source = ./config;
+  wayland.windowManager.sway = {
+    config =
+      let
+        cfg = config.wayland.windowManager.sway.config;
+      in
+        {
+          menu = "${config.programs.rofi.package}/bin/rofi -show drun -theme icon-grid -matching fuzzy";
+          keybindings = lib.mkOptionDefault {
+            "${cfg.modifier}+x" = "exec ${config.programs.rofi.package}/bin/rofi -show run -matching fuzzy";
+            "${cfg.modifier}+w" = "exec ${config.programs.rofi.package}/bin/rofi -show window -matching fuzzy";
+            "${cfg.modifier}+c" = "exec ${config.programs.rofi.package}/bin/rofi -show ssh -matching fuzzy";
+            "${cfg.modifier}+m" = "exec ${rofimoji}/bin/rofimoji";
+          };
+        };
 
-  wayland.windowManager.sway.config =
-    let
-      cfg = config.wayland.windowManager.sway.config;
-    in
-    {
-      menu = "${config.programs.rofi.package}/bin/rofi -show drun -matching fuzzy";
-      keybindings = lib.mkOptionDefault {
-        "${cfg.modifier}+x" = "exec ${config.programs.rofi.package}/bin/rofi -show run -matching fuzzy";
-        "${cfg.modifier}+w" = "exec ${config.programs.rofi.package}/bin/rofi -show window -matching fuzzy";
-        "${cfg.modifier}+c" = "exec ${config.programs.rofi.package}/bin/rofi -show ssh -matching fuzzy";
-        "${cfg.modifier}+m" = "exec ${rofimoji}/bin/rofimoji";
-      };
-    };
+    extraConfig = ''
+      layer_effects 'rofi' 'blur enable'
+    '';
+  };
 }
