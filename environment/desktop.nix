@@ -166,8 +166,6 @@
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
-
-    xdgOpenUsePortal = true;
   };
 
   # Enable automatic device mounting
