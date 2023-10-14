@@ -61,6 +61,7 @@ in
   imports = [
     ../alacritty
     ../keepassxc
+    ../mako
     ../rofi
     ../waybar
   ];
@@ -312,17 +313,4 @@ in
     wlprop
     wrap-scale-off
   ];
-
-  services.mako = {
-    enable = true;
-    defaultTimeout = 10000;
-    extraConfig = ''
-      [mode=invisible]
-      invisible=1
-
-      [mode=sticky]
-      ignore-timeout=true
-      default-timeout=0
-    '';
-  };
 }
