@@ -12,7 +12,7 @@
     input-filename = "temp2_input";
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
     "Anytype"
     "clonehero"
     "clonehero-unwrapped"
