@@ -7,9 +7,9 @@
 }
 
 window#waybar {
-    background: rgba(43, 48, 59, 0.9);
+    background: rgba(43, 48, 59, 0.6);
     border-bottom: 3px solid rgba(100, 114, 125, 0.9);
-    color: #ffffff;
+    color: #eeeeee;
     transition-property: background, background-color;
     transition-duration: .5s;
 }
@@ -23,7 +23,7 @@ window#waybar.empty {
     background: transparent;
 }
 window#waybar.solo {
-    background: #FFFFFF;
+    background: #EEEEEE;
 }
 */
 
@@ -40,13 +40,13 @@ window#waybar.chromium {
 #workspaces button {
     padding: 0 8px;
     background: transparent;
-    color: #ffffff;
+    color: #eeeeee;
     border-bottom: 3px solid transparent;
 }
 
 #workspaces button.focused {
     background: #64727D;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 3px solid #eeeeee;
 }
 
 #workspaces button.urgent {
@@ -55,30 +55,30 @@ window#waybar.chromium {
 
 #mode {
     background: #64727D;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 3px solid #eeeeee;
 }
 
 #clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
     padding: 0 5px;
     margin: 0 5px;
-    color: #ffffff;
+    color: #eeeeee;
 }
 
 #battery.charging {
-    color: #ffffff;
+    color: #eeeeee;
     background-color: #26A65B;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        background-color: #eeeeee;
         color: #000000;
     }
 }
 
 #battery.critical:not(.charging) {
     background: #f53c3c;
-    color: #ffffff;
+    color: #eeeeee;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

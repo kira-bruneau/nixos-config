@@ -67,6 +67,7 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
+    package = pkgs.swayfx;
     config =
       let
         cfg = config.wayland.windowManager.sway.config;
@@ -80,6 +81,8 @@ in
             titlebar = false;
             border = 0;
           };
+
+          floating.border = 0;
 
           fonts = {
             names = [ "cantarell" ];
@@ -296,6 +299,12 @@ in
         };
 
     extraConfig = ''
+      blur enable
+      corner_radius 10
+      shadows enable
+      shadows_on_csd enable
+      layer_effects 'waybar' 'blur enable; shadows enable'
+      layer_effects 'rofi' 'blur enable; shadows enable'
       include /etc/sway/config.d/*
     '';
   };
