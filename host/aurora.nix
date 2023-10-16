@@ -6,10 +6,6 @@
     ../environment/gui.nix
   ];
 
-  home.packages = with pkgs; [
-    vscodium
-  ];
-
   programs = {
     mpv.config = {
       # Hardware acceleration
