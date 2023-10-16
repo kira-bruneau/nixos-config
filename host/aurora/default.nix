@@ -89,6 +89,9 @@
   # Compress hibernation image as much as possible
   systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];
 
+  # Prevent CPU from overheating
+  services.thermald.enable = true;
+
   # Manage firmware updates
   services.fwupd.enable = true;
 }
