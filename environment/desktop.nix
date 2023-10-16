@@ -55,10 +55,7 @@
   services.logind.extraConfig = "HandlePowerKey=ignore";
 
   # Enable Sway Wayland compositor
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
+  programs.sway.enable = true;
 
   # Enable i3-gaps X11 window manager
   services.xserver.windowManager.i3 = {
