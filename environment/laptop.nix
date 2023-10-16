@@ -6,10 +6,6 @@
     ./portable.nix
   ];
 
-  # Power management
-  services.upower.enable = true;
-  systemd.services.upower.wantedBy = [ "multi-user.target" ];
-
   # Automatically control frequency of CPU to save power
   services.auto-cpufreq.enable = true;
 

@@ -83,8 +83,10 @@
     output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos -1920 0
   '';
 
-  # Power management
-  services.upower.noPollBatteries = true;
+  # Hibernate on low power
+  services.udev.extraRules = ''
+    SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-4]", RUN+="/run/current-system/systemd/bin/systemctl hibernate"
+  '';
 
   # Prevent CPU from overheating
   services.thermald.enable = true;
