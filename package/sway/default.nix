@@ -310,6 +310,7 @@ in
   };
 
   home.packages = with pkgs; [
+    wlprop
     wrap-scale-off
   ];
 
