@@ -265,16 +265,6 @@
             };
           }
         ];
-        work = lib.mkMerge [
-          baseProfile
-          {
-            id = 1;
-            settings = {
-              "extensions.activeThemeID" = "{d26a3404-d978-4bd6-93cf-f9749f57b923}";
-              "services.sync.username" = "kira@gadget.dev";
-            };
-          }
-        ];
       };
   };
 
@@ -302,13 +292,6 @@
       in
       {
         firefox = base;
-        firefox-work = lib.mkMerge [
-          base
-          {
-            exec = lib.mkForce "${base.exec} -P work";
-            name = lib.mkForce "${base.name} (work)";
-          }
-        ];
       };
 
     mimeApps.defaultApplications = {
