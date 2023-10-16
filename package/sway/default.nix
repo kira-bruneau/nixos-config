@@ -206,7 +206,7 @@ in
           startup = [
             { command = "${pkgs.anytype}/bin/anytype"; }
             { command = "${pkgs.blueman}/bin/blueman-applet"; }
-            { command = "emacs"; }
+            { command = "${config.programs.emacs.package}/bin/emacs"; }
             { command = "${config.programs.firefox.package}/bin/firefox"; }
             { command = "${pkgs.gnome.pomodoro}/bin/gnome-pomodoro --no-default-window --stop"; }
             { command = "${pkgs.newsflash}/bin/io.gitlab.news_flash.NewsFlash"; }

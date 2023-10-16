@@ -6,9 +6,11 @@
     ../gpg
   ];
 
+  programs.emacs.package = pkgs.callPackage ./package {};
+
   home = {
     packages = with pkgs; [
-      (pkgs.callPackage ./package {})
+      config.programs.emacs.package
     ];
 
     sessionVariables.EDITOR = "emacseditor";
