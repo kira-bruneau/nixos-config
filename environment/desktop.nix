@@ -57,7 +57,6 @@
   # Enable Sway Wayland compositor
   programs.sway = {
     enable = true;
-    extraPackages = with pkgs; [ swaylock swayidle ];
     wrapperFeatures.gtk = true;
   };
 
