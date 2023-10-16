@@ -244,6 +244,7 @@ in
             ];
             "10" = [
               { app_id = "^Caprine$"; }
+              { app_id = "^discord$"; }
               { app_id = "^Slack$"; }
             ];
           };
