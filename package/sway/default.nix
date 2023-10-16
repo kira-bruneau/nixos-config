@@ -293,7 +293,7 @@ in
 
           bars = [
             {
-              command = "${pkgs.waybar}/bin/waybar";
+              command = "${config.programs.waybar.package}/bin/waybar";
             }
           ];
         };
