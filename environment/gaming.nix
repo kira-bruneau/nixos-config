@@ -27,9 +27,6 @@
     wineWowPackages.staging
     winetricks
 
-    # Chat
-    discord
-
     # Recording
     obs-studio
 

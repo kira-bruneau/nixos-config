@@ -20,6 +20,7 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
     "Anytype"
+    "discord"
     "unrar"
   ];
 

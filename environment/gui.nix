@@ -32,7 +32,12 @@
     pavucontrol
 
     # Web
+    jellyfin-media-player
+    qbittorrent
     ungoogled-chromium
+
+    # Chat
+    discord
 
     # Media & Documents
     anytype
@@ -42,9 +47,7 @@
     gnome.nautilus
     gnucash
     inkscape
-    jellyfin-media-player
     libreoffice
-    qbittorrent
     sqlitebrowser
     xournalpp
     zynaddsubfx
