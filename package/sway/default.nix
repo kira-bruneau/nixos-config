@@ -67,7 +67,6 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
     config =
       let
         cfg = config.wayland.windowManager.sway.config;
