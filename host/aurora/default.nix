@@ -5,7 +5,6 @@
     framework
   ]) ++ [
     ../../environment/distributed-nix.nix
-    ../../environment/hidpi.nix
     ../../environment/laptop.nix
     ../../environment/locale
     ../../service/dnscrypt.nix

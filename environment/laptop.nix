@@ -17,14 +17,6 @@
   services.tlp.enable = false;
 
   # Enable touchpad support
-  services.xserver.libinput = {
-    enable = true;
-    touchpad = {
-      naturalScrolling = true;
-      tapping = true;
-    };
-  };
-
   environment.etc."sway/config.d/touchpad.conf" = {
     enable = config.programs.sway.enable;
     text = ''

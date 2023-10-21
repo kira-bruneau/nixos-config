@@ -10,7 +10,6 @@
     ../../environment/desktop.nix
     ../../environment/distributed-nix.nix
     ../../environment/gaming.nix
-    ../../environment/hidpi.nix
     ../../environment/locale
     ../../service/dnscrypt.nix
     ../../service/kubo.nix

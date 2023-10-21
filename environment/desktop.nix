@@ -33,7 +33,6 @@
         bindsym Control+Mod1+Delete mode "$mode_power"
       '';
 
-      # TODO: Add X + i3
       "greetd/environments".text = ''
         sway
       '';
@@ -68,13 +67,6 @@
       withGtkWrapper = config.programs.sway.wrapperFeatures.gtk;
       isNixOS = true;
     };
-  };
-
-  # Enable i3-gaps X11 window manager
-  services.xserver.windowManager.i3 = {
-    enable = true;
-    package = pkgs.i3-gaps;
-    extraPackages = [];
   };
 
   # Enable gtkgreet greeter (using Sway as the Wayland compositor)
