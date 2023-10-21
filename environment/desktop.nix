@@ -55,7 +55,20 @@
   services.logind.extraConfig = "HandlePowerKey=ignore";
 
   # Enable Sway Wayland compositor
-  programs.sway.enable = true;
+  programs.sway = {
+    enable = true;
+
+    # Requires a wrapped version of sway
+    # https://github.com/NixOS/nixpkgs/pull/234243
+    package = pkgs.sway.override {
+      sway-unwrapped = pkgs.swayfx;
+      extraSessionCommands = config.programs.sway.extraSessionCommands;
+      extraOptions = config.programs.sway.extraOptions;
+      withBaseWrapper = config.programs.sway.wrapperFeatures.base;
+      withGtkWrapper = config.programs.sway.wrapperFeatures.gtk;
+      isNixOS = true;
+    };
+  };
 
   # Enable i3-gaps X11 window manager
   services.xserver.windowManager.i3 = {
@@ -128,7 +141,7 @@
 
           gtkgreet-sway-config = pkgs.writeText "gtkgreet-sway-config" ''
             output * bg ${background} fill
-            exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}; ${pkgs.sway}/bin/swaymsg exit"
+            exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}; swaymsg exit"
             include /etc/sway/config.d/*
           '';
         in "sway --config ${gtkgreet-sway-config}";
