@@ -18,13 +18,6 @@
       # Fix forward history searching
       stty -ixon
     '';
-
-    shellAliases = {
-      # Convenience aliases for common nixos commands
-      nbuild = "sudo nixos-rebuild switch && home-manager switch";
-      nup = "sudo nixos-rebuild --upgrade switch && nix-channel --update && home-manager switch";
-      ntest = "sudo nixos-rebuild test && home-manager switch";
-    };
   };
 
   home.packages = with pkgs; [
