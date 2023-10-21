@@ -18,7 +18,7 @@ in
     width = 320;
     borderSize = 0;
     backgroundColor = "#2b303b99";
-    font = "Iosevka Nerd Font 10";
+    font = "sans-serif 10";
     textColor = "#eeeeee";
 
     extraConfig = ''

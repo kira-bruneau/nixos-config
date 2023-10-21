@@ -21,7 +21,7 @@ in
           all-outputs = true;
           format = "{icon}";
           format-icons = {
-            "1" = "";
+            "1" = ''<span font="Font Awesome 6 Brands"></span>'';
             "2" = "";
             "3" = "";
             "4" = "";

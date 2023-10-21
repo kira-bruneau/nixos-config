@@ -61,7 +61,7 @@ in
     };
 
     "*" = {
-      font = "DejaVu Sans, Font Awesome 6 Free Solid 10";
+      font = "sans-serif, Font Awesome 6 Free Solid 10";
       background-color = mkLiteral "transparent";
       text-color = mkLiteral "#FFFFFFFF";
     };

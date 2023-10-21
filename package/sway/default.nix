@@ -89,7 +89,7 @@ in
         floating.border = 0;
 
         fonts = {
-          names = [ "cantarell" ];
+          names = [ "sans-serif" ];
           size = 10.0;
         };
 

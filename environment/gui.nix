@@ -52,6 +52,9 @@
     xournalpp
     zynaddsubfx
 
+    # Fonts
+    inter
+
     # Utils
     gnome.gnome-clocks
     libnotify
@@ -82,6 +85,18 @@
     # mimeapps.list often gets overwritten by applications adding mimetype associations
     configFile."mimeapps.list".force = true;
   };
+
+  fonts.fontconfig.enable = true;
+  xdg.configFile."fontconfig/fonts.conf".text = ''
+    <?xml version='1.0'?>
+    <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
+    <fontconfig>
+      <alias binding="same">
+      <family>sans-serif</family>
+      <prefer><family>Inter</family></prefer>
+      </alias>
+    </fontconfig>
+  '';
 
   wayland.windowManager.sway.config = {
     startup = [
