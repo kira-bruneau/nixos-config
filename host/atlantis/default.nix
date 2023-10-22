@@ -77,6 +77,7 @@
     };
   };
 
+  # Use systemd-networkd instead of dhcpcd
   networking.dhcpcd.enable = false;
   systemd.network = {
     enable = true;
