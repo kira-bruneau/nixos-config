@@ -11,4 +11,10 @@
   };
 
   console.keyMap = ./colemak.map;
+
+  # Fallback to initrd console configuration
+  systemd.services = {
+    systemd-vconsole-setup.enable = false;
+    reload-systemd-vconsole-setup.enable = false;
+  };
 }
