@@ -18,7 +18,7 @@
           all-outputs = true;
           format = "{icon}";
           format-icons = {
-            "1" = "";
+            "1" = "";
             "2" = "";
             "3" = "";
             "4" = "";
@@ -26,7 +26,7 @@
             "7" = "";
             "8" = "";
             "9" = "";
-            "10" = "";
+            "10" = "";
             default = "";
           };
         };
@@ -74,8 +74,7 @@
         };
 
         "backlight" = {
-          format = "{percent}% {icon}";
-          format-icons = [ "" "" ];
+          format = "{percent}% ";
         };
 
         "battery" = {
@@ -115,6 +114,6 @@
   };
 
   home.packages = with pkgs; [
-    font-awesome_5
+    font-awesome_6
   ];
 }
