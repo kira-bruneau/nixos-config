@@ -31,38 +31,60 @@
   };
 
   disko.devices = {
-    disk.main = {
-      device = "/dev/disk/by-id/nvme-nvme.1987-3231323337393038303030313330333734364145-436f7273616972204d5036303020434f5245-00000001";
-      content = {
-        type = "table";
-        format = "gpt";
-        partitions = [
-          {
-            name = "boot";
-            start = "1MiB";
-            end = "512MiB";
-            bootable = true;
-            content = {
-              type = "filesystem";
-              format = "vfat";
-              extraArgs = [ "-F" "32" "-n" "boot" ];
-              mountpoint = "/boot";
-              mountOptions = [ "noatime" ];
-            };
-          }
-          {
-            name = "nixos";
-            start = "512MiB";
-            end = "100%";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              extraArgs = [ "-L" "nixos" ];
-              mountpoint = "/";
-              mountOptions = [ "noatime" ];
-            };
-          }
-        ];
+    disk = {
+      main = {
+        device = "/dev/disk/by-id/nvme-Corsair_MP600_CORE_212379080001303746AE";
+        content = {
+          type = "table";
+          format = "gpt";
+          partitions = [
+            {
+              name = "boot";
+              start = "1MiB";
+              end = "512MiB";
+              bootable = true;
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                extraArgs = [ "-F" "32" "-n" "boot" ];
+                mountpoint = "/boot";
+                mountOptions = [ "noatime" ];
+              };
+            }
+            {
+              name = "nixos";
+              start = "512MiB";
+              end = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                extraArgs = [ "-L" "nixos" ];
+                mountpoint = "/";
+                mountOptions = [ "noatime" ];
+              };
+            }
+          ];
+        };
+      };
+
+      media = {
+        device = "/dev/disk/by-id/nvme-CT1000P1SSD8_1911E1F0AAC7";
+        content = {
+          type = "table";
+          format = "gpt";
+          partitions = [
+            {
+              name = "media";
+              start = "0%";
+              end = "100%";
+              content = {
+                type = "filesystem";
+                format = "btrfs";
+                mountpoint = "/srv";
+              };
+            }
+          ];
+        };
       };
     };
 
@@ -134,4 +156,26 @@
 
   # Android debugging
   programs.adb.enable = true;
+
+  containers.media-server = {
+    autoStart = true;
+
+    bindMounts = {
+      "/srv" = {
+        hostPath = "/srv";
+        isReadOnly = false;
+      };
+    };
+
+    config = {
+      imports = [ ../../environment/media-server.nix ];
+      system.stateVersion = "22.11";
+      fonts.fontconfig.enable = false;
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    8096
+    5055
+  ];
 }
