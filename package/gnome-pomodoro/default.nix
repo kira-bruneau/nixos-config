@@ -1,9 +1,11 @@
 { lib, config, pkgs, ... }:
 
+let
+  package = pkgs.gnome.pomodoro;
+  gnome-pomodoro = "${package}/bin/gnome-pomodoro";
+in
 {
-  home.packages = with pkgs; [
-    gnome.pomodoro
-  ];
+  home.packages = [ package ];
 
   dconf.settings = lib.mkMerge [
     {
@@ -87,8 +89,18 @@
     in
     {
       keybindings = lib.mkOptionDefault {
-        "${cfg.modifier}+p" = "exec ${pkgs.gnome.pomodoro}/bin/gnome-pomodoro --start-stop";
-        "${cfg.modifier}+Shift+p" = "exec ${pkgs.gnome.pomodoro}/bin/gnome-pomodoro --pause-resume";
+        "${cfg.modifier}+p" = "exec ${gnome-pomodoro} --start-stop";
+        "${cfg.modifier}+Shift+p" = "exec ${gnome-pomodoro} --pause-resume";
       };
     };
+
+  services.swayidle = {
+    timeouts = [
+      {
+        timeout = 60;
+        command = "${gnome-pomodoro} --pause";
+        resumeCommand = "${gnome-pomodoro} --resume";
+      }
+    ];
+  };
 }

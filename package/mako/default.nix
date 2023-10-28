@@ -1,5 +1,10 @@
 { lib, config, pkgs, ... }:
 
+let
+  package = config.services.mako.package;
+  makoctl = "${package}/bin/makoctl";
+  grep = "${pkgs.gnugrep}/bin/grep";
+in
 {
   services.mako = {
     enable = true;
@@ -30,4 +35,16 @@
   wayland.windowManager.sway.extraConfig = ''
     layer_effects 'notifications' 'blur enable; corner_radius 10; shadows enable'
   '';
+
+  services.swayidle.timeouts = [
+    {
+      timeout = 30;
+      command = "${makoctl} mode -a sticky";
+      resumeCommand = toString (pkgs.writeShellScript "resume-notification-timeout" ''
+        if ! ${makoctl} mode | ${grep} -q invisible; then
+          ${makoctl} mode -r sticky
+        fi
+      '');
+    }
+  ];
 }

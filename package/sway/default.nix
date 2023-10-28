@@ -14,6 +14,10 @@ let
     print(random.choice(glob.glob("{}/*.*".format(wallpapers))))
   '';
 
+  lock = pkgs.writeShellScript "lock" ''
+    exec ${pkgs.swaylock}/bin/swaylock --daemonize --image `${random-wallpaper}`
+  '';
+
   # Turn off scaling on all displays
   scale-off = pkgs.writeShellApplication {
     name = "scale-off";
@@ -54,7 +58,7 @@ let
   };
 
   sound = pkgs.writeShellScript "sound" ''
-    ${pkgs.vorbis-tools}/bin/ogg123 "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/$1.oga"
+    exec ${pkgs.vorbis-tools}/bin/ogg123 "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/$1.oga"
   '';
 in
 {
@@ -177,7 +181,7 @@ in
                 | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
                 && ${sound} screen-capture'';
 
-            "${cfg.modifier}+l" = "exec ${pkgs.swaylock}/bin/swaylock --image `${random-wallpaper}`";
+            "${cfg.modifier}+l" = "exec ${lock}";
 
             "XF86AudioRaiseVolume" = ''
               exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%+ \
@@ -316,6 +320,29 @@ in
       include /etc/sway/config.d/*
       exec "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd XCURSOR_PATH XCURSOR_NAME XCURSOR_SIZE"
     '';
+  };
+
+  services.swayidle = {
+    enable = true;
+
+    events = [
+      {
+        event = "before-sleep";
+        command = "${lock}";
+      }
+    ];
+
+    timeouts = [
+      {
+        timeout = 300;
+        command = "${lock}";
+      }
+      {
+        timeout = 600;
+        command = "/run/current-system/sw/bin/swaymsg 'output * power off'";
+        resumeCommand = "/run/current-system/sw/bin/swaymsg 'output * power on'";
+      }
+    ];
   };
 
   home.packages = with pkgs; [
