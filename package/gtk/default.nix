@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   gtk = {
@@ -15,9 +15,7 @@
     };
 
     cursorTheme = {
-      package = pkgs.gnome.adwaita-icon-theme;
-      name = "Adwaita";
-      size = 24;
+      inherit (config.home.pointerCursor) package name size;
     };
   };
 

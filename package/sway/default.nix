@@ -94,11 +94,11 @@ in
             };
           };
 
-          seat = {
+          seat = lib.mkIf (config.home.pointerCursor != null) {
             "*" = {
               # TODO: Fractional scaling size doesn't match other app cursors
               # https://github.com/swaywm/sway/issues/5202
-              xcursor_theme = "${config.gtk.cursorTheme.name} ${toString config.gtk.cursorTheme.size}";
+              xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
             };
           };
 
@@ -305,6 +305,7 @@ in
       layer_effects 'waybar' 'blur enable; shadows enable'
       layer_effects 'rofi' 'blur enable; shadows enable'
       include /etc/sway/config.d/*
+      exec "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd XCURSOR_PATH XCURSOR_NAME XCURSOR_SIZE"
     '';
   };
 
