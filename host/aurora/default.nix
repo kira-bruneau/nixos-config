@@ -22,6 +22,8 @@
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
+    resumeDevice = config.fileSystems."/".device;
+    kernelParams = [ "resume_offset=70049792" ]; # sudo filefrag -v /swapfile | awk 'NR==4 {print $4}' | sed 's/\.\.$//'
     kernel.sysctl = { "vm.swappiness" = 1; };
   };
 
@@ -68,6 +70,12 @@
     };
   };
 
+  # Hibernation swapfile
+  swapDevices = [ { device = "/swapfile"; size = 64102; }];
+
+  # Compress hibernation image as much as possible
+  systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];
+
   # Sway output configuration
   environment.etc."sway/config.d/output.conf".text = ''
     output "BOE 0x095F Unknown" scale 1.5 pos 0 77
@@ -77,16 +85,6 @@
 
   # Power management
   services.upower.noPollBatteries = true;
-  swapDevices = [ { device = "/swapfile"; size = 64102; }];
-  boot = {
-    resumeDevice = config.fileSystems."/".device;
-
-    # Obtained from: sudo filefrag -v /swapfile
-    kernelParams = [ "resume_offset=70049792" ];
-  };
-
-  # Compress hibernation image as much as possible
-  systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];
 
   # Prevent CPU from overheating
   services.thermald.enable = true;
