@@ -133,7 +133,7 @@
 
           gtkgreet-sway-config = pkgs.writeText "gtkgreet-sway-config" ''
             output * bg ${background} fill
-            exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}"
+            exec "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP; ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}"
             include /etc/sway/config.d/*
           '';
         in "sway --config ${gtkgreet-sway-config}";
