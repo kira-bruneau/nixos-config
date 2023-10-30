@@ -133,7 +133,7 @@
 
           gtkgreet-sway-config = pkgs.writeText "gtkgreet-sway-config" ''
             output * bg ${background} fill
-            exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}; swaymsg exit"
+            exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}"
             include /etc/sway/config.d/*
           '';
         in "sway --config ${gtkgreet-sway-config}";
