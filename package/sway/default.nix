@@ -294,6 +294,10 @@ in
               criteria = { app_id = "^discord$"; title = "^$"; };
               command = "floating enable, sticky enable, border pixel 0, resize set 480 270, move position 1004 680, opacity 0.8";
             }
+            {
+              criteria = { app_id = "^org.jellyfin.$"; };
+              command = "inhibit_idle fullscreen";
+            }
           ];
 
           bars = [
