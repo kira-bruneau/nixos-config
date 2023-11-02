@@ -67,6 +67,8 @@
       withGtkWrapper = config.programs.sway.wrapperFeatures.gtk;
       isNixOS = true;
     };
+
+    extraPackages = [ ];
   };
 
   # Enable gtkgreet greeter (using Sway as the Wayland compositor)
