@@ -14,6 +14,7 @@
 
     systemPackages = with pkgs; [
       xdg-utils
+      gnome.adwaita-icon-theme
     ];
 
     etc = {
@@ -135,6 +136,7 @@
 
           gtkgreet-sway-config = pkgs.writeText "gtkgreet-sway-config" ''
             output * bg ${background} fill
+            seat * xcursor_theme Adwaita 24
             exec "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP; ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}"
             include /etc/sway/config.d/*
           '';
