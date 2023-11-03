@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.tmux = {
@@ -7,4 +7,11 @@
     disableConfirmationPrompt = true;
     clock24 = true;
   };
+
+  # Automatically start tmux on SSH sessions
+  programs.bash.profileExtra = lib.mkAfter ''
+    if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ]; then
+      exec ${pkgs.tmux}/bin/tmux
+    fi
+  '';
 }
