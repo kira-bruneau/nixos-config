@@ -70,6 +70,7 @@
     };
 
     extraPackages = [ ];
+    wrapperFeatures.gtk = true;
   };
 
   # Enable gtkgreet greeter (using Sway as the Wayland compositor)
