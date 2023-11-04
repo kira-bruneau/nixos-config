@@ -10,6 +10,7 @@
      :name "notify-async-shell-complete"
      :command (list
                "notify-send"
+               "--app-name" "Emacs"
                (format "Emacs %s" (buffer-name (process-buffer process)))
                (format "Exited with exit code %d" (process-exit-status process))))))
 

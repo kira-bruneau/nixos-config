@@ -10,6 +10,7 @@ in
     enable = true;
 
     defaultTimeout = 10000;
+    groupBy = "app-name,summary";
 
     anchor = "bottom-right";
     padding = "20";
