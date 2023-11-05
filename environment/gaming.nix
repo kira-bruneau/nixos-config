@@ -18,8 +18,8 @@
       };
 
       custom = {
-        start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-        end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+        start = "${pkgs.libnotify}/bin/notify-send --app-name GameMode 'GameMode started'";
+        end = "${pkgs.libnotify}/bin/notify-send --app-name GameMode 'GameMode ended'";
       };
     };
   };
