@@ -86,7 +86,6 @@
   wayland.windowManager.sway.config = {
     startup = [
       { command = "${pkgs.anytype}/bin/anytype"; }
-      { command = "${pkgs.blueman}/bin/blueman-applet"; }
     ];
 
     assigns = {
@@ -120,6 +119,8 @@
   };
 
   services.gpg-agent.pinentryFlavor = "gnome3";
+
+  services.blueman-applet.enable = true;
 
   services.easyeffects.enable = true;
 }
