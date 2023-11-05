@@ -76,139 +76,139 @@ in
       let
         cfg = config.wayland.windowManager.sway.config;
       in
-        {
-          modifier = "Mod4";
+      {
+        modifier = "Mod4";
 
-          gaps.inner = 10;
+        gaps.inner = 10;
 
-          window = {
-            titlebar = false;
-            border = 0;
-          };
-
-          floating.border = 0;
-
-          fonts = {
-            names = [ "cantarell" ];
-            size = 10.0;
-          };
-
-          output = {
-            "*" = {
-              bg = "`${random-wallpaper}` fill";
-            };
-          };
-
-          seat = lib.mkIf (config.home.pointerCursor != null) {
-            "*" = {
-              # TODO: Fractional scaling size doesn't match other app cursors
-              # https://github.com/swaywm/sway/issues/5202
-              xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
-            };
-          };
-
-          keybindings = lib.mkOptionDefault {
-            "${cfg.modifier}+a" = "exec ${cfg.menu}";
-            "${cfg.modifier}+q" = "kill";
-            "${cfg.modifier}+Shift+q" = ''
-              exec swaynag -t warning -m 'You pressed the exit shortcut. \
-                Do you really want to exit sway? \
-                This will end your Wayland session.' \
-                 -b 'Yes, exit sway' 'swaymsg exit'
-            '';
-
-            "${cfg.modifier}+h" = "focus left";
-            "${cfg.modifier}+n" = "focus down";
-            "${cfg.modifier}+e" = "focus up";
-            "${cfg.modifier}+i" = "focus right";
-
-            "${cfg.modifier}+Shift+h" = "move left";
-            "${cfg.modifier}+Shift+n" = "move down";
-            "${cfg.modifier}+Shift+e" = "move up";
-            "${cfg.modifier}+Shift+i" = "move right";
-
-            "${cfg.modifier}+Control+Shift+n" = "move workspace to output down";
-            "${cfg.modifier}+Control+Shift+e" = "move workspace to output up";
-            "${cfg.modifier}+Control+Shift+i" = "move workspace to output right";
-
-            "${cfg.modifier}+s" = "layout stacking";
-            "${cfg.modifier}+t" = "layout tabbed";
-            "${cfg.modifier}+d" = "layout toggle split";
-
-            "${cfg.modifier}+comma" = "focus parent";
-            "${cfg.modifier}+period" = "focus child";
-
-            # Mod+space switches keyboard layout
-            "${cfg.modifier}+Shift+space" = null;
-            "${cfg.modifier}+space" = null;
-
-            "${cfg.modifier}+Shift+f" = "floating toggle";
-            "${cfg.modifier}+Control+f" = "focus mode_toggle";
-
-            "${cfg.modifier}+0" = "workspace number 10";
-            "${cfg.modifier}+Shift+0" = "move container to workspace number 10";
-
-            "${cfg.modifier}+Shift+slash" = "move scratchpad";
-            "${cfg.modifier}+slash" = "scratchpad show";
-
-            "${cfg.modifier}+equal" = "exec ${scale-on}/bin/scale-on";
-            "${cfg.modifier}+minus" = "exec ${scale-off}/bin/scale-off";
-
-            "Print" = ''
-              exec ${pkgs.grim}/bin/grim -t png - \
-                | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
-                & ${sound} screen-capture
-            '';
-
-            "Ctrl+Print" = ''
-              exec ${pkgs.grim}/bin/grim -t png \
-                -g "$(${pkgs.slurp}/bin/slurp)" - \
-                | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
-                && ${sound} screen-capture
-            '';
-
-            "${cfg.modifier}+Print" = ''
-              exec ${pkgs.grim}/bin/grim -t png \
-                "$HOME/Pictures/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" \
-                | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
-                & ${sound} screen-capture
-            '';
-
-            "Ctrl+${cfg.modifier}+Print" = ''
-              exec ${pkgs.grim}/bin/grim -t png \
-                -g "$(${pkgs.slurp}/bin/slurp)" \
-                "$HOME/Pictures/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" \
-                | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
-                && ${sound} screen-capture'';
-
-            "${cfg.modifier}+l" = "exec ${lock}";
-
-            "XF86AudioRaiseVolume" = ''
-              exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%+ \
-                & ${sound} audio-volume-change
-            '';
-
-            "XF86AudioLowerVolume" = ''
-              exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%- \
-                & ${sound} audio-volume-change
-            '';
-
-            "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master toggle";
-
-            "${cfg.modifier}+XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer Capture toggle";
-          };
-
-          modes = lib.mkOptionDefault {
-            resize = {
-              "h" = "resize shrink width 10 px";
-              "n" = "resize grow height 10 px";
-              "e" = "resize shrink height 10 px";
-              "i" = "resize grow width 10 px";
-            };
-          };
-
-          bars = [ ];
+        window = {
+          titlebar = false;
+          border = 0;
         };
+
+        floating.border = 0;
+
+        fonts = {
+          names = [ "cantarell" ];
+          size = 10.0;
+        };
+
+        output = {
+          "*" = {
+            bg = "`${random-wallpaper}` fill";
+          };
+        };
+
+        seat = lib.mkIf (config.home.pointerCursor != null) {
+          "*" = {
+            # TODO: Fractional scaling size doesn't match other app cursors
+            # https://github.com/swaywm/sway/issues/5202
+            xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
+          };
+        };
+
+        keybindings = lib.mkOptionDefault {
+          "${cfg.modifier}+a" = "exec ${cfg.menu}";
+          "${cfg.modifier}+q" = "kill";
+          "${cfg.modifier}+Shift+q" = ''
+            exec swaynag -t warning -m 'You pressed the exit shortcut. \
+              Do you really want to exit sway? \
+              This will end your Wayland session.' \
+               -b 'Yes, exit sway' 'swaymsg exit'
+          '';
+
+          "${cfg.modifier}+h" = "focus left";
+          "${cfg.modifier}+n" = "focus down";
+          "${cfg.modifier}+e" = "focus up";
+          "${cfg.modifier}+i" = "focus right";
+
+          "${cfg.modifier}+Shift+h" = "move left";
+          "${cfg.modifier}+Shift+n" = "move down";
+          "${cfg.modifier}+Shift+e" = "move up";
+          "${cfg.modifier}+Shift+i" = "move right";
+
+          "${cfg.modifier}+Control+Shift+n" = "move workspace to output down";
+          "${cfg.modifier}+Control+Shift+e" = "move workspace to output up";
+          "${cfg.modifier}+Control+Shift+i" = "move workspace to output right";
+
+          "${cfg.modifier}+s" = "layout stacking";
+          "${cfg.modifier}+t" = "layout tabbed";
+          "${cfg.modifier}+d" = "layout toggle split";
+
+          "${cfg.modifier}+comma" = "focus parent";
+          "${cfg.modifier}+period" = "focus child";
+
+          # Mod+space switches keyboard layout
+          "${cfg.modifier}+Shift+space" = null;
+          "${cfg.modifier}+space" = null;
+
+          "${cfg.modifier}+Shift+f" = "floating toggle";
+          "${cfg.modifier}+Control+f" = "focus mode_toggle";
+
+          "${cfg.modifier}+0" = "workspace number 10";
+          "${cfg.modifier}+Shift+0" = "move container to workspace number 10";
+
+          "${cfg.modifier}+Shift+slash" = "move scratchpad";
+          "${cfg.modifier}+slash" = "scratchpad show";
+
+          "${cfg.modifier}+equal" = "exec ${scale-on}/bin/scale-on";
+          "${cfg.modifier}+minus" = "exec ${scale-off}/bin/scale-off";
+
+          "Print" = ''
+            exec ${pkgs.grim}/bin/grim -t png - \
+              | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
+              & ${sound} screen-capture
+          '';
+
+          "Ctrl+Print" = ''
+            exec ${pkgs.grim}/bin/grim -t png \
+              -g "$(${pkgs.slurp}/bin/slurp)" - \
+              | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
+              && ${sound} screen-capture
+          '';
+
+          "${cfg.modifier}+Print" = ''
+            exec ${pkgs.grim}/bin/grim -t png \
+              "$HOME/Pictures/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" \
+              | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
+              & ${sound} screen-capture
+          '';
+
+          "Ctrl+${cfg.modifier}+Print" = ''
+            exec ${pkgs.grim}/bin/grim -t png \
+              -g "$(${pkgs.slurp}/bin/slurp)" \
+              "$HOME/Pictures/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" \
+              | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
+              && ${sound} screen-capture'';
+
+          "${cfg.modifier}+l" = "exec ${lock}";
+
+          "XF86AudioRaiseVolume" = ''
+            exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%+ \
+              & ${sound} audio-volume-change
+          '';
+
+          "XF86AudioLowerVolume" = ''
+            exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%- \
+              & ${sound} audio-volume-change
+          '';
+
+          "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master toggle";
+
+          "${cfg.modifier}+XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer Capture toggle";
+        };
+
+        modes = lib.mkOptionDefault {
+          resize = {
+            "h" = "resize shrink width 10 px";
+            "n" = "resize grow height 10 px";
+            "e" = "resize shrink height 10 px";
+            "i" = "resize grow width 10 px";
+          };
+        };
+
+        bars = [ ];
+      };
 
     extraConfig = ''
       blur enable

@@ -2,7 +2,7 @@
 
 let
   mkLiteral = value: {
-   _type = "literal";
+    _type = "literal";
     inherit value;
   };
 
@@ -22,7 +22,7 @@ let
 
   mkKeyValue = { sep ? ": ", end ? ";" }:
     name: value:
-    "${name}${sep}${mkValueString value}${end}";
+      "${name}${sep}${mkValueString value}${end}";
 
   mkRasiSection = name: value:
     if lib.isAttrs value then
@@ -30,15 +30,19 @@ let
         toRasiKeyValue = lib.generators.toKeyValue { mkKeyValue = mkKeyValue { }; };
         # Remove null values so the resulting config does not have empty lines
         configStr = toRasiKeyValue (lib.filterAttrs (_: v: v != null) value);
-      in ''
+      in
+      ''
         ${name} {
         ${configStr}}
       ''
     else
-      (mkKeyValue {
-        sep = " ";
-        end = "";
-      } name value) + "\n";
+      (mkKeyValue
+        {
+          sep = " ";
+          end = "";
+        }
+        name
+        value) + "\n";
 
   toRasi = attrs:
     lib.concatStringsSep "\n" (lib.concatMap (lib.mapAttrsToList mkRasiSection) [
