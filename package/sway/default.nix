@@ -206,110 +206,6 @@ in
               "i" = "resize grow width 10 px";
             };
           };
-
-          startup = [
-            { command = "${pkgs.anytype}/bin/anytype"; }
-            { command = "${pkgs.blueman}/bin/blueman-applet"; }
-            { command = "${config.programs.emacs.package}/bin/emacs"; }
-            { command = "${config.programs.firefox.package}/bin/firefox"; }
-            { command = "${pkgs.gnome.pomodoro}/bin/gnome-pomodoro --no-default-window --stop"; }
-            { command = "${pkgs.newsflash}/bin/io.gitlab.news_flash.NewsFlash"; }
-            { command = "${pkgs.keepassxc}/bin/keepassxc"; }
-          ];
-
-          assigns = {
-            "1" = [
-              { app_id = "^firefox$"; }
-              { app_id = "^chromium-browser$"; }
-            ];
-            "2" = [
-              { app_id = "^emacs"; }
-              { app_id = "^codium-url-handler$"; }
-            ];
-            "4" = [
-              { app_id = "^mpv$"; }
-              { app_id = "^org.jellyfin.$"; }
-              { app_id = "^org.qbittorrent.qBittorrent$"; }
-              { title = "^Syncplay"; }
-            ];
-            "5" = [
-              { app_id = "^lutris$"; }
-              { app_id = "^org.dolphin-emu.$"; }
-              { app_id = "^org.prismlauncher.PrismLauncher$"; }
-              { class = "^cemu.exe$"; }
-              { class = "^dolphin-emu$"; } # Non-master Dolphin still uses X11
-              { class = "^Minecraft$"; }
-              { class = "^Steam$"; }
-            ];
-            "8" = [
-              { app_id = "^anytype$"; }
-            ];
-            "9" = [
-              { app_id = "^io.gitlab.news_flash.NewsFlash$"; }
-            ];
-            "10" = [
-              { app_id = "^Caprine$"; }
-              { app_id = "^discord$"; }
-              { app_id = "^Slack$"; }
-            ];
-          };
-
-          window.commands = [
-            {
-              criteria = { app_id = "^firefox$"; title = "https://www.youtube.com"; };
-              command = "move container to workspace 4";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "https://calendar.google.com"; };
-              command = "move container to workspace 7";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "https://calendar.proton.me"; };
-              command = "move container to workspace 7";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "https://mail.google.com"; };
-              command = "move container to workspace 9";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "https://mail.proton.me"; };
-              command = "move container to workspace 9";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "https://outlook.office.com"; };
-              command = "move container to workspace 9";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "https://app.cinny.in"; };
-              command = "move container to workspace 10";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "https://app.element.io"; };
-              command = "move container to workspace 10";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "https://app.slack.com"; };
-              command = "move container to workspace 10";
-            }
-            {
-              criteria = { app_id = "^firefox$"; title = "^Picture-in-Picture$"; };
-              command = "floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95";
-            }
-            {
-              criteria = { app_id = "^discord$"; title = "^$"; };
-              command = "floating enable, sticky enable, border pixel 0, resize set 480 270, move position 1004 680, opacity 0.8";
-            }
-            {
-              criteria = { app_id = "^org.jellyfin.$"; };
-              command = "inhibit_idle fullscreen";
-            }
-          ];
-
-          bars = [
-            {
-              command = "${config.programs.waybar.package}/bin/waybar";
-            }
-          ];
         };
 
     extraConfig = ''
@@ -317,7 +213,6 @@ in
       corner_radius 10
       shadows enable
       shadows_on_csd enable
-      layer_effects 'waybar' 'blur enable; shadows enable'
       include /etc/sway/config.d/*
       exec "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd XCURSOR_PATH XCURSOR_NAME XCURSOR_SIZE"
     '';

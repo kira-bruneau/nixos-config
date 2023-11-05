@@ -1,9 +1,12 @@
 { lib, config, pkgs, ... }:
 
+let
+  firefox = pkgs.firefox-wayland;
+in
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
+    package = firefox;
     profiles =
       let
         baseProfile = {
@@ -410,5 +413,48 @@
 
     # Touchscreen support
     sessionVariables.MOZ_USE_XINPUT2 = "1";
+  };
+
+  wayland.windowManager.sway.config = {
+    startup = [{ command = "${firefox}/bin/firefox"; }];
+    assigns."1" = [{ app_id = "^firefox$"; }];
+    window.commands = [
+      {
+        criteria = { app_id = "^firefox$"; title = "https://www.youtube.com"; };
+        command = "move container to workspace 4";
+      }
+      {
+        criteria = { app_id = "^firefox$"; title = "https://calendar.google.com"; };
+        command = "move container to workspace 7";
+      }
+      {
+        criteria = { app_id = "^firefox$"; title = "https://calendar.proton.me"; };
+        command = "move container to workspace 7";
+      }
+      {
+        criteria = { app_id = "^firefox$"; title = "https://mail.google.com"; };
+        command = "move container to workspace 9";
+      }
+      {
+        criteria = { app_id = "^firefox$"; title = "https://mail.proton.me"; };
+        command = "move container to workspace 9";
+      }
+      {
+        criteria = { app_id = "^firefox$"; title = "https://outlook.office.com"; };
+        command = "move container to workspace 9";
+      }
+      {
+        criteria = { app_id = "^firefox$"; title = "https://app.cinny.in"; };
+        command = "move container to workspace 10";
+      }
+      {
+        criteria = { app_id = "^firefox$"; title = "https://app.element.io"; };
+        command = "move container to workspace 10";
+      }
+      {
+        criteria = { app_id = "^firefox$"; title = "^Picture-in-Picture$"; };
+        command = "floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95";
+      }
+    ];
   };
 }

@@ -73,4 +73,8 @@ in
       };
     };
   };
+
+  wayland.windowManager.sway.config.assigns."5" = [
+    { app_id = "^lutris$"; }
+  ];
 }

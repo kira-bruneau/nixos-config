@@ -1,9 +1,12 @@
 { pkgs, ... }:
 
+let
+  waybar = pkgs.waybar;
+in
 {
   programs.waybar = {
     enable = true;
-
+    package = waybar;
     settings = {
       mainBar = {
         ipc = true;
@@ -116,4 +119,11 @@
   home.packages = with pkgs; [
     font-awesome_6
   ];
+
+  wayland.windowManager.sway = {
+    config.bars = [{ command = "${waybar}/bin/waybar"; }];
+    extraConfig = ''
+      layer_effects 'waybar' 'blur enable; shadows enable'
+    '';
+  };
 }

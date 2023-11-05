@@ -130,4 +130,8 @@
     "video/x-theora" = "mpv.desktop";
     "video/x-theora+ogg" = "mpv.desktop";
   };
+
+  wayland.windowManager.sway.config.assigns."4" = [
+    { app_id = "^mpv$"; }
+  ];
 }

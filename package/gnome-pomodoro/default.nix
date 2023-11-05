@@ -92,6 +92,8 @@ in
         "${cfg.modifier}+p" = "exec ${gnome-pomodoro} --start-stop";
         "${cfg.modifier}+Shift+p" = "exec ${gnome-pomodoro} --pause-resume";
       };
+
+      startup = [{ command = "${gnome-pomodoro} --no-default-window --stop"; }];
     };
 
   services.swayidle = {

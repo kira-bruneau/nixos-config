@@ -1,16 +1,17 @@
 { config, pkgs, ... }:
 
+let
+  emacs = pkgs.callPackage ./package { };
+in
 {
   imports = [
     ../aspell
     ../gpg
   ];
 
-  programs.emacs.package = pkgs.callPackage ./package {};
-
   home = {
     packages = with pkgs; [
-      config.programs.emacs.package
+      emacs
     ];
 
     sessionVariables.EDITOR = "emacseditor";
@@ -25,5 +26,10 @@
       "text/plain" = "emacsclient.desktop";
       "inode/directory" = "emacsclient.desktop";
     };
+  };
+
+  wayland.windowManager.sway.config = {
+    startup = [{ command = "${emacs}/bin/emacs"; }];
+    assigns."2" = [{ app_id = "^emacs"; }];
   };
 }
