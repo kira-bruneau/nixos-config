@@ -1,9 +1,8 @@
 { lib, config, pkgs, ... }:
 
 let
-  rofimoji = pkgs.rofimoji.override {
-    rofi = config.programs.rofi.package;
-  };
+  rofi = pkgs.rofi-wayland;
+  rofimoji = pkgs.rofimoji.override { inherit rofi; };
 in
 {
   imports = [
@@ -25,11 +24,11 @@ in
         cfg = config.wayland.windowManager.sway.config;
       in
         {
-          menu = "${config.programs.rofi.package}/bin/rofi -show drun -theme icon-grid -matching fuzzy";
+          menu = "${rofi}/bin/rofi -show drun -theme icon-grid -matching fuzzy";
           keybindings = lib.mkOptionDefault {
-            "${cfg.modifier}+x" = "exec ${config.programs.rofi.package}/bin/rofi -show run -matching fuzzy";
-            "${cfg.modifier}+w" = "exec ${config.programs.rofi.package}/bin/rofi -show window -matching fuzzy";
-            "${cfg.modifier}+c" = "exec ${config.programs.rofi.package}/bin/rofi -show ssh -matching fuzzy";
+            "${cfg.modifier}+x" = "exec ${rofi}/bin/rofi -show run -matching fuzzy";
+            "${cfg.modifier}+w" = "exec ${rofi}/bin/rofi -show window -matching fuzzy";
+            "${cfg.modifier}+c" = "exec ${rofi}/bin/rofi -show ssh -matching fuzzy";
             "${cfg.modifier}+m" = "exec ${rofimoji}/bin/rofimoji";
           };
         };
