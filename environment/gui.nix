@@ -33,6 +33,7 @@
     # Web
     jellyfin-media-player
     qbittorrent
+    syncplay
     ungoogled-chromium
 
     # Chat

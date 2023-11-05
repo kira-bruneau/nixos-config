@@ -230,6 +230,7 @@ in
               { app_id = "^mpv$"; }
               { app_id = "^org.jellyfin.$"; }
               { app_id = "^org.qbittorrent.qBittorrent$"; }
+              { title = "^Syncplay"; }
             ];
             "5" = [
               { app_id = "^lutris$"; }
