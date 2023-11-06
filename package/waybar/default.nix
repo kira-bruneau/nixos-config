@@ -114,16 +114,18 @@ in
     };
 
     style = ./style.css;
+
+    systemd = {
+      enable = true;
+      target = "sway-session.target";
+    };
   };
 
   home.packages = with pkgs; [
     font-awesome_6
   ];
 
-  wayland.windowManager.sway = {
-    config.bars = [{ command = "${waybar}/bin/waybar"; }];
-    extraConfig = ''
-      layer_effects 'waybar' 'blur enable; shadows enable'
-    '';
-  };
+  wayland.windowManager.sway.extraConfig = ''
+    layer_effects 'waybar' 'blur enable; shadows enable'
+  '';
 }
