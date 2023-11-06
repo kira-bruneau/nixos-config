@@ -206,8 +206,6 @@ in
             "i" = "resize grow width 10 px";
           };
         };
-
-        bars = [ ];
       };
 
     extraConfig = ''
