@@ -196,6 +196,10 @@ in
           "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master toggle";
 
           "${cfg.modifier}+XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer Capture toggle";
+
+          "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+          "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+          "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         };
 
         modes = lib.mkOptionDefault {
