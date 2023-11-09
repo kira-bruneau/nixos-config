@@ -7,6 +7,7 @@
 
     # Web
     ../package/firefox
+    ../package/jellyfin
     ../package/newsflash
 
     # Media & Documents
@@ -31,7 +32,6 @@
     pavucontrol
 
     # Web
-    jellyfin-media-player
     qbittorrent
     syncplay
     ungoogled-chromium
@@ -93,7 +93,6 @@
         { app_id = "^chromium-browser$"; }
       ];
       "4" = [
-        { app_id = "^org.jellyfin.$"; }
         { app_id = "^org.qbittorrent.qBittorrent$"; }
         { title = "^Syncplay"; }
       ];
@@ -110,10 +109,6 @@
       {
         criteria = { app_id = "^discord$"; title = "^$"; };
         command = "floating enable, sticky enable, border pixel 0, resize set 480 270, move position 1004 680, opacity 0.8";
-      }
-      {
-        criteria = { app_id = "^org.jellyfin.$"; };
-        command = "inhibit_idle fullscreen";
       }
     ];
   };
