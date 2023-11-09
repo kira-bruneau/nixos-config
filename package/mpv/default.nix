@@ -6,6 +6,10 @@
     config = {
       save-position-on-quit = true;
     };
+
+    scripts = with pkgs.mpvScripts; [
+      mpris
+    ];
   };
 
   xdg.mimeApps.defaultApplications = {
