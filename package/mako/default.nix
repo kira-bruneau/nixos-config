@@ -48,4 +48,9 @@ in
       '');
     }
   ];
+
+  programs.gnome-pomodoro = {
+    onstart = [ "${makoctl} mode -a sticky -a invisible" ];
+    onend = [ "${makoctl} mode -r sticky -r invisible" ];
+  };
 }

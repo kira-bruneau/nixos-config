@@ -244,6 +244,13 @@ in
     ];
   };
 
+  programs.gnome-pomodoro = {
+    onstart = [ "swaymsg 'gaps inner all set 0, bar mode hide'" ];
+    onend = [ "swaymsg 'gaps inner all set 10, bar mode dock'" ];
+    onpause = [ "swaymsg 'bar mode dock'" ];
+    onresume = [ "swaymsg 'bar mode hide'" ];
+  };
+
   home.packages = with pkgs; [
     wlprop
     wrap-scale-off

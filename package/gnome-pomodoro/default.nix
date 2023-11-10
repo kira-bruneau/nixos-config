@@ -3,24 +3,26 @@
 let
   package = pkgs.gnome.pomodoro;
   gnome-pomodoro = "${package}/bin/gnome-pomodoro";
-  makoctl = "${config.services.mako.package}/bin/makoctl";
-  swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
+  types = lib.types;
 in
 {
-  home.packages = [ package ];
+  options = {
+    programs.gnome-pomodoro = {
+      onstart = lib.mkOption { type = types.listOf types.str; };
+      onend = lib.mkOption { type = types.listOf types.str; };
+      onpause = lib.mkOption { type = types.listOf types.str; };
+      onresume = lib.mkOption { type = types.listOf types.str; };
+    };
+  };
 
-  dconf.settings = lib.mkMerge [
-    {
+  config = {
+    home.packages = [ package ];
+
+    dconf.settings = {
       "org/gnome/pomodoro/preferences" = {
         enabled-plugins = [
           "dark-theme"
           "sounds"
-        ];
-      };
-    }
-    (lib.mkIf config.services.mako.enable {
-      "org/gnome/pomodoro/preferences" = {
-        enabled-plugins = [
           "actions"
         ];
       };
@@ -38,86 +40,80 @@ in
         name = "Start Pomodoro";
         states = [ "pomodoro" ];
         triggers = [ "start" ];
-        command = toString (pkgs.writeShellScript "start-pomodoro.sh" ''
-          ${makoctl} mode -a sticky -a invisible &
-          ${swaymsg} 'gaps inner all set 0' &
+        command = toString (pkgs.writeShellScript "start-pomodoro" ''
+          ${builtins.concatStringsSep " &\n" config.programs.gnome-pomodoro.onstart} &
           if [ -e "$XDG_RUNTIME_DIR/gnome-pomodoro-idle" ]; then
             (${gnome-pomodoro} --pause && echo 1 > "$XDG_RUNTIME_DIR/gnome-pomodoro-paused") &
-          else
-            ${swaymsg} 'bar mode hide' &
           fi
-
           ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
           ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-break"
         '');
       };
 
       "org/gnome/pomodoro/plugins/actions/action1" = {
-        name = "Pause Pomodoro";
-        states = [ "pomodoro" ];
-        triggers = [ "pause" ];
-        command = toString (pkgs.writeShellScript "pause-pomodoro.sh" ''
-          ${swaymsg} 'bar mode dock' &
-          ${pkgs.coreutils}/bin/touch "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
-        '');
-      };
-
-      "org/gnome/pomodoro/plugins/actions/action2" = {
-        name = "Resume Pomodoro";
-        states = [ "pomodoro" ];
-        triggers = [ "resume" ];
-        command = toString (pkgs.writeShellScript "resume-pomodoro.sh" ''
-          ${swaymsg} 'bar mode hide' &
-          ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
-        '');
-      };
-
-      "org/gnome/pomodoro/plugins/actions/action3" = {
         name = "End Pomodoro";
         states = [ "pomodoro" ];
         triggers = [ "complete" "skip" ];
-        command = toString (pkgs.writeShellScript "end-pomodoro.sh" ''
-          ${makoctl} mode -r sticky -r invisible &
-          ${swaymsg} 'gaps inner all set 10' &
-          ${swaymsg} 'bar mode dock' &
+        command = toString (pkgs.writeShellScript "end-pomodoro" ''
+          ${builtins.concatStringsSep " &\n" config.programs.gnome-pomodoro.onend} &
           ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
           ${pkgs.coreutils}/bin/touch "$XDG_RUNTIME_DIR/gnome-pomodoro-break"
         '');
       };
-    })
-  ];
 
-  wayland.windowManager.sway.config =
-    let
-      cfg = config.wayland.windowManager.sway.config;
-    in
-    {
-      keybindings = lib.mkOptionDefault {
-        "${cfg.modifier}+p" = "exec ${gnome-pomodoro} --start-stop";
-        "${cfg.modifier}+Shift+p" = "exec ${gnome-pomodoro} --pause-resume";
+      "org/gnome/pomodoro/plugins/actions/action2" = {
+        name = "Pause Pomodoro";
+        states = [ "pomodoro" ];
+        triggers = [ "pause" ];
+        command = toString (pkgs.writeShellScript "pause-pomodoro" ''
+          ${builtins.concatStringsSep " &\n" config.programs.gnome-pomodoro.onpause} &
+          ${pkgs.coreutils}/bin/touch "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
+        '');
       };
 
-      startup = [{ command = "${gnome-pomodoro} --no-default-window --stop"; }];
+      "org/gnome/pomodoro/plugins/actions/action3" = {
+        name = "Resume Pomodoro";
+        states = [ "pomodoro" ];
+        triggers = [ "resume" ];
+        command = toString (pkgs.writeShellScript "resume-pomodoro" ''
+          ${builtins.concatStringsSep " &\n" config.programs.gnome-pomodoro.onresume} &
+          ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
+        '');
+      };
     };
 
-  services.swayidle.timeouts = [
-    {
-      timeout = 60;
-      command = toString (pkgs.writeShellScript "gnome-pomodoro-idle" ''
-       if [ ! -e "$XDG_RUNTIME_DIR/gnome-pomodoro-paused" ] && [ ! -e "$XDG_RUNTIME_DIR/gnome-pomodoro-break" ]; then
-         ${gnome-pomodoro} --pause && echo 1 > "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
-       fi
+    wayland.windowManager.sway.config =
+      let
+        cfg = config.wayland.windowManager.sway.config;
+      in
+      {
+        keybindings = lib.mkOptionDefault {
+          "${cfg.modifier}+p" = "exec ${gnome-pomodoro} --start-stop";
+          "${cfg.modifier}+Shift+p" = "exec ${gnome-pomodoro} --pause-resume";
+        };
 
-       ${pkgs.coreutils}/bin/touch "$XDG_RUNTIME_DIR/gnome-pomodoro-idle"
-     '');
+        startup = [{ command = "${gnome-pomodoro} --no-default-window --stop"; }];
+      };
 
-      resumeCommand = toString (pkgs.writeShellScript "gnome-pomodoro-idle-resume" ''
-        if [ -s "$XDG_RUNTIME_DIR/gnome-pomodoro-paused" ]; then
-          ${gnome-pomodoro} --resume &
-        fi
+    services.swayidle.timeouts = [
+      {
+        timeout = 60;
+        command = toString (pkgs.writeShellScript "gnome-pomodoro-idle" ''
+          if [ ! -e "$XDG_RUNTIME_DIR/gnome-pomodoro-paused" ] && [ ! -e "$XDG_RUNTIME_DIR/gnome-pomodoro-break" ]; then
+            ${gnome-pomodoro} --pause && echo 1 > "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
+          fi
 
-        ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-idle"
-      '');
-    }
-  ];
+          ${pkgs.coreutils}/bin/touch "$XDG_RUNTIME_DIR/gnome-pomodoro-idle"
+        '');
+
+        resumeCommand = toString (pkgs.writeShellScript "gnome-pomodoro-idle-resume" ''
+          if [ -s "$XDG_RUNTIME_DIR/gnome-pomodoro-paused" ]; then
+            ${gnome-pomodoro} --resume &
+          fi
+
+          ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-idle"
+        '');
+      }
+    ];
+  };
 }
