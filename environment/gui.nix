@@ -71,12 +71,12 @@
     };
 
     sessionVariables = {
+      # Use Wayland for Chrome & Electron apps
+      NIXOS_OZONE_WL = 1;
+
       # Improve appearance of Java applications
       # https://wiki.archlinux.org/index.php/Java#Tips_and_tricks
       _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
-
-      # Use Wayland for Chrome & Electron apps
-      NIXOS_OZONE_WL = 1;
     };
   };
 
@@ -137,6 +137,11 @@
   services.gpg-agent.pinentryFlavor = "gnome3";
 
   services.blueman-applet.enable = true;
+  systemd.user.services.blueman-applet.Service.Environment = [
+    # Workaround bluman-applet not getting input
+    # https://bugreports.qt.io/browse/QTBUG-49952
+    "QT_XCB_NO_XI2_MOUSE=1"
+  ];
 
   services.mpris-proxy.enable = true;
 
