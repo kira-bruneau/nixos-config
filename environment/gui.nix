@@ -29,6 +29,7 @@
   home.packages = with pkgs; [
     # Administration
     gnome.dconf-editor
+    helvum
     pavucontrol
 
     # Web

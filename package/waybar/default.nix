@@ -15,7 +15,7 @@ in
         height = 32;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "cpu" "memory" "disk" "temperature" "network" ];
-        modules-right = [ "idle_inhibitor" "backlight" "battery" "pulseaudio" "clock" "tray" ];
+        modules-right = [ "idle_inhibitor" "backlight" "battery" "wireplumber" "clock" "tray" ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -95,20 +95,12 @@ in
           format-disconnected = "Disconnected ⚠";
         };
 
-        "pulseaudio" = {
+        "wireplumber" = {
           format = "{volume}% {icon}";
-          format-bluetooth = "{volume}% {icon}";
           format-muted = "";
-          format-icons = {
-            headphones = "";
-            handsfree = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = [ "" "" ];
-          };
+          format-icons = [ "" "" "" ];
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+          on-click-right = "${pkgs.helvum}/bin/helvum";
         };
       };
     };

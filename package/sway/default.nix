@@ -184,18 +184,17 @@ in
           "${cfg.modifier}+l" = "exec ${lock}";
 
           "XF86AudioRaiseVolume" = ''
-            exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%+ \
+            exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1 \
               & ${sound} audio-volume-change
           '';
 
           "XF86AudioLowerVolume" = ''
-            exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%- \
+            exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- \
               & ${sound} audio-volume-change
           '';
 
-          "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master toggle";
-
-          "${cfg.modifier}+XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer Capture toggle";
+          "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "Shift+XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 
           "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
