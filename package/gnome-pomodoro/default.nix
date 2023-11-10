@@ -113,7 +113,6 @@ in
          ${gnome-pomodoro} --pause && echo 1 > "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
        fi
 
-       echo "$XDG_RUNTIME_DIR/gnome-pomodoro-idle" > /tmp/test2
        ${pkgs.coreutils}/bin/touch "$XDG_RUNTIME_DIR/gnome-pomodoro-idle"
      '');
 
