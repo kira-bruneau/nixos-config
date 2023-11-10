@@ -34,28 +34,23 @@ in
         ];
       };
 
-      "org/gnome/pomodoro/plugins/actions/action0" =
-        let
-          timeout = toString (config.services.mako.defaultTimeout / 1000);
-        in
-        {
-          name = "Start Pomodoro";
-          states = [ "pomodoro" ];
-          triggers = [ "start" ];
-          command = toString (pkgs.writeShellScript "start-pomodoro.sh" ''
-            ${makoctl} mode -a sticky &
-            ${swaymsg} 'gaps inner all set 0' &
-            if [ -e "$XDG_RUNTIME_DIR/gnome-pomodoro-idle" ]; then
-              (${gnome-pomodoro} --pause && echo 1 > "$XDG_RUNTIME_DIR/gnome-pomodoro-paused") &
-            else
-              ${swaymsg} 'bar mode hide' &
-            fi
+      "org/gnome/pomodoro/plugins/actions/action0" = {
+        name = "Start Pomodoro";
+        states = [ "pomodoro" ];
+        triggers = [ "start" ];
+        command = toString (pkgs.writeShellScript "start-pomodoro.sh" ''
+          ${makoctl} mode -a sticky -a invisible &
+          ${swaymsg} 'gaps inner all set 0' &
+          if [ -e "$XDG_RUNTIME_DIR/gnome-pomodoro-idle" ]; then
+            (${gnome-pomodoro} --pause && echo 1 > "$XDG_RUNTIME_DIR/gnome-pomodoro-paused") &
+          else
+            ${swaymsg} 'bar mode hide' &
+          fi
 
-            ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
-            ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-break"
-            ${pkgs.coreutils}/bin/sleep ${timeout} && ${makoctl} mode | ${pkgs.gnugrep}/bin/grep -q sticky && ${makoctl} mode -a invisible
-          '');
-        };
+          ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
+          ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-break"
+        '');
+      };
 
       "org/gnome/pomodoro/plugins/actions/action1" = {
         name = "Pause Pomodoro";
