@@ -24,10 +24,8 @@ in
     extraConfig = ''
       outer-margin=20
 
-      [mode=invisible]
+      [mode=do-not-disturb]
       invisible=1
-
-      [mode=sticky]
       ignore-timeout=true
       default-timeout=0
     '';
@@ -50,7 +48,7 @@ in
   ];
 
   programs.gnome-pomodoro = {
-    onstart = [ "${makoctl} mode -a sticky -a invisible" ];
-    onend = [ "${makoctl} mode -r sticky -r invisible" ];
+    onstart = [ "${makoctl} mode -a do-not-disturb" ];
+    onend = [ "${makoctl} mode -r do-not-disturb" ];
   };
 }
