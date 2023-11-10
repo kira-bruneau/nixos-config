@@ -83,6 +83,71 @@
     output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos -1920 0
   '';
 
+  # WirePlumber device configuration
+  environment.etc."wireplumber/main.lua.d/51-config.lua".text = ''
+    table.insert(alsa_monitor.rules, {
+      matches = {
+        {
+          { "device.name", "equals", "alsa_card.pci-0000_00_1f.3" },
+        },
+      },
+      apply_properties = {
+        ["device.nick"] = "System",
+        ["device.description"] = "System",
+      },
+    })
+
+    table.insert(alsa_monitor.rules, {
+      matches = {
+        {
+          { "node.name", "equals", "alsa_output.pci-0000_00_1f.3.analog-stereo" },
+        },
+      },
+      apply_properties = {
+        ["node.nick"] = "Speaker",
+        ["node.description"] = "Speaker",
+      },
+    })
+
+    table.insert(alsa_monitor.rules, {
+      matches = {
+        {
+          { "node.name", "equals", "alsa_input.pci-0000_00_1f.3.analog-stereo" },
+        },
+      },
+      apply_properties = {
+        ["node.nick"] = "Microphone",
+        ["node.description"] = "Microphone",
+      },
+    })
+
+    table.insert(libcamera_monitor.rules, {
+      matches = {
+        {
+          { "device.name", "equals", "libcamera_device.0" },
+        },
+      },
+      apply_properties = {
+         ["device.nick"] = "Camera",
+         ["device.description"] = "Camera",
+      },
+    })
+
+    table.insert(libcamera_monitor.rules, {
+      matches = {
+        {
+          { "node.name", "equals", "libcamera_input.__SB_.PC00.XHCI.RHUB.HS07-7_1.0-0bda_5634" },
+        },
+      },
+      apply_properties = {
+         ["node.nick"] = "Camera",
+         ["node.description"] = "Camera",
+      },
+    })
+
+    v4l2_monitor.enabled = false
+  '';
+
   # Hibernate on low power
   services.udev.extraRules = ''
     SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-4]", RUN+="/run/current-system/systemd/bin/systemctl hibernate"
