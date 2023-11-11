@@ -67,7 +67,7 @@ in
         };
 
         "disk" = {
-          format = "{}% ";
+          format = "{percentage_used}% ";
         };
 
         "temperature" = {
