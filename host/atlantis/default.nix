@@ -92,6 +92,53 @@
     output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 0,0
   '';
 
+  # WirePlumber device configuration
+  environment.etc."wireplumber/main.lua.d/51-config.lua".text = ''
+    table.insert(alsa_monitor.rules, {
+      matches = {
+        {
+          { "device.name", "equals", "alsa_card.usb-Generic_USB_Condenser_Microphone_201701110001-00" },
+        },
+      },
+      apply_properties = {
+        ["device.nick"] = "Microphone",
+        ["device.description"] = "Microphone",
+      },
+    })
+
+    table.insert(alsa_monitor.rules, {
+      matches = {
+        {
+          { "node.name", "equals", "alsa_input.usb-Generic_USB_Condenser_Microphone_201701110001-00.analog-stereo" },
+        },
+      },
+      apply_properties = {
+        ["node.nick"] = "Microphone",
+        ["node.description"] = "Microphone",
+      },
+    })
+
+    table.insert(alsa_monitor.rules, {
+      matches = {
+        {
+          -- RX 7900 XTX HDMI output
+          { "device.name", "equals", "alsa_card.pci-0000_0b_00.1" },
+        },
+        {
+          -- RX 590 HDMI output
+          { "device.name", "equals", "alsa_card.pci-0000_0c_00.1" },
+        },
+        {
+          -- Analog audio jacks
+          { "device.name", "equals", "alsa_card.pci-0000_0e_00.3" },
+        },
+      },
+      apply_properties = {
+        ["device.disabled"] = true,
+      },
+    })
+  '';
+
   # Configure GPU optimisations for gamemode
   programs.gamemode.settings.gpu = {
     apply_gpu_optimisations = "accept-responsibility";
