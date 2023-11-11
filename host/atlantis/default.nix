@@ -77,16 +77,6 @@
     };
   };
 
-  # Use systemd-networkd instead of dhcpcd
-  networking.dhcpcd.enable = false;
-  systemd.network = {
-    enable = true;
-    networks.enp7s0 = {
-      matchConfig.Name = "enp7s0";
-      networkConfig.DHCP = "yes";
-    };
-  };
-
   # Sway output configuration
   environment.etc."sway/config.d/output.conf".text = ''
     output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 0,0

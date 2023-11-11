@@ -162,6 +162,16 @@
     pulse.enable = true;
   };
 
+  # Use systemd-networkd instead of dhcpcd
+  networking.useDHCP = false;
+  systemd.network = {
+    enable = true;
+    networks.default = {
+      matchConfig.Name = "*";
+      networkConfig.DHCP = "yes";
+    };
+  };
+
   # Enable GUI for managing bluetooth
   services.blueman.enable = config.hardware.bluetooth.enable;
 

@@ -158,14 +158,4 @@
 
   # Manage firmware updates
   services.fwupd.enable = true;
-
-  # Use systemd-networkd instead of dhcpcd
-  networking.useDHCP = false;
-  systemd.network = {
-    enable = true;
-    networks.wlp170s0 = {
-      matchConfig.Name = "wlp170s0";
-      networkConfig.DHCP = "yes";
-    };
-  };
 }
