@@ -3,6 +3,7 @@
 let
   package = pkgs.gnome.pomodoro;
   gnome-pomodoro = "${package}/bin/gnome-pomodoro";
+  cfg = config.programs.gnome-pomodoro;
   types = lib.types;
 in
 {
@@ -41,7 +42,7 @@ in
         states = [ "pomodoro" ];
         triggers = [ "start" ];
         command = toString (pkgs.writeShellScript "start-pomodoro" ''
-          ${builtins.concatStringsSep " &\n" config.programs.gnome-pomodoro.onstart} &
+          ${builtins.concatStringsSep " &\n" cfg.onstart} &
           if [ -e "$XDG_RUNTIME_DIR/gnome-pomodoro-idle" ]; then
             (${gnome-pomodoro} --pause && echo 1 > "$XDG_RUNTIME_DIR/gnome-pomodoro-paused") &
           fi
@@ -55,7 +56,7 @@ in
         states = [ "pomodoro" ];
         triggers = [ "complete" "skip" ];
         command = toString (pkgs.writeShellScript "end-pomodoro" ''
-          ${builtins.concatStringsSep " &\n" config.programs.gnome-pomodoro.onend} &
+          ${builtins.concatStringsSep " &\n" cfg.onend} &
           ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
           ${pkgs.coreutils}/bin/touch "$XDG_RUNTIME_DIR/gnome-pomodoro-break"
         '');
@@ -66,7 +67,7 @@ in
         states = [ "pomodoro" ];
         triggers = [ "pause" ];
         command = toString (pkgs.writeShellScript "pause-pomodoro" ''
-          ${builtins.concatStringsSep " &\n" config.programs.gnome-pomodoro.onpause} &
+          ${builtins.concatStringsSep " &\n" cfg.onpause} &
           ${pkgs.coreutils}/bin/touch "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
         '');
       };
@@ -76,7 +77,7 @@ in
         states = [ "pomodoro" ];
         triggers = [ "resume" ];
         command = toString (pkgs.writeShellScript "resume-pomodoro" ''
-          ${builtins.concatStringsSep " &\n" config.programs.gnome-pomodoro.onresume} &
+          ${builtins.concatStringsSep " &\n" cfg.onresume} &
           ${pkgs.coreutils}/bin/rm -f "$XDG_RUNTIME_DIR/gnome-pomodoro-paused"
         '');
       };
