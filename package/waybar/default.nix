@@ -99,8 +99,6 @@ in
           format = "{volume}% {icon}";
           format-muted = "";
           format-icons = [ "" "" "" ];
-          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-          on-click-right = "${pkgs.helvum}/bin/helvum";
         };
       };
     };

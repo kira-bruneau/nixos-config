@@ -129,6 +129,11 @@
     ];
   };
 
+  programs.waybar.settings.mainBar.wireplumber = {
+    on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+    on-click-right = "${pkgs.helvum}/bin/helvum";
+  };
+
   services.gpg-agent.pinentryFlavor = "gnome3";
 
   services.blueman-applet.enable = true;
