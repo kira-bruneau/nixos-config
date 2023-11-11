@@ -70,7 +70,7 @@ in
     valgrind
 
     # Multimedia
-    youtube-dl
+    yt-dlp
   ];
 
   programs.man.enable = true;
