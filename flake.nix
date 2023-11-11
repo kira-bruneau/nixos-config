@@ -89,8 +89,13 @@
 
                       # Disable ZFS support, it may not be compatible
                       # with the configured kernel version
-                      boot.supportedFilesystems = lib.mkForce
-                        [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];
+                      nixpkgs.overlays = [
+                        (final: super: {
+                          zfs = super.zfs.overrideAttrs (_: {
+                            meta.platforms = [ ];
+                          });
+                        })
+                      ];
 
                       disko.enableConfig = false;
 
