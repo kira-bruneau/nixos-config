@@ -109,6 +109,41 @@
                     path
                   ];
                 };
+                "${host}/vm" = nixos-generators.nixosGenerate {
+                  pkgs = nixpkgs.legacyPackages.${system};
+                  format = "vm";
+                  specialArgs = { inherit inputs; };
+                  modules = [
+                    {
+                      networking.hostName = host;
+                    }
+                    {
+                      virtualisation = {
+                        memorySize = 1024 * 12;
+                        qemu.options = [
+                          "-device virtio-vga-gl"
+                          "-display gtk,gl=on"
+                        ];
+                      };
+
+                      systemd.network.networks.eth0 = {
+                        matchConfig.Name = "eth0";
+                        networkConfig.DHCP = "yes";
+                      };
+
+                      environment.sessionVariables = {
+                        WLR_NO_HARDWARE_CURSORS = "1";
+                      };
+
+                      environment.etc."sway/config.d/io.conf".text = ''
+                        output "*" scale 2
+                      '';
+
+                      services.auto-cpufreq.enable = lib.mkVMOverride false;
+                    }
+                    path
+                  ];
+                };
               };
             })
         {}
