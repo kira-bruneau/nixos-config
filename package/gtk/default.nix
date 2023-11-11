@@ -17,6 +17,8 @@
     cursorTheme = {
       inherit (config.home.pointerCursor) package name size;
     };
+
+    font.name = "sans-serif";
   };
 
   home = {
