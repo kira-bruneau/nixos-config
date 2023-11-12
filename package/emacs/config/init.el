@@ -1,8 +1,13 @@
 (let ((gc-cons-threshold most-positive-fixnum))
-  (defvar dir/aux (concat user-emacs-directory "aux/"))
-  (defvar dir/cache (concat user-emacs-directory "cache/"))
-  (defvar dir/conf (concat user-emacs-directory "conf/"))
-  (defvar dir/setup (concat user-emacs-directory "setup/"))
+  ;; Override user-emacs-directory to be in xdg state directory
+  (require 'xdg)
+  (defvar user-emacs-config-directory user-emacs-directory)
+  (setq user-emacs-directory (concat (xdg-state-home) "/emacs/"))
+  (when (boundp 'native-comp-eln-load-path)
+    (startup-redirect-eln-cache (expand-file-name "eln-cache" user-emacs-directory)))
+  (setq transient-values-file (concat user-emacs-config-directory "transient/values.el"))
+  (setq auto-save-list-file-prefix (concat user-emacs-directory "auto-save-list/.saves-"))
+  (defvar dir/setup (concat user-emacs-config-directory "setup/"))
 
   ;; Define setup files to load
   (defvar setup-files

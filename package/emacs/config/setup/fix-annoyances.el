@@ -14,7 +14,7 @@
 (setq tramp-verbose 2)
 
 ;; Stop putting custom config in my init.el
-(setq custom-file (concat user-emacs-directory "custom.el"))
+(setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file t)
 
 ;; Turn off the annoying bell
@@ -31,15 +31,15 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Not-writing-files-to-the-current-directory.html
 (setq
  lock-file-name-transforms
- `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat dir/aux "\\2") t)))
+ `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat user-emacs-directory "aux/\\2") t)))
 
 (setq
  auto-save-file-name-transforms
- `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat dir/aux "\\2") t)))
+ `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat user-emacs-directory "aux/\\2") t)))
 
 (setq
  backup-directory-alist
- `(("." . ,dir/aux)))
+ `(("." . ,(concat user-emacs-directory "aux"))))
 
 ;; Improve performance opening file under version control
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
