@@ -105,7 +105,7 @@
                       networking = {
                         hostName = host;
 
-                        # I use iwd instead
+                        # Disable wpa_supplicant (I use iwd)
                         wireless.enable = false;
                       };
 

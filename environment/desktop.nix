@@ -165,7 +165,7 @@
   # Use systemd-networkd instead of dhcpcd
   networking.useDHCP = false;
   systemd.network = {
-    enable = true;
+    enable = lib.mkDefault true;
     networks.default = {
       matchConfig.Name = "*";
       networkConfig.DHCP = "yes";
