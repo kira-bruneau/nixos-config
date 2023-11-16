@@ -58,7 +58,7 @@ window#waybar.chromium {
     border-bottom: 3px solid #eeeeee;
 }
 
-#clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #network, #wireplumber, #custom-media, #tray, #mode, #idle_inhibitor {
+#clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #wireplumber, #custom-media, #tray, #mode, #idle_inhibitor {
     padding: 0 5px;
     margin: 0 5px;
     color: #eeeeee;
