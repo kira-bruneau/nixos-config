@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../environment/bluetooth.nix
     ../environment/desktop.nix
     ../environment/gaming.nix
   ];
