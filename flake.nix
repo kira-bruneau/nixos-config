@@ -105,8 +105,8 @@
                       networking = {
                         hostName = host;
 
-                        # I prefer manual wpa_supplicant configuration
-                        wireless.userControlled.enable = lib.mkForce false;
+                        # I use iwd instead
+                        wireless.enable = false;
                       };
 
                       # Resolve conflict between install iso config and my host configs

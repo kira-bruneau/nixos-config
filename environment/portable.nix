@@ -10,7 +10,7 @@
 
   # Disable unused geoclue sources
   services.geoclue2 = {
-    # WiFi (requires wpa_supplicant)
+    # WiFi
     enableWifi = true;
 
     # GPS (requires Avahi)
