@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ../environment/server.nix
+
     # Window managers
     ../package/sway
 
@@ -37,6 +39,7 @@
     qbittorrent
     syncplay
     ungoogled-chromium
+    yt-dlp
 
     # Chat
     discord
@@ -44,12 +47,14 @@
     # Media & Documents
     anytype
     audacity
+    ffmpeg
     gimp
     gnome.file-roller
     gnome.nautilus
     gnucash
     inkscape
     libreoffice
+    poke
     sqlitebrowser
     xournalpp
     zynaddsubfx
@@ -62,6 +67,26 @@
     libnotify
     yabridge
     yabridgectl
+
+    # Nix
+    cachix
+    nix-bisect
+    nix-index
+    nix-init
+    nixpkgs-review
+    nurl
+    patchelf
+
+    # General development
+    binutils
+    file
+    linuxPackages.perf
+    tokei
+
+    # Debuggers
+    strace
+    tcpflow
+    valgrind
   ];
 
   home = {

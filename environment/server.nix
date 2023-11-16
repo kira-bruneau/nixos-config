@@ -18,20 +18,10 @@ in
     ../package/fzf
   ];
 
-  # Packages
   home.packages = with pkgs; [
-    # Extra "core utils"
-    du-dust
-    tealdeer
-    whichf
-
-    # System administration
+    # Administration
     nethogs
     pciutils
-
-    # Search
-    fd
-    ripgrep
 
     # Networking
     curl
@@ -40,37 +30,20 @@ in
     whois
 
     # Data conversion & manipulation
-    ffmpeg
     jq
     p7zip
-    poke
-    sd
     unrar
     unzip
     xmlstarlet
 
-    # Nix
-    cachix
-    nix-bisect
-    nix-index
-    nix-init
-    nixpkgs-review
-    nurl
-    patchelf
+    # Coreutils alternatives
+    du-dust
+    fd
+    ripgrep
+    sd
 
-    # General development
-    binutils
-    file
-    linuxPackages.perf
-    tokei
-
-    # Debuggers
-    strace
-    tcpflow
-    valgrind
-
-    # Multimedia
-    yt-dlp
+    # Custom utils
+    whichf
   ];
 
   programs.man.enable = true;

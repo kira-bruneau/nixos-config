@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ../environment/cli.nix
-    ../environment/gui.nix
+    ../environment/laptop.nix
   ];
 
   programs = {

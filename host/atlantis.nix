@@ -2,9 +2,8 @@
 
 {
   imports = [
-    ../environment/cli.nix
+    ../environment/desktop.nix
     ../environment/gaming.nix
-    ../environment/gui.nix
   ];
 
   programs.waybar.settings.mainBar.temperature = {
