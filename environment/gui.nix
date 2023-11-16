@@ -30,6 +30,7 @@
     # Administration
     gnome.dconf-editor
     helvum
+    iwgtk
     pavucontrol
 
     # Web
@@ -129,9 +130,15 @@
     ];
   };
 
-  programs.waybar.settings.mainBar.wireplumber = {
-    on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-    on-click-right = "${pkgs.helvum}/bin/helvum";
+  programs.waybar.settings.mainBar = {
+    network = {
+      on-click = "${pkgs.iwgtk}/bin/iwgtk";
+    };
+
+    wireplumber = {
+      on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+      on-click-right = "${pkgs.helvum}/bin/helvum";
+    };
   };
 
   services.gpg-agent.pinentryFlavor = "gnome3";
