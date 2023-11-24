@@ -23,7 +23,7 @@
 
     kernelPackages = pkgs.linuxPackages_latest;
     resumeDevice = config.fileSystems."/".device;
-    kernelParams = [ "resume_offset=70049792" ]; # sudo filefrag -v /swapfile | awk 'NR==4 {print $4}' | sed 's/\.\.$//'
+    kernelParams = [ "resume_offset=22532096" ]; # sudo filefrag -v /swapfile | awk 'NR==4 {print $4}' | sed 's/\.\.$//'
     kernel.sysctl = { "vm.swappiness" = 1; };
   };
 
