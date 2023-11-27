@@ -1,3 +1,6 @@
+{ pkgs, ... }:
+
 {
-  services.network-manager-applet.enable = true;
+  home.packages = [ pkgs.iwgtk ];
+  programs.waybar.settings.mainBar.network.on-click = "${pkgs.iwgtk}/bin/iwgtk";
 }

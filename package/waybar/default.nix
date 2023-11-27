@@ -14,8 +14,8 @@ in
         position = "bottom";
         height = 32;
         modules-left = [ "sway/workspaces" "sway/mode" ];
-        modules-center = [ "cpu" "memory" "disk" "temperature" "battery" ];
-        modules-right = [ "idle_inhibitor" "backlight" "wireplumber" "clock" "tray" ];
+        modules-center = [ "cpu" "memory" "disk" "temperature" "network" ];
+        modules-right = [ "idle_inhibitor" "backlight" "battery" "wireplumber" "clock" "tray" ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -87,6 +87,12 @@ in
           };
           format = "{capacity}% {icon}";
           format-icons = [ "" "" "" "" "" ];
+        };
+
+        "network" = {
+          format-wifi = "{essid} ({signalStrength}%) ";
+          format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
+          format-disconnected = "Disconnected ⚠";
         };
 
         "wireplumber" = {
