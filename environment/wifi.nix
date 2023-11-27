@@ -1,10 +1,5 @@
-{ lib, ... }:
+{ ... }:
 
 {
-  networking.networkmanager = {
-    enable = true;
-    wifi.backend = "iwd";
-  };
-
-  systemd.network.enable = false;
+  networking.wireless.iwd.enable = true;
 }
