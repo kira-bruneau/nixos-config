@@ -14,7 +14,7 @@
 
     # Media & Documents
     ../package/emacs
-    ../package/eog
+    ../package/loupe
     ../package/evince
     ../package/keepassxc
     ../package/lmms
