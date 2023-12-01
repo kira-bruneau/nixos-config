@@ -17,10 +17,12 @@
 , coreutils
 , diffutils
 , direnv
+, eslint_d
 , fd
 , fzf
 , gcc
 , gdb
+, ggt
 , git
 , go
 , godef
@@ -32,9 +34,11 @@
 , nixd
 , nixpkgs-fmt
 , nodejs
+, nodePackages
 , omnisharp-roslyn
 , pandoc
 , perl
+, prettierd
 , python3
 , ripgrep
 , rust-analyzer
@@ -53,22 +57,17 @@ let
     then emacs29
     else emacs29-pgtk;
 
-  nodePackages = import ./node-packages/node-composition.nix {
-    inherit pkgs;
-    inherit (stdenv.hostPlatform) system;
-  };
-
   # A lightweight wrapper for prettierd to avoid the overhead of node
   prettierc = (callPackage ./core_d_client.nix {
     name = "prettierc";
-    serverPath = ''${nodePackages."@fsouza/prettierd"}/bin/prettierd'';
+    serverPath = ''${prettierd}/bin/prettierd'';
     configFile = ".prettierd";
   });
 
   # A lightweight wrapper for eslint_d to avoid the overhead of node
   eslint_c = (callPackage ./core_d_client.nix {
     name = "eslint_c";
-    serverPath = ''${nodePackages.eslint_d}/bin/eslint_d'';
+    serverPath = ''${eslint_d}/bin/eslint_d'';
     configFile = ".eslint_d";
   });
 in
@@ -170,10 +169,12 @@ callPackage ./wrapper.nix {
       diffutils
       direnv
       eslint_c
+      eslint_d
       fd
       fzf
       gcc
       gdb
+      ggt
       git
       go
       godef
@@ -184,15 +185,12 @@ callPackage ./wrapper.nix {
       nixd
       nixpkgs-fmt
       nodejs
-      nodePackages."@fsouza/prettierd"
-      nodePackages."@gadgetinc/ggt"
       nodePackages.bash-language-server
-      nodePackages.eslint_d
-      nodePackages.typescript
       nodePackages.typescript-language-server
       pandoc
       perl
       prettierc
+      prettierd
       (python3.withPackages (ps: with ps; [
         debugpy
         python-lsp-server
