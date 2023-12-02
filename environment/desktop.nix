@@ -13,6 +13,7 @@
     ../package/newsflash
 
     # Media & Documents
+    ../package/anytype
     ../package/emacs
     ../package/loupe
     ../package/evince
@@ -45,7 +46,6 @@
     discord
 
     # Media & Documents
-    anytype
     audacity
     ffmpeg
     gimp
@@ -126,10 +126,6 @@
   '';
 
   wayland.windowManager.sway.config = {
-    startup = [
-      { command = "${pkgs.anytype}/bin/anytype"; }
-    ];
-
     assigns = {
       "1" = [
         { app_id = "^chromium-browser$"; }
@@ -137,9 +133,6 @@
       "4" = [
         { app_id = "^org.qbittorrent.qBittorrent$"; }
         { title = "^Syncplay"; }
-      ];
-      "8" = [
-        { app_id = "^anytype$"; }
       ];
       "10" = [
         { app_id = "^Caprine$"; }
