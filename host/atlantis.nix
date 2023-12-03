@@ -12,20 +12,27 @@
     input-filename = "temp2_input";
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
-    "Anytype"
-    "clonehero"
-    "clonehero-unwrapped"
-    "data.zip"
-    "discord"
-    "runescape-launcher"
-    "sm64ex"
-    "steam"
-    "steam-original"
-    "steam-run"
-    "unrar"
-    "vvvvvv"
-  ];
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+      "anytype"
+      "anytype-heart"
+      "clonehero"
+      "clonehero-unwrapped"
+      "data.zip"
+      "discord"
+      "runescape-launcher"
+      "sm64ex"
+      "steam"
+      "steam-original"
+      "steam-run"
+      "unrar"
+      "vvvvvv"
+    ];
+
+    permittedInsecurePackages = [
+      "electron-24.8.6"
+    ];
+  };
 
   home.stateVersion = "22.11";
 }
