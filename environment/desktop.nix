@@ -159,6 +159,26 @@
     };
   };
 
+  xdg.configFile."wireplumber/main.lua.d/51-restrict-control.lua".text = ''
+    table.insert(default_access.rules, {
+      matches = {
+        {
+          { "application.process.binary", "matches", "*chromium*" },
+        },
+        {
+          { "application.process.binary", "matches", "*Discord*" },
+        },
+        {
+          { "application.process.binary", "matches", "*electron*" },
+        },
+        {
+          { "application.process.binary", "matches", "*firefox*" },
+        },
+      },
+      default_permissions = "rx",
+    })
+ '';
+
   services.gpg-agent.pinentryFlavor = "gnome3";
 
   services.easyeffects.enable = true;
