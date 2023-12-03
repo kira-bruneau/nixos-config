@@ -1,6 +1,7 @@
 {
   "general": {
     "keep_running_in_background": false,
+    "autostart": false,
     "sync_on_startup": false,
     "sync_on_metered": true,
     "sync_every": {
@@ -15,6 +16,7 @@
     "article_view_load_images": true
   },
   "feed_list": {
+    "order": "Manual",
     "only_show_relevant": false
   },
   "article_list": {
@@ -66,5 +68,6 @@
     "custom_enabled": false,
     "custom_name": null,
     "custom_url": null
-  }
+  },
+  "feeds": {}
 }
