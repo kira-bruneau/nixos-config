@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -10,5 +10,9 @@
     ./distributed-nix.nix
     ./locale
     ./nix.nix
+  ];
+
+  environment.systemPackages = [
+    inputs.disko.packages.${pkgs.stdenv.system}.default
   ];
 }
