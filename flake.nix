@@ -48,21 +48,13 @@
             value = hostsDir + "/${host}";
           })
           (builtins.attrNames (builtins.readDir hostsDir)));
-
-      commonModules = with inputs; [
-        disko.nixosModules.disko
-        kira-nur.nixosModules.overlay
-        ./cachix.nix
-        ./environment/nix.nix
-        ./environment/custom-nixos-generate-config.nix
-      ];
     in
     {
       nixosConfigurations = builtins.mapAttrs
         (host: path:
           lib.nixosSystem {
             specialArgs = { inherit inputs; };
-            modules = commonModules ++ [
+            modules = [
               {
                 networking.hostName = host;
               }
@@ -90,7 +82,7 @@
                   pkgs = nixpkgs.legacyPackages.${system};
                   format = "install-iso";
                   specialArgs = { inherit inputs; };
-                  modules = commonModules ++ [
+                  modules = [
                     {
                       # /etc/nixos is seeded with the contents of this flake
                       installer.cloneConfig = false;

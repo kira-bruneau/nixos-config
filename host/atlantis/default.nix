@@ -7,13 +7,11 @@
     common-pc-ssd
   ]) ++ [
     ../../environment/bluetooth.nix
+    ../../environment/common.nix
     ../../environment/desktop.nix
-    ../../environment/distributed-nix.nix
     ../../environment/gaming.nix
-    ../../environment/locale
     ../../service/dnscrypt.nix
     ../../service/kubo.nix
-    ../../service/ssh.nix
     ../../user/builder.nix
     ../../user/kira.nix
   ];

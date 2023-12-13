@@ -4,11 +4,9 @@
   imports = (with inputs.nixos-hardware.nixosModules; [
     framework
   ]) ++ [
-    ../../environment/distributed-nix.nix
+    ../../environment/common.nix
     ../../environment/laptop.nix
-    ../../environment/locale
     ../../service/dnscrypt.nix
-    ../../service/ssh.nix
     ../../user/kira.nix
   ];
 
