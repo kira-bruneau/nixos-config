@@ -2,7 +2,7 @@
 
 {
   imports = (with inputs.nixos-hardware.nixosModules; [
-    framework
+    framework-11th-gen-intel
   ]) ++ [
     ../../environment/laptop.nix
     ../../user/kira.nix
