@@ -26,43 +26,31 @@ let
   '';
 
   # Turn off scaling on all displays
-  scale-off = pkgs.writeShellApplication {
-    name = "scale-off";
-    runtimeInputs = with pkgs; [ jq ];
-    text = ''
-      rm -rf /tmp/scale-on
-      mkdir /tmp/scale-on
+  scale-off = pkgs.writeShellScript "scale-off" ''
+    rm -rf /tmp/scale-on
+    mkdir /tmp/scale-on
 
-      while read -r scale name; do
-        echo "$scale" > "/tmp/scale-on/$name";
-      done < <(${swaymsg} -r -t get_outputs | jq -r '.[] | "\(.scale) \(.make) \(.model) \(.serial)"')
+    while read -r scale name; do
+      echo "$scale" > "/tmp/scale-on/$name";
+    done < <(${swaymsg} -r -t get_outputs | ${pkgs.jq}/bin/jq -r '.[] | "\(.scale) \(.make) \(.model) \(.serial)"')
 
-      ${swaymsg} 'output * scale 1'
-    '';
-  };
+    ${swaymsg} 'output * scale 1'
+  '';
 
   # Turn on scaling on all displays
-  scale-on = pkgs.writeShellApplication {
-    name = "scale-on";
-    runtimeInputs = with pkgs; [ coreutils ];
-    text = ''
-      for scale_file in /tmp/scale-on/*; do
-        ${swaymsg} "output \"$(basename "$scale_file")\" scale $(cat "$scale_file")"
-      done
-    '';
-  };
+  scale-on = pkgs.writeShellScript "scale-on" ''
+    for scale_file in /tmp/scale-on/*; do
+      ${swaymsg} "output \"$(basename "$scale_file")\" scale $(${pkgs.coreutils}/bin/cat "$scale_file")"
+    done
+  '';
 
   # Turn off scaling on all displays for the duration of the wrapped program
-  wrap-scale-off = pkgs.writeShellApplication {
-    name = "wrap-scale-off";
-    runtimeInputs = [ scale-off scale-on ];
-    text = ''
-      scale-off
-      export MANGOHUD_CONFIGFILE=$HOME/.config/MangoHud/MangoHud-HiDPI.conf
-      "$1" "''${@:2}"
-      scale-on
-    '';
-  };
+  wrap-scale-off = pkgs.writeShellScriptBin "wrap-scale-off" ''
+    ${scale-off}
+    export MANGOHUD_CONFIGFILE=$HOME/.config/MangoHud/MangoHud-HiDPI.conf
+    "$1" "''${@:2}"
+    ${scale-on}
+  '';
 
   sound = pkgs.writeShellScript "sound" ''
     exec ${pkgs.vorbis-tools}/bin/ogg123 "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/$1.oga"
@@ -159,8 +147,8 @@ in
           "${cfg.modifier}+Shift+slash" = "move scratchpad";
           "${cfg.modifier}+slash" = "scratchpad show";
 
-          "${cfg.modifier}+equal" = "exec ${scale-on}/bin/scale-on";
-          "${cfg.modifier}+minus" = "exec ${scale-off}/bin/scale-off";
+          "${cfg.modifier}+equal" = "exec ${scale-on}";
+          "${cfg.modifier}+minus" = "exec ${scale-off}";
 
           "Print" = ''
             exec ${grim} -t png - \
