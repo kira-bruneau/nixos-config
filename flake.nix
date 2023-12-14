@@ -78,7 +78,7 @@
           in
             packages // {
               ${system} = (packages.${system} or {}) // {
-                "${host}-install-iso" = nixos-generators.nixosGenerate {
+                "${host}/install-iso" = nixos-generators.nixosGenerate {
                   pkgs = nixpkgs.legacyPackages.${system};
                   format = "install-iso";
                   specialArgs = { inherit inputs; };
