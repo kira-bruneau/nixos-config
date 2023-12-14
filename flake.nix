@@ -84,6 +84,9 @@
                   specialArgs = { inherit inputs; };
                   modules = [
                     {
+                      networking.hostName = host;
+                    }
+                    {
                       # /etc/nixos is seeded with the contents of this flake
                       installer.cloneConfig = false;
 
@@ -101,12 +104,8 @@
                       boot.resumeDevice = lib.mkForce "";
                       disko.enableConfig = false;
 
-                      networking = {
-                        hostName = host;
-
-                        # Disable wpa_supplicant (I use iwd)
-                        wireless.enable = false;
-                      };
+                      # Disable wpa_supplicant (I use iwd)
+                      networking.wireless.enable = false;
 
                       # Resolve conflict between install iso config and my host configs
                       services.openssh.settings.PermitRootLogin = lib.mkForce "no";
