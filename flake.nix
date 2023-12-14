@@ -97,6 +97,8 @@
                         })
                       ];
 
+                      # Disable disk-specific configuration
+                      boot.resumeDevice = lib.mkForce "";
                       disko.enableConfig = false;
 
                       networking = {
