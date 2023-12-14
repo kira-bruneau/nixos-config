@@ -61,18 +61,6 @@
   # Enable Sway Wayland compositor
   programs.sway = {
     enable = true;
-
-    # Requires a wrapped version of sway
-    # https://github.com/NixOS/nixpkgs/pull/234243
-    package = pkgs.sway.override {
-      sway-unwrapped = pkgs.swayfx;
-      extraSessionCommands = config.programs.sway.extraSessionCommands;
-      extraOptions = config.programs.sway.extraOptions;
-      withBaseWrapper = config.programs.sway.wrapperFeatures.base;
-      withGtkWrapper = config.programs.sway.wrapperFeatures.gtk;
-      isNixOS = true;
-    };
-
     extraPackages = [ ];
     wrapperFeatures.gtk = true;
   };
