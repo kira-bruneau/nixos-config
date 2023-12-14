@@ -1,6 +1,7 @@
 { lib, config, pkgs, ... }:
 
 let
+  swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
   # Randomly choose a wallpaper in ~/Pictures/Wallpapers
   random-wallpaper = pkgs.writeScript "random-wallpaper" ''
     #!${pkgs.python3}/bin/python
@@ -21,26 +22,26 @@ let
   # Turn off scaling on all displays
   scale-off = pkgs.writeShellApplication {
     name = "scale-off";
-    runtimeInputs = with pkgs; [ sway jq ];
+    runtimeInputs = with pkgs; [ jq ];
     text = ''
       rm -rf /tmp/scale-on
       mkdir /tmp/scale-on
 
       while read -r scale name; do
         echo "$scale" > "/tmp/scale-on/$name";
-      done < <(swaymsg -r -t get_outputs | jq -r '.[] | "\(.scale) \(.make) \(.model) \(.serial)"')
+      done < <(${swaymsg} -r -t get_outputs | jq -r '.[] | "\(.scale) \(.make) \(.model) \(.serial)"')
 
-      swaymsg 'output * scale 1'
+      ${swaymsg} 'output * scale 1'
     '';
   };
 
   # Turn on scaling on all displays
   scale-on = pkgs.writeShellApplication {
     name = "scale-on";
-    runtimeInputs = with pkgs; [ coreutils sway jq ];
+    runtimeInputs = with pkgs; [ coreutils ];
     text = ''
       for scale_file in /tmp/scale-on/*; do
-        swaymsg "output \"$(basename "$scale_file")\" scale $(cat "$scale_file")"
+        ${swaymsg} "output \"$(basename "$scale_file")\" scale $(cat "$scale_file")"
       done
     '';
   };
@@ -71,6 +72,7 @@ in
   ];
 
   wayland.windowManager.sway = {
+    package = pkgs.swayfx;
     enable = true;
     config =
       let
@@ -114,7 +116,7 @@ in
             exec swaynag -t warning -m 'You pressed the exit shortcut. \
               Do you really want to exit sway? \
               This will end your Wayland session.' \
-               -b 'Yes, exit sway' 'swaymsg exit'
+               -b 'Yes, exit sway' '${swaymsg} exit'
           '';
 
           "${cfg.modifier}+h" = "focus left";
@@ -238,17 +240,17 @@ in
       }
       {
         timeout = 600;
-        command = "/run/current-system/sw/bin/swaymsg 'output * power off'";
-        resumeCommand = "/run/current-system/sw/bin/swaymsg 'output * power on'";
+        command = "${swaymsg} 'output * power off'";
+        resumeCommand = "${swaymsg} 'output * power on'";
       }
     ];
   };
 
   programs.gnome-pomodoro = {
-    onstart = [ "swaymsg 'gaps inner all set 0, bar mode hide'" ];
-    onend = [ "swaymsg 'gaps inner all set 10, bar mode dock'" ];
-    onpause = [ "swaymsg 'bar mode dock'" ];
-    onresume = [ "swaymsg 'bar mode hide'" ];
+    onstart = [ "${swaymsg} 'gaps inner all set 0, bar mode hide'" ];
+    onend = [ "${swaymsg} 'gaps inner all set 10, bar mode dock'" ];
+    onpause = [ "${swaymsg} 'bar mode dock'" ];
+    onresume = [ "${swaymsg} 'bar mode hide'" ];
   };
 
   home.packages = with pkgs; [
