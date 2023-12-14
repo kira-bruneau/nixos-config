@@ -2,6 +2,12 @@
 
 let
   swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
+  grim = "${pkgs.grim}/bin/grim";
+  slurp = "${pkgs.slurp}/bin/slurp";
+  wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
+  playerctl = "${pkgs.playerctl}/bin/playerctl";
+
   # Randomly choose a wallpaper in ~/Pictures/Wallpapers
   random-wallpaper = pkgs.writeScript "random-wallpaper" ''
     #!${pkgs.python3}/bin/python
@@ -157,50 +163,50 @@ in
           "${cfg.modifier}+minus" = "exec ${scale-off}/bin/scale-off";
 
           "Print" = ''
-            exec ${pkgs.grim}/bin/grim -t png - \
-              | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
+            exec ${grim} -t png - \
+              | ${wl-copy} -t image/png \
               & ${sound} screen-capture
           '';
 
           "Ctrl+Print" = ''
-            exec ${pkgs.grim}/bin/grim -t png \
-              -g "$(${pkgs.slurp}/bin/slurp)" - \
-              | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
+            exec ${grim} -t png \
+              -g "$(${slurp})" - \
+              | ${wl-copy} -t image/png \
               && ${sound} screen-capture
           '';
 
           "${cfg.modifier}+Print" = ''
-            exec ${pkgs.grim}/bin/grim -t png \
+            exec ${grim} -t png \
               "$HOME/Pictures/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" \
-              | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
+              | ${wl-copy} -t image/png \
               & ${sound} screen-capture
           '';
 
           "Ctrl+${cfg.modifier}+Print" = ''
-            exec ${pkgs.grim}/bin/grim -t png \
-              -g "$(${pkgs.slurp}/bin/slurp)" \
+            exec ${grim} -t png \
+              -g "$(${slurp})" \
               "$HOME/Pictures/Screenshots/$(date +'Screenshot from %Y-%m-%d %T.png')" \
-              | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png \
+              | ${wl-copy} -t image/png \
               && ${sound} screen-capture'';
 
           "${cfg.modifier}+l" = "exec ${lock}";
 
           "XF86AudioRaiseVolume" = ''
-            exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1 \
+            exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1 \
               & ${sound} audio-volume-change
           '';
 
           "XF86AudioLowerVolume" = ''
-            exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- \
+            exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%- \
               & ${sound} audio-volume-change
           '';
 
-          "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          "Shift+XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          "XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "Shift+XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 
-          "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-          "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-          "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+          "XF86AudioPlay" = "exec ${playerctl} play-pause";
+          "XF86AudioPrev" = "exec ${playerctl} previous";
+          "XF86AudioNext" = "exec ${playerctl} next";
         };
 
         modes = lib.mkOptionDefault {
