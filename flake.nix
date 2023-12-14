@@ -42,21 +42,15 @@
             ]
             else [ ])
           (builtins.attrNames (builtins.readDir hostsDir)));
-
-      commonModules = [
-        ./environment/seed-home-config.nix
-        {
-          nixpkgs.overlays = [
-            my-nur.overlays.default
-          ];
-
-          _module.args = { inherit inputs; };
-        }
-      ];
     in
     {
       nixosModules = builtins.mapAttrs
-        (host: path: { imports = commonModules ++ [ path ]; })
+        (host: path: {
+          imports = [
+            ({ _module.args = { inherit inputs; }; })
+            path
+          ];
+        })
         hosts;
     } // flake-utils.lib.eachDefaultSystem (system:
       let

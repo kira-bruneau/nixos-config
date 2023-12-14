@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 let
   whichf = pkgs.writeShellScriptBin "whichf" ''
@@ -6,16 +6,21 @@ let
   '';
 in
 {
+  nixpkgs.overlays = [
+    inputs.my-nur.overlays.default
+  ];
+
   imports = [
     ../package/bash
     ../package/direnv
     ../package/emacs
+    ../package/fzf
     ../package/git
     ../package/gpg
     ../package/htop
     ../package/ssh
     ../package/tmux
-    ../package/fzf
+    ./seed-home-config.nix
   ];
 
   home.packages = with pkgs; [

@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../environment/server.nix
+    ../environment/common.nix
 
     # Window managers
     ../package/sway
