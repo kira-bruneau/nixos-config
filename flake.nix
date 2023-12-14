@@ -60,16 +60,7 @@
 
         paths = flake-linter-lib.partitionToAttrs
           flake-linter-lib.commonPaths
-          (builtins.filter
-            (path:
-              (builtins.all
-                (ignore: !(lib.hasSuffix ignore path))
-                [
-                  "node-composition.nix"
-                  "node-env.nix"
-                  "node-packages.nix"
-                ]))
-            (flake-linter-lib.walkFlake ./.));
+          (flake-linter-lib.walkFlake ./.);
 
         linter = flake-linter-lib.makeFlakeLinter {
           root = ./.;
