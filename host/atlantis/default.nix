@@ -9,7 +9,6 @@
     ../../environment/bluetooth.nix
     ../../environment/desktop.nix
     ../../environment/gaming.nix
-    ../../service/dnscrypt.nix
     ../../service/kubo.nix
     ../../user/builder.nix
     ../../user/kira.nix

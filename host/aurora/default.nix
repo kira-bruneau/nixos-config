@@ -5,7 +5,6 @@
     framework
   ]) ++ [
     ../../environment/laptop.nix
-    ../../service/dnscrypt.nix
     ../../user/kira.nix
   ];
 

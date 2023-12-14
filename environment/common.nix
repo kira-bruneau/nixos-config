@@ -5,6 +5,7 @@
     inputs.disko.nixosModules.disko
     inputs.kira-nur.nixosModules.overlay
     ../cachix.nix
+    ../service/dnscrypt.nix
     ../service/ssh.nix
     ./custom-nixos-generate-config.nix
     ./distributed-nix.nix
