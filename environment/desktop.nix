@@ -177,7 +177,7 @@
       },
       default_permissions = "rx",
     })
- '';
+  '';
 
   services.gpg-agent.pinentryFlavor = "gnome3";
 
