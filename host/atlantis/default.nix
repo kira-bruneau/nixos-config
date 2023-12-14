@@ -7,7 +7,6 @@
     common-pc-ssd
   ]) ++ [
     ../../environment/bluetooth.nix
-    ../../environment/common.nix
     ../../environment/desktop.nix
     ../../environment/gaming.nix
     ../../service/dnscrypt.nix
