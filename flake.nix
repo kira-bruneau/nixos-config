@@ -24,7 +24,7 @@
     };
   };
 
-  outputs = { nixpkgs, my-nur, flake-utils, flake-linter, ... } @ inputs:
+  outputs = { nixpkgs, flake-utils, flake-linter, ... } @ inputs:
     let
       lib = nixpkgs.lib;
 
@@ -47,7 +47,12 @@
       nixosModules = builtins.mapAttrs
         (host: path: {
           imports = [
-            ({ _module.args = { inherit inputs; }; })
+            ({
+              _module.args = {
+                inherit inputs;
+                pkgsPath = nixpkgs;
+              };
+            })
             path
           ];
         })
