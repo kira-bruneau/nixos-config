@@ -7,6 +7,7 @@
     ../cachix.nix
     ../service/dnscrypt.nix
     ../service/ssh.nix
+    ../service/tailscale.nix
     ./custom-nixos-generate-config.nix
     ./distributed-nix.nix
     ./locale
