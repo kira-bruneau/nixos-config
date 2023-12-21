@@ -187,8 +187,8 @@
       "f" 'rg-rerun-change-literal ;; t (originally bound to rg-rerun-change-files)
       "p" 'rg-rerun-change-files)) ;; p
 
-  (eval-after-load 'rg-result
-    '(transient-suffix-put 'rg-menu 'rg-rerun-change-files--transient :key "p"))
+  (with-eval-after-load 'rg-menu
+    (transient-suffix-put 'rg-menu 'rg-rerun-change-files--transient :key "p"))
 
   (with-eval-after-load 'comint
     (evil-collection-define-key 'normal 'comint-mode-map
