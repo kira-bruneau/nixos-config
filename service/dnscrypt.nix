@@ -50,6 +50,4 @@
     nameservers = [ "127.0.0.1" "::1" ];
     dhcpcd.extraConfig = "nohook resolv.conf";
   };
-
-  services.resolved.enable = false;
 }
