@@ -1,11 +1,4 @@
-{ ... }:
-
 {
-  networking = {
-    nameservers = [ "127.0.0.1" "::1" ];
-    dhcpcd.extraConfig = "nohook resolv.conf";
-  };
-
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
@@ -50,6 +43,12 @@
         };
       };
     };
+  };
+
+  # Use dnscrypt-proxy as nameserver instead of dhcpcd or systemd-resolved
+  networking = {
+    nameservers = [ "127.0.0.1" "::1" ];
+    dhcpcd.extraConfig = "nohook resolv.conf";
   };
 
   services.resolved.enable = false;
