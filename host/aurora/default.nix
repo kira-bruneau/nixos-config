@@ -79,6 +79,11 @@
     output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos -1920 0
   '';
 
+  systemd.network.networks.wlan0 = {
+    matchConfig.Name = "wlan0";
+    networkConfig.DHCP = "yes";
+  };
+
   # WirePlumber device configuration
   environment.etc."wireplumber/main.lua.d/51-config.lua".text = ''
     table.insert(alsa_monitor.rules, {
