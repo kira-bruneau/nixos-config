@@ -32,15 +32,15 @@
     overrideFolders = true;
     settings = {
       devices = {
-        "atlantis" = { id = "64ZDVRR-2DZB475-3IWMGU6-OU46FZQ-P44AXVI-OYI6TO3-VOCUVRT-L62KBAE"; };
+        "quartz" = { id = "64ZDVRR-2DZB475-3IWMGU6-OU46FZQ-P44AXVI-OYI6TO3-VOCUVRT-L62KBAE"; };
         "aurora" = { id = "ODCDVEV-I63ZAW6-MV27YBB-W5MDOAU-YZ3RK23-DMXCWAN-STJOSEF-EFXFRQP"; };
         "luna" = { id = "O4NQTDT-NWV3GEZ-67BW33I-BQ454SI-42G2RK3-F53W4L4-RUG47VK-5VXLFA7"; };
       };
 
       folders = {
         "Auth" = {
-          enable = builtins.elem config.system.name [ "atlantis" "aurora" "luna" ];
-          devices = [ "atlantis" "aurora" "luna" ];
+          enable = builtins.elem config.system.name [ "quartz" "aurora" "luna" ];
+          devices = [ "quartz" "aurora" "luna" ];
           path = "~/Auth";
           ignorePerms = false;
           rescanIntervalS = 86400;
@@ -55,8 +55,8 @@
 
         # TODO: Automatically derive ignore rules from .gitignores
         # "Dev" = {
-        #   enable = builtins.elem config.system.name [ "atlantis" "aurora" ];
-        #   devices = [ "atlantis" "aurora" ];
+        #   enable = builtins.elem config.system.name [ "quartz" "aurora" ];
+        #   devices = [ "quartz" "aurora" ];
         #   path = "~/Dev";
         #   ignorePerms = false;
         #   rescanIntervalS = 86400;
@@ -67,8 +67,8 @@
         # };
 
         "Documents" = {
-          enable = builtins.elem config.system.name [ "atlantis" "aurora" ];
-          devices = [ "atlantis" "aurora" ];
+          enable = builtins.elem config.system.name [ "quartz" "aurora" ];
+          devices = [ "quartz" "aurora" ];
           path = "~/Documents";
           ignorePerms = false;
           rescanIntervalS = 86400;
@@ -82,8 +82,8 @@
         };
 
         "Pictures" = {
-          enable = builtins.elem config.system.name [ "atlantis" "aurora" ];
-          devices = [ "atlantis" "aurora" ];
+          enable = builtins.elem config.system.name [ "quartz" "aurora" ];
+          devices = [ "quartz" "aurora" ];
           path = "~/Pictures";
           ignorePerms = false;
           rescanIntervalS = 86400;
@@ -94,8 +94,8 @@
         };
 
         "Videos" = {
-          enable = builtins.elem config.system.name [ "atlantis" "aurora" ];
-          devices = [ "atlantis" "aurora" ];
+          enable = builtins.elem config.system.name [ "quartz" "aurora" ];
+          devices = [ "quartz" "aurora" ];
           path = "~/Videos";
           ignorePerms = false;
           rescanIntervalS = 86400;

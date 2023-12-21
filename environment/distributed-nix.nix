@@ -8,7 +8,7 @@
       (machine: machine.hostName != config.networking.hostName)
       [
         {
-          hostName = "atlantis";
+          hostName = "quartz";
           protocol = "ssh-ng";
           sshUser = "builder";
           systems = [ "x86_64-linux" "i686-linux" ];
@@ -26,7 +26,7 @@
 
   programs.ssh = {
     knownHosts = {
-      atlantis.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPBPD66/axLTeJHQ+lLmOSJT2VQyESnk5VRr7Rkx4BET";
+      quartz.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPBPD66/axLTeJHQ+lLmOSJT2VQyESnk5VRr7Rkx4BET";
       aurora.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDG2wKEtIS2KuoXr4uNAzwTLvkyjrLX9zonE3pZB2pdH";
     };
 
