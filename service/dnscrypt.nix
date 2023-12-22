@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 {
   services.dnscrypt-proxy2 = {
     enable = true;
@@ -45,14 +43,6 @@
         };
       };
     };
-  };
-
-  # Don't create unused directories
-  systemd.services.dnscrypt-proxy2.serviceConfig = lib.mkForce {
-    CacheDirectory = "";
-    LogsDirectory = "";
-    RuntimeDirectory = "";
-    StateDirectory = "";
   };
 
   # Use dnscrypt-proxy as nameserver instead of dhcpcd or systemd-resolved
