@@ -139,11 +139,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703124948,
-        "narHash": "sha256-QAwt/zj1wRPUBDu4ZKPY1T3M2tLU139cwHOBYyrG6fA=",
+        "lastModified": 1703362408,
+        "narHash": "sha256-nUpXoRj//pWrhH24DgidDN2p4ksNH2eFvHcd70mewXU=",
         "owner": "kira-bruneau",
         "repo": "home-config",
-        "rev": "f24972bfd5faf1cc8ec2e86491df50f3f91e8ffd",
+        "rev": "690ee12b9eb664c1705bd9878f77c78f41c7ae47",
         "type": "gitlab"
       },
       "original": {
@@ -161,11 +161,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703102010,
-        "narHash": "sha256-LfitbVQszoKL9AVojESztDyA9l7NTovMf4H/gLQV5m4=",
+        "lastModified": 1703361330,
+        "narHash": "sha256-5EILYZkJ7ytkv6eTIxVXQmLmZfiz4r4LjBVkfIzJTVs=",
         "owner": "kira-bruneau",
         "repo": "nur-packages",
-        "rev": "07aae1202bf087a6ee3ceffb4435bf46951999b5",
+        "rev": "617f3c1b44185b1f02a321926ec24342c61bf599",
         "type": "gitlab"
       },
       "original": {
