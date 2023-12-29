@@ -15,7 +15,7 @@ in
   # Disable tlp being enabled from common-pc-laptop in nixos-hardware
   services.tlp.enable = false;
 
-  # Enable touchpad support
+  # Touchpad configuration
   environment.etc."sway/config.d/touchpad.conf".text = ''
     input type:touchpad {
       natural_scroll enabled

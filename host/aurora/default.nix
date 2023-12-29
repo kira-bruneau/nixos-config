@@ -72,8 +72,13 @@
   # Compress hibernation image as much as possible
   systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];
 
-  # Sway output configuration
-  environment.etc."sway/config.d/output.conf".text = ''
+  # Sway I/O configuration
+  environment.etc."sway/config.d/io.conf".text = ''
+    input "1133:16461:Logitech_K400_Plus" {
+      natural_scroll enabled
+      scroll_factor 0.25
+    }
+
     output "BOE 0x095F Unknown" scale 1.5 pos 0 77
     output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 1504 0
     output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos -1920 0
