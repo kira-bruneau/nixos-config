@@ -46,25 +46,21 @@
           rescanIntervalS = 86400;
           versioning = {
             type = "staggered";
-            params = {
-              cleanInterval = "3600";
-              maxAge = "31536000";
-            };
+            params.maxAge = "31536000";
           };
         };
 
-        # TODO: Automatically derive ignore rules from .gitignores
-        # "Dev" = {
-        #   enable = builtins.elem config.system.name [ "quartz" "aurora" ];
-        #   devices = [ "quartz" "aurora" ];
-        #   path = "~/Dev";
-        #   ignorePerms = false;
-        #   rescanIntervalS = 86400;
-        #   versioning = {
-        #     type = "simple";
-        #     params.keep = "5";
-        #   };
-        # };
+        "Dev" = {
+          enable = builtins.elem config.system.name [ "quartz" "aurora" ];
+          devices = [ "quartz" "aurora" ];
+          path = "~/Dev";
+          ignorePerms = false;
+          rescanIntervalS = 86400;
+          versioning = {
+            type = "staggered";
+            params.maxAge = "604800";
+          };
+        };
 
         "Documents" = {
           enable = builtins.elem config.system.name [ "quartz" "aurora" ];
@@ -74,10 +70,7 @@
           rescanIntervalS = 86400;
           versioning = {
             type = "staggered";
-            params = {
-              cleanInterval = "3600";
-              maxAge = "31536000";
-            };
+            params.maxAge = "31536000";
           };
         };
 
@@ -88,8 +81,8 @@
           ignorePerms = false;
           rescanIntervalS = 86400;
           versioning = {
-            type = "simple";
-            params.keep = "5";
+            type = "staggered";
+            params.maxAge = "31536000";
           };
         };
 
@@ -100,8 +93,8 @@
           ignorePerms = false;
           rescanIntervalS = 86400;
           versioning = {
-            type = "simple";
-            params.keep = "5";
+            type = "staggered";
+            params.maxAge = "31536000";
           };
         };
       };
