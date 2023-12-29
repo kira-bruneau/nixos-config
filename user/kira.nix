@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, lib, ... }:
 
 {
   imports = [
@@ -9,7 +9,12 @@
   users.users.kira = {
     isNormalUser = true;
     description = "Kira Bruneau";
-    extraGroups = [ "wheel" "adbusers" "audio" "video" "ipfs" ];
+    extraGroups =
+      [ "wheel" "audio" ]
+      ++ lib.optional config.programs.adb.enable "adbusers"
+      ++ lib.optional config.programs.light.enable "video"
+      ++ lib.optional config.services.kubo.enable "ipfs";
+
     initialPassword = "kira";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFolmVKlEFdALSIXtRNy/0ZqcTGn2H5/e3ieaIHoQr85"
