@@ -12,7 +12,6 @@
     extraGroups =
       [ "wheel" "audio" ]
       ++ lib.optional config.programs.adb.enable "adbusers"
-      ++ lib.optional config.programs.light.enable "video"
       ++ lib.optional config.services.kubo.enable "ipfs";
 
     initialPassword = "kira";

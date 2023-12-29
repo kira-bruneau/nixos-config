@@ -1,5 +1,8 @@
-{ config, ... }:
+{ pkgs, ... }:
 
+let
+  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+in
 {
   imports = [
     ./desktop.nix
@@ -21,17 +24,17 @@
     }
   '';
 
-  # Enable light for controlling backlight
-  programs.light.enable = true;
+  # Use brightnessctl for controlling backlight
   environment.etc."sway/config.d/backlight-controls.conf".text = ''
-    bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
-    bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
-    bindsym Shift+XF86MonBrightnessUp exec --no-startup-id light -S 100
-    bindsym Shift+XF86MonBrightnessDown exec --no-startup-id light -r -S 1
+    bindsym XF86MonBrightnessUp exec ${brightnessctl} set 5%+
+    bindsym XF86MonBrightnessDown exec ${brightnessctl} set 5%-
+    bindsym Shift+XF86MonBrightnessUp exec ${brightnessctl} set 100%
+    bindsym Shift+XF86MonBrightnessDown exec ${brightnessctl} set 1
+
     # using volume scroller (really nice with the Corsair Vengeance K95)
-    bindsym Mod1+XF86AudioRaiseVolume exec --no-startup-id light -A 10
-    bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id light -U 10
-    bindsym Mod1+Shift+XF86AudioRaiseVolume exec --no-startup-id light -S 100
-    bindsym Mod1+Shift+XF86AudioLowerVolume exec --no-startup-id light -r -S 1
+    bindsym Mod1+XF86AudioRaiseVolume exec ${brightnessctl} set 5%+
+    bindsym Mod1+XF86AudioLowerVolume exec ${brightnessctl} set 5%-
+    bindsym Mod1+Shift+XF86AudioRaiseVolume exec ${brightnessctl} set 100%
+    bindsym Mod1+Shift+XF86AudioLowerVolume exec ${brightnessctl} set 1
   '';
 }
