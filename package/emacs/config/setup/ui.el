@@ -116,5 +116,5 @@
 
   :config
   (setq pixel-scroll-precision-use-momentum t)
-  (setq pixel-scroll-precision-momentum-tick 0.0167) ;; ~60fps
+  (setq pixel-scroll-precision-initial-velocity-factor 0.02)
   (setq pixel-scroll-precision-momentum-seconds 1.0))

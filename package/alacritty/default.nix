@@ -43,6 +43,8 @@
           white = "0xf3f4f5";
         };
       };
+
+      scrolling.multiplier = 10;
     };
   };
 

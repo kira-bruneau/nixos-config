@@ -98,6 +98,8 @@ in
 
           settings = {
             "accessibility.typeaheadfind.flashBar" = 0;
+            "apz.gtk.pangesture.delta_mode" = 2; # pixel mode
+            "apz.gtk.pangesture.pixel_delta_mode_multiplier" = "80"; # default is 40
             "apz.overscroll.enabled" = true;
             "browser.aboutConfig.showWarning" = false;
             "browser.aboutwelcome.enabled" = false;
