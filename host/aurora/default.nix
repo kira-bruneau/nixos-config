@@ -164,4 +164,10 @@
 
   # Manage firmware updates
   services.fwupd.enable = true;
+
+  # Manage logitech unifying receiver
+  hardware.logitech.wireless = {
+    enable = true;
+    enableGraphical = true;
+  };
 }
