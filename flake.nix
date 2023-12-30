@@ -48,14 +48,20 @@
       hosts = builtins.listToAttrs
         (builtins.map
           (file:
-            let
-              name = lib.removeSuffix ".nix" file;
-            in
-            {
+            let name = lib.removeSuffix ".nix" file; in {
               inherit name;
               value = {
-                imports = [ ./hosts/${file} ];
-                networking.hostName = name;
+                inherit inputs;
+
+                module = {
+                  imports = [ ./hosts/${file} ];
+                  networking.hostName = name;
+                };
+
+                hardwareModule =
+                  if builtins.pathExists ./hardware/hosts/${name}
+                  then ./hardware/hosts/${name}
+                  else null;
               };
             })
           (builtins.attrNames (builtins.readDir ./hosts)));
@@ -63,17 +69,15 @@
     {
       nixosConfigurations = builtins.listToAttrs
         (builtins.concatMap
-          (hostName:
-            if builtins.pathExists ./hardware/hosts/${hostName}
+          (name:
+            let host = hosts.${name}; in
+            if host.hardwareModule != null
             then [
               {
-                name = hostName;
-                value = lib.nixosSystem {
-                  specialArgs = { inherit inputs; };
-                  modules = [
-                    ./hardware/hosts/${hostName}
-                    hosts.${hostName}
-                  ];
+                inherit name;
+                value = host.inputs.nixpkgs.lib.nixosSystem {
+                  specialArgs = { inherit (host) inputs; };
+                  modules = [ host.hardwareModule host.module ];
                 };
               }
             ]
@@ -128,20 +132,25 @@
             ggt = inputs.kira-nur.packages.${system}.ggt;
           };
         } // builtins.foldl'
-          (packages: hostName:
-            let hostModule = hosts.${hostName}; in
+          (packages: name:
+            let
+              host = hosts.${name};
+              nixosGenerate = args: nixos-generators.nixosGenerate (args // {
+                lib = host.inputs.nixpkgs.lib;
+                nixosSystem = host.inputs.nixpkgs.lib.nixosSystem;
+                pkgs = host.inputs.nixpkgs.legacyPackages.${system};
+                specialArgs = { inherit (host) inputs; };
+                modules = [ host.module ] ++ args.modules;
+              });
+            in
             packages // {
-              "${hostName}/install-iso" = nixos-generators.nixosGenerate {
-                inherit system;
+              "${name}/install-iso" = nixosGenerate {
                 format = "install-iso";
-                specialArgs = { inherit inputs; };
-                modules = [ hostModule ./environments/install-iso.nix ];
+                modules = [ ./environments/install-iso.nix ];
               };
-              "${hostName}/vm" = nixos-generators.nixosGenerate {
-                inherit system;
+              "${name}/vm" = nixosGenerate {
                 format = "vm";
-                specialArgs = { inherit inputs; };
-                modules = [ hostModule ./environments/vm.nix ];
+                modules = [ ./environments/vm.nix ];
               };
             })
           { }
