@@ -10,7 +10,11 @@
     isNormalUser = true;
     description = "Kira Bruneau";
     extraGroups =
-      [ "wheel" "audio" ]
+      [
+        "audio" # set higher memlock limit for yabridge
+        "dialout" # access to serial devices (eg. CEC)
+        "wheel" # admin privileges
+      ]
       ++ lib.optional config.programs.adb.enable "adbusers"
       ++ lib.optional config.services.kubo.enable "ipfs";
 
