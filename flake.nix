@@ -28,12 +28,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     kira-nur = {
       url = "gitlab:kira-bruneau/nur-packages";
       inputs = {
         flake-linter.follows = "flake-linter";
         flake-utils.follows = "flake-utils";
       };
+    };
+
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -46,7 +56,12 @@
             let name = lib.removeSuffix ".nix" file; in {
               inherit name;
               value = {
-                inherit inputs;
+                inputs = {
+                  steamdeck = inputs // {
+                    nixpkgs = inputs.nixpkgs-unstable;
+                    home-manager = inputs.home-manager-unstable;
+                  };
+                }.${name} or inputs;
 
                 module = {
                   imports = [ ./hosts/${file} ];

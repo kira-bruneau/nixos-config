@@ -14,6 +14,7 @@
         "dialout" # access to serial devices (eg. CEC)
         "wheel" # admin privileges
       ]
+      ++ lib.optional config.networking.networkmanager.enable "networkmanager"
       ++ lib.optional config.programs.adb.enable "adbusers"
       ++ lib.optional config.services.kubo.enable "ipfs";
 
@@ -27,7 +28,7 @@
   home-manager.users.kira = ../home/hosts/${config.system.name}.nix;
 
   services.syncthing = {
-    enable = true;
+    enable = builtins.elem config.system.name [ "aurora" "luna" "quartz" ];
     user = "kira";
     group = "users";
     dataDir = "/home/kira";
