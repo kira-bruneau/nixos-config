@@ -58,7 +58,7 @@
               {
                 networking.hostName = host;
               }
-              (path + "/hardware.nix")
+              (path + "/hardware")
               path
             ];
           })
@@ -68,7 +68,7 @@
         (packages: host:
           let
             path = hosts.${host};
-            config = (import (path + "/hardware.nix") {
+            config = (import (path + "/hardware/generated.nix") {
               pkgs = nixpkgs.legacyPackages.${system};
               modulesPath = nixpkgs + "/modules";
               inherit config lib;
@@ -99,10 +99,6 @@
                           });
                         })
                       ];
-
-                      # Disable disk-specific configuration
-                      boot.resumeDevice = lib.mkForce "";
-                      disko.enableConfig = false;
 
                       # Disable wpa_supplicant (I use iwd)
                       networking.wireless.enable = false;

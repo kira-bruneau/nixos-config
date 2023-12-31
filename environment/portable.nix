@@ -1,11 +1,6 @@
 { ... }:
 
 {
-  imports = [
-    ./wifi.nix
-    ./bluetooth.nix
-  ];
-
   location.provider = "geoclue2";
 
   # Disable unused geoclue sources
