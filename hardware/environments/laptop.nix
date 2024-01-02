@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
@@ -18,6 +18,18 @@ in
       scroll_factor 0.25
     }
   '';
+
+  programs.dconf.profiles = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
+    user.databases = [
+      {
+        settings = with lib.gvariant; {
+          "org/gnome/desktop/peripherals/touchpad" = {
+            natural-scroll = true;
+          };
+        };
+      }
+    ];
+  };
 
   # Use brightnessctl for controlling backlight
   environment.etc."sway/config.d/backlight-controls.conf".text = ''
