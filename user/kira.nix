@@ -52,6 +52,7 @@
           path = "~/Auth";
           ignorePerms = false;
           rescanIntervalS = 86400;
+          fsWatcherDelayS = 0.01;
           versioning = {
             type = "staggered";
             params.maxAge = "31536000";
@@ -64,6 +65,7 @@
           path = "~/Dev";
           ignorePerms = false;
           rescanIntervalS = 86400;
+          fsWatcherDelayS = 0.01;
           versioning = {
             type = "staggered";
             params.maxAge = "604800";
@@ -76,6 +78,7 @@
           path = "~/Documents";
           ignorePerms = false;
           rescanIntervalS = 86400;
+          fsWatcherDelayS = 0.01;
           versioning = {
             type = "staggered";
             params.maxAge = "31536000";
@@ -88,6 +91,7 @@
           path = "~/Pictures";
           ignorePerms = false;
           rescanIntervalS = 86400;
+          fsWatcherDelayS = 0.01;
           versioning = {
             type = "staggered";
             params.maxAge = "31536000";
@@ -100,6 +104,7 @@
           path = "~/Videos";
           ignorePerms = false;
           rescanIntervalS = 86400;
+          fsWatcherDelayS = 0.01;
           versioning = {
             type = "staggered";
             params.maxAge = "31536000";
