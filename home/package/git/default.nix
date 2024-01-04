@@ -9,7 +9,7 @@
       init.defaultBranch = "main";
 
       core = {
-        fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
+        fsmonitor = true;
         whitespace = "cr-at-eol";
       };
 
