@@ -30,7 +30,7 @@ in
                 }];
                 icon = "${pkgs.fetchurl {
                   url = "https://github.githubassets.com/favicons/favicon.svg";
-                  sha256 = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
+                  hash = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
                 }}";
                 definedAliases = [ "@gh" ];
               };
@@ -77,7 +77,7 @@ in
                 }];
                 icon = "${pkgs.fetchurl {
                   url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
-                  sha256 = "sha256-WiXqffmuCVCOJ/rpqyhFK59bz1lKnUOp9/aoEAYRsn0=";
+                  hash = "sha256-4zWTcHuL1SEKk8KyVFsOKYPbM4rc7WNa9KrGhK4dJyg=";
                 }}";
                 definedAliases = [ "@r" ];
               };
@@ -88,8 +88,8 @@ in
                   params = [{ name = "search_query"; value = "{searchTerms}"; }];
                 }];
                 icon = "${pkgs.fetchurl {
-                  url = "www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
-                  sha256 = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
+                  url = "https://www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
+                  hash = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
                 }}";
                 definedAliases = [ "@y" ];
               };
