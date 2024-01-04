@@ -9,12 +9,6 @@ in
     ./portable.nix
   ];
 
-  # Automatically control frequency of CPU to save power
-  services.auto-cpufreq.enable = true;
-
-  # Disable tlp being enabled from common-pc-laptop in nixos-hardware
-  services.tlp.enable = false;
-
   # Touchpad configuration
   environment.etc."sway/config.d/touchpad.conf".text = ''
     input type:touchpad {

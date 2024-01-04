@@ -130,8 +130,6 @@
                       environment.etc."sway/config.d/io.conf".text = ''
                         output "*" scale 2
                       '';
-
-                      services.auto-cpufreq.enable = lib.mkVMOverride false;
                     }
                     path
                   ];
