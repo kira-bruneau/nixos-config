@@ -1,5 +1,12 @@
 { pkgs, ... }:
 
+
+let
+  mario64Rom = pkgs.fetchurl {
+    url = "https://ipfs.io/ipfs/QmWGw3Qu72FYoPpBTKMDJqsmhBnieBsXGkimGRd5bRBUDe";
+    hash = "sha256-F84Hc0PGEz+Mny1tbZpKtiyM0qpXxArqH0kLTIuyHZE=";
+  };
+in
 {
   imports = [
     ../package/lutris
@@ -16,6 +23,11 @@
       makeFlags = attrs.makeFlags ++ [
         "BETTERCAMERA=1"
       ];
+
+      preBuild = ''
+        patchShebangs extract_assets.py
+        ln -s ${mario64Rom} ./baserom.us.z64
+      '';
     }))
     steam
     steam-run
@@ -43,4 +55,8 @@
     { class = "^dolphin-emu$"; }
     { class = "^Steam$"; }
   ];
+
+  home.file = {
+    "Games/ROMs/Super Mario 64.z64".source = mario64Rom;
+  };
 }
