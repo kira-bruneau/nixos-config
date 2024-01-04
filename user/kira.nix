@@ -66,7 +66,7 @@
           path = "~/Dev";
           ignorePerms = false;
           rescanIntervalS = 86400;
-          fsWatcherDelayS = 0.01;
+          fsWatcherDelayS = 1;
           versioning = {
             type = "staggered";
             params.maxAge = "604800";
