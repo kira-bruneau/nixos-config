@@ -7,7 +7,7 @@ let
 in
 {
   nixpkgs.overlays = [
-    inputs.my-nur.overlays.default
+    inputs.kira-nur.overlays.default
   ];
 
   imports = [

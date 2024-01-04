@@ -5,7 +5,7 @@ with lib;
 {
   options.home.configDirectory = mkOption {
     type = types.path;
-    default = "${config.home.homeDirectory}/Dev/public/home-config";
+    default = "${config.home.homeDirectory}/Dev/public/nixos-config/home";
   };
 
   config.home.activation.seedHomeConfig =
