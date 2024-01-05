@@ -17,7 +17,6 @@
     '';
 
     systemPackages = with pkgs; [
-      xdg-utils
       gnome.adwaita-icon-theme
     ];
 
