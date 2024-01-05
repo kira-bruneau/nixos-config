@@ -61,17 +61,17 @@
           let
             path = hosts.${host};
             config = (import (path + "/hardware/generated.nix") {
-              pkgs = nixpkgs.legacyPackages.${system};
               modulesPath = nixpkgs + "/modules";
-              inherit config lib;
+              inherit config lib pkgs;
             });
 
             system = config.nixpkgs.hostPlatform.content;
+            pkgs = nixpkgs.legacyPackages.${system};
           in
             packages // {
               ${system} = (packages.${system} or {}) // {
                 "${host}/install-iso" = nixos-generators.nixosGenerate {
-                  pkgs = nixpkgs.legacyPackages.${system};
+                  inherit pkgs;
                   format = "install-iso";
                   specialArgs = { inherit inputs; };
                   modules = [
@@ -102,7 +102,7 @@
                   ];
                 };
                 "${host}/vm" = nixos-generators.nixosGenerate {
-                  pkgs = nixpkgs.legacyPackages.${system};
+                  inherit pkgs;
                   format = "vm";
                   specialArgs = { inherit inputs; };
                   modules = [
@@ -113,6 +113,7 @@
                       virtualisation = {
                         memorySize = 1024 * 12;
                         qemu.options = [
+                          "-smp $(${pkgs.coreutils}/bin/nproc)"
                           "-device virtio-vga-gl"
                           "-display gtk,gl=on"
                         ];
