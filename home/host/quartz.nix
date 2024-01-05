@@ -20,7 +20,6 @@
       "clonehero-unwrapped"
       "data.zip"
       "discord"
-      "runescape-launcher"
       "sm64ex"
       "steam"
       "steam-original"
