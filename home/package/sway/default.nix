@@ -9,16 +9,8 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
 
   # Randomly choose a wallpaper in ~/Pictures/Wallpapers
-  random-wallpaper = pkgs.writeScript "random-wallpaper" ''
-    #!${pkgs.python3}/bin/python
-
-    import glob
-    import os
-    import random
-    from pathlib import Path
-
-    wallpapers = os.path.join(Path.home(), 'Pictures/Wallpapers')
-    print(random.choice(glob.glob("{}/*.*".format(wallpapers))))
+  random-wallpaper = pkgs.writeShellScript "random-wallpaper" ''
+    ${pkgs.findutils}/bin/find ~/Pictures/Wallpapers -type f | ${pkgs.coreutils}/bin/shuf -n 1
   '';
 
   lock = pkgs.writeShellScript "lock" ''
