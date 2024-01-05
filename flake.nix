@@ -111,7 +111,7 @@
                     }
                     {
                       virtualisation = {
-                        memorySize = 1024 * 12;
+                        memorySize = 1024 * 4;
                         qemu.options = [
                           "-smp $(${pkgs.coreutils}/bin/nproc)"
                           "-device virtio-vga-gl"
