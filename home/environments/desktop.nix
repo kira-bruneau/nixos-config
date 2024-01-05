@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../environments/common.nix
+    ../environments/wallpapers.nix
 
     # Window managers
     ../programs/sway
