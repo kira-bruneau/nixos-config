@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ../../environment/config.nix
     ../aspell
     ../gpg
   ];

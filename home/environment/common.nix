@@ -20,7 +20,6 @@ in
     ../package/htop
     ../package/ssh
     ../package/tmux
-    ./seed-home-config.nix
   ];
 
   home.packages = with pkgs; [

@@ -4,6 +4,10 @@ let
   newsflash = pkgs.newsflash;
 in
 {
+  imports = [
+    ../../environment/config.nix
+  ];
+
   home.packages = [ newsflash ];
 
   # Manage newsflash config outside of home-manager while keeping track of the files in this git repo

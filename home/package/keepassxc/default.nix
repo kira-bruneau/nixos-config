@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../environment/config.nix
+  ];
+
   home.packages = with pkgs; [
     keepassxc
   ];
