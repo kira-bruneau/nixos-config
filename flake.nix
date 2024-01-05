@@ -131,6 +131,8 @@
                       environment.etc."sway/config.d/io.conf".text = ''
                         output "*" scale 2
                       '';
+
+                      services.syncthing.enable = lib.mkForce false;
                     }
                     path
                   ];
