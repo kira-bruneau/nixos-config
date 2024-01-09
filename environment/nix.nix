@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 
 {
   nix = {
@@ -14,6 +14,13 @@
       keep-going = true;
     };
   };
+
+  system.nixos.label = builtins.concatStringsSep "-"
+    (config.system.nixos.tags ++ [
+      (if inputs.self ? shortRev
+       then inputs.self.shortRev
+       else inputs.self.dirtyShortRev)
+    ]);
 
   programs.git.enable = true;
 }
