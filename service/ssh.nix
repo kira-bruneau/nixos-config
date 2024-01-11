@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   services.openssh = {
     enable = true;
@@ -16,4 +14,8 @@
       PermitRootLogin = "no";
     };
   };
+
+  programs.ssh.extraConfig = ''
+    IdentityFile /etc/ssh/ssh_host_ed25519_key
+  '';
 }

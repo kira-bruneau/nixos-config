@@ -1,6 +1,10 @@
 { inputs, config, pkgs, ... }:
 
 {
+  imports = [
+    ../program/ssh.nix
+  ];
+
   system.nixos.label = builtins.concatStringsSep "-"
     (config.system.nixos.tags ++ [
       (if inputs.self ? shortRev
@@ -48,17 +52,6 @@
           ${config.networking.hostName} private-key public-key
       fi
     )'';
-  };
-
-  programs.ssh = {
-    knownHosts = {
-      aurora.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDG2wKEtIS2KuoXr4uNAzwTLvkyjrLX9zonE3pZB2pdH";
-      quartz.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPBPD66/axLTeJHQ+lLmOSJT2VQyESnk5VRr7Rkx4BET";
-    };
-
-    extraConfig = ''
-      IdentityFile /etc/ssh/ssh_host_ed25519_key
-    '';
   };
 
   programs.git.enable = true;
