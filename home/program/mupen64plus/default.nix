@@ -17,7 +17,7 @@
     dataFile = {
       # Manage mupen64plus data directory outside of home-manager (synced with Syncthing)
       mupen64plus.source = config.lib.file.mkOutOfStoreSymlink
-        "${config.home.configDirectory}/package/mupen64plus/share/mupen64plus";
+        "${config.home.configDirectory}/program/mupen64plus/share/mupen64plus";
 
       "applications/mupen64plus".source = ./share/applications/mupen64plus;
       "icons/majoras-mask.png".source = ./share/icons/majoras-mask.png;

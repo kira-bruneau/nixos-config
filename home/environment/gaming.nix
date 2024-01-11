@@ -9,8 +9,8 @@ let
 in
 {
   imports = [
-    ../package/lutris
-    ../package/mupen64plus
+    ../program/lutris
+    ../program/mupen64plus
   ];
 
   home.packages = with pkgs; [

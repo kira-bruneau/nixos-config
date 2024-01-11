@@ -12,7 +12,7 @@ in
 
   # Manage newsflash config outside of home-manager while keeping track of the files in this git repo
   xdg.configFile."news-flash/newsflash_gtk.json".source = config.lib.file.mkOutOfStoreSymlink
-    "${config.home.configDirectory}/package/newsflash/newsflash_gtk.json";
+    "${config.home.configDirectory}/program/newsflash/newsflash_gtk.json";
 
   wayland.windowManager.sway.config = {
     startup = [{ command = "${newsflash}/bin/io.gitlab.news_flash.NewsFlash"; }];

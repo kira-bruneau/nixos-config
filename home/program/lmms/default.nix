@@ -13,10 +13,10 @@
     file = {
       # Manage lmms config outside of home-manager (synced with Syncthing)
       ".lmms".source = config.lib.file.mkOutOfStoreSymlink
-        "${config.home.configDirectory}/package/lmms/.lmms";
+        "${config.home.configDirectory}/program/lmms/.lmms";
 
       ".lmmsrc.xml".source = config.lib.file.mkOutOfStoreSymlink
-        "${config.home.configDirectory}/package/lmms/.lmmsrc.xml";
+        "${config.home.configDirectory}/program/lmms/.lmmsrc.xml";
     };
   };
 }

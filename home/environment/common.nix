@@ -11,15 +11,15 @@ in
   ];
 
   imports = [
-    ../package/bash
-    ../package/direnv
-    ../package/emacs
-    ../package/fzf
-    ../package/git
-    ../package/gpg
-    ../package/htop
-    ../package/ssh
-    ../package/tmux
+    ../program/bash
+    ../program/direnv
+    ../program/emacs
+    ../program/fzf
+    ../program/git
+    ../program/gpg
+    ../program/htop
+    ../program/ssh
+    ../program/tmux
   ];
 
   home.packages = with pkgs; [

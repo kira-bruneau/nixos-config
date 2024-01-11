@@ -14,6 +14,6 @@
 
     # Manage known_hosts outside of home-manager (synced with Syncthing)
     userKnownHostsFile = builtins.toString (config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/package/ssh/known_hosts");
+      "${config.home.configDirectory}/program/ssh/known_hosts");
   };
 }

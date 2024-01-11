@@ -5,28 +5,28 @@
     ../environment/common.nix
 
     # Window managers
-    ../package/sway
+    ../program/sway
 
     # Web
-    ../package/firefox
-    ../package/jellyfin
-    ../package/newsflash
+    ../program/firefox
+    ../program/jellyfin
+    ../program/newsflash
 
     # Media & Documents
-    ../package/anytype
-    ../package/emacs
-    ../package/loupe
-    ../package/evince
-    ../package/keepassxc
-    ../package/lmms
-    ../package/mpv
+    ../program/anytype
+    ../program/emacs
+    ../program/loupe
+    ../program/evince
+    ../program/keepassxc
+    ../program/lmms
+    ../program/mpv
 
     # Themes
-    ../package/gtk
+    ../program/gtk
 
     # Utils
-    ../package/speedcrunch
-    ../package/gnome-pomodoro
+    ../program/speedcrunch
+    ../program/gnome-pomodoro
   ];
 
   home.packages = with pkgs; [
