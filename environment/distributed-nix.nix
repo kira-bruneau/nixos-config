@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   nix = {
@@ -21,7 +21,19 @@
     settings = {
       builders-use-substitutes = true;
       fallback = true;
+      secret-key-files = "/var/lib/nix-daemon/private-key";
     };
+  };
+
+  systemd.services.nix-daemon = {
+    serviceConfig.StateDirectory = "nix-daemon";
+    preStart = ''(
+      cd /var/lib/nix-daemon
+      if [ ! -e private-key ] || [ ! -e public-key ]; then
+        ${pkgs.nix}/bin/nix-store --generate-binary-cache-key \
+          ${config.networking.hostName} private-key public-key
+      fi
+    )'';
   };
 
   programs.ssh = {
