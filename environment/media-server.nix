@@ -75,6 +75,8 @@ let
     Preferences = {
       "WebUI\\Port" = 8000;
       "WebUI\\LocalHostAuth" = false;
+      "WebUI\\AuthSubnetWhitelistEnabled" = true;
+      "WebUI\\AuthSubnetWhitelist" = "0.0.0.0/0";
       "WebUI\\AlternativeUIEnabled" = true;
       "WebUI\\RootFolder" = pkgs.fetchzip {
         url = "https://github.com/WDaan/VueTorrent/releases/download/v2.2.0/vuetorrent.zip";
@@ -206,10 +208,7 @@ in
     preStart = ''
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
         <Config>
-          <!--
-           https://forums.sonarr.tv/t/bad-request-invalid-host-error-when-bind-ip-127-0-0-1/31233
-           <BindAddress>localhost</BindAddress>
-          -->
+          <BindAddress>*</BindAddress>
           <AnalyticsEnabled>False</AnalyticsEnabled>
           <ApiKey>${sonarr.apiKey}</ApiKey>
         </Config>
@@ -316,9 +315,8 @@ in
     preStart = ''
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
         <Config>
-          <BindAddress>localhost</BindAddress>
-          <AuthenticationMethod>Forms</AuthenticationMethod>
-          <AuthenticationRequired>DisabledForLocalAddresses</AuthenticationRequired>
+          <BindAddress>*</BindAddress>
+          <AuthenticationMethod>External</AuthenticationMethod>
           <AnalyticsEnabled>False</AnalyticsEnabled>
           <ApiKey>${radarr.apiKey}</ApiKey>
         </Config>
@@ -399,9 +397,8 @@ in
     preStart = ''
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
         <Config>
-          <BindAddress>localhost</BindAddress>
-          <AuthenticationMethod>Forms</AuthenticationMethod>
-          <AuthenticationRequired>DisabledForLocalAddresses</AuthenticationRequired>
+          <BindAddress>*</BindAddress>
+          <AuthenticationMethod>External</AuthenticationMethod>
           <AnalyticsEnabled>False</AnalyticsEnabled>
           <ApiKey>${prowlarr.apiKey}</ApiKey>
         </Config>
