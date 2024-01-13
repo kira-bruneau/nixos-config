@@ -11,7 +11,6 @@
     extraGroups =
       [
         "audio" # set higher memlock limit for yabridge
-        "dialout" # access to serial devices (eg. CEC)
         "wheel" # admin privileges
       ]
       ++ lib.optional config.networking.networkmanager.enable "networkmanager"
