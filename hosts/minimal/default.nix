@@ -1,5 +1,0 @@
-{
-  imports = [
-    ../../environments/common.nix
-  ];
-}

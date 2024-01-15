@@ -1,10 +1,10 @@
 {
   imports = [
-    ../../environments/desktop.nix
-    ../../environments/gaming.nix
-    ../../services/kubo.nix
-    ../../users/builder.nix
-    ../../users/kira.nix
+    ../environments/desktop.nix
+    ../environments/gaming.nix
+    ../services/kubo.nix
+    ../users/builder.nix
+    ../users/kira.nix
   ];
 
   system.stateVersion = "22.11";
@@ -20,7 +20,7 @@
     };
 
     config = {
-      imports = [ ../../environments/media-server.nix ];
+      imports = [ ../environments/media-server.nix ];
       system.stateVersion = "22.11";
       fonts.fontconfig.enable = false;
     };

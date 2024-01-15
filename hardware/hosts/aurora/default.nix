@@ -3,8 +3,8 @@
 {
   imports = [
     ./generated.nix
-    ../../../hardware/wifi.nix
-    ../../../hardware/bluetooth.nix
+    ../../environments/wifi.nix
+    ../../environments/bluetooth.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [
     framework-11th-gen-intel
   ]);

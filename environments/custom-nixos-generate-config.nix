@@ -60,7 +60,7 @@ let
       if [ $show_hardware_config -ne 0 ]; then
         nixos-generate-config "''${args[@]}"
       else
-        out="$dir/hosts/$(hostname)/hardware/generated.nix"
+        out="$dir/hardware/hosts/$(hostname)/generated.nix"
         echo "writing $out..." >&2
         mkdir -p "$(dirname "$out")"
         nixos-generate-config "''${args[@]}" > "$out"

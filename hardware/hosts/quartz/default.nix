@@ -3,7 +3,7 @@
 {
   imports = [
     ./generated.nix
-    ../../../hardware/bluetooth.nix
+    ../../environments/bluetooth.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [
     common-cpu-amd
     common-gpu-amd
