@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
+let
+  resources = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.resources;
+in
 {
   imports = [
     ../environment/common.nix
@@ -35,6 +38,7 @@
     helvum
     iwgtk
     pavucontrol
+    resources
 
     # Web
     qbittorrent
@@ -150,6 +154,22 @@
   };
 
   programs.waybar.settings.mainBar = {
+    cpu = {
+      on-click = "${resources}/bin/resources";
+    };
+
+    memory = {
+      on-click = "${resources}/bin/resources";
+    };
+
+    disk = {
+      on-click = "${resources}/bin/resources";
+    };
+
+    temperature = {
+      on-click = "${resources}/bin/resources";
+    };
+
     network = {
       on-click = "${pkgs.iwgtk}/bin/iwgtk";
     };
