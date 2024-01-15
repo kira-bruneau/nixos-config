@@ -33,7 +33,7 @@
     let
       lib = nixpkgs.lib;
 
-      hostsDir = ./host;
+      hostsDir = ./hosts;
 
       hosts = builtins.listToAttrs
         (builtins.map
