@@ -7,7 +7,6 @@
 , makeWrapper
 , emacs
 , profile
-, makeWrapperArgs ? [ ]
 }:
 
 let
@@ -50,11 +49,18 @@ let
       done < <("$SHELL" -ilc '${coreutils}/bin/env -0')
     fi
   '';
+
+  makeWrapperArgs = [
+    "--prefix NIX_PROFILES ' ' ${profile}"
+    "--prefix PATH : ${profile}/bin"
+    "--add-flags '--init-directory=${../config}'"
+  ];
 in
 runCommand
   "${emacs.name}-profile-wrapper"
   {
     nativeBuildInputs = [ makeWrapper ];
+    meta.mainProgram = "emacs";
   }
   ''
     mkdir "$out"
@@ -66,8 +72,6 @@ runCommand
     for bin in $(basename "$out"/bin/emacs-*) emacsclient; do
       rm "$out"/bin/"$bin"
       makeWrapper ${emacs}/bin/"$bin" "$out"/bin/"$bin" \
-        --prefix NIX_PROFILES ' ' ${profile} \
-        --prefix PATH : ${profile}/bin \
         ${lib.concatStringsSep " " makeWrapperArgs}
     done
 
@@ -93,8 +97,6 @@ runCommand
       makeWrapper ${emacs}/Applications/Emacs.app/Contents/MacOS/Emacs "$out"/Applications/Emacs.app/Contents/MacOS/Emacs \
         --run ${lib.escapeShellArg shellEnv} \
         ${lib.optionalString (lib.hasInfix "emacs-mac" emacs.name) "--set EMACS_REINVOKED_FROM_SHELL 1"} \
-        --prefix NIX_PROFILES ' ' ${profile} \
-        --prefix PATH : ${profile}/bin \
         ${lib.concatStringsSep " " makeWrapperArgs}
     fi
   ''

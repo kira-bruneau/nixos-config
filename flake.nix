@@ -83,7 +83,13 @@
           (builtins.attrNames hosts));
     } // flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          overlays = [
+            inputs.kira-nur.overlays.default
+          ];
+
+          inherit system;
+        };
 
         flake-linter-lib = flake-linter.lib.${system};
 
@@ -124,7 +130,9 @@
           inherit (linter) fix;
         };
 
-        packages = builtins.foldl'
+        packages = {
+          emacs = pkgs.callPackage ./home/programs/emacs/package { };
+        } // builtins.foldl'
           (packages: hostName:
             let hostModule = hosts.${hostName}; in
             packages // {

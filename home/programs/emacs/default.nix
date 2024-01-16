@@ -18,13 +18,9 @@ in
     sessionVariables.EDITOR = "emacseditor";
   };
 
-  xdg = {
-    configFile.emacs.source = ./config;
-
-    mimeApps.defaultApplications = {
-      "text/plain" = "emacsclient.desktop";
-      "inode/directory" = "emacsclient.desktop";
-    };
+  xdg.mimeApps.defaultApplications = {
+    "text/plain" = "emacsclient.desktop";
+    "inode/directory" = "emacsclient.desktop";
   };
 
   wayland.windowManager.sway.config = {

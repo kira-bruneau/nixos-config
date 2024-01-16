@@ -15,3 +15,7 @@ My NixOS configuration
 | `programs`                   | Configuration for programs                                                   |
 | `services`                   | Configuration for self-contained services                                    |
 | `users`                      | Configuration for users on my system                                         |
+
+This repo used to only host my Emacs config, which can still be found
+under [./home/programs/emacs/config](./home/programs/emacs/config) and
+run with `nix run gitlab:kira-bruneau/nixos-config#emacs`.
