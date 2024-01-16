@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 
 let
@@ -16,7 +16,7 @@ in
   home.packages = with pkgs; [
     # Games & Launchers
     clonehero
-    pokemmo-installer
+    inputs.kira-nur.packages.${pkgs.system}.pokemmo-installer
     prismlauncher
     protontricks
     (sm64ex.overrideAttrs (attrs: {

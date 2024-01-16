@@ -6,10 +6,6 @@ let
   '';
 in
 {
-  nixpkgs.overlays = [
-    inputs.kira-nur.overlays.default
-  ];
-
   imports = [
     ../programs/bash
     ../programs/direnv

@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 let
-  emacs = pkgs.callPackage ./package { };
+  emacs = pkgs.callPackage ./package {
+    ggt = inputs.kira-nur.packages.${pkgs.system}.ggt;
+  };
 in
 {
   imports = [

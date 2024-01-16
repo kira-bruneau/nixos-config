@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.disko.nixosModules.disko
-    inputs.kira-nur.nixosModules.overlay
     ../cachix.nix
     ../services/dnscrypt.nix
     ../services/ssh.nix

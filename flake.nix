@@ -33,7 +33,6 @@
       inputs = {
         flake-linter.follows = "flake-linter";
         flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
       };
     };
 
@@ -83,13 +82,7 @@
           (builtins.attrNames hosts));
     } // flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs {
-          overlays = [
-            inputs.kira-nur.overlays.default
-          ];
-
-          inherit system;
-        };
+        pkgs = nixpkgs.legacyPackages.${system};
 
         flake-linter-lib = flake-linter.lib.${system};
 
@@ -131,7 +124,9 @@
         };
 
         packages = {
-          emacs = pkgs.callPackage ./home/programs/emacs/package { };
+          emacs = pkgs.callPackage ./home/programs/emacs/package {
+            ggt = inputs.kira-nur.packages.${system}.ggt;
+          };
         } // builtins.foldl'
           (packages: hostName:
             let hostModule = hosts.${hostName}; in
