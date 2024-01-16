@@ -12,7 +12,7 @@
       ];
     };
 
-    groups.builder = {};
+    groups.builder = { };
   };
 
   nix.settings.trusted-users = [ "builder" ];

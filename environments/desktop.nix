@@ -132,7 +132,8 @@
             exec "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP; ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -b ${transparent} -s ${style}"
             include /etc/sway/config.d/*
           '';
-        in "sway --config ${gtkgreet-sway-config}";
+        in
+        "sway --config ${gtkgreet-sway-config}";
     };
   };
 

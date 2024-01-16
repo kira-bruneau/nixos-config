@@ -1,5 +1,5 @@
 {
-  users.groups.audio = {};
+  users.groups.audio = { };
 
   security.pam.loginLimits = [
     {

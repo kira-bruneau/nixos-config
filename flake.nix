@@ -2,7 +2,15 @@
   description = "My NixOS configuration";
 
   inputs = {
-    systems.url = "github:nix-systems/default";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    flake-linter = {
+      url = "gitlab:kira-bruneau/flake-linter";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
@@ -22,7 +30,11 @@
 
     kira-nur = {
       url = "gitlab:kira-bruneau/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-linter.follows = "flake-linter";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     nixos-generators = {
@@ -31,9 +43,8 @@
     };
   };
 
-  outputs = { systems, nixpkgs, nixos-generators, ... } @ inputs:
+  outputs = { flake-utils, flake-linter, nixpkgs, nixos-generators, ... } @ inputs:
     let
-      eachSystem = nixpkgs.lib.genAttrs (import systems);
       lib = nixpkgs.lib;
       hosts = builtins.listToAttrs
         (builtins.map
@@ -70,14 +81,52 @@
             else [ ]
           )
           (builtins.attrNames hosts));
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
 
-      packages = eachSystem (system:
-        builtins.foldl'
+        flake-linter-lib = flake-linter.lib.${system};
+
+        paths = flake-linter-lib.partitionToAttrs
+          flake-linter-lib.commonPaths
+          (builtins.filter
+            (path:
+              (builtins.all
+                (ignore: !(nixpkgs.lib.hasSuffix ignore path))
+                [
+                  "cachix.nix"
+                  "generated.nix"
+                ]))
+            (flake-linter-lib.walkFlake ./.));
+
+        linter = flake-linter-lib.makeFlakeLinter {
+          root = ./.;
+          settings = {
+            markdownlint = {
+              paths = paths.markdown;
+              settings = {
+                MD013 = false;
+                MD033 = false;
+              };
+            };
+
+            nixpkgs-fmt.paths = paths.nix;
+            prettier.paths = paths.markdown;
+          };
+        };
+      in
+      {
+        checks = {
+          flake-linter = linter.check;
+        };
+
+        apps = {
+          inherit (linter) fix;
+        };
+
+        packages = builtins.foldl'
           (packages: hostName:
-            let
-              hostModule = hosts.${hostName};
-              pkgs = nixpkgs.legacyPackages.${system};
-            in
+            let hostModule = hosts.${hostName}; in
             packages // {
               "${hostName}/install-iso" = nixos-generators.nixosGenerate {
                 inherit system;
@@ -144,7 +193,6 @@
               };
             })
           { }
-          (builtins.attrNames hosts)
-      );
-    };
+          (builtins.attrNames hosts);
+      });
 }

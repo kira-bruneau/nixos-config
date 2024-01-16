@@ -66,7 +66,7 @@
   };
 
   # Hibernation swapfile
-  swapDevices = [ { device = "/swapfile"; size = 64102; }];
+  swapDevices = [{ device = "/swapfile"; size = 64102; }];
 
   # Compress hibernation image as much as possible
   systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];
