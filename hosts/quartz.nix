@@ -5,6 +5,7 @@
     ../environments/gaming.nix
     ../environments/gui/sway.nix
     ../services/kubo.nix
+    ../services/minecraft/BigChadGuysPlus.nix
     ../users/builder.nix
     ../users/kira.nix
   ];
@@ -43,6 +44,7 @@
     "clonehero-unwrapped"
     "data.zip"
     "discord"
+    "minecraft-server"
     "sm64ex"
     "steam"
     "steam-original"

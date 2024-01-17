@@ -20,6 +20,22 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-linter": {
       "inputs": {
         "flake-utils": [
@@ -169,6 +185,30 @@
         "type": "github"
       }
     },
+    "nix-minecraft": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1708132460,
+        "narHash": "sha256-qINWCY4dq6Hzvxd3QY5OTKhE4FPsNSoas5thNwpttk4=",
+        "owner": "Infinidoge",
+        "repo": "nix-minecraft",
+        "rev": "e8109d2e605a376109d5329c428c8d2d933470f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Infinidoge",
+        "repo": "nix-minecraft",
+        "type": "github"
+      }
+    },
     "nix-software-center": {
       "inputs": {
         "nixpkgs": [
@@ -262,6 +302,7 @@
         "home-manager-unstable": "home-manager-unstable",
         "jovian": "jovian",
         "kira-nur": "kira-nur",
+        "nix-minecraft": "nix-minecraft",
         "nix-software-center": "nix-software-center",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",

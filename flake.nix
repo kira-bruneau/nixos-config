@@ -50,6 +50,14 @@
       url = "github:snowfallorg/nix-software-center";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs = { flake-utils, flake-linter, nixpkgs, ... } @ inputs:
