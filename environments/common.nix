@@ -13,6 +13,6 @@
   ];
 
   environment.systemPackages = [
-    inputs.disko.packages.${pkgs.stdenv.system}.default
+    inputs.disko.packages.${pkgs.system}.default
   ];
 }
