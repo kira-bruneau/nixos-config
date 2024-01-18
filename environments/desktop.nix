@@ -71,14 +71,14 @@
       default_session.command =
         let
           background = pkgs.fetchurl {
-            url = "https://cdna.artstation.com/p/assets/images/images/041/883/956/large/alena-aenami-wings-hd.jpg";
-            sha256 = "sha256-Taa/mlQ9wN5duE49jbXnLQXu5N9GiQQoew4F0wMFCTA=";
+            url = "https://cdn.artstation.com/p/assets/images/images/041/883/956/large/alena-aenami-wings-hd.jpg";
+            hash = "sha256-7VcxN7ZpCaK07YpJFitN3fmWmNNIL0y+VW2E0agd3QU=";
           };
 
           # TODO: Update gtkgreet to use transparent background when no background is specified
           transparent = pkgs.fetchurl {
             url = "https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png";
-            sha256 = "sha256-PrEHktHwx+B+ckgnNUDxlS2aWimW9LXfcKsCbNnwVRc=";
+            hash = "sha256-PrEHktHwx+B+ckgnNUDxlS2aWimW9LXfcKsCbNnwVRc=";
           };
 
           style = pkgs.writeText "gtkgreet.css" ''
