@@ -10,11 +10,15 @@
 
   system.stateVersion = "23.11";
 
-  jovian.steam = {
-    enable = true;
-    autoStart = true;
-    user = "kira";
-    desktopSession = "gnome";
+  jovian = {
+    steam = {
+      enable = true;
+      autoStart = true;
+      user = "kira";
+      desktopSession = "gnome";
+    };
+
+    decky-loader.enable = true;
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [

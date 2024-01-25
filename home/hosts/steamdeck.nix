@@ -15,6 +15,9 @@
     ];
   };
 
+  # Enable CEF remote debugging for decky-loader
+  xdg.dataFile."Steam/.cef-enable-remote-debugging".text = "";
+
   dconf.settings = {
     # Enable on-screen keyboard
     "org/gnome/desktop/a11y/applications" = {
