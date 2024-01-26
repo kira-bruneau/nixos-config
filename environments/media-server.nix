@@ -77,11 +77,6 @@ let
       "WebUI\\LocalHostAuth" = false;
       "WebUI\\AuthSubnetWhitelistEnabled" = true;
       "WebUI\\AuthSubnetWhitelist" = "0.0.0.0/0";
-      "WebUI\\AlternativeUIEnabled" = true;
-      "WebUI\\RootFolder" = pkgs.fetchzip {
-        url = "https://github.com/WDaan/VueTorrent/releases/download/v2.2.0/vuetorrent.zip";
-        hash = "sha256-f38pgSLMx51UafmkOputlathw11IMslEatsVpRo3AYM=";
-      };
     };
 
     BitTorrent = {
