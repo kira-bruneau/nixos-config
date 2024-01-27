@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 let
   swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
@@ -58,8 +58,8 @@ in
   ];
 
   wayland.windowManager.sway = {
-    package = pkgs.swayfx;
     enable = true;
+    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.swayfx;
     config =
       let
         cfg = config.wayland.windowManager.sway.config;
