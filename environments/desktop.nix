@@ -64,6 +64,10 @@
     wrapperFeatures.gtk = true;
   };
 
+  security.pam.loginLimits = [
+    { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+  ];
+
   # Enable gtkgreet greeter (using Sway as the Wayland compositor)
   services.greetd = {
     enable = true;
