@@ -135,64 +135,13 @@
                 inherit system;
                 format = "install-iso";
                 specialArgs = { inherit inputs; };
-                modules = [
-                  hostModule
-                  {
-                    # /etc/nixos is seeded with the contents of this flake
-                    installer.cloneConfig = false;
-
-                    # Disable ZFS support, it may not be compatible
-                    # with the configured kernel version
-                    nixpkgs.overlays = [
-                      (final: super: {
-                        zfs = super.zfs.overrideAttrs (_: {
-                          meta.platforms = [ ];
-                        });
-                      })
-                    ];
-
-                    # Disable wpa_supplicant (I use iwd)
-                    networking.wireless.enable = false;
-
-                    # Resolve conflict between install iso config and my host configs
-                    services.openssh.settings.PermitRootLogin = lib.mkForce "no";
-                  }
-                ];
+                modules = [ hostModule ./environments/install-iso.nix ];
               };
               "${hostName}/vm" = nixos-generators.nixosGenerate {
                 inherit system;
                 format = "vm";
                 specialArgs = { inherit inputs; };
-                modules = [
-                  hostModule
-                  {
-                    virtualisation = {
-                      memorySize = 1024 * 4;
-                      qemu.options = [
-                        "-smp $(${pkgs.coreutils}/bin/nproc)"
-                        "-device virtio-vga-gl"
-                        "-display gtk,gl=on,grab-on-hover=on"
-                      ];
-                    };
-
-                    systemd.network.networks.eth0 = {
-                      matchConfig.Name = "eth0";
-                      networkConfig.DHCP = "yes";
-                    };
-
-                    environment.sessionVariables = {
-                      WLR_NO_HARDWARE_CURSORS = "1";
-                    };
-
-                    environment.etc."sway/config.d/io.conf".text = ''
-                      output "*" scale 2
-                    '';
-
-                    services.openssh.enable = lib.mkForce false;
-                    services.syncthing.enable = lib.mkForce false;
-                    services.tailscale.enable = lib.mkForce false;
-                  }
-                ];
+                modules = [ hostModule ./environments/vm.nix ];
               };
             })
           { }
