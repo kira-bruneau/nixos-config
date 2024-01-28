@@ -59,7 +59,15 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
+
+    package = pkgs.sway.override {
+      sway-unwrapped = pkgs.swayfx.overrideAttrs (attrs: {
+        meta = attrs.meta // {
+          mainProgram = "sway";
+        };
+      });
+    };
+
     config =
       let
         cfg = config.wayland.windowManager.sway.config;
