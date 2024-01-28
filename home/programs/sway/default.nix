@@ -59,7 +59,7 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
-    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.swayfx;
+    package = pkgs.swayfx;
     config =
       let
         cfg = config.wayland.windowManager.sway.config;
