@@ -16,10 +16,16 @@
 
   nix = {
     # Pin nixpkgs in flake registry
-    registry.nixpkgs.flake = inputs.nixpkgs;
+    registry = {
+      nixpkgs.flake = inputs.nixpkgs;
+      nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+    };
 
     # Pin nixpkgs channel (for backwards compatibility with nix2 cli)
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = [
+      "nixpkgs=${inputs.nixpkgs}"
+      "nixpkgs-unstable=${inputs.nixpkgs}"
+    ];
 
     distributedBuilds = true;
     buildMachines = builtins.filter
