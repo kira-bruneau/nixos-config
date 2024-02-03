@@ -1,4 +1,4 @@
-{ inputs, pkgs, pkgsUnstable, pkgsKiraNur, ... }:
+{ inputs, config, pkgs, pkgsUnstable, pkgsKiraNur, ... }:
 
 {
   imports = [
@@ -15,7 +15,10 @@
 
   _module.args = {
     pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
-    pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+    pkgsUnstable = import inputs.nixpkgs-unstable {
+      system = pkgs.system;
+      config = config.nixpkgs.config;
+    };
   };
 
   home-manager = {
