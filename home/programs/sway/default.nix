@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";

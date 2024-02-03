@@ -1,7 +1,7 @@
-{ inputs, pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 let
-  resources = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.resources;
+  resources = pkgsUnstable.resources;
 in
 {
   imports = [

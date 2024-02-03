@@ -1,5 +1,4 @@
-{ inputs, pkgs, ... }:
-
+{ pkgs, pkgsKiraNur, ... }:
 
 let
   mario64Rom = pkgs.fetchurl {
@@ -16,7 +15,7 @@ in
   home.packages = with pkgs; [
     # Games & Launchers
     clonehero
-    inputs.kira-nur.packages.${pkgs.system}.pokemmo-installer
+    pkgsKiraNur.pokemmo-installer
     prismlauncher
     protontricks
     (sm64ex.overrideAttrs (attrs: {

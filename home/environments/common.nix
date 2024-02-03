@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 let
   whichf = pkgs.writeShellScriptBin "whichf" ''

@@ -1,8 +1,7 @@
-{ inputs, config, lib, ... }:
+{ config, lib, ... }:
 
 {
   imports = [
-    inputs.home-manager.nixosModules.default
     ../groups/audio.nix
   ];
 
@@ -25,11 +24,7 @@
     ];
   };
 
-  home-manager = {
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users.kira = ../home/hosts/${config.system.name}.nix;
-  };
+  home-manager.users.kira = ../home/hosts/${config.system.name}.nix;
 
   services.syncthing = {
     enable = true;

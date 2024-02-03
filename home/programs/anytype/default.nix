@@ -1,7 +1,7 @@
-{ inputs, pkgs, ... }:
+{ pkgsKiraNur, ... }:
 
 let
-  anytype = inputs.kira-nur.packages.${pkgs.system}.anytype;
+  anytype = pkgsKiraNur.anytype;
 in
 {
   home.packages = [ anytype ];

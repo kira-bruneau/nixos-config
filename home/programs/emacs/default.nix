@@ -1,8 +1,8 @@
-{ inputs, pkgs, ... }:
+{ pkgs, pkgsKiraNur, ... }:
 
 let
   emacs = pkgs.callPackage ./package {
-    ggt = inputs.kira-nur.packages.${pkgs.system}.ggt;
+    ggt = pkgsKiraNur.ggt;
   };
 in
 {
