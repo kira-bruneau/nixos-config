@@ -3,6 +3,7 @@
 {
   imports = [
     ../environments/dev.nix
+    ../environments/gui/sway.nix
     ../environments/laptop.nix
     ../environments/media-production.nix
     ../environments/office.nix

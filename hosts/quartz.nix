@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../environments/gui.nix
     ../environments/gaming.nix
+    ../environments/gui/sway.nix
     ../services/kubo.nix
     ../users/builder.nix
     ../users/kira.nix

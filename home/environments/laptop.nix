@@ -1,7 +1,7 @@
 {
   imports = [
     ./bluetooth.nix
-    ./gui.nix
+    ./gui
     ./wifi.nix
   ];
 

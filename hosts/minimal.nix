@@ -1,6 +1,6 @@
 {
   imports = [
-    ../environments/common.nix
+    ../environments/default.nix
   ];
 
   system.stateVersion = "23.11";

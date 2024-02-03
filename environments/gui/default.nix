@@ -1,0 +1,49 @@
+{ config, ... }:
+
+{
+  imports = [
+    ../.
+  ];
+
+  environment = {
+    # Source ~/.profile on login to properly set 'home.sessionVariables'
+    # with home-manager.
+    #
+    # See https://github.com/rycee/home-manager/issues/1011
+    loginShellInit = ''
+      if [ -e $HOME/.profile ]; then
+        . $HOME/.profile
+      fi
+    '';
+  };
+
+  # Quiet boot
+  # FIXME: This still shows fsck messages & NixOS messages from stage-1-init.sh & stage-2-init.sh scripts
+  boot = {
+    initrd.verbose = false;
+    consoleLogLevel = 3;
+    kernelParams = [
+      "quiet"
+      "rd.udev.log_level=3"
+    ];
+  };
+
+  # Let the desktop environment handle the power key
+  services.logind.extraConfig = "HandlePowerKey=ignore";
+
+  # Enable GUI for managing bluetooth
+  services.blueman.enable = config.hardware.bluetooth.enable;
+
+  # Enable automatic device mounting
+  services.devmon.enable = true;
+
+  # Disable bitmap fonts
+  fonts.fontconfig.allowBitmaps = false;
+
+  # Reduce priority of nix daemon on desktop systems so the system is
+  # still usable while a nix build is running
+  nix = {
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
+  };
+}

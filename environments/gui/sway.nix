@@ -1,21 +1,11 @@
-{ lib, config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ./common.nix
+    ./.
   ];
 
   environment = {
-    # Source ~/.profile on login to properly set 'home.sessionVariables'
-    # with home-manager.
-    #
-    # See https://github.com/rycee/home-manager/issues/1011
-    loginShellInit = ''
-      if [ -e $HOME/.profile ]; then
-        . $HOME/.profile
-      fi
-    '';
-
     systemPackages = with pkgs; [
       gnome.adwaita-icon-theme
     ];
@@ -42,20 +32,6 @@
       '';
     };
   };
-
-  # Quiet boot
-  # FIXME: This still shows fsck messages & NixOS messages from stage-1-init.sh & stage-2-init.sh scripts
-  boot = {
-    initrd.verbose = false;
-    consoleLogLevel = 3;
-    kernelParams = [
-      "quiet"
-      "rd.udev.log_level=3"
-    ];
-  };
-
-  # Let the desktop environment handle the power key
-  services.logind.extraConfig = "HandlePowerKey=ignore";
 
   # Enable Sway Wayland compositor
   programs.sway = {
@@ -162,9 +138,6 @@
   networking.useDHCP = false;
   systemd.network.enable = true;
 
-  # Enable GUI for managing bluetooth
-  services.blueman.enable = config.hardware.bluetooth.enable;
-
   # Enable xdg-desktop-portal (screen sharing)
   xdg.portal = {
     wlr.enable = true;
@@ -174,29 +147,10 @@
     ];
   };
 
-  # Enable automatic device mounting
-  services.devmon.enable = true;
-
-  # Enable DConf
-  programs.dconf.enable = true;
-
-  # Enable GNOME crypto services
-  services.dbus.packages = with pkgs; [ gcr ];
-
   # Enable GNOME virtual file system
   services.gvfs.enable = true;
 
   # Enable GNOME password manager
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
-
-  # Disable bitmap fonts
-  fonts.fontconfig.allowBitmaps = false;
-
-  # Reduce priority of nix daemon on desktop systems so the system is
-  # still usable while a nix build is running
-  nix = {
-    daemonCPUSchedPolicy = "idle";
-    daemonIOSchedClass = "idle";
-  };
 }

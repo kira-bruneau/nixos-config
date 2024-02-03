@@ -1,12 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 let
   swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
+
   grim = "${pkgs.grim}/bin/grim";
+  playerctl = "${pkgs.playerctl}/bin/playerctl";
   slurp = "${pkgs.slurp}/bin/slurp";
   wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
-  playerctl = "${pkgs.playerctl}/bin/playerctl";
 
   # Randomly choose a wallpaper in ~/Pictures/Wallpapers
   random-wallpaper = pkgs.writeShellScript "random-wallpaper" ''
@@ -50,11 +51,21 @@ let
 in
 {
   imports = [
-    ../alacritty
-    ../keepassxc
-    ../mako
-    ../rofi
-    ../waybar
+    ./.
+
+    # Media & Documents
+    ../../programs/evince
+    ../../programs/loupe
+    ../../programs/mpv
+
+    # Themes
+    ../../programs/gtk
+
+    # Utils
+    ../../programs/alacritty
+    ../../programs/mako
+    ../../programs/rofi
+    ../../programs/waybar
   ];
 
   wayland.windowManager.sway = {
@@ -95,7 +106,7 @@ in
           };
         };
 
-        seat = lib.mkIf (config.home.pointerCursor != null) {
+        seat = {
           "*" = {
             # TODO: Fractional scaling size doesn't match other app cursors
             # https://github.com/swaywm/sway/issues/5202
@@ -240,6 +251,35 @@ in
     ];
   };
 
+  programs.waybar.settings.mainBar = {
+    cpu = {
+      on-click = "${pkgsUnstable.resources}/bin/resources";
+    };
+
+    memory = {
+      on-click = "${pkgsUnstable.resources}/bin/resources";
+    };
+
+    disk = {
+      on-click = "${pkgsUnstable.resources}/bin/resources";
+    };
+
+    temperature = {
+      on-click = "${pkgsUnstable.resources}/bin/resources";
+    };
+
+    network = {
+      on-click = "${pkgs.iwgtk}/bin/iwgtk";
+    };
+
+    wireplumber = {
+      on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+      on-click-right = "${pkgs.helvum}/bin/helvum";
+    };
+  };
+
+  services.gpg-agent.pinentryFlavor = "gnome3";
+
   programs.gnome-pomodoro = {
     onstart = [ "${swaymsg} 'gaps inner all set 0, bar mode hide'" ];
     onend = [ "${swaymsg} 'gaps inner all set 10, bar mode dock'" ];
@@ -248,7 +288,44 @@ in
   };
 
   home.packages = with pkgs; [
+    # Administration
+    gnome.dconf-editor
+    helvum
+    iwgtk
+    pavucontrol
+    pkgsUnstable.resources
+
+    # Media & Documents
+    gnome.file-roller
+    gnome.nautilus
+
+    # Utils
+    gnome.gnome-clocks
+    libnotify
     wlprop
     wrap-scale-off
+    xdg-utils
+    yabridge
+    yabridgectl
+
+    # Nix
+    cachix
+    nix-bisect
+    nix-index
+    nix-init
+    nixpkgs-review
+    nurl
+    patchelf
+
+    # General development
+    binutils
+    file
+    linuxPackages.perf
+    tokei
+
+    # Debuggers
+    strace
+    tcpflow
+    valgrind
   ];
 }
