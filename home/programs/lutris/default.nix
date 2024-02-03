@@ -9,7 +9,7 @@ in
   ];
 
   home.packages = with pkgs; [
-    lutris
+    lutris-free
   ];
 
   xdg.configFile = {

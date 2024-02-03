@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  # Support for running 32bit games
-  # See https://nixos.wiki/wiki/Steam
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  programs.steam.enable = true;
+
+  # Open ports for steam local network game transfers
+  networking.firewall = {
+    allowedTCPPorts = [ 27040 ];
+    allowedUDPPortRanges = [ { from = 27031; to = 27036; } ];
+  };
 
   # Better driver for Xbox One controllers
   hardware.xpadneo.enable = true;

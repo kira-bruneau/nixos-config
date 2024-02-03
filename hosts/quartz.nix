@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   imports = [
     ../environments/desktop.nix
@@ -29,5 +31,11 @@
   networking.firewall.allowedTCPPorts = [
     8096
     5055
+  ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-run"
   ];
 }

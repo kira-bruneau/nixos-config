@@ -17,7 +17,7 @@ in
     clonehero
     pkgsKiraNur.pokemmo-installer
     prismlauncher
-    protontricks
+    pkgsKiraNur.protontricks
     (sm64ex.overrideAttrs (attrs: {
       makeFlags = attrs.makeFlags ++ [
         "BETTERCAMERA=1"
@@ -28,8 +28,6 @@ in
         ln -s ${mario64Rom} ./baserom.us.z64
       '';
     }))
-    steam
-    steam-run
     ukmm
     vvvvvv
 

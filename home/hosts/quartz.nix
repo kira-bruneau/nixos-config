@@ -21,9 +21,6 @@
       "data.zip"
       "discord"
       "sm64ex"
-      "steam"
-      "steam-original"
-      "steam-run"
       "unrar"
       "vvvvvv"
     ];
