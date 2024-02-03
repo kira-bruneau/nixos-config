@@ -2,6 +2,7 @@
 
 {
   programs.steam.enable = true;
+  environment.variables.STEAMOS = "1";
 
   # Open ports for steam local network game transfers
   networking.firewall = {
