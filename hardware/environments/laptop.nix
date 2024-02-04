@@ -5,8 +5,9 @@ let
 in
 {
   imports = [
-    ./desktop.nix
+    ./bluetooth.nix
     ./portable.nix
+    ./wifi.nix
   ];
 
   # Touchpad configuration
