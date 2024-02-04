@@ -3,9 +3,9 @@
 {
   imports = [
     ../environments/bluetooth.nix
-    ../environments/desktop.nix
     ../environments/dev.nix
     ../environments/gaming.nix
+    ../environments/gui.nix
     ../environments/media-production.nix
     ../environments/office.nix
   ];

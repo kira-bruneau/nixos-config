@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../environments/desktop.nix
+    ../environments/gui.nix
     ../environments/gaming.nix
     ../services/kubo.nix
     ../users/builder.nix
