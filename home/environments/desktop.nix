@@ -17,8 +17,6 @@ in
     ../programs/newsflash
 
     # Media & Documents
-    ../programs/anytype
-    ../programs/emacs
     ../programs/loupe
     ../programs/evince
     ../programs/keepassxc
@@ -51,18 +49,8 @@ in
     discord
 
     # Media & Documents
-    audacity
-    ffmpeg
-    gimp
     gnome.file-roller
     gnome.nautilus
-    gnucash
-    inkscape
-    libreoffice
-    poke
-    sqlitebrowser
-    xournalpp
-    zynaddsubfx
 
     # Fonts
     inter
@@ -71,28 +59,6 @@ in
     gnome.gnome-clocks
     libnotify
     xdg-utils
-    yabridge
-    yabridgectl
-
-    # Nix
-    cachix
-    nix-bisect
-    nix-index
-    nix-init
-    nixpkgs-review
-    nurl
-    patchelf
-
-    # General development
-    binutils
-    file
-    linuxPackages.perf
-    tokei
-
-    # Debuggers
-    strace
-    tcpflow
-    valgrind
   ];
 
   home = {

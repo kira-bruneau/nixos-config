@@ -4,7 +4,10 @@
   imports = [
     ../environments/bluetooth.nix
     ../environments/desktop.nix
+    ../environments/dev.nix
     ../environments/gaming.nix
+    ../environments/media-production.nix
+    ../environments/office.nix
   ];
 
   programs.waybar.settings.mainBar.temperature = {

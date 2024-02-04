@@ -8,10 +8,7 @@ in
 {
   imports = [
     ../programs/bash
-    ../programs/direnv
-    ../programs/emacs
     ../programs/fzf
-    ../programs/git
     ../programs/gpg
     ../programs/htop
     ../programs/ssh

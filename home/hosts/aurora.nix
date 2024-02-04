@@ -2,7 +2,10 @@
 
 {
   imports = [
+    ../environments/dev.nix
     ../environments/laptop.nix
+    ../environments/media-production.nix
+    ../environments/office.nix
   ];
 
   programs = {
