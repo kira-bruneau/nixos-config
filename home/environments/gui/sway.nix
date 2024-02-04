@@ -268,10 +268,6 @@ in
       on-click = "${pkgsUnstable.resources}/bin/resources";
     };
 
-    network = {
-      on-click = "${pkgs.iwgtk}/bin/iwgtk";
-    };
-
     wireplumber = {
       on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
       on-click-right = "${pkgs.helvum}/bin/helvum";
@@ -291,7 +287,6 @@ in
     # Administration
     gnome.dconf-editor
     helvum
-    iwgtk
     pavucontrol
     pkgsUnstable.resources
 
