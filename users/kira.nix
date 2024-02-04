@@ -17,7 +17,7 @@
       ++ lib.optional config.programs.adb.enable "adbusers"
       ++ lib.optional config.services.kubo.enable "ipfs";
 
-    initialPassword = "kira";
+    hashedPasswordFile = "/persist/var/lib/secrets/login/kira";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFolmVKlEFdALSIXtRNy/0ZqcTGn2H5/e3ieaIHoQr85"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMIUYCcFr41Oy49T6v4296m/5bD2w/HgIubL3rf+3ULW"

@@ -16,8 +16,8 @@
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
-    resumeDevice = config.fileSystems."/".device;
-    kernelParams = [ "resume_offset=5601280" ]; # sudo filefrag -v /swapfile | awk 'NR==4 {print $4}' | sed 's/\.\.$//'
+    resumeDevice = config.fileSystems."/persist".device or "";
+    kernelParams = [ "resume_offset=5601280" ]; # sudo filefrag -v /persist/swapfile | awk 'NR==4 {print $4}' | sed 's/\.\.$//'
     kernel.sysctl = { "vm.swappiness" = 1; };
   };
 
@@ -47,7 +47,7 @@
               type = "filesystem";
               format = "ext4";
               extraArgs = [ "-L" "nixos" ];
-              mountpoint = "/";
+              mountpoint = "/persist";
               mountOptions = [ "noatime" ];
             };
           };
@@ -56,14 +56,15 @@
     };
 
     nodev = {
-      "/tmp" = {
+      "/" = {
         fsType = "tmpfs";
+        mountOptions = [ "defaults" "mode=755" ];
       };
     };
   };
 
   # Hibernation swapfile
-  swapDevices = [{ device = "/swapfile"; size = 64102; }];
+  swapDevices = [{ device = "/persist/swapfile"; size = 64102; }];
 
   # Compress hibernation image as much as possible
   systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];

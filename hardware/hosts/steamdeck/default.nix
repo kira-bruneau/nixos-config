@@ -40,7 +40,7 @@
             content = {
               type = "btrfs";
               extraArgs = [ "-L" "nixos" ];
-              mountpoint = "/";
+              mountpoint = "/persist";
               mountOptions = [ "noatime" ];
             };
           };
@@ -49,10 +49,22 @@
     };
 
     nodev = {
-      "/tmp" = {
+      "/" = {
         fsType = "tmpfs";
+        mountOptions = [ "defaults" "mode=755" ];
       };
     };
+  };
+
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/decky-loader"
+      "/var/lib/jupiter-biosupdate"
+    ];
+
+    files = [
+      "/var/log/jupiter-fan-control.log"
+    ];
   };
 
   jovian.devices.steamdeck = {

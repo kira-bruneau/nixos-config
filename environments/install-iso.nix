@@ -6,6 +6,9 @@
     ./stateless.nix
   ];
 
+  # Disable impermanence
+  environment.persistence = lib.mkImageMediaOverride {};
+
   # /etc/nixos is seeded with the contents of this flake
   installer.cloneConfig = false;
 
@@ -23,5 +26,5 @@
   networking.wireless.enable = false;
 
   # Resolve conflict between install iso config and my host configs
-  services.openssh.settings.PermitRootLogin = lib.mkForce "no";
+  services.openssh.settings.PermitRootLogin = lib.mkImageMediaOverride "no";
 }

@@ -68,6 +68,7 @@ in
 
         "disk" = {
           format = "{percentage_used}% ";
+          path = "/persist";
         };
 
         "temperature" = {

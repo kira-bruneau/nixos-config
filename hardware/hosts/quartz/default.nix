@@ -52,7 +52,7 @@
                 type = "filesystem";
                 format = "ext4";
                 extraArgs = [ "-L" "nixos" ];
-                mountpoint = "/";
+                mountpoint = "/persist";
                 mountOptions = [ "noatime" ];
               };
             };
@@ -100,10 +100,18 @@
     };
 
     nodev = {
-      "/tmp" = {
+      "/" = {
         fsType = "tmpfs";
+        mountOptions = [ "defaults" "mode=755" ];
       };
     };
+  };
+
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/ollama"
+      "/var/lib/minecraft"
+    ];
   };
 
   # Sway I/O configuration

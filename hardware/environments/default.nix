@@ -1,4 +1,4 @@
-{ inputs, pkgs, pkgsDisco, ... }:
+{ inputs, pkgsDisco, ... }:
 
 {
   imports = [
@@ -6,6 +6,7 @@
     ../services/ssh.nix
     ../services/syncthing.nix
     ../services/tailscale.nix
+    ./impermanence.nix
   ];
 
   environment.systemPackages = [
