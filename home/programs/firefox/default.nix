@@ -426,6 +426,10 @@ in
         command = "move container to workspace 4";
       }
       {
+        criteria = { app_id = "^firefox$"; title = "https://music.youtube.com"; };
+        command = "move container to workspace 4";
+      }
+      {
         criteria = { app_id = "^firefox$"; title = "https://calendar.google.com"; };
         command = "move container to workspace 7";
       }
