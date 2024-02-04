@@ -7,7 +7,7 @@
   # Open ports for steam local network game transfers
   networking.firewall = {
     allowedTCPPorts = [ 27040 ];
-    allowedUDPPortRanges = [ { from = 27031; to = 27036; } ];
+    allowedUDPPortRanges = [{ from = 27031; to = 27036; }];
   };
 
   # Better driver for Xbox One controllers
