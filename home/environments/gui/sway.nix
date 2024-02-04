@@ -11,7 +11,7 @@ let
 
   # Randomly choose a wallpaper in ~/Pictures/Wallpapers
   random-wallpaper = pkgs.writeShellScript "random-wallpaper" ''
-    ${pkgs.findutils}/bin/find ~/Pictures/Wallpapers -type f -o -type l | ${pkgs.coreutils}/bin/shuf -n 1
+    ${pkgs.findutils}/bin/find -L ~/Pictures/Wallpapers -type f | ${pkgs.coreutils}/bin/shuf -n 1
   '';
 
   lock = pkgs.writeShellScript "lock" ''
