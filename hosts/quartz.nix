@@ -15,9 +15,12 @@
     autoStart = true;
 
     bindMounts = {
-      "/srv" = {
-        hostPath = "/srv";
+      "/srv/media-ssd" = {
+        hostPath = "/srv/media-ssd";
         isReadOnly = false;
+      };
+      "/srv/media-hdd" = {
+        hostPath = "/srv/media-hdd";
       };
     };
 

@@ -61,7 +61,7 @@
         };
       };
 
-      media = {
+      media-ssd = {
         device = "/dev/disk/by-id/nvme-CT1000P1SSD8_1911E1F0AAC7";
         content = {
           type = "table";
@@ -74,8 +74,29 @@
               content = {
                 type = "filesystem";
                 format = "btrfs";
-                mountpoint = "/srv";
+                mountpoint = "/srv/media-ssd";
                 mountOptions = [ "noatime" ];
+              };
+            }
+          ];
+        };
+      };
+
+      media-hdd = {
+        device = "/dev/disk/by-id/usb-WD_Game_Drive_57585132453630385A544137-0:0";
+        content = {
+          type = "table";
+          format = "gpt";
+          partitions = [
+            {
+              name = "WD_BLACK";
+              start = "0%";
+              end = "100%";
+              content = {
+                type = "filesystem";
+                format = "exfat";
+                mountpoint = "/srv/media-hdd";
+                mountOptions = [ "noatime" "nofail" ];
               };
             }
           ];

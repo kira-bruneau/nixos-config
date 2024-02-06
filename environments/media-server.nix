@@ -18,14 +18,14 @@ let
   sonarr = {
     port = "8989";
     apiKey = "00000000000000000000000000000000";
-    rootFolder = "/srv/shows";
+    rootFolder = "/srv/media-ssd/shows";
     inherit downloadClients;
   };
 
   radarr = {
     port = "7878";
     apiKey = "00000000000000000000000000000000";
-    rootFolder = "/srv/movies";
+    rootFolder = "/srv/media-ssd/movies";
     inherit downloadClients;
   };
 
@@ -89,12 +89,12 @@ let
     mediaLibraries = {
       Shows = {
         type = "tvshow";
-        folders = [ sonarr.rootFolder ];
+        folders = [ sonarr.rootFolder "/srv/media-hdd/TV" ];
       };
 
       Movies = {
         type = "movies";
-        folders = [ radarr.rootFolder ];
+        folders = [ radarr.rootFolder "/srv/media-hdd/Movies" ];
       };
 
       Downloads.folders = [ qBittorrent.BitTorrent."Session\\DefaultSavePath" ];
