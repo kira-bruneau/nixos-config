@@ -35,14 +35,9 @@
         flake-utils.follows = "flake-utils";
       };
     };
-
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { flake-utils, flake-linter, nixpkgs, nixos-generators, ... } @ inputs:
+  outputs = { flake-utils, flake-linter, nixpkgs, ... } @ inputs:
     let
       lib = nixpkgs.lib;
       hosts = builtins.listToAttrs
@@ -135,21 +130,17 @@
           (packages: name:
             let
               host = hosts.${name};
-              nixosGenerate = args: nixos-generators.nixosGenerate (args // {
-                lib = host.inputs.nixpkgs.lib;
-                nixosSystem = host.inputs.nixpkgs.lib.nixosSystem;
-                pkgs = host.inputs.nixpkgs.legacyPackages.${system};
+              nixosGenerate = output: attrs: (host.inputs.nixpkgs.lib.nixosSystem (attrs // {
+                inherit system;
                 specialArgs = { inherit (host) inputs; };
-                modules = [ host.module ] ++ args.modules;
-              });
+                modules = [ host.module ] ++ attrs.modules;
+              })).config.system.build.${output};
             in
             packages // {
-              "${name}/install-iso" = nixosGenerate {
-                format = "install-iso";
+              "${name}/install-iso" = nixosGenerate "isoImage" {
                 modules = [ ./environments/install-iso.nix ];
               };
-              "${name}/vm" = nixosGenerate {
-                format = "vm";
+              "${name}/vm" = nixosGenerate "vm" {
                 modules = [ ./environments/vm.nix ];
               };
             })

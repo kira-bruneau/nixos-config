@@ -1,6 +1,10 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, modulesPath, ... }:
 
 {
+  imports = [
+    "${toString modulesPath}/virtualisation/qemu-vm.nix"
+  ];
+
   virtualisation = {
     memorySize = 1024 * 4;
     qemu.options = [

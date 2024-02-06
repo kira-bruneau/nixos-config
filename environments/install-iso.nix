@@ -1,6 +1,10 @@
-{ lib, ... }:
+{ lib, modulesPath, ... }:
 
 {
+  imports = [
+    "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix"
+  ];
+
   # /etc/nixos is seeded with the contents of this flake
   installer.cloneConfig = false;
 
