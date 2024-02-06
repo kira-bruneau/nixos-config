@@ -10,8 +10,8 @@
     };
 
     iconTheme = {
-      package = pkgs.arc-icon-theme;
-      name = "Arc";
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
     };
 
     cursorTheme = {
