@@ -65,7 +65,7 @@
         device = "/dev/disk/by-id/nvme-CT1000P1SSD8_1911E1F0AAC7";
         content = {
           type = "table";
-          format = "gpt";
+          format = "dos";
           partitions = [
             {
               name = "media";
@@ -75,6 +75,7 @@
                 type = "filesystem";
                 format = "btrfs";
                 mountpoint = "/srv";
+                mountOptions = [ "noatime" ];
               };
             }
           ];
