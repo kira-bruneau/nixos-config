@@ -123,7 +123,7 @@ let
         touch "$out/$type.collection"
       fi
 
-      for folder in "''${folders[@]}"; do
+      for folder in ''${folders}; do
         echo -n "$folder" > "$out/$(basename "$folder").mblink"
       done
     '';
