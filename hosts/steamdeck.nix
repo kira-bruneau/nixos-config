@@ -17,10 +17,18 @@
     desktopSession = "gnome";
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+    "clonehero"
+    "clonehero-unwrapped"
+    "data.zip"
+    "discord"
+    "sm64ex"
     "steam"
     "steam-jupiter-original"
+    "steam-original"
     "steam-run"
     "steamdeck-hw-theme"
+    "unrar"
+    "vvvvvv"
   ];
 }
