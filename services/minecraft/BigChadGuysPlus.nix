@@ -20,11 +20,14 @@ in
 
   services.minecraft-servers.servers."BigChadGuysPlus" = {
     enable = true;
+    autoStart = false;
     package = pkgsNixMinecraft.fabricServers.${serverVersion}.override { loaderVersion = fabricVersion; };
     symlinks = {
       "mods" = "${modpack}/mods";
       "resourcepacks" = "${modpack}/resourcepacks";
     };
+
+    serverProperties.server-port = 25564;
   };
 
   systemd.services.minecraft-server-BigChadGuysPlus = {
@@ -32,5 +35,26 @@ in
       rm -rf config
       cp -r --no-preserve=mode ${modpack}/config config
     '';
+  };
+
+  systemd.sockets.activate-BigChadGuysPlus = {
+    wantedBy = [ "sockets.target" ];
+    requires = [ "network.target" ];
+    listenStreams = [ "25565" ];
+  };
+
+  systemd.services.activate-BigChadGuysPlus = {
+    requires = [ "minecraft-server-BigChadGuysPlus.service" ];
+    after = [ "minecraft-server-BigChadGuysPlus.service" ];
+    serviceConfig = {
+      Type = "notify";
+      ExecStart = "${pkgs.systemd}/lib/systemd/systemd-socket-proxyd 127.0.0.1:25564";
+      PrivateTmp = true;
+    };
+  };
+
+  networking.firewall = {
+    allowedTCPPorts = [ 25565 ];
+    allowedUDPPorts = [ 25565 ];
   };
 }
