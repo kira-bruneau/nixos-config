@@ -6,8 +6,12 @@ let
   modpack = pkgs.fetchzip {
     url = "https://mediafilez.forgecdn.net/files/5109/63/BCG%2B%20Server%20Files%201.1.13HF.zip";
     stripRoot = false;
-    postFetch = "rm -rf eula.txt fabric-server-launch.jar libraries server.jar start.bat start.sh";
-    hash = "sha256-Eaj4zwkJIoBXprVc7MGm3EKxvBqDf4owX9J/XPIKYjo=";
+    postFetch = ''
+      cd "$out"
+      rm -rf eula.txt fabric-server-launch.jar libraries server.jar start.bat start.sh
+    '';
+
+    hash = "sha256-+bJ7CWmK3N9HdwkPo6mlPOSDIwSt+P3vTO5OyHZ7nFo=";
   };
 
   serverVersion = "fabric-1_20_1";
