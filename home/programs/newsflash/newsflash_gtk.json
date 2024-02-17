@@ -13,7 +13,8 @@
     "accept_invalid_certs": false,
     "accept_invalid_hostnames": false,
     "inspect_article_view": false,
-    "article_view_load_images": true
+    "article_view_load_images": true,
+    "ping_url": "http://example.com/"
   },
   "feed_list": {
     "order": "Manual",
@@ -25,8 +26,7 @@
     "hide_future_articles": false
   },
   "article_view": {
-    "theme": "Default",
-    "allow_select": false
+    "theme": "Default"
   },
   "keybindings": {
     "general": {
@@ -42,19 +42,21 @@
       "scroll_up": "U",
       "scroll_down": "L",
       "scrap_content": "<Shift>C",
-      "tag": "<ctl>T"
+      "tag": "<ctl>T",
+      "fullscreen": "<Shift><alt>X"
     },
     "article_list": {
       "next": "N",
       "prev": "E",
       "read": "R",
       "mark": "M",
-      "open": "O"
+      "open": "O",
+      "copy_url": "<ctl><Shift>C"
     },
     "feed_list": {
       "next": "<ctl>N",
       "prev": "<ctl>E",
-      "toggle_expanded": "Tab",
+      "toggle_expanded": "C",
       "read": "<Shift>A"
     }
   },
@@ -65,6 +67,7 @@
     "mastodon_enabled": true,
     "reddit_enabled": true,
     "telegram_enabled": true,
+    "clipboard_enabled": true,
     "custom_enabled": false,
     "custom_name": null,
     "custom_url": null
