@@ -41,13 +41,13 @@ in
     '';
   };
 
-  systemd.sockets.activate-BigChadGuysPlus = {
+  systemd.sockets.minecraft-server-BigChadGuysPlus-proxy = {
     wantedBy = [ "sockets.target" ];
     requires = [ "network.target" ];
     listenStreams = [ "25565" ];
   };
 
-  systemd.services.activate-BigChadGuysPlus = {
+  systemd.services.minecraft-server-BigChadGuysPlus-proxy = {
     requires = [ "minecraft-server-BigChadGuysPlus.service" ];
     after = [ "minecraft-server-BigChadGuysPlus.service" ];
     serviceConfig = {
