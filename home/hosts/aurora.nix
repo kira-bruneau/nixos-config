@@ -9,7 +9,12 @@
     ../environments/office.nix
   ];
 
-  home.stateVersion = "21.11";
+  home = {
+    stateVersion = "21.11";
+    packages = with pkgs; [
+      prismlauncher
+    ];
+  };
 
   programs = {
     mpv.config = {
