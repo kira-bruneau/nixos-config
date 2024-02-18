@@ -23,16 +23,15 @@
 
   disko.devices = {
     disk.main = {
-      device = "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b45507c59";
+      device = "/dev/disk/by-id/nvme-WDS100T1X0E-00AFY0_215222803209";
       content = {
-        type = "table";
-        format = "gpt";
-        partitions = [
-          {
-            name = "boot";
-            start = "1MiB";
-            end = "513MiB";
-            bootable = true;
+        type = "gpt";
+        partitions = {
+          boot = {
+            type = "EF00";
+            label = "boot";
+            start = "1M";
+            end = "513M";
             content = {
               type = "filesystem";
               format = "vfat";
@@ -40,11 +39,10 @@
               mountpoint = "/boot";
               mountOptions = [ "noatime" ];
             };
-          }
-          {
-            name = "nixos";
-            start = "513MiB";
-            end = "100%";
+          };
+          nixos = {
+            label = "nixos";
+            size = "100%";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -52,8 +50,8 @@
               mountpoint = "/";
               mountOptions = [ "noatime" ];
             };
-          }
-        ];
+          };
+        };
       };
     };
 

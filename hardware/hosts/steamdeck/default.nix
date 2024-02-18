@@ -19,14 +19,12 @@
     disk.main = {
       device = "/dev/disk/by-id/nvme-Phison_ESMP512GMB47C3-E13TS_22272M51254792";
       content = {
-        type = "table";
-        format = "gpt";
-        partitions = [
-          {
-            name = "boot";
-            start = "0%";
-            end = "512MiB";
-            bootable = true;
+        type = "gpt";
+        partitions = {
+          boot = {
+            type = "EF00";
+            label = "boot";
+            size = "512M";
             content = {
               type = "filesystem";
               format = "vfat";
@@ -34,19 +32,18 @@
               mountpoint = "/boot";
               mountOptions = [ "noatime" ];
             };
-          }
-          {
-            name = "nixos";
-            start = "512MiB";
-            end = "100%";
+          };
+          nixos = {
+            label = "nixos";
+            size = "100%";
             content = {
               type = "btrfs";
               extraArgs = [ "-L" "nixos" ];
               mountpoint = "/";
               mountOptions = [ "noatime" ];
             };
-          }
-        ];
+          };
+        };
       };
     };
 

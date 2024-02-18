@@ -29,14 +29,13 @@
       main = {
         device = "/dev/disk/by-id/nvme-Corsair_MP600_CORE_212379080001303746AE";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "boot";
-              start = "1MiB";
-              end = "512MiB";
-              bootable = true;
+          type = "gpt";
+          partitions = {
+            boot = {
+              type = "EF00";
+              label = "boot";
+              start = "1M";
+              end = "512M";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -44,11 +43,10 @@
                 mountpoint = "/boot";
                 mountOptions = [ "noatime" ];
               };
-            }
-            {
-              name = "nixos";
-              start = "512MiB";
-              end = "100%";
+            };
+            nixos = {
+              label = "nixos";
+              size = "100%";
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -56,8 +54,8 @@
                 mountpoint = "/";
                 mountOptions = [ "noatime" ];
               };
-            }
-          ];
+            };
+          };
         };
       };
 
@@ -85,21 +83,19 @@
       media-hdd = {
         device = "/dev/disk/by-id/usb-WD_Game_Drive_57585132453630385A544137-0:0";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "WD_BLACK";
-              start = "0%";
-              end = "100%";
+          type = "gpt";
+          partitions = {
+            WD_BLACK = {
+              label = "WD_BLACK";
+              size = "100%";
               content = {
                 type = "filesystem";
                 format = "exfat";
                 mountpoint = "/srv/media-hdd";
                 mountOptions = [ "noatime" "nofail" ];
               };
-            }
-          ];
+            };
+          };
         };
       };
     };
