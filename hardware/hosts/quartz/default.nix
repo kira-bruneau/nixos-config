@@ -72,8 +72,8 @@
               start = "0%";
               end = "100%";
               content = {
-                type = "filesystem";
-                format = "btrfs";
+                type = "btrfs";
+                extraArgs = [ "-L" "media" ];
                 mountpoint = "/srv/media-ssd";
                 mountOptions = [ "noatime" ];
               };

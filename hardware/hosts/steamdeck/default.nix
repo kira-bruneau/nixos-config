@@ -41,6 +41,7 @@
             end = "100%";
             content = {
               type = "btrfs";
+              extraArgs = [ "-L" "nixos" ];
               mountpoint = "/";
               mountOptions = [ "noatime" ];
             };
