@@ -16,6 +16,8 @@
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    nixpkgs-ollama.url = "github:NixOS/nixpkgs/30a7446a159f3869d4e75f559e42f5f6cb3c6865";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     disko = {
@@ -151,8 +153,9 @@
         };
 
         packages = {
-          emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
+          emacs = inputs.nixpkgs-unstable.legacyPackages.${system}.callPackage ./home/programs/emacs/package.nix {
             ggt = inputs.kira-nur.packages.${system}.ggt;
+            ollama = inputs.nixpkgs-ollama.legacyPackages.${system}.ollama;
           };
         } // builtins.foldl'
           (packages: name:

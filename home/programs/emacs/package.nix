@@ -36,6 +36,7 @@
 , nodejs
 , nodePackages
 , omnisharp-roslyn
+, ollama
 , pandoc
 , perl
 , prettierd
@@ -97,6 +98,7 @@ callPackage ./wrapper.nix {
     epkgs.drag-stuff
     epkgs.dtrt-indent
     epkgs.editorconfig
+    epkgs.ellama
     epkgs.evil
     epkgs.evil-collection
     epkgs.flx
@@ -204,6 +206,7 @@ callPackage ./wrapper.nix {
       nodePackages.bash-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
+      (ollama.override { enableRocm = true; })
       pandoc
       perl
       prettierc

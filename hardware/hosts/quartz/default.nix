@@ -4,6 +4,7 @@
   imports = [
     ./generated.nix
     ../../environments/bluetooth.nix
+    ../../../services/ollama.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [
     common-cpu-amd
     common-gpu-amd
@@ -171,4 +172,6 @@
 
   # Android debugging
   programs.adb.enable = true;
+
+  systemd.services.ollama.environment.ROCR_VISIBLE_DEVICES = "0";
 }

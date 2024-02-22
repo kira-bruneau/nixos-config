@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, pkgsUnstable, pkgsKiraNur, ... }:
+{ inputs, config, pkgs, pkgsUnstable, pkgsKiraNur, pkgsOllama, ... }:
 
 {
   imports = [
@@ -19,12 +19,17 @@
       system = pkgs.system;
       config = config.nixpkgs.config;
     };
+
+    pkgsOllama = import inputs.nixpkgs-ollama {
+      system = pkgs.system;
+      config = config.nixpkgs.config;
+    };
   };
 
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs pkgsUnstable pkgsKiraNur; };
+    extraSpecialArgs = { inherit inputs pkgsUnstable pkgsKiraNur pkgsOllama; };
   };
 
   environment.systemPackages = [
