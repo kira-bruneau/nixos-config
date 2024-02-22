@@ -62,21 +62,19 @@
       media-ssd = {
         device = "/dev/disk/by-id/nvme-CT1000P1SSD8_1911E1F0AAC7";
         content = {
-          type = "table";
-          format = "dos";
-          partitions = [
-            {
-              name = "media";
-              start = "0%";
-              end = "100%";
+          type = "gpt";
+          partitions = {
+            media = {
+              label = "media";
+              size = "100%";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-L" "media" ];
                 mountpoint = "/srv/media-ssd";
                 mountOptions = [ "noatime" ];
               };
-            }
-          ];
+            };
+          };
         };
       };
 
