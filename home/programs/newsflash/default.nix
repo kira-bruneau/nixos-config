@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgsUnstable, ... }:
 
 let
-  newsflash = pkgs.newsflash;
+  newsflash = pkgsUnstable.newsflash;
 in
 {
   imports = [
