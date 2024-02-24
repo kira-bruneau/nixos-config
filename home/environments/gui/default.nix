@@ -93,8 +93,6 @@
     })
   '';
 
-  services.easyeffects.enable = true;
-
   wayland.windowManager.sway.config = {
     assigns = {
       "1" = [
