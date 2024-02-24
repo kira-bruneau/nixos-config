@@ -80,7 +80,7 @@ let
     };
 
     BitTorrent = {
-      "Session\\DefaultSavePath" = "/srv/downloads";
+      "Session\\DefaultSavePath" = "/srv/media-ssd/downloads";
       "Session\\GlobalMaxRatio" = 2;
     };
   };
