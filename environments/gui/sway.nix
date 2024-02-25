@@ -153,4 +153,7 @@
   # Enable GNOME password manager
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+
+  # Disable fingerprint auth in greetd
+  security.pam.services.greetd.fprintAuth = false;
 }
