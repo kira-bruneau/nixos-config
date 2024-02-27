@@ -154,6 +154,7 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
 
-  # Disable fingerprint auth in greetd
+  # Disable fingerprint auth in greetd & swaylock
   security.pam.services.greetd.fprintAuth = false;
+  security.pam.services.swaylock.fprintAuth = false;
 }

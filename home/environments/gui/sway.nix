@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgsUnstable, ... }:
+{ config, lib, pkgs, pkgsUnstable, pkgsKiraNur, ... }:
 
 let
   swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
@@ -15,7 +15,7 @@ let
   '';
 
   lock = pkgs.writeShellScript "lock" ''
-    exec ${pkgs.swaylock}/bin/swaylock --daemonize --image `${random-wallpaper}`
+    exec ${pkgsKiraNur.swaylock-fprintd}/bin/swaylock --fingerprint --daemonize --image `${random-wallpaper}`
   '';
 
   # Turn off scaling on all displays
