@@ -138,8 +138,12 @@ in
                   "_testpilot-containers-browser-action"
                   "keepassxc-browser_keepassxc_org-browser-action"
                   "ublock0_raymondhill_net-browser-action"
+
+                  "unified-extensions-button"
                 ];
-                toolbar-menubar = [ "menubar-items" ];
+                toolbar-menubar = [
+                  "menubar-items"
+                ];
                 TabsToolbar = [
                   "tabbrowser-tabs"
                   "new-tab-button"
@@ -155,25 +159,30 @@ in
                 "developer-button"
 
                 # Extensions
-                "_3385c2d8-dcfd-4f92-adb7-5d8429dee164_-browser-action" # Video Ad-Block, for Twitch
                 "_9a41dee2-b924-4161-a971-7fb35c053a4a_-browser-action" # enhanced-h264ify
                 "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
                 "_testpilot-containers-browser-action"
                 "ghosttext_bfred_it-browser-action"
-                "jid1-zadieub7xozojw_jetpack-browser-action" # Media Keys
                 "keepassxc-browser_keepassxc_org-browser-action"
                 "languagetool-webextension_languagetool_org-browser-action"
                 "popupwindow_ettoolong-browser-action"
                 "ublock0_raymondhill_net-browser-action"
-                "_762f9885-5a13-4abd-9c77-433dcd38b8fd_-browser-action" # Return YouTube Dislike
+                "_0d7cafdd-501c-49ca-8ebb-e3341caaa55e_-browser-action" # Youtube NonStop
+                "_bdc2383f-16a2-459b-afba-f3fd26078085_-browser-action" # Cast YouTube in Browser
+                "firefoxpwa_filips_si-browser-action"
+                "fx_cast_matt_tf-browser-action"
+                "jid1-bofifl9vbdl2zq_jetpack-browser-action" # Decentraleyes
+                "_c2c003ee-bd69-42a2-b0e9-6f34222cb046_-browser-action" # Auto Tab Discard
+                "sponsorblocker_ajay_app-browser-action"
               ];
               dirtyAreaCache = [
                 "nav-bar"
                 "toolbar-menubar"
                 "TabsToolbar"
                 "PersonalToolbar"
+                "unified-extensions-area"
               ];
-              currentVersion = 18;
+              currentVersion = 20;
               newElementCount = 2;
             };
             "browser.warnOnQuit" = false;
