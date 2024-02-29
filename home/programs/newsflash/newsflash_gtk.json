@@ -39,23 +39,23 @@
       "only_starred": "<ctl>3"
     },
     "article_view": {
-      "scroll_up": "U",
-      "scroll_down": "L",
+      "scroll_up": "u",
+      "scroll_down": "l",
       "scrap_content": "<Shift>C",
       "tag": "<ctl>T",
       "fullscreen": "<Shift><alt>X"
     },
     "article_list": {
-      "next": "N",
-      "prev": "E",
+      "next": "n",
+      "prev": "e",
       "read": "R",
       "mark": "M",
       "open": "O",
       "copy_url": "<ctl><Shift>C"
     },
     "feed_list": {
-      "next": "<ctl>N",
-      "prev": "<ctl>E",
+      "next": "<Control>n",
+      "prev": "<Control>e",
       "toggle_expanded": "C",
       "read": "<Shift>A"
     }
