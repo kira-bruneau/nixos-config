@@ -1,5 +1,5 @@
-(use-package js2-mode
-  :mode "\\.js\\'"
+(use-package js-ts-mode
+  :mode ("\\.js\\'" "\\.jsx\\'")
   :interpreter ("node" "zx")
   :init
   (with-eval-after-load 'flycheck
@@ -16,8 +16,10 @@
     (add-to-list 'apheleia-formatters '(eslint . ("eslint_c" "--stdin" "--fix-to-stdout" "--stdin-filename" filepath))))
 
   (with-eval-after-load 'restclient
-    (add-to-list 'restclient-content-type-modes '("application/js" . js2-mode)))
+    (add-to-list 'restclient-content-type-modes '("application/js" . js-ts-mode))))
 
-  :config
-  (setq js2-mode-show-parse-errors nil)
-  (setq js2-mode-show-strict-warnings nil))
+(use-package typescript-ts-mode
+  :mode "\\.ts\\'")
+
+(use-package tsx-ts-mode
+  :mode "\\.tsx\\'")

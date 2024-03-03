@@ -1,2 +1,3 @@
-(use-package yaml-mode
-  :mode "\\.ksy\\'") ;; Kaitai Struct Language
+(use-package yaml-ts-mode
+  :mode ("\\.\\(e?ya?\\|ra\\)ml\\'"
+         "\\.ksy\\'")) ;; Kaitai Struct Language

@@ -85,7 +85,6 @@ callPackage ./wrapper.nix {
     epkgs.ccls
     epkgs.cider
     epkgs.cmake-font-lock
-    epkgs.cmake-mode
     epkgs.company
     epkgs.company-flx
     epkgs.company-restclient
@@ -94,7 +93,6 @@ callPackage ./wrapper.nix {
     epkgs.dap-mode
     epkgs.diminish
     epkgs.direnv
-    epkgs.dockerfile-mode
     epkgs.doom-themes
     epkgs.drag-stuff
     epkgs.dtrt-indent
@@ -106,11 +104,8 @@ callPackage ./wrapper.nix {
     epkgs.forge
     epkgs.gcmh
     epkgs.git-modes
-    epkgs.go-mode
-    epkgs.graphql-mode
+    epkgs.graphql-ts-mode
     epkgs.ivy
-    epkgs.js2-mode
-    epkgs.json-mode
     epkgs.latex-preview-pane
     epkgs.lsp-java
     epkgs.lsp-mode
@@ -123,7 +118,7 @@ callPackage ./wrapper.nix {
     epkgs.multi-term
     epkgs.multiple-cursors
     epkgs.nameless
-    epkgs.nix-mode
+    epkgs.nix-ts-mode
     epkgs.org-download
     epkgs.page-break-lines
     epkgs.php-mode
@@ -135,12 +130,34 @@ callPackage ./wrapper.nix {
     epkgs.rainbow-delimiters
     epkgs.restclient
     epkgs.rg
-    epkgs.rustic
     epkgs.slime
     epkgs.smartparens
     epkgs.suggest
     epkgs.swiper
-    epkgs.typescript-mode
+    (epkgs.treesit-grammars.with-grammars (ts: [
+      ts.tree-sitter-bash
+      ts.tree-sitter-c
+      ts.tree-sitter-c-sharp
+      ts.tree-sitter-cmake
+      ts.tree-sitter-cpp
+      ts.tree-sitter-css
+      ts.tree-sitter-dockerfile
+      ts.tree-sitter-go
+      ts.tree-sitter-gomod
+      ts.tree-sitter-gowork
+      ts.tree-sitter-graphql
+      ts.tree-sitter-html
+      ts.tree-sitter-java
+      ts.tree-sitter-javascript
+      ts.tree-sitter-jsdoc
+      ts.tree-sitter-json
+      ts.tree-sitter-nix
+      ts.tree-sitter-python
+      ts.tree-sitter-ruby
+      ts.tree-sitter-rust
+      ts.tree-sitter-typescript
+      ts.tree-sitter-yaml
+    ]))
     epkgs.undo-tree
     epkgs.vala-mode
     epkgs.visual-regexp
@@ -149,7 +166,6 @@ callPackage ./wrapper.nix {
     epkgs.web-mode
     epkgs.which-key
     epkgs.whitespace-cleanup-mode
-    epkgs.yaml-mode
   ]);
 
   profile = buildEnv {

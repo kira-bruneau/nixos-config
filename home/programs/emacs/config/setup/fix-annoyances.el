@@ -88,3 +88,14 @@
 ;; Read auth source from XDG_DATA_HOME
 (require 'xdg)
 (setq auth-sources (list (expand-file-name "authinfo/authinfo.gpg" (xdg-data-home))))
+
+;; Prefer tree-sitter modes
+(setq major-mode-remap-alist
+ '((c++-mode . c++-ts-mode)
+   (c-mode . c-ts-mode)
+   (cmake-mode . cmake-ts-mode)
+   (css-mode . css-ts-mode)
+   (java-mode . java-ts-mode)
+   (python-mode . python-ts-mode)
+   (ruby-mode . ruby-ts-mode)
+   (sh-mode . bash-ts-mode)))

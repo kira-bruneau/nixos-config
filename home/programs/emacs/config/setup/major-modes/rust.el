@@ -1,3 +1,2 @@
-(use-package rustic
-  :init
-  (setq rustic-lsp-setup-p nil))
+(use-package rust-ts-mode
+  :mode "\\.rs\\'")

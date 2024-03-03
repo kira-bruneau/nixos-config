@@ -1,8 +1,6 @@
 (use-package web-mode
   :mode ("\\.html?\\'"
          "\\.vue\\'"
-         "\\.jsx\\'"
-         "\\.tsx\\'"
          "\\.ejs\\'")
   :bind (:map web-mode-map
               ("C-c C-o" . browse-url-of-file))

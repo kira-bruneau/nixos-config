@@ -1,2 +1,2 @@
-(use-package dockerfile-mode
-  :mode ("\\Layerfile\\'"))
+(use-package dockerfile-ts-mode
+  :mode "[/\\]\\(?:Containerfile\\|Dockerfile\\)\\(?:\\.[^/\\]*\\)?\\'")
