@@ -211,4 +211,6 @@ callPackage ./wrapper.nix {
       omnisharp-roslyn
     ];
   };
+
+  config = ./config;
 }

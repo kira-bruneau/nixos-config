@@ -7,6 +7,7 @@
 , makeWrapper
 , emacs
 , profile
+, config
 }:
 
 let
@@ -53,7 +54,7 @@ let
   makeWrapperArgs = [
     "--prefix NIX_PROFILES ' ' ${profile}"
     "--prefix PATH : ${profile}/bin"
-    "--add-flags '--init-directory=${../config}'"
+    "--add-flags '--init-directory=${config}'"
   ];
 in
 runCommand
