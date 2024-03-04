@@ -120,6 +120,7 @@ in
             "browser.startup.homepage" = "about:home";
             "browser.startup.page" = 3; # Restore previous session
             "browser.tabs.firefox-view" = false;
+            "browser.tabs.tabClipWidth" = 999; # Hide close button on inactive tabs
             "browser.tabs.warnOnClose" = false;
             "browser.toolbars.bookmarks.visibility" = "newtab";
             "browser.uiCustomization.state" = builtins.toJSON {
