@@ -17,6 +17,7 @@
 , coreutils
 , diffutils
 , direnv
+, dockerfile-language-server-nodejs
 , eslint_d
 , fd
 , fzf
@@ -29,7 +30,9 @@
 , gopls
 , imagemagick
 , jdk
+, jdt-language-server
 , libnotify
+, marksman
 , lldb
 , nixd
 , nixpkgs-fmt
@@ -48,8 +51,9 @@
 , solargraph
 , tectonic
 , texlab
-, yarn
 , vala-language-server
+, vscode-langservers-extracted
+, yarn
 }:
 
 let
@@ -187,6 +191,7 @@ callPackage ./wrapper.nix {
       coreutils
       diffutils
       direnv
+      dockerfile-language-server-nodejs
       eslint_c
       eslint_d
       fd
@@ -201,12 +206,15 @@ callPackage ./wrapper.nix {
       imagemagick
       jdk
       libnotify
+      marksman
       nixd
       nixpkgs-fmt
       nodejs
       nodePackages.bash-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
+      nodePackages.vue-language-server
+      nodePackages.yaml-language-server
       (ollama.override { enableRocm = true; })
       pandoc
       perl
@@ -223,8 +231,9 @@ callPackage ./wrapper.nix {
       solargraph
       tectonic
       texlab
-      yarn
       vala-language-server
+      vscode-langservers-extracted
+      yarn
     ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
       # Currently doesn't built on Darwin
       ccls
