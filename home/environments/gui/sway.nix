@@ -15,7 +15,14 @@ let
   '';
 
   lock = pkgs.writeShellScript "lock" ''
-    exec ${pkgsKiraNur.swaylock-fprintd}/bin/swaylock --fingerprint --daemonize --image `${random-wallpaper}`
+    args=(--daemonize --image `${random-wallpaper}`)
+
+    ${pkgs.systemd}/bin/systemctl is-enabled fprintd.service
+    if [ $? -le 1 ]; then
+      args+=(--fingerprint)
+    fi
+
+    exec ${pkgsKiraNur.swaylock-fprintd}/bin/swaylock "''${args[@]}"
   '';
 
   # Turn off scaling on all displays
