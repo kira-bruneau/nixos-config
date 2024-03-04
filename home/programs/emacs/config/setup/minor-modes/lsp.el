@@ -14,6 +14,7 @@
          (ruby-ts-mode . lsp)
          (rust-ts-mode . lsp)
          (bash-ts-mode . lsp)
+         (tsx-ts-mode . lsp)
          (typescript-ts-mode . lsp)
          (vala-mode . lsp)
          (web-mode . lsp))
