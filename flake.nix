@@ -153,7 +153,7 @@
         };
 
         packages = {
-          emacs = inputs.nixpkgs-unstable.legacyPackages.${system}.callPackage ./home/programs/emacs/package.nix {
+          emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
             ggt = inputs.kira-nur.packages.${system}.ggt;
             ollama = inputs.nixpkgs-ollama.legacyPackages.${system}.ollama;
           };
