@@ -28,6 +28,7 @@
   gopls,
   imagemagick,
   jdk,
+  jdt-language-server,
   libnotify,
   marksman,
   lldb,
@@ -185,6 +186,7 @@ callPackage ./wrapper.nix {
         gopls
         imagemagick
         jdk
+        jdt-language-server
         libnotify
         marksman
         nixd
