@@ -150,12 +150,9 @@ callPackage ./wrapper.nix {
       ts.tree-sitter-dockerfile
       ts.tree-sitter-go
       ts.tree-sitter-gomod
-      ts.tree-sitter-gowork
       ts.tree-sitter-graphql
-      ts.tree-sitter-html
       ts.tree-sitter-java
       ts.tree-sitter-javascript
-      ts.tree-sitter-jsdoc
       ts.tree-sitter-json
       ts.tree-sitter-nix
       ts.tree-sitter-python
