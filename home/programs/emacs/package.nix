@@ -161,6 +161,7 @@ callPackage ./wrapper.nix {
       ts.tree-sitter-python
       ts.tree-sitter-ruby
       ts.tree-sitter-rust
+      ts.tree-sitter-toml
       ts.tree-sitter-tsx
       ts.tree-sitter-typescript
       ts.tree-sitter-yaml
