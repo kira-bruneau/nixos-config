@@ -1,6 +1,8 @@
-(use-package js-ts-mode
-  :mode ("\\.js\\'" "\\.jsx\\'")
-  :interpreter ("node" "zx")
+(use-package js
+  :mode (("\\.js\\'" . js-ts-mode)
+         ("\\.jsx\\'" . js-ts-mode))
+  :interpreter (("node" . js-ts-mode)
+                ("zx" . js-ts-mode))
   :init
   (with-eval-after-load 'flycheck
     (setq flycheck-javascript-eslint-executable "eslint_c")
@@ -19,7 +21,5 @@
     (add-to-list 'restclient-content-type-modes '("application/js" . js-ts-mode))))
 
 (use-package typescript-ts-mode
-  :mode "\\.ts\\'")
-
-(use-package tsx-ts-mode
-  :mode "\\.tsx\\'")
+  :mode ("\\.ts\\'"
+         ("\\.tsx\\'" . tsx-ts-mode)))

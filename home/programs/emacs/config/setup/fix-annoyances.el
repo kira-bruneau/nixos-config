@@ -96,6 +96,5 @@
    (cmake-mode . cmake-ts-mode)
    (css-mode . css-ts-mode)
    (java-mode . java-ts-mode)
-   (python-mode . python-ts-mode)
    (ruby-mode . ruby-ts-mode)
    (sh-mode . bash-ts-mode)))
