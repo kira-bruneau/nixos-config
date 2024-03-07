@@ -1,10 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ../.
-  ];
-
   environment = {
     # Source ~/.profile on login to properly set 'home.sessionVariables'
     # with home-manager.

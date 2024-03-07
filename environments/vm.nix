@@ -26,8 +26,4 @@
   environment.etc."sway/config.d/io.conf".text = ''
     output "*" scale 2
   '';
-
-  services.openssh.enable = lib.mkForce false;
-  services.syncthing.enable = lib.mkForce false;
-  services.tailscale.enable = lib.mkForce false;
 }

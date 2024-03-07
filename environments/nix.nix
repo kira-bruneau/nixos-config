@@ -1,10 +1,6 @@
 { inputs, config, pkgs, ... }:
 
 {
-  imports = [
-    ../programs/ssh.nix
-  ];
-
   system.nixos.label = builtins.concatStringsSep "-"
     (config.system.nixos.tags ++ [
       (

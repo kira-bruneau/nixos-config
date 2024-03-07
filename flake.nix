@@ -79,13 +79,21 @@
                 }.${name} or inputs;
 
                 module = {
-                  imports = [ ./hosts/${file} ];
+                  imports = [
+                    ./environments/default.nix
+                    ./hosts/${file}
+                  ];
                   networking.hostName = name;
                 };
 
                 hardwareModule =
                   if builtins.pathExists ./hardware/hosts/${name}
-                  then ./hardware/hosts/${name}
+                  then {
+                    imports = [
+                      ./hardware/environments/default.nix
+                      ./hardware/hosts/${name}
+                    ];
+                  }
                   else null;
               };
             })
