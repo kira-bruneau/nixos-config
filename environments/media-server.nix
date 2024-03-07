@@ -33,14 +33,6 @@ let
     port = "9696";
     apiKey = "00000000000000000000000000000000";
     indexers = {
-      "1337x" = {
-        definitionFile = "1337x";
-        downloadlink = 0; # iTorrents.org
-        downloadlink2 = 1; # magnet
-        sort = 2; # created
-        type = 1; # desc
-      };
-
       "LimeTorrents" = {
         definitionFile = "limetorrents";
         downloadlink = 1; # iTorrents.org
