@@ -14,7 +14,7 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixpkgs-ollama.url = "github:NixOS/nixpkgs/30a7446a159f3869d4e75f559e42f5f6cb3c6865";
 
