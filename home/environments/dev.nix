@@ -17,6 +17,7 @@
     nix-bisect
     nix-index
     nix-init
+    nix-output-monitor
     nixpkgs-review
     nurl
     patchelf
