@@ -132,6 +132,7 @@ callPackage ./wrapper.nix {
     epkgs.powerline
     epkgs.powershell
     epkgs.presentation
+    epkgs.pretty-sha-path
     epkgs.projectile
     epkgs.rainbow-delimiters
     epkgs.restclient
