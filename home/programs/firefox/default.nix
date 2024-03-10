@@ -270,10 +270,12 @@ in
         };
       in
       {
-        ${config.home.username} = lib.mkMerge [
+        firefox = lib.mkMerge [
           baseProfile
           {
             id = 0;
+            name = "Firefox";
+            path = config.home.username;
             settings = {
               "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
               "services.sync.username" = "kira.bruneau@pm.me";
@@ -284,30 +286,16 @@ in
   };
 
   xdg = {
-    desktopEntries =
-      let
-        # Overrides upstream desktop entry to open firefox in a new tab
-        base = {
-          categories = [ "Network" "WebBrowser" ];
-          exec = "firefox --new-tab %U";
-          genericName = "Web Browser";
-          icon = "firefox";
-          mimeType = [
-            "application/vnd.mozilla.xul+xml"
-            "application/xhtml+xml"
-            "text/html"
-            "text/xml"
-            "x-scheme-handler/ftp"
-            "x-scheme-handler/http"
-            "x-scheme-handler/https"
-          ];
-          name = "Firefox";
-          type = "Application";
-        };
-      in
-      {
-        firefox = base;
-      };
+    desktopEntries = builtins.mapAttrs
+      (id: profile: {
+        type = "Application";
+        name = profile.name;
+        genericName = "Web Browser";
+        icon = id;
+        categories = [ "Network" "WebBrowser" ];
+        exec = "firefox -P ${profile.name} --new-tab %U";
+      })
+      config.programs.firefox.profiles;
 
     mimeApps.defaultApplications = {
       "application/vnd.mozilla.xul+xml" = "firefox.desktop";
