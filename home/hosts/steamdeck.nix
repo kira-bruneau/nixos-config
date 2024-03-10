@@ -60,8 +60,22 @@
       };
     };
 
-  xdg.desktopEntries.jackfox.icon = lib.mkForce (pkgs.fetchurl {
-    url = "https://upload.wikimedia.org/wikipedia/commons/3/30/Firefox_Developer_Edition_logo%2C_2019.svg";
-    hash = "sha256-gQk9Uz20oMJiA77HmlLp75VuwDudL64x7IPaz+PBca4=";
-  });
+  xdg.desktopEntries = {
+    jackfox.icon = lib.mkForce (pkgs.fetchurl {
+      url = "https://upload.wikimedia.org/wikipedia/commons/3/30/Firefox_Developer_Edition_logo%2C_2019.svg";
+      hash = "sha256-gQk9Uz20oMJiA77HmlLp75VuwDudL64x7IPaz+PBca4=";
+    });
+
+    youtube = {
+      categories = [ "Network" "WebBrowser" ];
+      exec = "firefox --new-window --kiosk https://www.youtube.com";
+      genericName = "Web Browser";
+      icon = pkgs.fetchurl {
+        url = "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg";
+        hash = "sha256-fROAuewbDLM/ZhsgM9E77KfETCxAiabRTElVX/4/Ir8=";
+      };
+      name = "Youtube";
+      type = "Application";
+    };
+  };
 }
