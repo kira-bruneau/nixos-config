@@ -30,13 +30,12 @@
   },
   "keybindings": {
     "general": {
-      "shortcut": "F1",
       "refresh": "F5",
       "search": "<ctl>F",
-      "quit": "<ctl>Q",
       "all_articles": "<ctl>1",
       "only_unread": "<ctl>2",
-      "only_starred": "<ctl>3"
+      "only_starred": "<ctl>3",
+      "quit": "<ctl>Q"
     },
     "article_view": {
       "scroll_up": "u",
