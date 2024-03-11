@@ -142,6 +142,7 @@ callPackage ./wrapper.nix {
     epkgs.smartparens
     epkgs.suggest
     epkgs.swiper
+    epkgs.tree-sitter-ispell
     (epkgs.treesit-grammars.with-grammars (ts: [
       ts.tree-sitter-bash
       ts.tree-sitter-c
