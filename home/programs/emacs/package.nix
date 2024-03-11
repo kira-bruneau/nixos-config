@@ -105,6 +105,7 @@ callPackage ./wrapper.nix {
     epkgs.ellama
     epkgs.evil
     epkgs.evil-collection
+    epkgs.evil-textobj-tree-sitter
     epkgs.flx
     epkgs.flycheck
     epkgs.forge

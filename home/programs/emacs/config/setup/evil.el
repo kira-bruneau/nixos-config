@@ -192,7 +192,56 @@
 
   (with-eval-after-load 'comint
     (evil-collection-define-key 'normal 'comint-mode-map
-      (kbd "C-j") #'next-error-no-select
-      (kbd "C-k") #'previous-error-no-select
-      (kbd "gj") #'next-error-no-select
-      (kbd "gk") #'previous-error-no-select)))
+      "C-j" #'next-error-no-select
+      "C-k" #'previous-error-no-select
+      "gj" #'next-error-no-select
+      "gk" #'previous-error-no-select)))
+
+(use-package evil-textobj-tree-sitter
+  :init
+  (with-eval-after-load 'evil
+    (evil-define-key nil evil-outer-text-objects-map
+      "e" (evil-textobj-tree-sitter-get-textobj "function.outer")
+      "c" (evil-textobj-tree-sitter-get-textobj "class.outer")
+      "b" (evil-textobj-tree-sitter-get-textobj ("conditional.outer" "loop.outer")))
+
+    (evil-define-key nil evil-inner-text-objects-map
+      "e" (evil-textobj-tree-sitter-get-textobj "function.inner")
+      "c" (evil-textobj-tree-sitter-get-textobj "class.inner")
+      "b" (evil-textobj-tree-sitter-get-textobj ("conditional.inner" "loop.inner"))))
+
+  (with-eval-after-load 'evil-collection-unimpaired
+    (evil-collection-define-key 'normal 'evil-collection-unimpaired-mode-map
+      "]f"
+      (lambda ()
+        (interactive)
+        (evil-textobj-tree-sitter-goto-textobj "function.outer"))
+      "[f"
+      (lambda ()
+        (interactive)
+        (evil-textobj-tree-sitter-goto-textobj "function.outer" t))
+      "]F"
+      (lambda ()
+        (interactive)
+        (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t))
+      "[F"
+      (lambda ()
+        (interactive)
+        (evil-textobj-tree-sitter-goto-textobj "function.outer" t t))
+
+      "]c"
+      (lambda ()
+        (interactive)
+        (evil-textobj-tree-sitter-goto-textobj "class.outer"))
+      "[c"
+      (lambda ()
+        (interactive)
+        (evil-textobj-tree-sitter-goto-textobj "class.outer" t))
+      "]C"
+      (lambda ()
+        (interactive)
+        (evil-textobj-tree-sitter-goto-textobj "class.outer" nil t))
+      "[C"
+      (lambda ()
+        (interactive)
+        (evil-textobj-tree-sitter-goto-textobj "class.outer" t t)))))
