@@ -201,7 +201,7 @@ int main(int argc, char *argv[]) {
       exit_code = send(Command::force_standby);
     } else if (strcmp(arg, "active") == 0) {
       exit_code = send(Command::active);
-    } else if (strcmp(arg, "active") == 0) {
+    } else if (strcmp(arg, "inactive") == 0) {
       exit_code = send(Command::inactive);
     } else if (strcmp(arg, "standby") == 0) {
       exit_code = send(Command::standby);
