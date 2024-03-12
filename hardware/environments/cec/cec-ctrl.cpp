@@ -16,14 +16,14 @@
 using namespace CEC;
 
 bool force_active(ICECAdapter *cec) {
-  if (!cec->SetActiveSource(CEC_DEVICE_TYPE_PLAYBACK_DEVICE)) {
-    return false;
-  }
-
   auto start = std::chrono::steady_clock::now();
-  while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 15 && !cec->IsLibCECActiveSource()) {
+  do {
+    if (!cec->SetActiveSource(CEC_DEVICE_TYPE_PLAYBACK_DEVICE)) {
+      return false;
+    }
+
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
-  }
+  } while (!cec->IsLibCECActiveSource() && std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 15);
 
   return true;
 }
