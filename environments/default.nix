@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, pkgsUnstable, pkgsKiraNur, pkgsOllama, ... }:
+{ inputs, config, lib, pkgs, pkgsUnstable, pkgsKiraNur, pkgsOllama, ... }:
 
 {
   imports = [
@@ -28,4 +28,22 @@
     useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs pkgsUnstable pkgsKiraNur pkgsOllama; };
   };
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+    "anytype"
+    "anytype-heart"
+    "clonehero"
+    "clonehero-unwrapped"
+    "data.zip"
+    "discord"
+    "minecraft-server"
+    "sm64ex"
+    "steam"
+    "steam-jupiter-original"
+    "steam-original"
+    "steam-run"
+    "steamdeck-hw-theme"
+    "unrar"
+    "vvvvvv"
+  ];
 }
