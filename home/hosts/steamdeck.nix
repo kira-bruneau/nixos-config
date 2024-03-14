@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, pkgsNixSoftwareCenter, ... }:
 
 {
   imports = [
@@ -11,7 +11,7 @@
     stateVersion = "23.11";
     packages = with pkgs; [
       gnomeExtensions.dash-to-dock
-      inputs.nix-software-center.packages.${pkgs.system}.nix-software-center
+      pkgsNixSoftwareCenter.nix-software-center
     ];
   };
 

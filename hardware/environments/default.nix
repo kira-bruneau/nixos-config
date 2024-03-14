@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, pkgsDisco, ... }:
 
 {
   imports = [
@@ -9,6 +9,6 @@
   ];
 
   environment.systemPackages = [
-    inputs.disko.packages.${pkgs.system}.default
+    pkgsDisco.default
   ];
 }

@@ -78,13 +78,38 @@
                   };
                 }.${name} or inputs;
 
-                module = {
-                  imports = [
-                    ./environments/default.nix
-                    ./hosts/${file}
-                  ];
-                  networking.hostName = name;
-                };
+                module = { inputs, config, pkgs, ... }:
+                  let
+                    extraSpecialArgs = {
+                      pkgsUnstable = import inputs.nixpkgs-unstable {
+                        system = pkgs.system;
+                        config = config.nixpkgs.config;
+                      };
+
+                      pkgsOllama = import inputs.nixpkgs-ollama {
+                        system = pkgs.system;
+                        config = config.nixpkgs.config;
+                      };
+
+                      pkgsDisco = inputs.disko.packages.${pkgs.system};
+
+                      pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
+
+                      pkgsNixSoftwareCenter = inputs.nix-software-center.packages.${pkgs.system};
+
+                      pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.system};
+                    };
+                  in
+                  {
+                    imports = [
+                      ./environments/default.nix
+                      ./hosts/${file}
+                    ];
+
+                    networking.hostName = name;
+                    _module.args = extraSpecialArgs;
+                    home-manager.extraSpecialArgs = extraSpecialArgs;
+                  };
 
                 hardwareModule =
                   if builtins.pathExists ./hardware/hosts/${name}

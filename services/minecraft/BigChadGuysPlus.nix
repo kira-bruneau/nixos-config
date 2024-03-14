@@ -1,8 +1,6 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, pkgsNixMinecraft, ... }:
 
 let
-  pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.system};
-
   modpack = pkgs.fetchzip {
     url = "https://mediafilez.forgecdn.net/files/5109/63/BCG%2B%20Server%20Files%201.1.13HF.zip";
     stripRoot = false;
