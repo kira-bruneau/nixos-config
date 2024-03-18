@@ -293,6 +293,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-yuzu": {
+      "locked": {
+        "lastModified": 1710429098,
+        "narHash": "sha256-irN9RgAuoouk7PhQapw6/p2hhwUNHwIPHE6b6ZaE5nE=",
+        "owner": "Atemu",
+        "repo": "nixpkgs",
+        "rev": "f20a0c955555fb68cfc72886d7476de2aacd1b4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Atemu",
+        "ref": "revert-yuzu-removal",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1710420202,
@@ -323,7 +339,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-ollama": "nixpkgs-ollama",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixpkgs-yuzu": "nixpkgs-yuzu"
       }
     },
     "systems": {

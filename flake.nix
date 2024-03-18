@@ -18,6 +18,8 @@
 
     nixpkgs-ollama.url = "github:NixOS/nixpkgs/30a7446a159f3869d4e75f559e42f5f6cb3c6865";
 
+    nixpkgs-yuzu.url = "github:Atemu/nixpkgs/revert-yuzu-removal";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     disko = {
@@ -87,6 +89,11 @@
                       };
 
                       pkgsOllama = import inputs.nixpkgs-ollama {
+                        system = pkgs.system;
+                        config = config.nixpkgs.config;
+                      };
+
+                      pkgsYuzu = import inputs.nixpkgs-yuzu {
                         system = pkgs.system;
                         config = config.nixpkgs.config;
                       };

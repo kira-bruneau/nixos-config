@@ -1,4 +1,4 @@
-{ pkgs, pkgsKiraNur, ... }:
+{ pkgs, pkgsKiraNur, pkgsYuzu, ... }:
 
 let
   mario64Rom = pkgs.fetchurl {
@@ -33,6 +33,8 @@ in
 
     # Emulators
     dolphinEmuMaster
+    pkgsYuzu.yuzu
+    winetricks
     wineWowPackages.staging
     winetricks
 
