@@ -303,10 +303,8 @@ in
 
     # Utils
     gnome.gnome-clocks
-    libnotify
     wlprop
     wrap-scale-off
-    xdg-utils
     yabridge
     yabridgectl
   ];
