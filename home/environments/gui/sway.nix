@@ -308,4 +308,8 @@ in
     yabridge
     yabridgectl
   ];
+
+  xdg.mimeApps.defaultApplications = {
+    "inode/directory" = "emacsclient.desktop";
+  };
 }

@@ -31,4 +31,8 @@
 
   programs.bash.enableVteIntegration = true;
   programs.zsh.enableVteIntegration = true;
+
+  xdg.mimeApps.defaultApplications = {
+    "inode/directory" = "nautilus.desktop";
+  };
 }

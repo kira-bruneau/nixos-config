@@ -23,7 +23,6 @@ in
 
   xdg.mimeApps.defaultApplications = {
     "text/plain" = "emacsclient.desktop";
-    "inode/directory" = "emacsclient.desktop";
   };
 
   wayland.windowManager.sway.config = {
