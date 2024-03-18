@@ -209,7 +209,7 @@
             in
             packages // {
               "${name}/install-iso" = nixosGenerate "isoImage" {
-                modules = [ ./environments/install-iso.nix ];
+                modules = [ host.hardwareModule ./environments/install-iso.nix ];
               };
               "${name}/vm" = nixosGenerate "vm" {
                 modules = [ ./environments/vm.nix ];
