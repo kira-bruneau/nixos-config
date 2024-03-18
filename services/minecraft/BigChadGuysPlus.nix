@@ -29,6 +29,14 @@ in
       "resourcepacks" = "${modpack}/resourcepacks";
     };
 
+    files = {
+      "ops.json".value = [{
+        name = "daxvena";
+        uuid = "13290979-c320-4975-b1fe-8906f36851fe";
+        level = 4;
+      }];
+    };
+
     serverProperties.server-port = 25564;
   };
 
