@@ -15,10 +15,11 @@ let
   # Taken from nixpkgs/nixos/modules/services/editors/emacs.nix
   editorScript = writeScriptBin "emacseditor" ''
     #!${runtimeShell}
+    emacs="$(dirname "''${BASH_SOURCE[0]}")/emacs"
     if [ -z "$1" ]; then
-      exec emacsclient --create-frame --alternate-editor ${emacs}/bin/emacs
+      exec emacsclient --create-frame --alternate-editor "$emacs"
     else
-      exec emacsclient --alternate-editor ${emacs}/bin/emacs "$@"
+      exec emacsclient --alternate-editor "$emacs" "$@"
     fi
   '';
 
@@ -70,7 +71,7 @@ runCommand
     rm "$out"/bin; mkdir "$out"/bin
     ln -s ${emacs}/bin/* "$out"/bin
 
-    for bin in $(basename "$out"/bin/emacs-*) emacsclient; do
+    for bin in $(basename "$out"/bin/emacs-*); do
       rm "$out"/bin/"$bin"
       makeWrapper ${emacs}/bin/"$bin" "$out"/bin/"$bin" \
         ${lib.concatStringsSep " " makeWrapperArgs}
