@@ -20,6 +20,9 @@
       "aurora" = {
         user = "kira";
       };
+      "jackflix" = {
+        user = "jakira";
+      };
       "jakira.space" = {
         user = "root";
       };
