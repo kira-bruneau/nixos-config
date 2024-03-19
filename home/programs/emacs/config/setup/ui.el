@@ -60,9 +60,7 @@
                                                   (projectile-project-p))
                                          (powerline-raw (projectile-project-name) face2 'l))
                                        (unless (string-empty-p vc-mode-line)
-                                         (powerline-raw (concat "(" vc-mode-line ")") face2 'l))
-                                       (when (bound-and-true-p nyan-mode)
-                                         (powerline-raw (list (nyan-create)) face2 'l))))
+                                         (powerline-raw (concat "(" vc-mode-line ")") face2 'l))))
                             (rhs (list (powerline-raw global-mode-string face2 'r)
                                        (funcall separator-right face2 face1)
                                        (unless window-system
