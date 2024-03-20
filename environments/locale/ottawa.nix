@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   location = {
     latitude = 45.424721;
