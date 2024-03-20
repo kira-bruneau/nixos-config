@@ -13,6 +13,7 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
+    sharedModules = [ ../home/environments/default.nix ];
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [

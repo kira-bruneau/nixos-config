@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../../environments/default.nix
     ../../environments/wallpapers.nix
 
     # Web
