@@ -23,4 +23,9 @@
 
   # Resolve conflict between install iso config and my host configs
   services.openssh.settings.PermitRootLogin = lib.mkForce "no";
+
+  services.greetd.settings.initial_session = {
+    command = "sway";
+    user = "kira";
+  };
 }

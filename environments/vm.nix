@@ -26,4 +26,9 @@
   environment.etc."sway/config.d/io.conf".text = ''
     output "*" scale 2
   '';
+
+  services.greetd.settings.initial_session = {
+    command = "sway";
+    user = "kira";
+  };
 }
