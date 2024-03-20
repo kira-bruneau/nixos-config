@@ -72,7 +72,7 @@
                 type = "btrfs";
                 extraArgs = [ "-L" "media" ];
                 mountpoint = "/srv/media-ssd";
-                mountOptions = [ "noatime" ];
+                mountOptions = [ "noatime" "nofail" ];
               };
             };
           };

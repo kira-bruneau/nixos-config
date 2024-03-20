@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
   imports = [
@@ -16,13 +16,8 @@
     autoStart = true;
 
     bindMounts = {
-      "/srv/media-ssd" = {
-        hostPath = "/srv/media-ssd";
-        isReadOnly = false;
-      };
-      "/srv/media-hdd" = {
-        hostPath = "/srv/media-hdd";
-      };
+      "/srv/media-ssd" = { isReadOnly = false; };
+      "/srv/media-hdd" = {};
     };
 
     config = {
@@ -31,6 +26,11 @@
       fonts.fontconfig.enable = false;
     };
   };
+
+  systemd.services."container@media-server".unitConfig.RequiresMountFor =
+    builtins.map
+      (d: if d.hostPath != null then d.hostPath else d.mountPoint)
+      (builtins.attrValues config.containers.media-server.bindMounts);
 
   networking.firewall.allowedTCPPorts = [
     8096
