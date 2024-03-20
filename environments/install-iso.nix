@@ -3,6 +3,7 @@
 {
   imports = [
     "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix"
+    ./stateless.nix
   ];
 
   # /etc/nixos is seeded with the contents of this flake
@@ -23,9 +24,4 @@
 
   # Resolve conflict between install iso config and my host configs
   services.openssh.settings.PermitRootLogin = lib.mkForce "no";
-
-  services.greetd.settings.initial_session = {
-    command = "sway";
-    user = "kira";
-  };
 }
