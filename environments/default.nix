@@ -10,14 +10,15 @@
     ./nix.nix
   ];
 
+  environment.defaultPackages = [];
+
+  users.mutableUsers = false;
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
     sharedModules = [ ../home/environments/default.nix ];
   };
-
-  # Disable default packages
-  environment.defaultPackages = [];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
     "anytype"

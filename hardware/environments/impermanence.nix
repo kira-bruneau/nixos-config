@@ -46,8 +46,6 @@
     ++ builtins.concatMap (key: [ key.path "${key.path}.pub" ]) config.services.openssh.hostKeys;
   };
 
-  users.mutableUsers = false;
-
   # Workaround logrotate failing to rename logrotate.status bind-mount
   services.logrotate.settings.header.norenamecopy = true;
 }
