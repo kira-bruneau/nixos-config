@@ -6,6 +6,9 @@
     ./stateless.nix
   ];
 
+  # Resolve conflict between install iso config and my host configs
+  boot.loader.timeout = lib.mkImageMediaOverride 10;
+
   # Disable impermanence
   environment.persistence = lib.mkImageMediaOverride {};
 
