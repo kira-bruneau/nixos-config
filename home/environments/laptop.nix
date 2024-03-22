@@ -1,8 +1,14 @@
+{ pkgs, ... }:
+
 {
   imports = [
     ./bluetooth.nix
     ./gui
     ./wifi.nix
+  ];
+
+  home.packages = with pkgs; [
+    snapshot
   ];
 
   services.swayidle = {
