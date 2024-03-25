@@ -216,7 +216,7 @@ callPackage ./wrapper.nix {
       nodePackages.typescript-language-server
       nodePackages.vue-language-server
       nodePackages.yaml-language-server
-      (ollama.override { enableRocm = true; })
+      (ollama.override { acceleration = "rocm"; })
       pandoc
       perl
       prettierc

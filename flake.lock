@@ -333,22 +333,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-ollama": {
-      "locked": {
-        "lastModified": 1708118605,
-        "narHash": "sha256-GSmi2d0X2qDMQAA+jPixSYUAR5mYlu63526clLvXAPE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "30a7446a159f3869d4e75f559e42f5f6cb3c6865",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "30a7446a159f3869d4e75f559e42f5f6cb3c6865",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1711523803,
@@ -427,7 +411,6 @@
         "nix-software-center": "nix-software-center",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-ollama": "nixpkgs-ollama",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-yuzu": "nixpkgs-yuzu"
       }

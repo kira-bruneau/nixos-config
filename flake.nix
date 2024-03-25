@@ -16,8 +16,6 @@
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-ollama.url = "github:NixOS/nixpkgs/30a7446a159f3869d4e75f559e42f5f6cb3c6865";
-
     nixpkgs-yuzu.url = "github:Atemu/nixpkgs/revert-yuzu-removal";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -86,11 +84,6 @@
                   let
                     extraSpecialArgs = {
                       pkgsUnstable = import inputs.nixpkgs-unstable {
-                        system = pkgs.system;
-                        config = config.nixpkgs.config;
-                      };
-
-                      pkgsOllama = import inputs.nixpkgs-ollama {
                         system = pkgs.system;
                         config = config.nixpkgs.config;
                       };
@@ -197,7 +190,7 @@
         packages = {
           emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
             ggt = inputs.kira-nur.packages.${system}.ggt;
-            ollama = inputs.nixpkgs-ollama.legacyPackages.${system}.ollama;
+            ollama = inputs.nixpkgs-unstable.legacyPackages.${system}.ollama;
           };
         } // builtins.foldl'
           (packages: name:
