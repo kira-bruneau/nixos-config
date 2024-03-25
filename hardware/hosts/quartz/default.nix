@@ -110,8 +110,8 @@
 
   environment.persistence."/persist" = {
     directories = [
-      "/var/lib/ollama"
       "/var/lib/minecraft"
+      "/var/lib/private/ollama"
     ];
   };
 
