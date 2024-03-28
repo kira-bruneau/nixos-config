@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   services.syncthing = {
@@ -90,6 +90,9 @@
       };
     };
   };
+
+  # Re-scanning on resume is very wasteful & power hungry
+  systemd.services.syncthing-resume.enable = false;
 
   boot.kernel.sysctl = {
     "fs.inotify.max_user_watches" = 1048576;
