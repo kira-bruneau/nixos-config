@@ -17,4 +17,6 @@ in
       StateDirectory = "ollama";
     };
   };
+
+  environment.systemPackages = [ ollama ];
 }
