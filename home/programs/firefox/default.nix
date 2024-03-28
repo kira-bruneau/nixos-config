@@ -115,6 +115,7 @@ in
               "T9nJot5PurhJSy8n038xGA==" = 1; # twitter.com
             };
             "browser.newtabpage.enabled" = true;
+            "browser.crashReports.unsubmittedCheck.enabled" = false;
             "browser.newtabpage.pinned" = builtins.toJSON [ ];
             "browser.places.importBookmarksHTML" = true;
             "browser.shell.checkDefaultBrowser" = false;
