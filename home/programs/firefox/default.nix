@@ -106,12 +106,13 @@ in
             "browser.contentblocking.category" = "strict";
             "browser.newtabpage.blocked" = builtins.toJSON {
               # Dismiss builtin shortcuts
-              "26UbzFJ7qT9/4DhodHKA1Q==" = 1;
-              "4gPpjkxgZzXPVtuEoAL9Ig==" = 1;
-              "eV8/WsSLxHadrTL1gAxhug==" = 1;
-              "gLv0ja2RYVgxKdp0I5qwvA==" = 1;
-              "oYry01JR5qiqP3ru9Hdmtg==" = 1;
-              "T9nJot5PurhJSy8n038xGA==" = 1;
+              "26UbzFJ7qT9/4DhodHKA1Q==" = 1; # youtube.com
+              "4gPpjkxgZzXPVtuEoAL9Ig==" = 1; # facebook.com
+              "eV8/WsSLxHadrTL1gAxhug==" = 1; # wikipedia.org
+              "gLv0ja2RYVgxKdp0I5qwvA==" = 1; # reddit.com
+              "K00ILysCaEq8+bEqV/3nuw==" = 1; # amazon.com
+              "oYry01JR5qiqP3ru9Hdmtg==" = 1; # amazon.ca
+              "T9nJot5PurhJSy8n038xGA==" = 1; # twitter.com
             };
             "browser.newtabpage.enabled" = true;
             "browser.newtabpage.pinned" = builtins.toJSON [ ];
