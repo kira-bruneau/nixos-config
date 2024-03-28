@@ -3,7 +3,6 @@
 let
   emacs = pkgs.callPackage ./package.nix {
     ggt = pkgsKiraNur.ggt;
-    ollama = pkgsUnstable.ollama;
   };
 in
 {

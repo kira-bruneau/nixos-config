@@ -39,7 +39,6 @@
 , nodejs
 , nodePackages
 , omnisharp-roslyn
-, ollama
 , pandoc
 , perl
 , prettierd
@@ -216,7 +215,6 @@ callPackage ./wrapper.nix {
       nodePackages.typescript-language-server
       nodePackages.vue-language-server
       nodePackages.yaml-language-server
-      (ollama.override { acceleration = "rocm"; })
       pandoc
       perl
       prettierc

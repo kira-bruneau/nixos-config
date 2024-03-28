@@ -190,7 +190,6 @@
         packages = {
           emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
             ggt = inputs.kira-nur.packages.${system}.ggt;
-            ollama = inputs.nixpkgs-unstable.legacyPackages.${system}.ollama;
           };
         } // builtins.foldl'
           (packages: name:
