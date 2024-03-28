@@ -32,9 +32,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager-unstable = {
+    home-manager-jovian = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "jovian/nixpkgs";
     };
 
     kira-nur = {
@@ -45,10 +45,7 @@
       };
     };
 
-    jovian = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
     nix-software-center = {
       url = "github:snowfallorg/nix-software-center";
@@ -75,8 +72,8 @@
               value = {
                 inputs = {
                   steamdeck = inputs // {
-                    nixpkgs = inputs.nixpkgs-unstable;
-                    home-manager = inputs.home-manager-unstable;
+                    nixpkgs = inputs.jovian.inputs.nixpkgs;
+                    home-manager = inputs.home-manager-jovian;
                   };
                 }.${name} or inputs;
 
