@@ -27,7 +27,7 @@
     };
   };
 
-  systemd.services."container@media-server".unitConfig.RequiresMountFor =
+  systemd.services."container@media-server".unitConfig.RequiresMountsFor =
     builtins.map
       (d: if d.hostPath != null then d.hostPath else d.mountPoint)
       (builtins.attrValues config.containers.media-server.bindMounts);
