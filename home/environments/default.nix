@@ -11,6 +11,7 @@ in
     ../programs/fzf
     ../programs/gpg
     ../programs/htop
+    ../programs/ssh
     ../programs/tmux
   ];
 
