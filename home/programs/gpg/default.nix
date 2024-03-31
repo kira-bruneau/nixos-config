@@ -12,4 +12,11 @@
     defaultCacheTtl = 240;
     defaultCacheTtlSsh = 240;
   };
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks."*".match = ''
+      host * exec "${config.programs.gpg.package}/bin/gpg-connect-agent updatestartuptty /bye"
+    '';
+  };
 }
