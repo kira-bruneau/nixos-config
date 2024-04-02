@@ -25,7 +25,6 @@ in
     autoStart = false;
     package = pkgsNixMinecraft.fabricServers.${serverVersion}.override { loaderVersion = fabricVersion; };
     symlinks = {
-      "mods" = "${modpack}/mods";
       "resourcepacks" = "${modpack}/resourcepacks";
     };
 
@@ -44,6 +43,20 @@ in
     preStart = ''
       rm -rf config
       cp -r --no-preserve=mode ${modpack}/config config
+
+      rm -rf mods
+      mkdir mods
+      ln -s ${modpack}/mods/* mods
+
+      ln -s ${pkgs.fetchurl {
+        url = "https://mediafilez.forgecdn.net/files/5080/952/create-new-age-fabric-1.20.1-1.1.2.jar";
+        hash = "sha256-egBYEdjonRJCE5NuR/XyAN8u3m3aDjyVjVtvm0vJb1o=";
+      }} mods/create-new-age-fabric-1.20.1-1.1.2.jar
+
+      ln -s ${pkgs.fetchurl {
+        url = "https://mediafilez.forgecdn.net/files/5118/354/botarium-fabric-1.20.1-2.3.3.jar";
+        hash = "sha256-ihAOxHzjDGXg9qGuK0Vat8vwGW+HWMN0PfkZNxexbPo=";
+      }} mods/botarium-fabric-1.20.1-2.3.3.jar
     '';
   };
 
