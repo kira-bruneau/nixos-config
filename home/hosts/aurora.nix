@@ -10,7 +10,7 @@
   ];
 
   home = {
-    stateVersion = "21.11";
+    stateVersion = "23.11";
 
     packages = with pkgs; [
       prismlauncher
