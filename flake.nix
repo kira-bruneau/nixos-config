@@ -115,7 +115,8 @@
                   then {
                     imports = [
                       ./hardware/environments/default.nix
-                      ./hardware/hosts/${name}
+                      ./hardware/hosts/${name}/default.nix
+                      ./hardware/hosts/${name}/generated.nix
                     ];
                   }
                   else null;

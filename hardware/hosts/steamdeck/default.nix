@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./generated.nix
     ../../environments/cec
     ../../environments/laptop.nix
   ];

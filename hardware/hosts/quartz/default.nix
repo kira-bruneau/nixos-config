@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./generated.nix
     ../../environments/bluetooth.nix
     ../../../services/ollama.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [
