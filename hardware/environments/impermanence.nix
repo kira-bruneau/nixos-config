@@ -25,6 +25,7 @@
     ++ lib.optionals config.services.fwupd.enable [ "/var/cache/fwupd" "/var/lib/fwupd" ]
     ++ lib.optional config.networking.wireless.iwd.enable "/var/lib/iwd"
     ++ lib.optional config.services.kubo.enable config.services.kubo.dataDir
+    ++ lib.optional config.services.logrotate.enable "/var/lib/logrotate"
     ++ lib.optionals config.networking.networkmanager.enable [
       "/etc/NetworkManager/system-connections"
       "/var/lib/NetworkManager"
@@ -42,10 +43,17 @@
       "/var/log/lastlog" # uid -> last logout map (updated by pam, openssh)
       "/var/log/wtmp" # login/logout logs (updated by pam, openssh)
     ]
-    ++ lib.optional config.services.logrotate.enable "/var/lib/logrotate.status"
     ++ builtins.concatMap (key: [ key.path "${key.path}.pub" ]) config.services.openssh.hostKeys;
   };
 
   # Workaround logrotate failing to rename logrotate.status bind-mount
-  services.logrotate.settings.header.norenamecopy = true;
+  nixpkgs.overlays = [
+    (final: super: {
+      logrotate = super.logrotate.overrideAttrs (attrs: {
+        configureFlags = attrs.configureFlags ++ [
+          "--with-state-file-path=/var/lib/logrotate/logrotate.status"
+        ];
+      });
+    })
+  ];
 }
