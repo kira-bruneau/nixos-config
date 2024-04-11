@@ -235,7 +235,6 @@ in
       shadows enable
       shadows_on_csd enable
       include /etc/sway/config.d/*
-      exec "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd XCURSOR_PATH XCURSOR_NAME XCURSOR_SIZE"
     '';
   };
 
