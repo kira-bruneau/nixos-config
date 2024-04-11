@@ -121,6 +121,10 @@ in
           };
         };
 
+        startup = [
+          { command = "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit"; }
+        ];
+
         keybindings = lib.mkOptionDefault {
           "${cfg.modifier}+a" = "exec ${cfg.menu}";
           "${cfg.modifier}+q" = "kill";

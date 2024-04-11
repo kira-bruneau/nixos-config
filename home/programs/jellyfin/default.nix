@@ -8,7 +8,7 @@
   wayland.windowManager.sway.config.window.commands = [
     {
       criteria = { app_id = "^org.jellyfin.$"; };
-      command = "move container to workspace 4; inhibit_idle fullscreen";
+      command = "move container to workspace 4";
     }
   ];
 
