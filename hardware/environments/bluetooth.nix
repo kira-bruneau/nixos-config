@@ -5,7 +5,14 @@
     enable = true;
 
     # Disable plugins that require experimental features
-    disabledPlugins = [ "bap" "mcp" "vcp" ];
+    disabledPlugins = [
+      "bap"
+      "bass"
+      "csip"
+      "mcp"
+      "micp"
+      "vcp"
+    ];
   };
 
   # ConfigurationDirectory 'bluetooth' already exists but the mode is different. (File system: 755 ConfigurationDirectoryMode: 555)
