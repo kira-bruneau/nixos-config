@@ -10,4 +10,9 @@
     command = "sway";
     user = "kira";
   };
+
+  services.xserver.displayManager.autoLogin = {
+    enable = true;
+    user = "kira";
+  };
 }
