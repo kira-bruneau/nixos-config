@@ -113,11 +113,11 @@
                 hardwareModule =
                   if builtins.pathExists ./hardware/hosts/${name}
                   then {
-                    imports = [
-                      ./hardware/environments/default.nix
+                    imports = [ ./hardware/environments/default.nix ]
+                      ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix)
                       ./hardware/hosts/${name}/default.nix
-                      ./hardware/hosts/${name}/generated.nix
-                    ];
+                      ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix)
+                      ./hardware/hosts/${name}/generated.nix;
                   }
                   else null;
               };
