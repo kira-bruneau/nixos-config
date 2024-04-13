@@ -156,12 +156,6 @@
     SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-4]", RUN+="/run/current-system/systemd/bin/systemctl hibernate"
   '';
 
-  # Automatically control frequency of CPU to save power
-  services.auto-cpufreq.enable = true;
-
-  # Disable tlp being enabled from common-pc-laptop in nixos-hardware
-  services.tlp.enable = false;
-
   # Prevent CPU from overheating
   services.thermald.enable = true;
 
