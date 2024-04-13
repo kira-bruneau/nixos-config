@@ -29,6 +29,9 @@
     gnome-console
     gnome.gnome-clocks
     gnome.seahorse
+
+    # Extensions
+    gnomeExtensions.dash-to-dock
   ];
 
   programs.bash.enableVteIntegration = true;

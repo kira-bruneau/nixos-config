@@ -10,7 +10,6 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
-      gnomeExtensions.dash-to-dock
       pkgsNixSoftwareCenter.nix-software-center
     ];
   };
