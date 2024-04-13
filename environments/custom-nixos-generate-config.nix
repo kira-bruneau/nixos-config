@@ -29,6 +29,22 @@ let
 
       dir="''${root%/}$dir"
 
+      if [ -n "$root" ]; then
+        args=(--root "$root")
+      else
+        args=()
+      fi
+
+      args+=(
+        --dir "$dir"
+        --no-filesystems
+        --show-hardware-config
+      )
+
+      if [ $show_hardware_config -ne 0 ]; then
+        exec nixos-generate-config "''${args[@]}"
+      fi
+
       if [ $force -ne 0 ]; then
         rm -rf "$dir"
       fi
@@ -45,26 +61,10 @@ let
         echo "warning: not overwriting existing flake at $dir" >&2
       fi
 
-      if [ -n "$root" ]; then
-        args=(--root "$root")
-      else
-        args=()
-      fi
-
-      args+=(
-        --dir "$dir"
-        --no-filesystems
-        --show-hardware-config
-      )
-
-      if [ $show_hardware_config -ne 0 ]; then
-        nixos-generate-config "''${args[@]}"
-      else
-        out="$dir/hardware/hosts/$(hostname)/generated.nix"
-        echo "writing $out..." >&2
-        mkdir -p "$(dirname "$out")"
-        nixos-generate-config "''${args[@]}" > "$out"
-      fi
+      out="$dir/hardware/hosts/$(hostname)/generated.nix"
+      echo "writing $out..." >&2
+      mkdir -p "$(dirname "$out")"
+      nixos-generate-config "''${args[@]}" > "$out"
     '';
   }) // {
     meta = {
