@@ -55,16 +55,21 @@ let
         chmod -R +w "$dir"
         git -C "$dir" init --initial-branch main
         git -C "$dir" add --all
-        git -C "$dir" -c user.name='Kira Bruneau' -c user.email='kira.bruneau@pm.me' commit -m 'nixos-generate-config'
         git -C "$dir" config include.path ../.gitconfig
+        fresh=1
       else
         echo "warning: not overwriting existing flake at $dir" >&2
+        fresh=0
       fi
 
       out="$dir/hardware/hosts/$(hostname)/generated.nix"
       echo "writing $out..." >&2
       mkdir -p "$(dirname "$out")"
       nixos-generate-config "''${args[@]}" > "$out"
+      git -C "$dir" add "$out"
+      if [ $fresh -ne 0 ]; then
+        git -C "$dir" -c user.name='Kira Bruneau' -c user.email='kira.bruneau@pm.me' commit -m 'nixos-generate-config'
+      fi
     '';
   }) // {
     meta = {
