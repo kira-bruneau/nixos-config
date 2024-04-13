@@ -17,6 +17,18 @@
     "org/gnome/desktop/a11y/applications" = {
       screen-keyboard-enabled = true;
     };
+
+    "org/gnome/shell" = {
+      favorite-apps = [
+        "org.gnome.Nautilus.desktop"
+        "firefox.desktop"
+        "jackfox.desktop"
+        "steam.desktop"
+        "com.github.iwalton3.jellyfin-media-player.desktop"
+        "org.gnome.Console.desktop"
+        "dev.vlinkz.NixSoftwareCenter.desktop"
+      ];
+    };
   };
 
   xdg.desktopEntries = {
