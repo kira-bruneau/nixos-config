@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   services.openssh = {
     enable = true;
@@ -23,7 +25,7 @@
     };
 
     extraConfig = ''
-      IdentityFile /etc/ssh/ssh_host_ed25519_key
+      IdentityFile ${(builtins.head config.services.openssh.hostKeys).path}
     '';
   };
 }
