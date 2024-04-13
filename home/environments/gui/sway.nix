@@ -60,6 +60,9 @@ in
   imports = [
     ./.
 
+    # Administration
+    ../../programs/dconf-editor
+
     # Media & Documents
     ../../programs/evince
     ../../programs/loupe
@@ -293,7 +296,6 @@ in
 
   home.packages = with pkgs; [
     # Administration
-    gnome.dconf-editor
     helvum
     pavucontrol
     pkgsUnstable.resources

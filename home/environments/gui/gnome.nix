@@ -4,6 +4,9 @@
   imports = [
     ./.
 
+    # Administration
+    ../../programs/dconf-editor
+
     # Media & Documents
     ../../programs/evince
     ../../programs/loupe
@@ -15,7 +18,6 @@
   home.packages = with pkgs; [
     # Administration
     baobab
-    gnome.dconf-editor
     gnome.gnome-disk-utility
     gnome.gnome-system-monitor
 
