@@ -20,7 +20,7 @@
     # Administration
     baobab
     gnome.gnome-disk-utility
-    gnome.gnome-system-monitor
+    pkgsUnstable.resources
     pkgsNixSoftwareCenter.nix-software-center
 
     # Media & Documents
