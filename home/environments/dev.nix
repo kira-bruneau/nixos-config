@@ -8,6 +8,9 @@
   ];
 
   home.packages = with pkgs; [
+    # Web
+    ungoogled-chromium
+
     # Media & Documents
     poke
     sqlitebrowser
@@ -33,4 +36,8 @@
     tcpflow
     valgrind
   ];
+
+  wayland.windowManager.sway.config = {
+    assigns."1" = [{ app_id = "^chromium-browser$"; }];
+  };
 }

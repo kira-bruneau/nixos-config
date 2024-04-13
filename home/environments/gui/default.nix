@@ -23,7 +23,6 @@
       # Web
       qbittorrent
       syncplay
-      ungoogled-chromium
       yt-dlp
 
       # Chat
@@ -94,9 +93,6 @@
 
   wayland.windowManager.sway.config = {
     assigns = {
-      "1" = [
-        { app_id = "^chromium-browser$"; }
-      ];
       "4" = [
         { app_id = "^org.qbittorrent.qBittorrent$"; }
         { title = "^Syncplay"; }
