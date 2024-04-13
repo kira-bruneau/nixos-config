@@ -32,11 +32,11 @@ in
     vvvvvv
 
     # Emulators
+    cemu
     dolphinEmuMaster
     pkgsYuzu.yuzu
     winetricks
     wineWowPackages.staging
-    winetricks
 
     # Recording
     obs-studio
