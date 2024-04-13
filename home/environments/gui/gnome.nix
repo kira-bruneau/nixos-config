@@ -10,6 +10,7 @@
     # Media & Documents
     ../../programs/evince
     ../../programs/loupe
+    ../../programs/nautilus
 
     # Themes
     ../../programs/gtk
@@ -23,7 +24,6 @@
 
     # Media & Documents
     gnome.file-roller
-    gnome.nautilus
 
     # Utils
     gnome-console
@@ -33,10 +33,6 @@
 
   programs.bash.enableVteIntegration = true;
   programs.zsh.enableVteIntegration = true;
-
-  xdg.mimeApps.defaultApplications = {
-    "inode/directory" = "nautilus.desktop";
-  };
 
   dconf.settings = {
     "org/gnome/shell" = {

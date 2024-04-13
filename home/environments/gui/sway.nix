@@ -67,6 +67,7 @@ in
     ../../programs/evince
     ../../programs/loupe
     ../../programs/mpv
+    ../../programs/nautilus
 
     # Themes
     ../../programs/gtk
@@ -302,7 +303,6 @@ in
 
     # Media & Documents
     gnome.file-roller
-    gnome.nautilus
 
     # Utils
     gnome.gnome-clocks
