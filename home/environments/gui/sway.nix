@@ -306,8 +306,6 @@ in
     gnome.gnome-clocks
     wlprop
     wrap-scale-off
-    yabridge
-    yabridgectl
   ];
 
   xdg.mimeApps.defaultApplications = {
