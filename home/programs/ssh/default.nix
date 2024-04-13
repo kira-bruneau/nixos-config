@@ -27,7 +27,7 @@
         user = "kira";
       };
       "steamdeck" = {
-        user = "kira";
+        user = "jakira";
       };
     };
   };

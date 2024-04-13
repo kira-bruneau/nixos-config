@@ -4,19 +4,19 @@
   imports = [
     ../environments/gaming.nix
     ../environments/gui/gnome.nix
-    ../users/kira.nix
+    ../users/jakira.nix
     inputs.jovian.nixosModules.default
   ];
 
   system.stateVersion = "23.11";
 
-  users.defaultUser = "kira";
+  users.defaultUser = "jakira";
 
   jovian = {
     steam = {
       enable = true;
       autoStart = true;
-      user = "kira";
+      user = "jakira";
       desktopSession = "gnome";
     };
 
