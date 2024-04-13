@@ -1,4 +1,4 @@
-{ config, pkgs, pkgsUnstable, ... }:
+{ config, pkgs, pkgsUnstable, pkgsNixSoftwareCenter, ... }:
 
 {
   imports = [
@@ -21,6 +21,7 @@
     baobab
     gnome.gnome-disk-utility
     gnome.gnome-system-monitor
+    pkgsNixSoftwareCenter.nix-software-center
 
     # Media & Documents
     gnome.file-roller

@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, pkgsNixSoftwareCenter, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -7,12 +7,7 @@
     ../environments/gui/gnome.nix
   ];
 
-  home = {
-    stateVersion = "23.11";
-    packages = with pkgs; [
-      pkgsNixSoftwareCenter.nix-software-center
-    ];
-  };
+  home.stateVersion = "23.11";
 
   # Enable CEF remote debugging for decky-loader
   xdg.dataFile."Steam/.cef-enable-remote-debugging".text = "";
