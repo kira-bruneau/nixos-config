@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, pkgsUnstable, ... }:
 
 {
   imports = [
@@ -32,15 +32,29 @@
 
     # Extensions
     gnomeExtensions.dash-to-dock
+    pkgsUnstable.gnomeExtensions.random-wallpaper
   ];
 
   programs.bash.enableVteIntegration = true;
   programs.zsh.enableVteIntegration = true;
 
   dconf.settings = {
+    "org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
+      hide-panel-icon = true;
+      fetch-on-startup = true;
+      sources = [ "0" ];
+    };
+    "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/general/0" = {
+      name = "Wallpapers";
+      type = 4; # Local folder
+    };
+    "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/localFolder/0" = {
+      folder = "${config.home.homeDirectory}/Pictures/Wallpapers";
+    };
     "org/gnome/shell" = {
       enabled-extensions = [
         "dash-to-dock@micxgx.gmail.com"
+        "randomwallpaper@iflow.space"
       ];
     };
     # Dash to Dock settings for a better touch screen experience
