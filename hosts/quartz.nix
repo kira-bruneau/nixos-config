@@ -12,6 +12,8 @@
 
   system.stateVersion = "23.11";
 
+  users.defaultUser = "kira";
+
   containers.media-server = {
     autoStart = true;
 
