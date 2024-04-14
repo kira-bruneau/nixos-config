@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../drivers/logitech-wireless.nix
     ../../environments/laptop.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [
     framework-11th-gen-intel
@@ -161,10 +162,4 @@
 
   # Manage firmware updates
   services.fwupd.enable = true;
-
-  # Manage logitech unifying receiver
-  hardware.logitech.wireless = {
-    enable = true;
-    enableGraphical = true;
-  };
 }

@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../drivers/logitech-wireless.nix
     ../../environments/cec
     ../../environments/laptop.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [

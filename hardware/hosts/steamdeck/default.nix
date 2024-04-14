@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../drivers/logitech-wireless.nix
     ../../environments/cec
     ../../environments/laptop.nix
   ];
@@ -74,10 +75,4 @@
   environment.systemPackages = with pkgs; [
     steamdeck-firmware
   ];
-
-  # Manage logitech unifying receiver
-  hardware.logitech.wireless = {
-    enable = true;
-    enableGraphical = true;
-  };
 }
