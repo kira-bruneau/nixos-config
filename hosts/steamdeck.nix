@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../environments/autologin.nix
     ../environments/gaming.nix
     ../environments/gui/gnome.nix
     ../users/jakira.nix
@@ -15,8 +16,6 @@
   jovian = {
     steam = {
       enable = true;
-      autoStart = true;
-      user = "jakira";
       desktopSession = "gnome";
     };
 
