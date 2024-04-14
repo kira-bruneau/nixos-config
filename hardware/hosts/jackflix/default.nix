@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../environments/cec
     ../../environments/laptop.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [
     common-cpu-intel-cpu-only
