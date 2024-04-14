@@ -16,6 +16,8 @@
   jovian = {
     steam = {
       enable = true;
+      autoStart = true;
+      user = "jakira";
       desktopSession = "gnome";
     };
 

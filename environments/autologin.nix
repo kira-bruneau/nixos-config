@@ -24,9 +24,4 @@
       }
     ];
   };
-
-  jovian.steam = {
-    autoStart = true;
-    user = config.users.defaultUser;
-  };
 }
