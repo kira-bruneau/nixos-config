@@ -12,4 +12,16 @@
     enable = true;
     user = config.users.defaultUser;
   };
+
+  programs.dconf.profiles = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
+    user.databases = [
+      {
+        settings = {
+          "org/gnome/desktop/screensaver" = {
+            lock-enabled = false;
+          };
+        };
+      }
+    ];
+  };
 }
