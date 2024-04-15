@@ -17,24 +17,12 @@
       "${config.home.configDirectory}/programs/ssh/known_hosts");
 
     matchBlocks = {
-      "aurora" = {
-        user = "kira";
-      };
-      "jackflix" = {
-        user = "jakira";
-      };
-      "jakira.space" = {
-        user = "root";
-      };
-      "neo" = {
-        user = "kira";
-      };
-      "quartz" = {
-        user = "kira";
-      };
-      "steamdeck" = {
-        user = "jakira";
-      };
+      "aurora".user = "kira";
+      "jackflix".user = "jakira";
+      "jakira.space".user = "root";
+      "neo".user = "kira";
+      "quartz".user = "kira";
+      "steamdeck".user = "jakira";
     };
   };
 }
