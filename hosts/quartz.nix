@@ -4,6 +4,7 @@
   imports = [
     ../environments/gaming.nix
     ../environments/gui/sway.nix
+    ../environments/media-server.nix
     ../services/kubo.nix
     ../services/minecraft/BigChadGuysPlus.nix
     ../users/builder.nix
@@ -13,29 +14,4 @@
   system.stateVersion = "23.11";
 
   users.defaultUser = "kira";
-
-  containers.media-server = {
-    autoStart = true;
-
-    bindMounts = {
-      "/srv/media-ssd" = { isReadOnly = false; };
-      "/srv/media-hdd" = {};
-    };
-
-    config = {
-      imports = [ ../environments/media-server.nix ];
-      system.stateVersion = "23.11";
-      fonts.fontconfig.enable = false;
-    };
-  };
-
-  systemd.services."container@media-server".unitConfig.RequiresMountsFor =
-    builtins.map
-      (d: if d.hostPath != null then d.hostPath else d.mountPoint)
-      (builtins.attrValues config.containers.media-server.bindMounts);
-
-  networking.firewall.allowedTCPPorts = [
-    8096
-    5055
-  ];
 }

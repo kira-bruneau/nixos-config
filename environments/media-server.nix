@@ -121,7 +121,10 @@ let
     '';
 in
 {
-  services.jellyfin.enable = true;
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 
   users.users.jellyfin.extraGroups = [ "sonarr" "radarr" "qbittorrent" ];
 
@@ -175,7 +178,10 @@ in
     '';
   };
 
-  services.jellyseerr.enable = true;
+  services.jellyseerr = {
+    enable = true;
+    openFirewall = true;
+  };
 
   systemd.services.jellyseerr.serviceConfig = {
     CapabilityBoundingSet = "";

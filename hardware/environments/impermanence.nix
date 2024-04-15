@@ -21,6 +21,8 @@
     ++ lib.optional config.services.colord.enable "/var/lib/colord"
     ++ lib.optional config.services.fprintd.enable "/var/lib/fprint"
     ++ lib.optionals config.services.fwupd.enable [ "/var/cache/fwupd" "/var/lib/fwupd" ]
+    ++ lib.optionals config.services.jellyfin.enable [ "/var/lib/jellyfin" "/var/cache/jellyfin" "/var/log/jellyfin" ]
+    ++ lib.optional config.services.jellyseerr.enable "/var/lib/private/jellyseerr"
     ++ lib.optional config.networking.wireless.iwd.enable "/var/lib/iwd"
     ++ lib.optional config.services.kubo.enable config.services.kubo.dataDir
     ++ lib.optionals config.networking.networkmanager.enable [
@@ -30,6 +32,9 @@
     ]
     ++ builtins.map (container: "/var/lib/nixos-containers/${container}") (builtins.attrNames config.containers)
     ++ lib.optional config.services.power-profiles-daemon.enable "/var/lib/power-profiles-daemon"
+    ++ lib.optional config.services.prowlarr.enable "/var/lib/private/prowlarr"
+    ++ lib.optional config.services.radarr.enable config.services.radarr.dataDir
+    ++ lib.optional config.services.sonarr.enable config.services.sonarr.dataDir
     ++ lib.optional config.security.sudo.enable "/var/db/sudo"
     ++ lib.optional config.services.tailscale.enable "/var/lib/tailscale"
     ++ lib.optional config.services.upower.enable "/var/lib/upower";

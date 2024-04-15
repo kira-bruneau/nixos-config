@@ -112,6 +112,7 @@
     "/nix"
     "/var/lib/minecraft"
     "/var/lib/private/ollama"
+    "/var/lib/qBittorrent"
   ];
 
   # Sway I/O configuration
