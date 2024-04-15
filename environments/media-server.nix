@@ -134,6 +134,13 @@ in
       RequiresMountsFor = builtins.concatMap
         (lib: lib.folders)
         (builtins.attrValues jellyfin.mediaLibraries);
+
+      CapabilityBoundingSet = "";
+      ProcSubset = "pid";
+      ProtectClock = true;
+      ProtectHome = true;
+      ProtectProc = "invisible";
+      ProtectSystem = "full"; # strict doesn't work: Failed to create CoreCLR, HRESULT: 0x80004005
     };
 
     preStart = ''
@@ -166,6 +173,16 @@ in
             "${pkgs.coreutils}/bin/ln -sfn ${lib} \"$STATE_DIRECTORY/root/default/${name}\"")
           (builtins.attrNames jellyfin.mediaLibraries))}
     '';
+  };
+
+  services.jellyseerr.enable = true;
+
+  systemd.services.jellyseerr.serviceConfig = {
+    CapabilityBoundingSet = "";
+    ProcSubset = "pid";
+    ProtectClock = true;
+    ProtectProc = "invisible";
+    RestrictNamespaces = true;
   };
 
   services.sonarr = {
@@ -518,7 +535,4 @@ in
         "$STATE_DIRECTORY/.config/qBittorrent/qBittorrent.conf"
     '';
   };
-
-  # Manage those jellies
-  services.jellyseerr.enable = true;
 }
