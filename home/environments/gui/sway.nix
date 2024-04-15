@@ -297,6 +297,7 @@ in
 
   home.packages = with pkgs; [
     # Administration
+    baobab
     helvum
     pavucontrol
     pkgsUnstable.resources
