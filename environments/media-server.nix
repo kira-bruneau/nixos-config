@@ -134,16 +134,18 @@ in
       LogsDirectory = "jellyfin";
       LogsDirectoryMode = "0700";
       UMask = lib.mkForce "0022";
-      RequiresMountsFor = builtins.concatMap
-        (lib: lib.folders)
-        (builtins.attrValues jellyfin.mediaLibraries);
-
       CapabilityBoundingSet = "";
       ProcSubset = "pid";
       ProtectClock = true;
       ProtectHome = true;
       ProtectProc = "invisible";
       ProtectSystem = "full"; # strict doesn't work: Failed to create CoreCLR, HRESULT: 0x80004005
+    };
+
+    unitConfig = {
+      RequiresMountsFor = builtins.concatMap
+        (lib: lib.folders)
+        (builtins.attrValues jellyfin.mediaLibraries);
     };
 
     preStart = ''
