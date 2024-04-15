@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, pkgsUnstable, ... }:
 
 let
   downloadClients = {
@@ -178,6 +178,143 @@ let
     };
 in
 {
+  imports = [
+    (inputs.nixpkgs-unstable + "/nixos/modules/services/misc/homepage-dashboard.nix")
+  ];
+
+  disabledModules = [
+    "services/misc/homepage-dashboard.nix"
+  ];
+
+  services.homepage-dashboard = {
+    enable = true;
+    package = pkgsUnstable.homepage-dashboard;
+    services = [
+      {
+        "Public" = [
+          {
+            "Jellyfin" = {
+              icon = "jellyfin.svg";
+              href = "http://quartz:8096";
+            };
+          }
+          {
+            "Jellyseerr" = {
+              icon = "jellyseerr.svg";
+              href = "http://quartz:5055";
+            };
+          }
+          {
+            "BigChadGuys Plus" = {
+              icon = "https://media.forgecdn.net/avatars/937/629/638416082100123870.png";
+              widget = {
+                type = "minecraft";
+                url = "udp://amethyst:25565";
+                fields = [ "players" "status" ];
+              };
+            };
+          }
+        ];
+      }
+      {
+        "Internal" = [
+          {
+            "Sonarr" = {
+              icon = "sonarr.svg";
+              href = "http://quartz:${sonarr.port}";
+              widget = {
+                type = "sonarr";
+                url = "http://localhost:${sonarr.port}";
+                key = sonarr.apiKey;
+                # enableQueue = true;
+              };
+            };
+          }
+          {
+            "Radarr" = {
+              icon = "radarr.svg";
+              href = "http://quartz:${radarr.port}";
+              widget = {
+                type = "radarr";
+                url = "http://localhost:${radarr.port}";
+                key = radarr.apiKey;
+                # enableQueue = true;
+              };
+            };
+          }
+          {
+            "Prowlarr" = {
+              icon = "prowlarr.svg";
+              href = "http://quartz:${prowlarr.port}";
+              widget = {
+                type = "prowlarr";
+                url = "http://localhost:${prowlarr.port}";
+                key = prowlarr.apiKey;
+              };
+            };
+          }
+          {
+            "qBittorrent" = {
+              icon = "qbittorrent.svg";
+              href = "http://quartz:${toString qBittorrent.Preferences."WebUI\\Port"}";
+              widget = {
+                type = "qbittorrent";
+                url = "http://localhost:${toString qBittorrent.Preferences."WebUI\\Port"}";
+              };
+            };
+          }
+        ];
+      }
+      {
+        "Calendar" = [
+          {
+            "" = {
+              widget = {
+                type = "calendar";
+                firstDayInWeek = "sunday";
+                view = "monthly";
+                showTime = true;
+                integrations = [
+                  {
+                    type = "sonarr";
+                    service_group = "Internal";
+                    service_name = "Sonarr";
+                    params = {
+                      unmonitored = true;
+                    };
+                  }
+                  {
+                    type = "radarr";
+                    service_group = "Internal";
+                    service_name = "Radarr";
+                    params = {
+                      unmonitored = true;
+                    };
+                  }
+                ];
+              };
+            };
+          }
+        ];
+      }
+    ];
+
+    widgets = [
+      {
+        resources = {
+          cpu = true;
+          memory = true;
+          expanded = true;
+          disk = [
+            "/persist"
+            "/srv/media-ssd"
+            "/srv/media-hdd"
+          ];
+        };
+      }
+    ];
+  };
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
