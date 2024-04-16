@@ -6,10 +6,13 @@
     user = "kira";
     group = "users";
     dataDir = "/home/kira";
+    guiAddress = "0.0.0.0:8384";
     openDefaultPorts = true;
     overrideDevices = true;
     overrideFolders = true;
     settings = {
+      gui.insecureAdminAccess = true;
+
       devices = {
         "aurora" = { id = "ODCDVEV-I63ZAW6-MV27YBB-W5MDOAU-YZ3RK23-DMXCWAN-STJOSEF-EFXFRQP"; };
         "luna" = { id = "O4NQTDT-NWV3GEZ-67BW33I-BQ454SI-42G2RK3-F53W4L4-RUG47VK-5VXLFA7"; };
