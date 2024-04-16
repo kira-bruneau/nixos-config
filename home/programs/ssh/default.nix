@@ -20,7 +20,7 @@
       "aurora".user = "kira";
       "jackflix".user = "jakira";
       "jakira.space".user = "root";
-      "neo".user = "kira";
+      "amethyst".user = "kira";
       "quartz".user = "kira";
       "steamdeck".user = "jakira";
     };
