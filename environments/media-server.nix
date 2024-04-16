@@ -46,8 +46,8 @@ let
         implementation = "Cardigann";
         fields = {
           definitionFile = "1337x";
-          downloadlink1 = 0; # iTorrents.org
-          downloadlink2 = 1; # magnet
+          downloadlink = 1; # magnet
+          downloadlink2 = 0; # iTorrents.org
           sort = 2; # created
           type = 1; # desc
         };
@@ -71,6 +71,7 @@ let
         implementation = "Cardigann";
         fields = {
           definitionFile = "solidtorrents";
+          prefer_magnet_links = true;
           sort = 0; # created
           type = 1; # desc
         };
