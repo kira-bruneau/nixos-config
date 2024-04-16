@@ -25,6 +25,7 @@ in
     curl
     netcat
     nmap
+    rsync
     whois
 
     # Data conversion & manipulation
