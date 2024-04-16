@@ -1,6 +1,7 @@
 {
   imports = [
     ../environments/default.nix
+    ../users/builder.nix
     ../users/kira.nix
   ];
 
