@@ -56,7 +56,7 @@
     };
     "Pictures/Wallpapers/alena-aenami-dreamy-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/074/794/932/large/alena-aenami-dreamy-1k.jpg";
-      hash = "sha256-ZoLQ9HVdiYhnZfc2J4FfgSjNijQPhHl2sclvZPBoXVU=";
+      hash = "sha256-jLXzIzHY0uRSi43gQncAIzy1G/P9ZZk4l9Hqw//ata4=";
     };
     "Pictures/Wallpapers/alena-aenami-eclipse-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg";
