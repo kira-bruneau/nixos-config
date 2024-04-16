@@ -42,6 +42,16 @@ let
     };
 
     indexers = {
+      "1337x" = {
+        implementation = "Cardigann";
+        fields = {
+          definitionFile = "1337x";
+          downloadlink1 = 0; # iTorrents.org
+          downloadlink2 = 1; # magnet
+          sort = 2; # created
+          type = 1; # desc
+        };
+      };
       "AnimeTosho" = {
         implementation = "Torznab";
         fields = {
@@ -52,8 +62,8 @@ let
         implementation = "Cardigann";
         fields = {
           definitionFile = "limetorrents";
-          downloadlink = 1; # iTorrents.org
-          downloadlink2 = 0; # magnet
+          downloadlink = 1; # magnet
+          downloadlink2 = 0; # iTorrents.org
           sort = 0; # created
         };
       };
