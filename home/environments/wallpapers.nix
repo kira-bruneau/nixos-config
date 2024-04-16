@@ -106,6 +106,10 @@
       url = "https://cdn.artstation.com/p/assets/images/images/002/222/165/large/alena-aenami-mountains.jpg";
       hash = "sha256-7fdFkV5uxgXfnVAzgN29+XWgu+CKlNgHBNJZc3rbFB0=";
     };
+    "Pictures/Wallpapers/alena-aenami-new-year1k.jpg".source = pkgs.fetchurl {
+      url = "https://cdn.artstation.com/p/assets/images/images/065/778/955/large/alena-aenami-new-year1k.jpg";
+      hash = "sha256-u5OLO49Edh11a2dmhSBbQE9FB738uzv2w8Yu5ZBLwXQ=";
+    };
     "Pictures/Wallpapers/alena-aenami-night-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/033/957/502/large/alena-aenami-night-1k.jpg";
       hash = "sha256-uV0dcBf+HPmTqfbOMgV8B711Nw/2xDO9F3NX5l9f/O8=";
