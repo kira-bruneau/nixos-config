@@ -17,10 +17,10 @@
       "${config.home.configDirectory}/programs/ssh/known_hosts");
 
     matchBlocks = {
+      "amethyst".user = "kira";
       "aurora".user = "kira";
       "jackflix".user = "jakira";
       "jakira.space".user = "root";
-      "amethyst".user = "kira";
       "quartz".user = "kira";
       "steamdeck".user = "jakira";
     };
