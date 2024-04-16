@@ -2,16 +2,11 @@
 
 let
   downloadClients = {
-    qBittorrent = {
-      enable = true;
+    "qBittorrent" = {
       implementation = "QBittorrent";
-      configContract = "QBittorrentSettings";
-      fields = [
-        {
-          name = "port";
-          value = qBittorrent.Preferences."WebUI\\Port";
-        }
-      ];
+      fields = {
+        port = qBittorrent.Preferences."WebUI\\Port";
+      };
     };
   };
 
@@ -32,31 +27,56 @@ let
   prowlarr = {
     port = "9696";
     apiKey = "00000000000000000000000000000000";
+
+    applications = {
+      "Sonarr" = {
+        syncLevel = "fullSync";
+        implementation = "Sonarr";
+        fields.apiKey = sonarr.apiKey;
+      };
+      "Radarr" = {
+        syncLevel = "fullSync";
+        implementation = "Radarr";
+        fields.apiKey = radarr.apiKey;
+      };
+    };
+
     indexers = {
       "LimeTorrents" = {
-        definitionFile = "limetorrents";
-        downloadlink = 1; # iTorrents.org
-        downloadlink2 = 0; # magnet
-        sort = 0; # created
+        implementation = "Cardigann";
+        fields = {
+          definitionFile = "limetorrents";
+          downloadlink = 1; # iTorrents.org
+          downloadlink2 = 0; # magnet
+          sort = 0; # created
+        };
       };
-
       "Solid Torrents" = {
-        definitionFile = "solidtorrents";
-        sort = 0; # created
-        type = 1; # desc
+        implementation = "Cardigann";
+        fields = {
+          definitionFile = "solidtorrents";
+          sort = 0; # created
+          type = 1; # desc
+        };
       };
-
       "The Pirate Bay" = {
-        definitionFile = "thepiratebay";
+        implementation = "Cardigann";
+        fields = {
+          definitionFile = "thepiratebay";
+        };
       };
-
       "TheRARBG" = {
-        definitionFile = "therarbg";
-        sort = 0; # created desc
+        implementation = "Cardigann";
+        fields = {
+          definitionFile = "therarbg";
+          sort = 0; # created desc
+        };
       };
-
       "YTS" = {
-        definitionFile = "yts";
+        implementation = "Cardigann";
+        fields = {
+          definitionFile = "yts";
+        };
       };
     };
 
@@ -119,6 +139,18 @@ let
         echo -n "$folder" > "$out/$(basename "$folder").mblink"
       done
     '';
+
+  makeArrConfig = { implementation, fields ? [ ], ... }@config:
+    {
+      configContract = "${implementation}Settings";
+    } // config // {
+      fields = builtins.map
+        (name: {
+          inherit name;
+          value = fields.${name};
+        })
+        (builtins.attrNames fields);
+    };
 in
 {
   services.jellyfin = {
@@ -290,10 +322,10 @@ in
             data = "@${pkgs.writers.writeJSON "${name}.json"
               ({
                 inherit name;
+                enable = true;
                 removeCompletedDownloads = true;
                 removeFailedDownloads = true;
-                fields = [];
-              } // sonarr.downloadClients.${name}) }"
+              } // makeArrConfig sonarr.downloadClients.${name}) }"
           '')
           (builtins.attrNames sonarr.downloadClients)))
       }
@@ -393,10 +425,10 @@ in
             data = "@${pkgs.writers.writeJSON "${name}.json"
               ({
                 inherit name;
+                enable = true;
                 removeCompletedDownloads = true;
                 removeFailedDownloads = true;
-                fields = [];
-              } // radarr.downloadClients.${name}) }"
+              } // makeArrConfig radarr.downloadClients.${name}) }"
           '')
           (builtins.attrNames radarr.downloadClients)))
       }
@@ -430,57 +462,26 @@ in
           retry = 3
           retry-connrefused
         ''
-        ([
-          ''
+        ((builtins.map
+          (name: ''
             url = "http://localhost:${prowlarr.port}/api/v1/applications"
             request = "POST"
-            data = "@${pkgs.writers.writeJSON "sonarr.json" {
-              name = "Sonarr";
-              syncLevel = "fullSync";
-              implementation = "Sonarr";
-              configContract = "SonarrSettings";
-              fields = [
-                {
-                  name = "apiKey";
-                  value = sonarr.apiKey;
-                }
-              ];
-            }}"
-          ''
-          ''
-            url = "http://localhost:${prowlarr.port}/api/v1/applications"
-            request = "POST"
-            data = "@${pkgs.writers.writeJSON "radarr.json" {
-              name = "Radarr";
-              syncLevel = "fullSync";
-              implementation = "Radarr";
-              configContract = "RadarrSettings";
-              fields = [
-                {
-                  name = "apiKey";
-                  value = radarr.apiKey;
-                }
-              ];
-            }}"
-          ''
-        ]
-        ++ (builtins.map
-          (name: let fields = prowlarr.indexers.${name}; in ''
-            url = "http://localhost:${prowlarr.port}/api/v1/indexer"
-            request = "POST"
-            data = "@${pkgs.writers.writeJSON "${name}.json" {
+            data = "@${pkgs.writers.writeJSON "${name}.json" ({
               inherit name;
               enable = true;
               appProfileId = 1;
-              implementation = "Cardigann";
-              configContract = "CardigannSettings";
-              fields = builtins.map
-                (name: {
-                  inherit name;
-                  value = fields.${name};
-                })
-                (builtins.attrNames fields);
-            }}"
+            } // makeArrConfig prowlarr.applications.${name})}"
+          '')
+          (builtins.attrNames prowlarr.applications))
+        ++ (builtins.map
+          (name: ''
+            url = "http://localhost:${prowlarr.port}/api/v1/indexer"
+            request = "POST"
+            data = "@${pkgs.writers.writeJSON "${name}.json" ({
+              inherit name;
+              enable = true;
+              appProfileId = 1;
+            } // makeArrConfig prowlarr.indexers.${name})}"
           '')
           (builtins.attrNames prowlarr.indexers))
         ++ (builtins.map
@@ -490,9 +491,9 @@ in
             data = "@${pkgs.writers.writeJSON "${name}.json"
               ({
                 inherit name;
-                fields = [];
+                enable = true;
                 categories = [];
-              } // prowlarr.downloadClients.${name}) }"
+              } // makeArrConfig prowlarr.downloadClients.${name})}"
           '')
           (builtins.attrNames prowlarr.downloadClients))
         )
