@@ -54,6 +54,10 @@
       url = "https://cdn.artstation.com/p/assets/images/images/040/945/959/large/alena-aenami-crater3.jpg";
       hash = "sha256-3LxKpyChU2KGl+KKnI9xEDtJTApjXs+H+mmgCJAg0+w=";
     };
+    "Pictures/Wallpapers/alena-aenami-dreamy-1k.jpg".source = pkgs.fetchurl {
+      url = "https://cdn.artstation.com/p/assets/images/images/074/794/932/large/alena-aenami-dreamy-1k.jpg";
+      hash = "sha256-ZoLQ9HVdiYhnZfc2J4FfgSjNijQPhHl2sclvZPBoXVU=";
+    };
     "Pictures/Wallpapers/alena-aenami-eclipse-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg";
       hash = "sha256-l+Q/TGW727QClBajgsmLHjAhUxEerultCNlsTBbSYuQ=";
