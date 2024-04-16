@@ -42,6 +42,12 @@ let
     };
 
     indexers = {
+      "AnimeTosho" = {
+        implementation = "Torznab";
+        fields = {
+          baseUrl = "https://feed.animetosho.org";
+        };
+      };
       "LimeTorrents" = {
         implementation = "Cardigann";
         fields = {
