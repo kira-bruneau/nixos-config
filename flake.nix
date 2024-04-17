@@ -239,6 +239,12 @@
             in
             packages
             // {
+              "${host.name}/digital-ocean-image" = nixosGenerate "digitalOceanImage" {
+                modules = [
+                  host.hardwareModule
+                  ./environments/digital-ocean-image.nix
+                ];
+              };
               "${host.name}/install-iso" = nixosGenerate "isoImage" {
                 modules = [
                   host.hardwareModule
