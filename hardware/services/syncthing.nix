@@ -11,8 +11,6 @@
     overrideDevices = true;
     overrideFolders = true;
     settings = {
-      gui.insecureAdminAccess = true;
-
       devices = {
         "amethyst" = { id = "2PIQVSQ-2N77DGJ-XNTHNQF-PREKTRC-SCP6LFV-DRG3WK7-WFPT56T-NYWIAQG"; };
         "aurora" = { id = "ODCDVEV-I63ZAW6-MV27YBB-W5MDOAU-YZ3RK23-DMXCWAN-STJOSEF-EFXFRQP"; };
