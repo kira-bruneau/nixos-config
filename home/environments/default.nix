@@ -9,7 +9,6 @@ in
   imports = [
     ../programs/bash
     ../programs/fzf
-    ../programs/gpg
     ../programs/htop
     ../programs/ssh
     ../programs/tmux

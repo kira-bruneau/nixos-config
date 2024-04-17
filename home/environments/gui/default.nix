@@ -14,8 +14,9 @@
     ../../programs/keepassxc
 
     # Utils
-    ../../programs/speedcrunch
     ../../programs/gnome-pomodoro
+    ../../programs/gpg
+    ../../programs/speedcrunch
   ];
 
   home = {
