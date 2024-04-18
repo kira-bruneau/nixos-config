@@ -189,6 +189,7 @@ in
   services.homepage-dashboard = {
     enable = true;
     package = pkgsUnstable.homepage-dashboard;
+    listenPort = 80;
     services = [
       {
         "Public" = [
@@ -313,6 +314,11 @@ in
         };
       }
     ];
+  };
+
+  systemd.services.homepage-dashboard.serviceConfig = {
+    AmbientCapabilities = "CAP_NET_BIND_SERVICE";
+    CapabilityBoundingSet = "CAP_NET_BIND_SERVICE";
   };
 
   services.jellyfin = {
