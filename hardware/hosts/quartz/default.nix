@@ -88,8 +88,7 @@
               label = "WD_BLACK";
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "exfat";
+                type = "btrfs";
                 mountpoint = "/srv/media-hdd";
                 mountOptions = [ "noatime" "nofail" ];
               };

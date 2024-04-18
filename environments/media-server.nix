@@ -118,12 +118,12 @@ let
     mediaLibraries = {
       Shows = {
         type = "tvshow";
-        folders = [ sonarr.rootFolder "/srv/media-hdd/TV" ];
+        folders = [ sonarr.rootFolder "/srv/media-hdd/shows" ];
       };
 
       Movies = {
         type = "movies";
-        folders = [ radarr.rootFolder "/srv/media-hdd/Movies" ];
+        folders = [ radarr.rootFolder "/srv/media-hdd/movies" ];
       };
 
       Downloads.folders = [ qBittorrent.BitTorrent."Session\\DefaultSavePath" ];
