@@ -117,7 +117,7 @@ let
   jellyfin = {
     mediaLibraries = {
       Shows = {
-        type = "tvshow";
+        type = "tvshows";
         folders = [ sonarr.rootFolder "/srv/media-hdd/shows" ];
       };
 
