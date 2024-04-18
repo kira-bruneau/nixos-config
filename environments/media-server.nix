@@ -153,7 +153,15 @@ let
       fi
 
       for folder in ''${folders}; do
-        echo -n "$folder" > "$out/$(basename "$folder").mblink"
+        name=$(basename "$folder")
+        if [ -e "$out/$name.mblink" ]; then
+          i=1
+          while [ -e "$out/$name$i.mblink" ]; do
+            i=$((i+1))
+          done
+          name=$name$i
+        fi
+        echo -n "$folder" > "$out/$name.mblink"
       done
     '';
 
