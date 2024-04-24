@@ -36,15 +36,6 @@
           speedFactor = 3400; # MHz, max "boost" clock speed
           supportedFeatures = [ "big-parallel" "kvm" ];
         }
-        {
-          hostName = "amethyst";
-          protocol = "ssh-ng";
-          sshUser = "builder";
-          systems = [ "x86_64-linux" "i686-linux" ];
-          maxJobs = 4;
-          speedFactor = 2700; # MHz, max "boost" clock speed
-          supportedFeatures = [ "kvm" ];
-        }
       ];
 
     gc = {
@@ -60,7 +51,6 @@
       keep-going = true;
       secret-key-files = "/var/lib/nix-daemon/private-key";
       trusted-public-keys = [
-        "amethyst:+Lc2QSTJs3UZliUgICGANstc4EGLZt71ySGN2WQuolk="
         "aurora:PkeJpeCTFE3gprtNpxCW0EqbVwg0wFgvpHFq3Hj0Wlc="
         "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8="
       ];

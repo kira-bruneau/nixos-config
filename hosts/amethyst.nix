@@ -2,7 +2,6 @@
   imports = [
     ../environments/default.nix
     ../services/minecraft/BigChadGuysPlus.nix
-    ../users/builder.nix
     ../users/kira.nix
   ];
 
