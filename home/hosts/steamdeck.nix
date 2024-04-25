@@ -134,6 +134,13 @@ in
           AllowOverlay = 0;
         }
         {
+          appid = -1815128494;
+          appname = "Element";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.kira/config XDG_DATA_HOME=${config.home.homeDirectory}/.kira/data XDG_STATE_HOME=${config.home.homeDirectory}/.kira/state element-desktop";
+          AllowOverlay = 0;
+        }
+        {
           appid = -1562815367;
           appname = "Cemu";
           Exe = "env";
@@ -256,6 +263,13 @@ in
           appname = "Discord";
           Exe = "env";
           LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.jack/config XDG_DATA_HOME=${config.home.homeDirectory}/.jack/data XDG_STATE_HOME=${config.home.homeDirectory}/.jack/state Discord";
+          AllowOverlay = 0;
+        }
+        {
+          appid = -1815128494;
+          appname = "Element";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.jack/config XDG_DATA_HOME=${config.home.homeDirectory}/.jack/data XDG_STATE_HOME=${config.home.homeDirectory}/.jack/state element-desktop";
           AllowOverlay = 0;
         }
         {
