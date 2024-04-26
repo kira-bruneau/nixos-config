@@ -1,6 +1,0 @@
-game:
-  args: -opengl -SkipBuildPatchPrereq com.epicgames.launcher://apps/Z%3A/home/kira/Games/Rocket%20League/drive_c/Program%20Files/rocketleague/Binaries/Win64/?action=launch&silent=true
-  exe: EpicGamesLauncher.exe
-  prefix: ~/Games/Rocket League
-system: {}
-wine: {}
