@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./colemak.nix
+    ./keyboard.nix
     ./ottawa.nix
   ];
 
