@@ -212,6 +212,13 @@ in
           AllowOverlay = 0;
         }
         {
+          appid = -1234567890;
+          appname = "Majora's Mask";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= RMG --fullscreen --nogui --quit-after-emulation \"${config.home.homeDirectory}/Documents/ROMs/Zelda - Majora's Mask.z64\"";
+          AllowOverlay = 0;
+        }
+        {
           appid = -1234567891;
           appname = "Rosalie's Mupen GUI";
           Exe = "env";
@@ -348,6 +355,13 @@ in
           appname = "Mario Kart 8";
           Exe = "env";
           LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu --fullscreen --title-id 000500001010ec00";
+          AllowOverlay = 0;
+        }
+        {
+          appid = -1234567890;
+          appname = "Majora's Mask";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= RMG --fullscreen --nogui --quit-after-emulation \"${config.home.homeDirectory}/Documents/ROMs/Zelda - Majora's Mask.z64\"";
           AllowOverlay = 0;
         }
         {
