@@ -15,7 +15,7 @@ in
         height = 32;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "cpu" "memory" "disk" "temperature" "network" ];
-        modules-right = [ "idle_inhibitor" "backlight" "battery" "wireplumber" "clock" "tray" ];
+        modules-right = [ "custom/audio_idle_inhibitor" "idle_inhibitor" "backlight" "battery" "wireplumber" "clock" "tray" ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -100,6 +100,18 @@ in
           format = "{volume}% {icon}";
           format-muted = "";
           format-icons = [ "" "" "" ];
+        };
+
+        "custom/audio_idle_inhibitor" = {
+          format = "{icon}";
+          exec = "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
+          return-type = "json";
+          format-icons = {
+            output = "";
+            input = "";
+            output-input = "  ";
+            none = "";
+          };
         };
       };
     };
