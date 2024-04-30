@@ -16,8 +16,6 @@
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-ollama.url = "github:NixOS/nixpkgs/1042fd8b148a9105f3c0aca3a6177fd1d9360ba5";
-
     nixpkgs-yuzu.url = "github:Atemu/nixpkgs/revert-yuzu-removal";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -83,11 +81,6 @@
                   let
                     extraSpecialArgs = {
                       pkgsUnstable = import inputs.nixpkgs-unstable {
-                        system = pkgs.system;
-                        config = config.nixpkgs.config;
-                      };
-
-                      pkgsOllama = import inputs.nixpkgs-ollama {
                         system = pkgs.system;
                         config = config.nixpkgs.config;
                       };

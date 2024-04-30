@@ -1,7 +1,7 @@
-{ pkgsOllama, ... }:
+{ pkgsUnstable, ... }:
 
 let
-  ollama = pkgsOllama.ollama.override { acceleration = "rocm"; };
+  ollama = pkgsUnstable.ollama.override { acceleration = "rocm"; };
 in
 {
   systemd.services.ollama = {
