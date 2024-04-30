@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Zelda Ocarina of Time
-Exec=mupen64plus --fullscreen --resolution $(xrandr | grep "*" | awk '{print $1}') "/home/kira/Documents/ROMs/Zelda - Ocarina of Time.z64"
-Terminal=false
-Type=Application
-Icon=ocarina
-Comment=Zelda Ocarina of Time
-Categories=Game;Emulator;

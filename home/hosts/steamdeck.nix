@@ -211,6 +211,13 @@ in
           LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu --fullscreen --title-id 000500001010ec00";
           AllowOverlay = 0;
         }
+        {
+          appid = -1234567891;
+          appname = "Rosalie's Mupen GUI";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= RMG --fullscreen";
+          AllowOverlay = 0;
+        }
       ];
     };
   };
@@ -341,6 +348,13 @@ in
           appname = "Mario Kart 8";
           Exe = "env";
           LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu --fullscreen --title-id 000500001010ec00";
+          AllowOverlay = 0;
+        }
+        {
+          appid = -1234567891;
+          appname = "Rosalie's Mupen GUI";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= RMG --fullscreen";
           AllowOverlay = 0;
         }
       ];

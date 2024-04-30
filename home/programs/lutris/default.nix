@@ -42,16 +42,6 @@ in
       };
     };
 
-    "lutris/runners/mupen64plus.yml".source = settingsFormat.generate "mupen64plus.yml" {
-      mupen64plus = {
-        runner_executable = "${pkgs.mupen64plus}/bin/mupen64plus";
-      };
-
-      system = {
-        disable_runtime = true;
-      };
-    };
-
     "lutris/runners/steam.yml".source = settingsFormat.generate "steam.yml" {
       steam = { };
 

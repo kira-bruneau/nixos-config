@@ -14,8 +14,8 @@ in
 {
   imports = [
     ../programs/lutris
-    ../programs/mupen64plus
     ../programs/prismlauncher
+    ../programs/rmg
   ];
 
   home.packages = with pkgs; [
