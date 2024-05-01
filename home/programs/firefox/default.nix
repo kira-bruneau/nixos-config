@@ -199,6 +199,7 @@ in
             "services.sync.engine.passwords" = false;
             "services.sync.engine.prefs" = false;
             "signon.rememberSignons" = false; # Use keepassxc instead
+            "widget.wayland.fractional-scale.enabled" = true;
 
             # Search
             "browser.search.suggest.enabled" = false;
