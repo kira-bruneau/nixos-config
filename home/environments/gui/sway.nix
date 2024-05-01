@@ -83,13 +83,7 @@ in
   wayland.windowManager.sway = {
     enable = true;
 
-    package = pkgs.sway.override {
-      sway-unwrapped = pkgs.swayfx.overrideAttrs (attrs: {
-        meta = attrs.meta // {
-          mainProgram = "sway";
-        };
-      });
-    };
+    package = pkgsUnstable.swayfx;
 
     config =
       let
