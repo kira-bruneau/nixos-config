@@ -69,14 +69,14 @@ in
     ../../programs/mpv
     ../../programs/nautilus
 
-    # Themes
-    ../../programs/gtk
-
     # Utils
     ../../programs/alacritty
     ../../programs/mako
     ../../programs/rofi
     ../../programs/waybar
+
+    # Themes
+    ../../environments/gtk
   ];
 
   wayland.windowManager.sway = {

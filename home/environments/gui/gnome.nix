@@ -13,7 +13,7 @@
     ../../programs/nautilus
 
     # Themes
-    ../../programs/gtk
+    ../../environments/gtk
   ];
 
   home.packages = with pkgs; [
