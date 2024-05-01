@@ -22,6 +22,10 @@
 
         exec ${pkgs.pinentry.tty}/bin/pinentry-tty "$@"
       ''}
+
+      # Workaround for slow gnome pinentry
+      # Source: https://dev.gnupg.org/T3240
+      no-allow-external-cache
     '';
   };
 
