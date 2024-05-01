@@ -1,18 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment = {
-    # Source ~/.profile on login to properly set 'home.sessionVariables'
-    # with home-manager.
-    #
-    # See https://github.com/rycee/home-manager/issues/1011
-    loginShellInit = ''
-      if [ -e $HOME/.profile ]; then
-        . $HOME/.profile
-      fi
-    '';
-  };
-
   # Quiet boot
   # FIXME: This still shows fsck messages & NixOS messages from stage-1-init.sh & stage-2-init.sh scripts
   boot = {
