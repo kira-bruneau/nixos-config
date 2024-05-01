@@ -91,9 +91,12 @@ in
         };
 
         "network" = {
-          format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
-          format-disconnected = "Disconnected ⚠";
+          format-wifi = "{signalStrength}% ";
+          format-ethernet = "";
+          format-disconnected = "⚠";
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          tooltip-format-ethernet = "{ifname} = {ipaddr}/{cidr}";
+          tooltip-format-disconnected = "Disconnected ⚠";
         };
 
         "wireplumber" = {
