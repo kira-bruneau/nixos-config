@@ -14,6 +14,7 @@
 
     # Themes
     ../../environments/gtk
+    ../../environments/qt
   ];
 
   home.packages = with pkgs; [

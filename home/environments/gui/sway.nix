@@ -77,6 +77,7 @@ in
 
     # Themes
     ../../environments/gtk
+    ../../environments/qt
   ];
 
   wayland.windowManager.sway = {
