@@ -1,12 +1,8 @@
 { lib, config, pkgs, ... }:
 
-let
-  firefox = pkgs.firefox-wayland;
-in
 {
   programs.firefox = {
     enable = true;
-    package = firefox;
     profiles =
       let
         baseProfile = {
@@ -419,7 +415,7 @@ in
   };
 
   wayland.windowManager.sway.config = {
-    startup = [{ command = "${firefox}/bin/firefox"; }];
+    startup = [{ command = "${config.programs.firefox.package}/bin/firefox"; }];
     assigns."1" = [{ app_id = "^firefox$"; }];
     window.commands = [
       {
