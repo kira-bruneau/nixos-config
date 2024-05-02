@@ -17,7 +17,7 @@
   };
 
   config = {
-    environment.defaultPackages = [];
+    environment.defaultPackages = [ ];
 
     users.mutableUsers = false;
 

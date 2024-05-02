@@ -10,7 +10,7 @@
   boot.loader.timeout = lib.mkImageMediaOverride 10;
 
   # Disable impermanence
-  environment.persistence = lib.mkImageMediaOverride {};
+  environment.persistence = lib.mkImageMediaOverride { };
 
   # /etc/nixos is seeded with the contents of this flake
   installer.cloneConfig = false;
