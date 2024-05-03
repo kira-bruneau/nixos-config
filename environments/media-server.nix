@@ -144,8 +144,8 @@ let
       '';
     };
 
-  makeMediaLibrary = name: { type ? null, folders }:
-    pkgs.runCommand name { inherit type folders; } ''
+  makeMediaLibrary = name: { type ? null, folders, options ? null }:
+    pkgs.runCommand name { inherit type folders options; } ''
       mkdir "$out"
 
       if [ -n "$type" ]; then
@@ -162,6 +162,9 @@ let
           name=$name$i
         fi
         echo -n "$folder" > "$out/$name.mblink"
+        if [ -n "$options" ]; then
+          echo -n "$options" > "$out/options.xml"
+        fi
       done
     '';
 
