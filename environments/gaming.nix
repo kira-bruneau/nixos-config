@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
+
   environment.variables.STEAMOS = "1";
 
   # Open ports for steam local network game transfers
