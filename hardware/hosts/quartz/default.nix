@@ -118,6 +118,7 @@
     output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 0 0
   '';
 
+  # Enable DHCP on Ethernet interface
   systemd.network.networks.enp7s0 = {
     matchConfig.Name = "enp7s0";
     networkConfig.DHCP = "yes";

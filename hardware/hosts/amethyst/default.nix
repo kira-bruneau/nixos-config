@@ -72,4 +72,10 @@
   environment.persistence."/persist".directories = [
     "/var/lib/minecraft"
   ];
+
+  # Enable DHCP on Wi-Fi interface
+  systemd.network.networks.wlan0 = {
+    matchConfig.Name = "eth0";
+    networkConfig.DHCP = "yes";
+  };
 }

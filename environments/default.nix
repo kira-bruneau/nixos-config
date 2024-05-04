@@ -5,6 +5,7 @@
     inputs.home-manager.nixosModules.default
     ../cachix.nix
     ../services/dnscrypt.nix
+    ../services/systemd-networkd.nix
     ./custom-nixos-generate-config.nix
     ./locale
     ./nix.nix

@@ -135,10 +135,6 @@
     pulse.enable = true;
   };
 
-  # Use systemd-networkd instead of dhcpcd
-  networking.useDHCP = false;
-  systemd.network.enable = true;
-
   # Enable xdg-desktop-portal (screen sharing)
   xdg.portal = {
     wlr.enable = true;

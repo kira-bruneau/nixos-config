@@ -87,6 +87,7 @@
     output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos 0 0
   '';
 
+  # Enable DHCP on Wi-Fi interface
   systemd.network.networks.wlan0 = {
     matchConfig.Name = "wlan0";
     networkConfig.DHCP = "yes";
