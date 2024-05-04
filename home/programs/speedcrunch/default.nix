@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  settingsFormat = pkgs.formats.ini { };
+in
 {
   imports = [
     ../../environments/config.nix
@@ -9,12 +12,10 @@
     speedcrunch
   ];
 
-  # Manage SpeedCrunch config outside of home-manager (synced with Syncthing)
   xdg = {
-    configFile.SpeedCrunch.source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/programs/speedcrunch/config";
-
-    dataFile.SpeedCrunch.source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/programs/speedcrunch/share";
+    configFile."SpeedCrunch/SpeedCrunch.ini".source = settingsFormat.generate "SpeedCrunch.ini" {
+      General.ConfigVersion = 1200;
+      SpeedCrunch."Display\\ColorSchemeName" = "Tomorrow Night";
+    };
   };
 }
