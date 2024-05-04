@@ -27,12 +27,4 @@
   };
 
   home-manager.users.kira = ../home/hosts/${config.system.name}.nix;
-
-  services.xserver.xkb = {
-    layout = "us,us";
-    variant = "colemak,";
-    options = "grp:win_space_toggle";
-  };
-
-  console.keyMap = ../environments/locale/colemak.map;
 }

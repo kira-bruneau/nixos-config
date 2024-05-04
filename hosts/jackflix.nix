@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -15,5 +15,9 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
+    xkb = {
+      layout = lib.mkForce "us,us";
+      variant = lib.mkForce ",colemak";
+    };
   };
 }
