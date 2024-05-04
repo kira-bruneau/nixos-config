@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  settingsFormat = pkgs.formats.ini { };
+in
 {
   imports = [
     ../../environments/config.nix
@@ -9,9 +12,28 @@
     keepassxc
   ];
 
-  # Manage keepassxc config outside of home-manager while keeping track of the files in this git repo
-  xdg.configFile.keepassxc.source = config.lib.file.mkOutOfStoreSymlink
-    "${config.home.configDirectory}/programs/keepassxc/config";
+  xdg.configFile."keepassxc/keepassxc.ini".source = settingsFormat.generate "keepassxc.ini" {
+    General.ConfigVersion = 2;
+    Browser.Enabled = true;
+
+    GUI = {
+      ApplicationTheme = "dark";
+      MinimizeOnClose = true;
+      MinimizeOnStartup = true;
+      MinimizeToTray = true;
+      ShowTrayIcon = true;
+    };
+
+    PasswordGenerator = {
+      Length = 20;
+      SpecialChars = true;
+    };
+
+    Security = {
+      IconDownloadFallback = true;
+      LockDatabaseIdle = true;
+    };
+  };
 
   wayland.windowManager.sway.config.startup = [
     { command = "${pkgs.keepassxc}/bin/keepassxc"; }
