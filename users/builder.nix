@@ -18,5 +18,8 @@
     groups.builder = { };
   };
 
-  nix.settings.trusted-users = [ "builder" ];
+  nix.settings = {
+    keep-outputs = true;
+    trusted-users = [ "builder" ];
+  };
 }
