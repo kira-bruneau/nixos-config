@@ -326,6 +326,7 @@ in
 
   services.jellyfin = {
     enable = true;
+    package = pkgsUnstable.jellyfin;
     openFirewall = true;
   };
 
@@ -398,6 +399,7 @@ in
 
   services.sonarr = {
     enable = true;
+    package = pkgsUnstable.sonarr;
     dataDir = "/var/lib/sonarr";
   };
 
@@ -424,6 +426,7 @@ in
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
         <Config>
           <BindAddress>*</BindAddress>
+          <AuthenticationMethod>External</AuthenticationMethod>
           <AnalyticsEnabled>False</AnalyticsEnabled>
           <ApiKey>${sonarr.apiKey}</ApiKey>
         </Config>
@@ -439,6 +442,7 @@ in
         ''
         ''
           header = "X-Api-Key: ${sonarr.apiKey}"
+          header = "Content-Type: application/json"
           retry = 3
           retry-connrefused
         ''
@@ -505,6 +509,7 @@ in
 
   services.radarr = {
     enable = true;
+    package = pkgsUnstable.radarr;
     dataDir = "/var/lib/radarr";
   };
 
@@ -606,7 +611,10 @@ in
     '';
   };
 
-  services.prowlarr.enable = true;
+  services.prowlarr = {
+    enable = true;
+    package = pkgsUnstable.prowlarr;
+  };
 
   systemd.services.prowlarr = {
     preStart = ''
@@ -672,7 +680,7 @@ in
     '';
   };
 
-  systemd.packages = [ pkgs.qbittorrent-nox ];
+  systemd.packages = [ pkgsUnstable.qbittorrent-nox ];
 
   users.users.qbittorrent = {
     uid = config.ids.uids.deluge;
