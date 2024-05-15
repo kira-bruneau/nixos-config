@@ -47,6 +47,7 @@
     settings = {
       auto-optimise-store = true;
       builders-use-substitutes = true;
+      connect-timeout = 3;
       experimental-features = [ "nix-command" "flakes" ];
       keep-going = true;
       secret-key-files = "/var/lib/nix-daemon/private-key";
