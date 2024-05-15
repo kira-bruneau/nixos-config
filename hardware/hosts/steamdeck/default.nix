@@ -77,4 +77,6 @@
   environment.systemPackages = with pkgs; [
     steamdeck-firmware
   ];
+
+  programs.captive-browser.interface = "wlo1";
 }

@@ -93,6 +93,8 @@
     networkConfig.DHCP = "yes";
   };
 
+  programs.captive-browser.interface = "wlan0";
+
   # WirePlumber device configuration
   environment.etc."wireplumber/main.lua.d/51-config.lua".text = ''
     table.insert(alsa_monitor.rules, {

@@ -74,6 +74,8 @@
     "/nix"
   ];
 
+  programs.captive-browser.interface = "wlp3s0";
+
   nixpkgs.config.nvidia.acceptLicense = true;
 
   services.auto-cpufreq.enable = lib.mkForce false;
