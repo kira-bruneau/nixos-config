@@ -7,14 +7,11 @@
     ../environments/laptop.nix
     ../environments/media-production.nix
     ../environments/office.nix
+    ../programs/prismlauncher
   ];
 
   home = {
     stateVersion = "23.11";
-
-    packages = with pkgs; [
-      prismlauncher
-    ];
 
     sessionVariables = {
       # Hardware acceleration for gstreamer

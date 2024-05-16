@@ -10,13 +10,13 @@ in
   imports = [
     ../programs/lutris
     ../programs/mupen64plus
+    ../programs/prismlauncher
   ];
 
   home.packages = with pkgs; [
     # Games & Launchers
     clonehero
     pkgsKiraNur.pokemmo-installer
-    prismlauncher
     pkgsKiraNur.protontricks
     (sm64ex.overrideAttrs (attrs: {
       makeFlags = attrs.makeFlags ++ [
@@ -49,7 +49,6 @@ in
 
   wayland.windowManager.sway.config.assigns."5" = [
     { app_id = "^org.dolphin-emu.$"; }
-    { app_id = "^org.prismlauncher.PrismLauncher$"; }
     { class = "^cemu.exe$"; }
     { class = "^dolphin-emu$"; }
     { class = "^Steam$"; }
