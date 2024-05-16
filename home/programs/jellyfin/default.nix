@@ -5,11 +5,8 @@
     jellyfin-media-player
   ];
 
-  wayland.windowManager.sway.config.window.commands = [
-    {
-      criteria = { app_id = "^org.jellyfin.$"; };
-      command = "move container to workspace 4";
-    }
+  wayland.windowManager.sway.config.assigns."4" = [
+    { app_id = "^org.jellyfin.$"; }
   ];
 
   xdg.dataFile."jellyfinmediaplayer/scripts/mpris.so".source =
