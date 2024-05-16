@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../environments/bluetooth.nix
     ../environments/gaming.nix
     ../environments/gui/gnome.nix
     ../environments/laptop.nix
