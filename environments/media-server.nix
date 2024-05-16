@@ -431,6 +431,7 @@ in
           <BindAddress>*</BindAddress>
           <AuthenticationMethod>External</AuthenticationMethod>
           <AnalyticsEnabled>False</AnalyticsEnabled>
+          <LogDbEnabled>False</LogDbEnabled>
           <ApiKey>${sonarr.apiKey}</ApiKey>
         </Config>
       ''} "$STATE_DIRECTORY/config.xml"
@@ -541,6 +542,7 @@ in
           <BindAddress>*</BindAddress>
           <AuthenticationMethod>External</AuthenticationMethod>
           <AnalyticsEnabled>False</AnalyticsEnabled>
+          <LogDbEnabled>False</LogDbEnabled>
           <ApiKey>${radarr.apiKey}</ApiKey>
         </Config>
       ''} "$STATE_DIRECTORY/config.xml"
@@ -626,6 +628,7 @@ in
           <BindAddress>*</BindAddress>
           <AuthenticationMethod>External</AuthenticationMethod>
           <AnalyticsEnabled>False</AnalyticsEnabled>
+          <LogDbEnabled>False</LogDbEnabled>
           <ApiKey>${prowlarr.apiKey}</ApiKey>
         </Config>
       ''} "$STATE_DIRECTORY/config.xml"
