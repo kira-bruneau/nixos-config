@@ -11,6 +11,13 @@
     common-pc-laptop-hdd
   ]);
 
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+
+    # Modesetting is required for wayland
+    modesetting.enable = true;
+  };
+
   boot = {
     # Use the systemd-boot EFI boot loader
     loader = {
@@ -66,13 +73,6 @@
     "/home"
     "/nix"
   ];
-
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
-
-    # Modesetting is required for wayland
-    modesetting.enable = true;
-  };
 
   nixpkgs.config.nvidia.acceptLicense = true;
 
