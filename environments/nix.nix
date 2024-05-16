@@ -52,8 +52,11 @@
       keep-going = true;
       secret-key-files = "/var/lib/nix-daemon/private-key";
       trusted-public-keys = [
+        "amethyst:wWzYeKRMtWixW1rMNwf4jG+wWPUwRMEHCEB5WKixoes="
         "aurora:PkeJpeCTFE3gprtNpxCW0EqbVwg0wFgvpHFq3Hj0Wlc="
+        "jackflix:CtqkVpen2v2aTo4xs8LsmvZcPeke0ewYAtjLRbh+Vvw="
         "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8="
+        "steamdeck:BcQXU+d7+azmiE/6YBWs/OJpIYlhcuTcpTU2j7+Zxb8="
       ];
     };
   };
