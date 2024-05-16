@@ -2,7 +2,9 @@
 
 {
   home.packages = with pkgs; [
-    prismlauncher
+    (prismlauncher.override {
+      withWaylandGLFW = true;
+    })
   ];
 
   wayland.windowManager.sway.config.assigns."5" = [
