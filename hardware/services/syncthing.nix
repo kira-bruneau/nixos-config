@@ -1,8 +1,13 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   services.syncthing = {
     enable = builtins.elem config.system.name [ "amethyst" "aurora" "luna" "quartz" ];
+    package = pkgs.syncthing.overrideAttrs (attrs: {
+      patches = (attrs.patches or []) ++ [
+        ./syncthing-dont-flatten-file-events.patch
+      ];
+    });
     user = "kira";
     group = "users";
     dataDir = "/home/kira";

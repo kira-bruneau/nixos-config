@@ -1,0 +1,117 @@
+From 1098227d926c73a855a7b4029a4777874aa40409 Mon Sep 17 00:00:00 2001
+From: Kira Bruneau <kira.bruneau@pm.me>
+Date: Fri, 17 May 2024 14:31:51 -0400
+Subject: [PATCH] Remove maxFiles & maxFilesPerDir limits
+
+---
+ lib/watchaggregator/aggregator.go      | 34 ++------------------------
+ lib/watchaggregator/aggregator_test.go | 10 +++-----
+ 2 files changed, 5 insertions(+), 39 deletions(-)
+
+diff --git a/lib/watchaggregator/aggregator.go b/lib/watchaggregator/aggregator.go
+index 27c2c0a45..997429506 100644
+--- a/lib/watchaggregator/aggregator.go
++++ b/lib/watchaggregator/aggregator.go
+@@ -18,12 +18,6 @@ import (
+ 	"github.com/syncthing/syncthing/lib/fs"
+ )
+ 
+-// Not meant to be changed, but must be changeable for tests
+-var (
+-	maxFiles       = 512
+-	maxFilesPerDir = 128
+-)
+-
+ // aggregatedEvent represents potentially multiple events at and/or recursively
+ // below one path until it times out and a scan is scheduled.
+ // If it represents multiple events and there are events of both Remove and
+@@ -192,7 +186,7 @@ func (a *aggregator) newEvent(event fs.Event, inProgress map[string]struct{}) {
+ }
+ 
+ func (a *aggregator) aggregateEvent(event fs.Event, evTime time.Time) {
+-	if event.Name == "." || a.counts.total() == maxFiles {
++	if event.Name == "." {
+ 		l.Debugln(a, "Scan entire folder")
+ 		firstModTime := evTime
+ 		if a.root.childCount() != 0 {
+@@ -218,11 +212,8 @@ func (a *aggregator) aggregateEvent(event fs.Event, evTime time.Time) {
+ 	// events per directory limit bottom up
+ 	pathSegments := strings.Split(filepath.ToSlash(event.Name), "/")
+ 
+-	// As root dir cannot be further aggregated, allow up to maxFiles
+-	// children.
+-	localMaxFilesPerDir := maxFiles
+ 	var currPath string
+-	for i, name := range pathSegments[:len(pathSegments)-1] {
++	for _, name := range pathSegments[:len(pathSegments)-1] {
+ 		currPath = filepath.Join(currPath, name)
+ 
+ 		if ev, ok := parentDir.events[name]; ok {
+@@ -236,13 +227,6 @@ func (a *aggregator) aggregateEvent(event fs.Event, evTime time.Time) {
+ 			return
+ 		}
+ 
+-		if parentDir.childCount() == localMaxFilesPerDir {
+-			l.Debugf("%v Parent dir %s already has %d children, tracking it instead: %s", a, currPath, localMaxFilesPerDir, event.Name)
+-			event.Name = filepath.Dir(currPath)
+-			a.aggregateEvent(event, evTime)
+-			return
+-		}
+-
+ 		// If there are no events below path, but we need to recurse
+ 		// into that path, create eventDir at path.
+ 		if newParent, ok := parentDir.dirs[name]; ok {
+@@ -253,11 +237,6 @@ func (a *aggregator) aggregateEvent(event fs.Event, evTime time.Time) {
+ 			parentDir.dirs[name] = newParent
+ 			parentDir = newParent
+ 		}
+-
+-		// Reset allowed children count to maxFilesPerDir for non-root
+-		if i == 0 {
+-			localMaxFilesPerDir = maxFilesPerDir
+-		}
+ 	}
+ 
+ 	name := pathSegments[len(pathSegments)-1]
+@@ -275,15 +254,6 @@ func (a *aggregator) aggregateEvent(event fs.Event, evTime time.Time) {
+ 
+ 	childDir, ok := parentDir.dirs[name]
+ 
+-	// If a dir existed at path, it would be removed from dirs, thus
+-	// childCount would not increase.
+-	if !ok && parentDir.childCount() == localMaxFilesPerDir {
+-		l.Debugf("%v Parent dir already has %d children, tracking it instead: %s", a, localMaxFilesPerDir, event.Name)
+-		event.Name = filepath.Dir(event.Name)
+-		a.aggregateEvent(event, evTime)
+-		return
+-	}
+-
+ 	firstModTime := evTime
+ 	if ok {
+ 		firstModTime = childDir.firstModTime()
+diff --git a/lib/watchaggregator/aggregator_test.go b/lib/watchaggregator/aggregator_test.go
+index 11e7c51a0..5189e0864 100644
+--- a/lib/watchaggregator/aggregator_test.go
++++ b/lib/watchaggregator/aggregator_test.go
+@@ -21,15 +21,11 @@ import (
+ 	"github.com/syncthing/syncthing/lib/protocol"
+ )
+ 
++const maxFiles = 32
++const maxFilesPerDir = 8
++
+ func TestMain(m *testing.M) {
+-	maxFiles = 32
+-	maxFilesPerDir = 8
+-
+ 	ret := m.Run()
+-
+-	maxFiles = 512
+-	maxFilesPerDir = 128
+-
+ 	os.Exit(ret)
+ }
+ 
+-- 
+2.42.0
+
