@@ -83,7 +83,7 @@
     }
 
     output "BOE 0x095F Unknown" scale 1.5 pos 208 1080
-    output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 1712 1002
+    output "LG Electronics LG HDR 4K 0x0005B621" scale 2 pos 1712 1002
     output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos 0 0
   '';
 

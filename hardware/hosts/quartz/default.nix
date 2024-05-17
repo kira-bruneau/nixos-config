@@ -115,7 +115,7 @@
 
   # Sway I/O configuration
   environment.etc."sway/config.d/io.conf".text = ''
-    output "LG Electronics LG HDR 4K 0x0000B721" scale 2 pos 0 0
+    output "LG Electronics LG HDR 4K 0x0005B621" scale 2 pos 0 0
   '';
 
   # Enable DHCP on Ethernet interface
