@@ -6,13 +6,13 @@
       ipv6_servers = true;
       require_dnssec = true;
       doh_servers = false;
-      disabled_server_names = [ "cs-nyc1" "cs-nyc2" ];
+      disabled_server_names = [ "cs-montreal" ];
 
       anonymized_dns = {
         routes = [
           {
             server_name = "*";
-            via = [ "anon-cs-nyc1" "anon-cs-nyc2" ];
+            via = [ "anon-cs-montreal" ];
           }
         ];
 
