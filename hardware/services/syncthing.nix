@@ -29,6 +29,7 @@
           devices = [ "amethyst" "aurora" "luna" "quartz" ];
           path = "~/Auth";
           ignorePerms = false;
+          caseSensitiveFS = true;
           rescanIntervalS = 86400;
           fsWatcherDelayS = 0.01;
           versioning = {
@@ -42,6 +43,7 @@
           devices = [ "amethyst" "aurora" "quartz" ];
           path = "~/Dev";
           ignorePerms = false;
+          caseSensitiveFS = true;
           rescanIntervalS = 86400;
           fsWatcherDelayS = 1;
           versioning = {
@@ -55,6 +57,7 @@
           devices = [ "amethyst" "aurora" "quartz" ];
           path = "~/Documents";
           ignorePerms = false;
+          caseSensitiveFS = true;
           rescanIntervalS = 86400;
           fsWatcherDelayS = 0.01;
           versioning = {
@@ -68,6 +71,7 @@
           devices = [ "amethyst" "aurora" "quartz" ];
           path = "~/Pictures";
           ignorePerms = false;
+          caseSensitiveFS = true;
           rescanIntervalS = 86400;
           fsWatcherDelayS = 0.01;
           versioning = {
@@ -81,6 +85,7 @@
           devices = [ "amethyst" "aurora" "quartz" ];
           path = "~/Videos";
           ignorePerms = false;
+          caseSensitiveFS = true;
           rescanIntervalS = 86400;
           fsWatcherDelayS = 0.01;
           versioning = {
