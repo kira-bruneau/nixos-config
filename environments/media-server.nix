@@ -326,10 +326,6 @@ in
 
   services.jellyfin = {
     enable = true;
-    package = pkgsUnstable.jellyfin.override {
-      # Fix stuttering video with latest version of jellyfin-ffmpeg
-      ffmpeg = pkgs.jellyfin-ffmpeg;
-    };
     openFirewall = true;
   };
 
