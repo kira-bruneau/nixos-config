@@ -1,4 +1,4 @@
-{ inputs, pkgs, pkgsNixMinecraft, ... }:
+{ pkgs, pkgsNixMinecraft, ... }:
 
 let
   modpack = pkgs.fetchzip {
@@ -36,7 +36,10 @@ in
       }];
     };
 
-    serverProperties.server-port = 25564;
+    serverProperties = {
+      server-port = 25564;
+      difficulty = "normal";
+    };
   };
 
   systemd.services.minecraft-server-BigChadGuysPlus = {
