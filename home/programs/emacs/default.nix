@@ -1,9 +1,12 @@
-{ pkgs, pkgsUnstable, pkgsKiraNur, ... }:
+{
+  pkgs,
+  pkgsUnstable,
+  pkgsKiraNur,
+  ...
+}:
 
 let
-  emacs = pkgs.callPackage ./package.nix {
-    ggt = pkgsKiraNur.ggt;
-  };
+  emacs = pkgs.callPackage ./package.nix { ggt = pkgsKiraNur.ggt; };
 in
 {
   imports = [
@@ -13,10 +16,7 @@ in
   ];
 
   home = {
-    packages = with pkgs; [
-      emacs
-    ];
-
+    packages = with pkgs; [ emacs ];
     sessionVariables.EDITOR = "emacseditor";
   };
 
@@ -25,7 +25,7 @@ in
   };
 
   wayland.windowManager.sway.config = {
-    startup = [{ command = "${emacs}/bin/emacs"; }];
-    assigns."2" = [{ app_id = "^emacs"; }];
+    startup = [ { command = "${emacs}/bin/emacs"; } ];
+    assigns."2" = [ { app_id = "^emacs"; } ];
   };
 }

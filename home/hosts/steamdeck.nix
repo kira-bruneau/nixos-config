@@ -1,65 +1,74 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  json2vdf = pkgs.writers.writePython3 "json2vdf.py"
+  json2vdf = pkgs.writers.writePython3 "json2vdf.py" { libraries = [ pkgs.python3Packages.vdf ]; } ''
+    import json
+    import sys
+    import vdf
+
+
+    def json2vdf(data):
+        if isinstance(data, dict):
+            return {k: json2vdf(v) for k, v in data.items()}
+        if isinstance(data, list):
+            return {str(k): json2vdf(v) for k, v in enumerate(data)}
+        else:
+            return data
+
+
+    with open(sys.argv[1]) as fp:
+        data = json.load(fp)
+
+    data = json2vdf(data)
+
+    with open(sys.argv[2], "wb") as fp:
+        vdf.binary_dump(data, fp)
+  '';
+
+  vdf =
+    { }:
     {
-      libraries = [ pkgs.python3Packages.vdf ];
-    }
-    ''
-      import json
-      import sys
-      import vdf
+      type =
+        with lib.types;
+        let
+          valueType =
+            nullOr (oneOf [
+              int
+              float
+              str
+              path
+              # TODO:
+              # uint64
+              # int64
+              # widestring
+              # color
+              # pointer
+              (attrsOf valueType)
+              (listOf valueType)
+            ])
+            // {
+              description = "VDF value";
+            };
+        in
+        valueType;
 
-
-      def json2vdf(data):
-          if isinstance(data, dict):
-              return {k: json2vdf(v) for k, v in data.items()}
-          if isinstance(data, list):
-              return {str(k): json2vdf(v) for k, v in enumerate(data)}
-          else:
-              return data
-
-
-      with open(sys.argv[1]) as fp:
-          data = json.load(fp)
-
-      data = json2vdf(data)
-
-      with open(sys.argv[2], "wb") as fp:
-          vdf.binary_dump(data, fp)
-    '';
-
-  vdf = {}: {
-    type = with lib.types; let
-      valueType = nullOr
-        (oneOf [
-          int
-          float
-          str
-          path
-          # TODO:
-          # uint64
-          # int64
-          # widestring
-          # color
-          # pointer
-          (attrsOf valueType)
-          (listOf valueType)
-        ]) // {
-        description = "VDF value";
-      };
-    in
-    valueType;
-
-    generate = name: value: pkgs.runCommand name
-      {
-        value = builtins.toJSON value;
-        passAsFile = [ "value" ];
-      }
-      ''
-        ${json2vdf} "$valuePath" "$out"
-      '';
-  };
+      generate =
+        name: value:
+        pkgs.runCommand name
+          {
+            value = builtins.toJSON value;
+            passAsFile = [ "value" ];
+          }
+          ''
+            ${json2vdf} "$valuePath" "$out"
+          '';
+    };
 
   settingsFormat = vdf { };
 in

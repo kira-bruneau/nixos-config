@@ -12,27 +12,30 @@ let
     hash = "sha256-z784qhcrL0JTWpjXhk63Xo0K5uCBEf3yYmDjMOEqUdk=";
   };
 
-  forge = pkgs.runCommand "forge-1.16.5-36.2.34"
-    {
-      nativeBuildInputs = with pkgs; [ cacert curl jre_headless ];
-      outputHashAlgo = "sha256";
-      outputHashMode = "recursive";
-      outputHash = "sha256-BWQPxKIldvUhaBRFDOet6S8izcMN6eJ0dNTspPMUTy8=";
-    }
-    ''
-      mkdir -p "$out"
-      curl https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.34/forge-1.16.5-36.2.34-installer.jar -o ./installer.jar
-      java -jar ./installer.jar --installServer "$out"
-    '';
+  forge =
+    pkgs.runCommand "forge-1.16.5-36.2.34"
+      {
+        nativeBuildInputs = with pkgs; [
+          cacert
+          curl
+          jre_headless
+        ];
+        outputHashAlgo = "sha256";
+        outputHashMode = "recursive";
+        outputHash = "sha256-BWQPxKIldvUhaBRFDOet6S8izcMN6eJ0dNTspPMUTy8=";
+      }
+      ''
+        mkdir -p "$out"
+        curl https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.34/forge-1.16.5-36.2.34-installer.jar -o ./installer.jar
+        java -jar ./installer.jar --installServer "$out"
+      '';
 
   minecraft-server = pkgs.writeShellScriptBin "minecraft-server" ''
     exec ${pkgs.jre8}/bin/java $@ -jar ${forge}/forge-1.16.5-36.2.34.jar nogui
   '';
 in
 {
-  imports = [
-    ./.
-  ];
+  imports = [ ./. ];
 
   services.minecraft-servers.servers."AboveAndBeyond" = {
     enable = true;
@@ -48,11 +51,13 @@ in
     };
 
     files = {
-      "ops.json".value = [{
-        name = "daxvena";
-        uuid = "13290979-c320-4975-b1fe-8906f36851fe";
-        level = 4;
-      }];
+      "ops.json".value = [
+        {
+          name = "daxvena";
+          uuid = "13290979-c320-4975-b1fe-8906f36851fe";
+          level = 4;
+        }
+      ];
     };
 
     serverProperties = {

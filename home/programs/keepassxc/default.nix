@@ -4,13 +4,9 @@ let
   settingsFormat = pkgs.formats.ini { };
 in
 {
-  imports = [
-    ../../environments/config.nix
-  ];
+  imports = [ ../../environments/config.nix ];
 
-  home.packages = with pkgs; [
-    keepassxc
-  ];
+  home.packages = with pkgs; [ keepassxc ];
 
   xdg.configFile."keepassxc/keepassxc.ini".source = settingsFormat.generate "keepassxc.ini" {
     General.ConfigVersion = 2;
@@ -35,7 +31,5 @@ in
     };
   };
 
-  wayland.windowManager.sway.config.startup = [
-    { command = "${pkgs.keepassxc}/bin/keepassxc"; }
-  ];
+  wayland.windowManager.sway.config.startup = [ { command = "${pkgs.keepassxc}/bin/keepassxc"; } ];
 }

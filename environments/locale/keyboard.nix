@@ -12,10 +12,17 @@
       {
         settings = with lib.gvariant; {
           "org/gnome/desktop/input-sources" = {
-            sources = lib.zipListsWith
-              (layout: variant: (mkTuple [ "xkb" "${layout}${lib.optionalString (variant != "") "+${variant}"}" ]))
-              (lib.splitString "," config.services.xserver.xkb.layout)
-              (lib.splitString "," config.services.xserver.xkb.variant);
+            sources =
+              lib.zipListsWith
+                (
+                  layout: variant:
+                  (mkTuple [
+                    "xkb"
+                    "${layout}${lib.optionalString (variant != "") "+${variant}"}"
+                  ])
+                )
+                (lib.splitString "," config.services.xserver.xkb.layout)
+                (lib.splitString "," config.services.xserver.xkb.variant);
             xkb-options = lib.splitString "," config.services.xserver.xkb.options;
           };
         };

@@ -1,9 +1,7 @@
 { lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    gnome.nautilus
-  ];
+  home.packages = with pkgs; [ gnome.nautilus ];
 
   dconf.settings = {
     "org/gnome/nautilus/icon-view" = {
@@ -11,7 +9,5 @@
     };
   };
 
-  xdg.mimeApps.defaultApplications = lib.mkDefault {
-    "inode/directory" = "nautilus.desktop";
-  };
+  xdg.mimeApps.defaultApplications = lib.mkDefault { "inode/directory" = "nautilus.desktop"; };
 }

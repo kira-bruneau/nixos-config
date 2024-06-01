@@ -1,9 +1,7 @@
 { config, ... }:
 
 {
-  imports = [
-    ../../environments/config.nix
-  ];
+  imports = [ ../../environments/config.nix ];
 
   programs.ssh = {
     enable = true;
@@ -13,8 +11,9 @@
     controlPersist = "5m";
 
     # Manage known_hosts outside of home-manager (synced with Syncthing)
-    userKnownHostsFile = builtins.toString (config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/programs/ssh/known_hosts");
+    userKnownHostsFile = builtins.toString (
+      config.lib.file.mkOutOfStoreSymlink "${config.home.configDirectory}/programs/ssh/known_hosts"
+    );
 
     matchBlocks = {
       "amethyst".user = "kira";

@@ -1,7 +1,8 @@
-{ name
-, serverPath
-, configFile
-, writeCBin
+{
+  name,
+  serverPath,
+  configFile,
+  writeCBin,
 }:
 
 writeCBin name ''

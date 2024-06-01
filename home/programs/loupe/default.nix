@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    loupe
-  ];
+  home.packages = with pkgs; [ loupe ];
 
   xdg.mimeApps.defaultApplications = {
     "image/avif" = "org.gnome.Loupe.desktop";

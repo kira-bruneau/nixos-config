@@ -13,9 +13,29 @@ in
         layer = "top";
         position = "bottom";
         height = 32;
-        modules-left = [ "sway/workspaces" "sway/mode" ];
-        modules-center = [ "cpu" "memory" "disk" "temperature" "battery" ];
-        modules-right = [ "custom/audio_idle_inhibitor" "idle_inhibitor" "backlight" "wireplumber" "network" "clock" "tray" ];
+
+        modules-left = [
+          "sway/workspaces"
+          "sway/mode"
+        ];
+
+        modules-center = [
+          "cpu"
+          "memory"
+          "disk"
+          "temperature"
+          "battery"
+        ];
+
+        modules-right = [
+          "custom/audio_idle_inhibitor"
+          "idle_inhibitor"
+          "backlight"
+          "wireplumber"
+          "network"
+          "clock"
+          "tray"
+        ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -74,7 +94,13 @@ in
         "temperature" = {
           critical-threshold = 80;
           format = "{temperatureC}°C {icon}";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
         "backlight" = {
@@ -87,7 +113,13 @@ in
             critical = 10;
           };
           format = "{capacity}% {icon}";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
         "network" = {
@@ -102,7 +134,11 @@ in
         "wireplumber" = {
           format = "{volume}% {icon}";
           format-muted = "";
-          format-icons = [ "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
         };
 
         "custom/audio_idle_inhibitor" = {
@@ -122,12 +158,10 @@ in
     style = ./style.css;
   };
 
-  home.packages = with pkgs; [
-    font-awesome_6
-  ];
+  home.packages = with pkgs; [ font-awesome_6 ];
 
   wayland.windowManager.sway = {
-    config.bars = [{ command = "${waybar}/bin/waybar"; }];
+    config.bars = [ { command = "${waybar}/bin/waybar"; } ];
     extraConfig = ''
       layer_effects 'waybar' 'blur enable; shadows enable'
     '';

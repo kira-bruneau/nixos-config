@@ -2,7 +2,11 @@
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
-      listen_addresses = [ "127.0.0.1:53" "[::1]:53" ];
+      listen_addresses = [
+        "127.0.0.1:53"
+        "[::1]:53"
+      ];
+
       require_dnssec = true;
       doh_servers = false;
       disabled_server_names = [ "cs-montreal" ];
@@ -46,7 +50,11 @@
 
   # Use dnscrypt-proxy as nameserver instead of dhcpcd or systemd-resolved
   networking = {
-    nameservers = [ "127.0.0.1" "::1" ];
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
+
     dhcpcd.extraConfig = "nohook resolv.conf";
   };
 

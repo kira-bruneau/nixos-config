@@ -13,7 +13,7 @@ in
   };
 
   wayland.windowManager.sway.config = {
-    startup = [{ command = "${anytype}/bin/anytype"; }];
-    assigns."8" = [{ app_id = "^anytype$"; }];
+    startup = [ { command = "${anytype}/bin/anytype"; } ];
+    assigns."8" = [ { app_id = "^anytype$"; } ];
   };
 }

@@ -1,7 +1,5 @@
 {
-  imports = [
-    ../gtk
-  ];
+  imports = [ ../gtk ];
 
   qt = {
     enable = true;

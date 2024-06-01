@@ -15,9 +15,9 @@
 
     sessionVariables = {
       # Hardware acceleration for gstreamer
-      GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
-        gst-vaapi
-      ]);
+      GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
+        with pkgs.gst_all_1; [ gst-vaapi ]
+      );
     };
   };
 

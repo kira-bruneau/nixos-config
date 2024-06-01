@@ -72,7 +72,5 @@
     ];
   };
 
-  home.packages = with pkgs; [
-    gitAndTools.git-bug
-  ];
+  home.packages = with pkgs; [ gitAndTools.git-bug ];
 }

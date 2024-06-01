@@ -4,9 +4,7 @@
   imports = [
     ../../environments/bluetooth.nix
     ../../environments/wifi.nix
-  ] ++ (with inputs.nixos-hardware.nixosModules; [
-    dell-xps-13-9343
-  ]);
+  ] ++ (with inputs.nixos-hardware.nixosModules; [ dell-xps-13-9343 ]);
 
   boot = {
     # Use the systemd-boot EFI boot loader
@@ -30,7 +28,12 @@
             content = {
               type = "filesystem";
               format = "vfat";
-              extraArgs = [ "-F" "32" "-n" "boot" ];
+              extraArgs = [
+                "-F"
+                "32"
+                "-n"
+                "boot"
+              ];
               mountpoint = "/boot";
               mountOptions = [ "noatime" ];
             };
@@ -40,19 +43,31 @@
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = [ "-L" "nixos" ];
+              extraArgs = [
+                "-L"
+                "nixos"
+              ];
               subvolumes = {
                 "/persist" = {
                   mountpoint = "/persist";
-                  mountOptions = [ "compress=zstd" "noatime" ];
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
                 };
                 "/nix" = {
                   mountpoint = "/nix";
-                  mountOptions = [ "compress=zstd" "noatime" ];
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
                 };
                 "/home" = {
                   mountpoint = "/home";
-                  mountOptions = [ "compress=zstd" "noatime" ];
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
                 };
               };
             };
@@ -64,14 +79,15 @@
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = [ "defaults" "mode=755" ];
+        mountOptions = [
+          "defaults"
+          "mode=755"
+        ];
       };
     };
   };
 
-  environment.persistence."/persist".directories = [
-    "/var/lib/minecraft"
-  ];
+  environment.persistence."/persist".directories = [ "/var/lib/minecraft" ];
 
   # Enable DHCP on Wi-Fi interface
   systemd.network.networks.eth0 = {

@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ../programs/lmms
-  ];
+  imports = [ ../programs/lmms ];
 
   home.packages = with pkgs; [
     audacity

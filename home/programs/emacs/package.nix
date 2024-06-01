@@ -1,79 +1,81 @@
-{ lib
-, pkgs
-, stdenv
-, fetchpatch
-, emacs29
-, emacs29-pgtk
-, callPackage
-, writeShellScriptBin
-, buildEnv
-, aspellWithDicts
-, bear
-, cargo
-, cargo-edit
-, ccls
-, cmake
-, cmake-language-server
-, coreutils
-, diffutils
-, direnv
-, dockerfile-language-server-nodejs
-, eslint_d
-, fd
-, fzf
-, gcc
-, gdb
-, ggt
-, git
-, go
-, godef
-, gopls
-, imagemagick
-, jdk
-, jdt-language-server
-, libnotify
-, marksman
-, lldb
-, nixd
-, nixpkgs-fmt
-, nodejs
-, nodePackages
-, omnisharp-roslyn
-, pandoc
-, perl
-, prettierd
-, python3
-, ripgrep
-, rust-analyzer
-, rustc
-, rustfmt
-, solargraph
-, tectonic
-, texlab
-, vala-language-server
-, vscode-langservers-extracted
-, yarn
+{
+  lib,
+  pkgs,
+  stdenv,
+  fetchpatch,
+  emacs29,
+  emacs29-pgtk,
+  callPackage,
+  writeShellScriptBin,
+  buildEnv,
+  aspellWithDicts,
+  bear,
+  cargo,
+  cargo-edit,
+  ccls,
+  cmake,
+  cmake-language-server,
+  coreutils,
+  diffutils,
+  direnv,
+  dockerfile-language-server-nodejs,
+  eslint_d,
+  fd,
+  fzf,
+  gcc,
+  gdb,
+  ggt,
+  git,
+  go,
+  godef,
+  gopls,
+  imagemagick,
+  jdk,
+  jdt-language-server,
+  libnotify,
+  marksman,
+  lldb,
+  nixd,
+  nixfmt-rfc-style,
+  nodejs,
+  nodePackages,
+  omnisharp-roslyn,
+  pandoc,
+  perl,
+  prettierd,
+  python3,
+  ripgrep,
+  rust-analyzer,
+  rustc,
+  rustfmt,
+  solargraph,
+  tectonic,
+  texlab,
+  vala-language-server,
+  vscode-langservers-extracted,
+  yarn,
 }:
 
 let
-  emacs =
-    if stdenv.hostPlatform.isDarwin
-    then emacs29
-    else emacs29-pgtk;
+  emacs = if stdenv.hostPlatform.isDarwin then emacs29 else emacs29-pgtk;
 
   # A lightweight wrapper for prettierd to avoid the overhead of node
-  prettierc = (callPackage ./core_d_client.nix {
-    name = "prettierc";
-    serverPath = ''${prettierd}/bin/prettierd'';
-    configFile = ".prettierd";
-  });
+  prettierc = (
+    callPackage ./core_d_client.nix {
+      name = "prettierc";
+      serverPath = ''${prettierd}/bin/prettierd'';
+      configFile = ".prettierd";
+    }
+  );
 
   # A lightweight wrapper for eslint_d to avoid the overhead of node
-  eslint_c = (callPackage ./core_d_client.nix {
-    name = "eslint_c";
-    serverPath = ''${eslint_d}/bin/eslint_d'';
-    configFile = ".eslint_d";
-  });
+  eslint_c = (
+    callPackage ./core_d_client.nix {
+      name = "eslint_c";
+      serverPath = ''${eslint_d}/bin/eslint_d'';
+      configFile = ".eslint_d";
+    }
+  );
 in
 callPackage ./wrapper.nix {
   emacs = emacs.pkgs.withPackages (epkgs: [
@@ -177,68 +179,74 @@ callPackage ./wrapper.nix {
 
   profile = buildEnv {
     name = "emacs-profile";
-    paths = [
-      (aspellWithDicts (dicts: with dicts; [
-        en
-        en-computers
-        en-science
-      ]))
-      bear
-      cargo
-      cargo-edit
-      cmake
-      cmake-language-server
-      coreutils
-      diffutils
-      direnv
-      dockerfile-language-server-nodejs
-      eslint_c
-      eslint_d
-      fd
-      fzf
-      gcc
-      gdb
-      ggt
-      git
-      go
-      godef
-      gopls
-      imagemagick
-      jdk
-      libnotify
-      marksman
-      nixd
-      nixpkgs-fmt
-      nodejs
-      nodePackages.bash-language-server
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.vue-language-server
-      nodePackages.yaml-language-server
-      pandoc
-      perl
-      prettierc
-      prettierd
-      (python3.withPackages (ps: with ps; [
-        debugpy
-        python-lsp-server
-      ]))
-      ripgrep
-      rust-analyzer
-      rustc
-      rustfmt
-      solargraph
-      tectonic
-      texlab
-      vala-language-server
-      vscode-langservers-extracted
-      yarn
-    ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      # Currently doesn't built on Darwin
-      ccls
-      (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
-      omnisharp-roslyn
-    ];
+    paths =
+      [
+        (aspellWithDicts (
+          dicts: with dicts; [
+            en
+            en-computers
+            en-science
+          ]
+        ))
+        bear
+        cargo
+        cargo-edit
+        cmake
+        cmake-language-server
+        coreutils
+        diffutils
+        direnv
+        dockerfile-language-server-nodejs
+        eslint_c
+        eslint_d
+        fd
+        fzf
+        gcc
+        gdb
+        ggt
+        git
+        go
+        godef
+        gopls
+        imagemagick
+        jdk
+        libnotify
+        marksman
+        nixd
+        nixfmt-rfc-style
+        nodejs
+        nodePackages.bash-language-server
+        nodePackages.typescript
+        nodePackages.typescript-language-server
+        nodePackages.vue-language-server
+        nodePackages.yaml-language-server
+        pandoc
+        perl
+        prettierc
+        prettierd
+        (python3.withPackages (
+          ps: with ps; [
+            debugpy
+            python-lsp-server
+          ]
+        ))
+        ripgrep
+        rust-analyzer
+        rustc
+        rustfmt
+        solargraph
+        tectonic
+        texlab
+        vala-language-server
+        vscode-langservers-extracted
+        yarn
+      ]
+      ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+        # Currently doesn't built on Darwin
+        ccls
+        (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
+        omnisharp-roslyn
+      ];
   };
 
   config = ./config;

@@ -1,9 +1,7 @@
 { config, lib, ... }:
 
 {
-  imports = [
-    ./autologin.nix
-  ];
+  imports = [ ./autologin.nix ];
 
   users.users.${config.users.defaultUser} = {
     password = config.users.defaultUser;

@@ -1,4 +1,10 @@
-{ config, lib, pkgs, pkgsKiraNur, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgsKiraNur,
+  ...
+}:
 
 let
   swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
@@ -119,9 +125,7 @@ in
           };
         };
 
-        startup = [
-          { command = "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit"; }
-        ];
+        startup = [ { command = "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit"; } ];
 
         keybindings = lib.mkOptionDefault {
           "${cfg.modifier}+a" = "exec ${cfg.menu}";

@@ -1,9 +1,7 @@
 { config, lib, ... }:
 
 {
-  imports = [
-    ../groups/audio.nix
-  ];
+  imports = [ ../groups/audio.nix ];
 
   users.users.kira = {
     isNormalUser = true;

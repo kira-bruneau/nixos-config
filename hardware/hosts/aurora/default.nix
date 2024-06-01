@@ -1,12 +1,15 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     ../../drivers/logitech-wireless.nix
     ../../environments/laptop.nix
-  ] ++ (with inputs.nixos-hardware.nixosModules; [
-    framework-11th-gen-intel
-  ]);
+  ] ++ (with inputs.nixos-hardware.nixosModules; [ framework-11th-gen-intel ]);
 
   boot = {
     # Use the systemd-boot EFI boot loader
@@ -19,7 +22,9 @@
     kernelPackages = pkgs.linuxPackages_latest;
     resumeDevice = config.fileSystems."/persist".device or "";
     kernelParams = [ "resume_offset=5601280" ]; # sudo filefrag -v /persist/swapfile | awk 'NR==4 {print $4}' | sed 's/\.\.$//'
-    kernel.sysctl = { "vm.swappiness" = 1; };
+    kernel.sysctl = {
+      "vm.swappiness" = 1;
+    };
   };
 
   disko.devices = {
@@ -36,7 +41,12 @@
             content = {
               type = "filesystem";
               format = "vfat";
-              extraArgs = [ "-F" "32" "-n" "boot" ];
+              extraArgs = [
+                "-F"
+                "32"
+                "-n"
+                "boot"
+              ];
               mountpoint = "/boot";
               mountOptions = [ "noatime" ];
             };
@@ -47,7 +57,10 @@
             content = {
               type = "filesystem";
               format = "ext4";
-              extraArgs = [ "-L" "nixos" ];
+              extraArgs = [
+                "-L"
+                "nixos"
+              ];
               mountpoint = "/persist";
               mountOptions = [ "noatime" ];
             };
@@ -59,7 +72,10 @@
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = [ "defaults" "mode=755" ];
+        mountOptions = [
+          "defaults"
+          "mode=755"
+        ];
       };
     };
   };
@@ -70,7 +86,12 @@
   ];
 
   # Hibernation swapfile
-  swapDevices = [{ device = "/persist/swapfile"; size = 64102; }];
+  swapDevices = [
+    {
+      device = "/persist/swapfile";
+      size = 64102;
+    }
+  ];
 
   # Compress hibernation image as much as possible
   systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];

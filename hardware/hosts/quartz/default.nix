@@ -1,18 +1,18 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [
-    ../../environments/bluetooth.nix
-    ../../../services/ollama.nix
-  ] ++ (with inputs.nixos-hardware.nixosModules; [
-    common-cpu-amd
-    common-gpu-amd
-    common-pc-ssd
-  ]);
+  imports =
+    [
+      ../../environments/bluetooth.nix
+      ../../../services/ollama.nix
+    ]
+    ++ (with inputs.nixos-hardware.nixosModules; [
+      common-cpu-amd
+      common-gpu-amd
+      common-pc-ssd
+    ]);
 
-  hardware.firmware = with pkgs; [
-    rtl8761b-firmware
-  ];
+  hardware.firmware = with pkgs; [ rtl8761b-firmware ];
 
   boot = {
     # Use the systemd-boot EFI boot loader
@@ -40,7 +40,12 @@
               content = {
                 type = "filesystem";
                 format = "vfat";
-                extraArgs = [ "-F" "32" "-n" "boot" ];
+                extraArgs = [
+                  "-F"
+                  "32"
+                  "-n"
+                  "boot"
+                ];
                 mountpoint = "/boot";
                 mountOptions = [ "noatime" ];
               };
@@ -51,7 +56,10 @@
               content = {
                 type = "filesystem";
                 format = "ext4";
-                extraArgs = [ "-L" "nixos" ];
+                extraArgs = [
+                  "-L"
+                  "nixos"
+                ];
                 mountpoint = "/persist";
                 mountOptions = [ "noatime" ];
               };
@@ -70,9 +78,15 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-L" "media" ];
+                extraArgs = [
+                  "-L"
+                  "media"
+                ];
                 mountpoint = "/srv/media-ssd";
-                mountOptions = [ "noatime" "nofail" ];
+                mountOptions = [
+                  "noatime"
+                  "nofail"
+                ];
               };
             };
           };
@@ -90,7 +104,10 @@
               content = {
                 type = "btrfs";
                 mountpoint = "/srv/media-hdd";
-                mountOptions = [ "noatime" "nofail" ];
+                mountOptions = [
+                  "noatime"
+                  "nofail"
+                ];
               };
             };
           };
@@ -101,7 +118,10 @@
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = [ "defaults" "mode=755" ];
+        mountOptions = [
+          "defaults"
+          "mode=755"
+        ];
       };
     };
   };

@@ -1,22 +1,23 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   rofi = pkgs.rofi-wayland;
   rofimoji = pkgs.rofimoji.override { inherit rofi; };
 in
 {
-  imports = [
-    ./themes.nix
-  ];
+  imports = [ ./themes.nix ];
 
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
   };
 
-  home.packages = with pkgs; [
-    rofimoji
-  ];
+  home.packages = with pkgs; [ rofimoji ];
 
   wayland.windowManager.sway = {
     config =

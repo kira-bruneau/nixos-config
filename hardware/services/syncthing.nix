@@ -1,12 +1,20 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   services.syncthing = {
-    enable = builtins.elem config.system.name [ "amethyst" "aurora" "luna" "quartz" ];
+    enable = builtins.elem config.system.name [
+      "amethyst"
+      "aurora"
+      "luna"
+      "quartz"
+    ];
     package = pkgs.syncthing.overrideAttrs (attrs: {
-      patches = (attrs.patches or []) ++ [
-        ./syncthing-dont-flatten-file-events.patch
-      ];
+      patches = (attrs.patches or [ ]) ++ [ ./syncthing-dont-flatten-file-events.patch ];
     });
     user = "kira";
     group = "users";
@@ -17,20 +25,38 @@
     overrideFolders = true;
     settings = {
       devices = {
-        "amethyst" = { id = "2PIQVSQ-2N77DGJ-XNTHNQF-PREKTRC-SCP6LFV-DRG3WK7-WFPT56T-NYWIAQG"; };
-        "aurora" = { id = "ODCDVEV-I63ZAW6-MV27YBB-W5MDOAU-YZ3RK23-DMXCWAN-STJOSEF-EFXFRQP"; };
-        "luna" = { id = "O4NQTDT-NWV3GEZ-67BW33I-BQ454SI-42G2RK3-F53W4L4-RUG47VK-5VXLFA7"; };
-        "quartz" = { id = "64ZDVRR-2DZB475-3IWMGU6-OU46FZQ-P44AXVI-OYI6TO3-VOCUVRT-L62KBAE"; };
+        "amethyst" = {
+          id = "2PIQVSQ-2N77DGJ-XNTHNQF-PREKTRC-SCP6LFV-DRG3WK7-WFPT56T-NYWIAQG";
+        };
+        "aurora" = {
+          id = "ODCDVEV-I63ZAW6-MV27YBB-W5MDOAU-YZ3RK23-DMXCWAN-STJOSEF-EFXFRQP";
+        };
+        "luna" = {
+          id = "O4NQTDT-NWV3GEZ-67BW33I-BQ454SI-42G2RK3-F53W4L4-RUG47VK-5VXLFA7";
+        };
+        "quartz" = {
+          id = "64ZDVRR-2DZB475-3IWMGU6-OU46FZQ-P44AXVI-OYI6TO3-VOCUVRT-L62KBAE";
+        };
       };
 
       folders = {
         "Auth" = {
-          enable = builtins.elem config.system.name [ "amethyst" "aurora" "luna" "quartz" ];
-          devices = [ "amethyst" "aurora" "luna" "quartz" ];
+          enable = builtins.elem config.system.name [
+            "amethyst"
+            "aurora"
+            "luna"
+            "quartz"
+          ];
+          devices = [
+            "amethyst"
+            "aurora"
+            "luna"
+            "quartz"
+          ];
           path = "~/Auth";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
-          fsWatcherDelayS = 0.01;
+          fsWatcherDelayS = 1.0e-2;
           versioning = {
             type = "staggered";
             params.maxAge = "31536000";
@@ -38,8 +64,16 @@
         };
 
         "Dev" = {
-          enable = builtins.elem config.system.name [ "amethyst" "aurora" "quartz" ];
-          devices = [ "amethyst" "aurora" "quartz" ];
+          enable = builtins.elem config.system.name [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
+          devices = [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
           path = "~/Dev";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
@@ -51,12 +85,20 @@
         };
 
         "Documents" = {
-          enable = builtins.elem config.system.name [ "amethyst" "aurora" "quartz" ];
-          devices = [ "amethyst" "aurora" "quartz" ];
+          enable = builtins.elem config.system.name [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
+          devices = [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
           path = "~/Documents";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
-          fsWatcherDelayS = 0.01;
+          fsWatcherDelayS = 1.0e-2;
           versioning = {
             type = "staggered";
             params.maxAge = "31536000";
@@ -64,12 +106,20 @@
         };
 
         "Pictures" = {
-          enable = builtins.elem config.system.name [ "amethyst" "aurora" "quartz" ];
-          devices = [ "amethyst" "aurora" "quartz" ];
+          enable = builtins.elem config.system.name [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
+          devices = [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
           path = "~/Pictures";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
-          fsWatcherDelayS = 0.01;
+          fsWatcherDelayS = 1.0e-2;
           versioning = {
             type = "staggered";
             params.maxAge = "31536000";
@@ -77,12 +127,20 @@
         };
 
         "Videos" = {
-          enable = builtins.elem config.system.name [ "amethyst" "aurora" "quartz" ];
-          devices = [ "amethyst" "aurora" "quartz" ];
+          enable = builtins.elem config.system.name [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
+          devices = [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
           path = "~/Videos";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
-          fsWatcherDelayS = 0.01;
+          fsWatcherDelayS = 1.0e-2;
           versioning = {
             type = "staggered";
             params.maxAge = "31536000";

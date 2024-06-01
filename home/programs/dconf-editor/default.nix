@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    gnome.dconf-editor
-  ];
+  home.packages = with pkgs; [ gnome.dconf-editor ];
 
   dconf.settings = {
     "ca/desrt/dconf-editor" = {

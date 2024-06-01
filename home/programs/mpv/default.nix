@@ -7,14 +7,10 @@
       save-position-on-quit = true;
     };
 
-    scripts = with pkgs.mpvScripts; [
-      mpris
-    ];
+    scripts = with pkgs.mpvScripts; [ mpris ];
   };
 
-  home.packages = with pkgs; [
-    celluloid
-  ];
+  home.packages = with pkgs; [ celluloid ];
 
   xdg.mimeApps.defaultApplications = {
     "application/mxf" = "celluloid.desktop";

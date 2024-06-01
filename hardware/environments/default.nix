@@ -9,7 +9,5 @@
     ./impermanence.nix
   ];
 
-  environment.systemPackages = [
-    pkgsDisco.default
-  ];
+  environment.systemPackages = [ pkgsDisco.default ];
 }

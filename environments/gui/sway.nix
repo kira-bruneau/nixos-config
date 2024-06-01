@@ -1,14 +1,10 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./.
-  ];
+  imports = [ ./. ];
 
   environment = {
-    systemPackages = with pkgs; [
-      gnome.adwaita-icon-theme
-    ];
+    systemPackages = with pkgs; [ gnome.adwaita-icon-theme ];
 
     etc = {
       "sway/config.d/power-controls.conf".text = ''
@@ -42,7 +38,12 @@
   };
 
   security.pam.loginLimits = [
-    { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+    {
+      domain = "@users";
+      item = "rtprio";
+      type = "-";
+      value = 1;
+    }
   ];
 
   # Enable gtkgreet greeter (using Sway as the Wayland compositor)
@@ -138,10 +139,7 @@
   # Enable xdg-desktop-portal (screen sharing)
   xdg.portal = {
     wlr.enable = true;
-
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
 
   # Enable GNOME virtual file system

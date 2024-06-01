@@ -29,7 +29,12 @@
             content = {
               type = "filesystem";
               format = "vfat";
-              extraArgs = [ "-F" "32" "-n" "boot" ];
+              extraArgs = [
+                "-F"
+                "32"
+                "-n"
+                "boot"
+              ];
               mountpoint = "/boot";
               mountOptions = [ "noatime" ];
             };
@@ -39,7 +44,10 @@
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = [ "-L" "nixos" ];
+              extraArgs = [
+                "-L"
+                "nixos"
+              ];
               mountpoint = "/persist";
               mountOptions = [ "noatime" ];
             };
@@ -51,7 +59,10 @@
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = [ "defaults" "mode=755" ];
+        mountOptions = [
+          "defaults"
+          "mode=755"
+        ];
       };
     };
   };
@@ -64,9 +75,7 @@
       "/var/lib/jupiter-biosupdate"
     ];
 
-    files = [
-      "/var/log/jupiter-fan-control.log"
-    ];
+    files = [ "/var/log/jupiter-fan-control.log" ];
   };
 
   jovian.devices.steamdeck = {
@@ -74,9 +83,7 @@
     autoUpdate = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    steamdeck-firmware
-  ];
+  environment.systemPackages = with pkgs; [ steamdeck-firmware ];
 
   programs.captive-browser.interface = "wlo1";
 }

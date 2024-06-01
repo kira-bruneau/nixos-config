@@ -1,4 +1,9 @@
-{ pkgs, pkgsKiraNur, pkgsYuzu, ... }:
+{
+  pkgs,
+  pkgsKiraNur,
+  pkgsYuzu,
+  ...
+}:
 
 let
   mario64Rom = pkgs.fetchurl {
@@ -19,10 +24,7 @@ in
     pkgsKiraNur.pokemmo-installer
     pkgsKiraNur.protontricks
     (sm64ex.overrideAttrs (attrs: {
-      makeFlags = attrs.makeFlags ++ [
-        "BETTERCAMERA=1"
-      ];
-
+      makeFlags = attrs.makeFlags ++ [ "BETTERCAMERA=1" ];
       preBuild = ''
         patchShebangs extract_assets.py
         ln -s ${mario64Rom} ./baserom.us.z64

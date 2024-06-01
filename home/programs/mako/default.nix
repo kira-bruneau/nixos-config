@@ -39,11 +39,13 @@ in
     {
       timeout = 30;
       command = "${makoctl} mode -a sticky";
-      resumeCommand = toString (pkgs.writeShellScript "resume-notification-timeout" ''
-        if ! ${makoctl} mode | ${grep} -q invisible; then
-          ${makoctl} mode -r sticky
-        fi
-      '');
+      resumeCommand = toString (
+        pkgs.writeShellScript "resume-notification-timeout" ''
+          if ! ${makoctl} mode | ${grep} -q invisible; then
+            ${makoctl} mode -r sticky
+          fi
+        ''
+      );
     }
   ];
 

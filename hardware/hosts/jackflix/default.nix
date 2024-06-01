@@ -1,15 +1,23 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports = [
-    ../../drivers/logitech-wireless.nix
-    ../../environments/cec
-    ../../environments/laptop.nix
-  ] ++ (with inputs.nixos-hardware.nixosModules; [
-    common-cpu-intel-cpu-only
-    common-gpu-nvidia-nonprime
-    common-pc-laptop-hdd
-  ]);
+  imports =
+    [
+      ../../drivers/logitech-wireless.nix
+      ../../environments/cec
+      ../../environments/laptop.nix
+    ]
+    ++ (with inputs.nixos-hardware.nixosModules; [
+      common-cpu-intel-cpu-only
+      common-gpu-nvidia-nonprime
+      common-pc-laptop-hdd
+    ]);
 
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
@@ -42,7 +50,12 @@
             content = {
               type = "filesystem";
               format = "vfat";
-              extraArgs = [ "-F" "32" "-n" "boot" ];
+              extraArgs = [
+                "-F"
+                "32"
+                "-n"
+                "boot"
+              ];
               mountpoint = "/boot";
               mountOptions = [ "noatime" ];
             };
@@ -52,7 +65,10 @@
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = [ "-L" "nixos" ];
+              extraArgs = [
+                "-L"
+                "nixos"
+              ];
               mountpoint = "/persist";
               mountOptions = [ "noatime" ];
             };
@@ -64,7 +80,10 @@
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = [ "defaults" "mode=755" ];
+        mountOptions = [
+          "defaults"
+          "mode=755"
+        ];
       };
     };
   };

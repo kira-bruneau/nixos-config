@@ -1,4 +1,10 @@
-{ config, lib, pkgs, pkgsUnstable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
 
 let
   downloadClients = {
@@ -118,33 +124,43 @@ let
     mediaLibraries = {
       Shows = {
         type = "tvshows";
-        folders = [ sonarr.rootFolder "/srv/media-hdd/shows" ];
+        folders = [
+          sonarr.rootFolder
+          "/srv/media-hdd/shows"
+        ];
       };
 
       Movies = {
         type = "movies";
-        folders = [ radarr.rootFolder "/srv/media-hdd/movies" ];
+        folders = [
+          radarr.rootFolder
+          "/srv/media-hdd/movies"
+        ];
       };
 
       Downloads.folders = [ qBittorrent.BitTorrent."Session\\DefaultSavePath" ];
     };
   };
 
-  makeCurlScript = name: options: ctx: requests:
+  makeCurlScript =
+    name: options: ctx: requests:
     pkgs.writeTextFile {
       inherit name;
       executable = true;
       text = ''
         #!${pkgs.curl}/bin/curl -K
         ${options}
-        ${builtins.concatStringsSep "\nnext\n"
-          (builtins.map
-            (request: "${ctx}\n${request}")
-            requests)}
+        ${builtins.concatStringsSep "\nnext\n" (builtins.map (request: "${ctx}\n${request}") requests)}
       '';
     };
 
-  makeMediaLibrary = name: { type ? null, folders, options ? null }:
+  makeMediaLibrary =
+    name:
+    {
+      type ? null,
+      folders,
+      options ? null,
+    }:
     pkgs.runCommand name { inherit type folders options; } ''
       mkdir "$out"
 
@@ -168,16 +184,21 @@ let
       done
     '';
 
-  makeArrConfig = { implementation, fields ? [ ], ... }@config:
+  makeArrConfig =
+    {
+      implementation,
+      fields ? [ ],
+      ...
+    }@config:
     {
       configContract = "${implementation}Settings";
-    } // config // {
-      fields = builtins.map
-        (name: {
-          inherit name;
-          value = fields.${name};
-        })
-        (builtins.attrNames fields);
+    }
+    // config
+    // {
+      fields = builtins.map (name: {
+        inherit name;
+        value = fields.${name};
+      }) (builtins.attrNames fields);
     };
 in
 {
@@ -205,7 +226,10 @@ in
               widget = {
                 type = "minecraft";
                 url = "udp://amethyst:25565";
-                fields = [ "players" "status" ];
+                fields = [
+                  "players"
+                  "status"
+                ];
               };
             };
           }
@@ -322,7 +346,11 @@ in
     openFirewall = true;
   };
 
-  users.users.jellyfin.extraGroups = [ "sonarr" "radarr" "qbittorrent" ];
+  users.users.jellyfin.extraGroups = [
+    "sonarr"
+    "radarr"
+    "qbittorrent"
+  ];
 
   systemd.services.jellyfin = {
     serviceConfig = {
@@ -336,9 +364,9 @@ in
     };
 
     unitConfig = {
-      RequiresMountsFor = builtins.concatMap
-        (lib: lib.folders)
-        (builtins.attrValues jellyfin.mediaLibraries);
+      RequiresMountsFor = builtins.concatMap (lib: lib.folders) (
+        builtins.attrValues jellyfin.mediaLibraries
+      );
     };
 
     preStart = ''
@@ -364,11 +392,15 @@ in
       ''} "${config.services.jellyfin.configDir}/system.xml"
 
       ${pkgs.coreutils}/bin/mkdir -p "${config.services.jellyfin.dataDir}/root/default"
-      ${builtins.concatStringsSep "\n"
-        (builtins.map
-          (name: let lib = makeMediaLibrary name jellyfin.mediaLibraries.${name}; in
-            "${pkgs.coreutils}/bin/ln -sfn ${lib} \"${config.services.jellyfin.dataDir}/root/default/${name}\"")
-          (builtins.attrNames jellyfin.mediaLibraries))}
+      ${builtins.concatStringsSep "\n" (
+        builtins.map (
+          name:
+          let
+            lib = makeMediaLibrary name jellyfin.mediaLibraries.${name};
+          in
+          "${pkgs.coreutils}/bin/ln -sfn ${lib} \"${config.services.jellyfin.dataDir}/root/default/${name}\""
+        ) (builtins.attrNames jellyfin.mediaLibraries)
+      )}
     '';
   };
 
@@ -401,7 +433,9 @@ in
       group = config.services.sonarr.group;
     };
 
-    a = { argument = "default:group::rwx"; };
+    a = {
+      argument = "default:group::rwx";
+    };
   };
 
   systemd.services.sonarr = {
@@ -430,63 +464,71 @@ in
           retry = 3
           retry-connrefused
         ''
-        (let
-          naming = ''
-            fail-with-body
-            url = "http://localhost:${sonarr.port}/api/v3/config/naming/1"
-            request = "PUT"
-            data = "@${pkgs.writers.writeJSON "naming.json" {
-              id = 1;
-              renameEpisodes = true;
-              replaceIllegalCharacters = true;
-              standardEpisodeFormat = "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
-              dailyEpisodeFormat = "{Series Title} - {Air-Date} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
-              animeEpisodeFormat = "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
-              seriesFolderFormat = "{Series Title}";
-              seasonFolderFormat = "Season {season}";
-              specialsFolderFormat = "Specials";
-            }}"
-          '';
-        in
-        [
-          # PUT naming twice - first PUT doesn't work???
-          naming naming
-          ''
-            fail-with-body
-            url = "http://localhost:${sonarr.port}/api/v3/config/mediamanagement/1"
-            request = "PUT"
-            data = "@${pkgs.writers.writeJSON "mediamanagement.json" {
-              id = 1;
-              importExtraFiles = true;
-              extraFileExtensions = "srt";
+        (
+          let
+            naming = ''
+              fail-with-body
+              url = "http://localhost:${sonarr.port}/api/v3/config/naming/1"
+              request = "PUT"
+              data = "@${
+                pkgs.writers.writeJSON "naming.json" {
+                  id = 1;
+                  renameEpisodes = true;
+                  replaceIllegalCharacters = true;
+                  standardEpisodeFormat = "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
+                  dailyEpisodeFormat = "{Series Title} - {Air-Date} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
+                  animeEpisodeFormat = "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
+                  seriesFolderFormat = "{Series Title}";
+                  seasonFolderFormat = "Season {season}";
+                  specialsFolderFormat = "Specials";
+                }
+              }"
+            '';
+          in
+          [
+            # PUT naming twice - first PUT doesn't work???
+            naming
+            naming
+            ''
+              fail-with-body
+              url = "http://localhost:${sonarr.port}/api/v3/config/mediamanagement/1"
+              request = "PUT"
+              data = "@${
+                pkgs.writers.writeJSON "mediamanagement.json" {
+                  id = 1;
+                  importExtraFiles = true;
+                  extraFileExtensions = "srt";
 
-              # GUI defaults
-              copyUsingHardlinks = true;
-              recycleBinCleanupDays = 7;
-              minimumFreeSpaceWhenImporting = 100;
-              enableMediaInfo = true;
-            }}"
-          ''
-          ''
-            url = "http://localhost:${sonarr.port}/api/v3/rootfolder"
-            request = "POST"
-            data = "@${pkgs.writers.writeJSON "rootfolder.json" {
-              path = sonarr.rootFolder;
-            }}"
-          ''
-        ] ++ (builtins.map
-          (name: ''
+                  # GUI defaults
+                  copyUsingHardlinks = true;
+                  recycleBinCleanupDays = 7;
+                  minimumFreeSpaceWhenImporting = 100;
+                  enableMediaInfo = true;
+                }
+              }"
+            ''
+            ''
+              url = "http://localhost:${sonarr.port}/api/v3/rootfolder"
+              request = "POST"
+              data = "@${pkgs.writers.writeJSON "rootfolder.json" { path = sonarr.rootFolder; }}"
+            ''
+          ]
+          ++ (builtins.map (name: ''
             url = "http://localhost:${sonarr.port}/api/v3/downloadclient"
             request = "POST"
-            data = "@${pkgs.writers.writeJSON "${name}.json"
-              ({
-                inherit name;
-                enable = true;
-                removeCompletedDownloads = true;
-                removeFailedDownloads = true;
-              } // makeArrConfig sonarr.downloadClients.${name}) }"
-          '')
-          (builtins.attrNames sonarr.downloadClients)))
+            data = "@${
+              pkgs.writers.writeJSON "${name}.json" (
+                {
+                  inherit name;
+                  enable = true;
+                  removeCompletedDownloads = true;
+                  removeFailedDownloads = true;
+                }
+                // makeArrConfig sonarr.downloadClients.${name}
+              )
+            }"
+          '') (builtins.attrNames sonarr.downloadClients))
+        )
       }
     '';
   };
@@ -507,7 +549,9 @@ in
       group = config.services.radarr.group;
     };
 
-    a = { argument = "default:group::rwx"; };
+    a = {
+      argument = "default:group::rwx";
+    };
   };
 
   systemd.services.radarr = {
@@ -536,57 +580,65 @@ in
           retry = 3
           retry-connrefused
         ''
-        (let
-          naming = ''
-            fail-with-body
-            url = "http://localhost:${radarr.port}/api/v3/config/naming/1"
-            request = "PUT"
-            data = "@${pkgs.writers.writeJSON "naming.json" {
-              renameMovies = true;
-              replaceIllegalCharacters = true;
-              standardMovieFormat = "{Movie Title} ({Release Year}) {Quality Title} {MediaInfo VideoCodec}";
-              movieFolderFormat = "{Movie Title} ({Release Year})";
-            }}"
-          '';
-        in
-        [
-          # PUT naming twice - first PUT doesn't work???
-          naming naming
-          ''
-            fail-with-body
-            url = "http://localhost:${radarr.port}/api/v3/config/mediamanagement/1"
-            request = "PUT"
-            data = "@${pkgs.writers.writeJSON "mediamanagement.json" {
-              importExtraFiles = true;
-              extraFileExtensions = "srt";
+        (
+          let
+            naming = ''
+              fail-with-body
+              url = "http://localhost:${radarr.port}/api/v3/config/naming/1"
+              request = "PUT"
+              data = "@${
+                pkgs.writers.writeJSON "naming.json" {
+                  renameMovies = true;
+                  replaceIllegalCharacters = true;
+                  standardMovieFormat = "{Movie Title} ({Release Year}) {Quality Title} {MediaInfo VideoCodec}";
+                  movieFolderFormat = "{Movie Title} ({Release Year})";
+                }
+              }"
+            '';
+          in
+          [
+            # PUT naming twice - first PUT doesn't work???
+            naming
+            naming
+            ''
+              fail-with-body
+              url = "http://localhost:${radarr.port}/api/v3/config/mediamanagement/1"
+              request = "PUT"
+              data = "@${
+                pkgs.writers.writeJSON "mediamanagement.json" {
+                  importExtraFiles = true;
+                  extraFileExtensions = "srt";
 
-              # GUI defaults
-              copyUsingHardlinks = true;
-              recycleBinCleanupDays = 7;
-              minimumFreeSpaceWhenImporting = 100;
-              enableMediaInfo = true;
-            }}"
-          ''
-          ''
-            url = "http://localhost:${radarr.port}/api/v3/rootfolder"
-            request = "POST"
-            data = "@${pkgs.writers.writeJSON "rootfolder.json" {
-              path = radarr.rootFolder;
-            }}"
-          ''
-        ] ++ (builtins.map
-          (name: ''
+                  # GUI defaults
+                  copyUsingHardlinks = true;
+                  recycleBinCleanupDays = 7;
+                  minimumFreeSpaceWhenImporting = 100;
+                  enableMediaInfo = true;
+                }
+              }"
+            ''
+            ''
+              url = "http://localhost:${radarr.port}/api/v3/rootfolder"
+              request = "POST"
+              data = "@${pkgs.writers.writeJSON "rootfolder.json" { path = radarr.rootFolder; }}"
+            ''
+          ]
+          ++ (builtins.map (name: ''
             url = "http://localhost:${radarr.port}/api/v3/downloadclient"
             request = "POST"
-            data = "@${pkgs.writers.writeJSON "${name}.json"
-              ({
-                inherit name;
-                enable = true;
-                removeCompletedDownloads = true;
-                removeFailedDownloads = true;
-              } // makeArrConfig radarr.downloadClients.${name}) }"
-          '')
-          (builtins.attrNames radarr.downloadClients)))
+            data = "@${
+              pkgs.writers.writeJSON "${name}.json" (
+                {
+                  inherit name;
+                  enable = true;
+                  removeCompletedDownloads = true;
+                  removeFailedDownloads = true;
+                }
+                // makeArrConfig radarr.downloadClients.${name}
+              )
+            }"
+          '') (builtins.attrNames radarr.downloadClients))
+        )
       }
     '';
   };
@@ -622,40 +674,49 @@ in
           retry = 3
           retry-connrefused
         ''
-        ((builtins.map
-          (name: ''
+        (
+          (builtins.map (name: ''
             url = "http://localhost:${prowlarr.port}/api/v1/applications"
             request = "POST"
-            data = "@${pkgs.writers.writeJSON "${name}.json" ({
-              inherit name;
-              enable = true;
-              appProfileId = 1;
-            } // makeArrConfig prowlarr.applications.${name})}"
-          '')
-          (builtins.attrNames prowlarr.applications))
-        ++ (builtins.map
-          (name: ''
+            data = "@${
+              pkgs.writers.writeJSON "${name}.json" (
+                {
+                  inherit name;
+                  enable = true;
+                  appProfileId = 1;
+                }
+                // makeArrConfig prowlarr.applications.${name}
+              )
+            }"
+          '') (builtins.attrNames prowlarr.applications))
+          ++ (builtins.map (name: ''
             url = "http://localhost:${prowlarr.port}/api/v1/indexer"
             request = "POST"
-            data = "@${pkgs.writers.writeJSON "${name}.json" ({
-              inherit name;
-              enable = true;
-              appProfileId = 1;
-            } // makeArrConfig prowlarr.indexers.${name})}"
-          '')
-          (builtins.attrNames prowlarr.indexers))
-        ++ (builtins.map
-          (name: ''
+            data = "@${
+              pkgs.writers.writeJSON "${name}.json" (
+                {
+                  inherit name;
+                  enable = true;
+                  appProfileId = 1;
+                }
+                // makeArrConfig prowlarr.indexers.${name}
+              )
+            }"
+          '') (builtins.attrNames prowlarr.indexers))
+          ++ (builtins.map (name: ''
             url = "http://localhost:${prowlarr.port}/api/v1/downloadclient"
             request = "POST"
-            data = "@${pkgs.writers.writeJSON "${name}.json"
-              ({
-                inherit name;
-                enable = true;
-                categories = [];
-              } // makeArrConfig prowlarr.downloadClients.${name})}"
-          '')
-          (builtins.attrNames prowlarr.downloadClients))
+            data = "@${
+              pkgs.writers.writeJSON "${name}.json" (
+                {
+                  inherit name;
+                  enable = true;
+                  categories = [ ];
+                }
+                // makeArrConfig prowlarr.downloadClients.${name}
+              )
+            }"
+          '') (builtins.attrNames prowlarr.downloadClients))
         )
       }
     '';
@@ -676,8 +737,14 @@ in
 
   # Configure downloads directory to be shared by qbittorrent group
   systemd.tmpfiles.settings.qBittorrent.${qBittorrent.BitTorrent."Session\\DefaultSavePath"} = {
-    d = { mode = "2770"; user = "qbittorrent"; group = "qbittorrent"; };
-    a = { argument = "default:group::rwx"; };
+    d = {
+      mode = "2770";
+      user = "qbittorrent";
+      group = "qbittorrent";
+    };
+    a = {
+      argument = "default:group::rwx";
+    };
   };
 
   systemd.services."qbittorrent-nox@qbittorrent" = {

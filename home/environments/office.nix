@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ../programs/anytype
-  ];
+  imports = [ ../programs/anytype ];
 
   home.packages = with pkgs; [
     gnucash

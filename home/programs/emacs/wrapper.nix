@@ -1,13 +1,14 @@
-{ lib
-, writeScriptBin
-, runtimeShell
-, writeTextFile
-, coreutils
-, runCommand
-, makeWrapper
-, emacs
-, profile
-, config
+{
+  lib,
+  writeScriptBin,
+  runtimeShell,
+  writeTextFile,
+  coreutils,
+  runCommand,
+  makeWrapper,
+  emacs,
+  profile,
+  config,
 }:
 
 let
@@ -58,8 +59,7 @@ let
     "--add-flags '--init-directory=${config}'"
   ];
 in
-runCommand
-  "${emacs.name}-profile-wrapper"
+runCommand "${emacs.name}-profile-wrapper"
   {
     nativeBuildInputs = [ makeWrapper ];
     meta.mainProgram = "emacs";

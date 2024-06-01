@@ -16,24 +16,26 @@ let
   fabricVersion = "0.14.25";
 in
 {
-  imports = [
-    ./.
-  ];
+  imports = [ ./. ];
 
   services.minecraft-servers.servers."BigChadGuysPlus" = {
     enable = true;
     autoStart = false;
-    package = pkgsNixMinecraft.fabricServers.${serverVersion}.override { loaderVersion = fabricVersion; };
+    package = pkgsNixMinecraft.fabricServers.${serverVersion}.override {
+      loaderVersion = fabricVersion;
+    };
     symlinks = {
       "resourcepacks" = "${modpack}/resourcepacks";
     };
 
     files = {
-      "ops.json".value = [{
-        name = "daxvena";
-        uuid = "13290979-c320-4975-b1fe-8906f36851fe";
-        level = 4;
-      }];
+      "ops.json".value = [
+        {
+          name = "daxvena";
+          uuid = "13290979-c320-4975-b1fe-8906f36851fe";
+          level = 4;
+        }
+      ];
     };
 
     serverProperties = {
@@ -51,15 +53,19 @@ in
       mkdir mods
       ln -s ${modpack}/mods/* mods
 
-      ln -s ${pkgs.fetchurl {
-        url = "https://mediafilez.forgecdn.net/files/5080/952/create-new-age-fabric-1.20.1-1.1.2.jar";
-        hash = "sha256-egBYEdjonRJCE5NuR/XyAN8u3m3aDjyVjVtvm0vJb1o=";
-      }} mods/create-new-age-fabric-1.20.1-1.1.2.jar
+      ln -s ${
+        pkgs.fetchurl {
+          url = "https://mediafilez.forgecdn.net/files/5080/952/create-new-age-fabric-1.20.1-1.1.2.jar";
+          hash = "sha256-egBYEdjonRJCE5NuR/XyAN8u3m3aDjyVjVtvm0vJb1o=";
+        }
+      } mods/create-new-age-fabric-1.20.1-1.1.2.jar
 
-      ln -s ${pkgs.fetchurl {
-        url = "https://mediafilez.forgecdn.net/files/5118/354/botarium-fabric-1.20.1-2.3.3.jar";
-        hash = "sha256-ihAOxHzjDGXg9qGuK0Vat8vwGW+HWMN0PfkZNxexbPo=";
-      }} mods/botarium-fabric-1.20.1-2.3.3.jar
+      ln -s ${
+        pkgs.fetchurl {
+          url = "https://mediafilez.forgecdn.net/files/5118/354/botarium-fabric-1.20.1-2.3.3.jar";
+          hash = "sha256-ihAOxHzjDGXg9qGuK0Vat8vwGW+HWMN0PfkZNxexbPo=";
+        }
+      } mods/botarium-fabric-1.20.1-2.3.3.jar
     '';
   };
 

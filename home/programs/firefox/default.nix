@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   programs.firefox = {
@@ -9,7 +14,10 @@
           search = {
             force = true;
             default = "DuckDuckGo";
-            order = [ "DuckDuckGo" "Google" ];
+            order = [
+              "DuckDuckGo"
+              "Google"
+            ];
             engines = {
               "Amazon.ca".metaData.alias = "@a";
               "Bing".metaData.hidden = true;
@@ -18,12 +26,17 @@
               "Wikipedia (en)".metaData.alias = "@w";
 
               "GitHub" = {
-                urls = [{
-                  template = "https://github.com/search";
-                  params = [
-                    { name = "q"; value = "{searchTerms}"; }
-                  ];
-                }];
+                urls = [
+                  {
+                    template = "https://github.com/search";
+                    params = [
+                      {
+                        name = "q";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
                 icon = "${pkgs.fetchurl {
                   url = "https://github.githubassets.com/favicons/favicon.svg";
                   hash = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
@@ -32,45 +45,70 @@
               };
 
               "Nix Packages" = {
-                urls = [{
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    { name = "channel"; value = "unstable"; }
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
-                }];
+                urls = [
+                  {
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "channel";
+                        value = "unstable";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 definedAliases = [ "@np" ];
               };
 
               "NixOS Wiki" = {
-                urls = [{
-                  template = "https://nixos.wiki/index.php";
-                  params = [{ name = "search"; value = "{searchTerms}"; }];
-                }];
+                urls = [
+                  {
+                    template = "https://nixos.wiki/index.php";
+                    params = [
+                      {
+                        name = "search";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 definedAliases = [ "@nw" ];
               };
 
               "Nixpkgs Issues" = {
-                urls = [{
-                  template = "https://github.com/NixOS/nixpkgs/issues";
-                  params = [
-                    { name = "q"; value = "{searchTerms}"; }
-                  ];
-                }];
+                urls = [
+                  {
+                    template = "https://github.com/NixOS/nixpkgs/issues";
+                    params = [
+                      {
+                        name = "q";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 definedAliases = [ "@ni" ];
               };
 
               # A good way to find genuine discussion
               "Reddit" = {
-                urls = [{
-                  template = "https://www.reddit.com/search";
-                  params = [
-                    { name = "q"; value = "{searchTerms}"; }
-                  ];
-                }];
+                urls = [
+                  {
+                    template = "https://www.reddit.com/search";
+                    params = [
+                      {
+                        name = "q";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
                 icon = "${pkgs.fetchurl {
                   url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
                   hash = "sha256-4zWTcHuL1SEKk8KyVFsOKYPbM4rc7WNa9KrGhK4dJyg=";
@@ -79,10 +117,17 @@
               };
 
               "Youtube" = {
-                urls = [{
-                  template = "https://www.youtube.com/results";
-                  params = [{ name = "search_query"; value = "{searchTerms}"; }];
-                }];
+                urls = [
+                  {
+                    template = "https://www.youtube.com/results";
+                    params = [
+                      {
+                        name = "search_query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
                 icon = "${pkgs.fetchurl {
                   url = "https://www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
                   hash = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
@@ -140,9 +185,7 @@
 
                   "unified-extensions-button"
                 ];
-                toolbar-menubar = [
-                  "menubar-items"
-                ];
+                toolbar-menubar = [ "menubar-items" ];
                 TabsToolbar = [
                   "tabbrowser-tabs"
                   "new-tab-button"
@@ -285,16 +328,17 @@
   };
 
   xdg = {
-    desktopEntries = builtins.mapAttrs
-      (id: profile: {
-        type = "Application";
-        name = profile.name;
-        genericName = "Web Browser";
-        icon = id;
-        categories = [ "Network" "WebBrowser" ];
-        exec = "firefox -P ${profile.name} --new-tab %U";
-      })
-      config.programs.firefox.profiles;
+    desktopEntries = builtins.mapAttrs (id: profile: {
+      type = "Application";
+      name = profile.name;
+      genericName = "Web Browser";
+      icon = id;
+      categories = [
+        "Network"
+        "WebBrowser"
+      ];
+      exec = "firefox -P ${profile.name} --new-tab %U";
+    }) config.programs.firefox.profiles;
 
     mimeApps.defaultApplications = {
       "application/vnd.mozilla.xul+xml" = "firefox.desktop";
@@ -377,20 +421,21 @@
             WITH now(unix_ms) AS (SELECT CAST((julianday('now') - 2440587.5) * 86400000 AS INTEGER))
             INSERT INTO moz_perms(origin, type, permission, expireType, expireTime, modificationTime)
             VALUES
-            ${lib.concatStringsSep ",\n"
-              (builtins.concatMap
-                (origin:
+            ${lib.concatStringsSep ",\n" (
+              builtins.concatMap (
+                origin:
+                let
+                  originPermissions = permissions.${origin};
+                in
+                (builtins.map (
+                  type:
                   let
-                    originPermissions = permissions.${origin};
+                    permission = permissionValue.${originPermissions.${type}};
                   in
-                  (builtins.map
-                    (type:
-                      let
-                        permission = permissionValue.${originPermissions.${type}};
-                      in
-                        "  (${escapeString origin}, ${escapeString type}, ${escapeInt permission}, 0, 0, (SELECT unix_ms FROM now))")
-                    (builtins.attrNames originPermissions)))
-                (builtins.attrNames permissions))}
+                  "  (${escapeString origin}, ${escapeString type}, ${escapeInt permission}, 0, 0, (SELECT unix_ms FROM now))"
+                ) (builtins.attrNames originPermissions))
+              ) (builtins.attrNames permissions)
+            )}
             ON CONFLICT(origin, type) DO UPDATE SET
               permission=excluded.permission,
               expireType=excluded.expireType,
@@ -415,47 +460,77 @@
   };
 
   wayland.windowManager.sway.config = {
-    startup = [{ command = "${config.programs.firefox.package}/bin/firefox"; }];
-    assigns."1" = [{ app_id = "^firefox$"; }];
+    startup = [ { command = "${config.programs.firefox.package}/bin/firefox"; } ];
+    assigns."1" = [ { app_id = "^firefox$"; } ];
     window.commands = [
       {
-        criteria = { app_id = "^firefox$"; title = "https://www.youtube.com"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://www.youtube.com";
+        };
         command = "move container to workspace 4";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "https://music.youtube.com"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://music.youtube.com";
+        };
         command = "move container to workspace 4";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "https://calendar.google.com"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://calendar.google.com";
+        };
         command = "move container to workspace 7";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "https://calendar.proton.me"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://calendar.proton.me";
+        };
         command = "move container to workspace 7";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "https://mail.google.com"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://mail.google.com";
+        };
         command = "move container to workspace 9";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "https://mail.proton.me"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://mail.proton.me";
+        };
         command = "move container to workspace 9";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "https://outlook.office.com"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://outlook.office.com";
+        };
         command = "move container to workspace 9";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "https://app.cinny.in"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://app.cinny.in";
+        };
         command = "move container to workspace 10";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "https://app.element.io"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://app.element.io";
+        };
         command = "move container to workspace 10";
       }
       {
-        criteria = { app_id = "^firefox$"; title = "^Picture-in-Picture$"; };
+        criteria = {
+          app_id = "^firefox$";
+          title = "^Picture-in-Picture$";
+        };
         command = "floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95";
       }
     ];

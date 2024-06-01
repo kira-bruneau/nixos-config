@@ -11,9 +11,7 @@
       TS_NO_LOGS_NO_SUPPORT = "true";
     };
 
-    network.wait-online.ignoredInterfaces = [
-      config.services.tailscale.interfaceName
-    ];
+    network.wait-online.ignoredInterfaces = [ config.services.tailscale.interfaceName ];
   };
 
   networking.hosts = {

@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   mkLiteral = value: {
@@ -6,7 +11,8 @@ let
     inherit value;
   };
 
-  mkValueString = value:
+  mkValueString =
+    value:
     if lib.isBool value then
       if value then "true" else "false"
     else if lib.isInt value then
@@ -20,11 +26,15 @@ let
     else
       abort "Unhandled value type ${builtins.typeOf value}";
 
-  mkKeyValue = { sep ? ": ", end ? ";" }:
-    name: value:
-      "${name}${sep}${mkValueString value}${end}";
+  mkKeyValue =
+    {
+      sep ? ": ",
+      end ? ";",
+    }:
+    name: value: "${name}${sep}${mkValueString value}${end}";
 
-  mkRasiSection = name: value:
+  mkRasiSection =
+    name: value:
     if lib.isAttrs value then
       let
         toRasiKeyValue = lib.generators.toKeyValue { mkKeyValue = mkKeyValue { }; };
@@ -36,20 +46,24 @@ let
         ${configStr}}
       ''
     else
-      (mkKeyValue
-        {
-          sep = " ";
-          end = "";
-        }
-        name
-        value) + "\n";
+      (mkKeyValue {
+        sep = " ";
+        end = "";
+      } name value)
+      + "\n";
 
-  toRasi = attrs:
-    lib.concatStringsSep "\n" (lib.concatMap (lib.mapAttrsToList mkRasiSection) [
-      (lib.filterAttrs (n: _: n == "@theme") attrs)
-      (lib.filterAttrs (n: _: n == "@import") attrs)
-      (removeAttrs attrs [ "@theme" "@import" ])
-    ]);
+  toRasi =
+    attrs:
+    lib.concatStringsSep "\n" (
+      lib.concatMap (lib.mapAttrsToList mkRasiSection) [
+        (lib.filterAttrs (n: _: n == "@theme") attrs)
+        (lib.filterAttrs (n: _: n == "@import") attrs)
+        (removeAttrs attrs [
+          "@theme"
+          "@import"
+        ])
+      ]
+    );
 in
 {
   xdg.dataFile."rofi/themes/icon-grid.rasi".text = toRasi {
@@ -83,7 +97,10 @@ in
       spacing = mkLiteral "10px";
       border-radius = mkLiteral "10px";
       background-color = mkLiteral "white / 5%";
-      children = [ "prompt" "entry" ];
+      children = [
+        "prompt"
+        "entry"
+      ];
     };
 
     entry = {
@@ -122,7 +139,5 @@ in
     };
   };
 
-  home.packages = with pkgs; [
-    font-awesome_6
-  ];
+  home.packages = with pkgs; [ font-awesome_6 ];
 }

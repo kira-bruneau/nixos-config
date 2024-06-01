@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    evince
-  ];
+  home.packages = with pkgs; [ evince ];
 
   xdg.mimeApps.defaultApplications = {
     "application/illustrator" = "org.gnome.Evince.desktop";

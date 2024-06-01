@@ -4,13 +4,9 @@ let
   settingsFormat = pkgs.formats.ini { };
 in
 {
-  imports = [
-    ../../environments/config.nix
-  ];
+  imports = [ ../../environments/config.nix ];
 
-  home.packages = with pkgs; [
-    speedcrunch
-  ];
+  home.packages = with pkgs; [ speedcrunch ];
 
   xdg = {
     configFile."SpeedCrunch/SpeedCrunch.ini".source = settingsFormat.generate "SpeedCrunch.ini" {

@@ -7,9 +7,7 @@
     ./wifi.nix
   ];
 
-  home.packages = with pkgs; [
-    snapshot
-  ];
+  home.packages = with pkgs; [ snapshot ];
 
   services.swayidle = {
     timeouts = [
