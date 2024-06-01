@@ -13,16 +13,15 @@
     defaultCacheTtl = 240;
     defaultCacheTtlSsh = 240;
 
-    pinentryFlavor = null;
+    pinentryPackage = pkgs.writeShellScriptBin "pinentry" ''
+      if [ -n "$DISPLAY" ]; then
+        exec ${pkgs.pinentry.gnome3}/bin/pinentry-gnome3 "$@"
+      fi
+
+      exec ${pkgs.pinentry.tty}/bin/pinentry-tty "$@"
+    '';
+
     extraConfig = ''
-      pinentry-program ${pkgs.writeShellScript "pinentry" ''
-        if [ -n "$DISPLAY" ]; then
-          exec ${pkgs.pinentry.gnome3}/bin/pinentry-gnome3 "$@"
-        fi
-
-        exec ${pkgs.pinentry.tty}/bin/pinentry-tty "$@"
-      ''}
-
       # Workaround for slow gnome pinentry
       # Source: https://dev.gnupg.org/T3240
       no-allow-external-cache

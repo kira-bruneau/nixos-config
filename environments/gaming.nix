@@ -4,15 +4,10 @@
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
+    localNetworkGameTransfers.openFirewall = true;
   };
 
   environment.variables.STEAMOS = "1";
-
-  # Open ports for steam local network game transfers
-  networking.firewall = {
-    allowedTCPPorts = [ 27040 ];
-    allowedUDPPortRanges = [{ from = 27031; to = 27036; }];
-  };
 
   # Better driver for Xbox One controllers
   hardware.xpadneo.enable = true;

@@ -125,51 +125,54 @@
   };
 
   # WirePlumber device configuration
-  environment.etc."wireplumber/main.lua.d/51-config.lua".text = ''
-    table.insert(alsa_monitor.rules, {
-      matches = {
+  services.pipewire.wireplumber.extraConfig = {
+    alsa = {
+      "monitor.alsa.rules" = [
         {
-          { "device.name", "equals", "alsa_card.usb-Generic_USB_Condenser_Microphone_201701110001-00" },
-        },
-      },
-      apply_properties = {
-        ["device.nick"] = "Microphone",
-        ["device.description"] = "Microphone",
-      },
-    })
+          matches = [ { "device.name" = "alsa_card.usb-Generic_USB_Condenser_Microphone_201701110001-00"; } ];
+          actions = {
+            update-props = {
+              "device.nick" = "Microphone";
+              "device.description" = "Microphone";
+            };
+          };
+        }
+        {
+          matches = [
+            { "node.name" = "alsa_input.usb-Generic_USB_Condenser_Microphone_201701110001-00.analog-stereo"; }
+          ];
+          actions = {
+            update-props = {
+              "node.nick" = "Microphone";
+              "node.description" = "Microphone";
+            };
+          };
+        }
+        {
+          matches = [
+            {
+              # -- RX 7900 XTX HDMI output
+              "device.name" = "alsa_card.pci-0000_0b_00.1";
+            }
+            {
+              # -- RX 590 HDMI output
+              "device.name" = "alsa_card.pci-0000_0c_00.1";
+            }
+            {
+              # -- Analog audio jacks
+              "device.name" = "alsa_card.pci-0000_0e_00.3";
+            }
+          ];
 
-    table.insert(alsa_monitor.rules, {
-      matches = {
-        {
-          { "node.name", "equals", "alsa_input.usb-Generic_USB_Condenser_Microphone_201701110001-00.analog-stereo" },
-        },
-      },
-      apply_properties = {
-        ["node.nick"] = "Microphone",
-        ["node.description"] = "Microphone",
-      },
-    })
-
-    table.insert(alsa_monitor.rules, {
-      matches = {
-        {
-          -- RX 7900 XTX HDMI output
-          { "device.name", "equals", "alsa_card.pci-0000_0b_00.1" },
-        },
-        {
-          -- RX 590 HDMI output
-          { "device.name", "equals", "alsa_card.pci-0000_0c_00.1" },
-        },
-        {
-          -- Analog audio jacks
-          { "device.name", "equals", "alsa_card.pci-0000_0e_00.3" },
-        },
-      },
-      apply_properties = {
-        ["device.disabled"] = true,
-      },
-    })
-  '';
+          actions = {
+            update-props = {
+              "device.disabled" = true;
+            };
+          };
+        }
+      ];
+    };
+  };
 
   # Configure GPU optimisations for gamemode
   programs.gamemode.settings.gpu = {
@@ -181,5 +184,5 @@
   # Android debugging
   programs.adb.enable = true;
 
-  systemd.services.ollama.environment.ROCR_VISIBLE_DEVICES = "0";
+  services.ollama.environmentVariables.HIP_VISIBLE_DEVICES = "0";
 }

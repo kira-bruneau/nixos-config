@@ -17,10 +17,6 @@
     enableModemGPS = false;
   };
 
-  systemd.services.geoclue.wants = [ "network-online.target" ];
-
-  systemd.user.services.geoclue-agent.wants = [ "network-online.target" ];
-
   environment.etc."geolocation".text = ''
     ${toString config.location.latitude}
     ${toString config.location.longitude}

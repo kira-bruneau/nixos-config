@@ -8,7 +8,7 @@
     user = config.users.defaultUser;
   };
 
-  services.xserver.displayManager.autoLogin = {
+  services.displayManager.autoLogin = {
     enable = true;
     user = config.users.defaultUser;
   };

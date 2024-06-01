@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, pkgsUnstable, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 let
   downloadClients = {
@@ -181,17 +181,8 @@ let
     };
 in
 {
-  imports = [
-    (inputs.nixpkgs-unstable + "/nixos/modules/services/misc/homepage-dashboard.nix")
-  ];
-
-  disabledModules = [
-    "services/misc/homepage-dashboard.nix"
-  ];
-
   services.homepage-dashboard = {
     enable = true;
-    package = pkgsUnstable.homepage-dashboard;
     listenPort = 80;
     services = [
       {
@@ -326,16 +317,15 @@ in
 
   services.jellyfin = {
     enable = true;
+    package = pkgsUnstable.jellyfin;
+    logDir = "/var/log/jellyfin";
     openFirewall = true;
   };
 
   users.users.jellyfin.extraGroups = [ "sonarr" "radarr" "qbittorrent" ];
 
   systemd.services.jellyfin = {
-    environment.JELLYFIN_LOG_DIR = "/var/log/jellyfin";
     serviceConfig = {
-      LogsDirectory = "jellyfin";
-      LogsDirectoryMode = "0700";
       UMask = lib.mkForce "0022";
       CapabilityBoundingSet = "";
       ProcSubset = "pid";
@@ -352,7 +342,6 @@ in
     };
 
     preStart = ''
-      ${pkgs.coreutils}/bin/mkdir -p "$STATE_DIRECTORY/config"
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "system.xml" ''
         <?xml version="1.0" encoding="utf-8"?>
         <ServerConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -372,13 +361,13 @@ in
 
           <LibraryMonitorDelay>1</LibraryMonitorDelay>
         </ServerConfiguration>
-      ''} "$STATE_DIRECTORY/config/system.xml"
+      ''} "${config.services.jellyfin.configDir}/system.xml"
 
-      ${pkgs.coreutils}/bin/mkdir -p "$STATE_DIRECTORY/root/default"
+      ${pkgs.coreutils}/bin/mkdir -p "${config.services.jellyfin.dataDir}/root/default"
       ${builtins.concatStringsSep "\n"
         (builtins.map
           (name: let lib = makeMediaLibrary name jellyfin.mediaLibraries.${name}; in
-            "${pkgs.coreutils}/bin/ln -sfn ${lib} \"$STATE_DIRECTORY/root/default/${name}\"")
+            "${pkgs.coreutils}/bin/ln -sfn ${lib} \"${config.services.jellyfin.dataDir}/root/default/${name}\"")
           (builtins.attrNames jellyfin.mediaLibraries))}
     '';
   };
@@ -416,11 +405,6 @@ in
   };
 
   systemd.services.sonarr = {
-    serviceConfig = {
-      StateDirectory = "sonarr";
-      StateDirectoryMode = "0700";
-    };
-
     preStart = ''
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
         <Config>
@@ -430,7 +414,7 @@ in
           <LogDbEnabled>False</LogDbEnabled>
           <ApiKey>${sonarr.apiKey}</ApiKey>
         </Config>
-      ''} "$STATE_DIRECTORY/config.xml"
+      ''} "${config.services.sonarr.dataDir}/config.xml"
     '';
 
     postStart = ''
@@ -527,11 +511,6 @@ in
   };
 
   systemd.services.radarr = {
-    serviceConfig = {
-      StateDirectory = "radarr";
-      StateDirectoryMode = "0700";
-    };
-
     preStart = ''
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
         <Config>
@@ -541,7 +520,7 @@ in
           <LogDbEnabled>False</LogDbEnabled>
           <ApiKey>${radarr.apiKey}</ApiKey>
         </Config>
-      ''} "$STATE_DIRECTORY/config.xml"
+      ''} "${config.services.radarr.dataDir}/config.xml"
     '';
 
     postStart = ''
@@ -627,7 +606,7 @@ in
           <LogDbEnabled>False</LogDbEnabled>
           <ApiKey>${prowlarr.apiKey}</ApiKey>
         </Config>
-      ''} "$STATE_DIRECTORY/config.xml"
+      ''} "/var/lib/prowlarr/config.xml"
     '';
 
     postStart = ''
@@ -682,7 +661,7 @@ in
     '';
   };
 
-  systemd.packages = [ pkgsUnstable.qbittorrent-nox ];
+  systemd.packages = [ pkgs.qbittorrent-nox ];
 
   users.users.qbittorrent = {
     uid = config.ids.uids.deluge;

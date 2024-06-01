@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgsUnstable, pkgsKiraNur, ... }:
+{ config, lib, pkgs, pkgsKiraNur, ... }:
 
 let
   swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
@@ -82,9 +82,8 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
-
-    package = pkgsUnstable.swayfx;
-
+    package = pkgs.swayfx;
+    checkConfig = false;
     config =
       let
         cfg = config.wayland.windowManager.sway.config;
@@ -262,19 +261,19 @@ in
 
   programs.waybar.settings.mainBar = {
     cpu = {
-      on-click = "${pkgsUnstable.resources}/bin/resources";
+      on-click = "${pkgs.resources}/bin/resources";
     };
 
     memory = {
-      on-click = "${pkgsUnstable.resources}/bin/resources";
+      on-click = "${pkgs.resources}/bin/resources";
     };
 
     disk = {
-      on-click = "${pkgsUnstable.resources}/bin/resources";
+      on-click = "${pkgs.resources}/bin/resources";
     };
 
     temperature = {
-      on-click = "${pkgsUnstable.resources}/bin/resources";
+      on-click = "${pkgs.resources}/bin/resources";
     };
 
     wireplumber = {
@@ -295,7 +294,7 @@ in
     baobab
     helvum
     pavucontrol
-    pkgsUnstable.resources
+    resources
 
     # Media & Documents
     gnome.file-roller

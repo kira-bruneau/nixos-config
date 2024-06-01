@@ -70,7 +70,7 @@ in
     ../environments/gui/gnome.nix
   ];
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   # Enable CEF remote debugging for decky-loader
   xdg.dataFile."Steam/.cef-enable-remote-debugging".text = "";

@@ -1,4 +1,4 @@
-{ pkgs, pkgsUnstable, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -36,7 +36,7 @@
   # Enable Sway Wayland compositor
   programs.sway = {
     enable = true;
-    package = pkgsUnstable.swayfx;
+    package = pkgs.swayfx;
     extraPackages = [ ];
     wrapperFeatures.gtk = true;
   };

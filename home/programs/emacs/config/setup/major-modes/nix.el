@@ -6,7 +6,6 @@
     (add-to-list 'apheleia-mode-alist '(nix-ts-mode . nixpkgs-fmt)))
 
   (with-eval-after-load 'lsp-mode
-    (add-to-list 'lsp-language-id-configuration '(nix-ts-mode . "nix"))
     (lsp-register-client
      (make-lsp-client :new-connection (lsp-stdio-connection "nixd")
                       :major-modes '(nix-ts-mode)

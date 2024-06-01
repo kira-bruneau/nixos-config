@@ -11,7 +11,7 @@
   ];
 
   home = {
-    stateVersion = "23.11";
+    stateVersion = "24.05";
 
     sessionVariables = {
       # Hardware acceleration for gstreamer

@@ -96,69 +96,39 @@
   programs.captive-browser.interface = "wlan0";
 
   # WirePlumber device configuration
-  environment.etc."wireplumber/main.lua.d/51-config.lua".text = ''
-    table.insert(alsa_monitor.rules, {
-      matches = {
+  services.pipewire.wireplumber.extraConfig = {
+    alsa = {
+      "monitor.alsa.rules" = [
         {
-          { "device.name", "equals", "alsa_card.pci-0000_00_1f.3" },
-        },
-      },
-      apply_properties = {
-        ["device.nick"] = "System",
-        ["device.description"] = "System",
-      },
-    })
-
-    table.insert(alsa_monitor.rules, {
-      matches = {
+          matches = [ { "device.name" = "alsa_card.pci-0000_00_1f.3"; } ];
+          actions = {
+            update-props = {
+              "device.nick" = "System";
+              "device.description" = "System";
+            };
+          };
+        }
         {
-          { "node.name", "equals", "alsa_output.pci-0000_00_1f.3.analog-stereo" },
-        },
-      },
-      apply_properties = {
-        ["node.nick"] = "Speaker",
-        ["node.description"] = "Speaker",
-      },
-    })
-
-    table.insert(alsa_monitor.rules, {
-      matches = {
+          matches = [ { "node.name" = "alsa_output.pci-0000_00_1f.3.hdmi-stereo"; } ];
+          actions = {
+            update-props = {
+              "node.nick" = "Speaker";
+              "node.description" = "Speaker";
+            };
+          };
+        }
         {
-          { "node.name", "equals", "alsa_input.pci-0000_00_1f.3.analog-stereo" },
-        },
-      },
-      apply_properties = {
-        ["node.nick"] = "Microphone",
-        ["node.description"] = "Microphone",
-      },
-    })
-
-    table.insert(libcamera_monitor.rules, {
-      matches = {
-        {
-          { "device.name", "equals", "libcamera_device.0" },
-        },
-      },
-      apply_properties = {
-         ["device.nick"] = "Camera",
-         ["device.description"] = "Camera",
-      },
-    })
-
-    table.insert(libcamera_monitor.rules, {
-      matches = {
-        {
-          { "node.name", "equals", "libcamera_input.__SB_.PC00.XHCI.RHUB.HS07-7_1.0-0bda_5634" },
-        },
-      },
-      apply_properties = {
-         ["node.nick"] = "Camera",
-         ["node.description"] = "Camera",
-      },
-    })
-
-    v4l2_monitor.enabled = false
-  '';
+          matches = [ { "node.name" = "alsa_input.pci-0000_00_1f.3.analog-stereo.2"; } ];
+          actions = {
+            update-props = {
+              "node.nick" = "Microphone";
+              "node.description" = "Microphone";
+            };
+          };
+        }
+      ];
+    };
+  };
 
   # Hibernate on low power
   services.udev.extraRules = ''

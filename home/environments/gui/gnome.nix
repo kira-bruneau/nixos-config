@@ -1,4 +1,4 @@
-{ config, pkgs, pkgsUnstable, pkgsNixSoftwareCenter, ... }:
+{ config, pkgs, pkgsNixSoftwareCenter, ... }:
 
 {
   imports = [
@@ -21,7 +21,7 @@
     # Administration
     baobab
     gnome.gnome-disk-utility
-    pkgsUnstable.resources
+    resources
     pkgsNixSoftwareCenter.nix-software-center
 
     # Media & Documents
@@ -34,7 +34,7 @@
 
     # Extensions
     gnomeExtensions.dash-to-dock
-    pkgsUnstable.gnomeExtensions.random-wallpaper
+    gnomeExtensions.random-wallpaper
   ];
 
   programs.bash.enableVteIntegration = true;

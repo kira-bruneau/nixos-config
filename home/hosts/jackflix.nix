@@ -7,7 +7,7 @@
     ../environments/laptop.nix
   ];
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   dconf.settings = {
     "org/gnome/shell" = {

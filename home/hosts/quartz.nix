@@ -10,7 +10,7 @@
     ../environments/office.nix
   ];
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   programs.waybar.settings.mainBar.temperature = {
     hwmon-path-abs = "/sys/devices/platform/asus-ec-sensors/hwmon";
