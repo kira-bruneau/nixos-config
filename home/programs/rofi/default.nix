@@ -17,7 +17,7 @@ in
     package = pkgs.rofi-wayland;
   };
 
-  home.packages = with pkgs; [ rofimoji ];
+  home.packages = [ rofimoji ];
 
   wayland.windowManager.sway = {
     config =

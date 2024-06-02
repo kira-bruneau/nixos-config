@@ -33,7 +33,7 @@ in
   programs.dconf.profiles = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
     user.databases = [
       {
-        settings = with lib.gvariant; {
+        settings = {
           "org/gnome/desktop/peripherals/touchpad" = {
             natural-scroll = true;
           };

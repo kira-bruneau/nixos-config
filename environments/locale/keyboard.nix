@@ -10,13 +10,13 @@
   programs.dconf.profiles = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
     user.databases = [
       {
-        settings = with lib.gvariant; {
+        settings = {
           "org/gnome/desktop/input-sources" = {
             sources =
               lib.zipListsWith
                 (
                   layout: variant:
-                  (mkTuple [
+                  (lib.gvariant.mkTuple [
                     "xkb"
                     "${layout}${lib.optionalString (variant != "") "+${variant}"}"
                   ])

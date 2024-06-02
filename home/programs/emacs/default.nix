@@ -11,7 +11,7 @@ in
   ];
 
   home = {
-    packages = with pkgs; [ emacs ];
+    packages = [ emacs ];
     sessionVariables.EDITOR = "emacseditor";
   };
 
