@@ -26,6 +26,10 @@
       sharedModules = [ ../home/environments/default.nix ];
     };
 
+    # Unbind network-online from multi-user.target to speed up boot
+    # https://github.com/NixOS/nixpkgs/pull/282795
+    systemd.targets.network-online.wantedBy = lib.mkForce [ ];
+
     nixpkgs.config.allowUnfreePredicate =
       pkg:
       builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
