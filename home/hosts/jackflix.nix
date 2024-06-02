@@ -1,11 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-
-{
   imports = [
     ../environments/gaming.nix
     ../environments/gui/gnome.nix

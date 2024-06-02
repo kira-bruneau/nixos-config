@@ -1,9 +1,4 @@
-{
-  pkgs,
-  pkgsUnstable,
-  pkgsKiraNur,
-  ...
-}:
+{ pkgs, pkgsKiraNur, ... }:
 
 let
   emacs = pkgs.callPackage ./package.nix { ggt = pkgsKiraNur.ggt; };

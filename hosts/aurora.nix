@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 {
   imports = [
     ../environments/gui/sway.nix
