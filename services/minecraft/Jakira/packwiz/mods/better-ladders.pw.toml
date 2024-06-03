@@ -1,0 +1,13 @@
+name = "Better Ladders"
+filename = "betterladdersmod-1.20.x-No-3D-Model.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/CvgtCmGj/versions/vhz0me3l/betterladdersmod-1.20.x-No-3D-Model.jar"
+hash-format = "sha1"
+hash = "22ba3491677c8df06a42c1fc0773516ef49908f4"
+
+[update]
+[update.modrinth]
+mod-id = "CvgtCmGj"
+version = "vhz0me3l"

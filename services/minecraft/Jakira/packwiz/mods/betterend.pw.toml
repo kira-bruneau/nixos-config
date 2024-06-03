@@ -1,0 +1,13 @@
+name = "BetterEnd"
+filename = "better-end-4.0.11.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/gc8OEnCC/versions/7QwyTILr/better-end-4.0.11.jar"
+hash-format = "sha1"
+hash = "1e54364d63245a51e66e414ca73efbac9e05f11d"
+
+[update]
+[update.modrinth]
+mod-id = "gc8OEnCC"
+version = "7QwyTILr"

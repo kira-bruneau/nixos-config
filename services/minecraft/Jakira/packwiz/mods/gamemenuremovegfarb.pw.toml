@@ -1,0 +1,13 @@
+name = "Game Menu Remove GFARB"
+filename = "gamemenuremovegfarb-fabric-mc1.19.4-2.1.2.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/bKQclmIt/versions/RqkO2I7y/gamemenuremovegfarb-fabric-mc1.19.4-2.1.2.jar"
+hash-format = "sha1"
+hash = "34832dcf3cb85993c066a53a2d4a2190f191c10e"
+
+[update]
+[update.modrinth]
+mod-id = "bKQclmIt"
+version = "RqkO2I7y"

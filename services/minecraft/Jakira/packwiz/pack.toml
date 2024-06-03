@@ -1,0 +1,13 @@
+name = "Jakira Modpack"
+author = "Kira"
+version = "1.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "4e2fb8a3eab056a4dade73246d5b2aa329571a07e8df8709293e650df9b6e19f"
+
+[versions]
+fabric = "0.15.11"
+minecraft = "1.20.1"

@@ -1,0 +1,13 @@
+name = "Monsters in the Closet"
+filename = "monsters-in-the-closet-1.0.3+1.20.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/GMA8jFBD/versions/XI1l9czA/monsters-in-the-closet-1.0.3%2B1.20.jar"
+hash-format = "sha1"
+hash = "0d68812fe24bc828c6d8be7ed2382773673d97bd"
+
+[update]
+[update.modrinth]
+mod-id = "GMA8jFBD"
+version = "XI1l9czA"

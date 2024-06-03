@@ -1,0 +1,13 @@
+name = "Cardinal Components API"
+filename = "cardinal-components-api-5.2.2.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/K01OU20C/versions/qW85eawp/cardinal-components-api-5.2.2.jar"
+hash-format = "sha1"
+hash = "b049c6342185dae10607d6c1fe2fd792db189582"
+
+[update]
+[update.modrinth]
+mod-id = "K01OU20C"
+version = "qW85eawp"

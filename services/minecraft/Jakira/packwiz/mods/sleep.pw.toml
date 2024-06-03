@@ -1,0 +1,13 @@
+name = "Sleep"
+filename = "sleep-v.1.1.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/xTfNPx1w/sleep-v.1.1.1.jar"
+hash-format = "sha1"
+hash = "716b682e35fdc0b220aee39a4b06c81e22f7ca6b"
+
+[update]
+[update.modrinth]
+mod-id = "WTzuSu8P"
+version = "xTfNPx1w"

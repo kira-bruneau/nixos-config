@@ -1,0 +1,13 @@
+name = "Create: Structures"
+filename = "create-structures-0.1.1-1.20.1-FABRIC.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/IAnP4np7/versions/nqsTHZwx/create-structures-0.1.1-1.20.1-FABRIC.jar"
+hash-format = "sha1"
+hash = "b0adac5af2734590d57e86a270a343abb74dfed4"
+
+[update]
+[update.modrinth]
+mod-id = "IAnP4np7"
+version = "nqsTHZwx"

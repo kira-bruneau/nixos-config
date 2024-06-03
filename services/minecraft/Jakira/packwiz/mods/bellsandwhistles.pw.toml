@@ -1,0 +1,13 @@
+name = "Create: Bells & Whistles"
+filename = "bellsandwhistles-0.4.5+1.20.1-FABRIC.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/gJ5afkVv/versions/m0GUubvz/bellsandwhistles-0.4.5%2B1.20.1-FABRIC.jar"
+hash-format = "sha1"
+hash = "70e97c2ff786b8df7f354a37442ae36f4df35dc3"
+
+[update]
+[update.modrinth]
+mod-id = "gJ5afkVv"
+version = "m0GUubvz"

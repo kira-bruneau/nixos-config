@@ -1,0 +1,13 @@
+name = "When Dungeons Arise"
+filename = "DungeonsArise-1.20.1-2.1.57-fabric-release.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/8DfbfASn/versions/Vd5XOXlj/DungeonsArise-1.20.1-2.1.57-fabric-release.jar"
+hash-format = "sha1"
+hash = "d0af8c6c8c79ac2e14bcd8527725dd2004c65fe9"
+
+[update]
+[update.modrinth]
+mod-id = "8DfbfASn"
+version = "Vd5XOXlj"

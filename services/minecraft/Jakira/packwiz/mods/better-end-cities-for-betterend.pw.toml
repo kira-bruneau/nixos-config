@@ -1,0 +1,13 @@
+name = "Better End Cities for BetterEnd"
+filename = "betterendcitiesbetterend-1.20.1.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/DlcfxdlN/versions/EtaLjbuT/betterendcitiesbetterend-1.20.1.jar"
+hash-format = "sha1"
+hash = "3d594d6acc0f94758312b3f17c14654ce3e4b877"
+
+[update]
+[update.modrinth]
+mod-id = "DlcfxdlN"
+version = "EtaLjbuT"

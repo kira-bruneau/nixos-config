@@ -1,0 +1,13 @@
+name = "EMI Enchanting"
+filename = "emi_enchanting-0.1.0+1.20.1.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/wbWoo11W/versions/EQYdSyh8/emi_enchanting-0.1.0%2B1.20.1.jar"
+hash-format = "sha1"
+hash = "a71e9d17d2974ae5d5c9f764279433c76c7f89e6"
+
+[update]
+[update.modrinth]
+mod-id = "wbWoo11W"
+version = "EQYdSyh8"
