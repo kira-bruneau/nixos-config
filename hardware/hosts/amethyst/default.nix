@@ -89,6 +89,13 @@
 
   environment.persistence."/persist".directories = [ "/var/lib/minecraft" ];
 
+  swapDevices = [
+    {
+      device = "/persist/swapfile";
+      size = 7852;
+    }
+  ];
+
   # Enable DHCP on Wi-Fi interface
   systemd.network.networks.eth0 = {
     matchConfig.Name = "eth0";
