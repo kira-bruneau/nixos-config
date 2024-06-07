@@ -40,6 +40,9 @@ in
     winetricks
     wineWowPackages.staging
 
+    # Modding
+    packwiz
+
     # Recording
     obs-studio
 
