@@ -19,15 +19,17 @@ let
           cacert
           curl
           jre_headless
+          strip-nondeterminism
         ];
-        outputHashAlgo = "sha256";
+
         outputHashMode = "recursive";
-        outputHash = "sha256-BWQPxKIldvUhaBRFDOet6S8izcMN6eJ0dNTspPMUTy8=";
+        outputHash = "sha256-jccxyIEU6KZGOQpLi6zf5rBXzFQ76mXdb9+cLTNLkVo=";
       }
       ''
         mkdir -p "$out"
         curl https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.34/forge-1.16.5-36.2.34-installer.jar -o ./installer.jar
         java -jar ./installer.jar --installServer "$out"
+        strip-nondeterminism --type jar "$out/libraries/net/minecraft/server/1.16.5-20210115.111550/server-1.16.5-20210115.111550-srg.jar"
       '';
 
   minecraft-server = pkgs.writeShellScriptBin "minecraft-server" ''
