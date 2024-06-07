@@ -16,7 +16,7 @@ let
   fabricVersion = "0.14.25";
 in
 {
-  imports = [ ./. ];
+  imports = [ ../. ];
 
   services.minecraft-servers.servers."BigChadGuysPlus" = {
     enable = true;

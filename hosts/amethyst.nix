@@ -1,7 +1,7 @@
 {
   imports = [
     ../environments/default.nix
-    ../services/minecraft/AboveAndBeyond.nix
+    ../services/minecraft/AboveAndBeyond
     ../users/kira.nix
   ];
 

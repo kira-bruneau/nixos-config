@@ -35,7 +35,7 @@ let
   '';
 in
 {
-  imports = [ ./. ];
+  imports = [ ../. ];
 
   services.minecraft-servers.servers."AboveAndBeyond" = {
     enable = true;
