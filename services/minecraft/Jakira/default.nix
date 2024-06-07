@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   pkgsNixMinecraft,
@@ -6,23 +7,10 @@
 }:
 
 let
-  modpack =
-    (pkgsNixMinecraft.fetchPackwizModpack {
-      url = "file://${./packwiz}/pack.toml";
-      side = "both";
-      packHash = "sha256-M+mRvCEhN49T6reaVivJmztifGmLVZC0nITtvuvrQ88=";
-    }).addFiles
-      {
-        "mods/automodpack-fabric-4.0.0-beta1-1.20.1.jar" = pkgs.requireFile {
-          name = "automodpack-fabric-4.0.0-beta1-1.20.1.jar";
-          url = "https://github.com/Skidamek/AutoModpack/actions/runs/8317674272/artifacts/1333325852";
-          hash = "sha256-DxBZXiXo3psnw8+l2F2ViMJ00pgpTfIxAIERYsUKcPs=";
-        };
-      };
-
-  mcVersion = modpack.manifest.versions.minecraft;
-  fabricVersion = modpack.manifest.versions.fabric;
-  serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
+  inherit (inputs.packwiz2nix.lib) mkPackwizPackages mkModLinks;
+  mods = mkPackwizPackages pkgs ./checksums.json;
+  versions = (builtins.fromTOML (builtins.readFile ./packwiz/pack.toml)).versions;
+  serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${versions.minecraft}";
 in
 {
   imports = [ ../. ];
@@ -33,7 +21,7 @@ in
     jvmOpts = "-Xmx3G -Xms1G";
     package = pkgsNixMinecraft.fabricServers.${serverVersion}.override {
       jre_headless = pkgs.jdk17_headless;
-      loaderVersion = fabricVersion;
+      loaderVersion = versions.fabric;
     };
 
     files = {
@@ -99,7 +87,13 @@ in
       ];
     };
 
-    symlinks = {
+    symlinks = (mkModLinks mods) // {
+      "mods/automodpack-fabric-4.0.0-beta1-1.20.1.jar" = pkgs.requireFile {
+        name = "automodpack-fabric-4.0.0-beta1-1.20.1.jar";
+        url = "https://github.com/Skidamek/AutoModpack/actions/runs/8317674272/artifacts/1333325852";
+        hash = "sha256-DxBZXiXo3psnw8+l2F2ViMJ00pgpTfIxAIERYsUKcPs=";
+      };
+
       "config/emi.css" = pkgs.writeText "emi.css" ''
         #general {
           search-mod-name-by-default: true;
@@ -138,8 +132,6 @@ in
         module;id=xaerominimap:minimap;active=true;x=0;y=0;centered=false;fromRight=true;fromBottom=false;flippedVer=false;flippedHor=false;
       '';
 
-      "mods" = "${modpack}/mods";
-
       "options.txt" = pkgs.writeText "options.txt" ''
         version:3465
         joinedFirstServer:true
@@ -147,7 +139,11 @@ in
         tutorialStep:none
       '';
 
-      "shaderpacks/ComplementaryUnbound.zip" = "${modpack}/shaderpacks/ComplementaryUnbound_r5.2.1.zip";
+      # TODO: This should be included as part of packwiz2nix
+      "shaderpacks/ComplementaryUnbound.zip" = pkgs.fetchurl {
+        url = "https://cdn.modrinth.com/data/R6NEzAwj/versions/qWTl3wic/ComplementaryUnbound_r5.2.1.zip";
+        hash = "sha256-+1BFqK4FUXId3FyPOSgFfNZBXMw8p9+UfK+1VWRUfdA=";
+      };
 
       "shaderpacks/ComplementaryUnbound.zip.txt" = {
         format = pkgs.formats.keyValue { };

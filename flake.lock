@@ -449,6 +449,21 @@
         "type": "github"
       }
     },
+    "packwiz2nix": {
+      "locked": {
+        "lastModified": 1683887515,
+        "narHash": "sha256-eYxlzal5DNUvpv3F9W42wREdRi6h1hceOcgoiN6gvRg=",
+        "owner": "getchoo",
+        "repo": "packwiz2nix",
+        "rev": "1c9c0ef2e40fbd1a921b446d8fe5884e645e4308",
+        "type": "github"
+      },
+      "original": {
+        "owner": "getchoo",
+        "repo": "packwiz2nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "disko": "disko",
@@ -465,7 +480,8 @@
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-ollama": "nixpkgs-ollama",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixpkgs-yuzu": "nixpkgs-yuzu"
+        "nixpkgs-yuzu": "nixpkgs-yuzu",
+        "packwiz2nix": "packwiz2nix"
       }
     },
     "systems": {

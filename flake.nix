@@ -61,6 +61,8 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    packwiz2nix.url = "github:getchoo/packwiz2nix";
   };
 
   outputs =
@@ -68,6 +70,7 @@
       flake-utils,
       flake-linter,
       nixpkgs,
+      packwiz2nix,
       ...
     }@inputs:
     let
@@ -216,6 +219,7 @@
 
         apps = {
           inherit (linter) fix;
+          generate-jakira-modpack = packwiz2nix.lib.mkChecksumsApp pkgs ./services/minecraft/Jakira/packwiz/mods;
         };
 
         packages =
