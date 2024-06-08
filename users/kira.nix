@@ -24,5 +24,33 @@
     linger = true;
   };
 
-  home-manager.users.kira = ../home/hosts/${config.system.name}.nix;
+  home-manager.users.kira = {
+    imports = [ ../home/hosts/${config.system.name}.nix ];
+    programs = {
+      firefox.profiles.firefox.settings."services.sync.username" = "kira.bruneau@pm.me";
+
+      git = {
+        userName = "Kira Bruneau";
+        userEmail = "kira.bruneau@pm.me";
+        extraConfig = {
+          gitlab.user = "kira-bruneau";
+          github.user = "kira-bruneau";
+        };
+      };
+
+      ssh.matchBlocks = {
+        "amethyst".user = "kira";
+        "amethyst.lan".user = "kira";
+        "aurora".user = "kira";
+        "aurora.lan".user = "kira";
+        "jackflix".user = "jakira";
+        "jackflix.lan".user = "jakira";
+        "jakira.space".user = "kira";
+        "quartz".user = "kira";
+        "quartz.lan".user = "kira";
+        "steamdeck".user = "jakira";
+        "steamdeck.lan".user = "jakira";
+      };
+    };
+  };
 }

@@ -3,8 +3,6 @@
 {
   programs.git = {
     enable = true;
-    userName = "Kira Bruneau";
-    userEmail = "kira.bruneau@pm.me";
     extraConfig = {
       init.defaultBranch = "main";
 
@@ -16,9 +14,6 @@
       pull.rebase = "merges";
       rebase.autostash = true;
       diff.algorithm = "histogram";
-
-      gitlab.user = "kira-bruneau";
-      github.user = "kira-bruneau";
 
       "url \"git@gitlab.com:\"" = {
         pushInsteadOf = [

@@ -320,7 +320,6 @@
             path = config.home.username;
             settings = {
               "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
-              "services.sync.username" = "kira.bruneau@pm.me";
             };
           }
         ];
