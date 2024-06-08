@@ -16,11 +16,6 @@ in
   ];
 
   home.packages = with pkgs; [
-    # Administration
-    smartmontools
-    nethogs
-    pciutils
-
     # Networking
     curl
     netcat

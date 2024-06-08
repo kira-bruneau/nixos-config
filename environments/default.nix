@@ -1,4 +1,9 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -16,7 +21,12 @@
   };
 
   config = {
-    environment.defaultPackages = [ ];
+    environment = {
+      defaultPackages = [ ];
+      systemPackages = with pkgs; [
+        nethogs
+      ];
+    };
 
     users.mutableUsers = false;
 

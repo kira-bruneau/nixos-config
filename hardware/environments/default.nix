@@ -1,4 +1,9 @@
-{ inputs, pkgsDisco, ... }:
+{
+  inputs,
+  pkgs,
+  pkgsDisco,
+  ...
+}:
 
 {
   imports = [
@@ -9,5 +14,9 @@
     ./impermanence.nix
   ];
 
-  environment.systemPackages = [ pkgsDisco.default ];
+  environment.systemPackages = with pkgs; [
+    pciutils
+    pkgsDisco.default
+    smartmontools
+  ];
 }
