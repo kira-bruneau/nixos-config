@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   services.dnscrypt-proxy2 = {
     enable = true;
@@ -45,6 +47,10 @@
           minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
         };
       };
+
+      forwarding_rules = pkgs.writeText "forwarding-rules.txt" ''
+        lan 192.168.1.1
+      '';
     };
   };
 
