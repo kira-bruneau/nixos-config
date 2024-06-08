@@ -24,6 +24,7 @@
     environment = {
       defaultPackages = [ ];
       systemPackages = with pkgs; [
+        iftop
         nethogs
       ];
     };
