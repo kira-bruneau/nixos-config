@@ -4,7 +4,6 @@
   imports = [
     ../programs/direnv
     ../programs/emacs
-    ../programs/git
   ];
 
   home.packages = with pkgs; [
