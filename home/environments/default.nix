@@ -18,6 +18,7 @@ in
   home.packages = with pkgs; [
     # Networking
     curl
+    dig
     netcat
     nmap
     rsync
