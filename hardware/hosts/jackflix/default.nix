@@ -93,6 +93,8 @@
     "/nix"
   ];
 
+  services.hdapsd.enable = false;
+
   programs.captive-browser.interface = "wlp3s0";
 
   nixpkgs.config.nvidia.acceptLicense = true;
