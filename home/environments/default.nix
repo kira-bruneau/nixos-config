@@ -29,6 +29,7 @@ in
     unrar
     unzip
     xmlstarlet
+    zip
 
     # Coreutils alternatives
     du-dust
