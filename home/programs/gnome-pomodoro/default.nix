@@ -6,14 +6,18 @@
 }:
 
 let
-  package = pkgs.gnome.pomodoro;
-  gnome-pomodoro = "${package}/bin/gnome-pomodoro";
   cfg = config.programs.gnome-pomodoro;
+  gnome-pomodoro = "${cfg.package}/bin/gnome-pomodoro";
   types = lib.types;
 in
 {
   options = {
     programs.gnome-pomodoro = {
+      package = lib.mkPackageOption pkgs [
+        "gnome"
+        "pomodoro"
+      ] { };
+
       onstart = lib.mkOption {
         type = types.listOf types.str;
         default = [ ];
@@ -37,7 +41,7 @@ in
   };
 
   config = {
-    home.packages = [ package ];
+    home.packages = [ cfg.package ];
 
     dconf.settings = {
       "org/gnome/pomodoro/preferences" = {

@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgsNixSoftwareCenter,
+  pkgsUnstable,
   ...
 }:
 
@@ -22,28 +23,33 @@
     ../../environments/qt
   ];
 
-  home.packages = with pkgs; [
-    # Administration
-    baobab
-    gnome.gnome-disk-utility
-    resources
-    pkgsNixSoftwareCenter.nix-software-center
+  home.packages =
+    (with pkgs; [
+      # Administration
+      baobab
+      gnome.gnome-disk-utility
+      pkgsNixSoftwareCenter.nix-software-center
+      resources
 
-    # Media & Documents
-    gnome.file-roller
+      # Media & Documents
+      gnome.file-roller
 
-    # Utils
-    gnome-console
-    gnome.gnome-clocks
-    gnome.seahorse
+      # Utils
+      gnome-console
+      gnome.gnome-clocks
+      gnome.seahorse
+    ])
+    ++ (with pkgsUnstable; [
+      # Extensions
+      gnomeExtensions.dash-to-dock
+      gnomeExtensions.random-wallpaper
+    ]);
 
-    # Extensions
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.random-wallpaper
-  ];
-
-  programs.bash.enableVteIntegration = true;
-  programs.zsh.enableVteIntegration = true;
+  programs = {
+    bash.enableVteIntegration = true;
+    gnome-pomodoro.package = pkgsUnstable.gnome.pomodoro;
+    zsh.enableVteIntegration = true;
+  };
 
   dconf.settings = {
     "org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
