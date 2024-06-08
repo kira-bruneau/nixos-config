@@ -24,6 +24,9 @@
       useUserPackages = true;
       useGlobalPkgs = true;
       sharedModules = [ ../home/environments/default.nix ];
+      users.root = {
+        home.stateVersion = "24.05";
+      };
     };
 
     # Unbind network-online from multi-user.target to speed up boot
