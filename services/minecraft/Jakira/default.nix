@@ -1,17 +1,24 @@
-{ lib, pkgs, pkgsNixMinecraft, ... }:
+{
+  lib,
+  pkgs,
+  pkgsNixMinecraft,
+  ...
+}:
 
 let
-  modpack = (pkgsNixMinecraft.fetchPackwizModpack {
-    url = "file://${./packwiz}/pack.toml";
-    side = "both";
-    packHash = "sha256-M+mRvCEhN49T6reaVivJmztifGmLVZC0nITtvuvrQ88=";
-  }).addFiles {
-    "mods/automodpack-fabric-4.0.0-beta1-1.20.1.jar" = pkgs.requireFile {
-      name = "automodpack-fabric-4.0.0-beta1-1.20.1.jar";
-      url = "https://github.com/Skidamek/AutoModpack/actions/runs/8317674272/artifacts/1333325852";
-      hash = "sha256-DxBZXiXo3psnw8+l2F2ViMJ00pgpTfIxAIERYsUKcPs=";
-    };
-  };
+  modpack =
+    (pkgsNixMinecraft.fetchPackwizModpack {
+      url = "file://${./packwiz}/pack.toml";
+      side = "both";
+      packHash = "sha256-M+mRvCEhN49T6reaVivJmztifGmLVZC0nITtvuvrQ88=";
+    }).addFiles
+      {
+        "mods/automodpack-fabric-4.0.0-beta1-1.20.1.jar" = pkgs.requireFile {
+          name = "automodpack-fabric-4.0.0-beta1-1.20.1.jar";
+          url = "https://github.com/Skidamek/AutoModpack/actions/runs/8317674272/artifacts/1333325852";
+          hash = "sha256-DxBZXiXo3psnw8+l2F2ViMJ00pgpTfIxAIERYsUKcPs=";
+        };
+      };
 
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
@@ -81,7 +88,6 @@ in
           restore_replaced_block = true;
         };
       };
-
 
       "ops.json".value = [
         {
