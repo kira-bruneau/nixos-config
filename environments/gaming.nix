@@ -7,7 +7,7 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  environment.variables.STEAMOS = "1";
+  environment.sessionVariables.STEAMOS = "1";
 
   # Better driver for Xbox One controllers
   hardware.xpadneo.enable = true;
