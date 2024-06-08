@@ -9,9 +9,9 @@
         "[::1]:53"
       ];
 
-      require_dnssec = true;
-      doh_servers = false;
       disabled_server_names = [ "cs-montreal" ];
+      doh_servers = false;
+      require_dnssec = true;
 
       anonymized_dns = {
         routes = [
@@ -32,7 +32,7 @@
             "https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
           ];
 
-          cache_file = "public-resolvers.md";
+          cache_file = "/var/cache/dnscrypt-proxy/public-resolvers.md";
           minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
         };
 
@@ -43,7 +43,7 @@
             "https://ipv6.download.dnscrypt.info/resolvers-list/v3/relays.md"
           ];
 
-          cache_file = "relays.md";
+          cache_file = "/var/cache/dnscrypt-proxy/relays.md";
           minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
         };
       };
