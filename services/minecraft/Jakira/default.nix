@@ -44,6 +44,7 @@ in
           "/config/artifacts/common.json5"
           "/config/bclib/client.json"
           "/config/emi.css"
+          "/config/inventoryprofilesnext/integrationHints/travelersbackpack.json"
           "/config/inventoryprofilesnext/inventoryprofiles.json"
           "/config/iris.properties"
           "/config/universal-graves/config.json"
@@ -111,10 +112,17 @@ in
           enable_inventory_settings_button.value = false;
           continuous_crafting_saved_value = false;
         };
+
         AutoRefillSettings = {
           number_of_notifications = 1;
           visual_replace_failed_notification.value = false;
           audio_replace_failed_notification.value = false;
+        };
+      };
+
+      "config/inventoryprofilesnext/integrationHints/travelersbackpack.json".value = {
+        "com.tiviacz.travelersbackpack.client.screen.TravelersBackpackHandledScreen" = {
+          ignore = true;
         };
       };
 
