@@ -31,6 +31,7 @@ in
         syncedFiles = [
           "/config/artifacts/common.json5"
           "/config/bclib/client.json"
+          "/config/carryon-common.json"
           "/config/emi.css"
           "/config/inventoryprofilesnext/integrationHints/travelersbackpack.json"
           "/config/inventoryprofilesnext/inventoryprofiles.json"
@@ -62,6 +63,35 @@ in
         version = {
           "check [default: true]" = false;
           "didShowWelcome [default: false]" = true;
+        };
+      };
+
+      "config/carryon-common.json".value = {
+        blacklist = {
+          forbiddenTiles = [
+            "#forge:immovable"
+            "#forge:relocation_not_supported"
+            "ad_astra:*"
+            "ae2:*"
+            "create*:*"
+            "minecraft:*_bed"
+            "minecraft:*_door"
+            "minecraft:big_dripleaf_stem"
+            "minecraft:cake"
+            "minecraft:end_gateway"
+            "minecraft:end_portal"
+            "minecraft:large_fern"
+            "minecraft:lilac"
+            "minecraft:nether_portal"
+            "minecraft:peony"
+            "minecraft:piston_head"
+            "minecraft:rose_bush"
+            "minecraft:sunflower"
+            "minecraft:tall_grass"
+            "minecraft:tall_seagrass"
+            "minecraft:waterlily"
+            "tconstruct:*"
+          ];
         };
       };
 
