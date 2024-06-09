@@ -355,6 +355,10 @@
     "sha256": "4801d66e40a42535a7a0af6349b2d427078baf886af4bf06f85434de331fba71",
     "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/NsbSea5x/jei-1.20.1-fabric-15.3.0.4.jar"
   },
+  "krypton.pw.toml": {
+    "sha256": "69ad1810206ce12181b1b083640f044e7e250781c36c96c655eac36209057698",
+    "url": "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"
+  },
   "lambdynamiclights.pw.toml": {
     "sha256": "20433fb9a20f9450599bde4d8f0e8b0898eefdbda13e47d68430d31422c9f564",
     "url": "https://cdn.modrinth.com/data/yBW8D80W/versions/mYl4RvKg/lambdynamiclights-2.3.2%2B1.20.1.jar"
