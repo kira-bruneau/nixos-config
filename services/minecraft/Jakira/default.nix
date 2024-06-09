@@ -109,6 +109,7 @@ in
         GuiSettings = {
           enable_inventory_editor_button.value = false;
           enable_inventory_settings_button.value = false;
+          continuous_crafting_saved_value = false;
         };
         AutoRefillSettings = {
           number_of_notifications = 1;
