@@ -347,6 +347,10 @@
     "sha256": "c3280cd439cf627d37af635ad4f642eedc294742948a526f5f895178e2c0cb1c",
     "url": "https://cdn.modrinth.com/data/nvQzSEkH/versions/re9m40O9/Jade-1.20-fabric-11.9.2.jar"
   },
+  "jei.pw.toml": {
+    "sha256": "4801d66e40a42535a7a0af6349b2d427078baf886af4bf06f85434de331fba71",
+    "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/NsbSea5x/jei-1.20.1-fabric-15.3.0.4.jar"
+  },
   "lambdynamiclights.pw.toml": {
     "sha256": "20433fb9a20f9450599bde4d8f0e8b0898eefdbda13e47d68430d31422c9f564",
     "url": "https://cdn.modrinth.com/data/yBW8D80W/versions/mYl4RvKg/lambdynamiclights-2.3.2%2B1.20.1.jar"
