@@ -419,6 +419,10 @@
     "sha256": "d1c67bdb5932a870897630a6741362b12223aa9448b31de439761ab53ba28663",
     "url": "https://cdn.modrinth.com/data/bQh7xzFq/versions/TXL5AFHt/nerb-1.20.1-0.3-FABRIC.jar"
   },
+  "no-chat-reports.pw.toml": {
+    "sha256": "8ff70525b0fbc5fa7592424872aa8092db1f7646d53817590bd9f9b88c75babc",
+    "url": "https://cdn.modrinth.com/data/qQyHxfxd/versions/HeZZR2kF/NoChatReports-FABRIC-1.20.1-v2.2.2.jar"
+  },
   "no-realms-button.pw.toml": {
     "sha256": "c8d1ec5f2b9bfd2a4a21f8be42ed6f0f77ff9a1446f75011f35198c2f127bd04",
     "url": "https://cdn.modrinth.com/data/AMMUyCdF/versions/l58eKOAt/NoRealmsButton-1.0.2-fabric.jar"
@@ -430,10 +434,6 @@
   "not-enough-animations.pw.toml": {
     "sha256": "b3d6a8fc01b99b5931e5352a5671ef5f6e8694e716625a9b718eeadd7bf8a11e",
     "url": "https://cdn.modrinth.com/data/MPCX6s5C/versions/ibajTV3T/notenoughanimations-fabric-1.7.3-mc1.20.1.jar"
-  },
-  "nrb.pw.toml": {
-    "sha256": "e1e345a495b400192dfaeb9fd397759a665f3667a8d22ae1849ecb8d07a1bfac",
-    "url": "https://cdn.modrinth.com/data/9WJeSpTH/versions/rq7A1SX4/no-report-button-fabric-1.5.0.jar"
   },
   "numismatics.pw.toml": {
     "sha256": "f7fd42e6987e5fdacc0664e706cf7e50812d6707d11a98440c46bf646ff6aa7e",

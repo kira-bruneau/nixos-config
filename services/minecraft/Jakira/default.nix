@@ -37,6 +37,7 @@ in
           "/config/inventoryprofilesnext/inventoryprofiles.json"
           "/config/iris.properties"
           "/config/item_obliterator.json5"
+          "/config/NoChatReports/NCR-Client.json"
           "/config/universal-graves/config.json"
           "/config/xaerominimap.txt"
           "/mods/*.jar"
@@ -185,6 +186,12 @@ in
       "config/iris.properties".value = {
         shaderPack = "ComplementaryUnbound.zip";
         enableShaders = true;
+      };
+
+      "config/NoChatReports/NCR-Client.json".value = {
+        showNCRButton = false;
+        showReloadButton = false;
+        showServerSafety = false;
       };
 
       "config/xaerominimap.txt" = pkgs.writeText "xaerominimap.txt" ''

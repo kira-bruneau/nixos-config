@@ -526,6 +526,11 @@ hash = "91b6ddaebfb96b92e89d69123606266fd1109190131061d9a8f58e9f9f7a91ff"
 metafile = true
 
 [[files]]
+file = "mods/no-chat-reports.pw.toml"
+hash = "7ca62a9da5c2ec9f0a8bed5394021c959e90077db16b313be44f4c8736f7fbf5"
+metafile = true
+
+[[files]]
 file = "mods/no-realms-button.pw.toml"
 hash = "d4d446101ddd112e594bd0913a2603b591d5dcbd865bb5baf4f7af7009405c6a"
 metafile = true
@@ -538,11 +543,6 @@ metafile = true
 [[files]]
 file = "mods/not-enough-animations.pw.toml"
 hash = "c737bdfd6940736f88cd39065a0193ba70637a560fbce4389e59f67d72813209"
-metafile = true
-
-[[files]]
-file = "mods/nrb.pw.toml"
-hash = "f2ce31ed65af9cfcd50bf1e0d954ea6dece4546147a9595659d5ea6c9af374f2"
 metafile = true
 
 [[files]]
