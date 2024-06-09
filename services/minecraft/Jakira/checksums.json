@@ -343,6 +343,10 @@
     "sha256": "c70e6bd800da24e50f7cbeaae1bf56cf036009e371cc1002e707bfaa4c01c588",
     "url": "https://cdn.modrinth.com/data/cVNW5lr6/versions/vyEyvJgV/Highlighter-1.20.1-fabric-1.1.9.jar"
   },
+  "item-obliterator.pw.toml": {
+    "sha256": "67f9d6fc79c6f414904421d42ededa8fca2b442554ee6ce628a5a790c57a9fff",
+    "url": "https://cdn.modrinth.com/data/3ESR84kR/versions/IfKpXjEk/Item_Obliterator-Fabric_Quilt-1.20.1-2.2.2.jar"
+  },
   "jade.pw.toml": {
     "sha256": "c3280cd439cf627d37af635ad4f642eedc294742948a526f5f895178e2c0cb1c",
     "url": "https://cdn.modrinth.com/data/nvQzSEkH/versions/re9m40O9/Jade-1.20-fabric-11.9.2.jar"
@@ -402,6 +406,10 @@
   "natures-compass.pw.toml": {
     "sha256": "1869e52d9a306d40063c69f53261e991ecd76dea613216098a196520cebb4aa7",
     "url": "https://cdn.modrinth.com/data/fPetb5Kh/versions/NovIXDxY/NaturesCompass-1.20.1-2.2.3-fabric.jar"
+  },
+  "necronomicon.pw.toml": {
+    "sha256": "e9672731e310e8d93813f06fed60e8d3c4877d782a99c284d7b1100bb38503b8",
+    "url": "https://cdn.modrinth.com/data/P1Kv5EAO/versions/twWimVNr/Necronomicon-Fabric-1.4.2.jar"
   },
   "nerb.pw.toml": {
     "sha256": "d1c67bdb5932a870897630a6741362b12223aa9448b31de439761ab53ba28663",

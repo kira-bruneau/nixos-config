@@ -35,6 +35,7 @@ in
           "/config/inventoryprofilesnext/integrationHints/travelersbackpack.json"
           "/config/inventoryprofilesnext/inventoryprofiles.json"
           "/config/iris.properties"
+          "/config/item_obliterator.json5"
           "/config/universal-graves/config.json"
           "/config/xaerominimap.txt"
           "/mods/*.jar"
@@ -61,6 +62,37 @@ in
         version = {
           "check [default: true]" = false;
           "didShowWelcome [default: false]" = true;
+        };
+      };
+
+      "config/item_obliterator.json5" = {
+        format = pkgs.formats.json { };
+        value = {
+          configVersion = 2;
+
+          blacklisted_items = [
+            "artifacts:everlasting_beef"
+            "artifacts:eternal_steak"
+          ];
+
+          only_disable_recipes = [
+            "travelersbackpack:black_sleeping_bag"
+            "travelersbackpack:blue_sleeping_bag"
+            "travelersbackpack:brown_sleeping_bag"
+            "travelersbackpack:cyan_sleeping_bag"
+            "travelersbackpack:gray_sleeping_bag"
+            "travelersbackpack:green_sleeping_bag"
+            "travelersbackpack:light_blue_sleeping_bag"
+            "travelersbackpack:light_gray_sleeping_bag"
+            "travelersbackpack:lime_sleeping_bag"
+            "travelersbackpack:magenta_sleeping_bag"
+            "travelersbackpack:orange_sleeping_bag"
+            "travelersbackpack:pink_sleeping_bag"
+            "travelersbackpack:purple_sleeping_bag"
+            "travelersbackpack:red_sleeping_bag"
+            "travelersbackpack:white_sleeping_bag"
+            "travelersbackpack:yellow_sleeping_bag"
+          ];
         };
       };
 
