@@ -147,6 +147,7 @@ in
           "${cfg.modifier}+Shift+e" = "move up";
           "${cfg.modifier}+Shift+i" = "move right";
 
+          "${cfg.modifier}+Control+Shift+h" = "move workspace to output left";
           "${cfg.modifier}+Control+Shift+n" = "move workspace to output down";
           "${cfg.modifier}+Control+Shift+e" = "move workspace to output up";
           "${cfg.modifier}+Control+Shift+i" = "move workspace to output right";
