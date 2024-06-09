@@ -149,6 +149,7 @@ in
 
     serverProperties = {
       difficulty = "normal";
+      enforce-secure-profile = false;
       level-seed = 4013200787929413176;
       server-port = 25564;
     };
