@@ -315,6 +315,10 @@
     "sha256": "9af0cf98c5ddda3d822f74b3f7426018e3a0a17b8bcf989e87b722e059e739d8",
     "url": "https://cdn.modrinth.com/data/5faXoLqX/versions/uu7sqQDO/Iceberg-1.20.1-fabric-1.1.18.jar"
   },
+  "immediatelyfast.pw.toml": {
+    "sha256": "aed4ef3e06628322e51383e19e8e047c645624203238ce32cc4e5f23f4bcdb5c",
+    "url": "https://cdn.modrinth.com/data/5ZwdcRci/versions/115Ubn3O/ImmediatelyFast-Fabric-1.2.17%2B1.20.4.jar"
+  },
   "immersive-aircraft.pw.toml": {
     "sha256": "a033f73511125fbc0c3bebf548d95b3c1691427dbf135b41b23f2464953e591c",
     "url": "https://cdn.modrinth.com/data/x3HZvrj6/versions/3hpofkRO/immersive_aircraft-1.0.1%2B1.20.1-fabric.jar"
