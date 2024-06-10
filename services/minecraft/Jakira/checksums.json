@@ -375,6 +375,10 @@
     "sha256": "20433fb9a20f9450599bde4d8f0e8b0898eefdbda13e47d68430d31422c9f564",
     "url": "https://cdn.modrinth.com/data/yBW8D80W/versions/mYl4RvKg/lambdynamiclights-2.3.2%2B1.20.1.jar"
   },
+  "language-reload.pw.toml": {
+    "sha256": "9d3e71d61d775ce96233c7a1482b555f9021d3928c71bbe1ec61fe79fb2bf04e",
+    "url": "https://cdn.modrinth.com/data/uLbm7CG6/versions/kO9nUBoX/language-reload-1.6.1%2B1.20.1.jar"
+  },
   "lazydfu.pw.toml": {
     "sha256": "4f3b77273b57d019a8db58371e63e4426557c1bb7c9cc10536a03972122778c8",
     "url": "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"
