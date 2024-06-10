@@ -143,6 +143,10 @@
     "sha256": "be51b88b75c63b1123086b5f675a683984d504e01df3d9681da15c3187689ebf",
     "url": "https://cdn.modrinth.com/data/SaCpeal4/versions/D2F8i5te/comforts-fabric-6.3.5%2B1.20.1.jar"
   },
+  "controlling.pw.toml": {
+    "sha256": "f7bbb7e37f2118af29450ec468d3ce4ec2606fead2861f4092a43509c6803ed6",
+    "url": "https://cdn.modrinth.com/data/xv94TkTM/versions/6ipZLQSK/Controlling-fabric-1.20.1-12.0.2.jar"
+  },
   "copycats.pw.toml": {
     "sha256": "9a49151759acecda9690f27c4fa86539c784ba593ea335972e886e49e3f01780",
     "url": "https://cdn.modrinth.com/data/UT2M39wf/versions/jjhScGWs/Copycats-fabric.1.20.1-1.2.6.jar"
@@ -474,6 +478,10 @@
   "rrls.pw.toml": {
     "sha256": "b1e16694113245fca4d86a06e773ce00d1ff34e6202edaf817f28372bc6f566f",
     "url": "https://cdn.modrinth.com/data/ZP7xHXtw/versions/irkcosUg/rrls-4.0.6%2Bmc1.20.1-fabric.jar"
+  },
+  "searchables.pw.toml": {
+    "sha256": "f32e0b0c9bebc99944ddc6a9dba8f8336af666aaba151c6839b8353a2acdd53a",
+    "url": "https://cdn.modrinth.com/data/fuuu3xnx/versions/eh4IBlu2/Searchables-fabric-1.20.1-1.0.3.jar"
   },
   "sleep.pw.toml": {
     "sha256": "ca7bffeb7faa66aa721e7a0eadef0d63302c11b136bf204a03f53e2ae99e08a0",

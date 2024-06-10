@@ -181,6 +181,11 @@ hash = "ae3c8677a574757a519780f8c4f461763ebc19c590a42f3af0f9447bf7ef4a94"
 metafile = true
 
 [[files]]
+file = "mods/controlling.pw.toml"
+hash = "0360f47c1afd7385518db9df5d809344e1bcdc163e940a8744ee61b6d745b6ce"
+metafile = true
+
+[[files]]
 file = "mods/copycats.pw.toml"
 hash = "90291784f95c409c8b856d8a9e5389a4727be8f6a01dd4fd284705e0013b44ff"
 metafile = true
@@ -593,6 +598,11 @@ metafile = true
 [[files]]
 file = "mods/rrls.pw.toml"
 hash = "e9f279e9ce448e599a6784262c05855904ef693b9ca2e47dd1a53cb35742b363"
+metafile = true
+
+[[files]]
+file = "mods/searchables.pw.toml"
+hash = "5d694c42e5e6759807f1f5756de3dd24f098517143b8d8aac5721b7d5cf502b1"
 metafile = true
 
 [[files]]
