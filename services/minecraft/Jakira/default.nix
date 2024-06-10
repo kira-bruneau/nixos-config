@@ -189,9 +189,11 @@ in
       };
 
       "config/NoChatReports/NCR-Client.json".value = {
+        alwaysHideReportButton = true;
         showNCRButton = false;
         showReloadButton = false;
         showServerSafety = false;
+        verifiedIconEnabled = false;
       };
 
       "config/xaerominimap.txt" = pkgs.writeText "xaerominimap.txt" ''
