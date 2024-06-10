@@ -300,6 +300,7 @@ in
     helvum
     pavucontrol
     resources
+    wl-mirror
 
     # Media & Documents
     gnome.file-roller
