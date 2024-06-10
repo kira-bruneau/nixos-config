@@ -335,6 +335,10 @@
     "sha256": "c1d70310a9b3394a6f124d28d5f7efc21b2c08063eea60e1027762e9369f6ddd",
     "url": "https://cdn.modrinth.com/data/O7RBXm3n/versions/vYitK6Zf/InventoryProfilesNext-fabric-1.20-1.10.10.jar"
   },
+  "iris-flw-compat.pw.toml": {
+    "sha256": "55ac2af22956ee6fe37d860edf54dea5118a27f73e4e5c4abc87fd6a5b32fba4",
+    "url": "https://cdn.modrinth.com/data/ndHYMY2K/versions/ce9TjaVw/iris-flywheel-compat-1.20.1-0.2.5.jar"
+  },
   "iris.pw.toml": {
     "sha256": "a2ca9ca56265abd5f44a001e437bd4c9f3abed7cd8dae058208dd1c93488e131",
     "url": "https://cdn.modrinth.com/data/YL57xq9U/versions/KHQ2Hnpt/iris-1.7.0%2Bmc1.20.1.jar"
