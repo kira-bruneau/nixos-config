@@ -551,6 +551,11 @@ hash = "c737bdfd6940736f88cd39065a0193ba70637a560fbce4389e59f67d72813209"
 metafile = true
 
 [[files]]
+file = "mods/nrb.pw.toml"
+hash = "f2ce31ed65af9cfcd50bf1e0d954ea6dece4546147a9595659d5ea6c9af374f2"
+metafile = true
+
+[[files]]
 file = "mods/numismatics.pw.toml"
 hash = "9305abd7bed1a6175113e2fca0fe65174023cda93ce42716c5a94eba5d715bbf"
 metafile = true

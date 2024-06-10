@@ -439,6 +439,10 @@
     "sha256": "b3d6a8fc01b99b5931e5352a5671ef5f6e8694e716625a9b718eeadd7bf8a11e",
     "url": "https://cdn.modrinth.com/data/MPCX6s5C/versions/ibajTV3T/notenoughanimations-fabric-1.7.3-mc1.20.1.jar"
   },
+  "nrb.pw.toml": {
+    "sha256": "e1e345a495b400192dfaeb9fd397759a665f3667a8d22ae1849ecb8d07a1bfac",
+    "url": "https://cdn.modrinth.com/data/9WJeSpTH/versions/rq7A1SX4/no-report-button-fabric-1.5.0.jar"
+  },
   "numismatics.pw.toml": {
     "sha256": "f7fd42e6987e5fdacc0664e706cf7e50812d6707d11a98440c46bf646ff6aa7e",
     "url": "https://cdn.modrinth.com/data/Jdbbtt0i/versions/ExoJ4bOE/CreateNumismatics-1.0.6%2Bfabric-mc1.20.1.jar"

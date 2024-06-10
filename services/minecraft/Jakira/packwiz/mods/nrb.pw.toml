@@ -1,0 +1,13 @@
+name = "No Report Button"
+filename = "no-report-button-fabric-1.5.0.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/9WJeSpTH/versions/rq7A1SX4/no-report-button-fabric-1.5.0.jar"
+hash-format = "sha1"
+hash = "11363303661a54cc14376e23cbc32c189dbae92a"
+
+[update]
+[update.modrinth]
+mod-id = "9WJeSpTH"
+version = "rq7A1SX4"
