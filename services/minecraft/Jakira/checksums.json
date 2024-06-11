@@ -255,6 +255,10 @@
     "sha256": "d6a0f08566f7b6459637670e3efa3c53e9295b788b7da3ed2187948ee441b02a",
     "url": "https://cdn.modrinth.com/data/NNAgCjsB/versions/frGGaFrx/entityculling-fabric-1.6.5-mc1.20.1.jar"
   },
+  "eureka.pw.toml": {
+    "sha256": "aad3679ebda20adc120c9a7a07a34d676908c1d92c6c2a6831c808c33c383dac",
+    "url": "https://cdn.modrinth.com/data/EO8aSHxh/versions/sXx5EPib/eureka-1201-1.5.1-beta.3.jar"
+  },
   "exposure.pw.toml": {
     "sha256": "c553d715ce259c3c8f6a8eee5db4367dfd9fe8d5fa6c314757bc675cc77545ef",
     "url": "https://cdn.modrinth.com/data/hB899VmG/versions/AlbUxt2P/exposure-1.20.1-1.6.0-fabric.jar"
