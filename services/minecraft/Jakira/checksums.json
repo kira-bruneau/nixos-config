@@ -563,6 +563,10 @@
     "sha256": "0e761b3c2cced8c566d077cd81179733bf4879804ff54739ca3930e03065326d",
     "url": "https://cdn.modrinth.com/data/bRAPbNyF/versions/bv24X5Mj/veinmining-fabric-1.4.1%2B1.20.1.jar"
   },
+  "vmod.pw.toml": {
+    "sha256": "7d85cf55972b9ddfb083c0d4bae05488909de6bc9e69cc442c0afcdc48c66726",
+    "url": "https://cdn.modrinth.com/data/qS1ot7R2/versions/MwGsEpMX/VMod-Fabric-1.20.1-0.0.7.jar"
+  },
   "when-dungeons-arise.pw.toml": {
     "sha256": "e8efd54576797faff7cc221e26a41a097e985baa7889398defb15da4135d7cf8",
     "url": "https://cdn.modrinth.com/data/8DfbfASn/versions/Vd5XOXlj/DungeonsArise-1.20.1-2.1.57-fabric-release.jar"
