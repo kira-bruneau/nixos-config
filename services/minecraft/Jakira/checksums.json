@@ -171,6 +171,10 @@
     "sha256": "11a850d3689b4771d5fa705ffa7dd711827c69b71082956597e5d051471cc1ee",
     "url": "https://cdn.modrinth.com/data/Xbc0uyRg/versions/h2HgGyvA/create-fabric-0.5.1-f-build.1417%2Bmc1.20.1.jar"
   },
+  "create-high-pressure.pw.toml": {
+    "sha256": "5e0e2080c9653f10710feefc057f61718ca1eb467be49a02e19074a124071db2",
+    "url": "https://cdn.modrinth.com/data/Mn8ziD0c/versions/hGGRPrHq/create_high_pressure-1.1.0.jar"
+  },
   "create-jetpack.pw.toml": {
     "sha256": "84c583decbf5721ba8d706dad1516f671b3fee358fa605cd2b6d8637af8e6df9",
     "url": "https://cdn.modrinth.com/data/UbFnAd4l/versions/IwBgWAGw/create_jetpack-fabric-4.2.0.jar"

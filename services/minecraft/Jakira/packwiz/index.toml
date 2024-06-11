@@ -216,6 +216,11 @@ hash = "26394151533372bce2229f31c8df7f65e2deb751cc823f317cd30682381acc8f"
 metafile = true
 
 [[files]]
+file = "mods/create-high-pressure.pw.toml"
+hash = "cbfa75e50c93f17359914fe71f6bd86aaa5efb947ab78669d2a16688a8cb8ae6"
+metafile = true
+
+[[files]]
 file = "mods/create-jetpack.pw.toml"
 hash = "93f8459ef551d239aba91b04529a2fa9bc8fe3630000e1478928e7900b4ae22c"
 metafile = true
