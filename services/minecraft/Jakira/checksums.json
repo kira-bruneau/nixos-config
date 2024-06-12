@@ -431,6 +431,10 @@
     "sha256": "173671d3c796b1457e1700c1df839bd52307cfd5a0d7cd5b558fecbbe5082fba",
     "url": "https://cdn.modrinth.com/data/twkfQtEc/versions/yqHXozvj/moonlight-1.20-2.11.30-fabric.jar"
   },
+  "moreculling.pw.toml": {
+    "sha256": "def2462c60576d0bb8dbec51a101fe2909d4c5d343150d5e5105a56bbc6bbfd5",
+    "url": "https://cdn.modrinth.com/data/51shyZVL/versions/3m5znPWm/moreculling-1.20.4-0.24.0.jar"
+  },
   "mouse-tweaks.pw.toml": {
     "sha256": "1eb9f0c7878598a3a7dfb52cd0e8159ebf8b33b04e6df232534fed2fbb6616e4",
     "url": "https://cdn.modrinth.com/data/aC3cM3Vq/versions/mjuG4AYd/MouseTweaks-fabric-mc1.20-2.26.jar"
