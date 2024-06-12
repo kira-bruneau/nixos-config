@@ -263,6 +263,10 @@
     "sha256": "aad3679ebda20adc120c9a7a07a34d676908c1d92c6c2a6831c808c33c383dac",
     "url": "https://cdn.modrinth.com/data/EO8aSHxh/versions/sXx5EPib/eureka-1201-1.5.1-beta.3.jar"
   },
+  "expanded-delight.pw.toml": {
+    "sha256": "51260cf735ce73808df5009bf1aa6b26634ded622c80b1a59494389abdab8546",
+    "url": "https://cdn.modrinth.com/data/e9V6wFcR/versions/ZeqoW6AU/expandeddelight-0.3.1.jar"
+  },
   "exposure.pw.toml": {
     "sha256": "c553d715ce259c3c8f6a8eee5db4367dfd9fe8d5fa6c314757bc675cc77545ef",
     "url": "https://cdn.modrinth.com/data/hB899VmG/versions/AlbUxt2P/exposure-1.20.1-1.6.0-fabric.jar"
