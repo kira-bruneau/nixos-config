@@ -39,6 +39,10 @@
     "sha256": "da18e81a3b72263a67c40e325537c587b48fff2fabb625c612ca4d7c2f386ecd",
     "url": "https://cdn.modrinth.com/data/b1ZV3DIJ/versions/mXJWSwbJ/athena-fabric-1.20.1-3.1.2.jar"
   },
+  "badoptimizations.pw.toml": {
+    "sha256": "217b5c7326a52eff8fc7dd344d20644046f5bd7377e92c3b507189d1887a1476",
+    "url": "https://cdn.modrinth.com/data/g96Z4WVZ/versions/eT6Jsaq5/BadOptimizations-2.1.1.jar"
+  },
   "bclib.pw.toml": {
     "sha256": "391fa2a8d7e369b088c66d1f230c3951e1d83f19d60555b2efea5394d8bcfc51",
     "url": "https://cdn.modrinth.com/data/BgNRHReB/versions/TPC86Pyz/bclib-3.0.14.jar"
