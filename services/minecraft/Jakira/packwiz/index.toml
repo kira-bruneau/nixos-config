@@ -671,6 +671,11 @@ hash = "de89d4ffd14c02db24f737055f1f11b784bcb98e7e826efa4bc2329a962b4ba5"
 metafile = true
 
 [[files]]
+file = "mods/threadtweak.pw.toml"
+hash = "dbbeb7a8f32fdbe0d5e44a8c7671ed2297ee8d12d4610500ac54742e70b4fb53"
+metafile = true
+
+[[files]]
 file = "mods/tidal-towns.pw.toml"
 hash = "b47c07f5182af99016791a7008a241cd19442cb9e993cd56f5f90961a5f1375f"
 metafile = true

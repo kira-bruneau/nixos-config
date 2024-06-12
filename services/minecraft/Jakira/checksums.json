@@ -535,6 +535,10 @@
     "sha256": "d29d1a6e187ad381a6658618496095b17b98986154b761236174e35147c5619e",
     "url": "https://cdn.modrinth.com/data/wwcspvkr/versions/k3qnR2WS/textile_backup-3.1.2-1.20.jar"
   },
+  "threadtweak.pw.toml": {
+    "sha256": "13954c14a9491b07eab6d2b278faed5629d42ac52cc959711959f32270e6edff",
+    "url": "https://cdn.modrinth.com/data/vSEH1ERy/versions/gBP1GqtK/threadtweak-fabric-1.20.2-0.1.1.jar"
+  },
   "tidal-towns.pw.toml": {
     "sha256": "200681260b9d36632b7db214ceaac732128c4506b706fad81fa99cd7998e0371",
     "url": "https://cdn.modrinth.com/data/EEIwvQVo/versions/29RM9vrK/tidal-towns-1.3.jar"
