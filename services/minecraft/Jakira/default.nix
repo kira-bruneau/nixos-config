@@ -41,6 +41,7 @@ in
           "/config/NoChatReports/NCR-Client.json"
           "/config/universal-graves/config.json"
           "/config/xaerominimap.txt"
+          "/config/xaeroworldmap.txt"
           "/mods/*.jar"
           "/options.txt"
           "/resourcepacks/*"
@@ -65,6 +66,9 @@ in
         version = {
           "check [default: true]" = false;
           "didShowWelcome [default: false]" = true;
+        };
+        ui = {
+          "showUpdateInfo [default: true]" = false;
         };
       };
 
@@ -195,8 +199,9 @@ in
       };
 
       "config/iris.properties".value = {
-        shaderPack = "ComplementaryUnbound.zip";
+        disableUpdateMessage = true;
         enableShaders = true;
+        shaderPack = "ComplementaryUnbound.zip";
       };
 
       "config/NoChatReports/NCR-Client.json".value = {
@@ -208,10 +213,17 @@ in
       };
 
       "config/xaerominimap.txt" = pkgs.writeText "xaerominimap.txt" ''
+        ignoreUpdate:1
+        updateNotification:false
         lockNorth:true
         minimapOpacity:75.0
         minimapShape:1
         module;id=xaerominimap:minimap;active=true;x=0;y=0;centered=false;fromRight=true;fromBottom=false;flippedVer=false;flippedHor=false;
+      '';
+
+      "config/xaeroworldmap.txt" = pkgs.writeText "xaeroworldmap.txt" ''
+        ignoreUpdate:1
+        updateNotification:false
       '';
 
       "options.txt" = pkgs.writeText "options.txt" ''
