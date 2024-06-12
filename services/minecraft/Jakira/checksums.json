@@ -391,6 +391,10 @@
     "sha256": "69ad1810206ce12181b1b083640f044e7e250781c36c96c655eac36209057698",
     "url": "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"
   },
+  "ksyxis.pw.toml": {
+    "sha256": "c820280f0d5073a467f564269440285b7cad5345a5da733696719e92b95a1dc8",
+    "url": "https://cdn.modrinth.com/data/2ecVyZ49/versions/QFfBwOwT/Ksyxis-1.3.2.jar"
+  },
   "lambdynamiclights.pw.toml": {
     "sha256": "20433fb9a20f9450599bde4d8f0e8b0898eefdbda13e47d68430d31422c9f564",
     "url": "https://cdn.modrinth.com/data/yBW8D80W/versions/mYl4RvKg/lambdynamiclights-2.3.2%2B1.20.1.jar"
