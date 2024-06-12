@@ -219,6 +219,10 @@
     "sha256": "84e76abee3c3c47be4825690b30cfcaa54389b9a4199f381471f42f7b172a05a",
     "url": "https://cdn.modrinth.com/data/LQ3K71Q1/versions/48hFxWw7/dynamic-fps-3.4.3%2Bminecraft-1.20.0-fabric.jar"
   },
+  "ebe.pw.toml": {
+    "sha256": "1c4ce2c00d8cc6d2269de3cadaba551607c62692a8e5ad1d7c618462ed7ed05b",
+    "url": "https://cdn.modrinth.com/data/OVuFYfre/versions/i3v1Skck/enhancedblockentities-0.9%2B1.20.jar"
+  },
   "ecologics.pw.toml": {
     "sha256": "e7531df4e4349f1751eee5cda5821ee41becf57a31198371acc28a2827c49893",
     "url": "https://mediafilez.forgecdn.net/files/4857/271/ecologics-fabric-1.20.1-2.2.0.jar"

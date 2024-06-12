@@ -276,6 +276,11 @@ hash = "ee965d6f2e0a9cdc31139b0d8a3367eb8db031065a03142534652573626e9787"
 metafile = true
 
 [[files]]
+file = "mods/ebe.pw.toml"
+hash = "b8270928d44781b9e59982d376bb3cc0d24089ceebef3c79d3e1e881ba7ece60"
+metafile = true
+
+[[files]]
 file = "mods/ecologics.pw.toml"
 hash = "d0b865381aa81220eb47a862bafb4c7c0a47bd047c3509d73439d864057471b6"
 metafile = true
