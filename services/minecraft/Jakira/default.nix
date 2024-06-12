@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   pkgs,
   pkgsNixMinecraft,
@@ -163,6 +164,10 @@ in
         hash = "sha256-p7ze0H1LsScBOXX2ZN13n098xj5M3suUkqfxM3pX4OQ=";
       };
 
+      "allowed_symlinks.txt" = pkgs.writeText "allowed_symlinks.txt" ''
+        /nix/store
+      '';
+
       "config/emi.css" = pkgs.writeText "emi.css" ''
         #general {
           search-mod-name-by-default: true;
@@ -232,6 +237,8 @@ in
           WATER_REFRACTION_INTENSITY = 2.6;
         };
       };
+
+      "world/datapacks/fabric-biomes-terralinth-compat" = ./fabric-biomes-terralinth-compat;
     };
 
     serverProperties = {
