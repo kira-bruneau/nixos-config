@@ -91,7 +91,6 @@ callPackage ./wrapper.nix {
     epkgs.company-flx
     epkgs.company-restclient
     epkgs.counsel
-    epkgs.counsel-projectile
     epkgs.dap-mode
     epkgs.diminish
     epkgs.direnv
@@ -131,7 +130,8 @@ callPackage ./wrapper.nix {
     epkgs.powershell
     epkgs.presentation
     epkgs.pretty-sha-path
-    epkgs.projectile
+    epkgs.projection
+    epkgs.projection-multi
     epkgs.rainbow-delimiters
     epkgs.restclient
     epkgs.rg
