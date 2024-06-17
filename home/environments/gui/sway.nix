@@ -308,6 +308,7 @@ in
     # Utils
     gnome.gnome-clocks
     sway-audio-idle-inhibit
+    wdisplays
     wlprop
     wrap-scale-off
   ];
