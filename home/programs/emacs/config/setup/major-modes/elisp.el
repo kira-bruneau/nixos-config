@@ -12,6 +12,5 @@
            (current-buffer))))
 
 (use-package macrostep
-  :after elisp-mode
   :bind (:map emacs-lisp-mode-map
               ("C-c C-e" . macrostep-expand)))

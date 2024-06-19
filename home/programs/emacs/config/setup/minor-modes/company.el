@@ -13,6 +13,5 @@
   (setq company-idle-delay 0))
 
 (use-package company-flx
-  :after company
   :init
   (company-flx-mode))
