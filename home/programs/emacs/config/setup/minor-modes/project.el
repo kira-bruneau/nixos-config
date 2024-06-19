@@ -69,6 +69,7 @@
 
 (use-package projection-core-cache
   :init
+  (require 'projection-core-cache)
   (with-eval-after-load 'savehist
     (add-to-list 'savehist-additional-variables 'projection--project-cache)))
 
