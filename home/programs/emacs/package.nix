@@ -16,6 +16,7 @@
   diffutils,
   direnv,
   dockerfile-language-server-nodejs,
+  emacs-lsp-booster,
   eslint_d,
   fd,
   fzf,
@@ -55,6 +56,10 @@
 let
   emacs = if stdenv.hostPlatform.isDarwin then emacs29 else emacs29-pgtk;
 
+  emacsPackages = emacs.pkgs.overrideScope (final: prev: {
+    lsp-mode = prev.lsp-mode.overrideAttrs (attrs: { LSP_USE_PLISTS = true; });
+  });
+
   # A lightweight wrapper for prettierd to avoid the overhead of node
   prettierc = (
     callPackage ./core_d_client.nix {
@@ -74,7 +79,7 @@ let
   );
 in
 callPackage ./wrapper.nix {
-  emacs = emacs.pkgs.withPackages (epkgs: [
+  emacs = emacsPackages.emacsWithPackages (epkgs: [
     epkgs.adaptive-wrap
     epkgs.amx
     epkgs.apheleia
@@ -193,6 +198,7 @@ callPackage ./wrapper.nix {
         diffutils
         direnv
         dockerfile-language-server-nodejs
+        emacs-lsp-booster
         eslint_c
         eslint_d
         fd

@@ -23,6 +23,11 @@
          (web-mode . lsp)
          (yaml-ts-mode . lsp))
   :bind-keymap (("<f6>" . lsp-command-map))
+
+  :init
+  (when (functionp 'json-rpc-connection)
+    (error "Native JSON-RPC is incompatible with emacs-lsp-booster"))
+
   :config
   (setq lsp-eldoc-enable-hover nil)
   (setq lsp-enable-file-watchers nil) ;; file watchers cause emacs to hang on large projects
@@ -36,7 +41,30 @@
 
   ;; Use typescript-language-server & tsserver from PATH
   (lsp-dependency 'typescript-language-server `(:system ,(executable-find "typescript-language-server")))
-  (lsp-dependency 'typescript `(:system ,(executable-find "tsserver"))))
+  (lsp-dependency 'typescript `(:system ,(executable-find "tsserver")))
+
+  (defun lsp-booster--advice-json-parse (old-fn &rest args)
+    "Try to parse bytecode instead of json."
+    (or
+     (when (equal (following-char) ?#)
+       (let ((bytecode (read (current-buffer))))
+         (when (byte-code-function-p bytecode)
+           (funcall bytecode))))
+     (apply old-fn args)))
+
+  (advice-add 'json-parse-buffer :around #'lsp-booster--advice-json-parse)
+
+  (defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
+    "Prepend emacs-lsp-booster command to lsp CMD."
+    (let ((orig-result (funcall old-fn cmd test?)))
+      (if (and (not test?)                             ;; for check lsp-server-present?
+               (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
+               (executable-find "emacs-lsp-booster"))
+          (progn
+            (cons "emacs-lsp-booster" orig-result))
+        orig-result)))
+
+  (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
