@@ -24,9 +24,7 @@
   (setq magit-repository-directories '(("~/Dev" . 4))))
 
 (use-package forge
-  :after magit
-  :init
-  (require 'forge))
+  :after magit)
 
 (use-package browse-at-remote
   :bind ("C-c o" . browse-at-remote))
