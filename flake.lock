@@ -369,22 +369,6 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/50eb7ecf4cd0a5756d7275c8ba36790e5bd53e33.tar.gz"
       }
     },
-    "nixpkgs-ollama": {
-      "locked": {
-        "lastModified": 1714253743,
-        "narHash": "sha256-mdTQw2XlariysyScCv2tTE45QSU9v/ezLcHJ22f0Nxc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "58a1abdbae3217ca6b702f03d3b35125d88a2994",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "58a1abdbae3217ca6b702f03d3b35125d88a2994",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1718714799,
@@ -451,18 +435,17 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1718437845,
-        "narHash": "sha256-ZT7Oc1g4I4pHVGGjQFnewFVDRLH5cIZhEzODLz9YXeY=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "752c634c09ceb50c45e751f8791cb45cb3d46c9e",
-        "type": "github"
+        "lastModified": 1718926784,
+        "narHash": "sha256-t4zcHbRS3ZnVzFsYBggJ812iXoaY3dvVOFLu0s3TnAA=",
+        "ref": "83cc4673381a8dc214555020f627db190c6c3a2a",
+        "rev": "83cc4673381a8dc214555020f627db190c6c3a2a",
+        "revCount": 631674,
+        "type": "git",
+        "url": "file:///home/kira/Dev/nixpkgs/nixpkgs/unstable"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/kira/Dev/nixpkgs/nixpkgs/unstable"
       }
     },
     "packwiz2nix": {
@@ -495,7 +478,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-chromium": "nixpkgs-chromium",
-        "nixpkgs-ollama": "nixpkgs-ollama",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-yuzu": "nixpkgs-yuzu",
         "packwiz2nix": "packwiz2nix"

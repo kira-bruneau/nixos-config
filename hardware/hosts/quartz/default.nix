@@ -205,5 +205,8 @@
   # Android debugging
   programs.adb.enable = true;
 
-  services.ollama.environmentVariables.HIP_VISIBLE_DEVICES = "0";
+  services.ollama.environmentVariables = {
+    ROCR_VISIBLE_DEVICES = "0";
+    HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+  };
 }

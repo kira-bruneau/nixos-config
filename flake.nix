@@ -12,13 +12,11 @@
       };
     };
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "/home/kira/Dev/nixpkgs/nixpkgs/unstable";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixpkgs-chromium.url = "github:NixOS/nixpkgs/2748d22b45a99fb2deafa5f11c7531c212b2cefa";
-
-    nixpkgs-ollama.url = "github:NixOS/nixpkgs/58a1abdbae3217ca6b702f03d3b35125d88a2994";
 
     nixpkgs-yuzu.url = "github:Atemu/nixpkgs/revert-yuzu-removal";
 
@@ -110,11 +108,6 @@
                     };
 
                     pkgsChromium = import inputs.nixpkgs-chromium {
-                      system = pkgs.system;
-                      config = config.nixpkgs.config;
-                    };
-
-                    pkgsOllama = import inputs.nixpkgs-ollama {
                       system = pkgs.system;
                       config = config.nixpkgs.config;
                     };
