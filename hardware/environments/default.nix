@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  pkgsDisco,
+  pkgsDisko,
   ...
 }:
 
@@ -16,7 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     pciutils
-    pkgsDisco.default
+    pkgsDisko.default
     smartmontools
   ];
 }

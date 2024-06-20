@@ -124,7 +124,7 @@
                       config = config.nixpkgs.config;
                     };
 
-                    pkgsDisco = inputs.disko.packages.${pkgs.system};
+                    pkgsDisko = inputs.disko.packages.${pkgs.system};
 
                     pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
 
