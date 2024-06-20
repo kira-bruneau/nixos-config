@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  element-desktop = pkgs.element-desktop;
+  element-desktop = pkgs.element-desktop.override { electron = pkgs.electron_29; };
 in
 {
   home.packages = [ element-desktop ];

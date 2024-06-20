@@ -1,7 +1,7 @@
-{ pkgsKiraNur, ... }:
+{ pkgsUnstable, pkgsKiraNur, ... }:
 
 let
-  anytype = pkgsKiraNur.anytype;
+  anytype = pkgsKiraNur.anytype.override { electron = pkgsUnstable.electron_29; };
 in
 {
   home.packages = [ anytype ];

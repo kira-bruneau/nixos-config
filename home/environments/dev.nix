@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsChromium, ... }:
 
 {
   imports = [
@@ -8,7 +8,7 @@
 
   home.packages = with pkgs; [
     # Web
-    ungoogled-chromium
+    pkgsChromium.ungoogled-chromium
 
     # Media & Documents
     poke
