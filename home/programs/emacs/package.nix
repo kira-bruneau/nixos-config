@@ -56,9 +56,13 @@
 let
   emacs = if stdenv.hostPlatform.isDarwin then emacs29 else emacs29-pgtk;
 
-  emacsPackages = emacs.pkgs.overrideScope (final: prev: {
-    lsp-mode = prev.lsp-mode.overrideAttrs (attrs: { LSP_USE_PLISTS = true; });
-  });
+  emacsPackages = emacs.pkgs.overrideScope (
+    final: prev: {
+      lsp-mode = prev.lsp-mode.overrideAttrs (attrs: {
+        LSP_USE_PLISTS = true;
+      });
+    }
+  );
 
   # A lightweight wrapper for prettierd to avoid the overhead of node
   prettierc = (
