@@ -9,6 +9,9 @@
     ../../programs/jellyfin
     ../../programs/newsflash
 
+    # Chat
+    ../../programs/element
+
     # Media & Documents
     ../../programs/emacs
     ../../programs/keepassxc
