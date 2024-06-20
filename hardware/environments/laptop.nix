@@ -16,7 +16,7 @@ in
   ];
 
   # Automatically control frequency of CPU to save power
-  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.enable = !config.services.power-profiles-daemon.enable;
 
   # Disable tlp being enabled from common-pc-laptop in nixos-hardware
   services.tlp.enable = false;
