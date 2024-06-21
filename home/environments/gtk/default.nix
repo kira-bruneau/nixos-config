@@ -18,6 +18,9 @@
       inherit (config.home.pointerCursor) package name size;
     };
 
-    font.name = "sans-serif";
+    font = {
+      name = "sans-serif";
+      size = 10;
+    };
   };
 }
