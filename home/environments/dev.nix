@@ -17,7 +17,6 @@
     # Nix development
     cachix
     nix-bisect
-    nix-index
     nix-init
     nix-output-monitor
     nixpkgs-review
@@ -35,6 +34,8 @@
     tcpflow
     valgrind
   ];
+
+  programs.nix-index.enable = true;
 
   wayland.windowManager.sway.config = {
     assigns."1" = [ { app_id = "^chromium-browser$"; } ];
