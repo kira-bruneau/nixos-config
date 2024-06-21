@@ -100,7 +100,7 @@ in
           appname = "Jellyfin Media Player";
           Exe = "env";
           icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3727586514_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.kira/config XDG_DATA_HOME=${config.home.homeDirectory}/.kira/data XDG_STATE_HOME=${config.home.homeDirectory}/.kira/state jellyfinmediaplayer --tv --scale-factor 2";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= jellyfinmediaplayer --tv --scale-factor 2";
           AllowOverlay = 0;
         }
         {
@@ -246,7 +246,7 @@ in
           appname = "Jellyfin Media Player";
           Exe = "env";
           icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3727586514_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.jack/config XDG_DATA_HOME=${config.home.homeDirectory}/.jack/data XDG_STATE_HOME=${config.home.homeDirectory}/.jack/state jellyfinmediaplayer --tv --scale-factor 2";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= jellyfinmediaplayer --tv --scale-factor 2";
           AllowOverlay = 0;
         }
         {
