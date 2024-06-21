@@ -1,3 +1,2 @@
-(global-subword-mode t)
-
-(diminish 'subword-mode)
+(use-package global-subword-mode
+  :diminish "")
