@@ -10,5 +10,4 @@
 
   services.gnome.core-utilities.enable = false;
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
-  networking.networkmanager.enable = true;
 }
