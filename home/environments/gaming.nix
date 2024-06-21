@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsUnstable,
   pkgsKiraNur,
   pkgsYuzu,
   ...
@@ -20,6 +21,7 @@ in
 
   home.packages = with pkgs; [
     # Games & Launchers
+    pkgsUnstable._2ship2harkinian
     clonehero
     pkgsKiraNur.pokemmo-installer
     pkgsKiraNur.protontricks

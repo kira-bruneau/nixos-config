@@ -47,6 +47,7 @@
     nixpkgs.config.allowUnfreePredicate =
       pkg:
       builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+        "2ship2harkinian"
         "anytype"
         "anytype-heart"
         "broadcom-sta"
