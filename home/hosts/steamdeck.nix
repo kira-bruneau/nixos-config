@@ -215,7 +215,7 @@ in
           appid = -1234567890;
           appname = "Majora's Mask";
           Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= RMG --fullscreen --nogui --quit-after-emulation \"${config.home.homeDirectory}/Documents/ROMs/Zelda - Majora's Mask.z64\"";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= 2s2h";
           AllowOverlay = 0;
         }
         {
@@ -361,7 +361,7 @@ in
           appid = -1234567890;
           appname = "Majora's Mask";
           Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= RMG --fullscreen --nogui --quit-after-emulation \"${config.home.homeDirectory}/Documents/ROMs/Zelda - Majora's Mask.z64\"";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= 2s2h";
           AllowOverlay = 0;
         }
         {
