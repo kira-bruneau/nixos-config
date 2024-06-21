@@ -63,17 +63,10 @@
     configFile."mimeapps.list".force = true;
   };
 
-  fonts.fontconfig.enable = true;
-  xdg.configFile."fontconfig/fonts.conf".text = ''
-    <?xml version='1.0'?>
-    <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
-    <fontconfig>
-      <alias binding="same">
-      <family>sans-serif</family>
-      <prefer><family>Inter</family></prefer>
-      </alias>
-    </fontconfig>
-  '';
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts.sansSerif = [ "Inter" ];
+  };
 
   # xdg.configFile."wireplumber/main.lua.d/51-restrict-control.lua".text = ''
   #   table.insert(default_access.rules, {
