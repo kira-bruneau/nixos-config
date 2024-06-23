@@ -177,10 +177,10 @@ in
           AllowOverlay = 0;
         }
         {
-          appid = -592608667;
-          appname = "yuzu";
+          appid = -592608668;
+          appname = "sudachi";
           Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= yuzu -f";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f";
           AllowOverlay = 0;
         }
         {
@@ -194,7 +194,14 @@ in
           appid = -1737320186;
           appname = "Super Smash Bros. Ultimate";
           Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= yuzu -f -g ${config.home.homeDirectory}/Games/Yuzu/50e90d167d20f348cd4793aad9401283.nca";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g ${config.home.homeDirectory}/Games/Sudachi/50e90d167d20f348cd4793aad9401283.nca";
+          AllowOverlay = 0;
+        }
+        {
+          appid = -1565192715;
+          appname = "Mario Kart 8 Deluxe";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
           AllowOverlay = 0;
         }
         {
@@ -323,10 +330,10 @@ in
           AllowOverlay = 0;
         }
         {
-          appid = -592608667;
-          appname = "yuzu";
+          appid = -592608668;
+          appname = "sudachi";
           Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= yuzu -f";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f";
           AllowOverlay = 0;
         }
         {
@@ -340,7 +347,14 @@ in
           appid = -1737320186;
           appname = "Super Smash Bros. Ultimate";
           Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= yuzu -f -g ${config.home.homeDirectory}/Games/Yuzu/50e90d167d20f348cd4793aad9401283.nca";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g ${config.home.homeDirectory}/Games/Sudachi/50e90d167d20f348cd4793aad9401283.nca";
+          AllowOverlay = 0;
+        }
+        {
+          appid = -1565192715;
+          appname = "Mario Kart 8 Deluxe";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
           AllowOverlay = 0;
         }
         {

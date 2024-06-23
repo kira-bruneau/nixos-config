@@ -2,7 +2,6 @@
   pkgs,
   pkgsUnstable,
   pkgsKiraNur,
-  pkgsYuzu,
   ...
 }:
 
@@ -38,7 +37,7 @@ in
     # Emulators
     cemu
     dolphinEmuMaster
-    pkgsYuzu.yuzu
+    pkgsKiraNur.sudachi
     winetricks
     wineWowPackages.staging
 

@@ -18,8 +18,6 @@
 
     nixpkgs-chromium.url = "github:NixOS/nixpkgs/2748d22b45a99fb2deafa5f11c7531c212b2cefa";
 
-    nixpkgs-yuzu.url = "github:Atemu/nixpkgs/revert-yuzu-removal";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     disko = {
@@ -108,11 +106,6 @@
                     };
 
                     pkgsChromium = import inputs.nixpkgs-chromium {
-                      system = pkgs.system;
-                      config = config.nixpkgs.config;
-                    };
-
-                    pkgsYuzu = import inputs.nixpkgs-yuzu {
                       system = pkgs.system;
                       config = config.nixpkgs.config;
                     };
