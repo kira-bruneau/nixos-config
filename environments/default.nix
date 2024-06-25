@@ -50,10 +50,11 @@
         "2ship2harkinian"
         "anytype"
         "anytype-heart"
+        "aspell-dict-en-science"
         "broadcom-sta"
         "clonehero"
         "clonehero-unwrapped"
-        "data.zip"
+        "data.zip" # (vvvvvv)
         "discord"
         "minecraft-server"
         "nvidia-settings"
