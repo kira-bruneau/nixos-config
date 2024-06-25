@@ -169,12 +169,6 @@ in
         hash = "sha256-DxBZXiXo3psnw8+l2F2ViMJ00pgpTfIxAIERYsUKcPs=";
       };
 
-      "mods/create_interactive-1201-fabric-1.0.2-beta.2.jar" = pkgs.requireFile {
-        name = "create_interactive-1201-fabric-1.0.2-beta.2.jar";
-        url = "https://discord.com/channels/244934352092397568/1188368808352682004/1233488627799953438";
-        hash = "sha256-p7ze0H1LsScBOXX2ZN13n098xj5M3suUkqfxM3pX4OQ=";
-      };
-
       "allowed_symlinks.txt" = pkgs.writeText "allowed_symlinks.txt" ''
         /nix/store
       '';

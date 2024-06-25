@@ -1,13 +1,13 @@
 name = "VMod"
-filename = "VMod-Fabric-1.20.1-0.0.7.jar"
+filename = "VMod-Fabric-1.20.1-0.0.9.jar"
 side = "both"
 
 [download]
-url = "https://cdn.modrinth.com/data/qS1ot7R2/versions/MwGsEpMX/VMod-Fabric-1.20.1-0.0.7.jar"
+url = "https://cdn.modrinth.com/data/qS1ot7R2/versions/gtTOO4LM/VMod-Fabric-1.20.1-0.0.9.jar"
 hash-format = "sha1"
-hash = "b31a4aa12c2873902040473381aab0407a71c8fa"
+hash = "087da375d6141b0f14ac110ba5a64088b8135d1e"
 
 [update]
 [update.modrinth]
 mod-id = "qS1ot7R2"
-version = "MwGsEpMX"
+version = "gtTOO4LM"
