@@ -12,7 +12,7 @@
       };
     };
 
-    nixpkgs.url = "/home/kira/Dev/nixpkgs/nixpkgs/unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
