@@ -39,6 +39,7 @@ in
           "/config/iris.properties"
           "/config/item_obliterator.json5"
           "/config/NoChatReports/NCR-Client.json"
+          "/config/tconstruct-common.toml"
           "/config/universal-graves/config.json"
           "/config/xaerominimap.txt"
           "/config/xaeroworldmap.txt"
@@ -129,6 +130,12 @@ in
             "travelersbackpack:white_sleeping_bag"
             "travelersbackpack:yellow_sleeping_bag"
           ];
+        };
+      };
+
+      "config/tconstruct-common.toml".value = {
+        gameplay = {
+          shouldSpawnWithTinkersBook = false;
         };
       };
 
