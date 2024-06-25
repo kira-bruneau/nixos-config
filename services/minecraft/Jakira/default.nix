@@ -39,6 +39,7 @@ in
           "/config/iris.properties"
           "/config/item_obliterator.json5"
           "/config/NoChatReports/NCR-Client.json"
+          "/config/openloader/data/better-hephaestus"
           "/config/openloader/data/fabric-biomes-terralinth-compat"
           "/config/tconstruct-common.toml"
           "/config/universal-graves/config.json"
@@ -212,6 +213,11 @@ in
         showReloadButton = false;
         showServerSafety = false;
         verifiedIconEnabled = false;
+      };
+
+      "config/openloader/data/Better_Hephaestus_v1.0.zip" = pkgs.fetchurl {
+        url = "https://cdn.modrinth.com/data/BHMItbSw/versions/onnZIMPF/Better_Hephaestus_v1.0.zip";
+        hash = "sha256-ZH/6BZcXQAyCUKSque7wyvfKIRHe48x6b4UyJA6x3yc=";
       };
 
       "config/openloader/data/fabric-biomes-terralinth-compat" = ./fabric-biomes-terralinth-compat;
