@@ -621,6 +621,11 @@ hash = "9305abd7bed1a6175113e2fca0fe65174023cda93ce42716c5a94eba5d715bbf"
 metafile = true
 
 [[files]]
+file = "mods/open-loader.pw.toml"
+hash = "ec277331d582b3e88b3f6bed3a77f4f526689680507d718f76a1d0fd03ffcf54"
+metafile = true
+
+[[files]]
 file = "mods/playeranimator.pw.toml"
 hash = "a3d67082a95f70155d68aec25d7ffba8a7c7bc48b342529e52005ddfc76f11ae"
 metafile = true

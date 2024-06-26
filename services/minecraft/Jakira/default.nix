@@ -39,6 +39,7 @@ in
           "/config/iris.properties"
           "/config/item_obliterator.json5"
           "/config/NoChatReports/NCR-Client.json"
+          "/config/openloader/data/fabric-biomes-terralinth-compat"
           "/config/tconstruct-common.toml"
           "/config/universal-graves/config.json"
           "/config/xaerominimap.txt"
@@ -213,6 +214,8 @@ in
         verifiedIconEnabled = false;
       };
 
+      "config/openloader/data/fabric-biomes-terralinth-compat" = ./fabric-biomes-terralinth-compat;
+
       "config/xaerominimap.txt" = pkgs.writeText "xaerominimap.txt" ''
         ignoreUpdate:1
         updateNotification:false
@@ -250,8 +253,6 @@ in
           WATER_REFRACTION_INTENSITY = 2.6;
         };
       };
-
-      "world/datapacks/fabric-biomes-terralinth-compat" = ./fabric-biomes-terralinth-compat;
     };
 
     serverProperties = {
