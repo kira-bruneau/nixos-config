@@ -100,8 +100,8 @@
     "url": "https://cdn.modrinth.com/data/uy4Cnpcm/versions/CBnLZwRS/Bookshelf-Fabric-1.20.1-20.2.13.jar"
   },
   "botarium.pw.toml": {
-    "sha256": "8a100ec47ce30c65e0f6a1ae2b455ab7cbf0196f8758c3743df9193717b16cfa",
-    "url": "https://cdn.modrinth.com/data/2u6LRnMa/versions/5a8eybLl/botarium-fabric-1.20.1-2.3.3.jar"
+    "sha256": "d829200b5dbb464970e2c8b913e39788fd8902e43c4018200d8580833b4d0324",
+    "url": "https://cdn.modrinth.com/data/2u6LRnMa/versions/f3ATcSfq/botarium-fabric-1.20.1-2.3.4.jar"
   },
   "c2me-fabric.pw.toml": {
     "sha256": "16a91977a48bfd1fc93e361204fdc95a5a8b3a261a136630bfde229f54b589ab",
@@ -372,8 +372,8 @@
     "url": "https://cdn.modrinth.com/data/ndHYMY2K/versions/ce9TjaVw/iris-flywheel-compat-1.20.1-0.2.5.jar"
   },
   "iris.pw.toml": {
-    "sha256": "75916ddd618da04b4d4b5c24dd1b7b156f8d467474b3826ca426eb9e0f19c4ba",
-    "url": "https://cdn.modrinth.com/data/YL57xq9U/versions/G5dd9TM4/iris-1.7.1%2Bmc1.20.1.jar"
+    "sha256": "00155661a0b28c92ddbbab914aa07bfb300e835aa6f60b161cacd48ff0e8172f",
+    "url": "https://cdn.modrinth.com/data/YL57xq9U/versions/1CMVXDHo/iris-1.7.2%2Bmc1.20.1.jar"
   },
   "item-highlighter.pw.toml": {
     "sha256": "c70e6bd800da24e50f7cbeaae1bf56cf036009e371cc1002e707bfaa4c01c588",
@@ -572,8 +572,8 @@
     "url": "https://cdn.modrinth.com/data/DjLobEOy/versions/7ZwnSrVW/Towns-and-Towers-1.12-Fabric%2BForge.jar"
   },
   "travelersbackpack.pw.toml": {
-    "sha256": "c9f7c9d0494071144f602925628e4990acf6a626001e52dff5a1555295a6607e",
-    "url": "https://cdn.modrinth.com/data/rlloIFEV/versions/xa2rNDt3/travelersbackpack-fabric-1.20.1-9.1.13.jar"
+    "sha256": "2629cfd2d5a2db5bb2973cff1d742df5bc2acfc1eda81da0016d7d8ca5736563",
+    "url": "https://cdn.modrinth.com/data/rlloIFEV/versions/yec216MV/travelersbackpack-fabric-1.20.1-9.1.15.jar"
   },
   "treechop.pw.toml": {
     "sha256": "66ad56c20fc07fddbfc5144d98c70fa85b5fce43dd0d68474a4aa5d2d748705f",

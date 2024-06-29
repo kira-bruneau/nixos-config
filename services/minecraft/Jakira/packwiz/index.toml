@@ -127,7 +127,7 @@ metafile = true
 
 [[files]]
 file = "mods/botarium.pw.toml"
-hash = "43fe767a08365fa6c049c8e35323f6fd1a0aa4602725126e460ae6fd514888be"
+hash = "d4b79652245914a4f376f13a0a11c12b624613be9df788e227572ee7f5281f6c"
 metafile = true
 
 [[files]]
@@ -467,7 +467,7 @@ metafile = true
 
 [[files]]
 file = "mods/iris.pw.toml"
-hash = "268c5ed7677153bbf1bc4d37e6d5825388fa5d444c67f4b399fd4ce708b773b5"
+hash = "aac37788ac1acd537a8b5b32fc2489cddf8034f196f7f38c0755837764b4f01d"
 metafile = true
 
 [[files]]
@@ -717,7 +717,7 @@ metafile = true
 
 [[files]]
 file = "mods/travelersbackpack.pw.toml"
-hash = "4371fb81920fbe53fafa0eef2d5f49338e20cd137575c86185658dfa94e32ac8"
+hash = "a0de07d074c2f5d0e72f70a7b066f4d5aa2748179f05ddca2189376651c29464"
 metafile = true
 
 [[files]]
