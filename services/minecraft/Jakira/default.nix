@@ -39,15 +39,14 @@ in
           "/config/iris.properties"
           "/config/item_obliterator.json5"
           "/config/NoChatReports/NCR-Client.json"
-          "/config/openloader/data/better-hephaestus"
-          "/config/openloader/data/fabric-biomes-terralinth-compat"
+          "/config/openloader/data"
+          "/config/openloader/resources"
           "/config/tconstruct-common.toml"
           "/config/universal-graves/config.json"
           "/config/xaerominimap.txt"
           "/config/xaeroworldmap.txt"
           "/mods/*.jar"
           "/options.txt"
-          "/resourcepacks/*"
           "/shaderpacks/*"
         ];
 
