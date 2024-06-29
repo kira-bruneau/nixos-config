@@ -28,7 +28,6 @@ in
     files = {
       "automodpack/automodpack-server.json".value = {
         modpackName = "Jakira";
-        generateModpackOnStart = false;
         syncedFiles = [
           "/config/artifacts/common.json5"
           "/config/bclib/client.json"
