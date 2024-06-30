@@ -34,6 +34,7 @@ in
           "/config/bclib/client.json"
           "/config/carryon-common.json"
           "/config/emi.css"
+          "/config/fabric_loader_dependencies.json"
           "/config/inventoryprofilesnext/integrationHints/travelersbackpack.json"
           "/config/inventoryprofilesnext/inventoryprofiles.json"
           "/config/iris.properties"
@@ -190,6 +191,20 @@ in
         }
       '';
 
+      # version must be first key - can't use builtins.toJSON
+      "config/fabric_loader_dependencies.json" = pkgs.writeText "fabric_loader_dependencies.json" ''
+        {
+          "version": 1,
+          "overrides": {
+            "create": {
+              "breaks": {
+                "sound_physics_remastered": "<1.20.1-1.4.0"
+              }
+            }
+          }
+        }
+      '';
+
       "config/inventoryprofilesnext/inventoryprofiles.json".value = {
         GuiSettings = {
           enable_inventory_editor_button.value = false;
@@ -298,6 +313,7 @@ in
         joinedFirstServer:true
         skipMultiplayerWarning:true
         tutorialStep:none
+        directionalAudio:true
       '';
 
       # TODO: This should be included as part of packwiz2nix

@@ -567,6 +567,10 @@
     "sha256": "e6ee1af296b48c2dfaac1fa91c9e11e3b0c0bad53934a5e0dee2c1df3aa729ce",
     "url": "https://cdn.modrinth.com/data/AANobbMI/versions/dEpHs0Hg/sodium-fabric-0.5.10%2Bmc1.20.1.jar"
   },
+  "sound-physics-remastered.pw.toml": {
+    "sha256": "ed20be2b8314eb599cf2f2b31b4aab80601d8c208102ab6d5a906de9518e4121",
+    "url": "https://cdn.modrinth.com/data/qyVF9oeo/versions/qcWiQYte/sound-physics-remastered-fabric-1.20.1-1.4.2.jar"
+  },
   "spark.pw.toml": {
     "sha256": "00c034e684fa4471b41539dc29a8d39cc6f22eb29b2fa423895efc978a391d2d",
     "url": "https://cdn.modrinth.com/data/l6YH9Als/versions/XGW2fviP/spark-1.10.53-fabric.jar"
