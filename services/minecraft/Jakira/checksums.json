@@ -383,6 +383,10 @@
     "sha256": "64bf81726963996f1c3e1404e9058c352daf6bcdf96f931f75da66a2869cb9c2",
     "url": "https://cdn.modrinth.com/data/3ESR84kR/versions/tl9Z9uga/Item_Obliterator-MC1.20.1-Fabric_Quilt-2.3.0.jar"
   },
+  "jade-addons-fabric.pw.toml": {
+    "sha256": "439dd69c82c9c192cca2a94d7fdc280d3c9b87e2974c1593b70ede3df1e333fc",
+    "url": "https://cdn.modrinth.com/data/fThnVRli/versions/8NamGveF/JadeAddons-1.20.1-fabric-5.2.5.jar"
+  },
   "jade.pw.toml": {
     "sha256": "c3280cd439cf627d37af635ad4f642eedc294742948a526f5f895178e2c0cb1c",
     "url": "https://cdn.modrinth.com/data/nvQzSEkH/versions/re9m40O9/Jade-1.20-fabric-11.9.2.jar"
