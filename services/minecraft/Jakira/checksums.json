@@ -451,6 +451,10 @@
     "sha256": "a0c595355d680e0c87bf8eaebafedff6900d4e771a8d6894ee6d2d4374de8df9",
     "url": "https://cdn.modrinth.com/data/gvQqBUqZ/versions/ZSNsJrPI/lithium-fabric-mc1.20.1-0.11.2.jar"
   },
+  "lmd.pw.toml": {
+    "sha256": "7b9922427253b43770a4018b307bfd93073e9e0f4f07f661aa017fea7c6e8db0",
+    "url": "https://cdn.modrinth.com/data/vE2FN5qn/versions/CCOsRL93/letmedespawn-fabric-1.20.x-1.2.1.jar"
+  },
   "memoryleakfix.pw.toml": {
     "sha256": "b8ac33d7262e019710dd25e454116616bc9ed1f714ed910594b28a4c1da5adde",
     "url": "https://cdn.modrinth.com/data/NRjRiSSD/versions/5xvCCRjJ/memoryleakfix-fabric-1.17%2B-1.1.5.jar"
