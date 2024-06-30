@@ -706,6 +706,11 @@ hash = "5d694c42e5e6759807f1f5756de3dd24f098517143b8d8aac5721b7d5cf502b1"
 metafile = true
 
 [[files]]
+file = "mods/skip-backup-screen.pw.toml"
+hash = "e40ab47a18621558b0337ba5034d1282ec286d1eb75be990054b7b65ecc92d79"
+metafile = true
+
+[[files]]
 file = "mods/sleep.pw.toml"
 hash = "5ff76543b67925d459b3278db588cefcbed747cbfa320d2024cd3e32e66251cc"
 metafile = true

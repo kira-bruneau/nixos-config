@@ -563,6 +563,10 @@
     "sha256": "f32e0b0c9bebc99944ddc6a9dba8f8336af666aaba151c6839b8353a2acdd53a",
     "url": "https://cdn.modrinth.com/data/fuuu3xnx/versions/eh4IBlu2/Searchables-fabric-1.20.1-1.0.3.jar"
   },
+  "skip-backup-screen.pw.toml": {
+    "sha256": "c60e1b430634b8b3b7c3a3bff7011c541017f303e9a56a9de4722e30b0f9d370",
+    "url": "https://cdn.modrinth.com/data/uluMVcw5/versions/EVVIBc6z/SkipBackupScreen-1.0.jar"
+  },
   "sleep.pw.toml": {
     "sha256": "ca7bffeb7faa66aa721e7a0eadef0d63302c11b136bf204a03f53e2ae99e08a0",
     "url": "https://cdn.modrinth.com/data/WTzuSu8P/versions/xTfNPx1w/sleep-v.1.1.1.jar"
