@@ -1,0 +1,13 @@
+name = "AutoReconnect"
+filename = "autoreconnect-2.2.1.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/A9rziLV4/versions/pLQQC55S/autoreconnect-2.2.1.jar"
+hash-format = "sha1"
+hash = "1f2ad89d426958dcdaab475610bc6a4e12b8741b"
+
+[update]
+[update.modrinth]
+mod-id = "A9rziLV4"
+version = "pLQQC55S"
