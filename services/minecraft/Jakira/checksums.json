@@ -147,6 +147,10 @@
     "sha256": "be51b88b75c63b1123086b5f675a683984d504e01df3d9681da15c3187689ebf",
     "url": "https://cdn.modrinth.com/data/SaCpeal4/versions/D2F8i5te/comforts-fabric-6.3.5%2B1.20.1.jar"
   },
+  "continuity.pw.toml": {
+    "sha256": "669478ea6483f683c220564781bf0ef028517d53e1e7465f814350d474f0a5b1",
+    "url": "https://cdn.modrinth.com/data/1IjD5062/versions/84Zs6tNo/continuity-3.0.0-beta.5%2B1.20.1.jar"
+  },
   "controlling.pw.toml": {
     "sha256": "f7bbb7e37f2118af29450ec468d3ce4ec2606fead2861f4092a43509c6803ed6",
     "url": "https://cdn.modrinth.com/data/xv94TkTM/versions/6ipZLQSK/Controlling-fabric-1.20.1-12.0.2.jar"
