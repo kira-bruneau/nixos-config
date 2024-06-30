@@ -1,6 +1,6 @@
 name = "Jakira Modpack"
 author = "Kira"
-version = "1.3.3"
+version = "1.3.4"
 pack-format = "packwiz:1.1.0"
 
 [index]
