@@ -56,11 +56,6 @@ hash = "e5d87db8974fa2b69870d7ea2f0878ae7d9aabd5f6b1cadb0ea45cd641e89f24"
 metafile = true
 
 [[files]]
-file = "mods/autoreconnect.pw.toml"
-hash = "a6b573a662882ca6daf09638cca6920fe40cc80fe252541a6641e5e188615b39"
-metafile = true
-
-[[files]]
 file = "mods/badoptimizations.pw.toml"
 hash = "1596f0056944116fc58e9294ede2ecf069f11241ab57836b3096c57a008e67b3"
 metafile = true
