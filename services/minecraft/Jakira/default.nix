@@ -34,6 +34,7 @@ in
           "/config/bclib/client.json"
           "/config/carryon-common.json"
           "/config/emi.css"
+          "/config/entity_model_features.json"
           "/config/fabric_loader_dependencies.json"
           "/config/inventoryprofilesnext/integrationHints/travelersbackpack.json"
           "/config/inventoryprofilesnext/inventoryprofiles.json"
@@ -191,6 +192,11 @@ in
         }
       '';
 
+      "config/entity_model_features.json".value = {
+        # Fresh hand animations are incompatible with 3d skin layers
+        preventFirstPersonHandAnimating = true;
+      };
+
       # version must be first key - can't use builtins.toJSON
       "config/fabric_loader_dependencies.json" = pkgs.writeText "fabric_loader_dependencies.json" ''
         {
@@ -239,12 +245,25 @@ in
         verifiedIconEnabled = false;
       };
 
-      "config/openloader/data/Better_Hephaestus_v1.0.zip" = pkgs.fetchurl {
+      # TODO: This should be included as part of packwiz2nix
+      "config/openloader/data/Better_Hephaestus.zip" = pkgs.fetchurl {
         url = "https://cdn.modrinth.com/data/BHMItbSw/versions/onnZIMPF/Better_Hephaestus_v1.0.zip";
         hash = "sha256-ZH/6BZcXQAyCUKSque7wyvfKIRHe48x6b4UyJA6x3yc=";
       };
 
       "config/openloader/data/fabric-biomes-terralinth-compat" = ./fabric-biomes-terralinth-compat;
+
+      # TODO: This should be included as part of packwiz2nix
+      "config/openloader/resources/Expressive Fresh Moves.zip" = pkgs.fetchurl {
+        url = "https://cdn.modrinth.com/data/slufHzC2/versions/Sdg6a6Tc/Expressive%20Fresh%20Moves%20v3.0.1.zip";
+        hash = "sha256-pHlrVCoCJ1FcrpabE2/FG2zWr8ozUz62awxTInoTmps=";
+      };
+
+      # TODO: This should be included as part of packwiz2nix
+      "config/openloader/resources/FreshAnimations.zip" = pkgs.fetchurl {
+        url = "https://cdn.modrinth.com/data/50dA9Sha/versions/EuGq94MY/FreshAnimations_v1.9.1.zip";
+        hash = "sha256-5jc599RBSxv5MNfPWAXug5wTXB8RhS9a7l64WsQ7Yrw=";
+      };
 
       "config/presencefootsteps/userconfig.json".value = {
         volume = 20;

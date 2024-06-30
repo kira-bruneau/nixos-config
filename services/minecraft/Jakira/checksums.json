@@ -283,9 +283,17 @@
     "sha256": "4d967523b7ffcffe6acd0e995390a69dd9af5e6dd3e3573dd43ca42c32157bc0",
     "url": "https://cdn.modrinth.com/data/Lq6ojcWv/versions/4oiJql9P/endermanoverhaul-fabric-1.20.1-1.0.4.jar"
   },
+  "entity-model-features.pw.toml": {
+    "sha256": "ac1508eaa81909a19ba7ae776cad3ba4529a19427fed092186b6dba829264fb1",
+    "url": "https://cdn.modrinth.com/data/4I1XuqiY/versions/jkLvxFFA/entity_model_features_fabric_1.20.1-2.0.2.jar"
+  },
   "entityculling.pw.toml": {
     "sha256": "2dc40be98cb7157450f941673411f6d7a4ca69bf7dc1a47ba3b06a4e62a3e6f7",
     "url": "https://cdn.modrinth.com/data/NNAgCjsB/versions/F3RXDl1W/entityculling-fabric-1.6.6-mc1.20.1.jar"
+  },
+  "entitytexturefeatures.pw.toml": {
+    "sha256": "cbeda4d1cbc3a78ea35e5ed24fcbbc1a0429f7e0ffee8caaaf30c73b1061dba0",
+    "url": "https://cdn.modrinth.com/data/BVzZfTc1/versions/Iqpdkpj4/entity_texture_features_fabric_1.20.1-6.1.1.jar"
   },
   "eureka.pw.toml": {
     "sha256": "aad3679ebda20adc120c9a7a07a34d676908c1d92c6c2a6831c808c33c383dac",
