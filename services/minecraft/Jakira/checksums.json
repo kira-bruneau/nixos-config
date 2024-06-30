@@ -235,6 +235,10 @@
     "sha256": "e54940a921197ae63fb988ee12f88d667e7b17d124b5516be363e44fe2729409",
     "url": "https://cdn.modrinth.com/data/LQ3K71Q1/versions/jdsdQwkB/dynamic-fps-3.5.1%2Bminecraft-1.20.0-fabric.jar"
   },
+  "eating-animation.pw.toml": {
+    "sha256": "ff8fe184b3104b94c9e10e751f5730d3b1fec19894179743a2447367cb752463",
+    "url": "https://cdn.modrinth.com/data/rUgZvGzi/versions/AqXSvu6M/eating-animation-1.20%2B1.9.61.jar"
+  },
   "ebe.pw.toml": {
     "sha256": "1c4ce2c00d8cc6d2269de3cadaba551607c62692a8e5ad1d7c618462ed7ed05b",
     "url": "https://cdn.modrinth.com/data/OVuFYfre/versions/i3v1Skck/enhancedblockentities-0.9%2B1.20.jar"
