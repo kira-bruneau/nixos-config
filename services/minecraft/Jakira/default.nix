@@ -42,6 +42,7 @@ in
           "/config/openloader/data"
           "/config/openloader/resources"
           "/config/presencefootsteps/userconfig.json"
+          "/config/resourcepackoverrides.json"
           "/config/tconstruct-common.toml"
           "/config/universal-graves/config.json"
           "/config/xaerominimap.txt"
@@ -232,6 +233,50 @@ in
 
       "config/presencefootsteps/userconfig.json".value = {
         volume = 20;
+      };
+
+      "config/resourcepackoverrides.json".value = {
+        schema_version = 2;
+        pack_overrides = {
+          # Required
+          "continuity:default" = {
+            required = true;
+            hidden = true;
+          };
+
+          "continuity:glass_pane_culling_fix" = {
+            required = true;
+            hidden = true;
+          };
+
+          "minecraft:supporteatinganimation" = {
+            required = true;
+            hidden = true;
+          };
+
+          "Moonlight Mods Dynamic Assets" = {
+            required = true;
+            hidden = true;
+          };
+
+          "presencefootsteps:default_sound_pack" = {
+            required = true;
+            hidden = true;
+          };
+
+          # Optional
+          "extended_drawers:alt".force_compatible = true;
+
+          # Unnecessary
+          "$polymer-resources".hidden = true;
+
+          # Legacy
+          "create:legacy_copper".hidden = true;
+          "extended_drawers:dev".hidden = true;
+          "railways:legacy_palettes".hidden = true;
+          "railways:legacy_semaphore".hidden = true;
+          "vs_eureka:retro_helms".hidden = true;
+        };
       };
 
       "config/xaerominimap.txt" = pkgs.writeText "xaerominimap.txt" ''

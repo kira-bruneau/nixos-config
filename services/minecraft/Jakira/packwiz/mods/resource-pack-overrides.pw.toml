@@ -1,0 +1,13 @@
+name = "Resource Pack Overrides"
+filename = "ResourcePackOverrides-v8.0.3-1.20.1-Fabric.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/YsFycamt/versions/2LDowIR8/ResourcePackOverrides-v8.0.3-1.20.1-Fabric.jar"
+hash-format = "sha1"
+hash = "4caf15fe7fd80186f5bb414ec61628f094570a17"
+
+[update]
+[update.modrinth]
+mod-id = "YsFycamt"
+version = "2LDowIR8"
