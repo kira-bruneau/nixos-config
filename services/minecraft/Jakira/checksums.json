@@ -515,6 +515,10 @@
     "sha256": "7dd06f560b44173d9254a0a9edb7f8ba4156c963dcc378ccf432440441b53938",
     "url": "https://cdn.modrinth.com/data/tagwiZkJ/versions/EYWxtHOI/polymorph-fabric-0.49.5%2B1.20.1.jar"
   },
+  "presence-footsteps.pw.toml": {
+    "sha256": "7aded67b6363c9ca4b5003780a6b67cbbb60458e0d782017819ced617ae11cd9",
+    "url": "https://cdn.modrinth.com/data/rcTfTZr3/versions/LjDXTyEn/PresenceFootsteps-1.9.4%2B1.20.1.jar"
+  },
   "resourceful-config.pw.toml": {
     "sha256": "fcf04aac2e1d64f63ecf83cabc57b8058c99a34a4a9e5fa3289d83bf82e04815",
     "url": "https://cdn.modrinth.com/data/M1953qlQ/versions/PlEObkl9/resourcefulconfig-fabric-1.20.1-2.1.2.jar"

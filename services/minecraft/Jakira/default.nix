@@ -40,6 +40,7 @@ in
           "/config/NoChatReports/NCR-Client.json"
           "/config/openloader/data"
           "/config/openloader/resources"
+          "/config/presencefootsteps/userconfig.json"
           "/config/tconstruct-common.toml"
           "/config/universal-graves/config.json"
           "/config/xaerominimap.txt"
@@ -219,6 +220,10 @@ in
       };
 
       "config/openloader/data/fabric-biomes-terralinth-compat" = ./fabric-biomes-terralinth-compat;
+
+      "config/presencefootsteps/userconfig.json".value = {
+        volume = 20;
+      };
 
       "config/xaerominimap.txt" = pkgs.writeText "xaerominimap.txt" ''
         ignoreUpdate:1
