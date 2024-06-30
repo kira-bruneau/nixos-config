@@ -15,6 +15,10 @@
     "sha256": "c42c1ace7518e9cb542cb281d256456f8c27e7b0a296797f729802f302355e27",
     "url": "https://cdn.modrinth.com/data/XxWD5pD3/versions/qpG9cRjY/appliedenergistics2-fabric-15.2.0.jar"
   },
+  "ambientsounds.pw.toml": {
+    "sha256": "67757cb96603a62c963adfa53721a602620835a42eb41679a25124daa223e9cc",
+    "url": "https://cdn.modrinth.com/data/fM515JnW/versions/igkw5jai/AmbientSounds_FABRIC_v6.0.2_mc1.20.1.jar"
+  },
   "amendments.pw.toml": {
     "sha256": "3a03f686437aca2f743a61e6c7adc6071dfda25a32c6f6101f4d3e2cdd6010d6",
     "url": "https://cdn.modrinth.com/data/6iTJugQR/versions/Fk0Km5bb/amendments-1.20-1.2.8-fabric.jar"
@@ -206,6 +210,10 @@
   "createaddition.pw.toml": {
     "sha256": "a275f5073e0da88f958ec83eb4241e94743d405f21634e110e38093e9b6f2f54",
     "url": "https://cdn.modrinth.com/data/kU1G12Nn/versions/vV4bZmhm/createaddition-fabric%2B1.20.1-1.2.4.jar"
+  },
+  "creativecore.pw.toml": {
+    "sha256": "bfeb018eeb8c042a86e7401fc48ff6f6d51143310624225a074db8878aa2610a",
+    "url": "https://cdn.modrinth.com/data/OsZiaDHq/versions/YnHGMBbt/CreativeCore_FABRIC_v2.11.30_mc1.20.1.jar"
   },
   "creeper-overhaul.pw.toml": {
     "sha256": "cdbfbdfe66dab1791b9a79f11fffa64615e7d8f70a8dbe2228aed7f147e32d43",

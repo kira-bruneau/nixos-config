@@ -29,6 +29,7 @@ in
       "automodpack/automodpack-server.json".value = {
         modpackName = "Jakira";
         syncedFiles = [
+          "/config/ambientsounds-client.json"
           "/config/artifacts/common.json5"
           "/config/bclib/client.json"
           "/config/carryon-common.json"
@@ -173,6 +174,14 @@ in
       "allowed_symlinks.txt" = pkgs.writeText "allowed_symlinks.txt" ''
         /nix/store
       '';
+
+      "config/ambientsounds-client.json".value = {
+        general.volume = 0.8;
+        categories = {
+          cave = 0.3;
+          wind = 0.25;
+        };
+      };
 
       "config/emi.css" = pkgs.writeText "emi.css" ''
         #general {

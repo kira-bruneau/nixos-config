@@ -21,6 +21,11 @@ hash = "73ca8e414d5370acc3a2d6eda4f4b7f1c273c78b0f5545a8c42425dec18e22f0"
 metafile = true
 
 [[files]]
+file = "mods/ambientsounds.pw.toml"
+hash = "b72703b1946aad223f2b3c8090173f8dd98d9af9a8f3ed3c22ed881141da880b"
+metafile = true
+
+[[files]]
 file = "mods/amendments.pw.toml"
 hash = "64d78922bc5e9e825411bada42be1ee6816da1f6e419d6034089b3d3b85da2fb"
 metafile = true
@@ -258,6 +263,11 @@ metafile = true
 [[files]]
 file = "mods/createaddition.pw.toml"
 hash = "d7efd7d686ed6465c3eb2a71a5be177876a774388fbb31804c29f3c55141b8df"
+metafile = true
+
+[[files]]
+file = "mods/creativecore.pw.toml"
+hash = "01c94894fc8ce4a564c7ad0a74d71d4b75d8cc5ad85e921cfc71c013d52adeca"
 metafile = true
 
 [[files]]
