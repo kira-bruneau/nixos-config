@@ -661,6 +661,11 @@ hash = "9305abd7bed1a6175113e2fca0fe65174023cda93ce42716c5a94eba5d715bbf"
 metafile = true
 
 [[files]]
+file = "mods/observable.pw.toml"
+hash = "4a25843fc3042ddcf14e4abbd3426d68a76a7e2fde9091db8c6bea295c04a67e"
+metafile = true
+
+[[files]]
 file = "mods/open-loader.pw.toml"
 hash = "ec277331d582b3e88b3f6bed3a77f4f526689680507d718f76a1d0fd03ffcf54"
 metafile = true

@@ -527,6 +527,10 @@
     "sha256": "f7fd42e6987e5fdacc0664e706cf7e50812d6707d11a98440c46bf646ff6aa7e",
     "url": "https://cdn.modrinth.com/data/Jdbbtt0i/versions/ExoJ4bOE/CreateNumismatics-1.0.6%2Bfabric-mc1.20.1.jar"
   },
+  "observable.pw.toml": {
+    "sha256": "8be1d54eff87623e83199c71745db8f5d5bb523bb2d3aaec3d8f6368b302f7a5",
+    "url": "https://cdn.modrinth.com/data/VYRu7qmG/versions/797ujtju/observable-4.4.1.jar"
+  },
   "open-loader.pw.toml": {
     "sha256": "c887b6cb300d40e2571ddfaae6cac4197b4b9f80d131e43119db9e6c0cdf04c1",
     "url": "https://cdn.modrinth.com/data/KwWsINvD/versions/x9NMb7rU/OpenLoader-Fabric-1.20.1-19.0.4.jar"
