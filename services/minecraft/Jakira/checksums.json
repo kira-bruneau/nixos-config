@@ -319,6 +319,10 @@
     "sha256": "17e7b210e4bbcb7613f52bd3dad76bc495853130ec307725a0853cf207d705ba",
     "url": "https://cdn.modrinth.com/data/7vxePowz/versions/5dZdVy3m/FarmersDelight-1.20.1-2.1.1%2Brefabricated.jar"
   },
+  "fastload.pw.toml": {
+    "sha256": "e13ab713f9779623de29bb50396b3202d670532bd4605f74c907d4f7834c1637",
+    "url": "https://cdn.modrinth.com/data/kCpssoSb/versions/ys9T20o4/Fastload%2B1.18.2-1.20-3.4.0.jar"
+  },
   "fastquit.pw.toml": {
     "sha256": "6c07d505a7c7435c9813edf68103c8320e37c20daf95418d508aac2681212a78",
     "url": "https://cdn.modrinth.com/data/x1hIzbuY/versions/tNgyOUMr/fastquit-3.0.0%2B1.20%2B.jar"
@@ -414,10 +418,6 @@
   "krypton.pw.toml": {
     "sha256": "69ad1810206ce12181b1b083640f044e7e250781c36c96c655eac36209057698",
     "url": "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"
-  },
-  "ksyxis.pw.toml": {
-    "sha256": "c820280f0d5073a467f564269440285b7cad5345a5da733696719e92b95a1dc8",
-    "url": "https://cdn.modrinth.com/data/2ecVyZ49/versions/QFfBwOwT/Ksyxis-1.3.2.jar"
   },
   "lambdynamiclights.pw.toml": {
     "sha256": "20433fb9a20f9450599bde4d8f0e8b0898eefdbda13e47d68430d31422c9f564",
