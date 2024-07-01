@@ -99,6 +99,10 @@
     "sha256": "0159f382a5b06750778eaa07944aaa45a8dbbed156baabc9fbf0cc53b375da1e",
     "url": "https://cdn.modrinth.com/data/98ytUvlc/versions/tI2AznoW/bettertrims-2.3.1.jar"
   },
+  "birds-boids-addon.pw.toml": {
+    "sha256": "22a032eace3818714e5a3608e61dfac8cd5a4461055f871aa60bb734a60266e2",
+    "url": "https://cdn.modrinth.com/data/CvX6rOtB/versions/JK2QzDCr/birdsboids-1.1.0.jar"
+  },
   "boids.pw.toml": {
     "sha256": "6503e0d7ab6c1a8653e758392d4a788ab743194b3ac553389ce35bd49b56b85b",
     "url": "https://cdn.modrinth.com/data/2OckSy74/versions/14pDAJuk/Boids-1.2.2.jar"
