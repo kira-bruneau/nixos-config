@@ -223,6 +223,10 @@
     "sha256": "6d4e73a95e7bee1e0f9b2a531d40fcc255490c064f4607f58d11f48c4c61101b",
     "url": "https://cdn.modrinth.com/data/cl223EMc/versions/tBnivdbu/cristellib-1.1.5-fabric.jar"
   },
+  "cull-less-leaves.pw.toml": {
+    "sha256": "da533e0390bba60f3f77d1ef03404ede30fdd0a0ce0cf15fd2a47f0caea1f4b8",
+    "url": "https://cdn.modrinth.com/data/iG6ZHsUV/versions/TFvkv8XK/CullLessLeaves-1.3.0.jar"
+  },
   "decorative-blocks.pw.toml": {
     "sha256": "9273e91494670ddab6feaa6151df5a65c05966fe14306476e67ab77af37f4f72",
     "url": "https://cdn.modrinth.com/data/t6BIRVZn/versions/FibgWXh0/decorative_blocks-fabric-1.20.1-4.1.3.jar"
