@@ -459,6 +459,10 @@
     "sha256": "b8ac33d7262e019710dd25e454116616bc9ed1f714ed910594b28a4c1da5adde",
     "url": "https://cdn.modrinth.com/data/NRjRiSSD/versions/5xvCCRjJ/memoryleakfix-fabric-1.17%2B-1.1.5.jar"
   },
+  "modelfix.pw.toml": {
+    "sha256": "f6a7b7b6787d3aea9e48964f4abc763a7a09f9c108fb01f6d183be54953b26ba",
+    "url": "https://cdn.modrinth.com/data/QdG47OkI/versions/GkLb4bRl/modelfix-1.15-fabric.jar"
+  },
   "modernfix.pw.toml": {
     "sha256": "026cf7bbd8168bdbd5b89bbd787650336c92ecdfd75ea9c727c5602c78cf94d6",
     "url": "https://cdn.modrinth.com/data/nmDcB62a/versions/CB2UOpt3/modernfix-fabric-5.18.1%2Bmc1.20.1.jar"
