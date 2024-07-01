@@ -211,6 +211,12 @@ in
         }
       '';
 
+      "config/inventoryprofilesnext/integrationHints/travelersbackpack.json".value = {
+        "com.tiviacz.travelersbackpack.client.screen.TravelersBackpackHandledScreen" = {
+          ignore = true;
+        };
+      };
+
       "config/inventoryprofilesnext/inventoryprofiles.json".value = {
         GuiSettings = {
           enable_inventory_editor_button.value = false;
@@ -225,11 +231,6 @@ in
         };
       };
 
-      "config/inventoryprofilesnext/integrationHints/travelersbackpack.json".value = {
-        "com.tiviacz.travelersbackpack.client.screen.TravelersBackpackHandledScreen" = {
-          ignore = true;
-        };
-      };
 
       "config/iris.properties".value = {
         disableUpdateMessage = true;
