@@ -99,6 +99,10 @@
     "sha256": "0159f382a5b06750778eaa07944aaa45a8dbbed156baabc9fbf0cc53b375da1e",
     "url": "https://cdn.modrinth.com/data/98ytUvlc/versions/tI2AznoW/bettertrims-2.3.1.jar"
   },
+  "boids.pw.toml": {
+    "sha256": "6503e0d7ab6c1a8653e758392d4a788ab743194b3ac553389ce35bd49b56b85b",
+    "url": "https://cdn.modrinth.com/data/2OckSy74/versions/14pDAJuk/Boids-1.2.2.jar"
+  },
   "bookshelf-lib.pw.toml": {
     "sha256": "4da44061c9daf2c8b44531609f381b9b92bb207d9709753ead3b6ef1f6adcd7a",
     "url": "https://cdn.modrinth.com/data/uy4Cnpcm/versions/CBnLZwRS/Bookshelf-Fabric-1.20.1-20.2.13.jar"
