@@ -696,6 +696,11 @@ hash = "ec277331d582b3e88b3f6bed3a77f4f526689680507d718f76a1d0fd03ffcf54"
 metafile = true
 
 [[files]]
+file = "mods/options-profiles.pw.toml"
+hash = "c06f45365c11bd0e6f6c45100053804020f5ba1c6a02c755861ab43c699eafc0"
+metafile = true
+
+[[files]]
 file = "mods/particle-core.pw.toml"
 hash = "bcab2649d66eaf63afd6cd4cbfed7d3721adfc042b5f942932fe90e65526b556"
 metafile = true

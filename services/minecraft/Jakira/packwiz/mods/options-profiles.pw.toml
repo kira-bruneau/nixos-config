@@ -1,0 +1,13 @@
+name = "Options Profiles"
+filename = "[fabric 1.20] options-profiles-1.0.4.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/DnyS3EEW/versions/k0wIuRnS/%5Bfabric%201.20%5D%20options-profiles-1.0.4.jar"
+hash-format = "sha1"
+hash = "4ebb90efd436528e75ffe5872f09291ebae6229e"
+
+[update]
+[update.modrinth]
+mod-id = "DnyS3EEW"
+version = "k0wIuRnS"

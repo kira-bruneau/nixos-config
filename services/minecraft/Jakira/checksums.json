@@ -555,6 +555,10 @@
     "sha256": "c887b6cb300d40e2571ddfaae6cac4197b4b9f80d131e43119db9e6c0cdf04c1",
     "url": "https://cdn.modrinth.com/data/KwWsINvD/versions/x9NMb7rU/OpenLoader-Fabric-1.20.1-19.0.4.jar"
   },
+  "options-profiles.pw.toml": {
+    "sha256": "0fd2dd0d5a4290a41b0e1554b5e20de7eee3db73ba3cc1c1e407b7940e46e9fe",
+    "url": "https://cdn.modrinth.com/data/DnyS3EEW/versions/k0wIuRnS/%5Bfabric%201.20%5D%20options-profiles-1.0.4.jar"
+  },
   "particle-core.pw.toml": {
     "sha256": "93e29531268fd32197008a095f6c8bb1917c7344ddd66f230660cae3c3f52b03",
     "url": "https://cdn.modrinth.com/data/RSeLon5O/versions/EU8wWnRn/particle_core-0.2.3%2B1.20.1.jar"
