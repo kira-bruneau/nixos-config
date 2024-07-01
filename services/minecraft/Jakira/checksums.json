@@ -355,6 +355,10 @@
     "sha256": "91e685925fff2fcaa51a73202a6edc9d2435f76552a8d97af88942c37643fd86",
     "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/CtENDTlF/ForgeConfigAPIPort-v8.0.0-1.20.1-Fabric.jar"
   },
+  "fzzy-config.pw.toml": {
+    "sha256": "d769dc0471eac900037a89a130d43a8c480305db942f557e1259083b372595b7",
+    "url": "https://cdn.modrinth.com/data/hYykXjDp/versions/hgurC4IZ/fzzy_config-0.3.5%2B1.20.1.jar"
+  },
   "gamemenuremovegfarb.pw.toml": {
     "sha256": "c95a719354835b88f4e1cc0afce43359af6a3266c9c86c812c2761ad60cd6789",
     "url": "https://cdn.modrinth.com/data/bKQclmIt/versions/RqkO2I7y/gamemenuremovegfarb-fabric-mc1.19.4-2.1.2.jar"
@@ -550,6 +554,10 @@
   "open-loader.pw.toml": {
     "sha256": "c887b6cb300d40e2571ddfaae6cac4197b4b9f80d131e43119db9e6c0cdf04c1",
     "url": "https://cdn.modrinth.com/data/KwWsINvD/versions/x9NMb7rU/OpenLoader-Fabric-1.20.1-19.0.4.jar"
+  },
+  "particle-core.pw.toml": {
+    "sha256": "93e29531268fd32197008a095f6c8bb1917c7344ddd66f230660cae3c3f52b03",
+    "url": "https://cdn.modrinth.com/data/RSeLon5O/versions/EU8wWnRn/particle_core-0.2.3%2B1.20.1.jar"
   },
   "playeranimator.pw.toml": {
     "sha256": "0b10021fa638997398110777747726b1cb7a27bc3f8ff1b12e2b93ac01784018",
