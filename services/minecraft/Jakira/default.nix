@@ -265,6 +265,12 @@ in
         hash = "sha256-5jc599RBSxv5MNfPWAXug5wTXB8RhS9a7l64WsQ7Yrw=";
       };
 
+      # TODO: This should be included as part of packwiz2nix
+      "config/openloader/resources/Xaeros Naturalist Icons" = pkgs.fetchurl {
+        url = "https://cdn.modrinth.com/data/T7ma60Gj/versions/EsHrJR5f/Xaeros%20Naturalist%20Icons%20-%201.20.1.zip";
+        hash = "sha256-U3Wtr3IkonjNidNOdPquYaBXsuxUMdIpdAu55KYcmt0=";
+      };
+
       "config/presencefootsteps/userconfig.json".value = {
         volume = 20;
       };
