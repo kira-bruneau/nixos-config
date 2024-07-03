@@ -647,6 +647,10 @@
     "sha256": "200681260b9d36632b7db214ceaac732128c4506b706fad81fa99cd7998e0371",
     "url": "https://cdn.modrinth.com/data/EEIwvQVo/versions/29RM9vrK/tidal-towns-1.3.jar"
   },
+  "timeoutout.pw.toml": {
+    "sha256": "5ec692b7407e174c1cdb686d880eb264991cb749fc5ed077e8ec934c71125c8b",
+    "url": "https://cdn.modrinth.com/data/7cFX55fD/versions/1.0.3/timeoutout-1.0.3%2B1.19.1.jar"
+  },
   "toms-trading-network.pw.toml": {
     "sha256": "bc3a932a4bad3c34bf0f5c44220d7c0b1e3dc40bee36a33e3b82e31ca228fee6",
     "url": "https://cdn.modrinth.com/data/x5iQ3NM5/versions/KCwwK1st/toms_trading_network-fabric-1.20-0.2.4.jar"

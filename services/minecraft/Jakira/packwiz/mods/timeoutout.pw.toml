@@ -1,0 +1,13 @@
+name = "TimeOutOut"
+filename = "timeoutout-1.0.3+1.19.1.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/7cFX55fD/versions/1.0.3/timeoutout-1.0.3%2B1.19.1.jar"
+hash-format = "sha1"
+hash = "ca85e8276c84d67361331ad2aadd5ed1eab3cf8c"
+
+[update]
+[update.modrinth]
+mod-id = "7cFX55fD"
+version = "iDUwwz5Q"
