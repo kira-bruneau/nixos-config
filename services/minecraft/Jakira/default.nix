@@ -164,6 +164,11 @@ in
           uuid = "13290979-c320-4975-b1fe-8906f36851fe";
           level = 4;
         }
+        {
+          name = "cptjackl";
+          uuid = "7f32461d-39aa-4e8a-b2a6-73a09cbf8fbf";
+          level = 4;
+        }
       ];
     };
 
