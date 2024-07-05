@@ -399,10 +399,6 @@
     "sha256": "42aff98546b31ca0f3b2afcb619291f9d48e85c4a6fac646c505192a6f6df28f",
     "url": "https://cdn.modrinth.com/data/Orvt0mRa/versions/XPsoVC5n/indium-1.0.32%2Bmc1.20.1.jar"
   },
-  "interactive.pw.toml": {
-    "sha256": "e18ff8428ccb8fb670171cd681c8878affe8d3b4699642e46a6c0e2f862197ce",
-    "url": "https://cdn.modrinth.com/data/MyfCcqiE/versions/VLHAtRBQ/create_interactive-1.0.3-beta.2%2Be045de2a48.jar"
-  },
   "interiors.pw.toml": {
     "sha256": "a7a57cc227ff65d2114313dced70e748e2e86c52d8b76daaa5edb493d42d0371",
     "url": "https://cdn.modrinth.com/data/r4Knci2k/versions/7QGvBpZU/interiors-0.5.3%2Bfabric-mc1.20.1.jar"

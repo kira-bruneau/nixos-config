@@ -501,11 +501,6 @@ hash = "523659698dcfb97f79c9971a9c3ce41ba5e654d55b0464d73da01a63cd9a1824"
 metafile = true
 
 [[files]]
-file = "mods/interactive.pw.toml"
-hash = "b094e34df4e623024f47c4ed8ca41684f736c2e2c6d4f9504fa2660254e51d66"
-metafile = true
-
-[[files]]
 file = "mods/interiors.pw.toml"
 hash = "957fccf5d7bb580339b0ac2b8de2986415ef83fe297963e888e97d2063afefc3"
 metafile = true
