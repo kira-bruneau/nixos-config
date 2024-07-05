@@ -587,6 +587,10 @@
     "sha256": "da477c897a8bc0e080aa1e00b813c1d4bba26af80be2dbda10afd12a0ca40115",
     "url": "https://cdn.modrinth.com/data/ZP7xHXtw/versions/VHNE9K3D/rrls-4.0.6.1%2Bmc1.20.1-fabric.jar"
   },
+  "seamless-loading-screen.pw.toml": {
+    "sha256": "c187aab0b36703bc88050514a528c05eeb0f67a0def61d3fc2e10faee4c45fe6",
+    "url": "https://cdn.modrinth.com/data/TyTPFOiF/versions/31S6g6rg/seamless-loading-screen-2.0.3%2B1.20.1-fabric.jar"
+  },
   "searchables.pw.toml": {
     "sha256": "f32e0b0c9bebc99944ddc6a9dba8f8336af666aaba151c6839b8353a2acdd53a",
     "url": "https://cdn.modrinth.com/data/fuuu3xnx/versions/eh4IBlu2/Searchables-fabric-1.20.1-1.0.3.jar"
