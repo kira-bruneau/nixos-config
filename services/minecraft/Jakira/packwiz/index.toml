@@ -566,6 +566,11 @@ hash = "b4ca05b39b85c27cd97ccb65d5fb832f5e9fd7ee5710542a3e69dfa30a97ea7d"
 metafile = true
 
 [[files]]
+file = "mods/leave-my-bars-alone.pw.toml"
+hash = "c7e8c7d30f80fab35c6f1aee8cf66f7ebd3923fa43b4a52a1f9ae4b6fc34df3d"
+metafile = true
+
+[[files]]
 file = "mods/libipn.pw.toml"
 hash = "3de6db38b0870f8bc8c61b2698d4b64ac1610b9066536be1b22b3a8257ab73fe"
 metafile = true
@@ -713,6 +718,11 @@ metafile = true
 [[files]]
 file = "mods/presence-footsteps.pw.toml"
 hash = "35f2b7d27291e3a313c986137b70b7675bc32b3d0097e0940c7e23b0cf62b92e"
+metafile = true
+
+[[files]]
+file = "mods/puzzles-lib.pw.toml"
+hash = "82180c5afb4bafeee1b8296b51d71fa59400368683d85433a11725739a3d85df"
 metafile = true
 
 [[files]]

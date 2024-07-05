@@ -451,6 +451,10 @@
     "sha256": "4f3b77273b57d019a8db58371e63e4426557c1bb7c9cc10536a03972122778c8",
     "url": "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"
   },
+  "leave-my-bars-alone.pw.toml": {
+    "sha256": "aee6c16bed017bdad541112e6864acaab2d3d6d4175d5f42d46fc654158e78af",
+    "url": "https://cdn.modrinth.com/data/gK9mebQg/versions/m1OeQHdG/LeaveMyBarsAlone-v8.0.0-1.20.1-Fabric.jar"
+  },
   "libipn.pw.toml": {
     "sha256": "3e75c8d8c32b2dfbf7bb1cdd91f5b0d30bb39eb43ecfcf1c25ca093409c1a606",
     "url": "https://cdn.modrinth.com/data/onSQdWhM/versions/Uygzs3iI/libIPN-fabric-1.20-4.0.2.jar"
@@ -570,6 +574,10 @@
   "presence-footsteps.pw.toml": {
     "sha256": "7aded67b6363c9ca4b5003780a6b67cbbb60458e0d782017819ced617ae11cd9",
     "url": "https://cdn.modrinth.com/data/rcTfTZr3/versions/LjDXTyEn/PresenceFootsteps-1.9.4%2B1.20.1.jar"
+  },
+  "puzzles-lib.pw.toml": {
+    "sha256": "a412f09ef80ecb16fce0e772f1ad7fd5966b071b97149c8dab9f4d61cdf33338",
+    "url": "https://cdn.modrinth.com/data/QAGBst4M/versions/xjQF8bha/PuzzlesLib-v8.1.21-1.20.1-Fabric.jar"
   },
   "resource-pack-overrides.pw.toml": {
     "sha256": "b713ec9bb9d5abee1982bc5d180754eaee98ed4bc7ddc72094dc89fee265ed7e",
