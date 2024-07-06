@@ -1,6 +1,4 @@
 {
-  inputs,
-  config,
   lib,
   pkgs,
   pkgsNixMinecraft,
@@ -8,10 +6,44 @@
 }:
 
 let
-  inherit (inputs.packwiz2nix.lib) mkPackwizPackages mkModLinks;
-  mods = mkPackwizPackages pkgs ./checksums.json;
-  versions = (builtins.fromTOML (builtins.readFile ./packwiz/pack.toml)).versions;
-  serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${versions.minecraft}";
+  importPackwizMetaFile =
+    root: path:
+    let
+      meta = builtins.fromTOML (builtins.readFile (root + "/${path}"));
+    in
+    {
+      name = (builtins.dirOf path) + "/${meta.filename}";
+      value = pkgs.fetchurl {
+        url = meta.download.url;
+        outputHash = meta.download.hash;
+        outputHashAlgo = meta.download.hash-format;
+      };
+    };
+
+  importPackwizIndex =
+    root: path:
+    builtins.listToAttrs (
+      builtins.map (
+        file:
+        if file.metafile or false == true then
+          importPackwizMetaFile root file.file
+        else
+          {
+            name = file.file;
+            value = root + "/${file.file}";
+          }
+      ) (builtins.fromTOML (builtins.readFile (root + "/${path}"))).files
+    );
+
+  importPackwizModpack =
+    root:
+    let
+      pack = builtins.fromTOML (builtins.readFile (root + "/pack.toml"));
+    in
+    pack // { files = importPackwizIndex root pack.index.file; };
+
+  pack = importPackwizModpack ./packwiz;
+  serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${pack.versions.minecraft}";
 in
 {
   imports = [ ../. ];
@@ -22,7 +54,7 @@ in
     jvmOpts = "-Xmx3G -Xms1G";
     package = pkgsNixMinecraft.fabricServers.${serverVersion}.override {
       jre_headless = pkgs.jdk17_headless;
-      loaderVersion = versions.fabric;
+      loaderVersion = pack.versions.fabric;
     };
 
     files = {
@@ -172,7 +204,7 @@ in
       ];
     };
 
-    symlinks = (mkModLinks mods) // {
+    symlinks = pack.files // {
       "mods/automodpack-fabric-4.0.0-beta1-1.20.1.jar" = pkgs.requireFile {
         name = "automodpack-fabric-4.0.0-beta1-1.20.1.jar";
         url = "https://github.com/Skidamek/AutoModpack/actions/runs/8317674272/artifacts/1333325852";
@@ -236,7 +268,6 @@ in
         };
       };
 
-
       "config/iris.properties".value = {
         disableUpdateMessage = true;
         enableShaders = true;
@@ -249,32 +280,6 @@ in
         showReloadButton = false;
         showServerSafety = false;
         verifiedIconEnabled = false;
-      };
-
-      # TODO: This should be included as part of packwiz2nix
-      "config/openloader/data/Better_Hephaestus.zip" = pkgs.fetchurl {
-        url = "https://cdn.modrinth.com/data/BHMItbSw/versions/onnZIMPF/Better_Hephaestus_v1.0.zip";
-        hash = "sha256-ZH/6BZcXQAyCUKSque7wyvfKIRHe48x6b4UyJA6x3yc=";
-      };
-
-      "config/openloader/data/fabric-biomes-terralinth-compat" = ./fabric-biomes-terralinth-compat;
-
-      # TODO: This should be included as part of packwiz2nix
-      "config/openloader/resources/Expressive Fresh Moves.zip" = pkgs.fetchurl {
-        url = "https://cdn.modrinth.com/data/slufHzC2/versions/Sdg6a6Tc/Expressive%20Fresh%20Moves%20v3.0.1.zip";
-        hash = "sha256-pHlrVCoCJ1FcrpabE2/FG2zWr8ozUz62awxTInoTmps=";
-      };
-
-      # TODO: This should be included as part of packwiz2nix
-      "config/openloader/resources/FreshAnimations.zip" = pkgs.fetchurl {
-        url = "https://cdn.modrinth.com/data/50dA9Sha/versions/EuGq94MY/FreshAnimations_v1.9.1.zip";
-        hash = "sha256-5jc599RBSxv5MNfPWAXug5wTXB8RhS9a7l64WsQ7Yrw=";
-      };
-
-      # TODO: This should be included as part of packwiz2nix
-      "config/openloader/resources/Xaeros Naturalist Icons" = pkgs.fetchurl {
-        url = "https://cdn.modrinth.com/data/T7ma60Gj/versions/EsHrJR5f/Xaeros%20Naturalist%20Icons%20-%201.20.1.zip";
-        hash = "sha256-U3Wtr3IkonjNidNOdPquYaBXsuxUMdIpdAu55KYcmt0=";
       };
 
       "config/presencefootsteps/userconfig.json".value = {
@@ -346,12 +351,6 @@ in
         tutorialStep:none
         directionalAudio:true
       '';
-
-      # TODO: This should be included as part of packwiz2nix
-      "shaderpacks/ComplementaryUnbound.zip" = pkgs.fetchurl {
-        url = "https://cdn.modrinth.com/data/R6NEzAwj/versions/qWTl3wic/ComplementaryUnbound_r5.2.1.zip";
-        hash = "sha256-+1BFqK4FUXId3FyPOSgFfNZBXMw8p9+UfK+1VWRUfdA=";
-      };
 
       "shaderpacks/ComplementaryUnbound.zip.txt" = {
         format = pkgs.formats.keyValue { };

@@ -433,21 +433,6 @@
         "type": "github"
       }
     },
-    "packwiz2nix": {
-      "locked": {
-        "lastModified": 1683887515,
-        "narHash": "sha256-eYxlzal5DNUvpv3F9W42wREdRi6h1hceOcgoiN6gvRg=",
-        "owner": "getchoo",
-        "repo": "packwiz2nix",
-        "rev": "1c9c0ef2e40fbd1a921b446d8fe5884e645e4308",
-        "type": "github"
-      },
-      "original": {
-        "owner": "getchoo",
-        "repo": "packwiz2nix",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "disko": "disko",
@@ -463,8 +448,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-chromium": "nixpkgs-chromium",
-        "nixpkgs-unstable": "nixpkgs-unstable",
-        "packwiz2nix": "packwiz2nix"
+        "nixpkgs-unstable": "nixpkgs-unstable"
       }
     },
     "systems": {

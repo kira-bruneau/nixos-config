@@ -1,0 +1,13 @@
+name = "Better Hephaestus"
+filename = "Better_Hephaestus_v1.0.zip"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/BHMItbSw/versions/onnZIMPF/Better_Hephaestus_v1.0.zip"
+hash-format = "sha1"
+hash = "74a319f423bb7356272326a7011e7e2814d19f69"
+
+[update]
+[update.modrinth]
+mod-id = "BHMItbSw"
+version = "onnZIMPF"
