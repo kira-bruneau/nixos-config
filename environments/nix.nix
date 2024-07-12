@@ -1,7 +1,7 @@
 {
   inputs,
   config,
-  pkgs,
+  pkgsUnstable,
   ...
 }:
 
@@ -12,6 +12,8 @@
   );
 
   nix = {
+    package = pkgsUnstable.lix;
+
     # Pin nixpkgs in flake registry
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
@@ -75,7 +77,7 @@
       (
         cd /var/lib/nix-daemon
         if [ ! -e private-key ] || [ ! -e public-key ]; then
-          ${pkgs.nix}/bin/nix-store --generate-binary-cache-key \
+          ${config.nix.package}/bin/nix-store --generate-binary-cache-key \
             ${config.networking.hostName} private-key public-key
         fi
       )
