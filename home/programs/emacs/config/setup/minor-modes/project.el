@@ -30,7 +30,25 @@
   (defun project-magit-dispatch ()
     (interactive)
     (setq default-directory (project-root (project-current t)))
-    (magit-dispatch)))
+    (magit-dispatch))
+
+  ;; Only save project buffers before compilation
+  ;; Source: https://andreyor.st/posts/2022-07-16-project-el-enhancements/
+  (define-advice project-compile (:around (fn) save-project-buffers)
+    "Only ask to save project-related buffers."
+    (let* ((project-buffers (project-buffers (project-current)))
+           (compilation-save-buffers-predicate
+            (lambda () (memq (current-buffer) project-buffers))))
+      (funcall fn)))
+
+  (define-advice recompile (:around (fn &optional edit-command) save-project-buffers)
+    "Only ask to save project-related buffers if inside a project."
+    (if (project-current)
+        (let* ((project-buffers (project-buffers (project-current)))
+               (compilation-save-buffers-predicate
+                (lambda () (memq (current-buffer) project-buffers))))
+          (funcall fn edit-command))
+      (funcall fn edit-command))))
 
 (use-package projection-commands
   :bind (:map project-prefix-map
