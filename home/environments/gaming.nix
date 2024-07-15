@@ -57,7 +57,7 @@ in
     { app_id = "^org.dolphin-emu.$"; }
     { class = "^cemu.exe$"; }
     { class = "^dolphin-emu$"; }
-    { class = "^Steam$"; }
+    { class = "^steam$"; }
   ];
 
   home.file = {
