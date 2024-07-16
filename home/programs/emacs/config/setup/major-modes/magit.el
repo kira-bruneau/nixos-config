@@ -4,8 +4,9 @@
   (setq magit-no-message '("Turning on magit-auto-revert-mode..."))
 
   :config
-  (setq transient-enable-popup-navigation t)
+  (setq magit-delete-by-moving-to-trash nil)
   (setq magit-save-repository-buffers nil)
+  (setq transient-enable-popup-navigation t)
 
   (setq
    magit-repolist-columns
