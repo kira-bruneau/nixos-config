@@ -89,6 +89,9 @@
 (require 'xdg)
 (setq auth-sources (list (expand-file-name "authinfo/authinfo.gpg" (xdg-data-home))))
 
+;; Prefer tsc executable from PATH
+(setq tsc-dyn-get-from nil)
+
 ;; Prefer tree-sitter modes
 (setq major-mode-remap-alist
  '((c++-mode . c++-ts-mode)
