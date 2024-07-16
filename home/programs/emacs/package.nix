@@ -117,6 +117,7 @@ callPackage ./wrapper.nix {
     epkgs.gcmh
     epkgs.git-modes
     epkgs.graphql-ts-mode
+    epkgs.haskell-mode
     epkgs.ivy
     epkgs.latex-preview-pane
     epkgs.lsp-java
