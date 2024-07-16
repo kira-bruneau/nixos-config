@@ -13,6 +13,7 @@ in
     ../programs/htop
     ../programs/ssh
     ../programs/tmux
+    ./nix-gc.nix
   ];
 
   home.packages = with pkgs; [
