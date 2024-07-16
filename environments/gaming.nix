@@ -27,12 +27,6 @@
     };
   };
 
-  # Enable ReplaySorcery for background screen recording & instant replays
-  services.replay-sorcery = {
-    enable = true;
-    enableSysAdminCapability = true;
-  };
-
   # Set higher file limit for wine esync support
   security.pam.loginLimits = [
     {
