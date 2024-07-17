@@ -14,10 +14,12 @@
           search = {
             force = true;
             default = "DuckDuckGo";
+
             order = [
               "DuckDuckGo"
               "Google"
             ];
+
             engines = {
               "Amazon.ca".metaData.alias = "@a";
               "Bing".metaData.hidden = true;
@@ -37,10 +39,12 @@
                     ];
                   }
                 ];
+
                 icon = "${pkgs.fetchurl {
                   url = "https://github.githubassets.com/favicons/favicon.svg";
                   hash = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
                 }}";
+
                 definedAliases = [ "@gh" ];
               };
 
@@ -60,6 +64,7 @@
                     ];
                   }
                 ];
+
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 definedAliases = [ "@np" ];
               };
@@ -76,6 +81,7 @@
                     ];
                   }
                 ];
+
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 definedAliases = [ "@nw" ];
               };
@@ -92,6 +98,7 @@
                     ];
                   }
                 ];
+
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 definedAliases = [ "@ni" ];
               };
@@ -109,10 +116,12 @@
                     ];
                   }
                 ];
+
                 icon = "${pkgs.fetchurl {
                   url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
                   hash = "sha256-4zWTcHuL1SEKk8KyVFsOKYPbM4rc7WNa9KrGhK4dJyg=";
                 }}";
+
                 definedAliases = [ "@r" ];
               };
 
@@ -128,10 +137,12 @@
                     ];
                   }
                 ];
+
                 icon = "${pkgs.fetchurl {
                   url = "https://www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
                   hash = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
                 }}";
+
                 definedAliases = [ "@y" ];
               };
             };
@@ -145,6 +156,7 @@
             "browser.aboutConfig.showWarning" = false;
             "browser.aboutwelcome.enabled" = false;
             "browser.contentblocking.category" = "strict";
+
             "browser.newtabpage.blocked" = builtins.toJSON {
               # Dismiss builtin shortcuts
               "26UbzFJ7qT9/4DhodHKA1Q==" = 1; # youtube.com
@@ -155,6 +167,7 @@
               "oYry01JR5qiqP3ru9Hdmtg==" = 1; # amazon.ca
               "T9nJot5PurhJSy8n038xGA==" = 1; # twitter.com
             };
+
             "browser.newtabpage.enabled" = true;
             "browser.crashReports.unsubmittedCheck.enabled" = false;
             "browser.newtabpage.pinned" = builtins.toJSON [ ];
@@ -166,10 +179,12 @@
             "browser.tabs.tabClipWidth" = 999; # Hide close button on inactive tabs
             "browser.tabs.warnOnClose" = false;
             "browser.toolbars.bookmarks.visibility" = "newtab";
+
             "browser.uiCustomization.state" = builtins.toJSON {
               placements = {
                 widget-overflow-fixed-list = [ ];
                 unified-extensions-area = [ ];
+
                 nav-bar = [
                   "back-button"
                   "forward-button"
@@ -185,17 +200,21 @@
 
                   "unified-extensions-button"
                 ];
+
                 toolbar-menubar = [ "menubar-items" ];
+
                 TabsToolbar = [
                   "tabbrowser-tabs"
                   "new-tab-button"
                   "alltabs-button"
                 ];
+
                 PersonalToolbar = [
                   "import-button"
                   "personal-bookmarks"
                 ];
               };
+
               seen = [
                 "save-to-pocket-button"
                 "developer-button"
@@ -217,6 +236,7 @@
                 "_c2c003ee-bd69-42a2-b0e9-6f34222cb046_-browser-action" # Auto Tab Discard
                 "sponsorblocker_ajay_app-browser-action"
               ];
+
               dirtyAreaCache = [
                 "nav-bar"
                 "toolbar-menubar"
@@ -224,9 +244,11 @@
                 "PersonalToolbar"
                 "unified-extensions-area"
               ];
+
               currentVersion = 20;
               newElementCount = 2;
             };
+
             "browser.warnOnQuit" = false;
             "devtools.selfxss.count" = 5; # Allow pasting into console
             "dom.security.https_only_mode" = true;
@@ -318,9 +340,7 @@
             id = 0;
             name = "Firefox";
             path = config.home.username;
-            settings = {
-              "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
-            };
+            settings."extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
           }
         ];
       };
@@ -332,10 +352,12 @@
       name = profile.name;
       genericName = "Web Browser";
       icon = id;
+
       categories = [
         "Network"
         "WebBrowser"
       ];
+
       exec = "firefox -P ${profile.name} --new-tab %U";
     }) config.programs.firefox.profiles;
 
@@ -356,12 +378,15 @@
             "desktop-notification" = "allow";
             "persistent-storage" = "allow";
           };
+
           "https://calendar.proton.me" = {
             "desktop-notification" = "allow";
           };
+
           "https://discord.com" = {
             "desktop-notification" = "allow";
           };
+
           "https://mail.proton.me" = {
             "desktop-notification" = "allow";
           };
@@ -467,6 +492,7 @@
           app_id = "^firefox$";
           title = "https://www.youtube.com";
         };
+
         command = "move container to workspace 4";
       }
       {
@@ -474,6 +500,7 @@
           app_id = "^firefox$";
           title = "https://music.youtube.com";
         };
+
         command = "move container to workspace 4";
       }
       {
@@ -481,6 +508,7 @@
           app_id = "^firefox$";
           title = "https://calendar.google.com";
         };
+
         command = "move container to workspace 7";
       }
       {
@@ -488,6 +516,7 @@
           app_id = "^firefox$";
           title = "https://calendar.proton.me";
         };
+
         command = "move container to workspace 7";
       }
       {
@@ -495,6 +524,7 @@
           app_id = "^firefox$";
           title = "https://mail.google.com";
         };
+
         command = "move container to workspace 9";
       }
       {
@@ -502,6 +532,7 @@
           app_id = "^firefox$";
           title = "https://mail.proton.me";
         };
+
         command = "move container to workspace 9";
       }
       {
@@ -509,6 +540,7 @@
           app_id = "^firefox$";
           title = "https://outlook.office.com";
         };
+
         command = "move container to workspace 9";
       }
       {
@@ -516,6 +548,7 @@
           app_id = "^firefox$";
           title = "https://app.cinny.in";
         };
+
         command = "move container to workspace 10";
       }
       {
@@ -523,6 +556,7 @@
           app_id = "^firefox$";
           title = "https://app.element.io";
         };
+
         command = "move container to workspace 10";
       }
       {
@@ -530,6 +564,7 @@
           app_id = "^firefox$";
           title = "^Picture-in-Picture$";
         };
+
         command = "floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95";
       }
     ];
