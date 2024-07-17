@@ -48,17 +48,6 @@
       ".mypy_cache"
       "compile_commands.json"
 
-      ## Tern
-      ".tern-port"
-      ".tern-project"
-
-      ## GNU Global
-      "GPATH"
-      "GRTAGS"
-      "GSYMS"
-      "GTAGS"
-      "TAGS"
-
       ## Eclipse JDT Language Server
       ".classpath"
       ".project"
