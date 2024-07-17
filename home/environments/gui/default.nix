@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsChromium, ... }:
 
 {
   imports = [
@@ -30,7 +30,7 @@
       yt-dlp
 
       # Chat
-      discord
+      pkgsChromium.discord
 
       # Fonts
       inter
