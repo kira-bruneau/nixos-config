@@ -478,9 +478,6 @@
         # Ignore errors, firefox enforces an exclusive lock on the db while running
         $DRY_RUN_CMD ${pkgs.sqlite}/bin/sqlite3 ${db} < ${dataSQL} || :
       '';
-
-    # Touchscreen support
-    sessionVariables.MOZ_USE_XINPUT2 = "1";
   };
 
   wayland.windowManager.sway.config = {
