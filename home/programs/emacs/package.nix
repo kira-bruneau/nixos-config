@@ -46,8 +46,8 @@
   rustc,
   rustfmt,
   solargraph,
-  tectonic,
   texlab,
+  texliveBasic,
   vala-language-server,
   vscode-langservers-extracted,
   yarn,
@@ -242,8 +242,17 @@ callPackage ./wrapper.nix {
         rustc
         rustfmt
         solargraph
-        tectonic
         texlab
+        (texliveBasic.withPackages (ps: with ps; [
+          arydshln
+          ec
+          fontawesome5
+          metafont
+          moderncv
+          multirow
+          pgf
+          ps.import
+        ]))
         vala-language-server
         vscode-langservers-extracted
         yarn
