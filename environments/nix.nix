@@ -8,7 +8,16 @@
 {
   system.nixos.label = builtins.concatStringsSep "-" (
     config.system.nixos.tags
-    ++ [ (if inputs.self ? shortRev then inputs.self.shortRev else inputs.self.dirtyShortRev) ]
+    ++ [
+      (
+        if inputs.self ? shortRev then
+          inputs.self.shortRev
+        else if inputs.self ? dirtyShortRev then
+          inputs.self.dirtyShortRev
+        else
+          "dirty"
+      )
+    ]
   );
 
   nix = {
