@@ -21,10 +21,7 @@ in
     programs.gnome-pomodoro = {
       enable = lib.mkEnableOption "gnome-pomodoro";
 
-      package = lib.mkPackageOption pkgs [
-        "gnome"
-        "pomodoro"
-      ] { };
+      package = lib.mkPackageOption pkgs "gnome-pomodoro" { };
 
       actions = lib.mkOption {
         type = types.listOf options.dconf.settings.type.nestedTypes.elemType;

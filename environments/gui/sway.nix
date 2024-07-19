@@ -4,7 +4,7 @@
   imports = [ ./. ];
 
   environment = {
-    systemPackages = with pkgs; [ gnome.adwaita-icon-theme ];
+    systemPackages = with pkgs; [ adwaita-icon-theme ];
 
     etc = {
       "sway/config.d/power-controls.conf".text = ''

@@ -29,17 +29,17 @@
       baobab
       bustle
       d-spy
-      gnome.gnome-disk-utility
+      gnome-disk-utility
       pkgsNixSoftwareCenter.nix-software-center
       resources
 
       # Media & Documents
-      gnome.file-roller
+      file-roller
 
       # Utils
       gnome-console
-      gnome.gnome-clocks
-      gnome.seahorse
+      gnome-clocks
+      seahorse
     ])
     ++ (with pkgsUnstable; [
       # Extensions
@@ -49,7 +49,7 @@
 
   programs = {
     bash.enableVteIntegration = true;
-    gnome-pomodoro.package = pkgsUnstable.gnome.pomodoro;
+    gnome-pomodoro.package = pkgsUnstable.gnome-pomodoro;
     zsh.enableVteIntegration = true;
   };
 

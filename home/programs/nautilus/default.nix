@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ gnome.nautilus ];
+  home.packages = with pkgs; [ nautilus ];
 
   dconf.settings = {
     "org/gnome/nautilus/icon-view" = {

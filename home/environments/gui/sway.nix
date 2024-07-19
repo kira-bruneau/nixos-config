@@ -309,10 +309,10 @@ in
     wl-mirror
 
     # Media & Documents
-    gnome.file-roller
+    file-roller
 
     # Utils
-    gnome.gnome-clocks
+    gnome-clocks
     sway-audio-idle-inhibit
     wdisplays
     wlprop
