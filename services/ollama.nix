@@ -9,7 +9,8 @@
   services.ollama = {
     enable = true;
     package = pkgsUnstable.ollama;
-    listenAddress = "0.0.0.0:11434";
+    host = "0.0.0.0";
+    port = 11434;
     acceleration = "rocm";
     environmentVariables.OLLAMA_KEEP_ALIVE = "672h";
   };
