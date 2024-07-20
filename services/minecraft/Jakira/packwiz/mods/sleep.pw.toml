@@ -1,13 +1,13 @@
 name = "Sleep"
-filename = "sleep-v.1.1.1.jar"
+filename = "sleep-v.2.0.1.jar"
 side = "both"
 
 [download]
-url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/xTfNPx1w/sleep-v.1.1.1.jar"
+url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/YUDnvMVq/sleep-v.2.0.1.jar"
 hash-format = "sha1"
-hash = "716b682e35fdc0b220aee39a4b06c81e22f7ca6b"
+hash = "e1c1f0d3024a090e4cd1efbd36d28da686586eee"
 
 [update]
 [update.modrinth]
 mod-id = "WTzuSu8P"
-version = "xTfNPx1w"
+version = "YUDnvMVq"
