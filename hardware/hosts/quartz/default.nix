@@ -198,7 +198,7 @@
   # Configure GPU optimisations for gamemode
   programs.gamemode.settings.gpu = {
     apply_gpu_optimisations = "accept-responsibility";
-    gpu_device = 0;
+    gpu_device = 2;
     amd_performance_level = "high";
   };
 
