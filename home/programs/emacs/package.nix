@@ -23,6 +23,7 @@
   gcc,
   gdb,
   ggt,
+  ghostscript,
   git,
   go,
   godef,
@@ -39,6 +40,7 @@
   omnisharp-roslyn,
   pandoc,
   perl,
+  poppler_utils,
   prettierd,
   python3,
   ripgrep,
@@ -211,6 +213,7 @@ callPackage ./wrapper.nix {
         gcc
         gdb
         ggt
+        ghostscript
         git
         go
         godef
@@ -229,6 +232,7 @@ callPackage ./wrapper.nix {
         nodePackages.yaml-language-server
         pandoc
         perl
+        poppler_utils
         prettierc
         prettierd
         (python3.withPackages (
