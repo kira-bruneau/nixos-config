@@ -11,6 +11,22 @@
     ../../environments/laptop.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [ framework-11th-gen-intel ]);
 
+  hardware = {
+    enableRedistributableFirmware = false;
+    cpu.intel.updateMicrocode = true;
+    firmware = with pkgs; [
+      # Display Microcontroller firmware:
+      # i915/tgl_dmc_ver2_12.bin
+      #
+      # Bluetooth firmware:
+      # intel/ibt-0041-0041.sfi
+      #
+      # Wifi firmware:
+      # rtl_bt/iwlwifi-ty-a0-gf-a0-x.ucode
+      linux-firmware
+    ];
+  };
+
   boot = {
     # Use the systemd-boot EFI boot loader
     loader = {

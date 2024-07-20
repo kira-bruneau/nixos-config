@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -6,6 +6,15 @@
     ../../environments/cec
     ../../environments/laptop.nix
   ];
+
+  hardware = {
+    enableRedistributableFirmware = lib.mkForce false;
+    cpu.intel.updateMicrocode = true;
+    firmware = with pkgs; [
+      # Firmware is required in stage-1 for early KMS.
+      linux-firmware
+    ];
+  };
 
   boot = {
     # Use the systemd-boot EFI boot loader

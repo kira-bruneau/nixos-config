@@ -12,7 +12,27 @@
       common-pc-ssd
     ]);
 
-  hardware.firmware = with pkgs; [ rtl8761b-firmware ];
+  hardware = {
+    enableRedistributableFirmware = false;
+    cpu.amd.updateMicrocode = true;
+    wirelessRegulatoryDatabase = true;
+    firmware = with pkgs; [
+      # GPU firmware:
+      # amdgpu/dcn_3_2_0_dmcub.bin
+      # amdgpu/gc_11_0_0_mes.bin
+      # amdgpu/gc_11_0_0_mes_2.bin
+      # amdgpu/gc_11_0_0_pfp.bin
+      # amdgpu/polaris10_sdma.bin
+      # amdgpu/psp_13_0_0_sos.bin
+      # amdgpu/sdma_6_0_0.bin
+      # amdgpu/smu_13_0_0.bin
+      # amdgpu/vcn_4_0_0.bin
+      #
+      # Bluetooth firmware:
+      # rtl_bt/rtl8761bu_fw.bin
+      linux-firmware
+    ];
+  };
 
   boot = {
     # Use the systemd-boot EFI boot loader
