@@ -483,6 +483,9 @@ in
                   id = 1;
                   renameEpisodes = true;
                   replaceIllegalCharacters = true;
+                  colonReplacementFormat = 0;
+                  customColonReplacementFormat = "";
+                  multiEpisodeStyle = 0;
                   standardEpisodeFormat = "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
                   dailyEpisodeFormat = "{Series Title} - {Air-Date} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
                   animeEpisodeFormat = "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Title} {MediaInfo VideoCodec}";
