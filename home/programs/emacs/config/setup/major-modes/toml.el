@@ -1,2 +1,2 @@
 (use-package toml-ts-mode
-  :mode "\\.toml\\'")
+  :mode "\\(\\.toml\\|/Cargo.lock\\)\\'")
