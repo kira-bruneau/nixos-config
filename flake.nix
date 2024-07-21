@@ -211,6 +211,8 @@
           inherit (linter) fix;
         };
 
+        devShells.default = pkgs.mkShell { nativeBuildInputs = linter.nativeBuildInputs; };
+
         packages =
           {
             emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
