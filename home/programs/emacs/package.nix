@@ -63,24 +63,6 @@ let
       });
     }
   );
-
-  # A lightweight wrapper for prettierd to avoid the overhead of node
-  prettierc = (
-    callPackage ./core_d_client.nix {
-      name = "prettierc";
-      serverPath = ''${prettierd}/bin/prettierd'';
-      configFile = ".prettierd";
-    }
-  );
-
-  # A lightweight wrapper for eslint_d to avoid the overhead of node
-  eslint_c = (
-    callPackage ./core_d_client.nix {
-      name = "eslint_c";
-      serverPath = ''${eslint_d}/bin/eslint_d'';
-      configFile = ".eslint_d";
-    }
-  );
 in
 callPackage ./wrapper.nix {
   emacs = emacsPackages.emacsWithPackages (epkgs: [
@@ -205,7 +187,6 @@ callPackage ./wrapper.nix {
         direnv
         dockerfile-language-server-nodejs
         emacs-lsp-booster
-        eslint_c
         eslint_d
         fd
         fzf
@@ -230,7 +211,6 @@ callPackage ./wrapper.nix {
         nodePackages.yaml-language-server
         pandoc
         perl
-        prettierc
         prettierd
         (python3.withPackages (
           ps: with ps; [

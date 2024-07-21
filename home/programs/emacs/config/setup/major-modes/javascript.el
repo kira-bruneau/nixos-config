@@ -5,7 +5,7 @@
                 ("zx" . js-ts-mode))
   :init
   (with-eval-after-load 'flycheck
-    (setq flycheck-javascript-eslint-executable "eslint_c")
+    (setq flycheck-javascript-eslint-executable "eslint_d")
     (add-hook
      'lsp-diagnostics-mode-hook
      (lambda ()
@@ -15,7 +15,7 @@
     (delete 'lsp-eslint lsp-client-packages))
 
   (with-eval-after-load 'apheleia
-    (add-to-list 'apheleia-formatters '(eslint . ("eslint_c" "--stdin" "--fix-to-stdout" "--stdin-filename" filepath))))
+    (add-to-list 'apheleia-formatters '(eslint . ("eslint_d" "--stdin" "--fix-to-stdout" "--stdin-filename" filepath))))
 
   (with-eval-after-load 'restclient
     (add-to-list 'restclient-content-type-modes '("application/js" . js-ts-mode))))
