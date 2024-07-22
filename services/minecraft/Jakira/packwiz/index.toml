@@ -673,10 +673,6 @@ file = "mods/rrls.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/seamless-loading-screen.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/searchables.pw.toml"
 metafile = true
 
