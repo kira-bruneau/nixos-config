@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../programs/anytype ];
+  imports = [
+    ../programs/anytype
+    ../programs/protonmail-bridge
+  ];
 
   home.packages = with pkgs; [
     gnucash
