@@ -205,6 +205,13 @@ in
           AllowOverlay = 0;
         }
         {
+          appid = -1565192716;
+          appname = "Pikmin 3 Deluxe";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
+          AllowOverlay = 0;
+        }
+        {
           appid = -1826256805;
           appname = "The Legend Of Zelda The Wind Waker";
           Exe = "env";
@@ -355,6 +362,13 @@ in
           appname = "Mario Kart 8 Deluxe";
           Exe = "env";
           LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
+          AllowOverlay = 0;
+        }
+        {
+          appid = -1565192716;
+          appname = "Pikmin 3 Deluxe";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
           AllowOverlay = 0;
         }
         {
