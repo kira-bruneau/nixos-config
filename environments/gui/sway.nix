@@ -148,6 +148,7 @@
   # Enable GNOME password manager
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+  programs.seahorse.enable = true;
 
   # Disable fingerprint auth in greetd & swaylock
   security.pam.services.greetd.fprintAuth = false;
