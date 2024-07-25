@@ -24,7 +24,14 @@
           # Telemetry
           "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionEnabled" = false;
+
+          # UI
+          "mail.uidensity" = 2; # Relaxed
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
+
+        userChrome = builtins.readFile ./userChrome.css;
+        userContent = builtins.readFile ./userContent.css;
       };
     };
   };

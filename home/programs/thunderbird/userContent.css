@@ -1,0 +1,8 @@
+body {
+  margin: 9px;
+}
+
+.moz-text-plain, .moz-text-flowed {
+  font-family: initial !important;
+  font-size: 14px !important;
+}

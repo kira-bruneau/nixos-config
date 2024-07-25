@@ -1,0 +1,51 @@
+:root {
+  --toolbarbutton-header-bordercolor: transparent !important;
+  --button-border-color-ghost: transparent !important;
+}
+
+.kbd-container kbd {
+  font-weight: normal !important;
+  color: var(--layout-color-3) !important;
+  box-shadow: inset 0px -1px 0px var(--layout-border-0) !important;
+}
+
+.date, .message-header-datetime {
+  color: #525259 !important;
+}
+
+#messageHeader {
+  padding: 9px !important;
+}
+
+#headerSenderToolbarContainer {
+  align-items: baseline !important;
+}
+
+#header-view-toolbar {
+  .toolbarbutton-text {
+    display: none !important;
+  }
+
+  .toolbarbutton-menu-dropmarker {
+    margin-inline-start: 3px !important;
+    margin-inline-end: 3px !important;
+  }
+}
+
+#dateLabel {
+  margin-top: calc(-1em + 5px) !important;
+}
+
+#extraHeadersArea:empty {
+  display: none !important;
+}
+
+#mail-notification-top {
+  & > .notificationbox-stack[notificationside="top"] {
+    background-color: var(--toolbar-bgcolor) !important;
+  }
+
+  .infobar {
+    margin: 0 9px 9px !important;
+  }
+}
