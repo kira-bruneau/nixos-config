@@ -22,6 +22,13 @@
   align-items: baseline !important;
 }
 
+#expandedfromBox {
+  .recipient-avatar {
+    width: calc(1.05lh + var(--recipient-multi-line-gap) + 1lh) !important;
+    height: calc(1.05lh + var(--recipient-multi-line-gap) + 1lh) !important;
+  }
+}
+
 #header-view-toolbar {
   .toolbarbutton-text {
     display: none !important;
