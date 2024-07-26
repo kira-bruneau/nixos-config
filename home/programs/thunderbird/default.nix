@@ -14,6 +14,7 @@
         isDefault = true;
         settings = {
           # General
+          "app.donation.eoy.version.viewed" = 1000;
           "mail.rights.version" = 1;
           "mail.shell.checkDefaultClient" = false;
           "mailnews.start_page.enabled" = false;
