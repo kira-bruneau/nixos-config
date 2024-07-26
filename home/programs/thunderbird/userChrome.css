@@ -1,4 +1,5 @@
 :root {
+  --search-bar-border-color: var(--color-gray-40) !important;
   --toolbarbutton-header-bordercolor: transparent !important;
   --button-border-color-ghost: transparent !important;
 }
