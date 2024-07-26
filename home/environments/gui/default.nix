@@ -26,7 +26,6 @@
     packages = with pkgs; [
       # Web
       qbittorrent
-      syncplay
       yt-dlp
 
       # Chat
@@ -90,10 +89,7 @@
 
   wayland.windowManager.sway.config = {
     assigns = {
-      "4" = [
-        { app_id = "^org.qbittorrent.qBittorrent$"; }
-        { title = "^Syncplay"; }
-      ];
+      "4" = [ { app_id = "^org.qbittorrent.qBittorrent$"; } ];
       "10" = [
         { app_id = "^Caprine$"; }
         { app_id = "^discord$"; }
