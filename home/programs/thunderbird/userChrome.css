@@ -34,6 +34,7 @@
 
 #dateLabel {
   margin-top: calc(-1em + 5px) !important;
+  font-size: 0.95rem !important;
 }
 
 #extraHeadersArea:empty {
