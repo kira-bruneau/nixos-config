@@ -306,6 +306,7 @@
             "browser.ping-centre.telemetry" = false;
             "datareporting.healthreport.uploadEnabled" = false;
             "datareporting.policy.dataSubmissionEnabled" = false;
+            "dom.private-attribution.submission.enabled" = false;
             "dom.security.unexpected_system_load_telemetry_enabled" = false;
             "network.trr.confirmation_telemetry_enabled" = false;
             "security.app_menu.recordEventTelemetry" = false;
