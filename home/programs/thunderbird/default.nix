@@ -8,7 +8,18 @@
 {
   programs.thunderbird = {
     enable = true;
-    package = pkgsUnstable.thunderbird-128;
+
+    package = pkgsUnstable.thunderbird-128.override {
+      extraPolicies = {
+        ExtensionSettings = {
+          "uBlock0@raymondhill.net" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/ublock-origin/latest.xpi";
+          };
+        };
+      };
+    };
+
     profiles = {
       thunderbird = {
         isDefault = true;
