@@ -8,6 +8,51 @@
 {
   programs.firefox = {
     enable = true;
+
+    policies = {
+      ExtensionSettings = {
+        "@testpilot-containers" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
+        };
+
+        "PopupWindow@ettoolong" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/popup-window/latest.xpi";
+        };
+
+        "sponsorBlocker@ajay.app" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+        };
+
+        "uBlock0@raymondhill.net" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+        };
+
+        "{0d7cafdd-501c-49ca-8ebb-e3341caaa55e}" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-nonstop/latest.xpi";
+        };
+
+        "{9a41dee2-b924-4161-a971-7fb35c053a4a}" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/enhanced-h264ify/latest.xpi";
+        };
+
+        "{b86e4813-687a-43e6-ab65-0bde4ab75758}" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/localcdn-fork-of-decentraleyes/latest.xpi";
+        };
+
+        "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/auto-tab-discard/latest.xpi";
+        };
+      };
+    };
+
     profiles =
       let
         baseProfile = {
@@ -220,21 +265,15 @@
                 "developer-button"
 
                 # Extensions
-                "_9a41dee2-b924-4161-a971-7fb35c053a4a_-browser-action" # enhanced-h264ify
-                "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
-                "_testpilot-containers-browser-action"
-                "ghosttext_bfred_it-browser-action"
-                "keepassxc-browser_keepassxc_org-browser-action"
-                "languagetool-webextension_languagetool_org-browser-action"
-                "popupwindow_ettoolong-browser-action"
-                "ublock0_raymondhill_net-browser-action"
                 "_0d7cafdd-501c-49ca-8ebb-e3341caaa55e_-browser-action" # Youtube NonStop
-                "_bdc2383f-16a2-459b-afba-f3fd26078085_-browser-action" # Cast YouTube in Browser
-                "firefoxpwa_filips_si-browser-action"
-                "fx_cast_matt_tf-browser-action"
-                "jid1-bofifl9vbdl2zq_jetpack-browser-action" # Decentraleyes
+                "_9a41dee2-b924-4161-a971-7fb35c053a4a_-browser-action" # enhanced-h264ify
+                "_b86e4813-687a-43e6-ab65-0bde4ab75758_-browser-action" # LocalCDN
                 "_c2c003ee-bd69-42a2-b0e9-6f34222cb046_-browser-action" # Auto Tab Discard
+                "_testpilot-containers-browser-action"
+                "keepassxc-browser_keepassxc_org-browser-action"
+                "popupwindow_ettoolong-browser-action"
                 "sponsorblocker_ajay_app-browser-action"
+                "ublock0_raymondhill_net-browser-action"
               ];
 
               dirtyAreaCache = [
