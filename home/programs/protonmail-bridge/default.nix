@@ -21,15 +21,8 @@ in
   home.packages = with pkgs; [ protonmail-bridge ];
 
   systemd.user.services.protonmail-bridge = {
-    Unit = {
-      Wants = [ "network-online.target" ];
-      After = [
-        "network-online.target"
-        "dbus.service"
-      ];
-    };
-
+    Unit.After = [ "dbus.service" ];
     Service.ExecStart = "${lib.getExe protonmail-bridge} --noninteractive";
-    Install.WantedBy = [ "default.target" ];
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }
