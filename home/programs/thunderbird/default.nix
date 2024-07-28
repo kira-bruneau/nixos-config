@@ -50,10 +50,24 @@
               a: "account_${builtins.hashString "sha256" config.accounts.email.accounts.${a}.name}"
             ) (config.accounts.email.order))
             ++ [
+              # RSS
+              "account_rss"
+
               # Local Folder
               "account1"
             ]
           );
+
+          # RSS account
+          # TODO: Use home-manager module once merged:
+          # https://github.com/nix-community/home-manager/pull/5613
+          "mail.account.account_rss.server" = "server_rss";
+          "mail.server.server_rss.name" = "RSS";
+          "mail.server.server_rss.type" = "rss";
+          "mail.server.server_rss.directory" = "${config.home.homeDirectory}/.thunderbird/thunderbird/Mail/Feeds";
+          "mail.server.server_rss.directory-rel" = "[ProfD]Mail/Feeds";
+          "mail.server.server_rss.hostname" = "Feeds";
+          "mail.server.server_rss.storeContractID" = "@mozilla.org/msgstore/maildirstore;1";
         };
 
         userChrome = builtins.readFile ./userChrome.css;
