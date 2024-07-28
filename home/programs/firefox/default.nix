@@ -36,6 +36,11 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-nonstop/latest.xpi";
         };
 
+        "{74145f27-f039-47ce-a470-a662b129930a}" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/clearurls/latest.xpi";
+        };
+
         "{9a41dee2-b924-4161-a971-7fb35c053a4a}" = {
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/enhanced-h264ify/latest.xpi";
@@ -266,6 +271,7 @@
 
                 # Extensions
                 "_0d7cafdd-501c-49ca-8ebb-e3341caaa55e_-browser-action" # Youtube NonStop
+                "_74145f27-f039-47ce-a470-a662b129930a_-browser-action" # ClearURLs
                 "_9a41dee2-b924-4161-a971-7fb35c053a4a_-browser-action" # enhanced-h264ify
                 "_b86e4813-687a-43e6-ab65-0bde4ab75758_-browser-action" # LocalCDN
                 "_c2c003ee-bd69-42a2-b0e9-6f34222cb046_-browser-action" # Auto Tab Discard
