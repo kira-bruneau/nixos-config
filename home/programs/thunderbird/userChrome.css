@@ -19,6 +19,7 @@
 }
 
 #headerSenderToolbarContainer {
+  flex-direction: row-reverse !important;
   align-items: baseline !important;
 }
 
