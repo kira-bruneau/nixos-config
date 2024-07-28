@@ -2,6 +2,10 @@ body {
   margin: 9px;
 }
 
+img:not([overflowing]), picture, video, embed, object, iframe {
+  max-width: 100% !important;
+}
+
 .moz-text-plain, .moz-text-flowed {
   font-family: initial !important;
   font-size: 14px !important;
