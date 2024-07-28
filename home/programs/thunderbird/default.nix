@@ -6,6 +6,8 @@
 }:
 
 {
+  imports = [ ./order.nix ];
+
   programs.thunderbird = {
     enable = true;
 
@@ -40,6 +42,18 @@
           # UI
           "mail.uidensity" = 2; # Relaxed
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+          # Workaround new local folders account being added on every launch
+          # https://github.com/nix-community/home-manager/issues/5031
+          "mail.accountmanager.accounts" = lib.concatStringsSep "," (
+            (builtins.map (
+              a: "account_${builtins.hashString "sha256" config.accounts.email.accounts.${a}.name}"
+            ) (config.accounts.email.order))
+            ++ [
+              # Local Folder
+              "account1"
+            ]
+          );
         };
 
         userChrome = builtins.readFile ./userChrome.css;

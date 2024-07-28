@@ -28,46 +28,53 @@
   home-manager.users.kira = {
     imports = [ ../home/hosts/${config.system.name}.nix ];
 
-    accounts.email.accounts = {
-      "kira.bruneau@pm.me" = {
-        primary = true;
-        address = "kira.bruneau@pm.me";
-        aliases = [
-          "kira.bruneau@protonmail.com"
-          "kira.bruneau@proton.me"
-        ];
-        realName = "Kira Bruneau";
-        userName = "kira.bruneau@pm.me";
-        imap = {
-          host = "127.0.0.1";
-          port = 1143;
-          tls.useStartTls = true;
-        };
-        smtp = {
-          host = "127.0.0.1";
-          port = 1025;
-          tls.useStartTls = true;
-        };
-        thunderbird = {
-          enable = true;
-          profiles = [ "thunderbird" ];
-        };
-      };
+    accounts.email = {
+      order = [
+        "kira.bruneau@pm.me"
+        "kira.bruneau@gmail.com"
+      ];
 
-      "kira.bruneau@gmail.com" = {
-        flavor = "gmail.com";
-        address = "kira.bruneau@gmail.com";
-        realName = "Kira Bruneau";
-        thunderbird = {
-          enable = true;
-          profiles = [ "thunderbird" ];
-          settings = id: {
-            # Use OAuth2 for authentication
-            "mail.smtpserver.smtp_${id}.authMethod" = 10;
-            "mail.server.server_${id}.authMethod" = 10;
+      accounts = {
+        "kira.bruneau@pm.me" = {
+          primary = true;
+          address = "kira.bruneau@pm.me";
+          aliases = [
+            "kira.bruneau@protonmail.com"
+            "kira.bruneau@proton.me"
+          ];
+          realName = "Kira Bruneau";
+          userName = "kira.bruneau@pm.me";
+          imap = {
+            host = "127.0.0.1";
+            port = 1143;
+            tls.useStartTls = true;
+          };
+          smtp = {
+            host = "127.0.0.1";
+            port = 1025;
+            tls.useStartTls = true;
+          };
+          thunderbird = {
+            enable = true;
+            profiles = [ "thunderbird" ];
+          };
+        };
 
-            # Disable notifications
-            "mail.server.server_${id}.use_idle" = false;
+        "kira.bruneau@gmail.com" = {
+          flavor = "gmail.com";
+          address = "kira.bruneau@gmail.com";
+          realName = "Kira Bruneau";
+          thunderbird = {
+            enable = true;
+            profiles = [ "thunderbird" ];
+            settings = id: {
+              # Use OAuth2 for authentication
+              "mail.smtpserver.smtp_${id}.authMethod" = 10;
+              "mail.server.server_${id}.authMethod" = 10;
+
+              # Disable notifications
+              "mail.server.server_${id}.use_idle" = false;
+            };
           };
         };
       };
@@ -75,16 +82,6 @@
 
     programs = {
       firefox.profiles.firefox.settings."services.sync.username" = "kira.bruneau@pm.me";
-
-      thunderbird.profiles.thunderbird.settings = {
-        # Explicitly specify order of accounts
-        "mail.accountmanager.accounts" = builtins.concatStringsSep "," (
-          map (account: "account_${builtins.hashString "sha256" account}") [
-            "kira.bruneau@pm.me"
-            "kira.bruneau@gmail.com"
-          ]
-        );
-      };
 
       git = {
         userName = "Kira Bruneau";
