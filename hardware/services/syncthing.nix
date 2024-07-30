@@ -121,6 +121,27 @@
           };
         };
 
+        "RSS" = {
+          enable = builtins.elem config.system.name [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
+          devices = [
+            "amethyst"
+            "aurora"
+            "quartz"
+          ];
+          path = "~/.thunderbird/thunderbird/Mail/Feeds";
+          caseSensitiveFS = true;
+          rescanIntervalS = 86400;
+          fsWatcherDelayS = 1;
+          versioning = {
+            type = "staggered";
+            params.maxAge = "604800";
+          };
+        };
+
         "Videos" = {
           enable = builtins.elem config.system.name [
             "amethyst"
