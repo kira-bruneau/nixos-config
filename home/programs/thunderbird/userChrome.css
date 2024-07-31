@@ -14,6 +14,12 @@
   color: #525259 !important;
 }
 
+#unifiedToolbarContent {
+  .extension-action {
+    display: none !important;
+  }
+}
+
 #messageHeader {
   padding: 9px !important;
 }
