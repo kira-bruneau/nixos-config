@@ -95,6 +95,24 @@
                 definedAliases = [ "@gh" ];
               };
 
+              "Nixhub.io" = {
+                urls = [
+                  {
+                    template = "https://www.nixhub.io/search";
+                    params = [
+                      {
+                        name = "q";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+
+                iconUpdateURL = "https://www.nixhub.io/favicon.svg";
+                updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
+                definedAliases = [ "@nh" ];
+              };
+
               "Nix Options" = {
                 urls = [
                   {
