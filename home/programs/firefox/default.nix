@@ -90,11 +90,8 @@
                   }
                 ];
 
-                icon = "${pkgs.fetchurl {
-                  url = "https://github.githubassets.com/favicons/favicon.svg";
-                  hash = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
-                }}";
-
+                iconUpdateURL = "https://github.githubassets.com/favicons/favicon.svg";
+                updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
                 definedAliases = [ "@gh" ];
               };
 
@@ -188,11 +185,8 @@
                   }
                 ];
 
-                icon = "${pkgs.fetchurl {
-                  url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
-                  hash = "sha256-4zWTcHuL1SEKk8KyVFsOKYPbM4rc7WNa9KrGhK4dJyg=";
-                }}";
-
+                iconUpdateURL = "https://www.redditstatic.com/shreddit/assets/favicon/512x512.png";
+                updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
                 definedAliases = [ "@r" ];
               };
 
@@ -209,11 +203,8 @@
                   }
                 ];
 
-                icon = "${pkgs.fetchurl {
-                  url = "https://www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
-                  hash = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
-                }}";
-
+                iconUpdateURL = "https://www.youtube.com/s/desktop/103479f3/img/favicon_144x144.png";
+                updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
                 definedAliases = [ "@y" ];
               };
             };
