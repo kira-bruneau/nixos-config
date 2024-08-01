@@ -9,7 +9,7 @@
 
   hardware = {
     enableRedistributableFirmware = lib.mkForce false;
-    cpu.intel.updateMicrocode = true;
+    cpu.amd.updateMicrocode = true;
     firmware = with pkgs; [
       # Firmware is required in stage-1 for early KMS.
       linux-firmware
