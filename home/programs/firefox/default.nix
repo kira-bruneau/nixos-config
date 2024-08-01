@@ -16,6 +16,11 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
         };
 
+        "feed-preview@code.guido-berhoerster.org" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/feed-preview/latest.xpi";
+        };
+
         "PopupWindow@ettoolong" = {
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/popup-window/latest.xpi";
