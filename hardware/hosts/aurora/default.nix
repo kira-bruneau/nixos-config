@@ -25,6 +25,9 @@
       # rtl_bt/iwlwifi-ty-a0-gf-a0-x.ucode
       linux-firmware
     ];
+
+    # Support MangoHud GPU utilization
+    intel-gpu-tools.enable = true;
   };
 
   boot = {
