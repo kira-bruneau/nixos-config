@@ -7,7 +7,6 @@
     # Web
     ../../programs/firefox
     ../../programs/jellyfin
-    ../../programs/newsflash
 
     # Chat
     ../../programs/element
