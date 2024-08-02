@@ -46,6 +46,9 @@
           "datareporting.policy.dataSubmissionEnabled" = false;
 
           # UI
+          "apz.gtk.pangesture.delta_mode" = 2; # pixel mode
+          "apz.gtk.pangesture.pixel_delta_mode_multiplier" = "80"; # default is 40
+          "apz.overscroll.enabled" = true; # NOTE: Doesn't apply to browser chrome like it does in firefox
           "mail.uidensity" = 2; # Relaxed
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
