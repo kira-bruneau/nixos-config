@@ -421,7 +421,6 @@
             id = 0;
             name = "Firefox";
             path = config.home.username;
-            settings."extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
           }
         ];
       };
