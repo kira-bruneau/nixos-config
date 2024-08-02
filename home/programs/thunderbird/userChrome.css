@@ -1,16 +1,27 @@
+/*
+ * Reference mockup: https://blog.thunderbird.net/files/2024/07/128-Light@2x-1-e1720641205908.png
+ */
+
 :root {
+  /* Lighten search bar border color */
   --search-bar-border-color: var(--color-gray-40) !important;
+
+  /* Remove border on message header toolbar buttons */
   --toolbarbutton-header-bordercolor: transparent !important;
+
+  /* Remove border on ghost butons */
   --button-border-color-ghost: transparent !important;
 }
 
 .kbd-container kbd {
+  /* Lighten keybinding style */
   font-weight: normal !important;
   color: var(--layout-color-3) !important;
   box-shadow: inset 0px -1px 0px var(--layout-border-0) !important;
 }
 
 .date, .message-header-datetime {
+  /* Lighten date color */
   color: #525259 !important;
 }
 
@@ -29,24 +40,29 @@
   }
 }
 
-/* uBlock Origin is missing icon by default */
 #ublock0_raymondhill_net-browserAction-toolbarbutton {
   .button-icon {
+    /* uBlock Origin is missing icon by default */
     content: url(https://upload.wikimedia.org/wikipedia/commons/0/05/UBlock_Origin.svg);
   }
 }
 
 #messageHeader {
+  /* Increase message header padding */
   padding: 9px !important;
 }
 
 #headerSenderToolbarContainer {
+  /* Prevent collapsing toolbar into columns */
   flex-direction: row-reverse !important;
+
+  /* Align contained toolbar to baseline instead of center */
   align-items: baseline !important;
 }
 
 #expandedfromBox {
   .recipient-avatar {
+    /* Ensure avatar is sized relative to line height */
     width: calc(1.05lh + var(--recipient-multi-line-gap) + 1lh) !important;
     height: calc(1.05lh + var(--recipient-multi-line-gap) + 1lh) !important;
   }
@@ -58,21 +74,27 @@
   }
 
   .toolbarbutton-menu-dropmarker {
+    /* Keep end margin consistent with start margin */
     margin-inline-start: 3px !important;
     margin-inline-end: 3px !important;
   }
 }
 
 #dateLabel {
+  /* Hack to group #dateLabel together with #header-view toolbar */
   margin-top: calc(-1em + 5px) !important;
+
+  /* Decrease font size to keep it consistent with .date */
   font-size: 0.95rem !important;
 }
 
 #extraHeadersArea:empty {
+  /* Avoid extra padding when empty extra headers is empty */
   display: none !important;
 }
 
 #mail-notification-top {
+  /* Match styling of #header-view-toolbar */
   & > .notificationbox-stack[notificationside="top"] {
     background-color: var(--toolbar-bgcolor) !important;
   }
