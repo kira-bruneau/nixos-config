@@ -15,8 +15,14 @@
 }
 
 #unifiedToolbarContent {
-  .button-label {
-    display: none !important;
+  .unified-toolbar-button {
+    /* Remove drop-down arrow */
+    background: none !important;
+    padding-inline: 0 !important;
+
+    .button-label {
+      display: none !important;
+    }
   }
 }
 
