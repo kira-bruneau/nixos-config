@@ -261,6 +261,10 @@ file = "mods/create-design-n-decor.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/create-dreams-and-desires.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/create-enchantment-industry-fabric.pw.toml"
 metafile = true
 
