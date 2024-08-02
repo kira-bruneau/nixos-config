@@ -33,8 +33,15 @@ in
   wayland.windowManager.sway.config.startup = [ { command = "${keepassxc}/bin/keepassxc"; } ];
 
   # Firefox integration
-  programs.firefox.policies.ExtensionSettings."keepassxc-browser@keepassxc.org" = {
-    installation_mode = "force_installed";
-    install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+  programs.firefox = {
+    policies.ExtensionSettings."keepassxc-browser@keepassxc.org" = {
+      installation_mode = "force_installed";
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+    };
+
+    # FIXME: With this setting, keepassxc shows a popup: Could not
+    # save the native messaging script file for firefox. Figure out
+    # how to disable it.
+    nativeMessagingHosts = [ keepassxc ];
   };
 }
