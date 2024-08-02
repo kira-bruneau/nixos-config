@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   pkgsUnstable,
   ...
 }:
@@ -70,7 +71,18 @@
           "mail.server.server_rss.storeContractID" = "@mozilla.org/msgstore/maildirstore;1";
         };
 
-        userChrome = builtins.readFile ./userChrome.css;
+        userChrome =
+          builtins.replaceStrings [ "https://upload.wikimedia.org/wikipedia/commons/0/05/UBlock_Origin.svg" ]
+            [
+              "file://${
+                pkgs.fetchurl {
+                  url = "https://upload.wikimedia.org/wikipedia/commons/0/05/UBlock_Origin.svg";
+                  hash = "sha256-q+dlbA3VjulWXp3v8LBNIRvThMUHd+xaVbTr0sqJtZo=";
+                }
+              }"
+            ]
+            (builtins.readFile ./userChrome.css);
+
         userContent = builtins.readFile ./userContent.css;
       };
     };

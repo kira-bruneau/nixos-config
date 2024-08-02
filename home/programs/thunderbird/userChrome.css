@@ -15,8 +15,15 @@
 }
 
 #unifiedToolbarContent {
-  .extension-action {
+  .button-label {
     display: none !important;
+  }
+}
+
+/* uBlock Origin is missing icon by default */
+#ublock0_raymondhill_net-browserAction-toolbarbutton {
+  .button-icon {
+    content: url(https://upload.wikimedia.org/wikipedia/commons/0/05/UBlock_Origin.svg);
   }
 }
 
