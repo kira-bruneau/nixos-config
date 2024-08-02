@@ -16,9 +16,12 @@
 
 #unifiedToolbarContent {
   .unified-toolbar-button {
+    /* Use padding instead of margin */
+    padding: 6px !important;
+    margin: 0 !important;
+
     /* Remove drop-down arrow */
     background: none !important;
-    padding-inline: 0 !important;
 
     .button-label {
       display: none !important;
