@@ -9,16 +9,13 @@
   imports = [
     inputs.home-manager.nixosModules.default
     ../cachix.nix
+    ../modules
     ../services/dnscrypt.nix
     ../services/systemd-networkd.nix
     ./custom-nixos-generate-config.nix
     ./locale
     ./nix.nix
   ];
-
-  options = {
-    users.defaultUser = lib.mkOption { type = lib.types.str; };
-  };
 
   config = {
     environment = {

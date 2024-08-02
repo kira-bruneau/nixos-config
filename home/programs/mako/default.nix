@@ -49,7 +49,7 @@ in
     }
   ];
 
-  programs.gnome-pomodoro = {
+  programs.gnome-pomodoro-swayidle = {
     onstart = [ "${makoctl} mode -a do-not-disturb" ];
     onend = [ "${makoctl} mode -r do-not-disturb" ];
   };

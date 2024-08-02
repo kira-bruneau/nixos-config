@@ -1,8 +1,6 @@
 { config, ... }:
 
 {
-  imports = [ ../../environments/config.nix ];
-
   programs.ssh = {
     enable = true;
 

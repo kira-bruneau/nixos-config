@@ -5,8 +5,6 @@ let
   keepassxc = pkgs.keepassxc;
 in
 {
-  imports = [ ../../environments/config.nix ];
-
   home.packages = [ keepassxc ];
 
   xdg.configFile."keepassxc/keepassxc.ini".source = settingsFormat.generate "keepassxc.ini" {

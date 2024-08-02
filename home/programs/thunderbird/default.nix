@@ -7,8 +7,6 @@
 }:
 
 {
-  imports = [ ./order.nix ];
-
   programs.thunderbird = {
     enable = true;
 

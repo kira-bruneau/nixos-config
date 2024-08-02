@@ -4,8 +4,6 @@ let
   settingsFormat = pkgs.formats.ini { };
 in
 {
-  imports = [ ../../environments/config.nix ];
-
   home.packages = with pkgs; [ speedcrunch ];
 
   xdg = {

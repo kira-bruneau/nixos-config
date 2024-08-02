@@ -7,6 +7,7 @@ let
 in
 {
   imports = [
+    ../modules
     ../programs/bash
     ../programs/fzf
     ../programs/git

@@ -287,7 +287,7 @@ in
     };
   };
 
-  programs.gnome-pomodoro = {
+  programs.gnome-pomodoro-swayidle = {
     onstart = [ "${swaymsg} 'gaps inner all set 0, bar mode hide'" ];
     onend = [ "${swaymsg} 'gaps inner all set 10, bar mode dock'" ];
     onpause = [ "${swaymsg} 'bar mode dock'" ];

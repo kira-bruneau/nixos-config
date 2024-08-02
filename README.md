@@ -12,6 +12,7 @@ My NixOS configuration
 | `hardware`                   | Hardware-specific configuration that would be useless in the context of a VM |
 | `home`                       | [Home manager](https://github.com/nix-community/home-manager) configuration  |
 | `hosts`                      | Machine specific configuration                                               |
+| `modules`                    | Custom modules & module extensions                                           |
 | `programs`                   | Configuration for programs                                                   |
 | `services`                   | Configuration for self-contained services                                    |
 | `users`                      | Configuration for users on my system                                         |

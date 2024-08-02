@@ -4,8 +4,6 @@ let
   settingsFormat = pkgs.formats.yaml { };
 in
 {
-  imports = [ ../../environments/config.nix ];
-
   home.packages = with pkgs; [ lutris-free ];
 
   xdg.configFile = {
