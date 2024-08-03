@@ -1,15 +1,27 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  waybar = pkgs.waybar;
+  exe = lib.getExe config.programs.waybar.package;
 in
 {
   programs.waybar = {
     enable = true;
-    package = waybar;
+
+    package = pkgs.writeShellScriptBin "waybar" ''
+      echo "" > ~/.config/waybar/dynamic.css
+      exec ${lib.getExe pkgs.waybar}
+    '';
+
     settings = {
       mainBar = {
         ipc = true;
+        reload_style_on_change = true;
+
         layer = "top";
         position = "bottom";
         height = 32;
@@ -161,9 +173,17 @@ in
   home.packages = with pkgs; [ font-awesome_6 ];
 
   wayland.windowManager.sway = {
-    config.bars = [ { command = "${waybar}/bin/waybar"; } ];
+    config.bars = [ { command = exe; } ];
     extraConfig = ''
       layer_effects 'waybar' 'blur enable; shadows enable'
     '';
+  };
+
+  programs.gnome-pomodoro-swayidle = {
+    onpause = [
+      "echo 'window#waybar { border-bottom-color: #ffa000; }' > ~/.config/waybar/dynamic.css"
+    ];
+
+    onresume = [ "echo '' > ~/.config/waybar/dynamic.css" ];
   };
 }

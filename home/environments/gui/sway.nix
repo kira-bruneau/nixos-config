@@ -290,8 +290,8 @@ in
   programs.gnome-pomodoro-swayidle = {
     onstart = [ "${swaymsg} 'gaps inner all set 0, bar mode hide'" ];
     onend = [ "${swaymsg} 'gaps inner all set 10, bar mode dock'" ];
-    onpause = [ "${swaymsg} 'bar mode dock'" ];
-    onresume = [ "${swaymsg} 'bar mode hide'" ];
+    onpause = [ "${swaymsg} 'gaps inner all set 10, bar mode dock'" ];
+    onresume = [ "${swaymsg} 'gaps inner all set 0, bar mode hide'" ];
   };
 
   home.packages = with pkgs; [

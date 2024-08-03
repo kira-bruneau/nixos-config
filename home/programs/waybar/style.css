@@ -7,10 +7,12 @@
 }
 
 window#waybar {
-    background: rgba(43, 48, 59, 0.6);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.9);
+    background-color: rgba(43, 48, 59, 0.6);
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(100, 114, 125, 0.9);
     color: #eeeeee;
-    transition-property: background, background-color;
+    transition-property: background-color, border-bottom-color;
     transition-duration: .5s;
 }
 
@@ -129,3 +131,5 @@ label:focus {
 #mpd.paused {
     background: #51a37a;
 }
+
+@import "dynamic.css";
