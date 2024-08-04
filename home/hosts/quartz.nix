@@ -1,7 +1,7 @@
 {
   imports = [
     ../environments/bluetooth.nix
-    ../environments/dev.nix
+    ../environments/dev
     ../environments/gaming.nix
     ../environments/gui/sway.nix
     ../environments/media-production.nix

@@ -1,0 +1,16 @@
+* nix-instant-dev
+** TODO Fix postUnpack scripts that hardcode $sourceRoot (eg. source)
+** TODO Add gitRepoUrl to all git forges in nixpkgs
+** TODO Automatically unwrap packages that have passthru.unwrapped
+*** TODO Fix any wrappers in nixpkgs that don't have passthru
+** TODO Separate commits for each patch
+** TODO Support other vcs
+*** TODO Mercurial
+*** TODO SVN
+** TODO Support package manager source urls (pypi, melpa & elpa, bundler, ...)
+*** TODO Pypi
+*** TODO Melpa
+Mostly supported already, just need to update some fetcher mappings upstream
+*** TODO Elpa
+*** TODO Bundler
+** TODO As an optimization, do initial fetch with sparse checkout when sourceRoot/sparseCheckout is set
