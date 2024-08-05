@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsNixIndexDatabase, ... }:
 
 let
   whichf = pkgs.writeShellScriptBin "whichf" ''
@@ -46,5 +46,8 @@ in
 
   programs.man.enable = true;
 
-  programs.nix-index.enable = true;
+  programs.nix-index = {
+    enable = true;
+    package = pkgsNixIndexDatabase.nix-index-with-db;
+  };
 }

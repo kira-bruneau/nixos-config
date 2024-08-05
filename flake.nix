@@ -20,6 +20,11 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -108,6 +113,8 @@
                     };
 
                     pkgsDisko = inputs.disko.packages.${pkgs.system};
+
+                    pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.system};
 
                     pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
 
