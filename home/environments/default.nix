@@ -45,4 +45,6 @@ in
   ];
 
   programs.man.enable = true;
+
+  programs.nix-index.enable = true;
 }

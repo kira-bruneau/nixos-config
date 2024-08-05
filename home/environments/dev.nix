@@ -35,8 +35,6 @@
     valgrind
   ];
 
-  programs.nix-index.enable = true;
-
   wayland.windowManager.sway.config = {
     assigns."1" = [ { app_id = "^chromium-browser$"; } ];
   };
