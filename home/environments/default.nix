@@ -40,6 +40,9 @@ in
     ripgrep
     sd
 
+    # Nix utils
+    pkgsNixIndexDatabase.comma-with-db
+
     # Custom utils
     whichf
   ];
