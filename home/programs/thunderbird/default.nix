@@ -22,6 +22,11 @@
             installation_mode = "force_installed";
             install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/green-floral/latest.xpi";
           };
+
+          "{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/removedupes/latest.xpi";
+          };
         };
       };
     };
