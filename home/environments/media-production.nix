@@ -1,4 +1,4 @@
-{ pkgs, pkgsUnstable, ... }:
+{ pkgs, pkgsKiraNur, ... }:
 
 {
   imports = [ ../programs/lmms ];
@@ -10,6 +10,6 @@
     inkscape
     yabridge
     yabridgectl
-    pkgsUnstable.zynaddsubfx
+    pkgsKiraNur.zynaddsubfx
   ];
 }
