@@ -13,6 +13,11 @@
     package = pkgsUnstable.thunderbird-128.override {
       extraPolicies = {
         ExtensionSettings = {
+          "gconversation@xulforum.org" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/gmail-conversation-view/latest.xpi";
+          };
+
           "uBlock0@raymondhill.net" = {
             installation_mode = "force_installed";
             install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/ublock-origin/latest.xpi";

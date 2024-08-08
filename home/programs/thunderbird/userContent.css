@@ -1,4 +1,9 @@
 body {
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
   margin: 0 !important;
 }
 
@@ -9,4 +14,70 @@ img:not([overflowing]), picture, video, embed, object, iframe {
 .moz-text-plain, .moz-text-flowed {
   font-family: initial !important;
   font-size: 14px !important;
+}
+
+/* Thunderbird conversations extension */
+#conversationWrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+
+  button, [role=button] {
+    border-radius: 3px !important;
+  }
+
+  .conversationHeaderWrapper {
+    box-shadow: none !important;
+  }
+
+  .conversationHeader {
+    padding: 6px 10px !important;
+    line-height: 30px !important;
+    align-items: center !important;
+
+    .subject {
+      font-size: 1.6rem !important;
+    }
+  }
+
+  #messageList {
+    flex: 1 !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    overflow-y: scroll !important;
+
+    .message {
+      margin: 0 0px 6px !important;
+      border-radius: 6px !important;
+      box-shadow: 0 0 5px transparent !important;
+      transition: box-shadow 300ms ease, border-color 300ms ease !important;
+
+      .messageHeader {
+        margin: 0 !important;
+        padding: 3px 10px !important;
+        transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease !important;
+
+        &:hover {
+          background-color: color-mix(in srgb, AccentColor 10%, transparent) !important;
+        }
+      }
+
+      &:has(.messageHeader:hover) {
+        box-shadow: 0 0 5px color-mix(in srgb, AccentColor 50%, transparent) !important;
+        border-color: color-mix(in srgb, AccentColor 60%, transparent) !important;
+      }
+
+      &:focus {
+        box-shadow: 0 0 5px transparent !important;
+      }
+    }
+  }
+
+  .replyBox {
+    border-radius: 3px !important;
+    padding: 6px !important;
+    height: initial !important;
+    line-height: initial !important;
+    min-height: initial !important;
+  }
 }
