@@ -4,10 +4,10 @@
   imports = [ ../programs/lmms ];
 
   home.packages = with pkgs; [
-    audacity
     ffmpeg
     gimp
     inkscape
+    tenacity
     yabridge
     yabridgectl
     pkgsKiraNur.zynaddsubfx
