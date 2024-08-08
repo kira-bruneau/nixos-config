@@ -3,5 +3,5 @@
   (setopt ellama-provider
           (make-llm-ollama
            :host "quartz"
-           :chat-model "deepseek-coder:33b-instruct"
-           :embedding-model "deepseek-coder:33b-instruct")))
+           :chat-model "deepseek-coder-v2"
+           :embedding-model "deepseek-coder-v2")))
