@@ -16,6 +16,9 @@
 
   &[uidensity="compact"] {
     --spacing: 4px;
+
+    /* Fix use in calc (originally just 0) */
+    --recipient-multi-line-gap: 0px !important;
   }
 
   &[uidensity="touch"] {
