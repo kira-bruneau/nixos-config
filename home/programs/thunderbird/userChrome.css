@@ -3,6 +3,8 @@
  */
 
 :root {
+  --spacing: 7px;
+
   /* Lighten search bar border color */
   --search-bar-border-color: var(--color-gray-40) !important;
 
@@ -11,6 +13,14 @@
 
   /* Remove border on ghost butons */
   --button-border-color-ghost: transparent !important;
+
+  &[uidensity="compact"] {
+    --spacing: 4px;
+  }
+
+  &[uidensity="touch"] {
+    --spacing: 10px;
+  }
 }
 
 .kbd-container kbd {
@@ -49,7 +59,7 @@
 
 #messageHeader {
   /* Increase message header padding */
-  padding: 9px !important;
+  padding: var(--spacing) !important;
 }
 
 #headerSenderToolbarContainer {
@@ -100,6 +110,11 @@
   }
 
   .infobar {
-    margin: 0 9px 9px !important;
+    margin: 0 var(--spacing) var(--spacing) !important;
   }
+}
+
+#messagepane {
+  padding: var(--spacing) !important;
+  background-color: #fff !important;
 }
