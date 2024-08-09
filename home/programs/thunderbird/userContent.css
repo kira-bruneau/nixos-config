@@ -1,6 +1,7 @@
 :root {
-  --color-accent-primary: AccentColor !important;
   --spacing: 10px;
+  --small-spacing: 6px;
+  --color-accent-primary: AccentColor !important;
 }
 
 body {
@@ -36,7 +37,7 @@ img:not([overflowing]), picture, video, embed, object, iframe {
   }
 
   .conversationHeader {
-    padding: 6px var(--spacing) !important;
+    padding: var(--small-spacing) var(--spacing) !important;
     line-height: 30px !important;
     align-items: center !important;
 
@@ -52,7 +53,7 @@ img:not([overflowing]), picture, video, embed, object, iframe {
     overflow-y: scroll !important;
 
     .message {
-      margin: 0 0px 6px !important;
+      margin: 0 0px var(--small-spacing) !important;
       border-radius: 6px !important;
       box-shadow: 0 0 5px transparent !important;
       transition: box-shadow 300ms ease, border-color 300ms ease !important;

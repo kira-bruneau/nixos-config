@@ -3,10 +3,12 @@
  */
 
 :root {
+  --spacing: 7px;
+  --small-spacing: 4px;
+
+  /* Generalize accent color variables */
   --color-accent-primary: AccentColor !important;
   --selected-item-color: var(--color-accent-primary) !important;
-
-  --spacing: 7px;
 
   /* Lighten search bar border color */
   --search-bar-border-color: var(--color-gray-40) !important;
@@ -19,6 +21,7 @@
 
   &[uidensity="compact"] {
     --spacing: 4px;
+    --small-spacing: 2px;
 
     /* Fix use in calc (originally just 0) */
     --recipient-multi-line-gap: 0px !important;
@@ -26,6 +29,7 @@
 
   &[uidensity="touch"] {
     --spacing: 10px;
+    --small-spacing: 6px;
   }
 }
 
@@ -50,7 +54,7 @@
 #unifiedToolbarContent {
   .unified-toolbar-button {
     /* Use padding instead of margin */
-    padding: 6px !important;
+    padding: var(--small-spacing) !important;
     margin: 0 !important;
 
     /* Remove drop-down arrow */
