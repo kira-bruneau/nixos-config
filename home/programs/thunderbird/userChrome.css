@@ -11,7 +11,7 @@
   --selected-item-color: var(--color-accent-primary) !important;
 
   /* Lighten search bar border color */
-  --search-bar-border-color: var(--color-gray-40) !important;
+  --search-bar-border-color: var(--color-gray-30) !important;
 
   /* Remove border on message header toolbar buttons */
   --toolbarbutton-header-bordercolor: transparent !important;
