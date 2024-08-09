@@ -57,6 +57,10 @@
           thunderbird = {
             enable = true;
             profiles = [ "thunderbird" ];
+            settings = id: {
+              # Use maildir instead of mbox
+              "mail.server.server_${id}.storeContractID" = "@mozilla.org/msgstore/maildirstore;1";
+            };
           };
         };
 
@@ -74,6 +78,9 @@
 
               # Disable notifications
               "mail.server.server_${id}.use_idle" = false;
+
+              # Use maildir instead of mbox
+              "mail.server.server_${id}.storeContractID" = "@mozilla.org/msgstore/maildirstore;1";
             };
           };
         };
