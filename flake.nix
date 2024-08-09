@@ -172,7 +172,10 @@
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = inputs.nixpkgs.legacyPackages.${system};
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
+        };
 
         flake-linter-lib = flake-linter.lib.${system};
 

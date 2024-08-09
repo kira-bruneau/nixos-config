@@ -54,32 +54,7 @@
     services.dbus.implementation = "broker";
 
     nixpkgs.config = {
-      allowUnfreePredicate =
-        pkg:
-        builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
-          "2ship2harkinian"
-          "anytype"
-          "anytype-heart"
-          "aspell-dict-en-science"
-          "broadcom-sta"
-          "clonehero"
-          "clonehero-unwrapped"
-          "data.zip" # (vvvvvv)
-          "discord"
-          "minecraft-server"
-          "nvidia-settings"
-          "nvidia-x11"
-          "sm64ex"
-          "steam"
-          "steam-jupiter-original"
-          "steam-jupiter-unwrapped"
-          "steam-original"
-          "steam-unwrapped"
-          "steamdeck-hw-theme"
-          "unrar"
-          "vvvvvv"
-        ];
-
+      allowUnfreePredicate = import ../unfree.nix { inherit lib; };
       permittedInsecurePackages = [ "electron-29.4.6" ];
     };
   };
