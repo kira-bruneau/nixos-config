@@ -482,6 +482,7 @@ in
 
   services.jellyseerr = {
     enable = true;
+    package = pkgsUnstable.jellyseerr;
     openFirewall = true;
   };
 
@@ -935,7 +936,7 @@ in
     '';
   };
 
-  systemd.packages = [ pkgsUnstable.qbittorrent-nox ];
+  systemd.packages = [ pkgs.qbittorrent-nox ];
 
   users.users.qbittorrent = {
     uid = config.ids.uids.deluge;

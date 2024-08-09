@@ -1,6 +1,5 @@
 {
   lib,
-  pkgsUnstable,
   stdenv,
   emacs29,
   emacs29-pgtk,
@@ -44,6 +43,7 @@
   prettierd,
   python3,
   ripgrep,
+  rust-analyzer,
   rustc,
   rustfmt,
   solargraph,
@@ -211,7 +211,7 @@ callPackage ./wrapper.nix {
           ]
         ))
         ripgrep
-        pkgsUnstable.rust-analyzer
+        rust-analyzer
         rustc
         rustfmt
         solargraph

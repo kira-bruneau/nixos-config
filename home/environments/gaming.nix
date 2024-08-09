@@ -1,9 +1,4 @@
-{
-  pkgs,
-  pkgsUnstable,
-  pkgsKiraNur,
-  ...
-}:
+{ pkgs, pkgsKiraNur, ... }:
 
 let
   mario64Rom = pkgs.fetchurl {
@@ -20,7 +15,7 @@ in
 
   home.packages = with pkgs; [
     # Games & Launchers
-    pkgsUnstable._2ship2harkinian
+    _2ship2harkinian
     clonehero
     pkgsKiraNur.pokemmo-installer
     pkgsKiraNur.protontricks

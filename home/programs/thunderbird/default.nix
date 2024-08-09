@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  pkgsUnstable,
   ...
 }:
 
@@ -11,7 +10,7 @@
     enable = true;
 
     package =
-      (pkgsUnstable.thunderbird-128.overrideAttrs (attrs: {
+      (pkgs.thunderbird-128.overrideAttrs (attrs: {
         buildCommand =
           attrs.buildCommand
           + ''
