@@ -1,3 +1,8 @@
+:root {
+  --color-accent-primary: AccentColor !important;
+  --spacing: 10px;
+}
+
 body {
   position: absolute !important;
   top: 0 !important;
@@ -31,7 +36,7 @@ img:not([overflowing]), picture, video, embed, object, iframe {
   }
 
   .conversationHeader {
-    padding: 6px 10px !important;
+    padding: 6px var(--spacing) !important;
     line-height: 30px !important;
     align-items: center !important;
 
@@ -43,7 +48,7 @@ img:not([overflowing]), picture, video, embed, object, iframe {
   #messageList {
     flex: 1 !important;
     margin: 0 !important;
-    padding: 10px !important;
+    padding: var(--spacing) !important;
     overflow-y: scroll !important;
 
     .message {
@@ -54,17 +59,17 @@ img:not([overflowing]), picture, video, embed, object, iframe {
 
       .messageHeader {
         margin: 0 !important;
-        padding: 3px 10px !important;
+        padding: 3px var(--spacing) !important;
         transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease !important;
 
         &:hover {
-          background-color: color-mix(in srgb, AccentColor 10%, transparent) !important;
+          background-color: color-mix(in srgb, var(--color-accent-primary) 10%, transparent) !important;
         }
       }
 
       &:has(.messageHeader:hover) {
-        box-shadow: 0 0 5px color-mix(in srgb, AccentColor 50%, transparent) !important;
-        border-color: color-mix(in srgb, AccentColor 60%, transparent) !important;
+        box-shadow: 0 0 5px color-mix(in srgb, var(--color-accent-primary) 50%, transparent) !important;
+        border-color: color-mix(in srgb, var(--color-accent-primary) 60%, transparent) !important;
       }
 
       &:focus {
