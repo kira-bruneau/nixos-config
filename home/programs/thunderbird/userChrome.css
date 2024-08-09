@@ -47,8 +47,7 @@
 
 #spacesToolbar {
   /* Use dark sidebar color */
-  background-color: #393c58 !important;
-  opacity: 0.8;
+  background-color: rgba(57, 60, 88, 0.8) !important;
   color: #fff !important;
 }
 
