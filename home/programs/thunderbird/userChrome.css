@@ -52,6 +52,11 @@
   /* Use dark sidebar color */
   background-color: rgba(57, 60, 88, 0.8) !important;
   color: #fff !important;
+
+  &:not([hidden]) ~ #navigation-toolbox {
+    /* Align toolbox so it's not behind spaces toolbar */
+    margin-inline-start: var(--spaces-total-width) !important;
+  }
 }
 
 #threadTree {
@@ -62,11 +67,6 @@
     /* Ignore padding accounting for scrollbar */
     padding-inline-end: var(--spacing) !important;
   }
-}
-
-#navigation-toolbox {
-  /* Align toolbox so it's not behind spaces toolbar */
-  margin-inline-start: var(--spaces-total-width) !important;
 }
 
 #titlebar {
