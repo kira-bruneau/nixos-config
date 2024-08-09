@@ -48,7 +48,17 @@
 #spacesToolbar {
   /* Use dark sidebar color */
   background-color: #393c58 !important;
+  opacity: 0.8;
   color: #fff !important;
+}
+
+#navigation-toolbox {
+  /* Align toolbox so it's not behind spaces toolbar */
+  margin-inline-start: var(--spaces-total-width) !important;
+}
+
+#titlebar {
+  margin-inline-start: 0 !important;
 }
 
 #unifiedToolbarContent {
