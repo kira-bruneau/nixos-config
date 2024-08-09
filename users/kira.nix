@@ -68,12 +68,12 @@
           flavor = "gmail.com";
           address = "kira.bruneau@gmail.com";
           realName = "Kira Bruneau";
+          smtp = lib.mkForce null; # Google sends local ip in SMTP headers
           thunderbird = {
             enable = true;
             profiles = [ "thunderbird" ];
             settings = id: {
               # Use OAuth2 for authentication
-              "mail.smtpserver.smtp_${id}.authMethod" = 10;
               "mail.server.server_${id}.authMethod" = 10;
 
               # Disable notifications
