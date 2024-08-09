@@ -92,6 +92,6 @@ img:not([overflowing]), picture, video, embed, object, iframe {
 
   .bottom-links {
     border-top: 1px solid ThreeDShadow !important;
-    padding: var(--small-spacing) var(--spacing) !important;
+    padding: calc(var(--small-spacing) / 2) var(--spacing) !important;
   }
 }
