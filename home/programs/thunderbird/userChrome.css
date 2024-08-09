@@ -19,6 +19,9 @@
   /* Remove border on ghost butons */
   --button-border-color-ghost: transparent !important;
 
+  /* Increase padding on thread tree cards */
+  --tree-card-inline: var(--spacing) !important;
+
   &[uidensity="compact"] {
     --spacing: 4px;
     --small-spacing: 2px;
@@ -49,6 +52,16 @@
   /* Use dark sidebar color */
   background-color: rgba(57, 60, 88, 0.8) !important;
   color: #fff !important;
+}
+
+#threadTree {
+  /* Increase padding to align with conversation messages */
+  padding-block: 7px !important;
+
+  td {
+    /* Ignore padding accounting for scrollbar */
+    padding-inline-end: var(--spacing) !important;
+  }
 }
 
 #navigation-toolbox {
