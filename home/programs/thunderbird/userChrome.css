@@ -120,7 +120,7 @@
   }
 }
 
-#messagepane {
+#messagepane, #messageEditor {
   padding: var(--spacing) !important;
   background-color: #fff !important;
 }
