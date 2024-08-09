@@ -47,13 +47,16 @@ img:not([overflowing]), picture, video, embed, object, iframe {
   }
 
   #messageList {
+    display: flex !important;
+    flex-direction: column !important;
     flex: 1 !important;
     margin: 0 !important;
     padding: var(--spacing) !important;
+    gap: var(--small-spacing) !important;
     overflow-y: scroll !important;
 
     .message {
-      margin: 0 0px var(--small-spacing) !important;
+      margin: 0 !important;
       border-radius: 6px !important;
       box-shadow: 0 0 5px transparent !important;
       transition: box-shadow 300ms ease, border-color 300ms ease !important;
