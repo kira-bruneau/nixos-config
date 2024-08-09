@@ -94,7 +94,7 @@
       };
 
       thunderbird.profiles.thunderbird.settings = {
-        "extensions.activeThemeID" = "{67da5716-2a2f-4f39-b785-3ad9b7beeb6d}";
+        "extensions.activeThemeID" = "{14a690a4-9282-43f1-bb5e-81641b334ec2}";
       };
 
       git = {

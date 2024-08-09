@@ -23,6 +23,11 @@
             install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/ublock-origin/latest.xpi";
           };
 
+          "{14a690a4-9282-43f1-bb5e-81641b334ec2}" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/sakura-blossoms-birds/latest.xpi";
+          };
+
           "{67da5716-2a2f-4f39-b785-3ad9b7beeb6d}" = {
             installation_mode = "force_installed";
             install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/green-floral/latest.xpi";
