@@ -89,4 +89,9 @@ img:not([overflowing]), picture, video, embed, object, iframe {
     line-height: initial !important;
     min-height: initial !important;
   }
+
+  .bottom-links {
+    border-top: 1px solid ThreeDShadow !important;
+    padding: var(--small-spacing) var(--spacing) !important;
+  }
 }
