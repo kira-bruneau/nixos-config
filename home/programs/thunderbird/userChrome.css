@@ -41,6 +41,12 @@
   color: #525259 !important;
 }
 
+#spacesToolbar {
+  /* Use dark sidebar color */
+  background-color: #393c58 !important;
+  color: #fff !important;
+}
+
 #unifiedToolbarContent {
   .unified-toolbar-button {
     /* Use padding instead of margin */
