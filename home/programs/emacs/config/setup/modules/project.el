@@ -32,23 +32,29 @@
     (setq default-directory (project-root (project-current t)))
     (magit-dispatch))
 
-  ;; Only save project buffers before compilation
-  ;; Source: https://andreyor.st/posts/2022-07-16-project-el-enhancements/
-  (define-advice project-compile (:around (fn) save-project-buffers)
-    "Only ask to save project-related buffers."
-    (let* ((project-buffers (project-buffers (project-current)))
-           (compilation-save-buffers-predicate
-            (lambda () (memq (current-buffer) project-buffers))))
-      (funcall fn)))
+  ;; Per-project compilation buffers
+  ;; Adapted from: https://github.com/bbatsov/projectile/blob/0163b335a18af0f077a474d4dc6b36e22b5e3274/projectile.el#L5074-L5087
+  (defun project-compilation-buffer-name (compilation-mode)
+    "Meant to be used for `compilation-buffer-name-function`.
+Argument COMPILATION-MODE is the name of the major mode used for the
+compilation buffer."
+    (concat "*" (downcase compilation-mode) "*"
+            (if-let ((project (project-current))) (concat "<" (project-name project) ">") "")))
 
-  (define-advice recompile (:around (fn &optional edit-command) save-project-buffers)
-    "Only ask to save project-related buffers if inside a project."
-    (if (project-current)
-        (let* ((project-buffers (project-buffers (project-current)))
-               (compilation-save-buffers-predicate
-                (lambda () (memq (current-buffer) project-buffers))))
-          (funcall fn edit-command))
-      (funcall fn edit-command))))
+  (defun project-current-project-buffer-p ()
+    "Meant to be used for `compilation-save-buffers-predicate`.
+This indicates whether the current buffer is in the same project as the current
+window (including returning true if neither is in a project)."
+    (if-let ((project (with-current-buffer (window-buffer) (project-current))))
+        (string-prefix-p (file-truename (project-root project)) (file-truename (buffer-file-name)))
+      t))
+
+  (defun project-per-project-compilation-buffer-advice (orig-fun &rest args)
+    (let ((compilation-buffer-name-function #'project-compilation-buffer-name)
+          (compilation-save-buffers-predicate #'project-current-project-buffer-p))
+      (apply orig-fun args)))
+
+  (advice-add 'project-compile :around #'project-per-project-compilation-buffer-advice))
 
 (use-package projection-commands
   :bind (:map project-prefix-map
@@ -83,7 +89,13 @@
                     (call-interactively #'projection-commands-install-project)))))
 
   :config
-  (require 'projection))
+  (require 'projection)
+  (advice-add 'projection-commands-configure-project :around #'project-per-project-compilation-buffer-advice)
+  (advice-add 'projection-commands-build-project :around #'project-per-project-compilation-buffer-advice)
+  (advice-add 'projection-commands-test-project :around #'project-per-project-compilation-buffer-advice)
+  (advice-add 'projection-commands-run-project :around #'project-per-project-compilation-buffer-advice)
+  (advice-add 'projection-commands-package-project :around #'project-per-project-compilation-buffer-advice)
+  (advice-add 'projection-commands-install-project :around #'project-per-project-compilation-buffer-advice))
 
 (use-package projection-core-cache
   :init
