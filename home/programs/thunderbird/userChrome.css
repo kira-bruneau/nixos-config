@@ -104,8 +104,8 @@
   /* Prevent collapsing toolbar into columns */
   flex-direction: row-reverse !important;
 
-  /* Align contained toolbar to baseline instead of center */
-  align-items: baseline !important;
+  /* Align contained toolbar to flex-start instead of center */
+  align-items: flex-start !important;
 }
 
 #expandedfromBox {
