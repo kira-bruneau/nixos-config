@@ -56,7 +56,7 @@
           };
           thunderbird = {
             enable = true;
-            profiles = [ "thunderbird" ];
+            profiles = [ "kira" ];
             settings = id: {
               # Use maildir instead of mbox
               "mail.server.server_${id}.storeContractID" = "@mozilla.org/msgstore/maildirstore;1";
@@ -71,7 +71,7 @@
           smtp = lib.mkForce null; # Google sends local ip in SMTP headers
           thunderbird = {
             enable = true;
-            profiles = [ "thunderbird" ];
+            profiles = [ "kira" ];
             settings = id: {
               # Use OAuth2 for authentication
               "mail.server.server_${id}.authMethod" = 10;
@@ -93,7 +93,7 @@
         "services.sync.username" = "kira.bruneau@pm.me";
       };
 
-      thunderbird.profiles.thunderbird.settings = {
+      thunderbird.profiles.kira.settings = {
         "extensions.activeThemeID" = "{14a690a4-9282-43f1-bb5e-81641b334ec2}";
       };
 

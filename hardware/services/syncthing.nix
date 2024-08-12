@@ -132,7 +132,7 @@
             "aurora"
             "quartz"
           ];
-          path = "~/.thunderbird/thunderbird/Mail/Feeds";
+          path = "~/.thunderbird/kira/Mail/Feeds";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
           fsWatcherDelayS = 1;
