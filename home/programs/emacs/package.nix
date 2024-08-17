@@ -70,7 +70,7 @@ callPackage ./wrapper.nix {
     epkgs.cider
     epkgs.cmake-font-lock
     epkgs.cmake-mode
-    epkgs.counsel
+    epkgs.consult
     epkgs.dap-mode
     epkgs.diminish
     epkgs.direnv
@@ -89,7 +89,6 @@ callPackage ./wrapper.nix {
     epkgs.git-modes
     epkgs.graphql-ts-mode
     epkgs.haskell-mode
-    epkgs.ivy
     epkgs.latex-preview-pane
     epkgs.lsp-bridge
     epkgs.lua-mode
@@ -101,6 +100,7 @@ callPackage ./wrapper.nix {
     epkgs.multiple-cursors
     epkgs.nameless
     epkgs.nix-ts-mode
+    epkgs.orderless
     epkgs.org-download
     epkgs.page-break-lines
     epkgs.pdf-tools
@@ -118,7 +118,6 @@ callPackage ./wrapper.nix {
     epkgs.slime
     epkgs.smartparens
     epkgs.suggest
-    epkgs.swiper
     epkgs.tree-sitter-ispell
     (epkgs.treesit-grammars.with-grammars (ts: [
       ts.tree-sitter-bash
@@ -145,6 +144,7 @@ callPackage ./wrapper.nix {
     ]))
     epkgs.undo-tree
     epkgs.vala-mode
+    epkgs.vertico
     epkgs.visual-regexp
     epkgs.visual-regexp-steroids
     epkgs.vlf

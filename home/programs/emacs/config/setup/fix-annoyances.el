@@ -47,9 +47,31 @@
 ;; Don't prompt to create a new buffer for multiple async shells
 (setq async-shell-command-buffer 'new-buffer)
 
-;; Recursive minibuffers (support counsel-yank-pop within minibuffer)
+;; Recursive minibuffers
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode)
+
+;; Hide M-x commands which do not work in the current mode
+(use-package simple
+  :custom
+  (read-extended-command-predicate #'command-completion-default-include-p))
+
+;; Add prompt indicator to `completing-read-multiple'.
+;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
+(defun crm-indicator (args)
+  (cons (format "[CRM%s] %s"
+                (replace-regexp-in-string
+                 "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                 crm-separator)
+                (car args))
+        (cdr args)))
+(advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+;; Don't allow the cursor in the minibuffer prompt
+(setq minibuffer-prompt-properties
+      '(read-only t cursor-intangible t face minibuffer-prompt))
+
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
 ;; Support ANSI colours in compilation output
 ;; Source: https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer

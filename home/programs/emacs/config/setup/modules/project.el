@@ -1,7 +1,7 @@
 (use-package project
   :bind-keymap ("<f7>" . project-prefix-map)
   :bind (:map project-prefix-map
-         ("s" . project-counsel-rg)
+         ("s" . project-consult-ripgrep)
          ("S" . rg-project)
          ("v" . project-magit-dispatch)
          ("V" . magit-project-status)
@@ -13,7 +13,7 @@
   (setq magit-bind-magit-project-status nil)
   (setq project-switch-commands
         '((project-find-file "Find file")
-          (project-counsel-rg "Find regexp")
+          (project-consult-ripgrep "Find regexp")
           (rg-project "Ripgrep")
           (project-find-dir "Find directory")
           (project-dired "Dired")
@@ -22,10 +22,10 @@
           (project-async-shell-command "Execute")
           (project-shell "Shell")))
 
-  (defun project-counsel-rg ()
+  (defun project-consult-ripgrep ()
     (interactive)
     (let ((root (project-root (project-current t))))
-      (counsel-rg nil root nil (format "Find regexp in %s: " root))))
+      (consult-ripgrep root)))
 
   (defun project-magit-dispatch ()
     (interactive)
