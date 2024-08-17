@@ -94,6 +94,7 @@ callPackage ./wrapper.nix {
     epkgs.lua-mode
     epkgs.macrostep
     epkgs.magit
+    epkgs.marginalia
     epkgs.markdown-mode
     epkgs.mermaid-mode
     epkgs.multi-term
