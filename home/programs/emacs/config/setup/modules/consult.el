@@ -14,6 +14,7 @@
          ("C-r" . consult-history))
 
   :config
+  (setq consult-narrow-key "<")
   (setq consult-async-input-throttle 0.01)
   (setq consult-async-input-debounce 0.01)
   (setq consult-async-min-input 0))
