@@ -110,3 +110,10 @@ window (including returning true if neither is in a project)."
 
   :config
   (require 'projection))
+
+(use-package projection-multi-embark
+  :after (embark projection-multi)
+  :bind (:map project-prefix-map
+         ("a" . projection-multi-compile)
+         ("A" . project-compile))
+  :config (projection-multi-embark-setup-command-map))

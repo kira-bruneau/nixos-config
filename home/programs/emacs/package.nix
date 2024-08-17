@@ -79,6 +79,8 @@ callPackage ./wrapper.nix {
     epkgs.dtrt-indent
     epkgs.editorconfig
     epkgs.ellama
+    epkgs.embark
+    epkgs.embark-consult
     epkgs.evil
     epkgs.evil-collection
     epkgs.evil-textobj-tree-sitter
@@ -113,6 +115,7 @@ callPackage ./wrapper.nix {
     epkgs.pretty-sha-path
     epkgs.projection
     epkgs.projection-multi
+    epkgs.projection-multi-embark
     epkgs.rainbow-delimiters
     epkgs.restclient
     epkgs.rg
