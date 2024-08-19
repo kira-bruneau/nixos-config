@@ -1,5 +1,5 @@
 (use-package embark
   :bind*
-  (("C-." . embark-act)
-   ("C-;" . embark-dwim)
+  (("M-." . embark-act)
+   ("M-," . embark-dwim)
    ("C-h B" . embark-bindings)))

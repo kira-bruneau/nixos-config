@@ -1,4 +1,8 @@
 (use-package evil
+  :bind
+  (:map evil-normal-state-map
+        ("M-." . nil))
+
   :init
   (defvar evil-key-rotation
     '(;; Remap jkl commands to their equivalent colemak position
