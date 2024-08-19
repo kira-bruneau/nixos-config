@@ -1,5 +1,5 @@
 (use-package magit
-  :bind (("<f8>" . magit-file-dispatch))
+  :bind* ("<f8>" . magit-file-dispatch)
   :init
   (setq magit-no-message '("Turning on magit-auto-revert-mode..."))
 

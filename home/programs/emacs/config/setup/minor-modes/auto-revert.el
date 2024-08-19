@@ -1,5 +1,5 @@
 (use-package autorevert
-  :bind (("<f5>" . revert-buffer))
+  :bind* ("<f5>" . revert-buffer)
   :hook (dired-mode . auto-revert-mode)
   :config
   (setq auto-revert-verbose nil)

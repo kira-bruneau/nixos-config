@@ -1,5 +1,5 @@
 (use-package rg
-  :bind (("C-c s" . rg-menu))
+  :bind* ("C-c s" . rg-menu)
   :config
   (setq rg-show-columns t)
   (setq rg-default-alias-fallback "everything")

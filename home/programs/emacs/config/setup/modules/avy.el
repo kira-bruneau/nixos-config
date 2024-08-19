@@ -1,8 +1,8 @@
 (use-package avy
-  :bind (("C-:" . avy-goto-char)
-         ("C-'" . avy-goto-char-2)
-         ("M-g w" . avy-goto-word-1)
-         ("M-g e" . avy-goto-word-0))
+  :bind* (("C-:" . avy-goto-char)
+          ("C-'" . avy-goto-char-2)
+          ("M-g w" . avy-goto-word-1)
+          ("M-g e" . avy-goto-word-0))
 
   :init
   ;; Colemak optimized keys
