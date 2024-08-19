@@ -8,11 +8,19 @@
 let
   nix-instant-dev = pkgs.writeShellApplication {
     name = "nid";
+
     bashOptions = [ ];
+
+    excludeShellChecks = [
+      "SC2154"
+      "SC2034"
+    ];
+
     runtimeInputs = with pkgs; [
       config.nix.package
       coreutils
       git
+      jq
     ];
 
     text = builtins.readFile ./nix-instant-dev.sh;
