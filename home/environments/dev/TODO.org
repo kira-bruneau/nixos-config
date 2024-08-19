@@ -1,5 +1,4 @@
 * nix-instant-dev
-** TODO Fix postUnpack scripts that hardcode $sourceRoot (eg. source)
 ** TODO Add gitRepoUrl to all git forges in nixpkgs
 ** TODO Automatically unwrap packages that have passthru.unwrapped
 *** TODO Fix any wrappers in nixpkgs that don't have passthru

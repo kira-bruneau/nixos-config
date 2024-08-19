@@ -8,17 +8,11 @@
 let
   nix-instant-dev = pkgs.writeShellApplication {
     name = "nid";
-
-    bashOptions = [
-      "errexit"
-      "pipefail"
-    ];
-
+    bashOptions = [ ];
     runtimeInputs = with pkgs; [
       config.nix.package
       coreutils
       git
-      gnused
     ];
 
     text = builtins.readFile ./nix-instant-dev.sh;
