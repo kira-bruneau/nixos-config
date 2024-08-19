@@ -1,4 +1,5 @@
 (use-package lsp-bridge
+  :hook (lsp-bridge-mode . lsp-bridge-semantic-tokens-mode)
   :bind (:map lsp-bridge-mode-map
               ("C-M-/" . lsp-bridge-find-references)
               ("M-?" . lsp-bridge-popup-documentation))
