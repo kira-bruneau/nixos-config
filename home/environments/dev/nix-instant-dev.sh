@@ -61,7 +61,7 @@ if ! [ -L "$NIX_BUILD_TOP/${sourceRoot:-.}" ]; then
 fi
 
 cd "$NID_OUT"
-cmakeFlags="-DCMAKE_EXPORT_COMPILE_COMMANDS=1 $cmakeFlags"
+cmakeFlags="-Cnix-instant-dev.cmake $cmakeFlags"
 phases="patchPhase ${preConfigurePhases[*]:-} configurePhase" genericBuild
 
 if [ -e compile_commands.json ]; then

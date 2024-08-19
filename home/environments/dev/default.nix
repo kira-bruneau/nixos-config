@@ -23,7 +23,9 @@ let
       jq
     ];
 
-    text = builtins.readFile ./nix-instant-dev.sh;
+    text = builtins.replaceStrings [ "nix-instant-dev.cmake" ] [ "${./nix-instant-dev.cmake}" ] (
+      builtins.readFile ./nix-instant-dev.sh
+    );
   };
 in
 {
