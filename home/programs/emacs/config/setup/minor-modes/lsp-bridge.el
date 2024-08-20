@@ -44,6 +44,4 @@
 
 (unless (display-graphic-p)
   (use-package acm-terminal
-    :after acm
-    :init
-    (require 'acm-terminal)))
+    :after acm))

@@ -56,6 +56,11 @@ window (including returning true if neither is in a project)."
 
   (advice-add 'project-compile :around #'project-per-project-compilation-buffer-advice))
 
+(use-package projection-core-cache
+  :init
+  (with-eval-after-load 'savehist
+    (add-to-list 'savehist-additional-variables 'projection--project-cache)))
+
 (use-package projection-commands
   :bind (:map project-prefix-map
          ("z" . projection-commands-configure-project)
@@ -89,7 +94,6 @@ window (including returning true if neither is in a project)."
                     (call-interactively #'projection-commands-install-project)))))
 
   :config
-  (require 'projection)
   (advice-add 'projection-commands-configure-project :around #'project-per-project-compilation-buffer-advice)
   (advice-add 'projection-commands-build-project :around #'project-per-project-compilation-buffer-advice)
   (advice-add 'projection-commands-test-project :around #'project-per-project-compilation-buffer-advice)
@@ -97,19 +101,12 @@ window (including returning true if neither is in a project)."
   (advice-add 'projection-commands-package-project :around #'project-per-project-compilation-buffer-advice)
   (advice-add 'projection-commands-install-project :around #'project-per-project-compilation-buffer-advice))
 
-(use-package projection-core-cache
-  :init
-  (require 'projection-core-cache)
-  (with-eval-after-load 'savehist
-    (add-to-list 'savehist-additional-variables 'projection--project-cache)))
+(use-package projection)
 
 (use-package projection-multi
   :bind (:map project-prefix-map
          ("a" . projection-multi-compile)
-         ("A" . project-compile))
-
-  :config
-  (require 'projection))
+         ("A" . project-compile)))
 
 (use-package projection-multi-embark
   :after (embark projection-multi)

@@ -1,3 +1,1 @@
-(use-package vlf
-  :init
-  (require 'vlf-setup))
+(use-package vlf-setup)

@@ -1,3 +1,1 @@
-(use-package tree-sitter-ispell
-  :init
-  (require 'tree-sitter-ispell))
+(use-package tree-sitter-ispell)
