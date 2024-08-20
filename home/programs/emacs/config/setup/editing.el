@@ -1,5 +1,5 @@
 ;; Start server
-(load "server")
+(require 'server)
 (unless (server-running-p) (server-start))
 
 ;; Use spaces for indentation
