@@ -1,23 +1,10 @@
 (use-package lsp-bridge
-  :hook (lsp-bridge-mode . lsp-bridge-semantic-tokens-mode)
+  :hook ((after-init . global-lsp-bridge-mode)
+         (lsp-bridge-mode . lsp-bridge-semantic-tokens-mode))
   :bind (:map lsp-bridge-mode-map
               ("C-M-/" . lsp-bridge-find-references)
               ("M-?" . lsp-bridge-popup-documentation))
   :init
-  (require 'lsp-bridge)
-  (add-to-list 'lsp-bridge-single-lang-server-mode-list '(csharp-ts-mode . lsp-bridge-csharp-lsp-server))
-  (add-to-list 'lsp-bridge-default-mode-hooks 'csharp-ts-mode-hook)
-  (add-to-list 'lsp-bridge-formatting-indent-alist '(csharp-ts-mode . csharp-ts-mode-indent-offset))
-
-  (add-to-list 'lsp-bridge-single-lang-server-mode-list '(dockerfile-ts-mode . "docker-langserver"))
-  (add-to-list 'lsp-bridge-default-mode-hooks 'dockerfile-ts-mode-hook)
-
-  (add-to-list 'lsp-bridge-single-lang-server-mode-list '(nix-ts-mode . lsp-bridge-nix-lsp-server))
-  (add-to-list 'lsp-bridge-default-mode-hooks 'nix-ts-mode-hook)
-  (add-to-list 'lsp-bridge-formatting-indent-alist '(nix-ts-mode . nix-ts-mode-indent-offset))
-
-  (global-lsp-bridge-mode)
-
   (with-eval-after-load 'evil-vars
     (defun evil-goto-definition-lsp-bridge (_string position)
       (setq-local lsp-bridge-jump-to-def-in-other-window nil)
@@ -53,9 +40,7 @@
 
   (setq lsp-bridge-get-project-path-by-filepath #'lsp-bridge-get-project-path-by-filepath)
   (setq lsp-bridge-user-langserver-dir (concat user-emacs-config-directory "langserver"))
-  (setq lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver"))
-  (setq lsp-bridge-nix-lsp-server "nixd")
-  (setq lsp-bridge-python-lsp-server "pylsp"))
+  (setq lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver")))
 
 (unless (display-graphic-p)
   (use-package acm-terminal
