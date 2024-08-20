@@ -101,12 +101,14 @@ window (including returning true if neither is in a project)."
   (advice-add 'projection-commands-package-project :around #'project-per-project-compilation-buffer-advice)
   (advice-add 'projection-commands-install-project :around #'project-per-project-compilation-buffer-advice))
 
-(use-package projection)
-
 (use-package projection-multi
   :bind (:map project-prefix-map
          ("a" . projection-multi-compile)
-         ("A" . project-compile)))
+         ("A" . project-compile))
+
+  :init
+  ;; projection-multi depends on projection-types, but doesn't require the package itself
+  (require 'projection-types))
 
 (use-package projection-multi-embark
   :bind (:map project-prefix-map
