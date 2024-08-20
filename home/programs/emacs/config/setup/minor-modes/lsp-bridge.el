@@ -49,7 +49,7 @@
   :config
   (defun lsp-bridge-get-project-path-by-filepath (filename)
     (if-let ((project (project-current filename)))
-     (project-root project)))
+        (expand-file-name (project-root project))))
 
   (setq lsp-bridge-get-project-path-by-filepath #'lsp-bridge-get-project-path-by-filepath)
   (setq lsp-bridge-user-langserver-dir (concat user-emacs-config-directory "langserver"))
