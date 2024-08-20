@@ -109,7 +109,6 @@ window (including returning true if neither is in a project)."
          ("A" . project-compile)))
 
 (use-package projection-multi-embark
-  :after (embark projection-multi)
   :bind (:map project-prefix-map
          ("a" . projection-multi-compile)
          ("A" . project-compile))

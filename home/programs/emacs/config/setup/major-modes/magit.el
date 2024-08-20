@@ -24,5 +24,4 @@
 
   (setq magit-repository-directories '(("~/Dev" . 4))))
 
-(use-package forge
-  :after magit)
+(use-package forge)
