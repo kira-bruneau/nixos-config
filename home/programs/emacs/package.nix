@@ -60,14 +60,12 @@ callPackage ./wrapper.nix {
   emacs = emacs.pkgs.emacsWithPackages (epkgs: [
     epkgs.acm-terminal
     epkgs.adaptive-wrap
-    epkgs.amx
     epkgs.apheleia
     epkgs.arduino-mode
     epkgs.async
     epkgs.avy
     epkgs.browse-at-remote
     epkgs.buffer-move
-    epkgs.cider
     epkgs.cmake-font-lock
     epkgs.cmake-mode
     epkgs.consult
@@ -99,7 +97,6 @@ callPackage ./wrapper.nix {
     epkgs.marginalia
     epkgs.markdown-mode
     epkgs.mermaid-mode
-    epkgs.multi-term
     epkgs.multiple-cursors
     epkgs.nameless
     epkgs.nix-ts-mode
@@ -119,7 +116,6 @@ callPackage ./wrapper.nix {
     epkgs.rainbow-delimiters
     epkgs.restclient
     epkgs.rg
-    epkgs.slime
     epkgs.smartparens
     epkgs.suggest
     epkgs.tree-sitter-ispell
