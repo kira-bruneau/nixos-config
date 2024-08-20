@@ -1,2 +1,5 @@
-(use-package global-subword-mode
-  :diminish "")
+(use-package subword
+  :demand
+  :diminish ""
+  :config
+  (global-subword-mode))
