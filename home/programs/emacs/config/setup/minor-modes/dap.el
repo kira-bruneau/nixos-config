@@ -1,6 +1,7 @@
 (use-package dap-mode
+  :demand
   :hook (dap-stopped . (lambda (arg) (call-interactively #'my-dap-hydra)))
-  :init
+  :config
   (require 'dap-gdb-lldb)
 
   (require 'dap-python)

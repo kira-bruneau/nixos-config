@@ -13,20 +13,21 @@
 
 ;; Theme
 (use-package doom-themes
-  :init
-  (setq doom-themes-padded-modeline 3)
-  (load-theme 'doom-vibrant t)
-
+  :demand
   :config
   (setq org-todo-keyword-faces
         `(("TODO" :foreground ,(doom-color 'green) :weight bold)
           ("INPROGRESS" :foreground ,(doom-color 'blue) :weight bold)
           ("WAITING" :foreground ,(doom-color 'yellow) :weight bold)
           ("DONE" :foreground ,(doom-color 'grey)  :weight bold)
-          ("CANCELLED" :foreground ,(doom-color 'grey) :weight bold))))
+          ("CANCELLED" :foreground ,(doom-color 'grey) :weight bold)))
+
+  (setq doom-themes-padded-modeline 3)
+  (load-theme 'doom-vibrant t))
 
 (use-package powerline
-  :init
+  :demand
+  :config
   (defun powerline-minimal-theme ()
     "Setup the minimal mode-line."
     (interactive)
@@ -76,10 +77,9 @@
                        (concat (powerline-render lhs)
                                (powerline-fill face2 (powerline-width rhs))
                                (powerline-render rhs)))))))
-  (powerline-minimal-theme)
 
-  :config
-  (setq powerline-display-buffer-size nil))
+  (setq powerline-display-buffer-size nil)
+  (powerline-minimal-theme))
 
 ;; Font (current frame + future frames)
 (let ((font (if (eq system-type 'darwin) "Monaco 12" "DejaVu Sans Mono 9")))
@@ -108,10 +108,8 @@
 
 ;; Pixel precision scrolling
 (use-package pixel-scroll
-  :init
-  (pixel-scroll-precision-mode)
-
   :config
   (setq pixel-scroll-precision-use-momentum t)
   (setq pixel-scroll-precision-initial-velocity-factor 0.02)
-  (setq pixel-scroll-precision-momentum-seconds 1.0))
+  (setq pixel-scroll-precision-momentum-seconds 1.0)
+  (pixel-scroll-precision-mode))

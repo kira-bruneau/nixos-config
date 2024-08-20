@@ -1,6 +1,5 @@
 (use-package dtrt-indent
-  :init
-  (dtrt-indent-global-mode t)
-
+  :demand
   :config
-  (setq dtrt-indent-verbosity 0))
+  (setq dtrt-indent-verbosity 0)
+  (dtrt-indent-global-mode t))

@@ -5,7 +5,9 @@
     (remhash 'tab_width props)))
 
 (use-package editorconfig
-  :init
-  (editorconfig-mode 1)
+  :demand
+  :config
   (add-hook 'editorconfig-hack-properties-functions
-            #'my-editorconfig-hack-properties))
+            #'my-editorconfig-hack-properties)
+
+  (editorconfig-mode 1))

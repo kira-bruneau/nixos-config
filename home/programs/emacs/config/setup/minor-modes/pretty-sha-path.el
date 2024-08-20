@@ -1,3 +1,4 @@
 (use-package pretty-sha-path
-  :init
+  :demand
+  :config
   (global-pretty-sha-path-mode))

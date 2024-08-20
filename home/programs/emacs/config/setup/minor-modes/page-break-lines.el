@@ -1,3 +1,4 @@
 (use-package page-break-lines
-  :init
+  :demand
+  :config
   (global-page-break-lines-mode))

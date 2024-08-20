@@ -1,9 +1,11 @@
 (use-package evil
-  :bind
+  :demand
   (:map evil-normal-state-map
         ("M-." . nil))
 
   :init
+  (setq evil-want-keybinding nil)
+
   (defvar evil-key-rotation
     '(;; Remap jkl commands to their equivalent colemak position
       ("j" . "n")
@@ -143,6 +145,15 @@
       (ad-set-arg 1 (evil-key-rotation--rotate-key (ad-get-arg 1))))
     ad-do-it)
 
+  :config
+  (evil-set-undo-system 'undo-tree)
+
+  (setq evil-goto-definition-functions
+        '(evil-goto-definition-xref
+          evil-goto-definition-semantic
+          evil-goto-definition-imenu
+          evil-goto-definition-search))
+
   (defadvice evil-define-key* (around evil-key-rotation activate)
     (setq evil-key-rotation--force t)
     ad-do-it
@@ -159,21 +170,11 @@
   (defadvice evil-make-intercept-map (before evil-key-rotation activate)
     (add-to-list 'evil-key-rotation--maps (ad-get-arg 0)))
 
-  (setq evil-want-keybinding nil)
-  (setq evil-goto-definition-functions
-        '(evil-goto-definition-xref
-          evil-goto-definition-semantic
-          evil-goto-definition-imenu
-          evil-goto-definition-search))
-  (evil-mode 1)
-
-  :config
-  (evil-set-undo-system 'undo-tree))
+  (evil-mode 1))
 
 (use-package evil-collection
-  :init
-  (evil-collection-init)
-
+  :demand
+  :config
   ;; Default to normal mode in shell-mode like in compilation-mode
   ;; shell-mode derives from comint-mode which defaults to insert mode
   (evil-set-initial-state 'shell-mode 'normal)
@@ -200,7 +201,9 @@
       "C-j" #'next-error-no-select
       "C-k" #'previous-error-no-select
       "gj" #'next-error-no-select
-      "gk" #'previous-error-no-select)))
+      "gk" #'previous-error-no-select))
+
+  (evil-collection-init))
 
 (use-package evil-textobj-tree-sitter
   :init

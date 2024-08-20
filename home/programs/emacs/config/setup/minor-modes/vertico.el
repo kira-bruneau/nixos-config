@@ -1,3 +1,4 @@
 (use-package vertico
-  :init
+  :demand
+  :config
   (vertico-mode))

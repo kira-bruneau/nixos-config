@@ -1,4 +1,5 @@
 (use-package smartparens
+  :demand
   :diminish " ()"
-  :init
+  :config
   (smartparens-global-mode t))

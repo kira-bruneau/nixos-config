@@ -1,3 +1,4 @@
 (use-package which-key
-  :init
+  :demand
+  :config
   (which-key-mode))

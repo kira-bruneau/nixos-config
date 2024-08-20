@@ -1,4 +1,5 @@
 (use-package whitespace-cleanup-mode
+  :demand
   :diminish "" ;; ⌫
-  :init
+  :config
   (global-whitespace-cleanup-mode t))

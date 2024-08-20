@@ -1,3 +1,4 @@
-(use-package winner-mode
-  :init
+(use-package winner
+  :demand
+  :config
   (winner-mode t))

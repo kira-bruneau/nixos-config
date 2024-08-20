@@ -1,6 +1,5 @@
 (use-package direnv
-  :init
-  (direnv-mode)
-
+  :demand
   :config
-  (setq direnv-always-show-summary nil))
+  (setq direnv-always-show-summary nil)
+  (direnv-mode))
