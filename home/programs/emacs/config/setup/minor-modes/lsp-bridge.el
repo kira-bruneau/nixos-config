@@ -47,6 +47,11 @@
         (message "No linting modes are on.")))))
 
   :config
+  (defun lsp-bridge-get-project-path-by-filepath (filename)
+    (if-let ((project (project-current filename)))
+     (project-root project)))
+
+  (setq lsp-bridge-get-project-path-by-filepath #'lsp-bridge-get-project-path-by-filepath)
   (setq lsp-bridge-user-langserver-dir (concat user-emacs-config-directory "langserver"))
   (setq lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver"))
   (setq lsp-bridge-nix-lsp-server "nixd")
