@@ -6,4 +6,5 @@
   (orderless-matching-styles
    '(orderless-literal
      orderless-regexp
+     orderless-initialism
      orderless-prefixes)))
