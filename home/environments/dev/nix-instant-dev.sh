@@ -10,7 +10,7 @@ while read -r line; do
   export "$line"
 done < <(nix eval --json --read-only "$installable" --apply 'p: {
   unpackPhase = p.unpackPhase or "";
-  src_name = p.src.name;
+  src_name = p.src.name or "";
   src_git_url = p.src.gitRepoUrl or "";
   src_rev = p.src.rev or "";
   src_fetch_submodules = p.src.fetchSubmodules or false;
