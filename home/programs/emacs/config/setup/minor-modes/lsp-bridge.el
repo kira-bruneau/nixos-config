@@ -43,4 +43,4 @@
   (setq lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver")))
 
 (unless (display-graphic-p)
-  (use-package acm-terminal))
+  (use-package acm-terminal :demand))
