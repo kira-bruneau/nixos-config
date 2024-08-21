@@ -3,6 +3,9 @@
           ([remap isearch-forward] . consult-line)
           ([remap isearch-backward] . nil)
 
+          ;; Yank history
+          ("M-y" . consult-yank-pop)
+
           ;; Buffer switching
           ([remap switch-to-buffer] . consult-buffer)
           ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
