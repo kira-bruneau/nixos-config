@@ -55,6 +55,7 @@ in
 
     # General development
     binutils
+    difftastic
     file
     linuxPackages.perf
     tokei
