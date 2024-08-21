@@ -70,6 +70,7 @@ callPackage ./wrapper.nix {
     epkgs.cmake-mode
     epkgs.consult
     epkgs.dap-mode
+    epkgs.difftastic
     epkgs.diminish
     epkgs.direnv
     epkgs.doom-themes
