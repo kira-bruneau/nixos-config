@@ -22,10 +22,9 @@
           (project-async-shell-command "Execute")
           (project-shell "Shell")))
 
-  (defun project-consult-ripgrep ()
-    (interactive)
-    (let ((root (project-root (project-current t))))
-      (consult-ripgrep root)))
+  (defun project-consult-ripgrep (&optional dir initial)
+    (interactive "P" (list (project-root (project-current))))
+    (consult-ripgrep dir initial))
 
   (defun project-magit-dispatch ()
     (interactive)
