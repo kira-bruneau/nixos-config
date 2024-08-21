@@ -9,20 +9,24 @@
   (setq transient-levels (transient--read-file-contents (concat user-emacs-config-directory "transient/levels.el")))
   (setq transient-values (transient--read-file-contents (concat user-emacs-config-directory "transient/values.el")))
   (setq auto-save-list-file-prefix (concat user-emacs-directory "auto-save-list/.saves-"))
-  (defvar dir/setup (concat user-emacs-config-directory "setup/"))
 
   ;; Define setup files to load
   (defvar setup-files
     (delete-dups
      (append
       (mapcar
-       (lambda (name) (concat dir/setup name))
+       (lambda (file) (concat user-emacs-config-directory file))
        ;; Prioritize loading these files first
-       '("ui.el"
-         "fix-annoyances.el"
-         "evil.el"
-         "editing.el"))
-      (directory-files-recursively dir/setup "^[^.].*\.el$"))))
+       '("modules/ui.el"
+         "modules/fix-annoyances.el"
+         "modules/evil.el"
+         "modules/editing.el"))
+      (mapcan
+       (lambda (dir)
+         (directory-files-recursively (concat user-emacs-config-directory dir) "^[^.].*\.el$"))
+       '("major-modes"
+         "minor-modes"
+         "modules")))))
 
   ;; Load setup files and isolate errors
   (setq use-package-always-defer t)
