@@ -1,5 +1,5 @@
-(use-package csharp-ts-mode
-  :mode "\\.cs\\'"
+(use-package csharp-mode
+  :mode ("\\.cs\\'" . csharp-ts-mode)
   :init
   (with-eval-after-load 'lsp-bridge
     (add-to-list 'lsp-bridge-single-lang-server-mode-list '(csharp-ts-mode . lsp-bridge-csharp-lsp-server))
