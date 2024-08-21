@@ -1,8 +1,5 @@
 (use-package evil
   :demand
-  (:map evil-normal-state-map
-        ("M-." . nil))
-
   :init
   (setq evil-want-keybinding nil)
 
