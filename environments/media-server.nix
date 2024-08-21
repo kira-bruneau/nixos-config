@@ -19,14 +19,14 @@ let
   sonarr = {
     port = "8989";
     apiKey = "00000000000000000000000000000000";
-    rootFolder = "/srv/media-ssd/shows";
+    rootFolder = "/srv/media-hdd/shows";
     inherit downloadClients;
   };
 
   radarr = {
     port = "7878";
     apiKey = "00000000000000000000000000000000";
-    rootFolder = "/srv/media-ssd/movies";
+    rootFolder = "/srv/media-hdd/movies";
     inherit downloadClients;
   };
 
@@ -115,7 +115,7 @@ let
     };
 
     BitTorrent = {
-      "Session\\DefaultSavePath" = "/srv/media-ssd/downloads";
+      "Session\\DefaultSavePath" = "/srv/media-hdd/downloads";
       "Session\\GlobalMaxRatio" = 2;
     };
   };
