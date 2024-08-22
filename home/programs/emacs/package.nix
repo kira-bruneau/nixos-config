@@ -82,6 +82,7 @@ callPackage ./wrapper.nix {
     epkgs.embark-consult
     epkgs.evil
     epkgs.evil-collection
+    epkgs.evil-mc
     epkgs.evil-textobj-tree-sitter
     epkgs.flx
     epkgs.flycheck
@@ -98,7 +99,6 @@ callPackage ./wrapper.nix {
     epkgs.marginalia
     epkgs.markdown-mode
     epkgs.mermaid-mode
-    epkgs.multiple-cursors
     epkgs.nameless
     epkgs.nix-ts-mode
     epkgs.orderless

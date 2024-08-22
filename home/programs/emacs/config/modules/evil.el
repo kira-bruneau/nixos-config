@@ -202,6 +202,11 @@
 
   (evil-collection-init))
 
+(use-package evil-mc
+  :demand
+  :config
+  (global-evil-mc-mode 1))
+
 (use-package evil-textobj-tree-sitter
   :init
   (with-eval-after-load 'evil
