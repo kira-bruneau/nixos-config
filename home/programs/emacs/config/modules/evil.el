@@ -205,7 +205,8 @@
 (use-package evil-mc
   :demand
   :config
-  (global-evil-mc-mode 1))
+  (global-evil-mc-mode 1)
+  (add-to-list 'evil-mc-incompatible-minor-modes 'lsp-bridge-mode))
 
 (use-package evil-textobj-tree-sitter
   :init
