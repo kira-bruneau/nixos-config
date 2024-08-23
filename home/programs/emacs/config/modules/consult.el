@@ -1,7 +1,7 @@
 (use-package consult
   :bind* (;; Search
-          ("C-s" . consult-line)
-          ("C-r" . nil)
+          ([remap isearch-forward] . consult-line)
+          ([remap isearch-backward] . nil)
 
           ;; Buffer switching
           ([remap switch-to-buffer] . consult-buffer)
