@@ -205,6 +205,137 @@
 (use-package evil-mc
   :demand
   :config
+  ;; Add extra known commands from multiple-cursors:
+  ;; https://github.com/magnars/multiple-cursors.el/blob/c870c18462461df19382ecd2f9374c8b902cd804/multiple-cursors-core.el#L494-L569
+  ;; https://github.com/gabesoft/evil-mc/issues/24
+  (setq
+   evil-mc-custom-known-commands
+   '(;; (quoted-insert
+     ;;  (:default . evil-mc-execute-default-call-with-last-input))
+     (previous-line
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (next-line
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (newline
+      (:default . evil-mc-execute-default-call-with-count))
+     (newline-and-indent
+      (:default . evil-mc-execute-default-call-with-count))
+     (open-line
+      (:default . evil-mc-execute-default-call-with-count))
+     (delete-blank-lines
+      (:default . evil-mc-execute-default-call))
+     (transpose-lines
+      (:default . evil-mc-execute-default-call-with-count))
+     (transpose-paragraphs
+      (:default . evil-mc-execute-default-call-with-count))
+     ;; (transpose-regions
+     ;;  (:default . evil-mc-execute-call-with-region-or-pos))
+     (join-line
+      (:default . evil-mc-execute-default-call))
+     (right-char
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (right-word
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (forward-char
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (forward-word
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (left-char
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (left-word
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (backward-char
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (backward-word
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (forward-paragraph
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (backward-paragraph
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (forward-list
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (backward-list
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (yank
+      (:default . evil-mc-execute-default-call-with-count))
+     (yank-pop
+      (:default . evil-mc-execute-default-call-with-count))
+     (append-next-kill
+      (:default . evil-mc-execute-default-call))
+     (kill-word
+      (:default . evil-mc-execute-default-call-with-count))
+     (kill-line
+      (:default . evil-mc-execute-default-call-with-count))
+     (kill-whole-line
+      (:default . evil-mc-execute-default-call-with-count))
+     (backward-kill-word
+      (:default . evil-mc-execute-default-call-with-count))
+     (cperl-electric-backspace
+      (:default . evil-mc-execute-default-call-with-count))
+     (just-one-space
+      (:default . evil-mc-execute-default-call-with-count))
+     ;; (zap-to-char
+     ;;  (:default . evil-mc-execute-default-call-with-last-input))
+     (end-of-line
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (set-mark-command
+      (:default . evil-mc-execute-default-force-normal-state)
+      (visual . evil-mc-execute-visual-char))
+     ;; (cua-set-mark
+     ;;  (:default . evil-mc-execute-default-force-normal-state)
+     ;;  (visual . evil-mc-execute-visual-char))
+     ;; (cua-delete-region
+     ;;  (:default . evil-mc-execute-default-call))
+     (move-end-of-line
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (beginning-of-line
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (move-beginning-of-line
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (kill-ring-save
+      (:default . evil-mc-execute-default-evil-yank))
+     (back-to-indentation
+      (:default . evil-mc-execute-default-call)
+      (visual . evil-mc-execute-visual-call))
+     (subword-forward
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (subword-backward
+      (:default . evil-mc-execute-default-call-with-count)
+      (visual . evil-mc-execute-visual-call-with-count))
+     (subword-mark
+      (:default . evil-mc-execute-default-call-with-count))
+     (subword-kill
+      (:default . evil-mc-execute-default-call-with-count))
+     (subword-backward-kill
+      (:default . evil-mc-execute-default-call-with-count))
+     (subword-transpose
+      (:default . evil-mc-execute-default-call-with-count))
+     (subword-capitalize
+      (:default . evil-mc-execute-default-call-with-count))
+     (subword-upcase
+      (:default . evil-mc-execute-default-call-with-count))
+     (subword-downcase
+      (:default . evil-mc-execute-default-call-with-count))))
+
   (global-evil-mc-mode 1)
   (add-to-list 'evil-mc-incompatible-minor-modes 'lsp-bridge-mode))
 
