@@ -126,7 +126,7 @@ let
         type = "tvshows";
         folders = [
           sonarr.rootFolder
-          "/srv/media-hdd/shows"
+          "/srv/media-ssd/shows"
         ];
       };
 
@@ -134,7 +134,7 @@ let
         type = "movies";
         folders = [
           radarr.rootFolder
-          "/srv/media-hdd/movies"
+          "/srv/media-ssd/movies"
         ];
       };
 
