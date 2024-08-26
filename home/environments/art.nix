@@ -7,6 +7,7 @@
     ffmpeg
     gimp
     inkscape
+    krita
     tenacity
     yabridge
     yabridgectl
