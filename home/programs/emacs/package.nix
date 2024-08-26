@@ -118,6 +118,7 @@ callPackage ./wrapper.nix {
     epkgs.restclient
     epkgs.rg
     epkgs.smartparens
+    epkgs.sudo-edit
     epkgs.suggest
     epkgs.tree-sitter-ispell
     (epkgs.treesit-grammars.with-grammars (ts: [
