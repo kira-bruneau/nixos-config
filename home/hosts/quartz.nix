@@ -1,10 +1,10 @@
 {
   imports = [
+    ../environments/art.nix
     ../environments/bluetooth.nix
     ../environments/dev
     ../environments/gaming.nix
     ../environments/gui/sway.nix
-    ../environments/media-production.nix
     ../environments/office.nix
   ];
 

@@ -2,10 +2,10 @@
 
 {
   imports = [
+    ../environments/art.nix
     ../environments/dev
     ../environments/gui/sway.nix
     ../environments/laptop.nix
-    ../environments/media-production.nix
     ../environments/office.nix
     ../programs/prismlauncher
   ];
