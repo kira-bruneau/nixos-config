@@ -27,6 +27,7 @@ in
     whois
 
     # Data conversion & manipulation
+    ffmpeg
     jq
     p7zip
     unrar

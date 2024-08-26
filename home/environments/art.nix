@@ -4,7 +4,6 @@
   imports = [ ../programs/lmms ];
 
   home.packages = with pkgs; [
-    ffmpeg
     gimp
     inkscape
     krita
