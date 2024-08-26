@@ -157,6 +157,10 @@
   environment.etc."sway/config.d/io.conf".text = ''
     output "HAT Kamvas Pro 16 " scale 1.25 pos 0 553
     output "LG Electronics LG HDR 4K 0x0005B621" scale 2 pos 1536 0
+
+    input "9580:109:HID_256c:006d_Pen" {
+        map_to_output "HAT Kamvas Pro 16 "
+    }
   '';
 
   # Enable DHCP on Ethernet interface
