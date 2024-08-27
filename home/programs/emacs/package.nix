@@ -212,18 +212,7 @@ callPackage ./wrapper.nix {
         rustfmt
         solargraph
         texlab
-        (texliveBasic.withPackages (
-          ps: with ps; [
-            arydshln
-            ec
-            fontawesome5
-            metafont
-            moderncv
-            multirow
-            pgf
-            ps.import
-          ]
-        ))
+        texliveBasic
         vala-language-server
         vscode-langservers-extracted
         yarn
