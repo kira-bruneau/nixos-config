@@ -6,4 +6,5 @@
 (use-package vertico-directory
   :bind (:map vertico-map
          ("DEL" . vertico-directory-delete-char)
-         ("M-DEL" . vertico-directory-delete-word)))
+         ("M-DEL" . vertico-directory-delete-word))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
