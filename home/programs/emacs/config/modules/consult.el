@@ -6,6 +6,9 @@
           ;; Yank history
           ("M-y" . consult-yank-pop)
 
+          ;; Navigation
+          ([remap goto-line] . consult-goto-line)
+
           ;; Buffer switching
           ([remap switch-to-buffer] . consult-buffer)
           ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
