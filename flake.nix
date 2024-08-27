@@ -67,14 +67,9 @@
   };
 
   outputs =
-    {
-      flake-utils,
-      flake-linter,
-      nixpkgs,
-      ...
-    }@inputs:
+    { flake-utils, flake-linter, ... }@inputs:
     let
-      lib = nixpkgs.lib;
+      lib = inputs.nixpkgs.lib;
       hosts = builtins.listToAttrs (
         builtins.map (
           file:
@@ -179,14 +174,16 @@
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = inputs.nixpkgs.legacyPackages.${system};
+
+        pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${system};
 
         flake-linter-lib = flake-linter.lib.${system};
 
         paths = flake-linter-lib.partitionToAttrs flake-linter-lib.commonPaths (
           builtins.filter (
             path:
-            (builtins.all (ignore: !(nixpkgs.lib.hasSuffix ignore path)) [
+            (builtins.all (ignore: !(lib.hasSuffix ignore path)) [
               "cachix.nix"
               "generated.nix"
             ])
@@ -223,6 +220,7 @@
         packages =
           {
             emacs = pkgs.callPackage ./home/programs/emacs/package.nix { };
+            emacs-unstable = pkgsUnstable.callPackage ./home/programs/emacs/package.nix { };
           }
           // builtins.foldl' (
             packages: name:
