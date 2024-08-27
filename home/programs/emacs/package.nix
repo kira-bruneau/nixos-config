@@ -21,7 +21,6 @@
   fzf,
   gcc,
   gdb,
-  ggt,
   git,
   go,
   godef,
@@ -181,7 +180,6 @@ callPackage ./wrapper.nix {
         fzf
         gcc
         gdb
-        ggt
         git
         go
         godef

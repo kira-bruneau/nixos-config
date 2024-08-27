@@ -222,9 +222,7 @@
 
         packages =
           {
-            emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
-              ggt = inputs.kira-nur.packages.${system}.ggt;
-            };
+            emacs = pkgs.callPackage ./home/programs/emacs/package.nix { };
           }
           // builtins.foldl' (
             packages: name:
