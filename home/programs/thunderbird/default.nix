@@ -10,46 +10,55 @@
   programs.thunderbird = {
     enable = true;
 
-    package = pkgsUnstable.thunderbird-128.override {
-      extraPolicies = {
-        ExtensionSettings = {
-          "filtaquilla@mesquilla.com.xpi" = {
-            installation_mode = "force_installed";
-            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/filtaquilla/latest.xpi";
-          };
+    package =
+      (pkgsUnstable.thunderbird-128.overrideAttrs (attrs: {
+        buildCommand =
+          attrs.buildCommand
+          + ''
+            wrapProgram $out/bin/thunderbird \
+              --run '${lib.getExe pkgs.fd} -e msf . ${config.home.homeDirectory}/.thunderbird/${config.home.username}/Mail/Feeds -x ${pkgs.coreutils}/bin/rm'
+          '';
+      })).override
+        {
+          extraPolicies = {
+            ExtensionSettings = {
+              "filtaquilla@mesquilla.com.xpi" = {
+                installation_mode = "force_installed";
+                install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/filtaquilla/latest.xpi";
+              };
 
-          "gconversation@xulforum.org" = {
-            installation_mode = "force_installed";
-            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/gmail-conversation-view/latest.xpi";
-          };
+              "gconversation@xulforum.org" = {
+                installation_mode = "force_installed";
+                install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/gmail-conversation-view/latest.xpi";
+              };
 
-          "quickFilters@axelg.com.xpi" = {
-            installation_mode = "force_installed";
-            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/quickfilters/latest.xpi";
-          };
+              "quickFilters@axelg.com.xpi" = {
+                installation_mode = "force_installed";
+                install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/quickfilters/latest.xpi";
+              };
 
-          "uBlock0@raymondhill.net" = {
-            installation_mode = "force_installed";
-            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/ublock-origin/latest.xpi";
-          };
+              "uBlock0@raymondhill.net" = {
+                installation_mode = "force_installed";
+                install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/ublock-origin/latest.xpi";
+              };
 
-          "{14a690a4-9282-43f1-bb5e-81641b334ec2}" = {
-            installation_mode = "force_installed";
-            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/sakura-blossoms-birds/latest.xpi";
-          };
+              "{14a690a4-9282-43f1-bb5e-81641b334ec2}" = {
+                installation_mode = "force_installed";
+                install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/sakura-blossoms-birds/latest.xpi";
+              };
 
-          "{67da5716-2a2f-4f39-b785-3ad9b7beeb6d}" = {
-            installation_mode = "force_installed";
-            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/green-floral/latest.xpi";
-          };
+              "{67da5716-2a2f-4f39-b785-3ad9b7beeb6d}" = {
+                installation_mode = "force_installed";
+                install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/green-floral/latest.xpi";
+              };
 
-          "{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}" = {
-            installation_mode = "force_installed";
-            install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/removedupes/latest.xpi";
+              "{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}" = {
+                installation_mode = "force_installed";
+                install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/removedupes/latest.xpi";
+              };
+            };
           };
         };
-      };
-    };
 
     profiles = {
       ${config.home.username} = {
@@ -130,4 +139,9 @@
     "x-scheme-handler/mailto" = "thunderbird.desktop";
     "x-scheme-handler/mid" = "thunderbird.desktop";
   };
+
+  home.file.".thunderbird/${config.home.username}/Mail/Feeds/.stignore".text = ''
+    *.backup
+    *.msf
+  '';
 }
