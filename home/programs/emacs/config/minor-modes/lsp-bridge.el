@@ -1,16 +1,40 @@
 (use-package lsp-bridge
   :hook ((after-init . global-lsp-bridge-mode)
          (lsp-bridge-mode . lsp-bridge-semantic-tokens-mode))
-  :bind (:map lsp-bridge-mode-map
-              ("C-M-/" . lsp-bridge-find-references)
-              ("M-?" . lsp-bridge-popup-documentation))
+  :bind (:map
+         lsp-bridge-mode-map
+         ("C-M-/" . lsp-bridge-find-references)
+         ("M-?" . lsp-bridge-popup-documentation)
+
+         :map lsp-bridge-ref-mode-map
+         ("n" . lsp-bridge-ref-jump-next-keyword)
+         ("e" . lsp-bridge-ref-jump-prev-keyword)
+         ("i" . lsp-bridge-ref-jump-prev-file)
+         ("u" . lsp-bridge-ref-switch-to-edit-mode)
+         ("f" . lsp-bridge-ref-filter-match-files)
+         ("F" . lsp-bridge-ref-filter-mismatch-files)
+         ("x" . lsp-bridge-ref-unfilter)
+         ("s" . lsp-bridge-ref-filter-match-results)
+         ("S" . lsp-bridge-ref-filter-mismatch-results)
+         ("j" . nil)
+         ("k" . nil)
+         ("l" . nil)
+         ("X" . nil))
   :init
+  (with-eval-after-load 'evil-core
+    (evil-set-initial-state 'lsp-bridge-ref-mode 'emacs)
+    (evil-set-initial-state 'lsp-bridge-call-hierarchy-mode-map 'emacs))
+
   (with-eval-after-load 'evil-vars
     (defun evil-goto-definition-lsp-bridge (_string position)
       (setq-local lsp-bridge-jump-to-def-in-other-window nil)
       (lsp-bridge-call-file-api "find_define" (lsp-bridge--point-position position)))
 
     (add-to-list 'evil-goto-definition-functions #'evil-goto-definition-lsp-bridge))
+
+  (with-eval-after-load 'evil-collection
+    (evil-collection-define-key 'normal 'lsp-bridge-ref-mode-edit-map
+      (kbd "<escape>") 'lsp-bridge-ref-switch-to-view-mode))
 
   (with-eval-after-load 'evil-collection-unimpaired
     (evil-define-motion evil-collection-unimpaired-next-error (count)
@@ -40,7 +64,13 @@
 
   (setq lsp-bridge-get-project-path-by-filepath #'lsp-bridge-get-project-path-by-filepath)
   (setq lsp-bridge-user-langserver-dir (concat user-emacs-config-directory "langserver"))
-  (setq lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver")))
+  (setq lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver"))
+
+  (defadvice lsp-bridge-ref-switch-to-edit-mode (after lsp-bridge-ref-switch-to-view-mode activate)
+    (evil-exit-emacs-state))
+
+  (defadvice lsp-bridge-ref-switch-to-view-mode (after lsp-bridge-ref-switch-to-view-mode activate)
+    (evil-emacs-state)))
 
 (unless (display-graphic-p)
   (use-package acm-terminal :demand))

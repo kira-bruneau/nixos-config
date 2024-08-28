@@ -116,9 +116,7 @@
       evil-read-key-map
       evil-replace-state-map
       evil-visual-state-map
-      evil-window-map
-      lsp-bridge-call-hierarchy-mode-map
-      lsp-bridge-ref-mode-map))
+      evil-window-map))
 
   (defvar evil-key-rotation--force nil)
 
@@ -336,8 +334,7 @@
      (subword-downcase
       (:default . evil-mc-execute-default-call-with-count))))
 
-  (global-evil-mc-mode 1)
-  (add-to-list 'evil-mc-incompatible-minor-modes 'lsp-bridge-mode))
+  (global-evil-mc-mode 1))
 
 (use-package evil-textobj-tree-sitter
   :init
