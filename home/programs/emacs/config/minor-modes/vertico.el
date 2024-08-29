@@ -13,11 +13,18 @@
   :config
   (defun vertico-directory-insert (n &optional c)
     (interactive "p")
-    (if (and (eq 'file (vertico--metadata-get 'category))
-             (eq n 1)
-             (eq (point) (point-max))
-             (not (eq (char-before) ?/)))
-        (vertico-insert)
+    (if-let* (((eq n 1))
+              ((>= vertico--index 0))
+              ((eq (vertico--metadata-get 'category) 'file))
+              ((eq (point) (point-max)))
+              ((not (eq (char-before) ?/)))
+              (cand (vertico--candidate))
+              ((string-suffix-p "/" cand))
+              (pwd (file-name-directory (minibuffer-contents-no-properties)))
+              ((string-prefix-p pwd cand)))
+        (progn
+          (delete-minibuffer-contents)
+          (insert cand))
       (self-insert-command n c)))
 
   (defun vertico-directory-home ()
