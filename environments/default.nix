@@ -41,8 +41,9 @@
     # https://github.com/NixOS/nixpkgs/pull/282795
     systemd.targets.network-online.wantedBy = lib.mkForce [ ];
 
-    nixpkgs.config.allowUnfreePredicate =
-      pkg:
+    nixpkgs.config = {
+      allowUnfreePredicate =
+        pkg:
       builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
         "2ship2harkinian"
         "anytype"
@@ -65,5 +66,10 @@
         "unrar"
         "vvvvvv"
       ];
+
+      permittedInsecurePackages = [
+        "electron-29.4.6"
+      ];
+    };
   };
 }
