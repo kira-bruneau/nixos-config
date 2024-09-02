@@ -14,7 +14,7 @@
     hideMounts = true;
     directories =
       [
-        "/var/lib/nix-daemon"
+        "/var/lib/nix"
         "/var/lib/nixos"
         "/var/lib/systemd"
         "/var/log/journal"

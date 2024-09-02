@@ -70,7 +70,7 @@
         "flakes"
       ];
       keep-going = true;
-      secret-key-files = "/var/lib/nix-daemon/private-key";
+      secret-key-files = "/var/lib/nix/private-key";
       trusted-public-keys = [
         "amethyst:wWzYeKRMtWixW1rMNwf4jG+wWPUwRMEHCEB5WKixoes="
         "aurora:PkeJpeCTFE3gprtNpxCW0EqbVwg0wFgvpHFq3Hj0Wlc="
@@ -79,13 +79,17 @@
         "steamdeck:BcQXU+d7+azmiE/6YBWs/OJpIYlhcuTcpTU2j7+Zxb8="
       ];
     };
+
+    extraOptions = ''
+      !include /var/lib/nix/access-tokens
+    '';
   };
 
   systemd.services.nix-daemon = {
-    serviceConfig.StateDirectory = "nix-daemon";
+    serviceConfig.StateDirectory = "nix";
     preStart = ''
       (
-        cd /var/lib/nix-daemon
+        cd /var/lib/nix
         if [ ! -e private-key ] || [ ! -e public-key ]; then
           ${config.nix.package}/bin/nix-store --generate-binary-cache-key \
             ${config.networking.hostName} private-key public-key
