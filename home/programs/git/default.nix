@@ -53,8 +53,6 @@
       ".settings"
       ".factorypath"
     ];
-
-    difftastic.enable = true;
   };
 
   home.packages = with pkgs; [ gitAndTools.git-bug ];
