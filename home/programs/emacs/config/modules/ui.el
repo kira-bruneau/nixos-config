@@ -3,9 +3,9 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (setq inhibit-startup-screen t)
-(setq inhibit-startup-echo-area-message (user-login-name))
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message nil)
+(fset 'startup-echo-area-message 'string)
 
 ;; Maximize window
 (setq ns-auto-hide-menu-bar t)
