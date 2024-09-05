@@ -28,6 +28,7 @@
         "/var/cache/fwupd"
         "/var/lib/fwupd"
       ]
+      ++ lib.optional config.services.home-assistant.enable config.services.home-assistant.configDir
       ++ lib.optionals config.services.jellyfin.enable [
         "/var/lib/jellyfin"
         "/var/cache/jellyfin"
