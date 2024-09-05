@@ -131,12 +131,14 @@
     (when
         (or
          evil-key-rotation--force
-         (memq (ad-get-arg 0)
-               (seq-map
-                (lambda (map) (if (symbolp map) (symbol-value map) map))
-                (seq-filter
-                 (lambda (map) (or (not (symbolp map)) (boundp map)))
-                 evil-key-rotation--maps))))
+         (cl-some
+          (lambda (map)
+            (eq
+             (ad-get-arg 0)
+             (if (symbolp map)
+                 (when (boundp map) (symbol-value map))
+               map)))
+          evil-key-rotation--maps))
       (ad-set-arg 1 (evil-key-rotation--rotate-key (ad-get-arg 1))))
     ad-do-it)
 
