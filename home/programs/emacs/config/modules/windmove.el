@@ -1,6 +1,6 @@
 (use-package windmove
-  ;; Mirror i3 window move commands (vim-like + colemak layout)
-  :bind* (("C-S-n" . windmove-left)
-          ("C-S-e" . windmove-down)
-          ("C-S-i" . windmove-up)
-          ("C-S-o" . windmove-right)))
+  ;; Vim-like + colemak layout
+  :bind* (("C-S-h" . windmove-left)
+          ("C-S-n" . windmove-down)
+          ("C-S-e" . windmove-up)
+          ("C-S-i" . windmove-right)))
