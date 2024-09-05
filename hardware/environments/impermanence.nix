@@ -29,11 +29,14 @@
         "/var/lib/fwupd"
       ]
       ++ lib.optional config.services.home-assistant.enable config.services.home-assistant.configDir
-      ++ lib.optionals config.services.jellyfin.enable [
-        "/var/lib/jellyfin"
-        "/var/cache/jellyfin"
-        "/var/log/jellyfin"
-      ]
+      ++ lib.optionals config.services.jellyfin.enable (
+        with config.services.jellyfin;
+        [
+          dataDir
+          cacheDir
+          logDir
+        ]
+      )
       ++ lib.optional config.services.jellyseerr.enable "/var/lib/private/jellyseerr"
       ++ lib.optional config.networking.wireless.iwd.enable "/var/lib/iwd"
       ++ lib.optional config.services.kubo.enable config.services.kubo.dataDir
