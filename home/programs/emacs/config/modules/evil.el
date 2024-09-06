@@ -150,14 +150,12 @@
           evil-goto-definition-search))
 
   (defadvice evil-define-key* (around evil-key-rotation activate)
-    (setq evil-key-rotation--force t)
-    ad-do-it
-    (setq evil-key-rotation--force nil))
+    (let ((evil-key-rotation--force t))
+      ad-do-it))
 
   (defadvice evil-define-minor-mode-key (around evil-key-rotation activate)
-    (setq evil-key-rotation--force t)
-    ad-do-it
-    (setq evil-key-rotation--force nil))
+    (let ((evil-key-rotation--force t))
+      ad-do-it))
 
   (defadvice evil-make-overriding-map (before evil-key-rotation activate)
     (add-to-list 'evil-key-rotation--maps (ad-get-arg 0)))
