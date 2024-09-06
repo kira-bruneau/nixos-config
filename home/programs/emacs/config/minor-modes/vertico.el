@@ -1,6 +1,7 @@
 (use-package vertico
   :demand
   :config
+  (setq vertico-cycle t)
   (vertico-mode))
 
 (use-package vertico-directory
