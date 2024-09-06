@@ -8,6 +8,9 @@
   (setq magit-save-repository-buffers nil)
   (setq transient-enable-popup-navigation t)
 
+  (add-to-list 'transient-values '(magit-diff:magit-status-mode "--no-ext-diff"))
+  (add-to-list 'transient-values '(magit-log:magit-log-mode "-n256" "--graph" "--color" "--decorate" "--follow"))
+
   (setq
    magit-repolist-columns
    '(("Name" 15 magit-repolist-column-ident nil)

@@ -4,7 +4,4 @@
 (setq user-emacs-directory (concat (xdg-state-home) "/emacs/"))
 (when (boundp 'native-comp-eln-load-path)
   (startup-redirect-eln-cache (expand-file-name "eln-cache" user-emacs-directory)))
-(require 'transient)
-(setq transient-levels (transient--read-file-contents (concat user-emacs-config-directory "transient/levels.el")))
-(setq transient-values (transient--read-file-contents (concat user-emacs-config-directory "transient/values.el")))
 (setq auto-save-list-file-prefix (concat user-emacs-directory "auto-save-list/.saves-"))
