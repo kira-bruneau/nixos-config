@@ -1,4 +1,5 @@
-(let ((gc-cons-threshold most-positive-fixnum))
+(let ((inhibit-message t)
+      (gc-cons-threshold most-positive-fixnum))
   ;; Define setup files to load
   (defvar setup-files
     (delete-dups
