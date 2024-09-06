@@ -90,7 +90,6 @@
 
 ;; Line wrapping + misc
 (use-package simple
-  :diminish (visual-line-mode . " ↩")
   :bind* (("C-c v" . visual-line-mode))
   :config
   (setq column-number-mode t)

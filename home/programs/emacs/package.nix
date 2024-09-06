@@ -73,7 +73,6 @@ callPackage ./wrapper.nix {
     epkgs.consult
     epkgs.dap-mode
     epkgs.difftastic
-    epkgs.diminish
     epkgs.direnv
     epkgs.doom-themes
     epkgs.drag-stuff
