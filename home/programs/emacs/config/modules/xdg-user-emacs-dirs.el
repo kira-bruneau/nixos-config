@@ -13,5 +13,6 @@
         (concat user-emacs-state-directory "auto-save-list/.saves-"))))
 
 (startup-redirect-eln-cache (expand-file-name "eln-cache" user-emacs-cache-directory))
+(setq image-dired-dir (expand-file-name "image-dired/" user-emacs-cache-directory))
 
 (setq user-emacs-directory user-emacs-state-directory)
