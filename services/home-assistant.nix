@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  # Move to NUR
   waves = pkgs.fetchFromGitHub {
     owner = "tgcowell";
     repo = "waves";

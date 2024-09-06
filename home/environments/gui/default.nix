@@ -64,7 +64,8 @@
     defaultFonts.monospace = [ "Ubuntu Sans Mono" ];
   };
 
-  # xdg.configFile."wireplumber/main.lua.d/51-restrict-control.lua".text = ''
+  # TODO THIS
+  # xdg.configFile."wireplumber/main.lua.d/51-restrict-cotrol.lua".text = ''
   #   table.insert(default_access.rules, {
   #     matches = {
   #       {

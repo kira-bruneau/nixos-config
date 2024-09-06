@@ -1,3 +1,5 @@
+Fix applying patches relative to source root (yabridgectl)
+
 * nix-instant-dev
 ** TODO Add gitRepoUrl to all git forges in nixpkgs
 ** TODO Support other vcs
@@ -9,4 +11,7 @@
 Mostly supported already, just need to update some fetcher mappings upstream
 *** TODO Elpa
 *** TODO Bundler
+*** TODO Crates
+- Pin cargo deps for language server
+- separate src + gitRepoUrl
 ** TODO As an optimization, do initial fetch with sparse checkout when sourceRoot/sparseCheckout is set

@@ -1,0 +1,19 @@
+nixos:
+- shutdown terrible using greetd
+- I want to disable pipewire, wireplumber, bluetoothd in greetd
+
+mautrix-whatsapp:
+- double puppet
+
+mautrix-discord:
+- double puppet
+
+ellama:
+- super slow in emacs
+
+evil:
+- evil keybinding errors for org-mode
+- C-t is not being rotated correctly for dired
+
+project.el:
+- save all buffers in project
