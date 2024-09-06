@@ -71,7 +71,6 @@ callPackage ./wrapper.nix {
     epkgs.cmake-font-lock
     epkgs.cmake-mode
     epkgs.consult
-    epkgs.dap-mode
     epkgs.difftastic
     epkgs.direnv
     epkgs.doom-themes
