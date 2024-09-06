@@ -13,6 +13,7 @@
   cmake,
   cmake-language-server,
   coreutils,
+  dejavu_fonts,
   diffutils,
   direnv,
   dockerfile-language-server-nodejs,
@@ -172,6 +173,7 @@ callPackage ./wrapper.nix {
         cmake
         cmake-language-server
         coreutils
+        dejavu_fonts
         diffutils
         direnv
         dockerfile-language-server-nodejs

@@ -4,6 +4,7 @@
   runtimeShell,
   writeTextFile,
   coreutils,
+  makeFontsConf,
   runCommand,
   makeWrapper,
   emacs,
@@ -56,6 +57,7 @@ let
   makeWrapperArgs = [
     "--prefix NIX_PROFILES ' ' ${profile}"
     "--prefix PATH : ${profile}/bin"
+    "--set FONTCONFIG_FILE ${makeFontsConf { fontDirectories = [ "${profile}/share/fonts" ]; }}"
     "--add-flags '--init-directory=${config}'"
   ];
 in
