@@ -17,6 +17,7 @@
   diffutils,
   direnv,
   dockerfile-language-server-nodejs,
+  emacs-all-the-icons-fonts,
   eslint_d,
   fd,
   fzf,
@@ -58,6 +59,7 @@ let
 in
 callPackage ./wrapper.nix {
   emacs = emacs.pkgs.emacsWithPackages (epkgs: [
+    epkgs.all-the-icons-dired
     epkgs.acm-terminal
     epkgs.adaptive-wrap
     epkgs.apheleia
@@ -177,6 +179,7 @@ callPackage ./wrapper.nix {
         diffutils
         direnv
         dockerfile-language-server-nodejs
+        emacs-all-the-icons-fonts
         eslint_d
         fd
         fzf
