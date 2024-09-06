@@ -127,6 +127,7 @@
                   networking.hostName = name;
                   _module.args = extraSpecialArgs;
                   home-manager.extraSpecialArgs = extraSpecialArgs;
+                  nixpkgs.overlays = [ (final: super: { emacs = inputs.self.packages.${pkgs.system}.emacs; }) ];
                 };
 
               hardwareModule =

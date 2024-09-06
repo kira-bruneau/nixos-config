@@ -1,7 +1,7 @@
-{ pkgs, pkgsKiraNur, ... }:
+{ pkgs, ... }:
 
 let
-  emacs = pkgs.callPackage ./package.nix { };
+  emacs = pkgs.emacs;
 in
 {
   imports = [
