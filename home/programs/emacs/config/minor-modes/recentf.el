@@ -1,4 +1,5 @@
 (use-package recentf
   :demand
   :config
-  (recentf-mode))
+  (let ((inhibit-message t))
+    (recentf-mode)))
