@@ -5,7 +5,6 @@
   emacs29,
   emacs29-pgtk,
   callPackage,
-  fetchFromGitHub,
   buildEnv,
   aspellWithDicts,
   bear,
@@ -101,19 +100,7 @@ callPackage ./wrapper.nix {
     epkgs.markdown-mode
     epkgs.mermaid-mode
     epkgs.nameless
-    (epkgs.nix-ts-mode.overrideAttrs (
-      finalAttrs: prevAttrs:
-      assert prevAttrs.version == "20231107.1639";
-      {
-        version = "0.1.4";
-        src = fetchFromGitHub {
-          owner = "nix-community";
-          repo = "nix-ts-mode";
-          rev = "refs/tags/v${finalAttrs.version}";
-          hash = "sha256-hVJyVoTrHx3BJ5Te1ovEFgAqmALe4vX2oKyMl1FlU+g=";
-        };
-      }
-    ))
+    epkgs.nix-ts-mode
     epkgs.orderless
     epkgs.org-download
     epkgs.page-break-lines
