@@ -4,8 +4,9 @@
   :hook ((dired-mode . dired-omit-mode)
          (dired-mode . dired-hide-details-mode))
   :config
-  (setq dired-dwim-target t)
   (setq dired-listing-switches "-alh")
+  (setq dired-hide-details-hide-symlink-targets nil)
+  (setq dired-dwim-target t)
 
   (defun image-dired-default-directory ()
     (interactive)
