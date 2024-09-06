@@ -7,7 +7,7 @@
       (mapcar
        (lambda (file) (concat user-emacs-directory file))
        ;; Prioritize loading these files first
-       '("modules/xdg-state.el"
+       '("modules/xdg-user-emacs-dirs.el"
          "modules/ui.el"
          "modules/fix-annoyances.el"
          "modules/evil.el"
