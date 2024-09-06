@@ -1,7 +1,7 @@
 (use-package embark
   :bind*
-  (("M-." . embark-act)
-   ("M-," . embark-dwim)
+  (("C-." . embark-act)
+   ("C-," . embark-dwim)
    ("C-h B" . embark-bindings)
 
    :map embark-file-map
