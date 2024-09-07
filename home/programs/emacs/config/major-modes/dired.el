@@ -1,10 +1,9 @@
 (use-package dired
   :bind (:map dired-mode-map
               ("I" . image-dired-default-directory))
-  :hook ((dired-mode . dired-omit-mode)
-         (dired-mode . dired-hide-details-mode))
+  :hook ((dired-mode . dired-hide-details-mode))
   :config
-  (setq dired-listing-switches "-alh")
+  (setq dired-listing-switches "-Alh")
   (setq dired-hide-details-hide-symlink-targets nil)
   (setq dired-dwim-target t)
 
