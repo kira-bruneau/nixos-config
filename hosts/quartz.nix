@@ -2,8 +2,8 @@
   imports = [
     ../environments/gaming.nix
     ../environments/gui/sway.nix
-    ../environments/home-assistant.nix
     ../environments/media-server.nix
+    ../services/home-assistant.nix
     ../services/kubo.nix
     ../users/builder.nix
     ../users/kira.nix
