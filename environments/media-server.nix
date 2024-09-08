@@ -152,25 +152,32 @@ let
       Shows = {
         type = "tvshows";
         folders = sonarr.rootFolders;
+        options = ''
+          <EnableRealtimeMonitor>true</EnableRealtimeMonitor>
+        '';
       };
 
       Movies = {
         type = "movies";
         folders = radarr.rootFolders;
+        options = ''
+          <EnableRealtimeMonitor>true</EnableRealtimeMonitor>
+        '';
       };
 
       Books = {
         type = "books";
         folders = readarr.rootFolders;
+        options = ''
+          <EnableRealtimeMonitor>true</EnableRealtimeMonitor>
+        '';
       };
 
       Downloads = {
         folders = [ { path = qBittorrent.BitTorrent."Session\\DefaultSavePath"; } ];
         options = ''
-          <?xml version="1.0" encoding="utf-8"?>
-          <LibraryOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-            <EnableEmbeddedTitles>true</EnableEmbeddedTitles>
-          </LibraryOptions>
+          <EnableRealtimeMonitor>true</EnableRealtimeMonitor>
+          <EnableEmbeddedTitles>true</EnableEmbeddedTitles>
         '';
       };
     };
@@ -197,8 +204,14 @@ let
     }:
     pkgs.runCommand name
       {
-        inherit type options;
+        inherit type;
         folders = builtins.map (folder: folder.path) folders;
+        options = lib.optionalString (options != null) ''
+          <?xml version="1.0" encoding="utf-8"?>
+          <LibraryOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          ${options}
+          </LibraryOptions>
+        '';
       }
       ''
         mkdir "$out"
