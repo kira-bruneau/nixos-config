@@ -145,6 +145,10 @@ let
       "Session\\Port" = 15982;
       "Session\\GlobalMaxRatio" = 2;
     };
+
+    Network = {
+      PortForwardingEnabled = false;
+    };
   };
 
   jellyfin = {
