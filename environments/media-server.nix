@@ -932,6 +932,11 @@ in
     isSystemUser = true;
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [ qBittorrent.BitTorrent."Session\\Port" ];
+    allowedUDPPorts = [ qBittorrent.BitTorrent."Session\\Port" ];
+  };
+
   users.groups.qbittorrent = {
     gid = config.ids.gids.deluge;
   };
