@@ -116,6 +116,7 @@ let
 
     BitTorrent = {
       "Session\\DefaultSavePath" = "/srv/media-hdd/downloads";
+      "Session\\Port" = 15982;
       "Session\\GlobalMaxRatio" = 2;
     };
   };
