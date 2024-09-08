@@ -710,6 +710,7 @@ in
                   inherit name;
                   enable = true;
                   appProfileId = 1;
+                  priority = 25;
                 }
                 // makeArrConfig prowlarr.indexers.${name}
               )
