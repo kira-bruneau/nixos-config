@@ -19,14 +19,21 @@ let
   sonarr = {
     port = "8989";
     apiKey = "00000000000000000000000000000000";
-    rootFolder = "/srv/media-hdd/shows";
+    rootFolders = [
+      { path = "/srv/media-hdd/shows"; }
+      { path = "/srv/media-ssd/shows"; }
+    ];
+
     inherit downloadClients;
   };
 
   radarr = {
     port = "7878";
     apiKey = "00000000000000000000000000000000";
-    rootFolder = "/srv/media-hdd/movies";
+    rootFolders = [
+      { path = "/srv/media-hdd/movies"; }
+      { path = "/srv/media-ssd/movies"; }
+    ];
     inherit downloadClients;
   };
 
@@ -125,22 +132,16 @@ let
     mediaLibraries = {
       Shows = {
         type = "tvshows";
-        folders = [
-          sonarr.rootFolder
-          "/srv/media-ssd/shows"
-        ];
+        folders = sonarr.rootFolders;
       };
 
       Movies = {
         type = "movies";
-        folders = [
-          radarr.rootFolder
-          "/srv/media-ssd/movies"
-        ];
+        folders = radarr.rootFolders;
       };
 
       Downloads = {
-        folders = [ qBittorrent.BitTorrent."Session\\DefaultSavePath" ];
+        folders = [ { path = qBittorrent.BitTorrent."Session\\DefaultSavePath"; } ];
         options = ''
           <?xml version="1.0" encoding="utf-8"?>
           <LibraryOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -170,28 +171,33 @@ let
       folders,
       options ? null,
     }:
-    pkgs.runCommand name { inherit type folders options; } ''
-      mkdir "$out"
+    pkgs.runCommand name
+      {
+        inherit type options;
+        folders = builtins.map (folder: folder.path) folders;
+      }
+      ''
+        mkdir "$out"
 
-      if [ -n "$type" ]; then
-        touch "$out/$type.collection"
-      fi
+        if [ -n "$type" ]; then
+          touch "$out/$type.collection"
+        fi
 
-      for folder in ''${folders}; do
-        name=$(basename "$folder")
-        if [ -e "$out/$name.mblink" ]; then
-          i=1
-          while [ -e "$out/$name$i.mblink" ]; do
-            i=$((i+1))
-          done
-          name=$name$i
-        fi
-        echo -n "$folder" > "$out/$name.mblink"
-        if [ -n "$options" ]; then
-          echo -n "$options" > "$out/options.xml"
-        fi
-      done
-    '';
+        for folder in ''${folders}; do
+          name=$(basename "$folder")
+          if [ -e "$out/$name.mblink" ]; then
+            i=1
+            while [ -e "$out/$name$i.mblink" ]; do
+              i=$((i+1))
+            done
+            name=$name$i
+          fi
+          echo -n "$folder" > "$out/$name.mblink"
+          if [ -n "$options" ]; then
+            echo -n "$options" > "$out/options.xml"
+          fi
+        done
+      '';
 
   makeArrConfig =
     {
@@ -373,7 +379,7 @@ in
     };
 
     unitConfig = {
-      RequiresMountsFor = builtins.concatMap (lib: lib.folders) (
+      RequiresMountsFor = builtins.concatMap (lib: builtins.map (folder: folder.path) lib.folders) (
         builtins.attrValues jellyfin.mediaLibraries
       );
     };
@@ -435,17 +441,22 @@ in
   users.users.sonarr.extraGroups = [ "qbittorrent" ];
 
   # Configure shows directory to be shared by sonarr group
-  systemd.tmpfiles.settings.sonarr.${sonarr.rootFolder} = {
-    d = {
-      mode = "2770";
-      user = config.services.sonarr.user;
-      group = config.services.sonarr.group;
-    };
+  systemd.tmpfiles.settings.sonarr = builtins.listToAttrs (
+    builtins.map (folder: {
+      name = folder.path;
+      value = {
+        d = {
+          mode = "2770";
+          user = config.services.sonarr.user;
+          group = config.services.sonarr.group;
+        };
 
-    a = {
-      argument = "default:group::rwx";
-    };
-  };
+        a = {
+          argument = "default:group::rwx";
+        };
+      };
+    }) sonarr.rootFolders
+  );
 
   systemd.services.sonarr = {
     preStart = ''
@@ -519,12 +530,12 @@ in
                 }
               }"
             ''
-            ''
-              url = "http://localhost:${sonarr.port}/api/v3/rootfolder"
-              request = "POST"
-              data = "@${pkgs.writers.writeJSON "rootfolder.json" { path = sonarr.rootFolder; }}"
-            ''
           ]
+          ++ (builtins.map (folder: ''
+            url = "http://localhost:${sonarr.port}/api/v3/rootfolder"
+            request = "POST"
+            data = "@${pkgs.writers.writeJSON "rootfolder.json" folder}"
+          '') sonarr.rootFolders)
           ++ (builtins.map (name: ''
             url = "http://localhost:${sonarr.port}/api/v3/downloadclient"
             request = "POST"
@@ -554,17 +565,22 @@ in
   users.users.radarr.extraGroups = [ "qbittorrent" ];
 
   # Configure movies directory to be shared by radarr group
-  systemd.tmpfiles.settings.radarr.${radarr.rootFolder} = {
-    d = {
-      mode = "2770";
-      user = config.services.radarr.user;
-      group = config.services.radarr.group;
-    };
+  systemd.tmpfiles.settings.radarr = builtins.listToAttrs (
+    builtins.map (folder: {
+      name = folder.path;
+      value = {
+        d = {
+          mode = "2770";
+          user = config.services.radarr.user;
+          group = config.services.radarr.group;
+        };
 
-    a = {
-      argument = "default:group::rwx";
-    };
-  };
+        a = {
+          argument = "default:group::rwx";
+        };
+      };
+    }) radarr.rootFolders
+  );
 
   systemd.services.radarr = {
     preStart = ''
@@ -629,12 +645,12 @@ in
                 }
               }"
             ''
-            ''
-              url = "http://localhost:${radarr.port}/api/v3/rootfolder"
-              request = "POST"
-              data = "@${pkgs.writers.writeJSON "rootfolder.json" { path = radarr.rootFolder; }}"
-            ''
           ]
+          ++ (builtins.map (folder: ''
+            url = "http://localhost:${radarr.port}/api/v3/rootfolder"
+            request = "POST"
+            data = "@${pkgs.writers.writeJSON "rootfolder.json" folder}"
+          '') radarr.rootFolders)
           ++ (builtins.map (name: ''
             url = "http://localhost:${radarr.port}/api/v3/downloadclient"
             request = "POST"
