@@ -194,14 +194,28 @@
           };
         }
         {
+          matches = [ { "device.name" = "alsa_card.pci-0000_0c_00.1"; } ];
+          actions = {
+            update-props = {
+              "device.nick" = "Monitor";
+              "device.description" = "Monitor";
+            };
+          };
+        }
+        {
+          matches = [ { "node.name" = "alsa_card.pci-0000_0c_00.1"; } ];
+          actions = {
+            update-props = {
+              "device.nick" = "Monitor";
+              "device.description" = "Monitor";
+            };
+          };
+        }
+        {
           matches = [
             {
               # -- RX 7900 XTX HDMI output
               "device.name" = "alsa_card.pci-0000_0b_00.1";
-            }
-            {
-              # -- RX 590 HDMI output
-              "device.name" = "alsa_card.pci-0000_0c_00.1";
             }
             {
               # -- Analog audio jacks
