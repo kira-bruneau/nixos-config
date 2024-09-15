@@ -1,4 +1,10 @@
-{ inputs, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgsKiraNur,
+  ...
+}:
 
 {
   imports = [
@@ -22,6 +28,12 @@
     };
 
     decky-loader.enable = true;
+  };
+
+  systemd.services.decky-loader = {
+    preStart = ''
+      ln -snf ${pkgsKiraNur.powertools} ${config.jovian.decky-loader.stateDir}/plugins/PowerTools
+    '';
   };
 
   services.xserver.xkb = {
