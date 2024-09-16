@@ -24,7 +24,7 @@
       "runBuildScripts": true,
       "loadOutDirsFromCheck": true,
       "useRustcWrapperForBuildScripts": true,
-      "autoreload": false,
+      "autoreload": true,
       "buildScripts": {
         "enable": true,
         "rebuildOnSave": false,
