@@ -1,0 +1,60 @@
+{
+  "name": "rust-analyzer",
+  "languageId": "rust",
+  "command": ["rust-analyzer"],
+  "settings": {},
+  "capabilities": {
+    "textDocument": {
+      "hover": {
+        "contentFormat": ["markdown"]
+      }
+    }
+  },
+  "initializationOptions": {
+    "cachePriming": {
+      "enable": false
+    },
+    "enableExperimental": false,
+    "diagnostics": {
+      "enable": true
+    },
+    "cargo": {
+      "features": "all",
+      "noDefaultFeatures": false,
+      "runBuildScripts": true,
+      "loadOutDirsFromCheck": true,
+      "useRustcWrapperForBuildScripts": true,
+      "autoreload": false,
+      "buildScripts": {
+        "enable": true,
+        "rebuildOnSave": false,
+        "invocationLocation": "root",
+        "invocationStrategy": "once",
+        "overrideCommand": null
+        }
+      },
+    "checkOnSave": {
+      "enable": false,
+      "allTargets": true,
+      "features": "all",
+      "invocationLocation": "root",
+      "invocationStrategy": "once"
+    },
+    "completion": {
+      "addCallParenthesis": true,
+      "addCallArgumentSnippets": false,
+      "postfix": {
+        "enable": false
+      },
+      "autoimport": {
+        "enable": true
+      }
+    },
+    "procMacro": {
+      "enable": true
+    },
+    "lens": {
+      "enable": false
+    }
+  }
+}
