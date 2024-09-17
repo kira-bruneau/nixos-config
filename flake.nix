@@ -177,6 +177,8 @@
       let
         pkgs = inputs.nixpkgs.legacyPackages.${system};
 
+        pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+
         flake-linter-lib = flake-linter.lib.${system};
 
         paths = flake-linter-lib.partitionToAttrs flake-linter-lib.commonPaths (
@@ -218,7 +220,7 @@
 
         packages =
           {
-            emacs = pkgs.callPackage ./home/programs/emacs/package.nix { };
+            emacs = pkgs.callPackage ./home/programs/emacs/package.nix { rust-analyzer = pkgs.rust-analyzer; };
           }
           // builtins.foldl' (
             packages: name:
