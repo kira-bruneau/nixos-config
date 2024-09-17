@@ -92,8 +92,7 @@
 (use-package simple
   :bind* (("C-c v" . visual-line-mode))
   :config
-  (setq column-number-mode t)
-  ;;buffer
+  (column-number-mode)
   (set-default 'truncate-lines t))
 
 (use-package adaptive-wrap
@@ -102,7 +101,7 @@
 ;; Highlight matching parenthesis
 (use-package paren
   :config
-  (show-paren-mode t))
+  (show-paren-mode))
 
 ;; Pixel precision scrolling
 (use-package pixel-scroll

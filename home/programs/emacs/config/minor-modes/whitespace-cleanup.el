@@ -1,4 +1,4 @@
 (use-package whitespace-cleanup-mode
   :demand
   :config
-  (global-whitespace-cleanup-mode t))
+  (global-whitespace-cleanup-mode))

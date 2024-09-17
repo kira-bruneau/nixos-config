@@ -6,7 +6,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Delete selection when text is inserted
-(delete-selection-mode t)
+(delete-selection-mode)
 
 ;; Free up shift key for custom navigation bindings
 (use-package simple

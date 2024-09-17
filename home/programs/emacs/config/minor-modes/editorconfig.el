@@ -10,4 +10,4 @@
   (add-hook 'editorconfig-hack-properties-functions
             #'my-editorconfig-hack-properties)
 
-  (editorconfig-mode 1))
+  (editorconfig-mode))

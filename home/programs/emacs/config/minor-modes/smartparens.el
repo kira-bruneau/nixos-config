@@ -1,4 +1,4 @@
 (use-package smartparens
   :demand
   :config
-  (smartparens-global-mode t))
+  (smartparens-global-mode))

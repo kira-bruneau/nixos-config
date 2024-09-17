@@ -1,4 +1,4 @@
 (use-package winner
   :demand
   :config
-  (winner-mode t))
+  (winner-mode))

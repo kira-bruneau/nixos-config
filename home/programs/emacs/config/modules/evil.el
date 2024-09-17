@@ -165,7 +165,7 @@
   (defadvice evil-make-intercept-map (before evil-key-rotation activate)
     (add-to-list 'evil-key-rotation--maps (ad-get-arg 0)))
 
-  (evil-mode 1))
+  (evil-mode))
 
 (use-package evil-collection
   :demand
@@ -334,7 +334,7 @@
      (subword-downcase
       (:default . evil-mc-execute-default-call-with-count))))
 
-  (global-evil-mc-mode 1))
+  (global-evil-mc-mode))
 
 (use-package evil-textobj-tree-sitter
   :init

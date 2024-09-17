@@ -2,4 +2,4 @@
   :demand
   :config
   (setq undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory "aux"))))
-  (global-undo-tree-mode t))
+  (global-undo-tree-mode))
