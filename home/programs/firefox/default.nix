@@ -78,7 +78,24 @@
           ];
 
           engines = {
-            "Amazon.ca".metaData.alias = "@a";
+            "Amazon.ca" = {
+              urls = [
+                {
+                  template = "https://www.amazon.ca/s";
+                  params = [
+                    {
+                      name = "k";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              iconUpdateURL = "https://www.amazon.ca/favicon.ico";
+              updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
+              definedAliases = [ "@a" ];
+            };
+
             "Bing".metaData.hidden = true;
             "eBay".metaData.hidden = true;
             "Google".metaData.alias = "@g";
