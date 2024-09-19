@@ -42,7 +42,7 @@
     },
     "completion": {
       "addCallParenthesis": true,
-      "addCallArgumentSnippets": false,
+      "addCallArgumentSnippets": true,
       "postfix": {
         "enable": false
       },
