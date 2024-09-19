@@ -274,6 +274,7 @@
 
           "browser.newtabpage.enabled" = true;
           "browser.crashReports.unsubmittedCheck.enabled" = false;
+          "browser.newtabpage.activity-stream.showWeather" = false;
           "browser.newtabpage.pinned" = builtins.toJSON [ ];
           "browser.places.importBookmarksHTML" = true;
           "browser.shell.checkDefaultBrowser" = false;
