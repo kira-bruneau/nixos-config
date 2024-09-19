@@ -18,7 +18,7 @@ let
   });
 in
 {
-  home.packages = with pkgs; [ protonmail-bridge ];
+  home.packages = [ protonmail-bridge ];
 
   systemd.user.services.protonmail-bridge = {
     Unit.After = [ "dbus.service" ];
