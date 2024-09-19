@@ -44,32 +44,30 @@
     nixpkgs.config = {
       allowUnfreePredicate =
         pkg:
-      builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
-        "2ship2harkinian"
-        "anytype"
-        "anytype-heart"
-        "aspell-dict-en-science"
-        "broadcom-sta"
-        "clonehero"
-        "clonehero-unwrapped"
-        "data.zip" # (vvvvvv)
-        "discord"
-        "minecraft-server"
-        "nvidia-settings"
-        "nvidia-x11"
-        "sm64ex"
-        "steam"
-        "steam-jupiter-original"
-        "steam-original"
-        "steam-run"
-        "steamdeck-hw-theme"
-        "unrar"
-        "vvvvvv"
-      ];
+        builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+          "2ship2harkinian"
+          "anytype"
+          "anytype-heart"
+          "aspell-dict-en-science"
+          "broadcom-sta"
+          "clonehero"
+          "clonehero-unwrapped"
+          "data.zip" # (vvvvvv)
+          "discord"
+          "minecraft-server"
+          "nvidia-settings"
+          "nvidia-x11"
+          "sm64ex"
+          "steam"
+          "steam-jupiter-original"
+          "steam-original"
+          "steam-run"
+          "steamdeck-hw-theme"
+          "unrar"
+          "vvvvvv"
+        ];
 
-      permittedInsecurePackages = [
-        "electron-29.4.6"
-      ];
+      permittedInsecurePackages = [ "electron-29.4.6" ];
     };
   };
 }
