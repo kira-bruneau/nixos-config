@@ -1,7 +1,5 @@
 * nix-instant-dev
 ** TODO Add gitRepoUrl to all git forges in nixpkgs
-** TODO Automatically unwrap packages that have passthru.unwrapped
-*** TODO Fix any wrappers in nixpkgs that don't have passthru
 ** TODO Separate commits for each patch
 ** TODO Support other vcs
 *** TODO Mercurial

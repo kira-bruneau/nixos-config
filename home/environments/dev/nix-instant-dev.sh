@@ -1,20 +1,42 @@
 set -eo pipefail
 
-installable=$1
+candidates=("$1-unwrapped" "$1")
 
-NID_OUT=$(readlink -f "$(nix eval --raw "$installable".pname 2>/dev/null || nix eval --raw "$installable".name)")
+for installable in "${candidates[@]}"; do
+  while read -r line; do
+    # shellcheck disable=SC2163
+    export "$line"
+  done < <(nix eval --json --read-only "$installable" --apply "c:
+  let
+    NID_INSTALLABLE = if c ? unwrapped then \"$installable.unwrapped\" else \"$installable\";
+    p = if c ? unwrapped then c.unwrapped else c;
+  in {
+    inherit NID_INSTALLABLE;
+    NID_OUT = p.pname or p.name;
+    unpackPhase = p.unpackPhase or \"\";
+    src_name = p.src.name or \"\";
+    src_git_url = p.src.gitRepoUrl or \"\";
+    src_rev = p.src.rev or \"\";
+    src_fetch_submodules = p.src.fetchSubmodules or false;
+  }" 2>/dev/null | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
+
+  if [ -n "$NID_INSTALLABLE" ]; then
+    break
+  fi
+done
+
+if [ -z "$NID_INSTALLABLE" ]; then
+  echo "Invalid installable: $1"
+  exit 1
+fi
+
+if [ "$NID_INSTALLABLE" != "$1" ]; then
+  echo "Unwrapping $1 → $NID_INSTALLABLE"
+fi
+
+NID_OUT="$PWD/${NID_OUT%-unwrapped}"
+echo "Unpacking $NID_INSTALLABLE → $NID_OUT"
 mkdir "$NID_OUT"
-
-while read -r line; do
-  # shellcheck disable=SC2163
-  export "$line"
-done < <(nix eval --json --read-only "$installable" --apply 'p: {
-  unpackPhase = p.unpackPhase or "";
-  src_name = p.src.name or "";
-  src_git_url = p.src.gitRepoUrl or "";
-  src_rev = p.src.rev or "";
-  src_fetch_submodules = p.src.fetchSubmodules or false;
-}' | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
 
 if [ -z "$unpackPhase" ] && [ -n "$src_git_url" ]; then
   # Shallow clone to rev
@@ -50,7 +72,7 @@ fi
 unset src_name src_git_url src_rev src_fetch_submodules
 
 # shellcheck source=/dev/null
-. <(nix print-dev-env "$installable")
+. <(nix print-dev-env "$NID_INSTALLABLE")
 export NIX_LOG_FD=/dev/null
 cd "$NIX_BUILD_TOP"
 phases="${prePhases[*]:-} unpackPhase" genericBuild
