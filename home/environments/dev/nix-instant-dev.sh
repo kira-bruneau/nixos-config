@@ -1,3 +1,5 @@
+# shellcheck disable=SC2154
+
 set -eo pipefail
 
 candidates=("$1-unwrapped" "$1")

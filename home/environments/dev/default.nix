@@ -11,10 +11,7 @@ let
 
     bashOptions = [ ];
 
-    excludeShellChecks = [
-      "SC2154"
-      "SC2034"
-    ];
+    excludeShellChecks = [ "SC2154" ];
 
     runtimeInputs = with pkgs; [
       config.nix.package
