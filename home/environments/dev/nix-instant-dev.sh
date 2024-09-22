@@ -14,10 +14,10 @@ for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
     inherit unwrapped;
     NID_OUT = p.pname or p.name;
     unpackPhase = p.unpackPhase or "";
-    src_name = p.src.name or "";
-    src_git_url = p.src.gitRepoUrl or "";
-    src_rev = p.src.rev or "";
-    src_fetch_submodules = p.src.fetchSubmodules or false;
+    srcName = p.src.name or "";
+    srcGitRepoUrl = p.src.gitRepoUrl or "";
+    srcRev = p.src.rev or "";
+    srcFetchSubmodules = p.src.fetchSubmodules or false;
   }' 2>/dev/null | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
 
   if [ -n "$NID_OUT" ]; then
@@ -42,16 +42,16 @@ NID_OUT="$PWD/${NID_OUT%-unwrapped}"
 echo "Unpacking $NID_INSTALLABLE → $NID_OUT"
 mkdir "$NID_OUT"
 
-if [ -z "$unpackPhase" ] && [ -n "$src_git_url" ]; then
+if [ -z "$unpackPhase" ] && [ -n "$srcGitRepoUrl" ]; then
   # Shallow clone to rev
   cd "$NID_OUT"
   git init
-  git remote add origin "$src_git_url"
-  git fetch --depth 1 origin "$src_rev"
+  git remote add origin "$srcGitRepoUrl"
+  git fetch --depth 1 origin "$srcRev"
   git reset --hard FETCH_HEAD
 
   # Fetch submodules if necessary
-  if [ "$src_fetch_submodules" = "true" ]; then
+  if [ "$srcFetchSubmodules" = "true" ]; then
     git submodule update --init --recursive -j "$(nproc)" --progress --depth 1
   fi
 
@@ -61,19 +61,19 @@ if [ -z "$unpackPhase" ] && [ -n "$src_git_url" ]; then
   # Override default unpackPhase
   unpackPhase="
 runHook preUnpack
-ln -s \"\$NID_OUT\" $src_name
+ln -s \"\$NID_OUT\" $srcName
 
 if [ -n \"\${setSourceRoot:-}\" ]; then
   runOneHook setSourceRoot
 fi
 
-sourceRoot=\${sourceRoot:-$src_name}
+sourceRoot=\${sourceRoot:-$srcName}
 runHook postUnpack"
 else
   unset unpackPhase
 fi
 
-unset unwrapped src_name src_git_url src_rev src_fetch_submodules
+unset unwrapped srcName srcGitRepoUrl srcRev srcFetchSubmodules
 
 # shellcheck source=/dev/null
 . <(nix print-dev-env "$NID_INSTALLABLE")
