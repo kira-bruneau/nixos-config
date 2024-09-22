@@ -2,34 +2,36 @@
 
 set -eo pipefail
 
-candidates=("$1-unwrapped" "$1")
-
-for installable in "${candidates[@]}"; do
+for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
   while read -r line; do
     # shellcheck disable=SC2163
     export "$line"
-  done < <(nix eval --json --read-only "$installable" --apply "c:
+  done < <(nix eval --json --read-only "$NID_INSTALLABLE" --apply 'c:
   let
-    NID_INSTALLABLE = if c ? unwrapped then \"$installable.unwrapped\" else \"$installable\";
-    p = if c ? unwrapped then c.unwrapped else c;
+    unwrapped = c ? unwrapped;
+    p = if unwrapped then c.unwrapped else c;
   in {
-    inherit NID_INSTALLABLE;
+    inherit unwrapped;
     NID_OUT = p.pname or p.name;
-    unpackPhase = p.unpackPhase or \"\";
-    src_name = p.src.name or \"\";
-    src_git_url = p.src.gitRepoUrl or \"\";
-    src_rev = p.src.rev or \"\";
+    unpackPhase = p.unpackPhase or "";
+    src_name = p.src.name or "";
+    src_git_url = p.src.gitRepoUrl or "";
+    src_rev = p.src.rev or "";
     src_fetch_submodules = p.src.fetchSubmodules or false;
-  }" 2>/dev/null | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
+  }' 2>/dev/null | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
 
-  if [ -n "$NID_INSTALLABLE" ]; then
+  if [ -n "$NID_OUT" ]; then
     break
   fi
 done
 
-if [ -z "$NID_INSTALLABLE" ]; then
+if [ -z "$NID_OUT" ]; then
   echo "Invalid installable: $1"
   exit 1
+fi
+
+if [ "$unwrapped" = "true" ]; then
+  NID_INSTALLABLE="$NID_INSTALLABLE.unwrapped"
 fi
 
 if [ "$NID_INSTALLABLE" != "$1" ]; then
@@ -56,22 +58,22 @@ if [ -z "$unpackPhase" ] && [ -n "$src_git_url" ]; then
   # Fetch all other commits in the background
   git fetch --all --unshallow --quiet &
 
-  # Override unpackPhase
+  # Override default unpackPhase
   unpackPhase="
 runHook preUnpack
-ln -s $NID_OUT $src_name
+ln -s \"\$NID_OUT\" $src_name
 
-if [ -n \"${setSourceRoot:-}\" ]; then
+if [ -n \"\${setSourceRoot:-}\" ]; then
   runOneHook setSourceRoot
 fi
 
-sourceRoot=${sourceRoot:-$src_name}
+sourceRoot=\${sourceRoot:-$src_name}
 runHook postUnpack"
 else
   unset unpackPhase
 fi
 
-unset src_name src_git_url src_rev src_fetch_submodules
+unset unwrapped src_name src_git_url src_rev src_fetch_submodules
 
 # shellcheck source=/dev/null
 . <(nix print-dev-env "$NID_INSTALLABLE")
