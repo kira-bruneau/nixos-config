@@ -12,7 +12,7 @@ for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
     p = if unwrapped then c.unwrapped else c;
   in {
     inherit unwrapped;
-    NID_OUT = p.pname or p.name;
+    name = p.pname or (builtins.parseDrvName p.name).name;
     unpackPhase = p.unpackPhase or "";
     srcName = p.src.name or "";
     srcGitRepoUrl = p.src.gitRepoUrl or "";
@@ -20,12 +20,12 @@ for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
     srcFetchSubmodules = p.src.fetchSubmodules or false;
   }' 2>/dev/null | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
 
-  if [ -n "$NID_OUT" ]; then
+  if [ -n "$name" ]; then
     break
   fi
 done
 
-if [ -z "$NID_OUT" ]; then
+if [ -z "$name" ]; then
   echo "Invalid installable: $1"
   exit 1
 fi
@@ -38,7 +38,7 @@ if [ "$NID_INSTALLABLE" != "$1" ]; then
   echo "Unwrapping $1 → $NID_INSTALLABLE"
 fi
 
-NID_OUT="$PWD/${NID_OUT%-unwrapped}"
+NID_OUT="$PWD/${name%-unwrapped}"
 echo "Unpacking $NID_INSTALLABLE → $NID_OUT"
 mkdir "$NID_OUT"
 
@@ -73,7 +73,7 @@ else
   unset unpackPhase
 fi
 
-unset unwrapped srcName srcGitRepoUrl srcRev srcFetchSubmodules
+unset unwrapped name srcName srcGitRepoUrl srcRev srcFetchSubmodules
 
 # shellcheck source=/dev/null
 . <(nix print-dev-env "$NID_INSTALLABLE")
