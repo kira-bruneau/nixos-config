@@ -54,6 +54,4 @@
       ".factorypath"
     ];
   };
-
-  home.packages = with pkgs; [ gitAndTools.git-bug ];
 }

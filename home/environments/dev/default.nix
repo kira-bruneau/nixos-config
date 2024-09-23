@@ -56,6 +56,7 @@ in
     binutils
     difftastic
     file
+    gitAndTools.git-bug
     linuxPackages.perf
     tokei
 
