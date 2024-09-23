@@ -44,6 +44,4 @@ in
     # Custom utils
     whichf
   ];
-
-  programs.man.enable = true;
 }
