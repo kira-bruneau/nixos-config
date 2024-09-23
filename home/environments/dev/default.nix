@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgsChromium,
+  pkgsNixIndexDatabase,
   ...
 }:
 
@@ -42,6 +43,7 @@ in
 
     # Nix development
     cachix
+    pkgsNixIndexDatabase.comma-with-db
     nix-bisect
     nix-init
     nix-instant-dev
@@ -65,5 +67,10 @@ in
 
   wayland.windowManager.sway.config = {
     assigns."1" = [ { app_id = "^chromium-browser$"; } ];
+  };
+
+  programs.nix-index = {
+    enable = true;
+    package = pkgsNixIndexDatabase.nix-index-with-db;
   };
 }

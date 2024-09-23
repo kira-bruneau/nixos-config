@@ -1,4 +1,4 @@
-{ pkgs, pkgsNixIndexDatabase, ... }:
+{ pkgs, ... }:
 
 let
   whichf = pkgs.writeShellScriptBin "whichf" ''
@@ -41,17 +41,9 @@ in
     ripgrep
     sd
 
-    # Nix utils
-    pkgsNixIndexDatabase.comma-with-db
-
     # Custom utils
     whichf
   ];
 
   programs.man.enable = true;
-
-  programs.nix-index = {
-    enable = true;
-    package = pkgsNixIndexDatabase.nix-index-with-db;
-  };
 }
