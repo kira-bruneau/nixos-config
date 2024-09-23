@@ -1,4 +1,9 @@
 (use-package consult
+  :commands (consult-find-file-with-preview)
+
+  :init
+  (setq read-file-name-function #'consult-find-file-with-preview)
+
   :bind*
   (;; Search
    ([remap isearch-forward] . consult-line)
@@ -35,6 +40,40 @@
   :config
   (setopt consult-ripgrep-args (concat consult-ripgrep-args " --hidden --glob !.git --follow --no-messages"))
   (setopt consult-fd-args (append consult-fd-args '("--hidden" "--exclude" ".git" "--follow")))
+
+  (defun consult-find-file-with-preview (prompt &optional dir default-filename mustmatch initial predicate)
+    (interactive)
+    (let* ((dir (abbreviate-file-name (expand-file-name (or dir default-directory "~/"))))
+           (default-filename
+            (cond
+              (default-filename default-filename)
+              ((null initial) buffer-file-name)
+              ;; Special-case "" because (expand-file-name "" "/tmp/") returns
+              ;; "/tmp" rather than "/tmp/" (bug#39057).
+              ((equal "" initial) dir)
+              (t (expand-file-name initial dir))))
+           (default
+            (when default-filename
+              (if (consp default-filename)
+                  (mapcar 'abbreviate-file-name default-filename)
+                (abbreviate-file-name default-filename))))
+           (initial
+            (cond
+             ((and insert-default-directory (stringp dir))
+              (if initial
+                  (cons (minibuffer-maybe-quote-filename (concat dir initial))
+                        (length (minibuffer-maybe-quote-filename dir)))
+                (minibuffer-maybe-quote-filename dir)))
+             (initial (cons (minibuffer-maybe-quote-filename initial) 0))))
+           (default-directory dir)
+           (minibuffer-completing-file-name t))
+      (consult--read #'read-file-name-internal
+                     :state (consult--file-preview)
+                     :prompt prompt
+                     :default default
+                     :initial initial
+                     :require-match mustmatch
+                     :predicate predicate)))
 
   (consult-customize
    consult-line :preview-key 'any))
