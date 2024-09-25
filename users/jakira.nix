@@ -9,6 +9,7 @@ in
     description = "Jakira";
     extraGroups =
       [
+        "dialout" # access to serial devices (eg. CEC)
         "wheel" # admin privileges
       ]
       ++ lib.optional config.networking.networkmanager.enable "networkmanager"
