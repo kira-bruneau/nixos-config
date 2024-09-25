@@ -12,8 +12,6 @@ let
 
     bashOptions = [ ];
 
-    excludeShellChecks = [ "SC2154" ];
-
     runtimeInputs = with pkgs; [
       config.nix.package
       coreutils

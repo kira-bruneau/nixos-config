@@ -1,6 +1,12 @@
-# shellcheck disable=SC2154
-
 set -eo pipefail
+
+unwrapped=
+name=
+unpackPhase=
+srcName=
+srcGitRepoUrl=
+srcRev=
+srcFetchSubmodules=
 
 for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
   while read -r line; do
