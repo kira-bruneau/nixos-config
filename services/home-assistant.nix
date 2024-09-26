@@ -5,7 +5,7 @@ let
     owner = "tgcowell";
     repo = "waves";
     rev = "refs/tags/v2.4.1";
-    hash = "sha256-koUOdwt9t6iOQn4T/voV4Hvc5moqnf/PkXFp/nuFytM=";
+    hash = "sha256-JWMUf6WNBmFcV9HjdHLsmeLLm+5VqxcdxGDsmtpLnmM=";
   };
 in
 {
