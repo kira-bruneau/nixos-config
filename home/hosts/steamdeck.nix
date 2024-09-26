@@ -70,6 +70,87 @@ let
     };
 
   settingsFormat = vdf { };
+
+  xdgProfile =
+    name:
+    "XDG_CONFIG_HOME=${config.home.homeDirectory}/.${name}/config XDG_DATA_HOME=${config.home.homeDirectory}/.${name}/data XDG_STATE_HOME=${config.home.homeDirectory}/.${name}/state";
+
+  # TODO: Compute grid art compatible id
+  # https://gaming.stackexchange.com/questions/386882/how-do-i-find-the-appid-for-a-non-steam-game-on-steam
+  # generateAppId =
+  #   name:
+  #   -1
+  #   - (builtins.bitAnd 2147483647
+  #     (builtins.fromTOML "v=0x${builtins.substring 0 8 (builtins.hashString "sha256" name)}").v
+  #   );
+
+  generateAppId =
+    name:
+    {
+      "BigChadGuys Plus" = -103678894;
+      "Jellyfin Media Player" = -567380782;
+      "Moonlight" = -114896551;
+      "Prism Launcher" = -812576484;
+      "Clone Hero" = -314732879;
+      "Discord" = -740890966;
+      "Element" = -1815128494;
+      "Cemu" = -1562815367;
+      "Dolphin Emulator" = -1761564564;
+      "Firefox" = -1974293946;
+      "qBittorrent" = -909108272;
+      "Youtube" = -2035226226;
+      "sudachi" = -592608668;
+      "Dropout" = -1539404924;
+      "Super Smash Bros. Ultimate" = -1737320186;
+      "Mario Kart 8 Deluxe" = -1565192715;
+      "Pikmin 3 Deluxe" = -1565192716;
+      "The Legend of Zelda: Echoes of Wisdom" = -1565192717;
+      "The Legend Of Zelda The Wind Waker" = -1826256805;
+      "Mario Kart 8" = -1565192714;
+      "Majora's Mask" = -1234567890;
+      "Rosalie's Mupen GUI" = -1234567891;
+    }
+    .${name};
+
+  generateShortcut =
+    name: config:
+    {
+      appid = generateAppId name;
+      appname = name;
+      AllowOverlay = 0;
+    }
+    // config
+    // {
+      Exe = "env";
+      LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= ${config.LaunchOptions}";
+    };
+
+  generateShortcuts = shortcuts: lib.mapAttrsToList generateShortcut shortcuts;
+
+  common = {
+    "BigChadGuys Plus".LaunchOptions = "prismlauncher --launch \"BigChadGuys Plus\"";
+    "Cemu".LaunchOptions = "Cemu";
+    "Clone Hero".LaunchOptions = "clonehero";
+    "Discord".LaunchOptions = "Discord";
+    "Dolphin Emulator".LaunchOptions = "QT_QPA_PLATFORM=xcb dolphin-emu";
+    "Dropout".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.dropout.tv -P Jackfox";
+    "Element".LaunchOptions = "element-desktop";
+    "Firefox".LaunchOptions = "firefox";
+    "Jellyfin Media Player".LaunchOptions = "jellyfinmediaplayer --tv --scale-factor 2";
+    "Majora's Mask".LaunchOptions = "2s2h";
+    "Mario Kart 8 Deluxe".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
+    "Mario Kart 8".LaunchOptions = "Cemu --fullscreen --title-id 000500001010ec00";
+    "Moonlight".LaunchOptions = "moonlight";
+    "Pikmin 3 Deluxe".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
+    "Prism Launcher".LaunchOptions = "prismlauncher";
+    "qBittorrent".LaunchOptions = "qbittorrent";
+    "Rosalie's Mupen GUI".LaunchOptions = "RMG --fullscreen";
+    "sudachi".LaunchOptions = "sudachi -f";
+    "Super Smash Bros. Ultimate".LaunchOptions = "sudachi -f -g ${config.home.homeDirectory}/Games/Sudachi/50e90d167d20f348cd4793aad9401283.nca";
+    "The Legend Of Zelda The Wind Waker".LaunchOptions = "Cemu --fullscreen --title-id 0005000010143500";
+    "The Legend of Zelda: Echoes of Wisdom".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
+    "Youtube".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.youtube.com";
+  };
 in
 {
   imports = [
@@ -86,334 +167,30 @@ in
   xdg.dataFile."Steam/userdata/84026532/config/shortcuts.vdf" = {
     force = true;
     source = settingsFormat.generate "shortcuts.vdf" {
-      shortcuts = [
-        {
-          appid = -103678894;
-          appname = "BigChadGuys Plus";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/4191288402_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= prismlauncher --profile daxvena --launch \"BigChadGuys Plus\"";
-          AllowOverlay = 0;
+      shortcuts = generateShortcuts (
+        common
+        // {
+          "BigChadGuys Plus".LaunchOptions = "${common."BigChadGuys Plus".LaunchOptions} --profile daxvena";
+          "Discord".LaunchOptions = "${xdgProfile "kira"} ${common."Discord".LaunchOptions}";
+          "Element".LaunchOptions = "${xdgProfile "kira"} ${common."Element".LaunchOptions}";
+          "Firefox".LaunchOptions = "${common."Firefox".LaunchOptions} Kirafox";
         }
-        {
-          appid = -567380782;
-          appname = "Jellyfin Media Player";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3727586514_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= jellyfinmediaplayer --tv --scale-factor 2";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -114896551;
-          appname = "Moonlight";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= moonlight";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -812576484;
-          appname = "Prism Launcher";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3482390812_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= prismlauncher";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -314732879;
-          appname = "Clone Hero";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3980234417_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= clonehero";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -740890966;
-          appname = "Discord";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.kira/config XDG_DATA_HOME=${config.home.homeDirectory}/.kira/data XDG_STATE_HOME=${config.home.homeDirectory}/.kira/state Discord";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1815128494;
-          appname = "Element";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.kira/config XDG_DATA_HOME=${config.home.homeDirectory}/.kira/data XDG_STATE_HOME=${config.home.homeDirectory}/.kira/state element-desktop";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1562815367;
-          appname = "Cemu";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/2732151929_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1761564564;
-          appname = "Dolphin Emulator";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= QT_QPA_PLATFORM=xcb dolphin-emu";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1974293946;
-          appname = "Firefox";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= firefox";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -909108272;
-          appname = "qBittorrent";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= qbittorrent";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -2035226226;
-          appname = "Youtube";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= GDK_SCALE=2 firefox --new-window --kiosk https://www.youtube.com";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -592608668;
-          appname = "sudachi";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1539404924;
-          appname = "Dropout";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= GDK_SCALE=2 firefox -P Jackfox --new-window --kiosk https://www.dropout.tv";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1737320186;
-          appname = "Super Smash Bros. Ultimate";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g ${config.home.homeDirectory}/Games/Sudachi/50e90d167d20f348cd4793aad9401283.nca";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1565192715;
-          appname = "Mario Kart 8 Deluxe";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1565192716;
-          appname = "Pikmin 3 Deluxe";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1565192717;
-          appname = "The Legend of Zelda: Echoes of Wisdom";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1826256805;
-          appname = "The Legend Of Zelda The Wind Waker";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu --fullscreen --title-id 0005000010143500";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1565192714;
-          appname = "Mario Kart 8";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu --fullscreen --title-id 000500001010ec00";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1234567890;
-          appname = "Majora's Mask";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= 2s2h";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1234567891;
-          appname = "Rosalie's Mupen GUI";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= RMG --fullscreen";
-          AllowOverlay = 0;
-        }
-      ];
+      );
     };
   };
 
   xdg.dataFile."Steam/userdata/80252694/config/shortcuts.vdf" = {
     force = true;
     source = settingsFormat.generate "shortcuts.vdf" {
-      shortcuts = [
-        {
-          appid = -103678894;
-          appname = "BigChadGuys Plus";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/4191288402_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= prismlauncher --profile CptJackL --launch \"BigChadGuys Plus\"";
-          AllowOverlay = 0;
+      shortcuts = generateShortcuts (
+        common
+        // {
+          "BigChadGuys Plus".LaunchOptions = "${common."BigChadGuys Plus".LaunchOptions} --profile CptJackL";
+          "Discord".LaunchOptions = "${xdgProfile "jack"} ${common."Discord".LaunchOptions}";
+          "Element".LaunchOptions = "${xdgProfile "jack"} ${common."Element".LaunchOptions}";
+          "Firefox".LaunchOptions = "${common."Firefox".LaunchOptions} Jackfox";
         }
-        {
-          appid = -567380782;
-          appname = "Jellyfin Media Player";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3727586514_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= jellyfinmediaplayer --tv --scale-factor 2";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -114896551;
-          appname = "Moonlight";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= moonlight";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -812576484;
-          appname = "Prism Launcher";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3482390812_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= prismlauncher";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -314732879;
-          appname = "Clone Hero";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3980234417_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= clonehero";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -740890966;
-          appname = "Discord";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.jack/config XDG_DATA_HOME=${config.home.homeDirectory}/.jack/data XDG_STATE_HOME=${config.home.homeDirectory}/.jack/state Discord";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1815128494;
-          appname = "Element";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= XDG_CONFIG_HOME=${config.home.homeDirectory}/.jack/config XDG_DATA_HOME=${config.home.homeDirectory}/.jack/data XDG_STATE_HOME=${config.home.homeDirectory}/.jack/state element-desktop";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1562815367;
-          appname = "Cemu";
-          Exe = "env";
-          icon = "${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/2732151929_icon.png";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1761564564;
-          appname = "Dolphin Emulator";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= QT_QPA_PLATFORM=xcb dolphin-emu";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1974293946;
-          appname = "Firefox";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= firefox -P Jackfox";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -909108272;
-          appname = "qBittorrent";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= qbittorrent";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -2035226226;
-          appname = "Youtube";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= GDK_SCALE=2 firefox -P Jackfox --new-window --kiosk https://www.youtube.com";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -592608668;
-          appname = "sudachi";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1539404924;
-          appname = "Dropout";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= GDK_SCALE=2 firefox -P Jackfox --new-window --kiosk https://www.dropout.tv";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1737320186;
-          appname = "Super Smash Bros. Ultimate";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g ${config.home.homeDirectory}/Games/Sudachi/50e90d167d20f348cd4793aad9401283.nca";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1565192715;
-          appname = "Mario Kart 8 Deluxe";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1565192716;
-          appname = "Pikmin 3 Deluxe";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1565192717;
-          appname = "The Legend of Zelda: Echoes of Wisdom";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1826256805;
-          appname = "The Legend Of Zelda The Wind Waker";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu --fullscreen --title-id 0005000010143500";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1565192714;
-          appname = "Mario Kart 8";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= Cemu --fullscreen --title-id 000500001010ec00";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1234567890;
-          appname = "Majora's Mask";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= 2s2h";
-          AllowOverlay = 0;
-        }
-        {
-          appid = -1234567891;
-          appname = "Rosalie's Mupen GUI";
-          Exe = "env";
-          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= RMG --fullscreen";
-          AllowOverlay = 0;
-        }
-      ];
+      );
     };
   };
 
