@@ -105,4 +105,6 @@
       }
     ];
   };
+
+  dconf.enable = true;
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   whichf = pkgs.writeShellScriptBin "whichf" ''
@@ -44,4 +44,6 @@ in
     # Custom utils
     whichf
   ];
+
+  dconf.enable = lib.mkDefault false;
 }
