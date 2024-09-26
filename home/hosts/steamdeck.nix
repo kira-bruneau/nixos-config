@@ -212,6 +212,13 @@ in
           AllowOverlay = 0;
         }
         {
+          appid = -1565192717;
+          appname = "The Legend of Zelda: Echoes of Wisdom";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
+          AllowOverlay = 0;
+        }
+        {
           appid = -1826256805;
           appname = "The Legend Of Zelda The Wind Waker";
           Exe = "env";
@@ -369,6 +376,13 @@ in
           appname = "Pikmin 3 Deluxe";
           Exe = "env";
           LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
+          AllowOverlay = 0;
+        }
+        {
+          appid = -1565192717;
+          appname = "The Legend of Zelda: Echoes of Wisdom";
+          Exe = "env";
+          LaunchOptions = "LD_PRELOAD= LD_LIBRARY_PATH= sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
           AllowOverlay = 0;
         }
         {
