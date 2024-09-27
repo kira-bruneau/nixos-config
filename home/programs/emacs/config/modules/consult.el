@@ -30,6 +30,7 @@
   (setq consult-async-input-throttle 0.01)
   (setq consult-async-input-debounce 0.01)
   (setq consult-async-min-input 0)
+  (setq consult-async-split-style nil)
   (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden --glob !.git --follow --no-messages"))
   (setq consult-fd-args (append consult-fd-args '("--hidden" "--exclude" ".git" "--follow")))
 
