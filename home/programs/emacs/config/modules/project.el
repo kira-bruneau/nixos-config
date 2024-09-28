@@ -10,19 +10,19 @@
          ("X" . project-shell)
          ("g" . nil))
 
-  :config
-  (setq magit-bind-magit-project-status nil)
-  (setq project-switch-commands
-        '((project-consult-fd "Find file")
-          (project-consult-ripgrep "Find regexp")
-          (rg-project "Ripgrep")
-          (project-find-dir "Find directory")
-          (project-dired "Dired")
-          (project-magit-dispatch "Magit Dispatch")
-          (magit-project-status "Magit Status")
-          (project-async-shell-command "Execute")
-          (project-shell "Shell")))
+  :custom
+  (project-switch-commands
+   '((project-consult-fd "Find file")
+     (project-consult-ripgrep "Find regexp")
+     (rg-project "Ripgrep")
+     (project-find-dir "Find directory")
+     (project-dired "Dired")
+     (project-magit-dispatch "Magit Dispatch")
+     (magit-project-status "Magit Status")
+     (project-async-shell-command "Execute")
+     (project-shell "Shell")))
 
+  :config
   (defun project-consult-ripgrep (&optional dir initial)
     (interactive "P" (list (project-root (project-current))))
     (consult-ripgrep dir initial))

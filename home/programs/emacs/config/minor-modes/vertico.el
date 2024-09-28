@@ -1,7 +1,8 @@
-(use-package vertico
-  :demand
+(use-package vertico :demand
+  :custom
+  (vertico-cycle t)
+
   :config
-  (setq vertico-cycle t)
   (vertico-mode))
 
 (use-package vertico-directory

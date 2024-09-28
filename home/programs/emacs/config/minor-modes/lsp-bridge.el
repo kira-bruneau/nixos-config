@@ -57,14 +57,15 @@
        (:default
         (message "No linting modes are on.")))))
 
+  :custom
+  (lsp-bridge-get-project-path-by-filepath #'lsp-bridge-get-project-path-by-filepath)
+  (lsp-bridge-user-langserver-dir (concat user-emacs-config-directory "langserver"))
+  (lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver"))
+
   :config
   (defun lsp-bridge-get-project-path-by-filepath (filename)
     (if-let ((project (project-current filename)))
         (expand-file-name (project-root project))))
-
-  (setq lsp-bridge-get-project-path-by-filepath #'lsp-bridge-get-project-path-by-filepath)
-  (setq lsp-bridge-user-langserver-dir (concat user-emacs-config-directory "langserver"))
-  (setq lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver"))
 
   (defadvice lsp-bridge-ref-switch-to-edit-mode (after lsp-bridge-ref-switch-to-view-mode activate)
     (evil-exit-emacs-state))

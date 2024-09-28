@@ -24,13 +24,15 @@
    ("C-M-n" . vertico-next)
    ("C-M-p" . vertico-previous))
 
+  :custom
+  (consult-preview-key '("C-M-n" "C-M-p"))
+  (consult-narrow-key "<")
+  (consult-async-input-throttle 0.01)
+  (consult-async-input-debounce 0.01)
+  (consult-async-min-input 0)
+  (consult-async-split-style nil)
+
   :config
-  (setq consult-preview-key '("C-M-n" "C-M-p"))
-  (setq consult-narrow-key "<")
-  (setq consult-async-input-throttle 0.01)
-  (setq consult-async-input-debounce 0.01)
-  (setq consult-async-min-input 0)
-  (setq consult-async-split-style nil)
   (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden --glob !.git --follow --no-messages"))
   (setq consult-fd-args (append consult-fd-args '("--hidden" "--exclude" ".git" "--follow")))
 

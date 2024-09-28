@@ -1,8 +1,5 @@
-(use-package evil
-  :demand
+(use-package evil :demand
   :init
-  (setq evil-want-keybinding nil)
-
   (defvar evil-key-rotation
     '(;; Remap jkl commands to their equivalent colemak position
       ("j" . "n")
@@ -142,14 +139,16 @@
       (ad-set-arg 1 (evil-key-rotation--rotate-key (ad-get-arg 1))))
     ad-do-it)
 
+  :custom
+  (evil-want-keybinding nil)
+  (evil-goto-definition-functions
+   '(evil-goto-definition-xref
+     evil-goto-definition-semantic
+     evil-goto-definition-imenu
+     evil-goto-definition-search))
+
   :config
   (evil-set-undo-system 'undo-tree)
-
-  (setq evil-goto-definition-functions
-        '(evil-goto-definition-xref
-          evil-goto-definition-semantic
-          evil-goto-definition-imenu
-          evil-goto-definition-search))
 
   (defadvice evil-define-key* (around evil-key-rotation activate)
     (let ((evil-key-rotation--force t))

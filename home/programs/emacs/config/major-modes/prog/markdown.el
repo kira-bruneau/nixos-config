@@ -1,3 +1,3 @@
 (use-package markdown-mode
-  :config
-  (setq markdown-command "pandoc"))
+  :custom
+  (markdown-command "pandoc"))

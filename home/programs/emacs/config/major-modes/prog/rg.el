@@ -1,9 +1,11 @@
 (use-package rg
   :bind* ("C-c s" . rg-menu)
-  :config
-  (setq rg-show-columns t)
-  (setq rg-default-alias-fallback "everything")
 
+  :custom
+  (rg-show-columns t)
+  (rg-default-alias-fallback "everything")
+
+  :config
   (add-to-list 'transient-values '(rg-menu "--hidden" "--follow" "--glob=!.git"))
   (add-to-list 'transient-levels '(rg-menu (transient:rg-menu:--follow . 4)))
 

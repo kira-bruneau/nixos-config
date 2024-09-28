@@ -1,12 +1,12 @@
 (use-package ediff
   :hook ((ediff-before-setup . my-store-pre-ediff-winconfig)
          (ediff-quit . my-restore-pre-ediff-winconfig))
+
+  :custom
+  (ediff-window-setup-function 'ediff-setup-windows-plain)
+  (ediff-split-window-function 'split-window-horizontally)
+
   :config
-  (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-  (setq ediff-split-window-function 'split-window-horizontally)
-
-
-
   ;; Restore window configuration after quitting ediff
   ;; Source: https://emacs.stackexchange.com/questions/7482/restoring-windows-and-layout-after-an-ediff-session
 

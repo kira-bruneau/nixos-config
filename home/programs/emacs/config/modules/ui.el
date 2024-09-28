@@ -11,21 +11,23 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Theme
-(use-package doom-themes
-  :demand
-  :config
-  (setq org-todo-keyword-faces
-        `(("TODO" :foreground ,(doom-color 'green) :weight bold)
-          ("INPROGRESS" :foreground ,(doom-color 'blue) :weight bold)
-          ("WAITING" :foreground ,(doom-color 'yellow) :weight bold)
-          ("DONE" :foreground ,(doom-color 'grey)  :weight bold)
-          ("CANCELLED" :foreground ,(doom-color 'grey) :weight bold)))
+(use-package doom-themes :demand
+  :custom
+  (doom-themes-padded-modeline 3)
+  (org-todo-keyword-faces
+   `(("TODO" :foreground ,(doom-color 'green) :weight bold)
+     ("INPROGRESS" :foreground ,(doom-color 'blue) :weight bold)
+     ("WAITING" :foreground ,(doom-color 'yellow) :weight bold)
+     ("DONE" :foreground ,(doom-color 'grey)  :weight bold)
+     ("CANCELLED" :foreground ,(doom-color 'grey) :weight bold)))
 
-  (setq doom-themes-padded-modeline 3)
+  :config
   (load-theme 'doom-vibrant t))
 
-(use-package powerline
-  :demand
+(use-package powerline :demand
+  :custom
+  (powerline-display-buffer-size nil)
+
   :config
   (defun powerline-minimal-theme ()
     "Setup the minimal mode-line."
@@ -77,7 +79,6 @@
                                (powerline-fill face2 (powerline-width rhs))
                                (powerline-render rhs)))))))
 
-  (setq powerline-display-buffer-size nil)
   (powerline-minimal-theme))
 
 ;; Font (current frame + future frames)
@@ -105,8 +106,10 @@
 
 ;; Pixel precision scrolling
 (use-package pixel-scroll
+  :custom
+  (pixel-scroll-precision-use-momentum t)
+  (pixel-scroll-precision-initial-velocity-factor 0.02)
+  (pixel-scroll-precision-momentum-seconds 1.0)
+
   :config
-  (setq pixel-scroll-precision-use-momentum t)
-  (setq pixel-scroll-precision-initial-velocity-factor 0.02)
-  (setq pixel-scroll-precision-momentum-seconds 1.0)
   (pixel-scroll-precision-mode))

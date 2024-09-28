@@ -1,5 +1,6 @@
-(use-package undo-tree
-  :demand
+(use-package undo-tree :demand
+  :custom
+  (undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory "aux"))))
+
   :config
-  (setq undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory "aux"))))
   (global-undo-tree-mode))

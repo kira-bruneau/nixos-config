@@ -9,5 +9,5 @@
   (with-eval-after-load 'restclient
     (add-to-list 'restclient-content-type-modes '("text/html" . web-mode)))
 
-  :config
-  (setq web-mode-enable-current-element-highlight t))
+  :custom
+  (web-mode-enable-current-element-highlight t))

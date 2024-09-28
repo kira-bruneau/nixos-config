@@ -2,23 +2,25 @@
   :bind (:map dired-mode-map
               ("I" . image-dired-default-directory))
   :hook ((dired-mode . dired-hide-details-mode))
-  :config
-  (setq dired-listing-switches "-Alh")
-  (setq dired-hide-details-hide-symlink-targets nil)
-  (setq dired-dwim-target t)
 
+  :custom
+  (dired-listing-switches "-Alh")
+  (dired-hide-details-hide-symlink-targets nil)
+  (dired-dwim-target t)
+
+  :config
   (defun image-dired-default-directory ()
     (interactive)
     (image-dired default-directory)))
 
 (use-package all-the-icons-dired
   :hook ((dired-mode . all-the-icons-dired-mode))
-  :config
-  (setq all-the-icons-dired-monochrome nil))
+  :custom
+  (all-the-icons-dired-monochrome nil))
 
 (use-package image-dired
-  :config
-  (setq image-dired-thumbnail-storage 'standard-large))
+  :custom
+  (image-dired-thumbnail-storage 'standard-large))
 
 (use-package async
   :hook (dired-mode . dired-async-mode))

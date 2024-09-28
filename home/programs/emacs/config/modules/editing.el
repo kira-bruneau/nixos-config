@@ -10,8 +10,8 @@
 
 ;; Free up shift key for custom navigation bindings
 (use-package simple
-  :config
-  (setq shift-select-mode nil))
+  :custom
+  (shift-select-mode nil))
 
 ;; Allow narrowing to region
 (put 'narrow-to-region 'disabled nil)
