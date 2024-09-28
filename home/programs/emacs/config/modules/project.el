@@ -33,8 +33,8 @@
 
   (defun project-magit-dispatch ()
     (interactive)
-    (setq default-directory (project-root (project-current t)))
-    (magit-dispatch))
+    (let ((default-directory (project-root (project-current t))))
+      (magit-dispatch)))
 
   ;; Per-project compilation buffers
   ;; Adapted from: https://github.com/bbatsov/projectile/blob/0163b335a18af0f077a474d4dc6b36e22b5e3274/projectile.el#L5074-L5087
