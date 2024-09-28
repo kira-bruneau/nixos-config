@@ -1,5 +1,4 @@
-(use-package page-break-lines
+(use-package page-break-lines :demand
   :hook consult-after-jump
-  :demand
   :config
   (global-page-break-lines-mode))

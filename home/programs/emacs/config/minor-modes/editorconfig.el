@@ -4,8 +4,7 @@
     (remhash 'indent_size props)
     (remhash 'tab_width props)))
 
-(use-package editorconfig
-  :demand
+(use-package editorconfig :demand
   :config
   (add-hook 'editorconfig-hack-properties-functions
             #'my-editorconfig-hack-properties)

@@ -1,2 +1,1 @@
-(use-package vlf-setup
-  :demand)
+(use-package vlf-setup :demand)

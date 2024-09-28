@@ -1,4 +1,3 @@
-(use-package recentf
-  :demand
+(use-package recentf :demand
   :config
   (recentf-mode))

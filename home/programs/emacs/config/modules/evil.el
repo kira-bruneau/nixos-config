@@ -166,8 +166,7 @@
 
   (evil-mode))
 
-(use-package evil-collection
-  :demand
+(use-package evil-collection :demand
   :config
   ;; Default to normal mode in shell-mode like in compilation-mode
   ;; shell-mode derives from comint-mode which defaults to insert mode
@@ -199,8 +198,7 @@
 
   (evil-collection-init))
 
-(use-package evil-mc
-  :demand
+(use-package evil-mc :demand
   :config
   ;; Add extra known commands from multiple-cursors:
   ;; https://github.com/magnars/multiple-cursors.el/blob/c870c18462461df19382ecd2f9374c8b902cd804/multiple-cursors-core.el#L494-L569

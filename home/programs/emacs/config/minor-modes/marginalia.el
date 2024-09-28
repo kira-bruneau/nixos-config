@@ -1,5 +1,4 @@
-(use-package marginalia
-  :demand
+(use-package marginalia :demand
   :bind (:map minibuffer-local-map
          ("M-A" . marginalia-cycle))
 

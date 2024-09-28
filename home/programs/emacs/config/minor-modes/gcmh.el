@@ -1,4 +1,3 @@
-(use-package gcmh
-  :demand
+(use-package gcmh :demand
   :config
   (gcmh-mode))
