@@ -105,7 +105,7 @@
   (show-paren-mode))
 
 ;; Pixel precision scrolling
-(use-package pixel-scroll
+(use-package pixel-scroll :demand
   :custom
   (pixel-scroll-precision-use-momentum t)
   (pixel-scroll-precision-initial-velocity-factor 0.02)
