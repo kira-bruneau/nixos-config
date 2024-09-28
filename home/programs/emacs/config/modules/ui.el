@@ -2,9 +2,9 @@
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(setq inhibit-startup-screen t)
-(setq initial-major-mode 'fundamental-mode)
-(setq initial-scratch-message nil)
+(setopt inhibit-startup-screen t)
+(setopt initial-major-mode 'fundamental-mode)
+(setopt initial-scratch-message nil)
 
 ;; Maximize window
 (setq ns-auto-hide-menu-bar t)

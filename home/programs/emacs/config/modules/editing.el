@@ -20,4 +20,4 @@
 (global-set-key (kbd "C-c C-s") 'sort-lines)
 
 ;; Use case insensitive sorting by default
-(setq sort-fold-case t)
+(setopt sort-fold-case t)

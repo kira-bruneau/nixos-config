@@ -20,7 +20,7 @@
          "modules")))))
 
   ;; Load setup files and isolate errors
-  (setq use-package-always-defer t)
+  (setopt use-package-always-defer t)
   (defvar after-successful-init-hook nil)
   (let ((error? nil))
     (dolist (setup setup-files)

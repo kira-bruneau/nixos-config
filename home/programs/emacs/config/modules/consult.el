@@ -33,8 +33,8 @@
   (consult-async-split-style nil)
 
   :config
-  (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden --glob !.git --follow --no-messages"))
-  (setq consult-fd-args (append consult-fd-args '("--hidden" "--exclude" ".git" "--follow")))
+  (setopt consult-ripgrep-args (concat consult-ripgrep-args " --hidden --glob !.git --follow --no-messages"))
+  (setopt consult-fd-args (append consult-fd-args '("--hidden" "--exclude" ".git" "--follow")))
 
   (consult-customize
    consult-line :preview-key 'any))
