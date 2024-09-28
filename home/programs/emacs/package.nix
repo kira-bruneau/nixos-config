@@ -1,5 +1,6 @@
 {
   lib,
+  pkgsUnstable,
   stdenv,
   emacs29,
   emacs29-pgtk,
@@ -223,7 +224,7 @@ callPackage ./wrapper.nix {
           ]
         ))
         ripgrep
-        rust-analyzer
+        pkgsUnstable.rust-analyzer
         rustc
         rustfmt
         solargraph

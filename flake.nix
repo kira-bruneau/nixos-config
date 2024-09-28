@@ -220,7 +220,7 @@
 
         packages =
           {
-            emacs = pkgs.callPackage ./home/programs/emacs/package.nix { rust-analyzer = pkgs.rust-analyzer; };
+            emacs = pkgs.callPackage ./home/programs/emacs/package.nix { inherit pkgsUnstable; };
           }
           // builtins.foldl' (
             packages: name:
