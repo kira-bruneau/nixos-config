@@ -2,46 +2,64 @@ set -eo pipefail
 
 unwrapped=
 name=
-unpackPhase=
+src=
 srcName=
 srcGitRepoUrl=
 srcRev=
 srcFetchSubmodules=
+unpackPhase=
 
+# 1. Try to extract source metadata from Nix expression
 for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
-  while read -r line; do
-    # shellcheck disable=SC2163
-    export "$line"
-  done < <(nix eval --json --read-only "$NID_INSTALLABLE" --apply 'c:
-  let
-    unwrapped = c ? unwrapped;
-    p = if unwrapped then c.unwrapped else c;
-  in {
-    inherit unwrapped;
-    name = p.pname or (builtins.parseDrvName p.name).name;
-    unpackPhase = p.unpackPhase or "";
-    srcName = p.src.name or "";
-    srcGitRepoUrl = p.src.gitRepoUrl or "";
-    srcRev = p.src.rev or "";
-    srcFetchSubmodules = p.src.fetchSubmodules or false;
-  }' 2>/dev/null | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
+  eval "$(nix eval --json --read-only "$NID_INSTALLABLE" --apply 'c:
+    let
+      unwrapped = c ? unwrapped;
+      p = if unwrapped then c.unwrapped else c;
+    in {
+      inherit unwrapped;
+      name = p.pname or (builtins.parseDrvName p.name).name;
+      srcName = p.src.name or "";
+      srcGitRepoUrl = p.src.gitRepoUrl or "";
+      srcRev = p.src.rev or "";
+      srcFetchSubmodules = p.src.fetchSubmodules or false;
+      unpackPhase = p.unpackPhase or "";
+    }' 2>/dev/null | jq -r 'to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
 
   if [ -n "$name" ]; then
+    if [ "$unwrapped" = "true" ]; then
+      NID_INSTALLABLE="$NID_INSTALLABLE.unwrapped"
+    fi
+
     break
   fi
 done
 
+# 2. Try to extract source metadata from Nix derivation
 if [ -z "$name" ]; then
-  echo "Invalid installable: $1"
-  exit 1
-fi
+  eval "$(nix derivation show "$NID_INSTALLABLE" 2>/dev/null | jq -r 'to_entries[] | {
+    NID_INSTALLABLE: (.key),
+    name: (.value.env.pname // .value.name),
+    src: (.value.env.src // ""),
+    unpackPhase: (.value.env.unpackPhase // ""),
+  } | to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
 
-if [ "$unwrapped" = "true" ]; then
-  NID_INSTALLABLE="$NID_INSTALLABLE.unwrapped"
+  if [ -n "$src" ]; then
+    eval "$(nix derivation show "$src" 2>/dev/null | jq -r 'to_entries[] | {
+      srcName: .value.name,
+      srcGitRepoUrl: (if .value.env.fetcher // "" | endswith("nix-prefetch-git") then .value.env.url else "" end),
+      srcRev: (.value.env.rev // ""),
+      srcFetchSubmodules: (.value.env.fetchSubmodules // false),
+    } | to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
+  fi
+
+  if [ -z "$name" ]; then
+    echo "Invalid installable: $1"
+    exit 1
+  fi
 fi
 
 if [ "$NID_INSTALLABLE" != "$1" ]; then
-  echo "Unwrapping $1 → $NID_INSTALLABLE"
+  echo "Resolving $1 → $NID_INSTALLABLE"
 fi
 
 NID_OUT="$PWD/${name%-unwrapped}"
@@ -79,7 +97,13 @@ else
   unset unpackPhase
 fi
 
-unset unwrapped name srcName srcGitRepoUrl srcRev srcFetchSubmodules
+unset unwrapped
+unset name
+unset src
+unset srcName
+unset srcGitRepoUrl
+unset srcRev
+unset srcFetchSubmodules
 
 # shellcheck source=/dev/null
 . <(nix print-dev-env "$NID_INSTALLABLE")
