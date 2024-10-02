@@ -41,6 +41,9 @@
     # https://github.com/NixOS/nixpkgs/pull/282795
     systemd.targets.network-online.wantedBy = lib.mkForce [ ];
 
+    # Use dbus-broker since it's designed for high performance
+    services.dbus.implementation = "broker";
+
     nixpkgs.config = {
       allowUnfreePredicate =
         pkg:
