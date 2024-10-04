@@ -5,7 +5,7 @@
                 ("zx" . js-ts-mode))
   :init
   (with-eval-after-load 'flycheck
-    (setq flycheck-javascript-eslint-executable "eslint_d"))
+    (setopt flycheck-javascript-eslint-executable "eslint_d"))
 
   (with-eval-after-load 'apheleia
     (add-to-list 'apheleia-formatters '(eslint . ("eslint_d" "--stdin" "--fix-to-stdout" "--stdin-filename" filepath))))
