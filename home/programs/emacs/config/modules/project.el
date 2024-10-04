@@ -1,6 +1,7 @@
 (use-package project
   :bind-keymap ("<f7>" . project-prefix-map)
   :bind (:map project-prefix-map
+         ("p" . project-consult-switch-project)
          ("f" . project-consult-fd)
          ("s" . project-consult-ripgrep)
          ("S" . rg-project)
@@ -23,6 +24,28 @@
      (project-shell "Shell")))
 
   :config
+  (defun project-consult-switch-project (&optional arg initial)
+    (interactive "P")
+    (if (not (null arg)) (call-interactively #'project-switch-project)
+      (require 'consult)
+      (let ((default-directory "~/Dev")
+            (consult-fd-args
+             (append
+              (eval (car (get 'consult-fd-args 'standard-value)))
+              '("--hidden"
+                "--exclude" "archive"
+                "--exclude" ".stversions"
+                "--max-depth" "5"
+                "--format" "{//}"
+                "--prune"
+                "/\\.git$"
+                "--and"))))
+        (project-switch-project
+         (consult--find
+          "Select project: "
+          (consult--fd-make-builder '("."))
+          initial)))))
+
   (defun project-consult-ripgrep (&optional dir initial)
     (interactive "P" (list (project-root (project-current))))
     (consult-ripgrep dir initial))
