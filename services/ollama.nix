@@ -2,7 +2,6 @@
   config,
   lib,
   pkgsOllama,
-  pkgsUnstable,
   ...
 }:
 

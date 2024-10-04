@@ -45,7 +45,6 @@
   prettierd,
   python3,
   ripgrep,
-  rust-analyzer,
   rustc,
   rustfmt,
   solargraph,

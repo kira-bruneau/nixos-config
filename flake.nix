@@ -6,10 +6,7 @@
 
     flake-linter = {
       url = "gitlab:kira-bruneau/flake-linter";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
@@ -209,7 +206,15 @@
               };
             };
 
+            nixf-tidy-fix = {
+              paths = paths.nix;
+              settings = {
+                variable-lookup = true;
+              };
+            };
+
             nixfmt-rfc-style.paths = paths.nix;
+
             prettier.paths = paths.markdown;
           };
         };
