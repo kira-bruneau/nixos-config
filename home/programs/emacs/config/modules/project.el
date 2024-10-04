@@ -28,23 +28,25 @@
     (interactive "P")
     (if (not (null arg)) (call-interactively #'project-switch-project)
       (require 'consult)
-      (let ((default-directory "~/Dev")
-            (consult-fd-args
-             (append
-              (eval (car (get 'consult-fd-args 'standard-value)))
-              '("--hidden"
-                "--exclude" "archive"
-                "--exclude" ".stversions"
-                "--max-depth" "5"
-                "--format" "{//}"
-                "--prune"
-                "/\\.git$"
-                "--and"))))
-        (project-switch-project
-         (consult--find
-          "Select project: "
-          (consult--fd-make-builder '("."))
-          initial)))))
+      (project-switch-project
+       (expand-file-name
+        (let ((default-directory "~/Dev")
+              (consult-fd-args
+               (append
+                (eval (car (get 'consult-fd-args 'standard-value)))
+                '("--hidden"
+                  "--exclude" "archive"
+                  "--exclude" ".stversions"
+                  "--max-depth" "5"
+                  "--format" "{//}"
+                  "--prune"
+                  "/\\.git$"
+                  "--and"))))
+          (consult--find
+           "Select project: "
+           (consult--fd-make-builder '("."))
+           initial))
+        "~/Dev"))))
 
   (defun project-consult-ripgrep (&optional dir initial)
     (interactive "P" (list (project-root (project-current))))
