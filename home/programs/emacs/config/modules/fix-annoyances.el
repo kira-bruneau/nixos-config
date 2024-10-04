@@ -96,7 +96,7 @@
 
 ;; Use command modifier for meta on macOS
 (when (eq system-type 'darwin)
-  (setq mac-option-modifier 'nil)
+  (setq mac-option-modifier nil)
   (setq mac-command-modifier 'meta))
 
 ;; Prevent *Warnings* buffer from taking over existing buffer
