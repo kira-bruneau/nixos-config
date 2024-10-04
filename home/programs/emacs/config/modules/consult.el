@@ -36,6 +36,7 @@
   (consult-async-input-debounce 0.01)
   (consult-async-min-input 0)
   (consult-async-split-style nil)
+  (consult-preview-partial-size large-file-warning-threshold)
 
   :config
   (setopt consult-ripgrep-args (concat consult-ripgrep-args " --hidden --glob !.git --follow --no-messages"))
