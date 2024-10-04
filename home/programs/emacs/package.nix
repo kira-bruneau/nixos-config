@@ -129,7 +129,6 @@ callPackage ./wrapper.nix {
     epkgs.projection-multi-embark
     epkgs.rainbow-delimiters
     epkgs.restclient
-    epkgs.rg
     epkgs.smartparens
     epkgs.sudo-edit
     epkgs.suggest

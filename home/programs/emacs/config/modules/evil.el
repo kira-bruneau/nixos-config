@@ -181,14 +181,6 @@
       "p" nil ;; p (originally bound to magit-blob-previous, can use <f8>-p instead)
       "j" nil)) ;; n (originally bound to magit-blob-next, can use <f8>-n instead)
 
-  (with-eval-after-load 'rg-result
-    (evil-collection-define-key 'normal 'rg-mode-map
-      "f" 'rg-rerun-change-literal ;; t (originally bound to rg-rerun-change-files)
-      "p" 'rg-rerun-change-files)) ;; p
-
-  (with-eval-after-load 'rg-menu
-    (transient-suffix-put 'rg-menu 'rg-rerun-change-files--transient :key "p"))
-
   (with-eval-after-load 'comint
     (evil-collection-define-key 'normal 'comint-mode-map
       "C-j" #'next-error-no-select

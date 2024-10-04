@@ -4,7 +4,6 @@
          ("p" . project-consult-switch-project)
          ("f" . project-consult-fd)
          ("s" . project-consult-ripgrep)
-         ("S" . rg-project)
          ("v" . project-magit-dispatch)
          ("V" . magit-project-status)
          ("x" . project-async-shell-command)
@@ -15,7 +14,6 @@
   (project-switch-commands
    '((project-consult-fd "Find file")
      (project-consult-ripgrep "Find regexp")
-     (rg-project "Ripgrep")
      (project-find-dir "Find directory")
      (project-dired "Dired")
      (project-magit-dispatch "Magit Dispatch")
