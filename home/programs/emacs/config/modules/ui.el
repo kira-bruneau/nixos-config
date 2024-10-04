@@ -7,8 +7,10 @@
 (setopt initial-scratch-message nil)
 
 ;; Maximize window
-(setq ns-auto-hide-menu-bar t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(when (eq system-type 'darwin)
+ (setq ns-auto-hide-menu-bar t))
 
 ;; Theme
 (use-package doom-themes :demand
