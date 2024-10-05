@@ -9,7 +9,12 @@
         "[::1]:53"
       ];
 
-      disabled_server_names = [ "cs-montreal" ];
+      disabled_server_names = [
+        "cs-montreal"
+        "cs-nyc1"
+        "cs-nyc2"
+      ];
+
       doh_servers = false;
       require_dnssec = true;
 
@@ -17,7 +22,11 @@
         routes = [
           {
             server_name = "*";
-            via = [ "anon-cs-montreal" ];
+            via = [
+              "anon-cs-montreal"
+              "anon-cs-nyc1"
+              "anon-cs-nyc2"
+            ];
           }
         ];
 
