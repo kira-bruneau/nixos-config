@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   pkgsUnstable,
   ...
 }:
@@ -23,19 +24,14 @@
   nix = {
     package = pkgsUnstable.lix;
 
-    # Pin nixpkgs in flake registry
-    registry = {
-      nixpkgs.flake = inputs.nixpkgs;
-      nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
-    };
+    # Pin flake inputs to the registry
+    registry = builtins.mapAttrs (_name: input: { flake = input; }) inputs;
 
-    # Pin nixpkgs channel (for backwards compatibility with nix2 cli)
-    nixPath = [
-      "nixpkgs=${inputs.nixpkgs}"
-      "nixpkgs-unstable=${inputs.nixpkgs}"
-    ];
+    # Pin flake inputs as channels (for backwards compatibility with nix2 cli)
+    nixPath = lib.mapAttrsToList (name: input: "${name}=${input}") inputs;
 
     distributedBuilds = true;
+
     buildMachines = builtins.filter (machine: machine.hostName != config.networking.hostName) [
       {
         hostName = "quartz";
