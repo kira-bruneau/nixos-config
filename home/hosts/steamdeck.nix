@@ -98,6 +98,8 @@ let
       "Jellyfin Media Player" = -567380782;
       "Mario Kart 8 Deluxe" = -1565192715;
       "Mario Kart 8" = -1565192714;
+      "Mario Kart: Double Dash" = -1565192713;
+      "Mario Party 4" = -1565192712;
       "Moonlight" = -114896551;
       "Pikmin 3 Deluxe" = -1565192716;
       "Prism Launcher" = -812576484;
@@ -138,6 +140,8 @@ let
     "Jellyfin Media Player".LaunchOptions = "jellyfinmediaplayer --tv --scale-factor 2";
     "Mario Kart 8 Deluxe".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
     "Mario Kart 8".LaunchOptions = "Cemu --fullscreen --title-id 000500001010ec00";
+    "Mario Kart: Double Dash".LaunchOptions = "dolphin-emu -b -e '${config.home.homeDirectory}/Games/Dolphin/Mario Kart - Double Dash.gcm'";
+    "Mario Party 4".LaunchOptions = "dolphin-emu -b -e '${config.home.homeDirectory}/Games/Dolphin/MarioParty4.iso'";
     "Moonlight".LaunchOptions = "moonlight";
     "Pikmin 3 Deluxe".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
     "Prism Launcher".LaunchOptions = "prismlauncher";
