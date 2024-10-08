@@ -459,6 +459,14 @@ in
         </ServerConfiguration>
       ''} "${config.services.jellyfin.configDir}/system.xml"
 
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "branding.xml" ''
+        <?xml version="1.0" encoding="utf-8"?>
+        <BrandingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <CustomCss>.playedIndicator { display: none; }</CustomCss>
+          <SplashscreenEnabled>true</SplashscreenEnabled>
+        </BrandingOptions>
+      ''} "${config.services.jellyfin.configDir}/branding.xml"
+
       ${pkgs.coreutils}/bin/mkdir -p "${config.services.jellyfin.dataDir}/root/default"
       ${builtins.concatStringsSep "\n" (
         builtins.map (
