@@ -212,4 +212,32 @@ in
       ];
     };
   };
+
+  systemd.user = {
+    services.update-jellyfin-hero = {
+      Unit = {
+        Description = "Automatically update jellyfin's hero image";
+      };
+
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${lib.getExe pkgs.curl} http://quartz:8096/Branding/Splashscreen -o ${config.home.homeDirectory}/.local/share/Steam/userdata/84026532/config/grid/3727586514_hero.png";
+      };
+    };
+
+    timers.update-jellyfin-hero = {
+      Unit = {
+        Description = "Automatically update jellyfin's hero image";
+      };
+
+      Timer = {
+        OnCalendar = "daily";
+        Persistent = "true";
+      };
+
+      Install = {
+        WantedBy = [ "timers.target" ];
+      };
+    };
+  };
 }
