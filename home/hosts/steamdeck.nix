@@ -88,26 +88,27 @@ let
     name:
     {
       "BigChadGuys Plus" = -103678894;
-      "Jellyfin Media Player" = -567380782;
-      "Moonlight" = -114896551;
-      "Prism Launcher" = -812576484;
+      "Cemu" = -1562815367;
       "Clone Hero" = -314732879;
       "Discord" = -740890966;
-      "Cemu" = -1562815367;
       "Dolphin Emulator" = -1761564564;
-      "Firefox" = -1974293946;
-      "qBittorrent" = -909108272;
-      "Youtube" = -2035226226;
-      "sudachi" = -592608668;
       "Dropout" = -1539404924;
-      "Super Smash Bros. Ultimate" = -1737320186;
+      "Element" = -1815128494;
+      "Firefox" = -1974293946;
+      "Jellyfin Media Player" = -567380782;
       "Mario Kart 8 Deluxe" = -1565192715;
-      "Pikmin 3 Deluxe" = -1565192716;
-      "The Legend of Zelda: Echoes of Wisdom" = -1565192717;
-      "The Legend Of Zelda The Wind Waker" = -1826256805;
       "Mario Kart 8" = -1565192714;
-      "Majora's Mask" = -1234567890;
+      "Moonlight" = -114896551;
+      "Pikmin 3 Deluxe" = -1565192716;
+      "Prism Launcher" = -812576484;
+      "qBittorrent" = -909108272;
       "Rosalie's Mupen GUI" = -1234567891;
+      "sudachi" = -592608668;
+      "Super Smash Bros. Ultimate" = -1737320186;
+      "The Legend of Zelda: Echoes of Wisdom" = -1565192717;
+      "The Legend Of Zelda: Majora's Mask" = -1234567890;
+      "The Legend Of Zelda: The Wind Waker" = -1826256805;
+      "Youtube" = -2035226226;
     }
     .${name};
 
@@ -135,7 +136,6 @@ let
     "Dropout".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.dropout.tv -P Jackfox";
     "Firefox".LaunchOptions = "firefox";
     "Jellyfin Media Player".LaunchOptions = "jellyfinmediaplayer --tv --scale-factor 2";
-    "Majora's Mask".LaunchOptions = "2s2h";
     "Mario Kart 8 Deluxe".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
     "Mario Kart 8".LaunchOptions = "Cemu --fullscreen --title-id 000500001010ec00";
     "Moonlight".LaunchOptions = "moonlight";
@@ -145,8 +145,9 @@ let
     "Rosalie's Mupen GUI".LaunchOptions = "RMG --fullscreen";
     "sudachi".LaunchOptions = "sudachi -f";
     "Super Smash Bros. Ultimate".LaunchOptions = "sudachi -f -g ${config.home.homeDirectory}/Games/Sudachi/50e90d167d20f348cd4793aad9401283.nca";
-    "The Legend Of Zelda The Wind Waker".LaunchOptions = "Cemu --fullscreen --title-id 0005000010143500";
     "The Legend of Zelda: Echoes of Wisdom".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
+    "The Legend Of Zelda: Majora's Mask".LaunchOptions = "2s2h";
+    "The Legend Of Zelda: The Wind Waker".LaunchOptions = "Cemu --fullscreen --title-id 0005000010143500";
     "Youtube".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.youtube.com";
   };
 in
