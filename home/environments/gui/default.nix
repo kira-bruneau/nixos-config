@@ -8,9 +8,6 @@
     ../../programs/firefox
     ../../programs/jellyfin
 
-    # Chat
-    ../../programs/element
-
     # Media & Documents
     ../../programs/emacs
     ../../programs/keepassxc

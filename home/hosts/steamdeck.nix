@@ -93,7 +93,6 @@ let
       "Prism Launcher" = -812576484;
       "Clone Hero" = -314732879;
       "Discord" = -740890966;
-      "Element" = -1815128494;
       "Cemu" = -1562815367;
       "Dolphin Emulator" = -1761564564;
       "Firefox" = -1974293946;
@@ -134,7 +133,6 @@ let
     "Discord".LaunchOptions = "Discord";
     "Dolphin Emulator".LaunchOptions = "QT_QPA_PLATFORM=xcb dolphin-emu";
     "Dropout".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.dropout.tv -P Jackfox";
-    "Element".LaunchOptions = "element-desktop";
     "Firefox".LaunchOptions = "firefox";
     "Jellyfin Media Player".LaunchOptions = "jellyfinmediaplayer --tv --scale-factor 2";
     "Majora's Mask".LaunchOptions = "2s2h";
@@ -172,7 +170,6 @@ in
         // {
           "BigChadGuys Plus".LaunchOptions = "${common."BigChadGuys Plus".LaunchOptions} --profile daxvena";
           "Discord".LaunchOptions = "${xdgProfile "kira"} ${common."Discord".LaunchOptions}";
-          "Element".LaunchOptions = "${xdgProfile "kira"} ${common."Element".LaunchOptions}";
           "Firefox".LaunchOptions = "${common."Firefox".LaunchOptions} Kirafox";
         }
       );
@@ -187,7 +184,6 @@ in
         // {
           "BigChadGuys Plus".LaunchOptions = "${common."BigChadGuys Plus".LaunchOptions} --profile CptJackL";
           "Discord".LaunchOptions = "${xdgProfile "jack"} ${common."Discord".LaunchOptions}";
-          "Element".LaunchOptions = "${xdgProfile "jack"} ${common."Element".LaunchOptions}";
           "Firefox".LaunchOptions = "${common."Firefox".LaunchOptions} Jackfox";
         }
       );
