@@ -1,8 +1,8 @@
 (use-package consult
-  :commands (consult-find-file-with-preview)
+  :commands (completing-read-with-preview)
 
   :init
-  (setq read-file-name-function #'consult-find-file-with-preview)
+  (setq completing-read-function #'completing-read-with-preview)
 
   :bind*
   (;; Search
@@ -42,39 +42,40 @@
   (setopt consult-ripgrep-args (concat consult-ripgrep-args " --hidden --glob !.git --follow --no-messages"))
   (setopt consult-fd-args (append consult-fd-args '("--hidden" "--exclude" ".git" "--follow")))
 
-  (defun consult-find-file-with-preview (prompt &optional dir default-filename mustmatch initial predicate)
-    (interactive)
-    (let* ((dir (abbreviate-file-name (expand-file-name (or dir default-directory "~/"))))
-           (default-filename
-            (cond
-              (default-filename default-filename)
-              ((null initial) buffer-file-name)
-              ;; Special-case "" because (expand-file-name "" "/tmp/") returns
-              ;; "/tmp" rather than "/tmp/" (bug#39057).
-              ((equal "" initial) dir)
-              (t (expand-file-name initial dir))))
-           (default
-            (when default-filename
-              (if (consp default-filename)
-                  (mapcar 'abbreviate-file-name default-filename)
-                (abbreviate-file-name default-filename))))
-           (initial
-            (cond
-             ((and insert-default-directory (stringp dir))
-              (if initial
-                  (cons (minibuffer-maybe-quote-filename (concat dir initial))
-                        (length (minibuffer-maybe-quote-filename dir)))
-                (minibuffer-maybe-quote-filename dir)))
-             (initial (cons (minibuffer-maybe-quote-filename initial) 0))))
-           (default-directory dir)
-           (minibuffer-completing-file-name t))
-      (consult--read #'read-file-name-internal
-                     :state (consult--file-preview)
+  (defun completing-read-with-preview (prompt collection
+                                              &optional
+                                              predicate require-match
+                                              initial-input hist def
+                                              inherit-input-method)
+    (cond
+     ((and
+       (not (boundp 'in-consult-read-p))
+       (eq
+        (completion-metadata-get
+         (completion-metadata initial-input collection predicate)
+         'category)
+        'file))
+      (consult--read collection
                      :prompt prompt
-                     :default default
-                     :initial initial
-                     :require-match mustmatch
-                     :predicate predicate)))
+                     :predicate predicate
+                     :require-match require-match
+                     :initial initial-input
+                     :history hist
+                     :default def
+                     :inherit-input-method inherit-input-method
+                     :state (consult--file-preview)))
+     (t (completing-read-default prompt collection predicate
+                                 require-match initial-input hist def
+                                 inherit-input-method))))
+
+  (defun consult-read-with-preview (oldfun table &rest options)
+    (let ((in-consult-read-p t))
+      (unless (plist-get options :state)
+        (when (eq (plist-get options :category) 'file)
+          (plist-put options :state (consult--file-preview))))
+      (apply oldfun table options)))
+
+  (add-function :around (symbol-function 'consult--read) #'consult-read-with-preview)
 
   (consult-customize
    consult-line :preview-key 'any))
