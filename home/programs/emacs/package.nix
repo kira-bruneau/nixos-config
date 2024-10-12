@@ -165,6 +165,7 @@ callPackage ./wrapper.nix {
     epkgs.web-mode
     epkgs.which-key
     epkgs.whitespace-cleanup-mode
+    epkgs.xterm-color
   ]);
 
   profile = buildEnv {
