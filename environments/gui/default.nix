@@ -41,4 +41,7 @@
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedClass = "idle";
   };
+
+  # Generate documentation for all imported modules
+  documentation.nixos.includeAllModules = true;
 }
