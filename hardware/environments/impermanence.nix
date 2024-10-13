@@ -48,6 +48,7 @@
       ++ builtins.map (container: "/var/lib/nixos-containers/${container}") (
         builtins.attrNames config.containers
       )
+      ++ lib.optional config.services.ollama.enable "/var/lib/private/ollama"
       ++ lib.optional config.services.power-profiles-daemon.enable "/var/lib/power-profiles-daemon"
       ++ lib.optional config.services.prowlarr.enable "/var/lib/private/prowlarr"
       ++ lib.optional config.services.radarr.enable config.services.radarr.dataDir

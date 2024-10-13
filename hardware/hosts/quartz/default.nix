@@ -149,7 +149,6 @@
   environment.persistence."/persist".directories = [
     "/home"
     "/nix"
-    "/var/lib/private/ollama"
     "/var/lib/qBittorrent"
   ];
 
