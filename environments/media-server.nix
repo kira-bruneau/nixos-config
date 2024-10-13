@@ -507,7 +507,7 @@ in
       name = folder.path;
       value = {
         d = {
-          mode = "2770";
+          mode = "2755";
           user = config.services.sonarr.user;
           group = config.services.sonarr.group;
         };
@@ -631,7 +631,7 @@ in
       name = folder.path;
       value = {
         d = {
-          mode = "2770";
+          mode = "2755";
           user = config.services.radarr.user;
           group = config.services.radarr.group;
         };
@@ -745,7 +745,7 @@ in
       name = folder.path;
       value = {
         d = {
-          mode = "2770";
+          mode = "2755";
           user = config.services.readarr.user;
           group = config.services.readarr.group;
         };
@@ -956,7 +956,7 @@ in
   # Configure downloads directory to be shared by qbittorrent group
   systemd.tmpfiles.settings.qBittorrent.${qBittorrent.BitTorrent."Session\\DefaultSavePath"} = {
     d = {
-      mode = "2770";
+      mode = "2755";
       user = "qbittorrent";
       group = "qbittorrent";
     };
