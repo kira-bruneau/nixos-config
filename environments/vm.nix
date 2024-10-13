@@ -15,11 +15,6 @@
     ];
   };
 
-  systemd.network.networks.eth0 = {
-    matchConfig.Name = "eth0";
-    networkConfig.DHCP = "yes";
-  };
-
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
   };

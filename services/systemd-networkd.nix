@@ -6,5 +6,22 @@ lib.mkIf (!config.networking.networkmanager.enable) {
     useDHCP = false;
   };
 
-  systemd.network.enable = true;
+  systemd.network = {
+    enable = true;
+
+    networks.en = {
+      matchConfig.Name = "en*";
+      networkConfig.DHCP = "yes";
+    };
+
+    networks.eth = {
+      matchConfig.Name = "eth*";
+      networkConfig.DHCP = "yes";
+    };
+
+    networks.wlan = {
+      matchConfig.Name = "wlan*";
+      networkConfig.DHCP = "yes";
+    };
+  };
 }

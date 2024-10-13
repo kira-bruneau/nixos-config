@@ -105,11 +105,5 @@
     }
   ];
 
-  # Enable DHCP on Wi-Fi interface
-  systemd.network.networks.eth0 = {
-    matchConfig.Name = "eth0";
-    networkConfig.DHCP = "yes";
-  };
-
   services.logind.lidSwitch = "ignore";
 }

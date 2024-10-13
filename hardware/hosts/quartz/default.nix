@@ -163,12 +163,6 @@
     }
   '';
 
-  # Enable DHCP on Ethernet interface
-  systemd.network.networks.enp7s0 = {
-    matchConfig.Name = "enp7s0";
-    networkConfig.DHCP = "yes";
-  };
-
   # WirePlumber device configuration
   services.pipewire.wireplumber.extraConfig = {
     alsa = {
