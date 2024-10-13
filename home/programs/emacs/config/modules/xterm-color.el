@@ -5,7 +5,7 @@
         (remove 'ansi-color-process-output comint-output-filter-functions))
 
   (defun xterm-color-comint-term-environment (environment)
-    (cons "TERM=xterm-256color" environment))
+    (cons "TERM=xterm-256color PAGER=" environment))
 
   (advice-add 'comint-term-environment :filter-return #'xterm-color-comint-term-environment)
 
