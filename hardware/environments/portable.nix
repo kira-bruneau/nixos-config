@@ -25,6 +25,4 @@
   '';
 
   services.localtimed.enable = true;
-
-  programs.captive-browser.enable = true;
 }
