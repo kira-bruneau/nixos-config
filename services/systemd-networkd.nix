@@ -9,17 +9,22 @@ lib.mkIf (!config.networking.networkmanager.enable) {
   systemd.network = {
     enable = true;
 
-    networks.en = {
-      matchConfig.Name = "en*";
+    networks.predicatable-ethernet = {
+      matchConfig.Name = "enp*";
       networkConfig.DHCP = "yes";
     };
 
-    networks.eth = {
+    networks.predictable-wifi = {
+      matchConfig.Name = "wlp*";
+      networkConfig.DHCP = "yes";
+    };
+
+    networks.legacy-ethernet = {
       matchConfig.Name = "eth*";
       networkConfig.DHCP = "yes";
     };
 
-    networks.wlan = {
+    networks.legacy-wifi = {
       matchConfig.Name = "wlan*";
       networkConfig.DHCP = "yes";
     };
