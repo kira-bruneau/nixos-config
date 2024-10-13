@@ -10,12 +10,12 @@ lib.mkIf (!config.networking.networkmanager.enable) {
     enable = true;
 
     networks.predicatable-ethernet = {
-      matchConfig.Name = "enp*";
+      matchConfig.Name = "en*";
       networkConfig.DHCP = "yes";
     };
 
     networks.predictable-wifi = {
-      matchConfig.Name = "wlp*";
+      matchConfig.Name = "wl*";
       networkConfig.DHCP = "yes";
     };
 
