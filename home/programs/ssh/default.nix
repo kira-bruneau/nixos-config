@@ -10,6 +10,8 @@
 
     extraConfig = ''
       ConnectTimeout 3
+      ServerAliveInterval 60
+      ServerAliveCountMax 2
     '';
 
     # Manage known_hosts outside of home-manager (synced with Syncthing)
