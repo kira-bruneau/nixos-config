@@ -41,6 +41,9 @@
     # https://github.com/NixOS/nixpkgs/pull/282795
     systemd.targets.network-online.wantedBy = lib.mkForce [ ];
 
+    # Prefer nftables over iptables
+    networking.nftables.enable = true;
+
     # Use dbus-broker since it's designed for high performance
     services.dbus.implementation = "broker";
 
