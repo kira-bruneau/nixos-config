@@ -25,7 +25,10 @@
     package = pkgsUnstable.lix;
 
     # Pin flake inputs to the registry
-    registry = builtins.mapAttrs (_name: input: { flake = input; }) inputs;
+    registry = (builtins.mapAttrs (_name: input: { flake = input; }) inputs) // {
+      n.flake = inputs.nixpkgs;
+      u.flake = inputs.nixpkgs-unstable;
+    };
 
     # Pin flake inputs as channels (for backwards compatibility with nix2 cli)
     nixPath = lib.mapAttrsToList (name: input: "${name}=${input}") inputs;
