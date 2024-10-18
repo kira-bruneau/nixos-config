@@ -42,8 +42,7 @@
                   "--max-depth" "5"
                   "--format" "{//}"
                   "--prune"
-                  "/\\.git$"
-                  "--and"))))
+                  "/\\.git$"))))
           (consult--find
            "Select project: "
            (consult--fd-make-builder '("."))
