@@ -109,19 +109,11 @@ unset srcFetchSubmodules
 . <(nix print-dev-env "$NID_INSTALLABLE")
 export NIX_LOG_FD=/dev/null
 cd "$NIX_BUILD_TOP"
-phases="${prePhases[*]:-} unpackPhase" genericBuild
-if ! [ -L "$NIX_BUILD_TOP/${sourceRoot:-.}" ]; then
-  cd "$(dirname "$NID_OUT")"
-  mv -T "$NIX_BUILD_TOP/${sourceRoot:-.}" "$NID_OUT"
-  ln -s "$NID_OUT" "$NIX_BUILD_TOP/${sourceRoot:-.}"
-fi
-
-cd "$NID_OUT"
 cmakeFlags="-Cnix-instant-dev.cmake $cmakeFlags"
-phases="patchPhase ${preConfigurePhases[*]:-} configurePhase" genericBuild
+phases="${prePhases[*]:-} unpackPhase patchPhase ${preConfigurePhases[*]:-} configurePhase" genericBuild
 
 if [ -e compile_commands.json ]; then
-  ln -rs compile_commands.json "$NIX_BUILD_TOP/$sourceRoot"
+  ln -rs compile_commands.json "$NID_OUT"
 fi
 
 rm -rf "$NIX_BUILD_TOP"
