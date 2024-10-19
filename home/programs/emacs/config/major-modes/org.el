@@ -4,6 +4,11 @@
           :map org-mode-map
           ("M-p" . org-metaup)
           ("M-n" . org-metadown))
+
+  :init
+  (with-eval-after-load 'lsp-bridge
+    (delete 'org-mode-hook lsp-bridge-default-mode-hooks))
+
   :custom
   (org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
   (org-hide-emphasis-markers t)
