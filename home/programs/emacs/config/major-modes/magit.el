@@ -26,15 +26,24 @@
   (add-to-list 'transient-values '(magit-diff:magit-status-mode "--no-ext-diff"))
   (add-to-list 'transient-values '(magit-log:magit-log-mode "-n256" "--graph" "--color" "--decorate" "--follow"))
 
-  (defun magit-checkout-or-visit (oldfun &rest args)
+  (defun magit-checkout-or-visit (process)
+    (set-process-sentinel
+     process
+     (lambda (process event)
+       (magit--checkout-or-visit #'magit-process-sentinel process event)))
+    process)
+
+  (advice-add 'magit-checkout :filter-return #'magit-checkout-or-visit)
+
+  (defun magit--checkout-or-visit (fn &rest args)
     (condition-case err
         (let ((magit-process-raise-error t))
-          (apply #'magit--checkout args))
+          (apply fn args))
       (magit-git-error
        (if (string-match "\\`'\\(?:.*?\\)' is already used by worktree at '\\(.*?\\)'" (cadr err))
            (magit-diff-visit-directory (match-string 1 (cadr err)))
          (signal 'magit-git-error (cdr err))))))
 
-  (advice-add 'magit-checkout :around #'magit-checkout-or-visit))
+  (advice-add 'magit--checkout :around #'magit--checkout-or-visit))
 
 (use-package forge)
