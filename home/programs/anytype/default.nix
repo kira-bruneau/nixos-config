@@ -1,10 +1,7 @@
 { pkgsUnstable, pkgsKiraNur, ... }:
 
-let
-  anytype = pkgsKiraNur.anytype.override { electron = pkgsUnstable.electron_29; };
-in
 {
-  home.packages = [ anytype ];
+  home.packages = [ (pkgsKiraNur.anytype.override { electron = pkgsUnstable.electron_29; }) ];
 
   xdg.configFile."anytype/devconfig.json".text = builtins.toJSON {
     sudo = true; # Disables analytics
@@ -13,7 +10,7 @@ in
   };
 
   wayland.windowManager.sway.config = {
-    startup = [ { command = "${anytype}/bin/anytype"; } ];
+    startup = [ { command = "anytype"; } ];
     assigns."8" = [ { app_id = "^anytype$"; } ];
   };
 }

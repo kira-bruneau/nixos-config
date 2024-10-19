@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
-let
-  emacs = pkgs.emacs;
-in
 {
   imports = [
     ../aspell
@@ -10,7 +7,7 @@ in
   ];
 
   home = {
-    packages = [ emacs ];
+    packages = [ pkgs.emacs ];
     sessionVariables.EDITOR = "emacseditor";
   };
 
@@ -19,7 +16,7 @@ in
   };
 
   wayland.windowManager.sway.config = {
-    startup = [ { command = "${emacs}/bin/emacs"; } ];
+    startup = [ { command = "emacs"; } ];
     assigns."2" = [ { app_id = "^emacs"; } ];
   };
 }

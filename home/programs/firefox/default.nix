@@ -572,7 +572,7 @@
   };
 
   wayland.windowManager.sway.config = {
-    startup = [ { command = "${config.programs.firefox.package}/bin/firefox"; } ];
+    startup = [ { command = "firefox"; } ];
     assigns."1" = [ { app_id = "^firefox$"; } ];
     window.commands = [
       {

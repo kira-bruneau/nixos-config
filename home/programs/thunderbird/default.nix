@@ -130,7 +130,7 @@
   };
 
   wayland.windowManager.sway.config = {
-    startup = [ { command = lib.getExe config.programs.thunderbird.package; } ];
+    startup = [ { command = "thunderbird"; } ];
     assigns."9" = [ { app_id = "^thunderbird$"; } ];
   };
 
