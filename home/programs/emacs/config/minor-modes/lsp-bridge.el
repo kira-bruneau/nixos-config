@@ -19,7 +19,10 @@
          ("j" . nil)
          ("k" . nil)
          ("l" . nil)
-         ("X" . nil))
+         ("X" . nil)
+
+         :map project-prefix-map
+         ("l" . lsp-bridge-restart-process))
   :init
   (with-eval-after-load 'evil-core
     (evil-set-initial-state 'lsp-bridge-ref-mode 'emacs)
