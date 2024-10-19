@@ -119,8 +119,6 @@ in
 
         seat = {
           "*" = {
-            # TODO: Fractional scaling size doesn't match other app cursors
-            # https://github.com/swaywm/sway/issues/5202
             xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
           };
         };
