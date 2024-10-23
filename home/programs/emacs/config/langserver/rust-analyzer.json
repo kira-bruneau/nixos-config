@@ -25,11 +25,6 @@
       "allTargets": true,
       "features": "all",
       "invocationStrategy": "once"
-    },
-    "completion": {
-      "postfix": {
-        "enable": false
-      }
     }
   }
 }
