@@ -14,47 +14,23 @@
     "cachePriming": {
       "enable": false
     },
-    "enableExperimental": false,
-    "diagnostics": {
-      "enable": true
-    },
     "cargo": {
       "features": "all",
-      "noDefaultFeatures": false,
-      "runBuildScripts": true,
-      "loadOutDirsFromCheck": true,
-      "useRustcWrapperForBuildScripts": true,
-      "autoreload": true,
       "buildScripts": {
-        "enable": true,
         "rebuildOnSave": false,
-        "invocationLocation": "root",
-        "invocationStrategy": "once",
-        "overrideCommand": null
-        }
-      },
-    "checkOnSave": {
-      "enable": false,
+        "invocationStrategy": "once"
+      }
+    },
+    "checkOnSave": false,
+    "check": {
       "allTargets": true,
       "features": "all",
-      "invocationLocation": "root",
       "invocationStrategy": "once"
     },
     "completion": {
-      "addCallParenthesis": true,
-      "addCallArgumentSnippets": true,
       "postfix": {
         "enable": false
-      },
-      "autoimport": {
-        "enable": true
       }
-    },
-    "procMacro": {
-      "enable": true
-    },
-    "lens": {
-      "enable": false
     }
   }
 }
