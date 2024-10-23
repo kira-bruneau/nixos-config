@@ -975,6 +975,10 @@ in
       XDG_RUNTIME_DIR = "/run";
     };
 
+    unitConfig = {
+      RequiresMountsFor = [ qBittorrent.BitTorrent."Session\\DefaultSavePath" ];
+    };
+
     serviceConfig = {
       StateDirectory = "qBittorrent";
       StateDirectoryMode = "0700";
