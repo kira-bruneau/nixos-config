@@ -18,7 +18,6 @@
     "cargo": {
       "features": "all",
       "buildScripts": {
-        "rebuildOnSave": false,
         "invocationStrategy": "once"
       }
     },
