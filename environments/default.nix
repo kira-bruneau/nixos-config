@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   pkgs,
   ...
@@ -42,7 +43,12 @@
     systemd.targets.network-online.wantedBy = lib.mkForce [ ];
 
     # Prefer nftables over iptables
-    networking.nftables.enable = true;
+    networking = {
+      nftables.enable = true;
+      firewall.trustedInterfaces = lib.mkIf config.services.tailscale.enable [
+        config.services.tailscale.interfaceName
+      ];
+    };
 
     # Use dbus-broker since it's designed for high performance
     services.dbus.implementation = "broker";
