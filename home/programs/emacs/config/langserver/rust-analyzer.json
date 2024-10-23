@@ -2,6 +2,7 @@
   "name": "rust-analyzer",
   "languageId": "rust",
   "command": ["rust-analyzer"],
+  "project-files": ["package.json"],
   "settings": {},
   "capabilities": {
     "textDocument": {
@@ -21,7 +22,6 @@
         "invocationStrategy": "once"
       }
     },
-    "checkOnSave": false,
     "check": {
       "allTargets": true,
       "features": "all",
