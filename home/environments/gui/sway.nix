@@ -301,6 +301,7 @@ in
   home.packages = with pkgs; [
     # Administration
     baobab
+    d-spy
     helvum
     pavucontrol
     resources
