@@ -73,7 +73,7 @@
           "steam"
           "steam-jupiter-original"
           "steam-original"
-          "steam-run"
+          "steam-unwrapped"
           "steamdeck-hw-theme"
           "unrar"
           "vvvvvv"

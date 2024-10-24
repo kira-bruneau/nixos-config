@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 {
   programs.steam = {
     enable = true;
+    package = pkgsUnstable.steam;
     gamescopeSession.enable = true;
     localNetworkGameTransfers.openFirewall = true;
   };
