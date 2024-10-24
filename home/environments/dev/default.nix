@@ -29,6 +29,7 @@ in
   imports = [
     ../../programs/direnv
     ../../programs/emacs
+    ../../programs/nix-init
   ];
 
   home.packages = with pkgs; [
@@ -43,7 +44,6 @@ in
     cachix
     pkgsNixIndexDatabase.comma-with-db
     nix-bisect
-    nix-init
     nix-instant-dev
     nix-output-monitor
     nixpkgs-review
