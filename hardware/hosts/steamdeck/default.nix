@@ -3,7 +3,6 @@
 {
   imports = [
     ../../drivers/logitech-wireless.nix
-    ../../environments/cec
     ../../environments/gaming.nix
     ../../environments/laptop.nix
   ];
@@ -94,6 +93,11 @@
   };
 
   environment.systemPackages = with pkgs; [ steamdeck-firmware ];
+
+  systemd.user.services.cec-sync.environment.WAYLAND_DISPLAY = "gamescope-0";
+
+  # Wakehook is redundant when using cec-sync
+  systemd.user.services.wakehook.enable = false;
 
   programs.captive-browser.interface = "wlo1";
 }

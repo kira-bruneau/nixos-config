@@ -1,6 +1,10 @@
 { config, ... }:
 
 {
+  imports = [
+    ../services/cec-sync.nix
+  ];
+
   location.provider = "geoclue2";
 
   # Disable unused geoclue sources
