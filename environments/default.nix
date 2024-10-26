@@ -72,6 +72,7 @@
           "sm64ex"
           "steam"
           "steam-jupiter-original"
+          "steam-jupiter-unwrapped"
           "steam-original"
           "steam-unwrapped"
           "steamdeck-hw-theme"
