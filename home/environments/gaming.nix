@@ -36,7 +36,7 @@ in
 
     # Emulators
     cemu
-    dolphinEmuMaster
+    dolphin-emu
     pkgsKiraNur.sudachi
     winetricks
     wineWowPackages.staging
@@ -54,7 +54,6 @@ in
   ];
 
   wayland.windowManager.sway.config.assigns."5" = [
-    { app_id = "^org.dolphin-emu.$"; }
     { class = "^cemu.exe$"; }
     { class = "^dolphin-emu$"; }
     { class = "^steam$"; }
