@@ -27,6 +27,7 @@
     (with pkgs; [
       # Administration
       baobab
+      bustle
       d-spy
       gnome.gnome-disk-utility
       pkgsNixSoftwareCenter.nix-software-center

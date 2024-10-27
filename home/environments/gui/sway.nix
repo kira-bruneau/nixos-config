@@ -301,6 +301,7 @@ in
   home.packages = with pkgs; [
     # Administration
     baobab
+    bustle
     d-spy
     helvum
     pavucontrol
