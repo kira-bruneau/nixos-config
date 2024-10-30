@@ -24,5 +24,6 @@
     -1
   '';
 
-  services.localtimed.enable = true;
+  services.automatic-timezoned.enable = true;
+  time.timeZone = null;
 }
