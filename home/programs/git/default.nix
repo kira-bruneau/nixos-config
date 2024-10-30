@@ -40,7 +40,6 @@
 
       # Project Management
       ".direnv"
-      ".envrc"
       ".idea"
       ".mypy_cache"
       "compile_commands.json"
