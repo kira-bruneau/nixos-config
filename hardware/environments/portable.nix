@@ -11,6 +11,7 @@
   services.geoclue2 = {
     # WiFi
     enableWifi = true;
+    geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
 
     # GPS (requires Avahi)
     enableNmea = false;
