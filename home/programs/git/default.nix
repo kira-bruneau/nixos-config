@@ -38,6 +38,10 @@
       # Emacs backup files
       "*~"
 
+      # Nix result files
+      "result"
+      "result-*"
+
       # Project Management
       ".direnv"
       ".idea"
