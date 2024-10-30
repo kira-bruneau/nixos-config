@@ -25,6 +25,8 @@
   :config
   (add-to-list 'transient-values '(magit-diff:magit-status-mode "--no-ext-diff"))
   (add-to-list 'transient-values '(magit-log:magit-log-mode "-n256" "--graph" "--color" "--decorate" "--follow"))
+  (add-to-list 'transient-levels '(magit-fetch (transient:magit-fetch:--unshallow . 4)))
+  (add-to-list 'transient-levels '(magit-remote (magit-remote-unshallow . 4)))
 
   (defun magit-checkout-or-visit (process)
     (set-process-sentinel
