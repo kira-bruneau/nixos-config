@@ -7,6 +7,7 @@
     sudo = true; # Disables analytics
     hideTray = true;
     hideMenuBar = true;
+    languages = [ "en-CA" ];
   };
 
   wayland.windowManager.sway.config = {
