@@ -43,6 +43,7 @@
       "result-*"
 
       # Project Management
+      ".cache/clangd"
       ".direnv"
       ".idea"
       ".mypy_cache"
