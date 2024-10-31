@@ -23,8 +23,8 @@
   # Disable ZFS support, it may not be compatible
   # with the configured kernel version
   nixpkgs.overlays = [
-    (final: super: {
-      zfs = super.zfs.overrideAttrs (_: {
+    (final: prev: {
+      zfs = prev.zfs.overrideAttrs (_: {
         meta.platforms = [ ];
       });
     })
