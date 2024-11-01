@@ -1,5 +1,8 @@
 (use-package project
+  :commands (project-consult-ripgrep)
+
   :bind-keymap ("<f7>" . project-prefix-map)
+
   :bind (:map project-prefix-map
          ("p" . project-consult-switch-project)
          ("f" . project-consult-fd)
@@ -8,6 +11,7 @@
          ("V" . magit-project-status)
          ("x" . project-async-shell-command)
          ("X" . project-shell)
+         ("l" . lsp-bridge-restart-process)
          ("g" . nil))
 
   :custom

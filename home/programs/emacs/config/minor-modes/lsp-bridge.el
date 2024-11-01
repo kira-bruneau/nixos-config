@@ -1,12 +1,14 @@
 (use-package lsp-bridge
+  :commands (lsp-bridge-find-def
+             lsp-bridge-find-references
+             lsp-bridge-rename
+             lsp-bridge-restart-process
+             lsp-bridge-show-documentation)
+
   :hook ((after-init . global-lsp-bridge-mode)
          (lsp-bridge-mode . lsp-bridge-semantic-tokens-mode))
-  :bind (:map
-         lsp-bridge-mode-map
-         ("C-M-/" . lsp-bridge-find-references)
-         ("M-?" . lsp-bridge-popup-documentation)
 
-         :map lsp-bridge-ref-mode-map
+  :bind (:map lsp-bridge-ref-mode-map
          ("n" . lsp-bridge-ref-jump-next-keyword)
          ("e" . lsp-bridge-ref-jump-prev-keyword)
          ("i" . lsp-bridge-ref-jump-prev-file)
@@ -19,21 +21,11 @@
          ("j" . nil)
          ("k" . nil)
          ("l" . nil)
-         ("X" . nil)
-
-         :map project-prefix-map
-         ("l" . lsp-bridge-restart-process))
+         ("X" . nil))
   :init
   (with-eval-after-load 'evil-core
     (evil-set-initial-state 'lsp-bridge-ref-mode 'emacs)
     (evil-set-initial-state 'lsp-bridge-call-hierarchy-mode-map 'emacs))
-
-  (with-eval-after-load 'evil-vars
-    (defun evil-goto-definition-lsp-bridge (_string position)
-      (setq-local lsp-bridge-jump-to-def-in-other-window nil)
-      (lsp-bridge-call-file-api "find_define" (lsp-bridge--point-position position)))
-
-    (add-to-list 'evil-goto-definition-functions #'evil-goto-definition-lsp-bridge))
 
   (with-eval-after-load 'evil-collection
     (evil-collection-define-key 'normal 'lsp-bridge-ref-mode-edit-map
