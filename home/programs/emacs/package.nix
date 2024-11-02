@@ -163,6 +163,7 @@ callPackage ./wrapper.nix {
     epkgs.visual-regexp-steroids
     epkgs.vlf
     epkgs.web-mode
+    epkgs.wgrep
     epkgs.which-key
     epkgs.whitespace-cleanup-mode
     epkgs.xterm-color
