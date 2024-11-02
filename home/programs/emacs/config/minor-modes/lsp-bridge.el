@@ -57,6 +57,7 @@
   (lsp-bridge-user-langserver-dir (concat user-emacs-config-directory "langserver"))
   (lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver"))
   (lsp-bridge-diagnostic-fetch-idle 0)
+  (lsp-bridge-code-action-enable-popup-menu nil)
 
   :config
   (defun lsp-bridge-get-project-path-by-filepath (filename)
