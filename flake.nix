@@ -15,8 +15,6 @@
 
     nixpkgs-chromium.url = "github:NixOS/nixpkgs/2748d22b45a99fb2deafa5f11c7531c212b2cefa";
 
-    nixpkgs-ollama.url = "github:NixOS/nixpkgs/c04d5652cfa9742b1d519688f65d1bbccea9eb7e";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nix-index-database = {
@@ -102,11 +100,6 @@
                     };
 
                     pkgsChromium = import inputs.nixpkgs-chromium {
-                      system = pkgs.system;
-                      config = config.nixpkgs.config;
-                    };
-
-                    pkgsOllama = import inputs.nixpkgs-ollama {
                       system = pkgs.system;
                       config = config.nixpkgs.config;
                     };

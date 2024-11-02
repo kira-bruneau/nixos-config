@@ -1,14 +1,14 @@
 {
   config,
   lib,
-  pkgsOllama,
+  pkgsUnstable,
   ...
 }:
 
 {
   services.ollama = {
     enable = true;
-    package = pkgsOllama.ollama;
+    package = pkgsUnstable.ollama;
     listenAddress = "0.0.0.0:11434";
     acceleration = "rocm";
     environmentVariables.OLLAMA_KEEP_ALIVE = "672h";
