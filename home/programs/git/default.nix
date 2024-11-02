@@ -9,9 +9,10 @@
         whitespace = "cr-at-eol";
       };
 
+      diff.algorithm = "histogram";
       pull.rebase = "merges";
       rebase.autostash = true;
-      diff.algorithm = "histogram";
+      rerere.enabled = true;
 
       "url \"git@gitlab.com:\"" = {
         pushInsteadOf = [
