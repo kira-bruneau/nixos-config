@@ -24,21 +24,21 @@
   :config
   (defun embark-find-definition (thing)
     (cond
-     ((derived-mode-p 'lsp-bridge-mode) (lsp-bridge-find-def))
+     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-find-def))
      (t (xref-find-definitions thing))))
 
   (defun embark-show-documentation (thing)
     (cond
-     ((derived-mode-p 'emacs-lisp-mode) (describe-symbol thing))
-     ((derived-mode-p 'lsp-bridge-mode) (lsp-bridge-show-documentation))))
+     ((bound-and-true-p emacs-lisp-mode) (describe-symbol thing))
+     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-show-documentation))))
 
   (defun embark-rename (thing)
     (cond
-     ((derived-mode-p 'lsp-bridge-mode) (lsp-bridge-rename))
+     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-rename))
      (t (call-interactively #'vr/query-replace))))
 
   (defun embark-find-references (thing)
     (cond
-     ((derived-mode-p 'emacs-lisp-mode) (project-consult-ripgrep nil thing))
-     ((derived-mode-p 'lsp-bridge-mode) (lsp-bridge-find-references))
+     ((bound-and-true-p emacs-lisp-mode) (project-consult-ripgrep nil thing))
+     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-find-references))
      (t (project-consult-ripgrep nil thing)))))
