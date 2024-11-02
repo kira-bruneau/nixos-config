@@ -13,12 +13,14 @@
    ("h" . embark-show-documentation)
    ("r" . embark-rename)
    ("s" . embark-find-references)
+   ("x" . embark-execute)
    ("I" . info-lookup-symbol)
 
    :map embark-symbol-map
    ("RET" . embark-find-definition)
    ("d" . embark-find-definition)
    ("s" . embark-find-references)
+   ("x" . embark-execute)
    ("I" . info-lookup-symbol))
 
   :config
@@ -41,4 +43,8 @@
     (cond
      ((bound-and-true-p emacs-lisp-mode) (project-consult-ripgrep nil thing))
      ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-find-references))
-     (t (project-consult-ripgrep nil thing)))))
+     (t (project-consult-ripgrep nil thing))))
+
+  (defun embark-execute (thing)
+    (cond
+     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-code-action)))))
