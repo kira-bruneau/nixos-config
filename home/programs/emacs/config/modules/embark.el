@@ -47,4 +47,10 @@
 
   (defun embark-execute (thing)
     (cond
-     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-code-action)))))
+     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-code-action))))
+
+  (add-to-list 'embark-pre-action-hooks
+   '(embark-find-definition embark-evil-set-jump))
+
+  (cl-defun embark-evil-set-jump (&key bounds &allow-other-keys)
+    (evil-set-jump)))
