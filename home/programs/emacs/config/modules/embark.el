@@ -17,11 +17,8 @@
    ("I" . info-lookup-symbol)
 
    :map embark-symbol-map
-   ("RET" . embark-find-definition)
-   ("d" . embark-find-definition)
    ("s" . embark-find-references)
-   ("x" . embark-execute)
-   ("I" . info-lookup-symbol))
+   ("I" . embark-info-lookup-symbol))
 
   :config
   (defun embark-find-definition (thing)
@@ -31,8 +28,8 @@
 
   (defun embark-show-documentation (thing)
     (cond
-     ((bound-and-true-p emacs-lisp-mode) (describe-symbol thing))
-     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-show-documentation))))
+     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-show-documentation))
+     (t (display-local-help))))
 
   (defun embark-rename (thing)
     (cond
