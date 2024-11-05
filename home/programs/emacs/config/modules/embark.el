@@ -10,14 +10,15 @@
    :map embark-identifier-map
    ("RET" . embark-find-definition)
    ("d" . embark-find-definition)
+   ("f" . embark-find-references)
    ("h" . embark-show-documentation)
    ("r" . embark-rename)
-   ("s" . embark-find-references)
+   ("s" . embark-ripgrep-references)
    ("x" . embark-execute)
    ("I" . info-lookup-symbol)
 
    :map embark-symbol-map
-   ("s" . embark-find-references)
+   ("s" . embark-ripgrep-references)
    ("I" . embark-info-lookup-symbol))
 
   :config
@@ -37,10 +38,11 @@
      (t (call-interactively #'vr/query-replace))))
 
   (defun embark-find-references (thing)
-    (cond
-     ((bound-and-true-p emacs-lisp-mode) (project-consult-ripgrep nil thing))
-     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-find-references))
-     (t (project-consult-ripgrep nil thing))))
+    (when (bound-and-true-p lsp-bridge-mode)
+      (lsp-bridge-find-references)))
+
+  (defun embark-ripgrep-references (thing)
+    (project-consult-ripgrep nil thing))
 
   (defun embark-execute (thing)
     (cond
