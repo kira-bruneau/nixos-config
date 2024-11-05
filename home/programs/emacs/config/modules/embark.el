@@ -33,9 +33,8 @@
      (t (display-local-help))))
 
   (defun embark-rename (thing)
-    (cond
-     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-rename))
-     (t (call-interactively #'vr/query-replace))))
+    (when (bound-and-true-p lsp-bridge-mode)
+      (lsp-bridge-rename)))
 
   (defun embark-find-references (thing)
     (when (bound-and-true-p lsp-bridge-mode)
