@@ -1,4 +1,9 @@
-{ pkgs, pkgsChromium, ... }:
+{
+  pkgs,
+  pkgsUnstable,
+  pkgsChromium,
+  ...
+}:
 
 {
   imports = [
@@ -21,7 +26,7 @@
   home = {
     packages = with pkgs; [
       # Web
-      qbittorrent
+      pkgsUnstable.qbittorrent
       yt-dlp
 
       # Chat

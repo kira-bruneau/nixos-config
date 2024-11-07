@@ -935,7 +935,7 @@ in
     '';
   };
 
-  systemd.packages = [ pkgs.qbittorrent-nox ];
+  systemd.packages = [ pkgsUnstable.qbittorrent-nox ];
 
   users.users.qbittorrent = {
     uid = config.ids.uids.deluge;
