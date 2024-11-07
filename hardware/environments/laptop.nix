@@ -45,7 +45,9 @@ in
   # Use brightnessctl for controlling backlight
   environment.etc."sway/config.d/backlight-controls.conf".text = ''
     bindsym XF86MonBrightnessUp exec ${brightnessctl} set 5%+
+    bindsym Control+XF86MonBrightnessUp exec ${brightnessctl} set 1%+
     bindsym XF86MonBrightnessDown exec ${brightnessctl} set 5%-
+    bindsym Control+XF86MonBrightnessDown exec ${brightnessctl} set 1%-
     bindsym Shift+XF86MonBrightnessUp exec ${brightnessctl} set 100%
     bindsym Shift+XF86MonBrightnessDown exec ${brightnessctl} set 1
 
