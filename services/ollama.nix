@@ -15,8 +15,23 @@
     environmentVariables.OLLAMA_KEEP_ALIVE = "672h";
   };
 
-  # Preload commonly used model
-  systemd.services.ollama.postStart = ''
-    ${lib.getExe config.services.ollama.package} run deepseek-coder-v2 ""
-  '';
+  systemd.services.ollama-preload = {
+    wantedBy = [ "ollama.service" ];
+    after = [ "ollama.service" ];
+    environment = config.systemd.services.ollama.environment;
+    serviceConfig = {
+      Type = "oneshot";
+      DynamicUser = true;
+      Restart = "on-failure";
+
+      # bounded exponential backoff
+      RestartSec = "1s";
+      RestartMaxDelaySec = "2h";
+      RestartSteps = "10";
+
+      ExecStart = ''
+        ${lib.getExe config.services.ollama.package} run deepseek-coder-v2:16b-lite-instruct-q8_0 ""
+      '';
+    };
+  };
 }
