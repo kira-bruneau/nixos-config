@@ -58,6 +58,7 @@
   (lsp-bridge-user-multiserver-dir (concat user-emacs-config-directory "multiserver"))
   (lsp-bridge-diagnostic-fetch-idle 0)
   (lsp-bridge-code-action-enable-popup-menu nil)
+  (lsp-bridge-semantic-tokens-auto-update 'hook)
 
   :config
   (defun lsp-bridge-get-project-path-by-filepath (filename)
