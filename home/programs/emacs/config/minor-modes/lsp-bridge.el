@@ -59,6 +59,7 @@
   (lsp-bridge-diagnostic-fetch-idle 0)
   (lsp-bridge-code-action-enable-popup-menu nil)
   (lsp-bridge-semantic-tokens-auto-update 'hook)
+  (lsp-bridge-semantic-tokens-delay 0)
 
   :config
   (defun lsp-bridge-get-project-path-by-filepath (filename)
