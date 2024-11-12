@@ -152,7 +152,7 @@ let
     "The Legend of Zelda: Echoes of Wisdom".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
     "The Legend Of Zelda: Majora's Mask".LaunchOptions = "2s2h";
     "The Legend Of Zelda: The Wind Waker".LaunchOptions = "Cemu --fullscreen --title-id 0005000010143500";
-    "Youtube".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.youtube.com";
+    "Youtube".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.youtube.com/tv";
   };
 in
 {
@@ -240,5 +240,10 @@ in
         WantedBy = [ "timers.target" ];
       };
     };
+  };
+
+  programs.firefox.policies.ExtensionSettings."{d2bcedce-889b-4d53-8ce9-493d8f78612a}" = {
+    installation_mode = "force_installed";
+    install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-for-tv/latest.xpi";
   };
 }
