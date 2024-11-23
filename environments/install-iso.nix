@@ -11,6 +11,10 @@
     ./stateless.nix
   ];
 
+  # Always include redistributable firmware, just in case something
+  # wasn't covered for the specific host
+  hardware.enableRedistributableFirmware = lib.mkImageMediaOverride true;
+
   # Resolve conflict between install iso config and my host configs
   boot.loader.timeout = lib.mkImageMediaOverride 10;
 
