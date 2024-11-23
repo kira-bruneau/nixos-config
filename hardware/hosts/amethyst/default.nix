@@ -106,4 +106,6 @@
   ];
 
   services.logind.lidSwitch = "ignore";
+
+  programs.captive-browser.interface = "eth0";
 }
