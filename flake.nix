@@ -127,16 +127,14 @@
                   nixpkgs.overlays = [ (final: prev: { emacs = inputs.self.packages.${pkgs.system}.emacs; }) ];
                 };
 
-              hardwareModule =
-                if builtins.pathExists ./hardware/hosts/${name} then
-                  {
-                    imports =
-                      [ ./hardware/environments/default.nix ]
-                      ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix) ./hardware/hosts/${name}/default.nix
-                      ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix) ./hardware/hosts/${name}/generated.nix;
-                  }
-                else
-                  null;
+              hardwareModule = {
+                imports =
+                  [ ./hardware/environments/default.nix ]
+                  ++ (
+                    lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix) ./hardware/hosts/${name}/default.nix
+                    ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix) ./hardware/hosts/${name}/generated.nix
+                  );
+              };
             };
           }
         ) (builtins.attrNames (builtins.readDir ./hosts))
@@ -149,7 +147,7 @@
           let
             host = hosts.${name};
           in
-          if host.hardwareModule != null then
+          if builtins.pathExists ./hardware/hosts/${name}/default.nix then
             [
               {
                 inherit name;
@@ -249,8 +247,9 @@
             // {
               "${name}/install-iso" = nixosGenerate "isoImage" {
                 modules = [
+                  host.hardwareModule
                   ./environments/install-iso.nix
-                ] ++ lib.optional (host.hardwareModule != null) host.hardwareModule;
+                ];
               };
               "${name}/vm" = nixosGenerate "vm" { modules = [ ./environments/vm.nix ]; };
             }
