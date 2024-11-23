@@ -30,7 +30,7 @@
       RestartSteps = "10";
 
       ExecStart = ''
-        ${lib.getExe config.services.ollama.package} run deepseek-coder-v2:16b-lite-instruct-q8_0 ""
+        ${lib.getExe config.services.ollama.package} run qwen2.5-coder:32b-instruct-q4_K_M ""
       '';
     };
   };
