@@ -9,7 +9,6 @@
     ../../programs/jellyfin
 
     # Media & Documents
-    ../../programs/emacs
     ../../programs/keepassxc
 
     # Utils
