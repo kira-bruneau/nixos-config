@@ -12,6 +12,7 @@
    ("d" . embark-find-definition)
    ("f" . embark-find-references)
    ("h" . embark-show-documentation)
+   ("i" . embark-find-impl)
    ("r" . embark-rename)
    ("s" . embark-ripgrep-references)
    ("x" . embark-execute)
@@ -39,6 +40,10 @@
   (defun embark-find-references (thing)
     (when (bound-and-true-p lsp-bridge-mode)
       (lsp-bridge-find-references)))
+
+  (defun embark-find-impl (thing)
+    (when (bound-and-true-p lsp-bridge-mode)
+      (lsp-bridge-find-impl)))
 
   (defun embark-ripgrep-references (thing)
     (project-consult-ripgrep nil thing))
