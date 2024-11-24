@@ -467,6 +467,23 @@ in
         </BrandingOptions>
       ''} "${config.services.jellyfin.configDir}/branding.xml"
 
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "encoding.xml" ''
+        <?xml version="1.0" encoding="utf-8"?>
+        <EncodingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <EnableHardwareEncoding>true</EnableHardwareEncoding>
+          <HardwareAccelerationType>vaapi</HardwareAccelerationType>
+          <VaapiDevice>/dev/dri/renderD128</VaapiDevice>
+          <HardwareDecodingCodecs>
+            <string>h264</string>
+            <string>hevc</string>
+            <string>mpeg2video</string>
+            <string>vc1</string>
+          </HardwareDecodingCodecs>
+          <EnableDecodingColorDepth10Hevc>true</EnableDecodingColorDepth10Hevc>
+          <EnableDecodingColorDepth10Vp9>false</EnableDecodingColorDepth10Vp9>
+        </EncodingOptions>
+      ''} "${config.services.jellyfin.configDir}/encoding.xml"
+
       ${pkgs.coreutils}/bin/mkdir -p "${config.services.jellyfin.dataDir}/root/default"
       ${builtins.concatStringsSep "\n" (
         builtins.map (
