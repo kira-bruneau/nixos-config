@@ -481,6 +481,7 @@ in
           </HardwareDecodingCodecs>
           <EnableDecodingColorDepth10Hevc>true</EnableDecodingColorDepth10Hevc>
           <EnableDecodingColorDepth10Vp9>false</EnableDecodingColorDepth10Vp9>
+          <EnableTonemapping>true</EnableTonemapping>
         </EncodingOptions>
       ''} "${config.services.jellyfin.configDir}/encoding.xml"
 
