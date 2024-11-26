@@ -12,7 +12,6 @@
     ../cachix.nix
     ../modules
     ../services/dnscrypt.nix
-    ../services/systemd-networkd.nix
     ./custom-nixos-generate-config.nix
     ./locale
     ./nix.nix
@@ -44,6 +43,7 @@
 
     # Prefer nftables over iptables
     networking = {
+      useNetworkd = true;
       nftables.enable = true;
       firewall.trustedInterfaces = lib.mkIf config.services.tailscale.enable [
         config.services.tailscale.interfaceName
