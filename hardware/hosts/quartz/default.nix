@@ -4,6 +4,7 @@
   imports =
     [
       ../../environments/bluetooth.nix
+      ../../environments/gaming.nix
       ../../../services/ollama.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [

@@ -11,6 +11,7 @@
     [
       ../../drivers/logitech-wireless.nix
       ../../environments/cec
+      ../../environments/gaming.nix
       ../../environments/laptop.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [

@@ -9,9 +9,6 @@
 
   environment.sessionVariables.STEAMOS = "1";
 
-  # Better driver for Xbox One controllers
-  hardware.xpadneo.enable = true;
-
   # Enable GameMode to optimise system performance on-demand
   programs.gamemode = {
     enable = true;
