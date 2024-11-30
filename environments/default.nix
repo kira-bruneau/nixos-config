@@ -53,9 +53,6 @@
     # Use dbus-broker since it's designed for high performance
     services.dbus.implementation = "broker";
 
-    nixpkgs.config = {
-      allowUnfreePredicate = import ../unfree.nix { inherit lib; };
-      permittedInsecurePackages = [ "electron-29.4.6" ];
-    };
+    nixpkgs.config = import ../nixpkgs-config.nix { inherit lib; };
   };
 }

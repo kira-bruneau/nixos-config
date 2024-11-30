@@ -172,7 +172,7 @@
       let
         pkgs = import inputs.nixpkgs {
           inherit system;
-          config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
+          config = import ./nixpkgs-config.nix { inherit lib; };
         };
 
         flake-linter-lib = flake-linter.lib.${system};
