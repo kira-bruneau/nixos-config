@@ -71,7 +71,10 @@
     (evil-exit-emacs-state))
 
   (defadvice lsp-bridge-ref-switch-to-view-mode (after lsp-bridge-ref-switch-to-view-mode activate)
-    (evil-emacs-state)))
+    (evil-emacs-state))
+
+  (defadvice lsp-bridge-restart-process (after lsp-bridge-revert-after-restart activate)
+    (revert-buffer)))
 
 (unless (display-graphic-p)
   (use-package acm-terminal :demand))
