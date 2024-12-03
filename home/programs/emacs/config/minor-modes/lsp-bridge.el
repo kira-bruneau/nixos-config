@@ -60,6 +60,7 @@
   (lsp-bridge-code-action-enable-popup-menu nil)
   (lsp-bridge-semantic-tokens-auto-update 'hook)
   (lsp-bridge-semantic-tokens-delay 0)
+  (acm-backend-lsp-show-progress t)
 
   :config
   (defun lsp-bridge-get-project-path-by-filepath (filename)
