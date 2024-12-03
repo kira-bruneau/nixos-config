@@ -175,6 +175,11 @@
           config = import ./nixpkgs-config.nix { inherit lib; };
         };
 
+        pkgs-unstable = import inputs.nixpkgs-unstable {
+          inherit system;
+          config = import ./nixpkgs-config.nix { inherit lib; };
+        };
+
         flake-linter-lib = flake-linter.lib.${system};
 
         paths = flake-linter-lib.partitionToAttrs flake-linter-lib.commonPaths (
@@ -225,6 +230,7 @@
         packages =
           {
             emacs = pkgs.callPackage ./home/programs/emacs/package.nix { };
+            emacs-unstable = pkgs-unstable.callPackage ./home/programs/emacs/package.nix { };
           }
           // builtins.foldl' (
             packages: name:
