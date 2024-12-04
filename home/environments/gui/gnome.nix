@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgsNixSoftwareCenter,
   pkgsUnstable,
   ...
 }:
@@ -30,7 +29,6 @@
       bustle
       d-spy
       gnome-disk-utility
-      pkgsNixSoftwareCenter.nix-software-center
       resources
 
       # Media & Documents

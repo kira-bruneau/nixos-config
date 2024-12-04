@@ -49,11 +49,6 @@
 
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
-    nix-software-center = {
-      url = "github:snowfallorg/nix-software-center";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs = {
@@ -109,8 +104,6 @@
                     pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.system};
 
                     pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
-
-                    pkgsNixSoftwareCenter = inputs.nix-software-center.packages.${pkgs.system};
 
                     pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.system};
                   };
