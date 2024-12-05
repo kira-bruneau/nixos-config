@@ -43,7 +43,7 @@
 
     # Prefer nftables over iptables
     networking = {
-      useNetworkd = true;
+      useNetworkd = !config.networking.networkmanager.enable;
       nftables.enable = true;
       firewall.trustedInterfaces = lib.mkIf config.services.tailscale.enable [
         config.services.tailscale.interfaceName
