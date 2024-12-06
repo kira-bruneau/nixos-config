@@ -611,6 +611,14 @@
       {
         criteria = {
           app_id = "^firefox$";
+          title = "http://habitica.jakira.space";
+        };
+
+        command = "move container to workspace 8";
+      }
+      {
+        criteria = {
+          app_id = "^firefox$";
           title = "https://mail.google.com";
         };
 

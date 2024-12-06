@@ -14,6 +14,7 @@
     hideMounts = true;
     directories =
       [
+        "/var/db"
         "/var/lib/nix"
         "/var/lib/nixos"
         "/var/lib/systemd"
@@ -54,7 +55,6 @@
       ++ lib.optional config.services.radarr.enable config.services.radarr.dataDir
       ++ lib.optional config.services.readarr.enable config.services.readarr.dataDir
       ++ lib.optional config.services.sonarr.enable config.services.sonarr.dataDir
-      ++ lib.optional config.security.sudo.enable "/var/db/sudo"
       ++ lib.optional config.services.tailscale.enable "/var/lib/tailscale"
       ++ lib.optional config.services.upower.enable "/var/lib/upower";
 

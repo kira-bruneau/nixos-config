@@ -3,6 +3,7 @@
     ../environments/gaming.nix
     ../environments/gui/sway.nix
     ../environments/media-server.nix
+    ../services/habitica.nix
     ../services/home-assistant.nix
     ../services/kubo.nix
     ../users/builder.nix

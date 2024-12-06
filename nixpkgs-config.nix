@@ -25,6 +25,7 @@
       "steamdeck-hw-theme"
       "unrar"
       "vvvvvv"
+      "mongodb-ce"
     ];
 
   permittedInsecurePackages = [
