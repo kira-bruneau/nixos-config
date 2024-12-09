@@ -281,6 +281,7 @@
           "browser.startup.homepage" = "about:home";
           "browser.startup.page" = 3; # Restore previous session
           "browser.tabs.firefox-view" = false;
+          "browser.tabs.groups.enabled" = true;
           "browser.tabs.hoverPreview.enabled" = false;
           "browser.tabs.tabClipWidth" = 999; # Hide close button on inactive tabs
           "browser.tabs.warnOnClose" = false;
