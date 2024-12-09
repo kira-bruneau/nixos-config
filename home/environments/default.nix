@@ -47,4 +47,13 @@ in
   ];
 
   dconf.enable = lib.mkDefault false;
+
+  systemd.user.services.taildrop = {
+    Install.WantedBy = [ "default.target" ];
+    Unit.Description = "Automatically save taildrop files to ~/Downloads/Taildrop";
+    Service = {
+      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p '%h/Downloads/Taildrop'";
+      ExecStart = "${lib.getExe pkgs.tailscale} file get --loop '%h/Downloads/Taildrop'";
+    };
+  };
 }
