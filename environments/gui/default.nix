@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Quiet boot
@@ -12,16 +17,26 @@
     ];
   };
 
-  # Force all apps to use the same version of mesa as in hardware.graphics.package,
-  # regardless of the version it was compiled with
-  environment.extraInit = lib.mkIf config.hardware.graphics.enable ''
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${
-      lib.makeLibraryPath [
-        config.hardware.graphics.package.out
-        config.hardware.graphics.package32.out
-      ]
-    }
-  '';
+  environment = {
+    # Force all apps to use the same version of mesa as in hardware.graphics.package,
+    # regardless of the version it was compiled with
+    extraInit = lib.mkIf config.hardware.graphics.enable ''
+      export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${
+        lib.makeLibraryPath [
+          config.hardware.graphics.package.out
+          config.hardware.graphics.package32.out
+        ]
+      }
+    '';
+
+    sessionVariables = {
+      NAUTILUS_4_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
+    };
+
+    pathsToLink = [
+      "/share/nautilus-python/extensions"
+    ];
+  };
 
   # Let the desktop environment handle the power key
   services.logind.extraConfig = "HandlePowerKey=ignore";

@@ -1,7 +1,17 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  pkgsKiraNur,
+  ...
+}:
 
 {
-  home.packages = with pkgs; [ nautilus ];
+  home = {
+    packages = with pkgs; [
+      nautilus
+      pkgsKiraNur.nautilus-taildrop
+    ];
+  };
 
   dconf.settings = {
     "org/gnome/nautilus/icon-view" = {
