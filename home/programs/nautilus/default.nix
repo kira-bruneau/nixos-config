@@ -8,6 +8,7 @@
 {
   home = {
     packages = with pkgs; [
+      ffmpegthumbnailer
       nautilus
       pkgsKiraNur.nautilus-taildrop
     ];
