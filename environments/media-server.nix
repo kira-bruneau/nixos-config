@@ -258,9 +258,46 @@ let
     };
 in
 {
+  services.nginx = {
+    enable = true;
+    virtualHosts = {
+      "home.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.homepage-dashboard.listenPort}";
+        recommendedProxySettings = true;
+      };
+      "jellyfin.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:8096";
+        recommendedProxySettings = true;
+      };
+      "jellyseerr.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:5055";
+        recommendedProxySettings = true;
+      };
+      "prowlarr.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:9696";
+        recommendedProxySettings = true;
+      };
+      "radarr.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:7878";
+        recommendedProxySettings = true;
+      };
+      "readarr.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:8787";
+        recommendedProxySettings = true;
+      };
+      "sonarr.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:8989";
+        recommendedProxySettings = true;
+      };
+      "qbittorrent.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:8000";
+        recommendedProxySettings = true;
+      };
+    };
+  };
+
   services.homepage-dashboard = {
     enable = true;
-    listenPort = 80;
     services = [
       {
         "Public" = [
