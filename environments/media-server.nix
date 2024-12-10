@@ -258,9 +258,21 @@ let
     };
 in
 {
+  services.nginx = {
+    enable = true;
+    virtualHosts = {
+      "home.jakira.space".locations."/".proxyPass = "http://127.0.0.1:${toString config.services.homepage-dashboard.listenPort}";
+      "jellyfin.jakira.space".locations."/".proxyPass = "http://127.0.0.1:8096";
+      "jellyseerr.jakira.space".locations."/".proxyPass = "http://127.0.0.1:5055";
+      "prowlarr.jakira.space".locations."/".proxyPass = "http://127.0.0.1:9696";
+      "radarr.jakira.space".locations."/".proxyPass = "http://127.0.0.1:7878";
+      "readarr.jakira.space".locations."/".proxyPass = "http://127.0.0.1:8787";
+      "sonarr.jakira.space".locations."/".proxyPass = "http://127.0.0.1:8989";
+    };
+  };
+
   services.homepage-dashboard = {
     enable = true;
-    listenPort = 80;
     services = [
       {
         "Public" = [
