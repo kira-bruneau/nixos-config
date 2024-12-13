@@ -91,6 +91,7 @@ callPackage ./wrapper.nix {
     epkgs.git-modes
     epkgs.graphql-ts-mode
     epkgs.haskell-mode
+    epkgs.journalctl-mode
     epkgs.latex-preview-pane
     epkgs.lsp-bridge
     epkgs.lua-mode
