@@ -1,4 +1,10 @@
+{ inputs, pkgsKiraNur, ... }:
+
 {
+  imports = [
+    inputs.kira-nur.nixosModules.bluetooth-autoconnect
+  ];
+
   hardware.bluetooth = {
     enable = true;
 
@@ -44,5 +50,10 @@
         }
       ];
     };
+  };
+
+  services.bluetooth-autoconnect = {
+    enable = true;
+    package = pkgsKiraNur.bluetooth-autoconnect;
   };
 }
