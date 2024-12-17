@@ -83,10 +83,12 @@
 
   (powerline-minimal-theme))
 
-;; Font (current frame + future frames)
-(let ((font (if (eq system-type 'darwin) "Monaco 12" "DejaVu Sans Mono 9")))
-  (set-frame-font font)
-  (add-to-list 'default-frame-alist (cons 'font font)))
+;; Default font
+(set-face-attribute 'default nil
+                    :font
+                    (if (eq system-type 'darwin)
+                        "Monaco 12"
+                      "DejaVu Sans Mono 9"))
 
 ;; Buffer settings
 (setq-default tab-width 2)
