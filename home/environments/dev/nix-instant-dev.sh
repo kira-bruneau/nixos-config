@@ -11,6 +11,7 @@ unpackPhase=
 
 # 1. Try to extract source metadata from Nix expression
 for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
+  # shellcheck disable=SC2016
   eval "$(nix eval --json --read-only "$NID_INSTALLABLE" --apply 'c:
     let
       unwrapped = c ? unwrapped;
@@ -20,7 +21,7 @@ for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
       name = p.pname or (builtins.parseDrvName p.name).name;
       srcName = p.src.name or "";
       srcGitRepoUrl = p.src.gitRepoUrl or "";
-      srcRev = p.src.rev or "";
+      srcRev = if p.src.rev or null != null then p.src.rev else (if p.src.tag or null != null then "refs/tags/${p.src.tag}" else "");
       srcFetchSubmodules = p.src.fetchSubmodules or false;
       unpackPhase = p.unpackPhase or "";
     }' 2>/dev/null | jq -r 'to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
@@ -47,7 +48,7 @@ if [ -z "$name" ]; then
     eval "$(nix derivation show "$src" 2>/dev/null | jq -r 'to_entries[] | {
       srcName: .value.name,
       srcGitRepoUrl: (if .value.env.fetcher // "" | endswith("nix-prefetch-git") then .value.env.url else "" end),
-      srcRev: (.value.env.rev // ""),
+      srcRev: (.value.env.rev // if .value.env.tag != null then "refs/tags/" + .value.env.tag else "" end),
       srcFetchSubmodules: (.value.env.fetchSubmodules // false),
     } | to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
   fi
