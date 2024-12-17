@@ -67,6 +67,12 @@ NID_OUT="$PWD/${name%-unwrapped}"
 echo "Unpacking $NID_INSTALLABLE → $NID_OUT"
 mkdir "$NID_OUT"
 
+cleanup() {
+  rmdir --ignore-fail-on-non-empty "$NID_OUT"
+}
+
+trap cleanup EXIT
+
 if [ -z "$unpackPhase" ] && [ -n "$srcGitRepoUrl" ]; then
   # Shallow clone to rev
   cd "$NID_OUT"
