@@ -614,7 +614,7 @@
           title = "http://habitica.jakira.space";
         };
 
-        command = "move container to workspace 8";
+        command = "move container to workspace 7";
       }
       {
         criteria = {
