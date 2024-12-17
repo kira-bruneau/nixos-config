@@ -1,6 +1,7 @@
 (use-package ellama
   :custom
   (ellama-major-mode 'ellama-mode)
+  (ellama-auto-scroll t)
 
   :config
   (setopt ellama-provider
