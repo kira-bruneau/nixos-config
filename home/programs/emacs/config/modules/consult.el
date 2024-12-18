@@ -37,6 +37,8 @@
   (consult-async-min-input 0)
   (consult-async-split-style nil)
   (consult-preview-partial-size large-file-warning-threshold)
+  (xref-show-xrefs-function #'consult-xref)
+  (xref-show-definitions-function  #'consult-xref)
 
   :config
   (setopt consult-ripgrep-args (concat consult-ripgrep-args " --hidden --glob !.git --follow --no-messages"))
