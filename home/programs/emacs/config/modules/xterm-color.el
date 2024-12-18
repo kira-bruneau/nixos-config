@@ -21,7 +21,7 @@
               (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
 
   ;; Compilation buffers
-  (setq compilation-environment '("TERM=xterm-256color"))
+  (setq compilation-environment '("TERM=xterm-256color" "PAGER="))
 
   (defun xterm-color-compilation-filter (f proc string)
     (funcall f proc (xterm-color-filter string)))
