@@ -128,6 +128,9 @@ function tryCommitChanges() {
   git add -A > /dev/null 2>&1 && git commit -m "$1" > /dev/null 2>&1 || :
 }
 
+printf "use flake %q\n" "$NID_INSTALLABLE" >> .envrc
+tryCommitChanges "direnv"
+
 function commitPrePatch() {
   tryCommitChanges "prePatch"
 }
