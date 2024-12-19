@@ -123,6 +123,36 @@ if ! [ -L "$NIX_BUILD_TOP/${sourceRoot:-.}" ]; then
   ln -s "$NID_OUT" "$NIX_BUILD_TOP/${sourceRoot:-.}"
 fi
 
+function tryCommitChanges() {
+  # shellcheck disable=SC2015
+  git add -A > /dev/null 2>&1 && git commit -m "$1" > /dev/null 2>&1 || :
+}
+
+function commitPrePatch() {
+  tryCommitChanges "prePatch"
+}
+
+prePatchHooks+=(commitPrePatch)
+
+function patch() {
+  local nix_store_path="${i:-patch}"
+  local name="${nix_store_path#*-}"
+  command patch "$@"
+  tryCommitChanges "$name"
+}
+
+function commitPostPatch() {
+  tryCommitChanges "postPatch"
+}
+
+postPatchHooks+=(commitPostPatch)
+
+function commitConfigurePhase() {
+  tryCommitChanges "configurePhase"
+}
+
+postConfigureHooks+=(commitConfigurePhase)
+
 cd "$NID_OUT"
 cmakeFlags="-Cnix-instant-dev.cmake $cmakeFlags"
 phases="patchPhase ${preConfigurePhases[*]:-} configurePhase" genericBuild

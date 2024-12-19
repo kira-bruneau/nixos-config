@@ -1,6 +1,5 @@
 * nix-instant-dev
 ** TODO Add gitRepoUrl to all git forges in nixpkgs
-** TODO Separate commits for each patch
 ** TODO Support other vcs
 *** TODO Mercurial
 *** TODO SVN
