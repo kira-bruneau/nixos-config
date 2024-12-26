@@ -42,7 +42,7 @@ in
 
     # Nix development
     cachix
-    pkgsNixIndexDatabase.comma-with-db
+    comma
     nix-bisect
     nix-instant-dev
     nix-output-monitor
