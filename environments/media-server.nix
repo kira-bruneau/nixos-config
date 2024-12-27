@@ -515,13 +515,12 @@ in
           <HardwareAccelerationType>vaapi</HardwareAccelerationType>
           <VaapiDevice>/dev/dri/renderD128</VaapiDevice>
           <HardwareDecodingCodecs>
+            <string>av1</string>
             <string>h264</string>
             <string>hevc</string>
-            <string>mpeg2video</string>
-            <string>vc1</string>
+            <string>vp9</string>
           </HardwareDecodingCodecs>
           <EnableDecodingColorDepth10Hevc>true</EnableDecodingColorDepth10Hevc>
-          <EnableDecodingColorDepth10Vp9>false</EnableDecodingColorDepth10Vp9>
           <EnableTonemapping>true</EnableTonemapping>
         </EncodingOptions>
       ''} "${config.services.jellyfin.configDir}/encoding.xml"
