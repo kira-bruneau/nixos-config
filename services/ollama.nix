@@ -1,14 +1,12 @@
 {
   config,
   lib,
-  pkgsUnstable,
   ...
 }:
 
 {
   services.ollama = {
     enable = true;
-    package = pkgsUnstable.ollama;
     host = "0.0.0.0";
     port = 11434;
     acceleration = "rocm";
