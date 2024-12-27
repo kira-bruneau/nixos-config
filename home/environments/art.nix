@@ -7,6 +7,7 @@
     gimp
     inkscape
     krita
+    orca-slicer
     tenacity
     yabridge
     yabridgectl
