@@ -18,6 +18,8 @@
   };
 
   environment = {
+    systemPackages = with pkgs; [ gparted ];
+
     # Force all apps to use the same version of mesa as in hardware.graphics.package,
     # regardless of the version it was compiled with
     extraInit = lib.mkIf config.hardware.graphics.enable ''
