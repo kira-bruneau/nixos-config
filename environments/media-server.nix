@@ -566,7 +566,7 @@ in
       name = folder.path;
       value = {
         d = {
-          mode = "2755";
+          mode = "2775";
           user = config.services.sonarr.user;
           group = config.services.sonarr.group;
         };
@@ -690,7 +690,7 @@ in
       name = folder.path;
       value = {
         d = {
-          mode = "2755";
+          mode = "2775";
           user = config.services.radarr.user;
           group = config.services.radarr.group;
         };
@@ -804,7 +804,7 @@ in
       name = folder.path;
       value = {
         d = {
-          mode = "2755";
+          mode = "2775";
           user = config.services.readarr.user;
           group = config.services.readarr.group;
         };
