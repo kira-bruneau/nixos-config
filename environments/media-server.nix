@@ -283,19 +283,19 @@ in
           proxyPass = "http://127.0.0.1:5055";
         };
         "prowlarr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:9696";
+          proxyPass = "http://127.0.0.1:${prowlarr.port}";
         };
         "radarr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:7878";
+          proxyPass = "http://127.0.0.1:${radarr.port}";
         };
         "readarr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:8787";
+          proxyPass = "http://127.0.0.1:${readarr.port}";
         };
         "sonarr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:8989";
+          proxyPass = "http://127.0.0.1:${sonarr.port}";
         };
         "qbittorrent.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:8000";
+          proxyPass = "http://127.0.0.1:${toString qBittorrent.Preferences."WebUI\\Port"}";
         };
       };
   };
@@ -308,13 +308,13 @@ in
           {
             "Jellyfin" = {
               icon = "jellyfin.svg";
-              href = "http://quartz:8096";
+              href = "http://jellyfin.jakira.space";
             };
           }
           {
             "Jellyseerr" = {
               icon = "jellyseerr.svg";
-              href = "http://quartz:5055";
+              href = "http://jellyseerr.jakira.space";
             };
           }
           {
@@ -337,7 +337,7 @@ in
           {
             "Sonarr" = {
               icon = "sonarr.svg";
-              href = "http://quartz:${sonarr.port}";
+              href = "http://sonarr.jakira.space";
               widget = {
                 type = "sonarr";
                 url = "http://localhost:${sonarr.port}";
@@ -349,7 +349,7 @@ in
           {
             "Radarr" = {
               icon = "radarr.svg";
-              href = "http://quartz:${radarr.port}";
+              href = "http://radarr.jakira.space";
               widget = {
                 type = "radarr";
                 url = "http://localhost:${radarr.port}";
@@ -361,7 +361,7 @@ in
           {
             "Readarr" = {
               icon = "readarr.svg";
-              href = "http://quartz:${readarr.port}";
+              href = "http://readarr.jakira.space";
               widget = {
                 type = "readarr";
                 url = "http://localhost:${readarr.port}";
@@ -373,7 +373,7 @@ in
           {
             "Prowlarr" = {
               icon = "prowlarr.svg";
-              href = "http://quartz:${prowlarr.port}";
+              href = "http://prowlarr.jakira.space";
               widget = {
                 type = "prowlarr";
                 url = "http://localhost:${prowlarr.port}";
@@ -384,7 +384,7 @@ in
           {
             "qBittorrent" = {
               icon = "qbittorrent.svg";
-              href = "http://quartz:${toString qBittorrent.Preferences."WebUI\\Port"}";
+              href = "http://qbittorrent.jakira.space";
               widget = {
                 type = "qbittorrent";
                 url = "http://localhost:${toString qBittorrent.Preferences."WebUI\\Port"}";
