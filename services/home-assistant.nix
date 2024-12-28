@@ -14,6 +14,8 @@ in
     extraComponents = [ "vesync" ];
     extraPackages = ps: with ps; [ numpy ];
     config = {
+      frontend.themes = "!include ${waves}/themes/waves.yaml";
+
       homeassistant = {
         name = "Home";
         latitude = config.location.latitude;
@@ -21,8 +23,9 @@ in
         unit_system = "metric";
       };
 
-      frontend = {
-        themes = "!include ${waves}/themes/waves.yaml";
+      http = {
+        use_x_forwarded_for = true;
+        trusted_proxies = [ "127.0.0.1" ];
       };
     };
   };
@@ -31,4 +34,15 @@ in
     mkdir -p ${config.services.home-assistant.configDir}/www
     ln -fns ${waves}/themes ${config.services.home-assistant.configDir}/www/waves
   '';
+
+  services.nginx = {
+    enable = true;
+    virtualHosts = {
+      "home-assistant.jakira.space".locations."/" = {
+        proxyPass = "http://127.0.0.1:8123";
+        recommendedProxySettings = true;
+        proxyWebsockets = true;
+      };
+    };
+  };
 }
