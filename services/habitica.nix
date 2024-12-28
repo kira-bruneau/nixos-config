@@ -13,7 +13,7 @@
   services = {
     habitica = {
       enable = true;
-      package = pkgsKiraNur.habitica;
+      package = pkgsKiraNur.jakirica;
       hostName = "habitica.jakira.space";
     };
 
