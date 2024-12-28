@@ -318,8 +318,8 @@ in
             };
           }
           {
-            "BigChadGuys Plus" = {
-              icon = "https://media.forgecdn.net/avatars/937/629/638416082100123870.png";
+            "Minecraft" = {
+              icon = "minecraft.svg";
               widget = {
                 type = "minecraft";
                 url = "udp://amethyst:25565";
