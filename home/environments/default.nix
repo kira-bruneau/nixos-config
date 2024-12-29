@@ -46,14 +46,6 @@ in
     whichf
   ];
 
+  # home-manager enables dconf by default, but we only want it in the gui environments
   dconf.enable = lib.mkDefault false;
-
-  systemd.user.services.taildrop = {
-    Install.WantedBy = [ "default.target" ];
-    Unit.Description = "Automatically save taildrop files to ~/Downloads/Taildrop";
-    Service = {
-      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p '%h/Downloads/Taildrop'";
-      ExecStart = "${lib.getExe pkgs.tailscale} file get --loop '%h/Downloads/Taildrop'";
-    };
-  };
 }
