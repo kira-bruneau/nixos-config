@@ -51,6 +51,14 @@
           "kvm"
         ];
       }
+      {
+        hostName = "rocky";
+        protocol = "ssh-ng";
+        sshUser = "builder";
+        systems = [ "aarch64-linux" ];
+        maxJobs = 4; # 4 cores
+        speedFactor = 1296; # MHz, max "boost" clock speed
+      }
     ];
 
     gc = {
@@ -75,6 +83,7 @@
         "aurora:PkeJpeCTFE3gprtNpxCW0EqbVwg0wFgvpHFq3Hj0Wlc="
         "jackflix:CtqkVpen2v2aTo4xs8LsmvZcPeke0ewYAtjLRbh+Vvw="
         "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8="
+        "rocky:JuZH5XWnnaZj03DtceTDe5xEHHMgcn0+vzToW1Z3Pgg="
         "steamdeck:BcQXU+d7+azmiE/6YBWs/OJpIYlhcuTcpTU2j7+Zxb8="
       ];
     };
