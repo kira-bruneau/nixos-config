@@ -24,6 +24,7 @@
       ++ lib.optional config.services.blueman.enable "/var/lib/blueman"
       ++ lib.optional config.hardware.bluetooth.enable "/var/lib/bluetooth"
       ++ lib.optional config.services.colord.enable "/var/lib/colord"
+      ++ lib.optional config.services.dnscrypt-proxy2.enable "/var/cache/private/dnscrypt-proxy"
       ++ lib.optional config.services.fprintd.enable "/var/lib/fprint"
       ++ lib.optionals config.services.fwupd.enable [
         "/var/cache/fwupd"
