@@ -1,16 +1,17 @@
 { config, pkgs, ... }:
 
+let
+  settings = config.services.syncthing.settings;
+  hostName = config.networking.hostName;
+in
 {
   services.syncthing = {
-    enable = builtins.elem config.system.name [
-      "amethyst"
-      "aurora"
-      "luna"
-      "quartz"
-    ];
+    enable = builtins.elem hostName (builtins.attrNames settings.devices);
+
     package = pkgs.syncthing.overrideAttrs (attrs: {
       patches = (attrs.patches or [ ]) ++ [ ./syncthing-dont-flatten-file-events.patch ];
     });
+
     user = "kira";
     group = "users";
     dataDir = "/home/kira";
@@ -18,36 +19,16 @@
     openDefaultPorts = true;
     overrideDevices = true;
     overrideFolders = true;
+
     settings = {
       devices = {
-        "amethyst" = {
-          id = "2PIQVSQ-2N77DGJ-XNTHNQF-PREKTRC-SCP6LFV-DRG3WK7-WFPT56T-NYWIAQG";
-        };
-        "aurora" = {
-          id = "ODCDVEV-I63ZAW6-MV27YBB-W5MDOAU-YZ3RK23-DMXCWAN-STJOSEF-EFXFRQP";
-        };
-        "luna" = {
-          id = "O4NQTDT-NWV3GEZ-67BW33I-BQ454SI-42G2RK3-F53W4L4-RUG47VK-5VXLFA7";
-        };
-        "quartz" = {
-          id = "64ZDVRR-2DZB475-3IWMGU6-OU46FZQ-P44AXVI-OYI6TO3-VOCUVRT-L62KBAE";
-        };
+        luna.id = "O4NQTDT-NWV3GEZ-67BW33I-BQ454SI-42G2RK3-F53W4L4-RUG47VK-5VXLFA7";
       };
 
       folders = {
-        "Auth" = {
-          enable = builtins.elem config.system.name [
-            "amethyst"
-            "aurora"
-            "luna"
-            "quartz"
-          ];
-          devices = [
-            "amethyst"
-            "aurora"
-            "luna"
-            "quartz"
-          ];
+        Auth = {
+          enable = builtins.elem hostName settings.folders.Auth.devices;
+          devices = [ "luna" ];
           path = "~/Auth";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
@@ -58,17 +39,8 @@
           };
         };
 
-        "Dev" = {
-          enable = builtins.elem config.system.name [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
-          devices = [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
+        Dev = {
+          enable = builtins.elem hostName settings.folders.Dev.devices;
           path = "~/Dev";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
@@ -79,17 +51,8 @@
           };
         };
 
-        "Documents" = {
-          enable = builtins.elem config.system.name [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
-          devices = [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
+        Documents = {
+          enable = builtins.elem hostName settings.folders.Documents.devices;
           path = "~/Documents";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
@@ -100,17 +63,8 @@
           };
         };
 
-        "Pictures" = {
-          enable = builtins.elem config.system.name [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
-          devices = [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
+        Pictures = {
+          enable = builtins.elem hostName settings.folders.Pictures.devices;
           path = "~/Pictures";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
@@ -121,17 +75,8 @@
           };
         };
 
-        "RSS" = {
-          enable = builtins.elem config.system.name [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
-          devices = [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
+        RSS = {
+          enable = builtins.elem hostName settings.folders.RSS.devices;
           path = "~/.thunderbird/kira/Mail/Feeds";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
@@ -142,17 +87,8 @@
           };
         };
 
-        "Videos" = {
-          enable = builtins.elem config.system.name [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
-          devices = [
-            "amethyst"
-            "aurora"
-            "quartz"
-          ];
+        Videos = {
+          enable = builtins.elem hostName settings.folders.Videos.devices;
           path = "~/Videos";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;

@@ -35,32 +35,6 @@
 
     distributedBuilds = true;
 
-    buildMachines = builtins.filter (machine: machine.hostName != config.networking.hostName) [
-      {
-        hostName = "quartz";
-        protocol = "ssh-ng";
-        sshUser = "builder";
-        systems = [
-          "x86_64-linux"
-          "i686-linux"
-        ];
-        maxJobs = 12; # 6 cores, each with 2 threads
-        speedFactor = 3400; # MHz, max "boost" clock speed
-        supportedFeatures = [
-          "big-parallel"
-          "kvm"
-        ];
-      }
-      {
-        hostName = "rocky";
-        protocol = "ssh-ng";
-        sshUser = "builder";
-        systems = [ "aarch64-linux" ];
-        maxJobs = 4; # 4 cores
-        speedFactor = 1296; # MHz, max "boost" clock speed
-      }
-    ];
-
     gc = {
       automatic = true;
       dates = "weekly";
@@ -78,14 +52,6 @@
       ];
       keep-going = true;
       secret-key-files = "/var/lib/nix/private-key";
-      trusted-public-keys = [
-        "amethyst:wWzYeKRMtWixW1rMNwf4jG+wWPUwRMEHCEB5WKixoes="
-        "aurora:PkeJpeCTFE3gprtNpxCW0EqbVwg0wFgvpHFq3Hj0Wlc="
-        "jackflix:CtqkVpen2v2aTo4xs8LsmvZcPeke0ewYAtjLRbh+Vvw="
-        "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8="
-        "rocky:JuZH5XWnnaZj03DtceTDe5xEHHMgcn0+vzToW1Z3Pgg="
-        "steamdeck:BcQXU+d7+azmiE/6YBWs/OJpIYlhcuTcpTU2j7+Zxb8="
-      ];
     };
 
     extraOptions = ''

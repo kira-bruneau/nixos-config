@@ -62,88 +62,84 @@
     { flake-utils, flake-linter, ... }@inputs:
     let
       lib = inputs.nixpkgs.lib;
-      hosts = builtins.listToAttrs (
-        builtins.map (
-          file:
-          let
-            name = lib.removeSuffix ".nix" file;
-          in
-          {
-            inherit name;
-            value = {
-              inputs =
-                {
-                  steamdeck = inputs // {
-                    nixpkgs = inputs.jovian.inputs.nixpkgs;
-                    home-manager = inputs.home-manager-jovian;
-                  };
-                }
-                .${name} or inputs;
 
-              module =
-                {
-                  inputs,
-                  config,
-                  pkgs,
-                  ...
-                }:
-                let
-                  extraSpecialArgs = {
-                    pkgsUnstable = import inputs.nixpkgs-unstable {
-                      system = pkgs.system;
-                      config = config.nixpkgs.config;
-                    };
+      hosts = builtins.map (
+        file:
+        let
+          name = lib.removeSuffix ".nix" file;
+        in
+        {
+          inherit name;
 
-                    pkgsChromium = import inputs.nixpkgs-chromium {
-                      system = pkgs.system;
-                      config = config.nixpkgs.config;
-                    };
+          inputs =
+            {
+              steamdeck = inputs // {
+                nixpkgs = inputs.jovian.inputs.nixpkgs;
+                home-manager = inputs.home-manager-jovian;
+              };
+            }
+            .${name} or inputs;
 
-                    pkgsDisko = inputs.disko.packages.${pkgs.system};
-
-                    pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.system};
-
-                    pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
-
-                    pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.system};
-                  };
-                in
-                {
-                  imports = [
-                    ./environments/default.nix
-                    ./hosts/${file}
-                  ];
-
-                  networking.hostName = name;
-                  _module.args = extraSpecialArgs;
-                  home-manager.extraSpecialArgs = extraSpecialArgs;
-                  nixpkgs.overlays = [ (final: prev: { emacs = inputs.self.packages.${pkgs.system}.emacs; }) ];
+          module =
+            {
+              inputs,
+              config,
+              pkgs,
+              ...
+            }:
+            let
+              extraSpecialArgs = {
+                pkgsUnstable = import inputs.nixpkgs-unstable {
+                  system = pkgs.system;
+                  config = config.nixpkgs.config;
                 };
 
-              hardwareModule = {
-                imports =
-                  [ ./hardware/environments/default.nix ]
-                  ++ (
-                    lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix) ./hardware/hosts/${name}/default.nix
-                    ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix) ./hardware/hosts/${name}/generated.nix
-                  );
+                pkgsChromium = import inputs.nixpkgs-chromium {
+                  system = pkgs.system;
+                  config = config.nixpkgs.config;
+                };
+
+                pkgsDisko = inputs.disko.packages.${pkgs.system};
+
+                pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.system};
+
+                pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
+
+                pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.system};
               };
+            in
+            {
+              imports = [
+                ./environments/default.nix
+                ./hosts/${file}
+              ];
+
+              networking.hostName = name;
+              _module.args = extraSpecialArgs;
+              home-manager.extraSpecialArgs = extraSpecialArgs;
+              nixpkgs.overlays = [ (final: prev: { emacs = inputs.self.packages.${pkgs.system}.emacs; }) ];
             };
-          }
-        ) (builtins.attrNames (builtins.readDir ./hosts))
-      );
+
+          hardwareModule = {
+            imports =
+              [ ./hardware/environments/default.nix ]
+              ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix) ./hardware/hosts/${name}/default.nix
+              ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix) ./hardware/hosts/${name}/generated.nix
+              ++ builtins.concatMap (host: host.sharedModules) hosts;
+          };
+
+          sharedModules = lib.optional (builtins.pathExists ./hardware/hosts/${name}/shared.nix) ./hardware/hosts/${name}/shared.nix;
+        }
+      ) (builtins.attrNames (builtins.readDir ./hosts));
     in
     {
       nixosConfigurations = builtins.listToAttrs (
         builtins.concatMap (
-          name:
-          let
-            host = hosts.${name};
-          in
-          if builtins.pathExists ./hardware/hosts/${name}/default.nix then
+          host:
+          if builtins.pathExists ./hardware/hosts/${host.name}/default.nix then
             [
               {
-                inherit name;
+                inherit (host) name;
                 value = host.inputs.nixpkgs.lib.nixosSystem {
                   specialArgs = {
                     inherit (host) inputs;
@@ -157,7 +153,7 @@
             ]
           else
             [ ]
-        ) (builtins.attrNames hosts)
+        ) hosts
       );
     }
     // flake-utils.lib.eachDefaultSystem (
@@ -226,9 +222,8 @@
             emacs-unstable = pkgs-unstable.callPackage ./home/programs/emacs/package.nix { };
           }
           // builtins.foldl' (
-            packages: name:
+            packages: host:
             let
-              host = hosts.${name};
               nixosGenerate =
                 output: attrs:
                 (host.inputs.nixpkgs.lib.nixosSystem (
@@ -244,15 +239,15 @@
             in
             packages
             // {
-              "${name}/install-iso" = nixosGenerate "isoImage" {
+              "${host.name}/install-iso" = nixosGenerate "isoImage" {
                 modules = [
                   host.hardwareModule
                   ./environments/install-iso.nix
                 ];
               };
-              "${name}/vm" = nixosGenerate "vm" { modules = [ ./environments/vm.nix ]; };
+              "${host.name}/vm" = nixosGenerate "vm" { modules = [ ./environments/vm.nix ]; };
             }
-          ) { } (builtins.attrNames hosts);
+          ) { } hosts;
       }
     );
 }
