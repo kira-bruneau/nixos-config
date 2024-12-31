@@ -119,8 +119,8 @@
         content = {
           type = "gpt";
           partitions = {
-            WD_BLACK = {
-              label = "WD_BLACK";
+            Jackflix = {
+              label = "Jackflix";
               size = "100%";
               content = {
                 type = "btrfs";
