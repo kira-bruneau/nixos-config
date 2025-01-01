@@ -41,6 +41,7 @@
       )
       ++ lib.optional config.services.jellyseerr.enable "/var/lib/private/jellyseerr"
       ++ lib.optional config.networking.wireless.iwd.enable "/var/lib/iwd"
+      ++ lib.optional config.services.klipper.enable config.services.klipper.configDir
       ++ lib.optional config.services.kubo.enable config.services.kubo.dataDir
       ++ lib.optionals config.networking.networkmanager.enable [
         "/etc/NetworkManager/system-connections"
