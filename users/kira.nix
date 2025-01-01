@@ -108,17 +108,8 @@
       };
 
       ssh.matchBlocks = {
-        "amethyst".user = "kira";
-        "amethyst.lan".user = "kira";
-        "aurora".user = "kira";
-        "aurora.lan".user = "kira";
         "jackflix".user = "jakira";
         "jackflix.lan".user = "jakira";
-        "jakira.space".user = "kira";
-        "quartz".user = "kira";
-        "quartz.lan".user = "kira";
-        "gneiss".user = "kira";
-        "gneiss.lan".user = "kira";
         "steamdeck".user = "jakira";
         "steamdeck.lan".user = "jakira";
       };
