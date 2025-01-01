@@ -275,6 +275,45 @@
 
   services.octoprint.enable = true;
 
+  services.fluidd = {
+    enable = true;
+    hostName = "fluidd.jakira.space";
+  };
+
+  services.mainsail = {
+    enable = true;
+    hostName = "mainsail.jakira.space";
+  };
+
+  services.moonraker = {
+    enable = true;
+    address = "0.0.0.0";
+    allowSystemControl = true;
+    settings = {
+      octoprint_compat = { };
+
+      authorization = {
+        cors_domains = [
+          "http://${config.services.fluidd.hostName}"
+          "http://${config.services.mainsail.hostName}"
+        ];
+
+        trusted_clients = [
+          "127.0.0.1"
+          "100.64.0.0/10" # tailscale
+        ];
+      };
+    };
+  };
+
+  systemd.services.moonraker.restartTriggers = [
+    config.environment.etc."moonraker.cfg".source
+  ];
+
+  users.users.moonraker.extraGroups = [ "octoprint" ];
+
+  security.polkit.enable = true;
+
   services.nginx = {
     enable = true;
     virtualHosts = {

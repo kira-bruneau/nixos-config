@@ -43,6 +43,7 @@
       ++ lib.optional config.networking.wireless.iwd.enable "/var/lib/iwd"
       ++ lib.optional config.services.klipper.enable config.services.klipper.configDir
       ++ lib.optional config.services.kubo.enable config.services.kubo.dataDir
+      ++ lib.optional config.services.moonraker.enable config.services.moonraker.stateDir
       ++ lib.optionals config.networking.networkmanager.enable [
         "/etc/NetworkManager/system-connections"
         "/var/lib/NetworkManager"
