@@ -267,7 +267,7 @@ in
 
           extraConfig = ''
             allow 127.0.0.1;
-            allow 100.64.0.1/10; # tailscale
+            allow 100.64.0.0/10; # tailscale
             deny all;
           '';
         };
