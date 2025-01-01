@@ -6,7 +6,7 @@
       {
         protocol = "ssh-ng";
         sshUser = "builder";
-        hostName = "rocky";
+        hostName = "gneiss";
         maxJobs = 4; # 4 cores
         speedFactor = 1296; # MHz, max "boost" clock speed
         systems = [ "aarch64-linux" ];
@@ -18,7 +18,7 @@
     ];
   };
 
-  networking.hosts."100.64.0.10" = [ "rocky" ];
+  networking.hosts."100.64.0.10" = [ "gneiss" ];
 
-  programs.ssh.knownHosts.rocky.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINUGzRm127zLH3ZQxwGTFmWyggeu7uwoaMnCGUdCq0fO";
+  programs.ssh.knownHosts.gneiss.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINUGzRm127zLH3ZQxwGTFmWyggeu7uwoaMnCGUdCq0fO";
 }

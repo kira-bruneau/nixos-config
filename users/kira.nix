@@ -117,8 +117,8 @@
         "jakira.space".user = "kira";
         "quartz".user = "kira";
         "quartz.lan".user = "kira";
-        "rocky".user = "kira";
-        "rocky.lan".user = "kira";
+        "gneiss".user = "kira";
+        "gneiss.lan".user = "kira";
         "steamdeck".user = "jakira";
         "steamdeck.lan".user = "jakira";
       };
