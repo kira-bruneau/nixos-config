@@ -43,6 +43,7 @@
 
   services.klipper = {
     enable = true;
+    package = pkgsKiraNur.ender3-v3-se-klipper-with-display;
 
     octoprintIntegration = true;
 
@@ -158,7 +159,6 @@
         control_pin = "PC13";
         x_offset = -24.0;
         y_offset = -15.5;
-        z_offset = 0.1;
         speed = 20;
         pin_move_time = 0.4;
         stow_on_each_sample = false;
@@ -180,9 +180,6 @@
         probe_count = "5,5";
         algorithm = "bicubic";
       };
-
-      # NOT IMPLEMTED (assuming it even works)
-      # display = { }
 
       "output_pin beeper".pin = "PB0";
 
@@ -249,6 +246,16 @@
         TURN_OFF_HEATERS
         UPDATE_DELAYED_GCODE ID=DELAYED_PRINTER_OFF DURATION=60
       ";
+
+      "gcode_macro PROBE_ZOFFSET".gcode = "
+        PRTOUCH_PROBE_ZOFFSET
+        SAVE_CONFIG
+      ";
+
+      e3v3se_display = {
+        language = "english";
+        logging = true;
+      };
     };
 
     firmwares = {
@@ -261,6 +268,7 @@
 
   environment.etc = {
     "klipper.d/macro.cfg".source = "${pkgsKiraNur.ender3-v3-se-klipper-config}/macro.cfg";
+    "klipper.d/prtouch.cfg".source = "${pkgsKiraNur.ender3-v3-se-klipper-config}/prtouch.cfg";
   };
 
   services.octoprint.enable = true;
