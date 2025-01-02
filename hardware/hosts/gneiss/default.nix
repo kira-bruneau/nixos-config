@@ -66,9 +66,9 @@
         microsteps = 64;
         rotation_distance = 40;
         endstop_pin = "!PA5";
-        position_endstop = -6;
-        position_min = -6;
-        position_max = 230;
+        position_endstop = -9;
+        position_min = -9;
+        position_max = 228;
         homing_speed = 50;
       };
 
@@ -79,8 +79,8 @@
         microsteps = 64;
         rotation_distance = 40;
         endstop_pin = "!PA6";
-        position_endstop = -14;
-        position_min = -14;
+        position_endstop = -13;
+        position_min = -13;
         position_max = 230;
         homing_speed = 50;
       };
@@ -176,7 +176,7 @@
       };
 
       safe_z_home = {
-        home_xy_position = "134,123";
+        home_xy_position = "115,115";
         speed = 50;
         z_hop = 10;
         z_hop_speed = 5;
