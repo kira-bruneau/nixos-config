@@ -64,26 +64,40 @@
         step_pin = "PC2";
         dir_pin = "!PB9";
         enable_pin = "!PC3";
-        microsteps = 64;
+        microsteps = 16;
         rotation_distance = 40;
-        endstop_pin = "!PA5";
+        endstop_pin = "~!PA5";
         position_endstop = -9;
         position_min = -9;
         position_max = 228;
-        homing_speed = 50;
+        homing_speed = 80;
+      };
+
+      "tmc2208 stepper_x" = {
+        uart_pin = "PB12";
+        run_current = 0.6;
+        sense_resistor = 0.15;
+        interpolate = true;
       };
 
       stepper_y = {
         step_pin = "PB8";
         dir_pin = "PB7";
         enable_pin = "!PC3";
-        microsteps = 64;
+        microsteps = 16;
         rotation_distance = 40;
-        endstop_pin = "!PA6";
+        endstop_pin = "~!PA6";
         position_endstop = -13;
         position_min = -13;
         position_max = 230;
-        homing_speed = 50;
+        homing_speed = 80;
+      };
+
+      "tmc2208 stepper_y" = {
+        uart_pin = "PB13";
+        run_current = 0.6;
+        sense_resistor = 0.15;
+        interpolate = true;
       };
 
       stepper_z = {
@@ -98,6 +112,13 @@
         homing_speed = 4;
         second_homing_speed = 1;
         homing_retract_dist = 2.0;
+      };
+
+      "tmc2208 stepper_z" = {
+        uart_pin = "PB14";
+        run_current = 0.8;
+        sense_resistor = 0.15;
+        interpolate = true;
       };
 
       extruder = {
@@ -147,11 +168,11 @@
 
       printer = {
         kinematics = "cartesian";
-        max_velocity = 150;
-        max_accel = 3000;
-        max_z_velocity = 50;
+        max_velocity = 250;
+        max_accel = 2500;
+        max_z_velocity = 5;
         square_corner_velocity = 5.0;
-        max_z_accel = 500;
+        max_z_accel = 100;
       };
 
       bltouch = {
@@ -167,9 +188,9 @@
 
       safe_z_home = {
         home_xy_position = "115,115";
-        speed = 50;
+        speed = 150;
         z_hop = 10;
-        z_hop_speed = 5;
+        z_hop_speed = 10;
       };
 
       bed_mesh = {
@@ -183,28 +204,18 @@
 
       "output_pin beeper".pin = "PB0";
 
-      "tmc2209 stepper_x" = {
-        uart_pin = "PB12";
-        run_current = 0.6;
-        sense_resistor = 0.15;
-        stealthchop_threshold = 0;
-        interpolate = false;
-      };
-
-      "tmc2209 stepper_y" = {
-        uart_pin = "PB13";
-        run_current = 0.6;
-        sense_resistor = 0.15;
-        stealthchop_threshold = 0;
-        interpolate = false;
-      };
-
-      "tmc2209 stepper_z" = {
-        uart_pin = "PB14";
-        run_current = 0.8;
-        sense_resistor = 0.15;
-        stealthchop_threshold = 0;
-        interpolate = false;
+      screws_tilt_adjust = {
+        screw1 = "54.5, 45.5";
+        screw1_name = "front left screw";
+        screw2 = "224.5, 45.5";
+        screw2_name = "front right screw";
+        screw3 = "224.5, 215.5";
+        screw3_name = "rear right screw";
+        screw4 = "54.5, 215.5";
+        screw4_name = "rear left screw";
+        horizontal_move_z = 10.0;
+        speed = 50.0;
+        screw_thread = "CCW-M4";
       };
 
       "temperature_sensor MCU" = {
