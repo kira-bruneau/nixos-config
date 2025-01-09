@@ -315,14 +315,28 @@
   services.nginx = {
     enable = true;
     virtualHosts = {
-      "octoprint.jakira.space".locations."/" = {
-        proxyPass = "http://${
-          if config.services.octoprint.host != null then config.services.octoprint.host else "127.0.0.1"
-        }:${toString config.services.octoprint.port}";
+      "octoprint.jakira.space" = {
+        locations."/" = {
+          proxyPass = "http://${
+            if config.services.octoprint.host != null then config.services.octoprint.host else "127.0.0.1"
+          }:${toString config.services.octoprint.port}";
 
-        recommendedProxySettings = true;
-        proxyWebsockets = true;
+          recommendedProxySettings = true;
+          proxyWebsockets = true;
+        };
+
+        extraConfig = ''
+          client_max_body_size 50M;
+        '';
       };
+
+      "fluidd.jakira.space".extraConfig = ''
+        client_max_body_size 50M;
+      '';
+
+      "mainsail.jakira.space".extraConfig = ''
+        client_max_body_size 50M;
+      '';
     };
   };
 }
