@@ -173,5 +173,8 @@
   services.thermald.enable = true;
 
   # Manage firmware updates
-  services.fwupd.enable = true;
+  services.fwupd = {
+    enable = true;
+    extraRemotes = [ "lvfs-testing" ];
+  };
 }
