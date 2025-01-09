@@ -540,7 +540,6 @@ in
 
   services.jellyseerr = {
     enable = true;
-    package = pkgsUnstable.jellyseerr;
     openFirewall = true;
   };
 
