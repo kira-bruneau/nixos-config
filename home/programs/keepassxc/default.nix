@@ -9,7 +9,11 @@ in
 
   xdg.configFile."keepassxc/keepassxc.ini".source = settingsFormat.generate "keepassxc.ini" {
     General.ConfigVersion = 2;
-    Browser.Enabled = true;
+
+    Browser = {
+      Enabled = true;
+      UpdateBinaryPath = false;
+    };
 
     GUI = {
       ApplicationTheme = "dark";
@@ -39,9 +43,6 @@ in
       install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
     };
 
-    # FIXME: With this setting, keepassxc shows a popup: Could not
-    # save the native messaging script file for firefox. Figure out
-    # how to disable it.
     nativeMessagingHosts = [ keepassxc ];
   };
 }
