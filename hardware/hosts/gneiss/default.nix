@@ -112,11 +112,6 @@
         heater_pin = "PA1";
         sensor_type = "EPCOS 100K B57560G104F";
         sensor_pin = "PC5";
-        control = "pid";
-        # tuned for stock hardware with 200 degree Celsius target
-        pid_Kp = 27.142;
-        pid_Ki = 1.371;
-        pid_Kd = 134.351;
         min_temp = 0;
         max_temp = 260;
       };
@@ -125,11 +120,6 @@
         heater_pin = "PB2";
         sensor_type = "EPCOS 100K B57560G104F";
         sensor_pin = "PC4";
-        control = "pid";
-        # tuned for stock hardware with 70 degree Celsius target
-        pid_kp = 66.371;
-        pid_ki = 0.846;
-        pid_kd = 1301.702;
         min_temp = 0;
         max_temp = 100;
       };
