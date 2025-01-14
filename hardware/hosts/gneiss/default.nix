@@ -167,7 +167,7 @@
         sensor_pin = "^PC14";
         control_pin = "PC13";
         x_offset = -24.0;
-        y_offset = -13.0;
+        y_offset = -15.5;
         z_offset = 0.1;
         speed = 20;
         pin_move_time = 0.4;
