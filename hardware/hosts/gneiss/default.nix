@@ -186,7 +186,7 @@
         speed = 120;
         horizontal_move_z = 5;
         mesh_min = "30,30"; # Need to handle head distance with cr-touch (bl_touch);
-        mesh_max = "205,215.5"; # Max probe range;
+        mesh_max = "200,200";
         probe_count = "5,5";
         algorithm = "bicubic";
       };
