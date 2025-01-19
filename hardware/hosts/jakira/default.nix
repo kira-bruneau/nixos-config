@@ -43,4 +43,6 @@
   ];
 
   zramSwap.enable = true;
+
+  services.tailscale.enable = false;
 }
