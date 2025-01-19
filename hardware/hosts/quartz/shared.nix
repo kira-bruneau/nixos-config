@@ -26,7 +26,18 @@
     ];
   };
 
-  networking.hosts."100.64.0.1" = [ "quartz" ];
+  networking = {
+    wireguard.interfaces.wg0 = {
+      ips = lib.optional (config.networking.hostName == "quartz") "10.100.0.2/32";
+      peers = lib.optional (config.networking.hostName != "quartz") {
+        name = "quartz";
+        publicKey = "s4KfpSZRL37pLbHieVAWFoVcpkzTP8LoMzlt/wQLQwk=";
+        allowedIPs = [ "10.100.0.2/32" ];
+      };
+    };
+
+    hosts."100.64.0.1" = [ "quartz" ];
+  };
 
   programs.ssh.knownHosts.quartz.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPBPD66/axLTeJHQ+lLmOSJT2VQyESnk5VRr7Rkx4BET";
 
