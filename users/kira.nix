@@ -108,8 +108,6 @@
       };
 
       ssh.matchBlocks = {
-        "jackflix".user = "jakira";
-        "jackflix.lan".user = "jakira";
         "steamdeck".user = "jakira";
         "steamdeck.lan".user = "jakira";
       };
