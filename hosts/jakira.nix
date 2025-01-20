@@ -22,7 +22,7 @@
 
   services.mastodon = {
     enable = true;
-    localDomain = "jakira.space";
+    localDomain = "mastodon.jakira.space";
     configureNginx = true;
     smtp.fromAddress = "noreply@jakira.space";
     streamingProcesses = 1;
