@@ -5,7 +5,6 @@
     [
       ../../environments/bluetooth.nix
       ../../environments/gaming.nix
-      ../../../services/ollama.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
@@ -234,8 +233,11 @@
     amd_performance_level = "high";
   };
 
-  services.ollama.environmentVariables = {
-    ROCR_VISIBLE_DEVICES = "0";
-    HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+  services.ollama = {
+    acceleration = "rocm";
+    environmentVariables = {
+      ROCR_VISIBLE_DEVICES = "0";
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+    };
   };
 }

@@ -6,6 +6,7 @@
     ../services/habitica.nix
     ../services/home-assistant.nix
     ../services/kubo.nix
+    ../services/ollama.nix
     ../users/builder.nix
     ../users/kira.nix
   ];
