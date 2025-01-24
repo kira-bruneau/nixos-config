@@ -144,6 +144,7 @@ let
       "Session\\DefaultSavePath" = "/srv/media-hdd/downloads";
       "Session\\Port" = 15982;
       "Session\\GlobalMaxRatio" = 2;
+      "Session\\ExcludedFileNames" = [ "*.lnk" ];
     };
 
     Network = {
@@ -1047,7 +1048,13 @@ in
     preStart = ''
       ${pkgs.coreutils}/bin/mkdir -p "$STATE_DIRECTORY/.config/qBittorrent"
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership \
-        ${(pkgs.formats.ini { }).generate "qBittorrent.conf" qBittorrent} \
+        ${
+          (pkgs.formats.ini {
+            listToValue = lib.concatMapStringsSep ", " (lib.generators.mkValueStringDefault { });
+          }).generate
+            "qBittorrent.conf"
+            qBittorrent
+        } \
         "$STATE_DIRECTORY/.config/qBittorrent/qBittorrent.conf"
     '';
   };
