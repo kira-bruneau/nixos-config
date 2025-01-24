@@ -108,8 +108,8 @@
       };
 
       ssh.matchBlocks = {
-        "steamdeck".user = "jakira";
-        "steamdeck.lan".user = "jakira";
+        "peridot".user = "jakira";
+        "peridot.lan".user = "jakira";
       };
     };
   };

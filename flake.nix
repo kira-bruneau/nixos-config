@@ -73,7 +73,7 @@
 
           inputs =
             {
-              steamdeck = inputs // {
+              peridot = inputs // {
                 nixpkgs = inputs.jovian.inputs.nixpkgs;
                 home-manager = inputs.home-manager-jovian;
               };
