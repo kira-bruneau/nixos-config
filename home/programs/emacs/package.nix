@@ -202,7 +202,6 @@ callPackage ./wrapper.nix {
         nodePackages.bash-language-server
         nodePackages.typescript
         nodePackages.typescript-language-server
-        nodePackages.vue-language-server
         nodePackages.yaml-language-server
         pandoc
         perl
