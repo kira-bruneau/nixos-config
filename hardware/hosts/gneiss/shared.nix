@@ -18,6 +18,5 @@
 
   networking.hosts."100.64.0.10" = [ "gneiss" ];
 
-  programs.ssh.knownHosts.gneiss.publicKey =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINUGzRm127zLH3ZQxwGTFmWyggeu7uwoaMnCGUdCq0fO";
+  programs.ssh.knownHosts.gneiss.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINUGzRm127zLH3ZQxwGTFmWyggeu7uwoaMnCGUdCq0fO";
 }
