@@ -1,7 +1,13 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  settings = config.services.syncthing.settings;
+  cfg = config.services.syncthing;
+  settings = cfg.settings;
   hostName = config.networking.hostName;
 in
 {
@@ -112,7 +118,7 @@ in
   # Re-scanning on resume is very wasteful & power hungry
   systemd.services.syncthing-resume.enable = false;
 
-  boot.kernel.sysctl = {
+  boot.kernel.sysctl = lib.mkIf cfg.enable {
     "fs.inotify.max_user_watches" = 1048576;
   };
 }
