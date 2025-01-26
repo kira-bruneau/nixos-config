@@ -46,6 +46,7 @@ in
     nix-bisect
     nix-instant-dev
     nix-output-monitor
+    nix-search
     nixpkgs-review
     nurl
     patchelf
