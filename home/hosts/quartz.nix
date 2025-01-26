@@ -57,7 +57,6 @@
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nur-packages";
           ExecStart = pkgs.writeShellScript "update-nur" ''
             export PATH=${lib.makeBinPath (with pkgs; [ nix ])}
-            nix run .#update
             nix run .#sync ~/Dev/nixpkgs/nur
           '';
         };
