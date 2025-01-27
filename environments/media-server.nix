@@ -514,7 +514,7 @@ in
         <EncodingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <EnableHardwareEncoding>true</EnableHardwareEncoding>
           <HardwareAccelerationType>vaapi</HardwareAccelerationType>
-          <VaapiDevice>/dev/dri/renderD128</VaapiDevice>
+          <VaapiDevice>/dev/dri/by-path/pci-0000:0b:00.0-render</VaapiDevice>
           <HardwareDecodingCodecs>
             <string>av1</string>
             <string>h264</string>
