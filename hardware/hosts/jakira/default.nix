@@ -7,6 +7,7 @@
 {
   imports = [
     "${toString modulesPath}/virtualisation/digital-ocean-config.nix"
+    ./synapse-proxy.nix
   ];
 
   # FIXME: Root partition uses tmpfs, which causes growpart to fail

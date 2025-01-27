@@ -7,6 +7,7 @@
     ../services/home-assistant.nix
     ../services/kubo.nix
     ../services/ollama.nix
+    ../services/synapse.nix
     ../users/builder.nix
     ../users/kira.nix
   ];

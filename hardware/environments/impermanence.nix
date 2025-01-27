@@ -49,6 +49,7 @@
         "/var/cache/mastodon"
         "/var/lib/mastodon"
       ]
+      ++ lib.optional config.services.matrix-synapse.enable config.services.matrix-synapse.dataDir
       ++ lib.optional config.services.moonraker.enable config.services.moonraker.stateDir
       ++ lib.optionals config.networking.networkmanager.enable [
         "/etc/NetworkManager/system-connections"

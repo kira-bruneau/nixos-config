@@ -475,6 +475,11 @@
             "desktop-notification" = "allow";
           };
 
+          "https://chat.jakira.space" = {
+            "desktop-notification" = "allow";
+            "persistent-storage" = "allow";
+          };
+
           "https://discord.com" = {
             "desktop-notification" = "allow";
           };
@@ -652,6 +657,14 @@
         criteria = {
           app_id = "^firefox$";
           title = "https://app.element.io";
+        };
+
+        command = "move container to workspace 10";
+      }
+      {
+        criteria = {
+          app_id = "^firefox$";
+          title = "https://chat.jakira.space";
         };
 
         command = "move container to workspace 10";
