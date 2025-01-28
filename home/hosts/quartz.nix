@@ -25,11 +25,6 @@
   systemd.user = {
     services = {
       update-nixos-main = {
-        Unit = {
-          Wants = [ "update-nur.service" ];
-          After = [ "update-nur.service" ];
-        };
-
         Service = {
           Type = "oneshot";
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nixos-config/main";
@@ -128,6 +123,11 @@
 
       update-nixos-peridot = {
         Timer.OnCalendar = "weekly";
+        Install.WantedBy = [ "timers.target" ];
+      };
+
+      update-nur = {
+        Timer.OnCalendar = "daily";
         Install.WantedBy = [ "timers.target" ];
       };
     };
