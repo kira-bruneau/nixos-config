@@ -36,7 +36,7 @@
       };
     };
 
-    hosts."100.64.0.1" = [ "quartz" ];
+    hosts."100.64.0.1" = lib.mkIf config.services.tailscale.enable [ "quartz" ];
   };
 
   programs.ssh.knownHosts.quartz.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPBPD66/axLTeJHQ+lLmOSJT2VQyESnk5VRr7Rkx4BET";

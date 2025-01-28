@@ -1,7 +1,9 @@
+{ config, lib, ... }:
+
 {
   nix.settings.trusted-public-keys = [ "amethyst:wWzYeKRMtWixW1rMNwf4jG+wWPUwRMEHCEB5WKixoes=" ];
 
-  networking.hosts."100.64.0.6" = [ "amethyst" ];
+  networking.hosts."100.64.0.6" = lib.mkIf config.services.tailscale.enable [ "amethyst" ];
 
   programs.ssh.knownHosts.amethyst.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEt3gfHRXW9WP0/wff2WEVGqlr/6b6jtr6fpz9uRkotS";
 

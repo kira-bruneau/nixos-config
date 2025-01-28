@@ -1,7 +1,9 @@
+{ config, lib, ... }:
+
 {
   nix.settings.trusted-public-keys = [ "aurora:PkeJpeCTFE3gprtNpxCW0EqbVwg0wFgvpHFq3Hj0Wlc=" ];
 
-  networking.hosts."100.64.0.2" = [ "lapis" ];
+  networking.hosts."100.64.0.2" = lib.mkIf config.services.tailscale.enable [ "lapis" ];
 
   programs.ssh.knownHosts.lapis.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDG2wKEtIS2KuoXr4uNAzwTLvkyjrLX9zonE3pZB2pdH";
 
