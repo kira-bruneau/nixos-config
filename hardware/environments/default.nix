@@ -11,6 +11,7 @@
     ../services/ssh.nix
     ../services/syncthing.nix
     ../services/tailscale.nix
+    ../services/wireguard.nix
     ./impermanence.nix
   ];
 

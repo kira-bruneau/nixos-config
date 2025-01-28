@@ -5,7 +5,6 @@
     [
       ../../environments/bluetooth.nix
       ../../environments/gaming.nix
-      ../../services/wireguard.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd

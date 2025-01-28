@@ -7,7 +7,6 @@
 {
   imports = [
     "${toString modulesPath}/virtualisation/digital-ocean-config.nix"
-    ../../services/wireguard.nix
   ];
 
   # FIXME: Root partition uses tmpfs, which causes growpart to fail
