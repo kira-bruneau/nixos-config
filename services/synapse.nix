@@ -11,6 +11,10 @@ let
   dbUser = settings.database.args.user;
 in
 {
+  imports = [
+    ./mautrix-whatsapp.nix
+  ];
+
   services = {
     matrix-synapse = {
       enable = true;

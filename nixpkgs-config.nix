@@ -37,5 +37,8 @@
 
     # anytype
     "electron-29.4.6"
+
+    # mautrix-whatsapp
+    "olm-3.2.16"
   ];
 }
