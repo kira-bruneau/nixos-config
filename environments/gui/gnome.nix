@@ -10,4 +10,5 @@
 
   services.gnome.core-utilities.enable = false;
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
+  networking.networkmanager.wifi.backend = "iwd";
 }
