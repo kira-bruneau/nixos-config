@@ -53,10 +53,18 @@
       ++ lib.optional config.services.mautrix-whatsapp.enable "/var/lib/mautrix-whatsapp"
       ++ lib.optional config.services.moonraker.enable config.services.moonraker.stateDir
       ++ lib.optionals config.networking.networkmanager.enable [
-        "/etc/NetworkManager/system-connections"
         "/var/lib/NetworkManager"
         "/var/lib/NetworkManager-fortisslvpn"
       ]
+      ++
+        lib.optional
+          (
+            config.networking.networkmanager.enable
+            && config.networking.networkmanager.wifi.backend == "wpa_supplicant"
+          )
+          [
+            "/etc/NetworkManager/system-connections"
+          ]
       ++ lib.optionals config.services.nginx.enable [
         "/var/cache/nginx"
         "/var/log/nginx"
