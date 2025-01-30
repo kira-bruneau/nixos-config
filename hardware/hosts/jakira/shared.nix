@@ -4,6 +4,8 @@
   nix.settings.trusted-public-keys = [ "jakira:wNeIHrxXz2JonyeKJ8Dx6YThMAt1oTn58kVCOAYR1JI=" ];
 
   networking = {
+    hosts."209.38.0.183" = [ "jakira" ];
+
     wireguard.interfaces.wg0 = {
       ips = lib.optional (config.networking.hostName == "jakira") "10.100.0.1/32";
       listenPort = if config.networking.hostName == "jakira" then 51820 else null;
@@ -11,7 +13,7 @@
         name = "jakira";
         publicKey = "nliKU5Ry6/NKRkWWEQs9HkSs6micz4kbw7HuO26XskM=";
         allowedIPs = [ "10.100.0.1/32" ];
-        endpoint = "jakira.space:51820";
+        endpoint = "jakira:51820";
         persistentKeepalive = 25;
       };
     };
