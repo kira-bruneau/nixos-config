@@ -43,7 +43,7 @@
       )
       ++ lib.optional config.services.jellyseerr.enable "/var/lib/private/jellyseerr"
       ++ lib.optional config.networking.wireless.iwd.enable "/var/lib/iwd"
-      ++ lib.optional config.services.klipper.enable config.services.klipper.configDir
+      ++ lib.optional config.services.klipper.enable "/var/lib/private/klipper"
       ++ lib.optional config.services.kubo.enable config.services.kubo.dataDir
       ++ lib.optionals config.services.mastodon.enable [
         "/var/cache/mastodon"
@@ -63,7 +63,6 @@
       ++ builtins.map (container: "/var/lib/nixos-containers/${container}") (
         builtins.attrNames config.containers
       )
-      ++ lib.optional config.services.octoprint.enable config.services.octoprint.stateDir
       ++ lib.optional config.services.ollama.enable "/var/lib/private/ollama"
       ++ lib.optional config.services.opendkim.enable "/var/lib/opendkim"
       ++ lib.optional config.services.postfix.enable "/var/lib/postfix"

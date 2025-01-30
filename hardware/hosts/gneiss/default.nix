@@ -45,8 +45,6 @@
     enable = true;
     package = pkgsKiraNur.ender3-v3-se-klipper-with-display;
 
-    octoprintIntegration = true;
-
     settings = {
       "include /etc/klipper.d/*.cfg" = { };
 
@@ -282,8 +280,6 @@
     "klipper.d/prtouch.cfg".source = "${pkgsKiraNur.ender3-v3-se-klipper-config}/prtouch.cfg";
   };
 
-  services.octoprint.enable = true;
-
   services.fluidd = {
     enable = true;
     hostName = "fluidd.jakira.space";
@@ -319,28 +315,11 @@
     config.environment.etc."moonraker.cfg".source
   ];
 
-  users.users.moonraker.extraGroups = [ "octoprint" ];
-
   security.polkit.enable = true;
 
   services.nginx = {
     enable = true;
     virtualHosts = {
-      "octoprint.jakira.space" = {
-        locations."/" = {
-          proxyPass = "http://${
-            if config.services.octoprint.host != null then config.services.octoprint.host else "127.0.0.1"
-          }:${toString config.services.octoprint.port}";
-
-          recommendedProxySettings = true;
-          proxyWebsockets = true;
-        };
-
-        extraConfig = ''
-          client_max_body_size 50M;
-        '';
-      };
-
       "fluidd.jakira.space".extraConfig = ''
         client_max_body_size 50M;
       '';
