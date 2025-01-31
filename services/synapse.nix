@@ -14,6 +14,7 @@ in
   services = {
     matrix-synapse = {
       enable = true;
+
       settings = {
         server_name = "jakira.space";
         public_baseurl = "https://matrix.jakira.space";
@@ -36,6 +37,8 @@ in
             ];
           }
         ];
+
+        forgotten_room_retention_period = "28d";
       };
     };
 
