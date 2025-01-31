@@ -5,6 +5,13 @@
     enable = true;
 
     settings = lib.mkForce {
+      network.history_sync = {
+        request_full_sync = true;
+        full_sync_config = {
+          days_limit = 10 * 365;
+        };
+      };
+
       bridge = {
         permissions = {
           "*" = "relay";
@@ -22,6 +29,13 @@
         address = "http://localhost:8008";
         domain = config.services.matrix-synapse.settings.server_name;
         async_media = true;
+      };
+
+      backfill = {
+        enabled = true;
+        max_initial_messages = 2147483646;
+        max_catchup_messages = 2147483646;
+        threads.max_initial_messages = 2147483646;
       };
 
       logging.writers = [
