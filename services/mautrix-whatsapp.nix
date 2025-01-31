@@ -7,9 +7,7 @@
     settings = lib.mkForce {
       network.history_sync = {
         request_full_sync = true;
-        full_sync_config = {
-          days_limit = 10 * 365;
-        };
+        full_sync_config.days_limit = 10 * 365;
       };
 
       bridge = {
@@ -36,6 +34,12 @@
         max_initial_messages = 2147483646;
         max_catchup_messages = 2147483646;
         threads.max_initial_messages = 2147483646;
+      };
+
+      encryption = {
+        allow = true;
+        default = true;
+        require = true;
       };
 
       logging.writers = [
