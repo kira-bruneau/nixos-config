@@ -1,4 +1,9 @@
-{ pkgs, pkgsKiraNur, ... }:
+{
+  pkgs,
+  pkgsKiraNur,
+  pkgsYabridgeWine,
+  ...
+}:
 
 {
   imports = [ ../programs/lmms ];
@@ -10,8 +15,12 @@
     krita
     orca-slicer
     tenacity
-    yabridge
-    yabridgectl
+    (pkgsKiraNur.yabridge.override {
+      wine = pkgsYabridgeWine.wineWowPackages.staging;
+    })
+    (pkgsKiraNur.yabridgectl.override {
+      wine = pkgsYabridgeWine.wineWowPackages.staging;
+    })
     pkgsKiraNur.zynaddsubfx
   ];
 
