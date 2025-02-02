@@ -7,5 +7,6 @@
     enable = true;
     eula = true;
     dataDir = "/var/lib/minecraft";
+    managementSystem.systemd-socket.enable = true;
   };
 }
