@@ -1,9 +1,7 @@
 { inputs, ... }:
 
 {
-  imports = [
-    ../../environments/wifi.nix
-  ] ++ (with inputs.nixos-hardware.nixosModules; [ dell-xps-13-9343 ]);
+  imports = (with inputs.nixos-hardware.nixosModules; [ dell-xps-13-9343 ]);
 
   hardware = {
     enableRedistributableFirmware = false;
