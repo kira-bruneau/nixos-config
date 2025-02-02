@@ -1,13 +1,13 @@
 name = "Iris & Oculus Flywheel Compat"
-filename = "iris-flywheel-compat-1.20.1-0.2.5.jar"
+filename = "iris-flywheel-compat-fabric1.20.1+1.1.4.jar"
 side = "client"
 
 [download]
-url = "https://cdn.modrinth.com/data/ndHYMY2K/versions/ce9TjaVw/iris-flywheel-compat-1.20.1-0.2.5.jar"
+url = "https://cdn.modrinth.com/data/ndHYMY2K/versions/v3unHP1U/iris-flywheel-compat-fabric1.20.1%2B1.1.4.jar"
 hash-format = "sha1"
-hash = "eeb14f4a70f1368caeea7776d35d846234619816"
+hash = "3a6a2d277ef215bf6f0b1a81eb2ffce7553d96ce"
 
 [update]
 [update.modrinth]
 mod-id = "ndHYMY2K"
-version = "ce9TjaVw"
+version = "v3unHP1U"

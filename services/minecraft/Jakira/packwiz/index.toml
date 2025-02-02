@@ -93,6 +93,10 @@ file = "mods/ae2.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/almanac.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/ambientsounds.pw.toml"
 metafile = true
 
@@ -118,6 +122,10 @@ metafile = true
 
 [[files]]
 file = "mods/athena-ctm.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/automodpack.pw.toml"
 metafile = true
 
 [[files]]
@@ -209,10 +217,6 @@ file = "mods/cc-tweaked.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/cc-vs.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/cccbridge.pw.toml"
 metafile = true
 
@@ -237,6 +241,10 @@ file = "mods/comforts.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/configurable.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/continuity.pw.toml"
 metafile = true
 
@@ -250,14 +258,6 @@ metafile = true
 
 [[files]]
 file = "mods/create-big-cannons.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/create-clockwork.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/create-design-n-decor.pw.toml"
 metafile = true
 
 [[files]]
@@ -382,10 +382,6 @@ metafile = true
 
 [[files]]
 file = "mods/entitytexturefeatures.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/eureka.pw.toml"
 metafile = true
 
 [[files]]
@@ -633,11 +629,19 @@ file = "mods/observable.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/octo-lib.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/open-loader.pw.toml"
 metafile = true
 
 [[files]]
 file = "mods/options-profiles.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/owo-lib.pw.toml"
 metafile = true
 
 [[files]]
@@ -713,7 +717,15 @@ file = "mods/starlight.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/supermartijn642s-config-lib.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/supplementaries.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/tcdcommons.pw.toml"
 metafile = true
 
 [[files]]
@@ -761,15 +773,7 @@ file = "mods/universal-graves.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/valkyrien-skies.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/vein-mining.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/vmod.pw.toml"
 metafile = true
 
 [[files]]

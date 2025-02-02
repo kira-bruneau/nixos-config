@@ -3,11 +3,11 @@ filename = "ComplementaryUnbound.zip"
 side = "client"
 
 [download]
-url = "https://cdn.modrinth.com/data/R6NEzAwj/versions/RMaZ3tSJ/ComplementaryUnbound_r5.2.2.zip"
+url = "https://cdn.modrinth.com/data/R6NEzAwj/versions/Z1zqMzjh/ComplementaryUnbound_r5.4.zip"
 hash-format = "sha1"
-hash = "f0c0cbd2059b7a464b9e0f061ddfa6f0980849e1"
+hash = "239542849d064ab0ac9758a3e6278c310ace0a04"
 
 [update]
 [update.modrinth]
 mod-id = "R6NEzAwj"
-version = "RMaZ3tSJ"
+version = "Z1zqMzjh"

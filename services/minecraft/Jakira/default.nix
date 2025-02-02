@@ -205,12 +205,6 @@ in
     };
 
     symlinks = pack.files // {
-      "mods/automodpack-fabric-4.0.0-beta1-1.20.1.jar" = pkgs.requireFile {
-        name = "automodpack-fabric-4.0.0-beta1-1.20.1.jar";
-        url = "https://github.com/Skidamek/AutoModpack/actions/runs/8317674272/artifacts/1333325852";
-        hash = "sha256-DxBZXiXo3psnw8+l2F2ViMJ00pgpTfIxAIERYsUKcPs=";
-      };
-
       "allowed_symlinks.txt" = pkgs.writeText "allowed_symlinks.txt" ''
         /nix/store
       '';

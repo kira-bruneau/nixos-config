@@ -1,13 +1,13 @@
 name = "Not Enough Recipe Book [NERB]"
-filename = "nerb-1.20.1-0.3-FABRIC.jar"
+filename = "Not Enough Recipe Book-FABRIC-0.4.1+1.20.1.jar"
 side = "both"
 
 [download]
-url = "https://cdn.modrinth.com/data/bQh7xzFq/versions/TXL5AFHt/nerb-1.20.1-0.3-FABRIC.jar"
+url = "https://cdn.modrinth.com/data/bQh7xzFq/versions/hiLb6QFe/Not%20Enough%20Recipe%20Book-FABRIC-0.4.1%2B1.20.1.jar"
 hash-format = "sha1"
-hash = "3455a9d5305ef7f9d725a1b043cdff3e7f342501"
+hash = "9088cb96c16372b339ca7f5b6e928938ebf97442"
 
 [update]
 [update.modrinth]
 mod-id = "bQh7xzFq"
-version = "TXL5AFHt"
+version = "hiLb6QFe"
