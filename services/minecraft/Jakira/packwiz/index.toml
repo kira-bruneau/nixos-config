@@ -5,64 +5,64 @@ file = "config/openloader/data/better-hephaestus.pw.toml"
 metafile = true
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_aquatic.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_aquatic.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_cold/overworld.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_cold/overworld.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_coniferous.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_coniferous.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_dense_vegetation/overworld.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_dense_vegetation/overworld.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_desert.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_desert.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_dry/overworld.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_dry/overworld.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_hot/overworld.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_hot/overworld.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_mountain.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_mountain.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_mountain/peak.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_mountain/peak.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_mountain/slope.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_mountain/slope.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_mushroom.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_mushroom.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_plains.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_plains.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_snowy.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_snowy.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_sparse_vegetation/overworld.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_sparse_vegetation/overworld.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_swamp.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_swamp.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_underground.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_underground.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_wasteland.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_wasteland.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/is_wet/overworld.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_wet/overworld.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/data/c/tags/worldgen/biome/no_default_monsters.json"
+file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/no_default_monsters.json"
 
 [[files]]
-file = "config/openloader/data/fabric-biomes-terralinth-compat/pack.mcmeta"
+file = "config/openloader/data/fabric-biomes-terralith-compat/pack.mcmeta"
 
 [[files]]
 file = "config/openloader/resources/fresh-animations.pw.toml"
