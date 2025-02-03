@@ -28,7 +28,12 @@ in
         forceSSL = true;
         locations = {
           "/".return = 404;
-          "/_matrix".proxyPass = "http://quartz:8008";
+          "/_matrix" = {
+            proxyPass = "http://quartz:8008";
+            extraConfig = ''
+              client_max_body_size 1G;
+            '';
+          };
           "/_synapse/client".proxyPass = "http://quartz:8008";
         };
       };
