@@ -361,7 +361,7 @@ in
     serverProperties = {
       difficulty = "normal";
       enforce-secure-profile = false;
-      level-seed = 4013200787929413176;
+      level-seed = 1989853394042396715;
       server-port = 25564;
     };
   };
