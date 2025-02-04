@@ -60,8 +60,9 @@
               lib.makeBinPath (
                 with pkgs;
                 [
-                  nix
+                  coreutils
                   git
+                  nix
                 ]
               )
             }
