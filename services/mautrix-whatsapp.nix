@@ -4,6 +4,8 @@
   services.mautrix-whatsapp = {
     enable = true;
 
+    environmentFile = "/var/lib/mautrix-whatsapp/tokens.env";
+
     settings = lib.mkForce {
       network.history_sync = {
         request_full_sync = true;
@@ -40,6 +42,7 @@
         allow = true;
         default = true;
         require = true;
+        pickle_key = "$MAUTRIX_WHATSAPP_ENCRYPTION_PICKLE_KEY";
       };
 
       logging.writers = [
