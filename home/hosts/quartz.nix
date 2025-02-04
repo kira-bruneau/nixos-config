@@ -47,11 +47,6 @@
       };
 
       update-nixos-unstable = {
-        Unit = {
-          Wants = [ "update-nixos-main.service" ];
-          After = [ "update-nixos-main.service" ];
-        };
-
         Service = {
           Type = "oneshot";
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nixos-config/unstable";
