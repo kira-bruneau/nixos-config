@@ -10,8 +10,10 @@
 
     # Disable plugins that require experimental features
     disabledPlugins = [
+      "asha"
       "bap"
       "bass"
+      "ccp"
       "csip"
       "mcp"
       "micp"
