@@ -53,30 +53,6 @@ in
         apply = lib.recursiveUpdate default;
         inherit (settingsFormat) type;
         default = {
-          homeserver = {
-            software = "standard";
-
-            domain = "";
-            address = "";
-          };
-
-          appservice = {
-            id = "";
-
-            database = {
-              type = "sqlite3-fk-wal";
-              uri = "file:${fullDataDir cfg}/mautrix-discord.db?_txlock=immediate";
-            };
-
-            bot = {
-              username = "";
-            };
-
-            hostname = "localhost";
-            port = 29334;
-            address = "http://${cfg.settings.appservice.hostname}:${toString cfg.settings.appservice.port}";
-          };
-
           bridge = {
             # Enable encryption by default to make the bridge more secure
             encryption = {
@@ -102,8 +78,6 @@ in
                 share = "cross-signed-tofu";
               };
             };
-
-            permissions = { };
           };
 
           logging = {
@@ -115,61 +89,6 @@ in
             };
           };
         };
-        defaultText = ''
-          {
-            homeserver = {
-              software = "standard";
-              address = "https://''${cfg.settings.homeserver.domain}";
-            };
-
-            appservice = {
-              database = {
-                type = "sqlite3-fk-wal";
-                uri = "file:''${fullDataDir cfg}/mautrix-discord.db?_txlock=immediate";
-              };
-
-              hostname = "localhost";
-              port = 29334;
-              address = "http://''${cfg.settings.appservice.hostname}:''${toString cfg.settings.appservice.port}";
-            };
-
-            bridge = {
-              # Require encryption by default to make the bridge more secure
-              encryption = {
-                allow = true;
-                default = true;
-                require = true;
-
-                # Recommended options from mautrix documentation
-                # for optimal security.
-                delete_keys = {
-                  dont_store_outbound = true;
-                  ratchet_on_decrypt = true;
-                  delete_fully_used_on_decrypt = true;
-                  delete_prev_on_new_session = true;
-                  delete_on_device_delete = true;
-                  periodically_delete_expired = true;
-                  delete_outdated_inbound = true;
-                };
-
-                verification_levels = {
-                  receive = "cross-signed-tofu";
-                  send = "cross-signed-tofu";
-                  share = "cross-signed-tofu";
-                };
-              };
-            };
-
-            logging = {
-              min_level = "info";
-              writers = lib.singleton {
-                type = "stdout";
-                format = "pretty-colored";
-                time_format = " ";
-              };
-            };
-          };
-        '';
         description = ''
           {file}`config.yaml` configuration as a Nix attribute set.
           Configuration options should match those described in
@@ -246,7 +165,8 @@ in
     lib.mkIf cfg.enable {
       assertions = [
         {
-          assertion = cfg.settings.homeserver.domain != "" && cfg.settings.homeserver.address != "";
+          assertion =
+            cfg.settings.homeserver.domain or "" != "" && cfg.settings.homeserver.address or "" != "";
           message = ''
             The options with information about the homeserver:
             `services.mautrix-discord.settings.homeserver.domain` and
@@ -254,21 +174,9 @@ in
           '';
         }
         {
-          assertion = cfg.settings.bridge.permissions != { };
+          assertion = cfg.settings.bridge.permissions or { } != { };
           message = ''
             The option `services.mautrix-discord.settings.bridge.permissions` has to be set.
-          '';
-        }
-        {
-          assertion = cfg.settings.appservice.id != "";
-          message = ''
-            The option `services.mautrix-discord.settings.appservice.id` has to be set.
-          '';
-        }
-        {
-          assertion = cfg.settings.appservice.bot.username != "";
-          message = ''
-            The option `services.mautrix-discord.settings.appservice.bot.username` has to be set.
           '';
         }
       ];
@@ -370,7 +278,7 @@ in
 
           serviceConfig = {
             Type = "oneshot";
-            UMask = 27;
+            UMask = "0027";
 
             User = "mautrix-discord";
             Group = "mautrix-discord";
@@ -421,7 +329,7 @@ in
             SystemCallArchitectures = "native";
             SystemCallErrorNumber = "EPERM";
             SystemCallFilter = [ "@system-service" ];
-            UMask = 27;
+            UMask = "0027";
 
             WorkingDirectory = fullDataDir cfg;
             ReadWritePaths = fullDataDir cfg;
@@ -440,25 +348,6 @@ in
         serviceUnit = "mautrix-discord.service";
         registrationServiceUnit = "mautrix-discord-registration.service";
         registrationFile = (fullDataDir cfg) + "/discord-registration.yaml";
-        settings =
-          let
-            inherit (lib.modules) mkDefault;
-          in
-          {
-            bridge = {
-              username_template = mkDefault "discord_{{.}}";
-            };
-
-            appservice = {
-              id = mkDefault "discord";
-              port = mkDefault 29334;
-              bot = {
-                username = mkDefault "discordbot";
-                displayname = mkDefault "Discord bridge bot";
-                avatar = mkDefault "mxc://maunium.net/nIdEykemnwdisvHbpxflpDlC";
-              };
-            };
-          };
       };
     }
   );
