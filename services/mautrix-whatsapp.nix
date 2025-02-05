@@ -7,10 +7,7 @@
     environmentFile = "/var/lib/mautrix-whatsapp/tokens.env";
 
     settings = lib.mkForce {
-      network.history_sync = {
-        request_full_sync = true;
-        full_sync_config.days_limit = 10 * 365;
-      };
+      network.history_sync.request_full_sync = true;
 
       bridge = {
         permissions = {
