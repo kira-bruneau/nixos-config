@@ -12,6 +12,7 @@ let
 in
 {
   imports = [
+    ./mautrix-discord.nix
     ./mautrix-whatsapp.nix
   ];
 
