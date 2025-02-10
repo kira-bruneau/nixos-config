@@ -7,6 +7,14 @@
 }:
 
 let
+  jsonFormat = pkgs.formats.json { };
+
+  qbittorrentFormat = pkgs.formats.ini {
+    listToValue = lib.concatMapStringsSep ", " (lib.generators.mkValueStringDefault { });
+  };
+
+  xmlFormat = pkgsUnstable.formats.xml { };
+
   downloadClients = {
     "qBittorrent" = {
       implementation = "QBittorrent";
@@ -157,33 +165,27 @@ let
       Shows = {
         type = "tvshows";
         folders = sonarr.rootFolders;
-        options = ''
-          <EnableRealtimeMonitor>true</EnableRealtimeMonitor>
-        '';
+        options.EnableRealtimeMonitor = true;
       };
 
       Movies = {
         type = "movies";
         folders = radarr.rootFolders;
-        options = ''
-          <EnableRealtimeMonitor>true</EnableRealtimeMonitor>
-        '';
+        options.EnableRealtimeMonitor = true;
       };
 
       Books = {
         type = "books";
         folders = readarr.rootFolders;
-        options = ''
-          <EnableRealtimeMonitor>true</EnableRealtimeMonitor>
-        '';
+        options.EnableRealtimeMonitor = true;
       };
 
       Downloads = {
         folders = [ { path = qBittorrent.BitTorrent."Session\\DefaultSavePath"; } ];
-        options = ''
-          <EnableRealtimeMonitor>true</EnableRealtimeMonitor>
-          <EnableEmbeddedTitles>true</EnableEmbeddedTitles>
-        '';
+        options = {
+          EnableEmbeddedTitles = true;
+          EnableRealtimeMonitor = true;
+        };
       };
     };
   };
@@ -211,12 +213,16 @@ let
       {
         inherit type;
         folders = builtins.map (folder: folder.path) folders;
-        options = lib.optionalString (options != null) ''
-          <?xml version="1.0" encoding="utf-8"?>
-          <LibraryOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          ${options}
-          </LibraryOptions>
-        '';
+        options =
+          if options != { } then
+            xmlFormat.generate "options.xml" {
+              LibraryOptions = {
+                "@xmlns:xsi" = "http://www.w3.org/2001/XMLSchema-instance";
+                "@xmlns:xsd" = "http://www.w3.org/2001/XMLSchema";
+              } // options;
+            }
+          else
+            null;
       }
       ''
         mkdir "$out"
@@ -235,10 +241,11 @@ let
             name=$name$i
           fi
           echo -n "$folder" > "$out/$name.mblink"
-          if [ -n "$options" ]; then
-            echo -n "$options" > "$out/options.xml"
-          fi
         done
+
+        if [ -n "$options" ]; then
+          ln -s "$options" "$out/options.xml"
+        fi
       '';
 
   makeArrConfig =
@@ -481,51 +488,70 @@ in
     };
 
     preStart = ''
-      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "system.xml" ''
-        <?xml version="1.0" encoding="utf-8"?>
-        <ServerConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <IsStartupWizardCompleted>true</IsStartupWizardCompleted>
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${
+        xmlFormat.generate "system.xml" {
+          ServerConfiguration = {
+            "@xmlns:xsi" = "http://www.w3.org/2001/XMLSchema-instance";
+            "@xmlns:xsd" = "http://www.w3.org/2001/XMLSchema";
 
-          <UICulture>en-US</UICulture>
-          <PreferredMetadataLanguage>en</PreferredMetadataLanguage>
-          <MetadataCountryCode>CA</MetadataCountryCode>
+            IsStartupWizardCompleted = true;
 
-          <PluginRepositories>
-            <RepositoryInfo>
-              <Name>Jellyfin Stable</Name>
-              <Url>https://repo.jellyfin.org/releases/plugin/manifest-stable.json</Url>
-              <Enabled>true</Enabled>
-            </RepositoryInfo>
-          </PluginRepositories>
+            UICulture = "en-US";
+            PreferredMetadataLanguage = "en";
+            MetadataCountryCode = "CA";
 
-          <LibraryMonitorDelay>1</LibraryMonitorDelay>
-        </ServerConfiguration>
-      ''} "${config.services.jellyfin.configDir}/system.xml"
+            PluginRepositories = {
+              RepositoryInfo = {
+                Name = "Jellyfin Stable";
+                Url = "https://repo.jellyfin.org/releases/plugin/manifest-stable.json";
+                Enabled = true;
+              };
+            };
 
-      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "branding.xml" ''
-        <?xml version="1.0" encoding="utf-8"?>
-        <BrandingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <CustomCss>.playedIndicator { display: none; }</CustomCss>
-          <SplashscreenEnabled>true</SplashscreenEnabled>
-        </BrandingOptions>
-      ''} "${config.services.jellyfin.configDir}/branding.xml"
+            LibraryMonitorDelay = 1;
+          };
+        }
+      } "${config.services.jellyfin.configDir}/system.xml"
 
-      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "encoding.xml" ''
-        <?xml version="1.0" encoding="utf-8"?>
-        <EncodingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <EnableHardwareEncoding>true</EnableHardwareEncoding>
-          <HardwareAccelerationType>vaapi</HardwareAccelerationType>
-          <VaapiDevice>/dev/dri/by-path/pci-0000:0b:00.0-render</VaapiDevice>
-          <HardwareDecodingCodecs>
-            <string>av1</string>
-            <string>h264</string>
-            <string>hevc</string>
-            <string>vp9</string>
-          </HardwareDecodingCodecs>
-          <EnableDecodingColorDepth10Hevc>true</EnableDecodingColorDepth10Hevc>
-          <EnableTonemapping>true</EnableTonemapping>
-        </EncodingOptions>
-      ''} "${config.services.jellyfin.configDir}/encoding.xml"
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${
+        xmlFormat.generate "branding.xml" {
+          BrandingOptions = {
+            "@xmlns:xsi" = "http://www.w3.org/2001/XMLSchema-instance";
+            "@xmlns:xsd" = "http://www.w3.org/2001/XMLSchema";
+
+            CustomCss = ''
+              .playedIndicator {
+                display: none;
+              }
+            '';
+
+            SplashscreenEnabled = true;
+          };
+        }
+      } "${config.services.jellyfin.configDir}/branding.xml"
+
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${
+        xmlFormat.generate "encoding.xml" {
+          EncodingOptions = {
+            "@xmlns:xsi" = "http://www.w3.org/2001/XMLSchema-instance";
+            "@xmlns:xsd" = "http://www.w3.org/2001/XMLSchema";
+
+            EnableHardwareEncoding = true;
+            HardwareAccelerationType = "vaapi";
+            VaapiDevice = "/dev/dri/by-path/pci-0000:0b:00.0-render";
+
+            HardwareDecodingCodecs.string = [
+              "av1"
+              "h264"
+              "hevc"
+              "vp9"
+            ];
+
+            EnableDecodingColorDepth10Hevc = true;
+            EnableTonemapping = true;
+          };
+        }
+      } "${config.services.jellyfin.configDir}/encoding.xml"
 
       ${pkgs.coreutils}/bin/mkdir -p "${config.services.jellyfin.dataDir}/root/default"
       ${builtins.concatStringsSep "\n" (
@@ -581,15 +607,17 @@ in
 
   systemd.services.sonarr = {
     preStart = ''
-      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
-        <Config>
-          <BindAddress>*</BindAddress>
-          <AuthenticationMethod>External</AuthenticationMethod>
-          <AnalyticsEnabled>False</AnalyticsEnabled>
-          <LogDbEnabled>False</LogDbEnabled>
-          <ApiKey>${sonarr.apiKey}</ApiKey>
-        </Config>
-      ''} "${config.services.sonarr.dataDir}/config.xml"
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${
+        xmlFormat.generate "config.xml" {
+          Config = {
+            BindAddress = "*";
+            AuthenticationMethod = "External";
+            AnalyticsEnabled = false;
+            LogDbEnabled = false;
+            ApiKey = sonarr.apiKey;
+          };
+        }
+      } "${config.services.sonarr.dataDir}/config.xml"
     '';
 
     postStart = ''
@@ -612,7 +640,7 @@ in
               url = "http://localhost:${sonarr.port}/api/v3/config/naming/1"
               request = "PUT"
               data = "@${
-                pkgs.writers.writeJSON "naming.json" {
+                jsonFormat.generate "naming.json" {
                   id = 1;
                   renameEpisodes = true;
                   replaceIllegalCharacters = true;
@@ -638,7 +666,7 @@ in
               url = "http://localhost:${sonarr.port}/api/v3/config/mediamanagement/1"
               request = "PUT"
               data = "@${
-                pkgs.writers.writeJSON "mediamanagement.json" {
+                jsonFormat.generate "mediamanagement.json" {
                   id = 1;
                   importExtraFiles = true;
                   extraFileExtensions = "srt";
@@ -655,13 +683,13 @@ in
           ++ (builtins.map (folder: ''
             url = "http://localhost:${sonarr.port}/api/v3/rootfolder"
             request = "POST"
-            data = "@${pkgs.writers.writeJSON "rootfolder.json" folder}"
+            data = "@${jsonFormat.generate "rootfolder.json" folder}"
           '') sonarr.rootFolders)
           ++ (builtins.map (name: ''
             url = "http://localhost:${sonarr.port}/api/v3/downloadclient"
             request = "POST"
             data = "@${
-              pkgs.writers.writeJSON "${name}.json" (
+              jsonFormat.generate "${name}.json" (
                 {
                   inherit name;
                   enable = true;
@@ -705,15 +733,17 @@ in
 
   systemd.services.radarr = {
     preStart = ''
-      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
-        <Config>
-          <BindAddress>*</BindAddress>
-          <AuthenticationMethod>External</AuthenticationMethod>
-          <AnalyticsEnabled>False</AnalyticsEnabled>
-          <LogDbEnabled>False</LogDbEnabled>
-          <ApiKey>${radarr.apiKey}</ApiKey>
-        </Config>
-      ''} "${config.services.radarr.dataDir}/config.xml"
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${
+        xmlFormat.generate "config.xml" {
+          Config = {
+            BindAddress = "*";
+            AuthenticationMethod = "External";
+            AnalyticsEnabled = false;
+            LogDbEnabled = false;
+            ApiKey = radarr.apiKey;
+          };
+        }
+      } "${config.services.radarr.dataDir}/config.xml"
     '';
 
     postStart = ''
@@ -736,7 +766,7 @@ in
               url = "http://localhost:${radarr.port}/api/v3/config/naming/1"
               request = "PUT"
               data = "@${
-                pkgs.writers.writeJSON "naming.json" {
+                jsonFormat.generate "naming.json" {
                   renameMovies = true;
                   replaceIllegalCharacters = true;
                   standardMovieFormat = "{Movie Title} ({Release Year}) {Quality Title} {MediaInfo VideoCodec}";
@@ -754,7 +784,7 @@ in
               url = "http://localhost:${radarr.port}/api/v3/config/mediamanagement/1"
               request = "PUT"
               data = "@${
-                pkgs.writers.writeJSON "mediamanagement.json" {
+                jsonFormat.generate "mediamanagement.json" {
                   importExtraFiles = true;
                   extraFileExtensions = "srt";
 
@@ -770,13 +800,13 @@ in
           ++ (builtins.map (folder: ''
             url = "http://localhost:${radarr.port}/api/v3/rootfolder"
             request = "POST"
-            data = "@${pkgs.writers.writeJSON "rootfolder.json" folder}"
+            data = "@${jsonFormat.generate "rootfolder.json" folder}"
           '') radarr.rootFolders)
           ++ (builtins.map (name: ''
             url = "http://localhost:${radarr.port}/api/v3/downloadclient"
             request = "POST"
             data = "@${
-              pkgs.writers.writeJSON "${name}.json" (
+              jsonFormat.generate "${name}.json" (
                 {
                   inherit name;
                   enable = true;
@@ -819,15 +849,17 @@ in
 
   systemd.services.readarr = {
     preStart = ''
-      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
-        <Config>
-          <BindAddress>*</BindAddress>
-          <AuthenticationMethod>External</AuthenticationMethod>
-          <AnalyticsEnabled>False</AnalyticsEnabled>
-          <LogDbEnabled>False</LogDbEnabled>
-          <ApiKey>${readarr.apiKey}</ApiKey>
-        </Config>
-      ''} "${config.services.readarr.dataDir}/config.xml"
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${
+        xmlFormat.generate "config.xml" {
+          Config = {
+            BindAddress = "*";
+            AuthenticationMethod = "External";
+            AnalyticsEnabled = false;
+            LogDbEnabled = false;
+            ApiKey = readarr.apiKey;
+          };
+        }
+      } "${config.services.readarr.dataDir}/config.xml"
     '';
 
     postStart = ''
@@ -850,7 +882,7 @@ in
               url = "http://localhost:${readarr.port}/api/v1/config/naming/1"
               request = "PUT"
               data = "@${
-                pkgs.writers.writeJSON "naming.json" {
+                jsonFormat.generate "naming.json" {
                   renameBooks = true;
                   replaceIllegalCharacters = true;
                   colonReplacementFormat = 4;
@@ -869,7 +901,7 @@ in
               url = "http://localhost:${readarr.port}/api/v1/config/mediamanagement/1"
               request = "PUT"
               data = "@${
-                pkgs.writers.writeJSON "mediamanagement.json" {
+                jsonFormat.generate "mediamanagement.json" {
                   importExtraFiles = true;
                   extraFileExtensions = "srt";
 
@@ -886,7 +918,7 @@ in
             url = "http://localhost:${readarr.port}/api/v1/rootfolder"
             request = "POST"
             data = "@${
-              pkgs.writers.writeJSON "rootfolder.json" (
+              jsonFormat.generate "rootfolder.json" (
                 {
                   defaultQualityProfileId = 1;
                   defaultMetadataProfileId = 1;
@@ -899,7 +931,7 @@ in
             url = "http://localhost:${readarr.port}/api/v1/downloadclient"
             request = "POST"
             data = "@${
-              pkgs.writers.writeJSON "${name}.json" (
+              jsonFormat.generate "${name}.json" (
                 {
                   inherit name;
                   enable = true;
@@ -922,15 +954,17 @@ in
 
   systemd.services.prowlarr = {
     preStart = ''
-      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${pkgs.writeText "config.xml" ''
-        <Config>
-          <BindAddress>*</BindAddress>
-          <AuthenticationMethod>External</AuthenticationMethod>
-          <AnalyticsEnabled>False</AnalyticsEnabled>
-          <LogDbEnabled>False</LogDbEnabled>
-          <ApiKey>${prowlarr.apiKey}</ApiKey>
-        </Config>
-      ''} "/var/lib/prowlarr/config.xml"
+      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${
+        xmlFormat.generate "config.xml" {
+          Config = {
+            BindAddress = "*";
+            AuthenticationMethod = "External";
+            AnalyticsEnabled = false;
+            LogDbEnabled = false;
+            ApiKey = prowlarr.apiKey;
+          };
+        }
+      } "/var/lib/prowlarr/config.xml"
     '';
 
     postStart = ''
@@ -951,7 +985,7 @@ in
             url = "http://localhost:${prowlarr.port}/api/v1/applications"
             request = "POST"
             data = "@${
-              pkgs.writers.writeJSON "${name}.json" (
+              jsonFormat.generate "${name}.json" (
                 {
                   inherit name;
                   enable = true;
@@ -965,7 +999,7 @@ in
             url = "http://localhost:${prowlarr.port}/api/v1/indexer"
             request = "POST"
             data = "@${
-              pkgs.writers.writeJSON "${name}.json" (
+              jsonFormat.generate "${name}.json" (
                 {
                   inherit name;
                   enable = true;
@@ -980,7 +1014,7 @@ in
             url = "http://localhost:${prowlarr.port}/api/v1/downloadclient"
             request = "POST"
             data = "@${
-              pkgs.writers.writeJSON "${name}.json" (
+              jsonFormat.generate "${name}.json" (
                 {
                   inherit name;
                   enable = true;
@@ -1049,13 +1083,7 @@ in
     preStart = ''
       ${pkgs.coreutils}/bin/mkdir -p "$STATE_DIRECTORY/.config/qBittorrent"
       ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership \
-        ${
-          (pkgs.formats.ini {
-            listToValue = lib.concatMapStringsSep ", " (lib.generators.mkValueStringDefault { });
-          }).generate
-            "qBittorrent.conf"
-            qBittorrent
-        } \
+        ${qbittorrentFormat.generate "qBittorrent.conf" qBittorrent} \
         "$STATE_DIRECTORY/.config/qBittorrent/qBittorrent.conf"
     '';
   };
