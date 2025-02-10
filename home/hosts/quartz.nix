@@ -113,17 +113,29 @@
 
     timers = {
       update-nixos-main = {
-        Timer.OnCalendar = "daily";
+        Timer = {
+          OnCalendar = "daily";
+          Persistent = true;
+        };
+
         Install.WantedBy = [ "timers.target" ];
       };
 
       update-nixos-peridot = {
-        Timer.OnCalendar = "weekly";
+        Timer = {
+          OnCalendar = "weekly";
+          Persistent = true;
+        };
+
         Install.WantedBy = [ "timers.target" ];
       };
 
       update-nur = {
-        Timer.OnCalendar = "daily";
+        Timer = {
+          OnCalendar = "daily";
+          Persistent = true;
+        };
+
         Install.WantedBy = [ "timers.target" ];
       };
     };
