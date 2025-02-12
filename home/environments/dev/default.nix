@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgsChromium,
   pkgsNixIndexDatabase,
   ...
 }:
@@ -34,7 +33,7 @@ in
 
   home.packages = with pkgs; [
     # Web
-    pkgsChromium.ungoogled-chromium
+    ungoogled-chromium
 
     # Media & Documents
     poke

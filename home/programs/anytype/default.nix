@@ -1,7 +1,7 @@
-{ pkgsUnstable, pkgsKiraNur, ... }:
+{ pkgsKiraNur, ... }:
 
 {
-  home.packages = [ (pkgsKiraNur.anytype.override { electron = pkgsUnstable.electron_29; }) ];
+  home.packages = [ pkgsKiraNur.anytype ];
 
   xdg.configFile."anytype/devconfig.json".text = builtins.toJSON {
     sudo = true; # Disables analytics

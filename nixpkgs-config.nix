@@ -35,9 +35,6 @@
     "dotnet-sdk-6.0.428"
     "dotnet-sdk-wrapped-6.0.428"
 
-    # anytype
-    "electron-29.4.6"
-
     # mautrix-whatsapp
     "olm-3.2.16"
   ];

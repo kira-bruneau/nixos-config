@@ -96,11 +96,6 @@
                   config = config.nixpkgs.config;
                 };
 
-                pkgsChromium = import inputs.nixpkgs-chromium {
-                  system = pkgs.system;
-                  config = config.nixpkgs.config;
-                };
-
                 pkgsYabridgeWine = import inputs.nixpkgs-chromium {
                   system = pkgs.system;
                   config = config.nixpkgs.config;
