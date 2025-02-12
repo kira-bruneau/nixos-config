@@ -281,10 +281,9 @@ in
         };
       in
       {
-        "jakira.space".locations."/" = sharedSettings // {
+        "home.jakira.space".locations."/" = sharedSettings // {
           proxyPass = "http://127.0.0.1:${toString config.services.homepage-dashboard.listenPort}";
         };
-        "home.jakira.space".globalRedirect = "jakira.space";
         "jellyfin.jakira.space".locations."/" = sharedSettings // {
           proxyPass = "http://127.0.0.1:8096";
         };
