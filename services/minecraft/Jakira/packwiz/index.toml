@@ -545,6 +545,10 @@ file = "mods/lmd.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/matrix-bridge.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/memoryleakfix.pw.toml"
 metafile = true
 
