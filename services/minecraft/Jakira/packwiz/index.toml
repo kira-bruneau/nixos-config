@@ -129,10 +129,6 @@ file = "mods/automodpack.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/badoptimizations.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/bclib.pw.toml"
 metafile = true
 
