@@ -333,10 +333,6 @@ file = "mods/eating-animation.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/ebe.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/ecologics.pw.toml"
 metafile = true
 
