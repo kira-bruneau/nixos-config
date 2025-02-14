@@ -1,9 +1,18 @@
 { lib, pkgs, ... }:
 
 let
-  whichf = pkgs.writeShellScriptBin "whichf" ''
-    readlink -f $(which $@)
-  '';
+  wf = pkgs.writeShellApplication {
+    name = "wf";
+
+    runtimeInputs = with pkgs; [
+      coreutils
+      which
+    ];
+
+    text = ''
+      readlink -f "$(which "$@")"
+    '';
+  };
 in
 {
   imports = [
@@ -43,7 +52,7 @@ in
     sd
 
     # Custom utils
-    whichf
+    wf
   ];
 
   # home-manager enables dconf by default, but we only want it in the gui environments
