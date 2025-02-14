@@ -50,7 +50,7 @@ in
 
   services.minecraft-servers.servers.Jakira = {
     enable = true;
-    autoStart = false;
+    openFirewall = true;
     jvmOpts = "-Xmx3G -Xms1G";
     package = pkgsNixMinecraft.fabricServers.${serverVersion}.override {
       jre_headless = pkgs.jdk17_headless;
@@ -362,28 +362,6 @@ in
       difficulty = "normal";
       enforce-secure-profile = false;
       level-seed = 1989853394042396715;
-      server-port = 25564;
     };
-  };
-
-  systemd.sockets.minecraft-server-Jakira-proxy = {
-    wantedBy = [ "sockets.target" ];
-    requires = [ "network.target" ];
-    listenStreams = [ "25565" ];
-  };
-
-  systemd.services.minecraft-server-Jakira-proxy = {
-    requires = [ "minecraft-server-Jakira.service" ];
-    after = [ "minecraft-server-Jakira.service" ];
-    serviceConfig = {
-      Type = "notify";
-      ExecStart = "${pkgs.systemd}/lib/systemd/systemd-socket-proxyd 127.0.0.1:25564";
-      PrivateTmp = true;
-    };
-  };
-
-  networking.firewall = {
-    allowedTCPPorts = [ 25565 ];
-    allowedUDPPorts = [ 25565 ];
   };
 }
