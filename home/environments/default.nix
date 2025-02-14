@@ -1,6 +1,26 @@
 { lib, pkgs, ... }:
 
 let
+  jb = pkgs.writeShellApplication {
+    name = "jb";
+
+    runtimeInputs = with pkgs; [ systemd ];
+
+    text = ''
+      journalctl -b -u "$@"
+    '';
+  };
+
+  jn = pkgs.writeShellApplication {
+    name = "jn";
+
+    runtimeInputs = with pkgs; [ systemd ];
+
+    text = ''
+      journalctl -u "$@" --since "$(systemctl show --value -p ActiveEnterTimestamp "$@")"
+    '';
+  };
+
   wf = pkgs.writeShellApplication {
     name = "wf";
 
@@ -52,6 +72,8 @@ in
     sd
 
     # Custom utils
+    jb
+    jn
     wf
   ];
 
