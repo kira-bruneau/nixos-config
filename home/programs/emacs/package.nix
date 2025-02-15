@@ -30,6 +30,7 @@
   imagemagick,
   jdk,
   jdt-language-server,
+  kotlin-language-server,
   libnotify,
   marksman,
   lldb,
@@ -92,6 +93,7 @@ callPackage ./wrapper.nix {
     epkgs.graphql-ts-mode
     epkgs.haskell-mode
     epkgs.journalctl-mode
+    epkgs.kotlin-ts-mode
     epkgs.latex-preview-pane
     epkgs.lsp-bridge
     epkgs.lua-mode
@@ -135,6 +137,7 @@ callPackage ./wrapper.nix {
       ts.tree-sitter-java
       ts.tree-sitter-javascript
       ts.tree-sitter-json
+      ts.tree-sitter-kotlin
       ts.tree-sitter-nix
       ts.tree-sitter-python
       ts.tree-sitter-ruby
@@ -192,6 +195,7 @@ callPackage ./wrapper.nix {
         imagemagick
         jdk
         jdt-language-server
+        kotlin-language-server
         libnotify
         marksman
         nixd
