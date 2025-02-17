@@ -75,16 +75,18 @@
         path = config.home.username;
         search = {
           force = true;
-          default = "DuckDuckGo";
-          privateDefault = "DuckDuckGo";
+          default = "ddg";
+          privateDefault = "ddg";
 
           order = [
-            "DuckDuckGo"
-            "Google"
+            "ddg"
+            "google"
+            "youtube"
           ];
 
           engines = {
-            "Amazon.ca" = {
+            amazon = {
+              name = "Amazon.ca";
               urls = [
                 {
                   template = "https://www.amazon.ca/s";
@@ -101,12 +103,13 @@
               definedAliases = [ "@a" ];
             };
 
-            "Bing".metaData.hidden = true;
-            "eBay".metaData.hidden = true;
-            "Google".metaData.alias = "@g";
-            "Wikipedia (en)".metaData.alias = "@w";
+            bing.metaData.hidden = true;
+            ebay-ca.metaData.hidden = true;
+            google.metaData.alias = "@g";
+            wikipedia.metaData.alias = "@w";
 
-            "GitHub" = {
+            github = {
+              name = "GitHub";
               urls = [
                 {
                   template = "https://github.com/search";
@@ -119,11 +122,12 @@
                 }
               ];
 
-              iconMapObj."16" = "https://github.githubassets.com/favicons/favicon.svg";
+              icon = "https://github.githubassets.com/favicons/favicon.svg";
               definedAliases = [ "@gh" ];
             };
 
-            "GitHub Code" = {
+            github-code = {
+              name = "GitHub Code";
               urls = [
                 {
                   template = "https://github.com/search";
@@ -140,11 +144,12 @@
                 }
               ];
 
-              iconMapObj."16" = "https://github.githubassets.com/favicons/favicon.svg";
+              icon = "https://github.githubassets.com/favicons/favicon.svg";
               definedAliases = [ "@ghx" ];
             };
 
-            "GitHub Commits" = {
+            github-commits = {
+              name = "GitHub Commits";
               urls = [
                 {
                   template = "https://github.com/search";
@@ -161,11 +166,12 @@
                 }
               ];
 
-              iconMapObj."16" = "https://github.githubassets.com/favicons/favicon.svg";
+              icon = "https://github.githubassets.com/favicons/favicon.svg";
               definedAliases = [ "@ghc" ];
             };
 
-            "GitHub Repositories" = {
+            github-repositories = {
+              name = "GitHub Repositories";
               urls = [
                 {
                   template = "https://github.com/search";
@@ -182,11 +188,12 @@
                 }
               ];
 
-              iconMapObj."16" = "https://github.githubassets.com/favicons/favicon.svg";
+              icon = "https://github.githubassets.com/favicons/favicon.svg";
               definedAliases = [ "@ghr" ];
             };
 
-            "Nixhub.io" = {
+            nixhub = {
+              name = "Nixhub.io";
               urls = [
                 {
                   template = "https://www.nixhub.io/search";
@@ -199,11 +206,12 @@
                 }
               ];
 
-              iconMapObj."16" = "https://www.nixhub.io/favicon.svg";
+              icon = "https://www.nixhub.io/favicon.svg";
               definedAliases = [ "@nh" ];
             };
 
-            "Nix Options" = {
+            nix-options = {
+              name = "Nix Options";
               urls = [
                 {
                   template = "https://search.nixos.org/options";
@@ -220,11 +228,12 @@
                 }
               ];
 
-              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@no" ];
             };
 
-            "Nix Packages" = {
+            nix-packages = {
+              name = "Nix Packages";
               urls = [
                 {
                   template = "https://search.nixos.org/packages";
@@ -241,11 +250,12 @@
                 }
               ];
 
-              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@np" ];
             };
 
-            "NixOS Wiki" = {
+            nixos-wiki = {
+              name = "NixOS Wiki";
               urls = [
                 {
                   template = "https://wiki.nixos.org/w/index.php";
@@ -258,11 +268,12 @@
                 }
               ];
 
-              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@nw" ];
             };
 
-            "Nixpkgs PR Tracker" = {
+            nixpkgs-pr-tracker = {
+              name = "Nixpkgs PR Tracker";
               urls = [
                 {
                   template = "https://nixpk.gs/pr-tracker.html";
@@ -275,11 +286,13 @@
                 }
               ];
 
-              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@nt" ];
             };
 
-            "Home Manager Issues" = {
+            home-manager-issues = {
+              name = "Home Manager issues";
+
               urls = [
                 {
                   template = "https://github.com/nix-community/home-manager/issues";
@@ -292,11 +305,13 @@
                 }
               ];
 
-              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@hi" ];
             };
 
-            "Nixpkgs Issues" = {
+            nixpkgs-issues = {
+              name = "Nixpkgs Issues";
+
               urls = [
                 {
                   template = "https://github.com/NixOS/nixpkgs/issues";
@@ -309,12 +324,12 @@
                 }
               ];
 
-              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@ni" ];
             };
 
-            # A good way to find genuine discussion
-            "Reddit" = {
+            reddit = {
+              name = "Reddit";
               urls = [
                 {
                   template = "https://www.reddit.com/search";
@@ -331,7 +346,8 @@
               definedAliases = [ "@r" ];
             };
 
-            "Youtube" = {
+            youtube = {
+              name = "YouTube";
               urls = [
                 {
                   template = "https://www.youtube.com/results";
