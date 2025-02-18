@@ -413,6 +413,10 @@ file = "mods/farmers-delight-refabricated.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/fastback.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/fastload.pw.toml"
 metafile = true
 
@@ -730,10 +734,6 @@ metafile = true
 
 [[files]]
 file = "mods/terralith.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/textile_backup.pw.toml"
 metafile = true
 
 [[files]]
