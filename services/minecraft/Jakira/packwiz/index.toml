@@ -5,6 +5,10 @@ file = "config/openloader/data/better-hephaestus.pw.toml"
 metafile = true
 
 [[files]]
+file = "config/openloader/data/create-structures.pw.toml"
+metafile = true
+
+[[files]]
 file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldgen/biome/is_aquatic.json"
 
 [[files]]
@@ -63,6 +67,14 @@ file = "config/openloader/data/fabric-biomes-terralith-compat/data/c/tags/worldg
 
 [[files]]
 file = "config/openloader/data/fabric-biomes-terralith-compat/pack.mcmeta"
+
+[[files]]
+file = "config/openloader/data/sleep.pw.toml"
+metafile = true
+
+[[files]]
+file = "config/openloader/data/terralith.pw.toml"
+metafile = true
 
 [[files]]
 file = "config/openloader/resources/fresh-animations.pw.toml"
@@ -286,10 +298,6 @@ metafile = true
 
 [[files]]
 file = "mods/create-steam-n-rails.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/create-structures.pw.toml"
 metafile = true
 
 [[files]]
@@ -697,10 +705,6 @@ file = "mods/skip-backup-screen.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/sleep.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/slice-and-dice.pw.toml"
 metafile = true
 
@@ -730,10 +734,6 @@ metafile = true
 
 [[files]]
 file = "mods/tcdcommons.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/terralith.pw.toml"
 metafile = true
 
 [[files]]
