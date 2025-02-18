@@ -333,6 +333,10 @@ file = "mods/ecologics.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/emi-create-schematics.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/emi-enchanting.pw.toml"
 metafile = true
 
