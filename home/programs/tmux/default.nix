@@ -14,7 +14,7 @@ in
 
   # Automatically start tmux on SSH sessions
   programs.bash.profileExtra = lib.mkAfter ''
-    if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ]; then
+    if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ] && [ -n "$INSIDE_EMACS" ]; then
       exec ${tmux}/bin/tmux attach
     fi
   '';
