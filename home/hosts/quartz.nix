@@ -102,7 +102,7 @@
       update-nur = {
         Service = {
           Type = "oneshot";
-          WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nur-packages";
+          WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nur-packages/main";
           ExecStart = pkgs.writeShellScript "update-nur" ''
             export PATH=${lib.makeBinPath (with pkgs; [ nix ])}
             nix run .#sync ~/Dev/nixpkgs/nur
