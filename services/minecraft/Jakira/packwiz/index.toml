@@ -265,6 +265,10 @@ file = "mods/copycats.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/coroutil.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/create-big-cannons.pw.toml"
 metafile = true
 
@@ -774,6 +778,10 @@ metafile = true
 
 [[files]]
 file = "mods/vein-mining.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/what-are-they-up-to.pw.toml"
 metafile = true
 
 [[files]]
