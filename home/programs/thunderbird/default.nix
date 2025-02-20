@@ -10,7 +10,7 @@
     enable = true;
 
     package =
-      (pkgs.thunderbird.overrideAttrs (attrs: {
+      (pkgs.thunderbird-latest.overrideAttrs (attrs: {
         buildCommand =
           attrs.buildCommand
           + ''
