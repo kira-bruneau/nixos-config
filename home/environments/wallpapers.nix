@@ -212,5 +212,11 @@
       url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1518222915099-PT34N2CZLGEOD6HU4HIL/oceangoddess2.jpg";
       hash = "sha256-qbkjevPVX+sHvxBjpqWRi23qWxTwCu+h6tfycetCJlg=";
     };
+
+    # Živko Kondić: https://www.zhillustrator.com
+    "Pictures/Wallpapers/zivko-kondic-detail-2.jpg".source = pkgs.fetchurl {
+      url = "https://cdn.artstation.com/p/assets/images/images/065/477/779/large/zivko-kondic-detail-2.jpg";
+      hash = "sha256-6iXBkNjxjLWfYa5BATFNuUb+b9uv0aE5kOxhJ9ANGxo=";
+    };
   };
 }
