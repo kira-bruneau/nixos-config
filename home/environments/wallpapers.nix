@@ -128,11 +128,6 @@
       hash = "sha256-VwOkHVg3tQswH+fgFBLspFk9OTCCHGJPfeiLdHfoCuI=";
     };
 
-    "Pictures/Wallpapers/wallpaper_51.jpg".source = pkgs.fetchurl {
-      url = "https://www.androidpolice.com/wp-content/uploads/2013/11/nexusae0_wallpaper_51.jpg";
-      hash = "sha256-n4ImZpnvuDTOBrbZcf68DlDUIGG2tQlML/1/JGz6qvc=";
-    };
-
     # Cathleen McAllister: https://www.cathleenconcepts.com
     "Pictures/Wallpapers/botanicalschool2.jpg".source = pkgs.fetchurl {
       url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1527133445648-IWM4P51FA7JRGJ9C8TVL/botanicalschool2.jpg";
