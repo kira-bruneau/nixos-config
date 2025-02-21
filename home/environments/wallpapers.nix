@@ -1,11 +1,8 @@
 { pkgs, ... }:
 
 {
-  # Artists:
-  # https://star-plasma.tumblr.com
-  # https://www.artstation.com/aenamiart
-  # https://www.behance.net/geometrieva
   home.file = {
+    # Alena Aenami: https://www.artstation.com/aenamiart
     "Pictures/Wallpapers/alena-aenami-15step.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/034/249/633/large/alena-aenami-15step.jpg";
       hash = "sha256-somlRLvOd0vK6WBq+ZPWx2XtCXmcRQqTbQfj6GcA07Q=";
@@ -162,17 +159,58 @@
       url = "https://cdn.artstation.com/p/assets/images/images/041/883/956/large/alena-aenami-wings-hd.jpg";
       hash = "sha256-7VcxN7ZpCaK07YpJFitN3fmWmNNIL0y+VW2E0agd3QU=";
     };
+
+    # https://www.behance.net/geometrieva
     "Pictures/Wallpapers/4HPEcJ8.jpeg".source = pkgs.fetchurl {
       url = "https://i.imgur.com/4HPEcJ8.jpeg";
       hash = "sha256-/h4CAbRxvyIlFW+HbJGlkUS9BNVp5kV5iTlLnEyjoM0=";
     };
+
+    # https://star-plasma.tumblr.com
     "Pictures/Wallpapers/tumblr_oxatnfFq9p1s3zokdo4_1280.jpg".source = pkgs.fetchurl {
       url = "https://media.tumblr.com/54bebe7b661fcc5ee1f3f7be4d9b56ee/tumblr_oxatnfFq9p1s3zokdo4_1280.jpg";
       hash = "sha256-VwOkHVg3tQswH+fgFBLspFk9OTCCHGJPfeiLdHfoCuI=";
     };
+
     "Pictures/Wallpapers/wallpaper_51.jpg".source = pkgs.fetchurl {
       url = "https://www.androidpolice.com/wp-content/uploads/2013/11/nexusae0_wallpaper_51.jpg";
       hash = "sha256-n4ImZpnvuDTOBrbZcf68DlDUIGG2tQlML/1/JGz6qvc=";
+    };
+
+    # Cathleen McAllister: https://www.cathleenconcepts.com
+    "Pictures/Wallpapers/botanicalschool2.jpg".source = pkgs.fetchurl {
+      url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1527133445648-IWM4P51FA7JRGJ9C8TVL/botanicalschool2.jpg";
+      hash = "sha256-QGsQ2NHrXENp+qEHMBaG7cgRGdZwzRO8oO9UYWWBYAM=";
+    };
+
+    "Pictures/Wallpapers/bot_aquariums05_reduced.jpg".source = pkgs.fetchurl {
+      url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1574373891744-21DTLPWYF4U27J3K5NLB/bot_aquariums05_reduced.jpg";
+      hash = "sha256-FOLitgZGnd7IIDQ4w9E3D3EvjCFeivdFG8be40PtdGM=";
+    };
+
+    "Pictures/Wallpapers/bot_librarygirls03.jpg".source = pkgs.fetchurl {
+      url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1565802118663-TW1QFDTGPQZIEEX3ILGQ/bot_librarygirls03.jpg";
+      hash = "sha256-LQFfr/BEZyjAKmYVfI4WOGGCZd2Mc/L8+6kMpSB8XVk=";
+    };
+
+    "Pictures/Wallpapers/bot_seedlibraryr05.jpg".source = pkgs.fetchurl {
+      url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1542667075403-6M5GWN2CLVC4OZORQ5T5/bot_seedlibraryr05.jpg";
+      hash = "sha256-7wkUV3hxp1GtZvBgIasj+TIXpinijP8mfFVwW2XNs4A=";
+    };
+
+    "Pictures/Wallpapers/hillhouse.jpg".source = pkgs.fetchurl {
+      url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1714239438601-9WCP7POBN2ODCWJ4JHFU/hillhouse.jpg";
+      hash = "sha256-6EzFxut0wbZBEPXh1IWV/yjjh+7pcgF1/eNYWawTg3w=";
+    };
+
+    "Pictures/Wallpapers/market2.jpg".source = pkgs.fetchurl {
+      url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1491280992429-YOPDT2T82MH24MV7SV8W/market2.jpg";
+      hash = "sha256-fRfeZaBglklJUd+MrDV7Ef3k9D+OunZ6TCUnaYfw9ZU=";
+    };
+
+    "Pictures/Wallpapers/oceangoddess2.jpg".source = pkgs.fetchurl {
+      url = "https://images.squarespace-cdn.com/content/v1/531e37e5e4b063fa3e98a4a7/1518222915099-PT34N2CZLGEOD6HU4HIL/oceangoddess2.jpg";
+      hash = "sha256-qbkjevPVX+sHvxBjpqWRi23qWxTwCu+h6tfycetCJlg=";
     };
   };
 }
