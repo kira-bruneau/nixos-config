@@ -84,11 +84,7 @@
   (powerline-minimal-theme))
 
 ;; Default font
-(set-face-attribute 'default nil
-                    :font
-                    (if (eq system-type 'darwin)
-                        "Monaco 12"
-                      "DejaVu Sans Mono 9"))
+(set-face-attribute 'default nil :height 90)
 
 ;; Buffer settings
 (setq-default tab-width 2)

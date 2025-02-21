@@ -27,7 +27,8 @@
       discord
 
       # Fonts
-      inter
+      ubuntu-sans
+      ubuntu-sans-mono
 
       # Utils
       libnotify
@@ -59,7 +60,8 @@
 
   fonts.fontconfig = {
     enable = true;
-    defaultFonts.sansSerif = [ "Inter" ];
+    defaultFonts.sansSerif = [ "Ubuntu Sans" ];
+    defaultFonts.monospace = [ "Ubuntu Sans Mono" ];
   };
 
   # xdg.configFile."wireplumber/main.lua.d/51-restrict-control.lua".text = ''
