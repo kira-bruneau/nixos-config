@@ -23,14 +23,6 @@
       url = "https://cdn.artstation.com/p/assets/images/images/031/514/156/large/alena-aenami-budapest.jpg";
       hash = "sha256-TiN9WGhMJPUho2oaWitepl94eAxSE4pWCgzfsd03sNA=";
     };
-    "Pictures/Wallpapers/alena-aenami-castle2k.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/003/316/239/large/alena-aenami-castle2k.jpg";
-      hash = "sha256-bp/x0/1wg3cfB0XIIwF749b4NGgvyivg4WqP4iWf9LQ=";
-    };
-    "Pictures/Wallpapers/alena-aenami-close-to-the-sun-1920.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/003/723/818/large/alena-aenami-close-to-the-sun-1920.jpg";
-      hash = "sha256-UukNGy+1mmAKLztgpxrFNdUoPRI417XaTlK0HFMz7qc=";
-    };
     "Pictures/Wallpapers/alena-aenami-clouds-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/040/945/997/large/alena-aenami-clouds-1k.jpg";
       hash = "sha256-oBiQD8huKRMLpmJ/2ovghjUcCpfZB/g1Hnvxb0i4Aw0=";
@@ -55,10 +47,6 @@
       url = "https://cdn.artstation.com/p/assets/images/images/074/794/932/large/alena-aenami-dreamy-1k.jpg";
       hash = "sha256-jLXzIzHY0uRSi43gQncAIzy1G/P9ZZk4l9Hqw//ata4=";
     };
-    "Pictures/Wallpapers/alena-aenami-eclipse-1k.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg";
-      hash = "sha256-l+Q/TGW727QClBajgsmLHjAhUxEerultCNlsTBbSYuQ=";
-    };
     "Pictures/Wallpapers/alena-aenami-endless-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/014/327/751/large/alena-aenami-endless-1k.jpg";
       hash = "sha256-/25SJOkBecedibo5YGyOZn8hgWhZq3Kho+OQbVDc8wA=";
@@ -75,29 +63,9 @@
       url = "https://cdn.artstation.com/p/assets/images/images/002/518/961/large/alena-aenami-ice1920.jpg";
       hash = "sha256-u1iBaOnod2KsSjwQV4SesNGR06vdHzRgeUqf6MUtqTs=";
     };
-    "Pictures/Wallpapers/alena-aenami-lighthouse1k.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/003/061/580/large/alena-aenami-lighthouse1k.jpg";
-      hash = "sha256-Euuke3LB3B2Qbarz8qoCPbtiKdRbDJLLWugXkn0Sb+w=";
-    };
-    "Pictures/Wallpapers/alena-aenami-lights1k1.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/006/170/271/large/alena-aenami-lights1k1.jpg";
-      hash = "sha256-SPPNQ7GGhVdH6ojlM/OcFmZY6SjjLHW2wWJX3/dX+Ik=";
-    };
     "Pictures/Wallpapers/alena-aenami-lights-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/065/778/660/large/alena-aenami-lights-1k.jpg";
       hash = "sha256-h8NfbCY3MA1TmqQIW0C9GNpwvCntk6Lf0+hkEkj0jOY=";
-    };
-    "Pictures/Wallpapers/alena-aenami-lines1k.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/009/970/322/large/alena-aenami-lines1k.jpg";
-      hash = "sha256-rIrvN0N7O4X5SmQPvpu0U2bclG7ATqvyjJDKPbY1Bqk=";
-    };
-    "Pictures/Wallpapers/alena-aenami-lost-dream-hd.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/037/583/635/large/alena-aenami-lost-dream-hd.jpg";
-      hash = "sha256-9iCv16T7vRjP9QkrjW4fCllyVgmoDJG9mTp5uoQyAJs=";
-    };
-    "Pictures/Wallpapers/alena-aenami-mountains1k.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/002/446/988/large/alena-aenami-mountains1k.jpg";
-      hash = "sha256-Y0XTskxqYct6P0SGxIop8JszNGar9hygKctb/V98oOo=";
     };
     "Pictures/Wallpapers/alena-aenami-mountains.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/002/222/165/large/alena-aenami-mountains.jpg";
@@ -106,10 +74,6 @@
     "Pictures/Wallpapers/alena-aenami-new-year1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/065/778/955/large/alena-aenami-new-year1k.jpg";
       hash = "sha256-u5OLO49Edh11a2dmhSBbQE9FB738uzv2w8Yu5ZBLwXQ=";
-    };
-    "Pictures/Wallpapers/alena-aenami-night-1k.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/033/957/502/large/alena-aenami-night-1k.jpg";
-      hash = "sha256-uV0dcBf+HPmTqfbOMgV8B711Nw/2xDO9F3NX5l9f/O8=";
     };
     "Pictures/Wallpapers/alena-aenami-portal-001-w.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/040/946/134/large/alena-aenami-portal-001-w.jpg";
@@ -127,10 +91,6 @@
       url = "https://cdn.artstation.com/p/assets/images/images/002/844/038/large/alena-aenami-reflect1k.jpg";
       hash = "sha256-rzi0uPy/kr1q75EIfOJA/n/8POp1NbC5ARwhrXBAfPQ=";
     };
-    "Pictures/Wallpapers/alena-aenami-revenant3-2.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/001/798/518/4k/alena-aenami-revenant3-2.jpg";
-      hash = "sha256-FPLXpVVkH+8Lev/jI9dyjtMnso4swMnlqstcFElHyvY=";
-    };
     "Pictures/Wallpapers/alena-aenami-serenity-1k-2.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/065/778/947/large/alena-aenami-serenity-1k.jpg";
       hash = "sha256-VYP6Eb+xZUc3+01zRgRXVL/8hbk71V4zHjZ0Sy3Zq+0=";
@@ -138,10 +98,6 @@
     "Pictures/Wallpapers/alena-aenami-serenity-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/004/446/155/large/alena-aenami-serenity-1k.jpg";
       hash = "sha256-muzXOM68GN5hnIF/4DPJNb2XZBoox+olcy6SdQsuahw=";
-    };
-    "Pictures/Wallpapers/alena-aenami-sky1k.jpg".source = pkgs.fetchurl {
-      url = "https://cdn.artstation.com/p/assets/images/images/002/715/085/large/alena-aenami-sky1k.jpg";
-      hash = "sha256-iF8XMHKo0u2fe6vhP8sPJhlmz1lB0fKLWtERiaxCIro=";
     };
     "Pictures/Wallpapers/alena-aenami-solar-1k.jpg".source = pkgs.fetchurl {
       url = "https://cdn.artstation.com/p/assets/images/images/008/084/830/large/alena-aenami-solar-1k.jpg";
