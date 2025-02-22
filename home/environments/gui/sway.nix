@@ -111,6 +111,24 @@ in
           size = 10.0;
         };
 
+        colors = {
+          focused = {
+            background = "#1b202b";
+            border = "#1b202b";
+            childBorder = "#2b303b";
+            text = "#eeeeee";
+            indicator = "#ff0000";
+          };
+
+          unfocused = {
+            background = "#2b303b";
+            border = "#2b303b";
+            childBorder = "#2b303b";
+            text = "#64727d";
+            indicator = "#ff0000";
+          };
+        };
+
         output = {
           "*" = {
             bg = "`${random-wallpaper}` fill";
