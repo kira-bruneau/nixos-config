@@ -234,6 +234,12 @@ in
         "com.tiviacz.travelersbackpack.inventory.menu.BackpackItemMenu" = {
           ignore = true;
         };
+        "com.tiviacz.travelersbackpack.client.screens.BackpackSettingsScreen" = {
+          ignore = true;
+        };
+        "com.tiviacz.travelersbackpack.inventory.menu.BackpackSettingsMenu" = {
+          ignore = true;
+        };
       };
 
       "config/inventoryprofilesnext/inventoryprofiles.json".value = {
