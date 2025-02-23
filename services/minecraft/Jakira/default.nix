@@ -243,7 +243,10 @@ in
       '';
 
       "config/inventoryprofilesnext/integrationHints/travelersbackpack.json".value = {
-        "com.tiviacz.travelersbackpack.client.screen.TravelersBackpackHandledScreen" = {
+        "com.tiviacz.travelersbackpack.client.screens.BackpackScreen" = {
+          ignore = true;
+        };
+        "com.tiviacz.travelersbackpack.inventory.menu.BackpackItemMenu" = {
           ignore = true;
         };
       };
