@@ -86,7 +86,13 @@ in
         ];
 
         allowEditsInFiles = [
-          "/config/*"
+          "/config/ambientsounds-client.json"
+          "/config/emi.css"
+          "/config/inventoryprofilesnext/inventoryprofiles.json"
+          "/config/iris.properties"
+          "/config/presencefootsteps/userconfig.json"
+          "/config/xaerominimap.txt"
+          "/config/xaeroworldmap.txt"
           "/options.txt"
           "/shaderpacks/*.txt"
         ];
