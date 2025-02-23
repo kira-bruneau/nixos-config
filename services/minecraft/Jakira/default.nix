@@ -67,7 +67,6 @@ in
           "/config/carryon-common.json"
           "/config/emi.css"
           "/config/entity_model_features.json"
-          "/config/fabric_loader_dependencies.json"
           "/config/inventoryprofilesnext/integrationHints/travelersbackpack.json"
           "/config/inventoryprofilesnext/inventoryprofiles.json"
           "/config/iris.properties"
@@ -227,20 +226,6 @@ in
         # Fresh hand animations are incompatible with 3d skin layers
         preventFirstPersonHandAnimating = true;
       };
-
-      # version must be first key - can't use builtins.toJSON
-      "config/fabric_loader_dependencies.json" = pkgs.writeText "fabric_loader_dependencies.json" ''
-        {
-          "version": 1,
-          "overrides": {
-            "create": {
-              "breaks": {
-                "sound_physics_remastered": "<1.20.1-1.4.0"
-              }
-            }
-          }
-        }
-      '';
 
       "config/inventoryprofilesnext/integrationHints/travelersbackpack.json".value = {
         "com.tiviacz.travelersbackpack.client.screens.BackpackScreen" = {
