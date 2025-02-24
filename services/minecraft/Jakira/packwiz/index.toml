@@ -273,6 +273,10 @@ file = "mods/create-big-cannons.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/create-deco.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/create-dreams-and-desires.pw.toml"
 metafile = true
 
