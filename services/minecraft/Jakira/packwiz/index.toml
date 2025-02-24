@@ -301,6 +301,10 @@ file = "mods/create-new-age.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/create-pattern-schematics.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/create-power-loader-fabric.pw.toml"
 metafile = true
 
