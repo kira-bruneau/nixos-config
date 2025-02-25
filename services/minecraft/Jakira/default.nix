@@ -254,6 +254,10 @@ in
           sort_order = "RAW_ID";
         };
 
+        Hotkeys = {
+          sort_inventory.main.keys = "R,S";
+        };
+
         GuiSettings = {
           enable_inventory_editor_button.value = false;
           enable_inventory_settings_button.value = false;
