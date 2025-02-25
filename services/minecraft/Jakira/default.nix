@@ -66,7 +66,6 @@ in
           "/config/bclib/client.json"
           "/config/carryon-common.json"
           "/config/emi.css"
-          "/config/entity_model_features.json"
           "/config/inventoryprofilesnext/integrationHints/travelersbackpack.json"
           "/config/inventoryprofilesnext/inventoryprofiles.json"
           "/config/iris.properties"
@@ -382,11 +381,6 @@ in
           left-sidebar-subpanels: craftables 10;
         }
       '';
-
-      "config/entity_model_features.json".value = {
-        # Fresh hand animations are incompatible with 3d skin layers
-        preventFirstPersonHandAnimating = true;
-      };
 
       "config/inventoryprofilesnext/integrationHints/travelersbackpack.json".value = {
         "com.tiviacz.travelersbackpack.client.screens.BackpackScreen" = {
