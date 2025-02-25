@@ -226,6 +226,10 @@ in
         #general {
           search-mod-name-by-default: true;
         }
+
+        #ui {
+          left-sidebar-subpanels: craftables 10;
+        }
       '';
 
       "config/entity_model_features.json".value = {
