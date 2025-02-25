@@ -251,6 +251,7 @@ in
       "config/inventoryprofilesnext/inventoryprofiles.json".value = {
         ModSettings = {
           enable_auto_refill.value = false;
+          enable_updates_check = false;
           first_run = false;
           sort_order = "RAW_ID";
         };
