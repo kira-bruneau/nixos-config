@@ -289,10 +289,6 @@ file = "mods/create-fabric.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/create-high-pressure.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/create-jetpack.pw.toml"
 metafile = true
 
@@ -310,6 +306,10 @@ metafile = true
 
 [[files]]
 file = "mods/create-steam-n-rails.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/create-ultimate-factory.pw.toml"
 metafile = true
 
 [[files]]
