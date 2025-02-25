@@ -479,11 +479,19 @@ in
       };
 
       "config/xaerominimap.txt" = pkgs.writeText "xaerominimap.txt" ''
+        autoConvertWaypointDistanceToKmThreshold:10000
+        compassLocation:2
+        displayCurrentClaim:true
         ignoreUpdate:1
-        updateNotification:false
+        lightOverlayColor:0
         lockNorth:true
         minimapOpacity:75.0
-        minimapShape:1
+        minimapShape:0
+        northCompassColor:-1
+        updateNotification:false
+        waypointsBottom:true
+        waypointsDistanceExp:8
+        waypointsDistanceMin:25.0
         module;id=xaerominimap:minimap;active=true;x=0;y=0;centered=false;fromRight=true;fromBottom=false;flippedVer=false;flippedHor=false;
       '';
 
