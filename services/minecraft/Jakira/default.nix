@@ -249,6 +249,11 @@ in
       };
 
       "config/inventoryprofilesnext/inventoryprofiles.json".value = {
+        ModSettings = {
+          first_run = false;
+          sort_order = "RAW_ID";
+        };
+
         GuiSettings = {
           enable_inventory_editor_button.value = false;
           enable_inventory_settings_button.value = false;
