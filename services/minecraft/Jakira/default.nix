@@ -250,6 +250,7 @@ in
 
       "config/inventoryprofilesnext/inventoryprofiles.json".value = {
         ModSettings = {
+          enable_auto_refill.value = false;
           first_run = false;
           sort_order = "RAW_ID";
         };
@@ -262,12 +263,6 @@ in
           enable_inventory_editor_button.value = false;
           enable_inventory_settings_button.value = false;
           continuous_crafting_saved_value = false;
-        };
-
-        AutoRefillSettings = {
-          number_of_notifications = 1;
-          visual_replace_failed_notification.value = false;
-          audio_replace_failed_notification.value = false;
         };
       };
 
