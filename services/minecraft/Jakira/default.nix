@@ -91,6 +91,7 @@ in
           "/config/inventoryprofilesnext/inventoryprofiles.json"
           "/config/iris.properties"
           "/config/presencefootsteps/userconfig.json"
+          "/config/travelersbackpack.json5"
           "/config/xaerominimap.txt"
           "/config/xaeroworldmap.txt"
           "/options.txt"
