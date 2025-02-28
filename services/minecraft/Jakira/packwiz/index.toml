@@ -669,6 +669,10 @@ file = "mods/numismatics.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/nyfs-spiders.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/observable.pw.toml"
 metafile = true
 
