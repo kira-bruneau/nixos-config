@@ -129,6 +129,10 @@ file = "mods/architectury-api.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/armor-statues.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/artifacts.pw.toml"
 metafile = true
 

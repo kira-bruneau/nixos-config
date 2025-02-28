@@ -1,0 +1,13 @@
+name = "Armor Statues"
+filename = "ArmorStatues-v8.0.6-1.20.1-Fabric.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/bbGCtEvb/versions/D9e0CJWj/ArmorStatues-v8.0.6-1.20.1-Fabric.jar"
+hash-format = "sha1"
+hash = "958af5b24d34ec94d94a32c5f10060180850c3f4"
+
+[update]
+[update.modrinth]
+mod-id = "bbGCtEvb"
+version = "D9e0CJWj"
