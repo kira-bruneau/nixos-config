@@ -357,6 +357,10 @@ file = "mods/dynamic-fps.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/easy-magic.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/eating-animation.pw.toml"
 metafile = true
 
