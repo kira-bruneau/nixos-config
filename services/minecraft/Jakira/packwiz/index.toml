@@ -229,6 +229,10 @@ file = "mods/carry-on.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/cave-dust.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/cc-tweaked.pw.toml"
 metafile = true
 
