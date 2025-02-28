@@ -805,6 +805,10 @@ file = "mods/vein-mining.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/visual-workbench.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/what-are-they-up-to.pw.toml"
 metafile = true
 
