@@ -205,6 +205,10 @@ file = "mods/birds-boids-addon.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/blur-plus.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/boids.pw.toml"
 metafile = true
 
