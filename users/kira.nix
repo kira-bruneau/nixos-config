@@ -89,7 +89,7 @@
     };
 
     programs = {
-      firefox.profiles.firefox.settings = {
+      librewolf.profiles.librewolf.settings = {
         "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
         "services.sync.username" = "kira.bruneau@pm.me";
       };

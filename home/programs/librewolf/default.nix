@@ -6,8 +6,9 @@
 }:
 
 {
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
+    vendorPath = ".mozilla";
 
     policies = {
       ExtensionSettings = {
@@ -64,13 +65,14 @@
     };
 
     profiles = {
-      firefox = {
+      librewolf = {
         id = 0;
-        name = "Firefox";
+        name = "Librewolf";
         path = config.home.username;
         search = {
           force = true;
           default = "DuckDuckGo";
+          privateDefault = "DuckDuckGo";
 
           order = [
             "DuckDuckGo"
@@ -365,6 +367,15 @@
           "signon.rememberSignons" = false; # Use keepassxc instead
           "widget.wayland.fractional-scale.enabled" = true;
 
+          # Loosen librewolf-specific security settings
+          "identity.fxaccounts.enabled" = true;
+          "privacy.clearOnShutdown_v2.cache" = false;
+          "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+          "privacy.fingerprintingProtection.overrides" = "+AllTargets,-JSDateTimeUTC";
+          "privacy.history.custom" = false;
+          "privacy.resistFingerprinting" = false;
+          "privacy.sanitize.sanitizeOnShutdown" = false;
+
           # Search
           "browser.search.suggest.enabled" = false;
           "browser.search.update" = false;
@@ -451,20 +462,20 @@
         "WebBrowser"
       ];
 
-      exec = "firefox -P ${profile.name} --new-tab %U";
-    }) config.programs.firefox.profiles;
+      exec = "librewolf -P ${profile.name} --new-tab %U";
+    }) config.programs.librewolf.profiles;
 
     mimeApps.defaultApplications = {
-      "application/vnd.mozilla.xul+xml" = "firefox.desktop";
-      "application/xhtml+xml" = "firefox.desktop";
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
+      "application/vnd.mozilla.xul+xml" = "librewolf.desktop";
+      "application/xhtml+xml" = "librewolf.desktop";
+      "text/html" = "librewolf.desktop";
+      "x-scheme-handler/http" = "librewolf.desktop";
+      "x-scheme-handler/https" = "librewolf.desktop";
     };
   };
 
   home = {
-    activation.firefoxPermissions =
+    activation.librewolfPermissions =
       let
         permissions = {
           "https://app.element.io" = {
@@ -490,7 +501,7 @@
           };
         };
 
-        db = lib.escapeShellArg "${config.home.homeDirectory}/.mozilla/firefox/${config.home.username}/permissions.sqlite";
+        db = lib.escapeShellArg "${config.home.homeDirectory}/${config.programs.librewolf.configPath}/${config.programs.librewolf.profiles.librewolf.path}/permissions.sqlite";
 
         schemaSQL = pkgs.writeText "schema.sql" ''
           BEGIN TRANSACTION;
@@ -573,18 +584,18 @@
           $DRY_RUN_CMD ${pkgs.sqlite}/bin/sqlite3 ${db} < ${schemaSQL}
         fi
 
-        # Ignore errors, firefox enforces an exclusive lock on the db while running
+        # Ignore errors, librewolf enforces an exclusive lock on the db while running
         $DRY_RUN_CMD ${pkgs.sqlite}/bin/sqlite3 ${db} < ${dataSQL} || :
       '';
   };
 
   wayland.windowManager.sway.config = {
-    startup = [ { command = "firefox"; } ];
-    assigns."1" = [ { app_id = "^firefox$"; } ];
+    startup = [ { command = "librewolf"; } ];
+    assigns."1" = [ { app_id = "^librewolf$"; } ];
     window.commands = [
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://www.youtube.com";
         };
 
@@ -592,7 +603,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://music.youtube.com";
         };
 
@@ -600,7 +611,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://calendar.google.com";
         };
 
@@ -608,7 +619,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://calendar.proton.me";
         };
 
@@ -616,7 +627,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "http://habitica.jakira.space";
         };
 
@@ -624,7 +635,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://mail.google.com";
         };
 
@@ -632,7 +643,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://mail.proton.me";
         };
 
@@ -640,7 +651,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://outlook.office.com";
         };
 
@@ -648,7 +659,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://app.cinny.in";
         };
 
@@ -656,7 +667,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://app.element.io";
         };
 
@@ -664,7 +675,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "https://chat.jakira.space";
         };
 
@@ -672,7 +683,7 @@
       }
       {
         criteria = {
-          app_id = "^firefox$";
+          app_id = "^librewolf$";
           title = "^Picture-in-Picture$";
         };
 

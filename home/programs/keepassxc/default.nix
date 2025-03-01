@@ -36,8 +36,8 @@ in
 
   wayland.windowManager.sway.config.startup = [ { command = "${keepassxc}/bin/keepassxc"; } ];
 
-  # Firefox integration
-  programs.firefox = {
+  # Librewolf integration
+  programs.librewolf = {
     policies.ExtensionSettings."keepassxc-browser@keepassxc.org" = {
       installation_mode = "force_installed";
       install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";

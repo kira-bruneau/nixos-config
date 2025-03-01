@@ -94,8 +94,8 @@ let
       "Dolphin Emulator" = -1761564564;
       "Dropout" = -1539404924;
       "Element" = -1815128494;
-      "Firefox" = -1974293946;
       "Jellyfin Media Player" = -567380782;
+      "Librewolf" = -1974293946;
       "Mario Kart 8 Deluxe" = -1565192715;
       "Mario Kart 8" = -1565192714;
       "Mario Kart: Double Dash" = -1565192713;
@@ -135,8 +135,8 @@ let
     "Clone Hero".LaunchOptions = "clonehero";
     "Discord".LaunchOptions = "Discord";
     "Dolphin Emulator".LaunchOptions = "QT_QPA_PLATFORM=xcb dolphin-emu";
-    "Dropout".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.dropout.tv -P Jackfox";
-    "Firefox".LaunchOptions = "firefox";
+    "Dropout".LaunchOptions = "GDK_SCALE=2 librewolf --new-window --kiosk https://www.dropout.tv -P Jackwolf";
+    "Librewolf".LaunchOptions = "librewolf";
     "Jellyfin Media Player".LaunchOptions = "jellyfinmediaplayer --tv --scale-factor 2";
     "Mario Kart 8 Deluxe".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
     "Mario Kart 8".LaunchOptions = "Cemu --fullscreen --title-id 000500001010ec00";
@@ -152,7 +152,7 @@ let
     "The Legend of Zelda: Echoes of Wisdom".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
     "The Legend Of Zelda: Majora's Mask".LaunchOptions = "2s2h";
     "The Legend Of Zelda: The Wind Waker".LaunchOptions = "Cemu --fullscreen --title-id 0005000010143500";
-    "Youtube".LaunchOptions = "GDK_SCALE=2 firefox --new-window --kiosk https://www.youtube.com/tv";
+    "Youtube".LaunchOptions = "GDK_SCALE=2 librewolf --new-window --kiosk https://www.youtube.com/tv";
   };
 in
 {
@@ -175,7 +175,7 @@ in
         // {
           "BigChadGuys Plus".LaunchOptions = "${common."BigChadGuys Plus".LaunchOptions} --profile daxvena";
           "Discord".LaunchOptions = "${xdgProfile "kira"} ${common."Discord".LaunchOptions}";
-          "Firefox".LaunchOptions = "${common."Firefox".LaunchOptions} Kirafox";
+          "Librewolf".LaunchOptions = "${common."Librewolf".LaunchOptions} -P Kirawolf";
         }
       );
     };
@@ -189,7 +189,7 @@ in
         // {
           "BigChadGuys Plus".LaunchOptions = "${common."BigChadGuys Plus".LaunchOptions} --profile CptJackL";
           "Discord".LaunchOptions = "${xdgProfile "jack"} ${common."Discord".LaunchOptions}";
-          "Firefox".LaunchOptions = "${common."Firefox".LaunchOptions} Jackfox";
+          "Librewolf".LaunchOptions = "${common."Librewolf".LaunchOptions} -P Jackwolf";
         }
       );
     };
@@ -204,8 +204,8 @@ in
     "org/gnome/shell" = {
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
-        "firefox.desktop"
-        "jackfox.desktop"
+        "librewolf.desktop"
+        "jackwolf.desktop"
         "steam.desktop"
         "com.github.iwalton3.jellyfin-media-player.desktop"
         "org.gnome.Console.desktop"
@@ -242,7 +242,7 @@ in
     };
   };
 
-  programs.firefox.policies.ExtensionSettings."{d2bcedce-889b-4d53-8ce9-493d8f78612a}" = {
+  programs.librewolf.policies.ExtensionSettings."{d2bcedce-889b-4d53-8ce9-493d8f78612a}" = {
     installation_mode = "force_installed";
     install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-for-tv/latest.xpi";
   };

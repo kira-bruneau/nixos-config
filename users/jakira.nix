@@ -35,19 +35,19 @@ in
     {
       imports = [ ../home/hosts/${system-name}.nix ];
 
-      # Add firefox profile for Jack
-      programs.firefox.profiles = {
-        firefox = lib.mkForce {
-          name = "Kirafox";
-          path = "kira";
+      # Add librewolf profile for Jack
+      programs.librewolf.profiles = {
+        librewolf = {
+          name = lib.mkForce "Kirawolf";
+          path = lib.mkForce "kira";
         };
-        jackfox =
+        jackwolf =
           let
-            base = config.programs.firefox.profiles.firefox;
+            base = config.programs.librewolf.profiles.librewolf;
           in
           {
             id = base.id + 1;
-            name = "Jackfox";
+            name = "Jackwolf";
             path = "jack";
             settings = base.settings // {
               "extensions.activeThemeID" = "{d26a3404-d978-4bd6-93cf-f9749f57b923}";
@@ -57,12 +57,14 @@ in
       };
 
       xdg.desktopEntries = {
-        jackfox.icon = lib.mkForce (
+        librewolf.icon = lib.mkForce (
           pkgs.fetchurl {
-            url = "https://upload.wikimedia.org/wikipedia/commons/3/30/Firefox_Developer_Edition_logo%2C_2019.svg";
-            hash = "sha256-gQk9Uz20oMJiA77HmlLp75VuwDudL64x7IPaz+PBca4=";
+            url = "https://raw.githubusercontent.com/chunkyhairball/cute-icons/refs/heads/main/librewoof/Librewoof.svg";
+            hash = "sha256-V0yN2cMm07zNilfRWJdxASSxBOF2yNb9Bsd0kQi11Ms=";
           }
         );
+
+        jackwolf.icon = lib.mkForce "librewolf";
       };
     };
 }

@@ -5,8 +5,8 @@
     ../../environments/wallpapers.nix
 
     # Web
-    ../../programs/firefox
     ../../programs/jellyfin
+    ../../programs/librewolf
 
     # Media & Documents
     ../../programs/keepassxc
@@ -77,7 +77,7 @@
   #         { "application.process.binary", "matches", "*electron*" },
   #       },
   #       {
-  #         { "application.process.binary", "matches", "*firefox*" },
+  #         { "application.process.binary", "matches", "*librewolf*" },
   #       },
   #     },
   #     default_permissions = "rx",
