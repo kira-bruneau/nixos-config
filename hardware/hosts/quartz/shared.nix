@@ -37,7 +37,11 @@
     };
 
     hosts = {
-      "100.64.0.1" = lib.mkIf config.services.tailscale.enable [ "quartz" ];
+      "100.64.0.1" = lib.optionals config.services.tailscale.enable (
+        [ "quartz" ]
+        ++ lib.optional config.services.firefox-syncserver.enable config.services.firefox-syncserver.singleNode.hostname
+      );
+
       "10.100.0.2" = lib.mkIf config.networking.wireguard.enable [ "quartz" ];
     };
   };
@@ -56,4 +60,6 @@
       "Videos".devices = [ "quartz" ];
     };
   };
+
+  services.firefox-syncserver.singleNode.hostname = "firefox.jakira.space";
 }
