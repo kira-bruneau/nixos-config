@@ -51,7 +51,7 @@ in
   services.minecraft-servers.servers.Jakira = {
     enable = true;
     openFirewall = true;
-    jvmOpts = "-Xmx3G -Xms1G";
+    jvmOpts = "-Xmx6G -Xms3G";
     package = pkgsNixMinecraft.fabricServers.${serverVersion}.override {
       jre_headless = pkgs.jdk17_headless;
       loaderVersion = pack.versions.fabric;
