@@ -1,8 +1,8 @@
 {
   lib,
   stdenv,
-  emacs29,
-  emacs29-pgtk,
+  emacs,
+  emacs-pgtk,
   callPackage,
   buildEnv,
   aspellWithDicts,
@@ -56,7 +56,7 @@
 }:
 
 let
-  emacs = if stdenv.hostPlatform.isDarwin then emacs29 else emacs29-pgtk;
+  emacs = if stdenv.hostPlatform.isDarwin then emacs else emacs-pgtk;
 in
 callPackage ./wrapper.nix {
   emacs = emacs.pkgs.emacsWithPackages (epkgs: [
@@ -77,7 +77,6 @@ callPackage ./wrapper.nix {
     epkgs.doom-themes
     epkgs.drag-stuff
     epkgs.dtrt-indent
-    epkgs.editorconfig
     epkgs.ellama
     epkgs.embark
     epkgs.embark-consult
@@ -96,7 +95,6 @@ callPackage ./wrapper.nix {
     epkgs.kotlin-ts-mode
     epkgs.latex-preview-pane
     epkgs.lsp-bridge
-    epkgs.lua-mode
     epkgs.macrostep
     epkgs.magit
     epkgs.marginalia
@@ -138,6 +136,7 @@ callPackage ./wrapper.nix {
       ts.tree-sitter-javascript
       ts.tree-sitter-json
       ts.tree-sitter-kotlin
+      ts.tree-sitter-lua
       ts.tree-sitter-nix
       ts.tree-sitter-python
       ts.tree-sitter-ruby
@@ -155,7 +154,6 @@ callPackage ./wrapper.nix {
     epkgs.vlf
     epkgs.web-mode
     epkgs.wgrep
-    epkgs.which-key
     epkgs.whitespace-cleanup-mode
     epkgs.xterm-color
   ]);
