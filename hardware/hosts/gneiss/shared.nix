@@ -16,7 +16,11 @@
     ];
   };
 
-  networking.hosts."100.64.0.10" = lib.mkIf config.services.tailscale.enable [ "gneiss" ];
+  networking.hosts."100.64.0.10" = lib.mkIf config.services.tailscale.enable [
+    "gneiss"
+    "fluidd.jakira.space"
+    "mainsail.jakira.space"
+  ];
 
   programs.ssh.knownHosts.gneiss.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINUGzRm127zLH3ZQxwGTFmWyggeu7uwoaMnCGUdCq0fO";
 }

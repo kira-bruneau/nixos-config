@@ -4,7 +4,14 @@
   nix.settings.trusted-public-keys = [ "jakira:wNeIHrxXz2JonyeKJ8Dx6YThMAt1oTn58kVCOAYR1JI=" ];
 
   networking = {
-    hosts."209.38.0.183" = [ "jakira" ];
+    hosts."209.38.0.183" = [
+      "jakira"
+      "jakira.space"
+      "chat.jakira.space"
+      "headscale.jakira.space"
+      "mastodon.jakira.space"
+      "matrix.jakira.space"
+    ];
 
     wireguard.interfaces.wg0 = {
       ips = lib.optional (config.networking.hostName == "jakira") "10.100.0.1/32";

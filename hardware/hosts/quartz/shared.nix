@@ -37,10 +37,20 @@
     };
 
     hosts = {
-      "100.64.0.1" = lib.optionals config.services.tailscale.enable (
-        [ "quartz" ]
-        ++ lib.optional config.services.firefox-syncserver.enable config.services.firefox-syncserver.singleNode.hostname
-      );
+      "100.64.0.1" = lib.optionals config.services.tailscale.enable [
+        "quartz"
+        "firefox.jakira.space"
+        "habitica.jakira.space"
+        "home-assistant.jakira.space"
+        "home.jakira.space"
+        "jellyfin.jakira.space"
+        "jellyseerr.jakira.space"
+        "prowlarr.jakira.space"
+        "qbittorrent.jakira.space"
+        "radarr.jakira.space"
+        "readarr.jakira.space"
+        "sonarr.jakira.space"
+      ];
 
       "10.100.0.2" = lib.mkIf config.networking.wireguard.enable [ "quartz" ];
     };
@@ -60,6 +70,4 @@
       "Videos".devices = [ "quartz" ];
     };
   };
-
-  services.firefox-syncserver.singleNode.hostname = "firefox.jakira.space";
 }

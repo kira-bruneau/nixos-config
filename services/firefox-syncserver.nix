@@ -9,6 +9,7 @@
     singleNode = {
       enable = true;
       enableNginx = true;
+      hostname = "firefox.jakira.space";
     };
   };
 
