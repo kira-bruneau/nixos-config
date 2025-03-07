@@ -115,3 +115,12 @@
    (java-mode . java-ts-mode)
    (ruby-mode . ruby-ts-mode)
    (sh-mode . bash-ts-mode)))
+
+(use-package comint
+  :config
+  (setq
+   comint-password-prompt-regexp
+   (concat
+    comint-password-prompt-regexp
+    ;; sudo-rs format
+    "\\|^\\[su\\(do\\)?: authenticate\\] Password: *\\'")))
