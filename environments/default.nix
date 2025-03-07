@@ -15,6 +15,7 @@
     ./custom-nixos-generate-config.nix
     ./locale
     ./nix.nix
+    ./sudo-rs.nix
   ];
 
   config = {
