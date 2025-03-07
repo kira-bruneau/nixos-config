@@ -10,6 +10,7 @@
     singleNode = {
       enable = true;
       url = "https://firefox-syncserver.jakira.space";
+      capacity = 1;
     };
 
     settings.host = "0.0.0.0";
