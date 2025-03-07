@@ -6,6 +6,7 @@
   services.firefox-syncserver = {
     enable = true;
     secrets = "/var/lib/private/firefox-syncserver/secrets";
+    logLevel = "trace";
 
     singleNode = {
       enable = true;
