@@ -43,6 +43,7 @@
     };
 
     settings = {
+      allowed-users = [ "@wheel" ];
       auto-optimise-store = true;
       builders-use-substitutes = true;
       connect-timeout = 3;
