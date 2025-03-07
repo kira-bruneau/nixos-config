@@ -39,7 +39,6 @@
     hosts = {
       "100.64.0.1" = lib.optionals config.services.tailscale.enable [
         "quartz"
-        "firefox.jakira.space"
         "habitica.jakira.space"
         "home-assistant.jakira.space"
         "home.jakira.space"

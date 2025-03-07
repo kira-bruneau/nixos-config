@@ -7,6 +7,7 @@
 {
   imports = [
     "${toString modulesPath}/virtualisation/digital-ocean-config.nix"
+    ./firefox-syncserver-proxy.nix
     ./synapse-proxy.nix
   ];
 

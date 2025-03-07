@@ -8,6 +8,7 @@
       "jakira"
       "jakira.space"
       "chat.jakira.space"
+      "firefox-syncserver.jakira.space"
       "headscale.jakira.space"
       "mastodon.jakira.space"
       "matrix.jakira.space"
