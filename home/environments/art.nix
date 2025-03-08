@@ -11,7 +11,7 @@
   home.packages = with pkgs; [
     gimp
     inkscape
-    kdenlive
+    kdePackages.kdenlive
     krita
     orca-slicer
     tenacity
