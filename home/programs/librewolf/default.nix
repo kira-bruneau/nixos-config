@@ -51,6 +51,11 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/enhanced-h264ify/latest.xpi";
         };
 
+        "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/user-agent-string-switcher/latest.xpi";
+        };
+
         "{b86e4813-687a-43e6-ab65-0bde4ab75758}" = {
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/localcdn-fork-of-decentraleyes/latest.xpi";
