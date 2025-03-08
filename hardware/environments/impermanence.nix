@@ -54,6 +54,7 @@
       ++ lib.optional config.services.mautrix-discord.enable "/var/lib/mautrix-discord"
       ++ lib.optional config.services.mautrix-whatsapp.enable "/var/lib/mautrix-whatsapp"
       ++ lib.optional config.services.moonraker.enable config.services.moonraker.stateDir
+      ++ lib.optional config.services.mysql.enable config.services.mysql.dataDir
       ++ lib.optionals config.networking.networkmanager.enable [
         "/var/lib/NetworkManager"
         "/var/lib/NetworkManager-fortisslvpn"
