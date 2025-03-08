@@ -577,6 +577,10 @@ file = "mods/leave-my-bars-alone.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/lets-do-herbalbrews.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/libipn.pw.toml"
 metafile = true
 
