@@ -1,5 +1,5 @@
 (use-package compile
   :config
-  (defadvice compile (before ad-compile-smart activate)
-    "Advises `compile' so it sets the argument COMINT to t."
-    (ad-set-arg 1 t)))
+  (define-advice compile (:around (fn command &optional comint) force-comint)
+    "Advises `compile' to always set argument COMINT to t."
+    (funcall fn command t)))

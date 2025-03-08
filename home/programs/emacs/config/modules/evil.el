@@ -124,20 +124,24 @@
         (kbd new-key)
       key))
 
-  (defadvice define-key (around evil-key-rotation activate)
-    (when
-        (or
-         evil-key-rotation--force
-         (cl-some
-          (lambda (map)
-            (eq
-             (ad-get-arg 0)
-             (if (symbolp map)
-                 (when (boundp map) (symbol-value map))
-               map)))
-          evil-key-rotation--maps))
-      (ad-set-arg 1 (evil-key-rotation--rotate-key (ad-get-arg 1))))
-    ad-do-it)
+  (define-advice define-key (:around (fn keymap key &rest rest) evil-key-rotation)
+    (apply
+     fn
+     keymap
+     (if
+         (or
+          evil-key-rotation--force
+          (cl-some
+           (lambda (map)
+             (eq
+              keymap
+              (if (symbolp map)
+                  (when (boundp map) (symbol-value map))
+                map)))
+           evil-key-rotation--maps))
+         (evil-key-rotation--rotate-key key)
+       key)
+     rest))
 
   :custom
   (evil-want-keybinding nil)
@@ -150,19 +154,19 @@
   :config
   (evil-set-undo-system 'undo-tree)
 
-  (defadvice evil-define-key* (around evil-key-rotation activate)
+  (define-advice evil-define-key* (:around (fn &rest rest) evil-key-rotation)
     (let ((evil-key-rotation--force t))
-      ad-do-it))
+      (apply fn rest)))
 
-  (defadvice evil-define-minor-mode-key (around evil-key-rotation activate)
+  (define-advice evil-define-minor-mode-key (:around (fn &rest rest) evil-key-rotation)
     (let ((evil-key-rotation--force t))
-      ad-do-it))
+      (apply fn rest)))
 
-  (defadvice evil-make-overriding-map (before evil-key-rotation activate)
-    (add-to-list 'evil-key-rotation--maps (ad-get-arg 0)))
+  (define-advice evil-make-overriding-map (:before (fn keymap) evil-key-rotation)
+    (add-to-list 'evil-key-rotation--maps keymap))
 
-  (defadvice evil-make-intercept-map (before evil-key-rotation activate)
-    (add-to-list 'evil-key-rotation--maps (ad-get-arg 0)))
+  (define-advice evil-make-intercept-map (:before (fn keymap) evil-key-rotation)
+    (add-to-list 'evil-key-rotation--maps keymap))
 
   (evil-mode))
 

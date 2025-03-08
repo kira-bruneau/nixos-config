@@ -67,13 +67,13 @@
     (if-let ((project (project-current filename)))
         (expand-file-name (project-root project))))
 
-  (defadvice lsp-bridge-ref-switch-to-edit-mode (after lsp-bridge-ref-switch-to-view-mode activate)
+  (define-advice lsp-bridge-ref-switch-to-edit-mode (:after () exit-evil-emacs-state)
     (evil-exit-emacs-state))
 
-  (defadvice lsp-bridge-ref-switch-to-view-mode (after lsp-bridge-ref-switch-to-view-mode activate)
+  (define-advice lsp-bridge-ref-switch-to-view-mode (:after () enter-evil-emacs-state)
     (evil-emacs-state))
 
-  (defadvice lsp-bridge-restart-process (after lsp-bridge-revert-after-restart activate)
+  (define-advice lsp-bridge-restart-process (:after () revert-buffer)
     (revert-buffer)))
 
 (unless (display-graphic-p)
