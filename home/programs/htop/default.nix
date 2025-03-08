@@ -8,7 +8,4 @@
       show_program_path = 0;
     };
   };
-
-  # https://github.com/nix-community/home-manager/issues/4947
-  xdg.configFile."htop/htoprc".force = true;
 }
