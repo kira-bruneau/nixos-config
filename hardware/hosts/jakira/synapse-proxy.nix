@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 let
   clientConfig."m.homeserver".base_url = "https://matrix.jakira.space";
@@ -38,6 +38,20 @@ in
         };
       };
       "chat.jakira.space" = {
+        enableACME = true;
+        forceSSL = true;
+        root = pkgsUnstable.cinny.override {
+          conf = {
+            defaultHomeserver = 0;
+            homeserverList = [ "jakira.space" ];
+            hashRouter = {
+              enabled = true;
+              basename = "/";
+            };
+          };
+        };
+      };
+      "element.jakira.space" = {
         enableACME = true;
         forceSSL = true;
         root = pkgs.element-web.override {
