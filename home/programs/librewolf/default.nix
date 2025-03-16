@@ -8,7 +8,6 @@
 {
   programs.librewolf = {
     enable = true;
-    vendorPath = ".mozilla";
 
     policies = {
       ExtensionSettings = {
