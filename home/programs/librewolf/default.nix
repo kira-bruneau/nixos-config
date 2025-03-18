@@ -197,6 +197,23 @@
               definedAliases = [ "@nw" ];
             };
 
+            "Home Manager Issues" = {
+              urls = [
+                {
+                  template = "https://github.com/nix-community/home-manager/issues";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@hi" ];
+            };
+
             "Nixpkgs Issues" = {
               urls = [
                 {
