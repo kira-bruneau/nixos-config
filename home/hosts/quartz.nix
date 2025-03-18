@@ -114,7 +114,11 @@
     timers = {
       update-nixos-main = {
         Timer = {
-          OnCalendar = "daily";
+          OnCalendar = [
+            "*-*-* 00:00:00"
+            "*-*-* 12:00:00"
+          ];
+
           Persistent = true;
         };
 
