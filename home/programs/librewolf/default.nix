@@ -92,8 +92,7 @@
                 }
               ];
 
-              iconUpdateURL = "https://www.amazon.ca/favicon.ico";
-              updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
+              iconMapObj."48" = "https://www.amazon.ca/favicon.ico";
               definedAliases = [ "@a" ];
             };
 
@@ -115,8 +114,7 @@
                 }
               ];
 
-              iconUpdateURL = "https://github.githubassets.com/favicons/favicon.svg";
-              updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
+              iconMapObj."16" = "https://github.githubassets.com/favicons/favicon.svg";
               definedAliases = [ "@gh" ];
             };
 
@@ -133,8 +131,7 @@
                 }
               ];
 
-              iconUpdateURL = "https://www.nixhub.io/favicon.svg";
-              updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
+              iconMapObj."16" = "https://www.nixhub.io/favicon.svg";
               definedAliases = [ "@nh" ];
             };
 
@@ -155,7 +152,7 @@
                 }
               ];
 
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@no" ];
             };
 
@@ -176,7 +173,7 @@
                 }
               ];
 
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@np" ];
             };
 
@@ -193,7 +190,7 @@
                 }
               ];
 
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@nw" ];
             };
 
@@ -210,7 +207,7 @@
                 }
               ];
 
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@hi" ];
             };
 
@@ -227,7 +224,7 @@
                 }
               ];
 
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@ni" ];
             };
 
@@ -245,8 +242,7 @@
                 }
               ];
 
-              iconUpdateURL = "https://www.redditstatic.com/shreddit/assets/favicon/512x512.png";
-              updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
+              iconMapObj."512" = "https://www.redditstatic.com/shreddit/assets/favicon/512x512.png";
               definedAliases = [ "@r" ];
             };
 
@@ -263,8 +259,7 @@
                 }
               ];
 
-              iconUpdateURL = "https://www.youtube.com/s/desktop/103479f3/img/favicon_144x144.png";
-              updateInterval = 7 * 24 * 60 * 60 * 1000; # every week
+              iconMapObj."144" = "https://www.youtube.com/s/desktop/103479f3/img/favicon_144x144.png";
               definedAliases = [ "@y" ];
             };
           };
