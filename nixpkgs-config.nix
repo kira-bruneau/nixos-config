@@ -29,7 +29,7 @@
     ];
 
   permittedInsecurePackages = [
-    # mautrix-whatsapp
+    # mautrix-discord, mautrix-whatsapp
     "olm-3.2.16"
   ];
 }
