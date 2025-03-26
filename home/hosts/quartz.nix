@@ -24,51 +24,99 @@
 
   systemd.user = {
     services = {
+      update-nixos = {
+        Service = {
+          Type = "oneshot";
+          WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nixos-config/update";
+          ExecStart = lib.getExe (
+            pkgs.writeShellApplication {
+              name = "update-nixos";
+
+              runtimeInputs = with pkgs; [
+                git
+                nix
+                nixos-rebuild
+              ];
+
+              text = ''
+                cleanup() {
+                    local exit_code changes
+                    exit_code=$?
+                    changes="$(git rev-parse HEAD)"
+                    git reset --hard '@{-1}'
+                    git switch -
+                    if [ "$exit_code" -eq 0 ]; then
+                        git merge --ff-only "$changes"
+                    fi
+                }
+
+                git switch --detach HEAD
+                trap cleanup EXIT
+                nix flake update --commit-lock-file --option commit-lockfile-summary "flake.lock: update"
+                nixos-rebuild build --flake .
+              '';
+            }
+          );
+        };
+      };
+
       update-nixos-main = {
+        Unit = {
+          Requires = [ "update-nixos.service" ];
+          After = [ "update-nixos.service" ];
+        };
+
         Service = {
           Type = "oneshot";
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nixos-config/main";
-          ExecStart = pkgs.writeShellScript "update-nixos-main" ''
-            export PATH=${
-              lib.makeBinPath (
-                with pkgs;
-                [
-                  nix
-                  nixos-rebuild
-                  git
-                ]
-              )
-            }
+          ExecStart = lib.getExe (
+            pkgs.writeShellApplication {
+              name = "update-nixos-main";
 
-            nix flake update --commit-lock-file --option commit-lockfile-summary "flake.lock: update"
-            nixos-rebuild build --flake .
-          '';
+              runtimeInputs = with pkgs; [
+                git
+                nix
+                nixos-rebuild
+              ];
+
+              text = ''
+                git rebase update
+                nixos-rebuild build --flake .
+              '';
+            }
+          );
         };
       };
 
       update-nixos-unstable = {
+        Unit = {
+          Requires = [ "update-nixos.service" ];
+          After = [ "update-nixos.service" ];
+        };
+
         Service = {
           Type = "oneshot";
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nixos-config/unstable";
-          ExecStart = pkgs.writeShellScript "update-nixos-unstable" ''
-            export PATH=${
-              lib.makeBinPath (
-                with pkgs;
-                [
-                  coreutils
-                  git
-                  nix
-                ]
-              )
-            }
+          ExecStart = lib.getExe (
+            pkgs.writeShellApplication {
+              name = "update-nixos-unstable";
 
-            if ! git pull --rebase; then
-              rm flake.lock
-              nix flake lock
-              git add flake.lock
-              GIT_EDITOR=true git rebase --continue
-            fi
-          '';
+              runtimeInputs = with pkgs; [
+                coreutils
+                git
+                nix
+              ];
+
+              text = ''
+                if ! git rebase update; then
+                  rm flake.lock
+                  nix flake lock
+                  git add flake.lock
+                  GIT_EDITOR=true git rebase --continue
+                fi
+              '';
+            }
+          );
         };
       };
 
@@ -81,21 +129,26 @@
         Service = {
           Type = "oneshot";
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nixos-config/peridot";
-          ExecStart = pkgs.writeShellScript "update-nixos-peridot" ''
-            export PATH=${
-              lib.makeBinPath (
-                with pkgs;
-                [
-                  git
-                  nix
-                  nixos-rebuild
-                ]
-              )
-            }
+          ExecStart = lib.getExe (
+            pkgs.writeShellApplication {
+              name = "update-nixos-peridot";
+              text = ''
+                export PATH=${
+                  lib.makeBinPath (
+                    with pkgs;
+                    [
+                      git
+                      nix
+                      nixos-rebuild
+                    ]
+                  )
+                }
 
-            git pull --rebase
-            nixos-rebuild build --flake .#peridot
-          '';
+                git rebase unstable
+                nixos-rebuild build --flake .#peridot
+              '';
+            }
+          );
         };
       };
 
@@ -103,10 +156,15 @@
         Service = {
           Type = "oneshot";
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nur-packages/main";
-          ExecStart = pkgs.writeShellScript "update-nur" ''
-            export PATH=${lib.makeBinPath (with pkgs; [ nix ])}
-            nix run .#sync ~/Dev/nixpkgs/nur
-          '';
+          ExecStart = lib.getExe (
+            pkgs.writeShellApplication {
+              name = "update-nur";
+              runtimeInputs = with pkgs; [ nix ];
+              text = ''
+                nix run .#sync ~/Dev/nixpkgs/nur
+              '';
+            }
+          );
         };
       };
     };
