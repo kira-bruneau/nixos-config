@@ -110,7 +110,8 @@ let
       "The Legend of Zelda: Echoes of Wisdom" = -1565192717;
       "The Legend Of Zelda: Majora's Mask" = -1234567890;
       "The Legend Of Zelda: The Wind Waker" = -1826256805;
-      "Youtube" = -2035226226;
+      "YouTube" = -2035226226;
+      "YouTube Music" = -2035226227;
     }
     .${name};
 
@@ -152,7 +153,8 @@ let
     "The Legend of Zelda: Echoes of Wisdom".LaunchOptions = "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
     "The Legend Of Zelda: Majora's Mask".LaunchOptions = "2s2h";
     "The Legend Of Zelda: The Wind Waker".LaunchOptions = "Cemu --fullscreen --title-id 0005000010143500";
-    "Youtube".LaunchOptions = "GDK_SCALE=2 librewolf --new-window --kiosk https://www.youtube.com/tv";
+    "YouTube".LaunchOptions = "GDK_SCALE=2 librewolf --new-window --kiosk https://www.youtube.com/tv";
+    "YouTube Music".LaunchOptions = "GDK_SCALE=2 librewolf --new-window --kiosk https://music.youtube.com -P 'YouTube Music'";
   };
 in
 {

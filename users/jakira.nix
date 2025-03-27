@@ -46,7 +46,7 @@ in
             base = config.programs.librewolf.profiles.librewolf;
           in
           {
-            id = base.id + 1;
+            id = config.programs.librewolf.profiles.youtube-music.id + 1;
             name = "Jackwolf";
             path = "jack";
             settings = base.settings // {

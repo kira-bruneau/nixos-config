@@ -63,7 +63,7 @@
       };
     };
 
-    profiles = {
+    profiles = rec {
       librewolf = {
         id = 0;
         name = "Librewolf";
@@ -458,23 +458,42 @@
           "network.trr.mode" = 5;
         };
       };
+
+      youtube-music = librewolf // {
+        id = 1;
+        name = "YouTube Music";
+        path = "youtube-music";
+      };
     };
   };
 
   xdg = {
-    desktopEntries = builtins.mapAttrs (id: profile: {
-      type = "Application";
-      name = profile.name;
-      genericName = "Web Browser";
-      icon = id;
+    desktopEntries =
+      builtins.mapAttrs (id: profile: {
+        type = "Application";
+        name = profile.name;
+        genericName = "Web Browser";
+        icon = id;
 
-      categories = [
-        "Network"
-        "WebBrowser"
-      ];
+        categories = [
+          "Network"
+          "WebBrowser"
+        ];
 
-      exec = "librewolf -P ${profile.name} --new-tab %U";
-    }) config.programs.librewolf.profiles;
+        exec = "librewolf -P ${profile.name} --new-tab %U";
+      }) config.programs.librewolf.profiles
+      // {
+        youtube-music = {
+          type = "Application";
+          name = "YouTube Music";
+          icon = pkgs.fetchurl {
+            url = "https://upload.wikimedia.org/wikipedia/commons/6/6a/Youtube_Music_icon.svg";
+            hash = "sha256-K/up+bdoIXa5ltb1H4XKO1EnLggr/Z+H9jzukfX8jQs=";
+          };
+
+          exec = "librewolf -P \"YouTube Music\" --kiosk https://music.youtube.com";
+        };
+      };
 
     mimeApps.defaultApplications = {
       "application/vnd.mozilla.xul+xml" = "librewolf.desktop";
@@ -616,6 +635,14 @@
         criteria = {
           app_id = "^librewolf$";
           title = "https://music.youtube.com";
+        };
+
+        command = "move container to workspace 4";
+      }
+      {
+        criteria = {
+          app_id = "^librewolf$";
+          title = "YouTube Music";
         };
 
         command = "move container to workspace 4";
