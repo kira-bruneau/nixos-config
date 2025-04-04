@@ -13,8 +13,6 @@
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-chromium.url = "github:NixOS/nixpkgs/2748d22b45a99fb2deafa5f11c7531c212b2cefa";
-
     nixpkgs-yabridge-wine.url = "github:NixOS/nixpkgs/0e82ab234249d8eee3e8c91437802b32c74bb3fd";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -96,7 +94,7 @@
                   config = config.nixpkgs.config;
                 };
 
-                pkgsYabridgeWine = import inputs.nixpkgs-chromium {
+                pkgsYabridgeWine = import inputs.nixpkgs-yabridge-wine {
                   system = pkgs.system;
                   config = config.nixpkgs.config;
                 };
