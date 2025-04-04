@@ -194,6 +194,23 @@
               definedAliases = [ "@nw" ];
             };
 
+            "Nixpkgs PR Tracker" = {
+              urls = [
+                {
+                  template = "https://nixpk.gs/pr-tracker.html";
+                  params = [
+                    {
+                      name = "pr";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              iconMapObj."16" = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@nt" ];
+            };
+
             "Home Manager Issues" = {
               urls = [
                 {
