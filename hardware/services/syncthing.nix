@@ -87,6 +87,7 @@ in
           caseSensitiveFS = true;
           rescanIntervalS = 86400;
           fsWatcherDelayS = 1;
+          maxConflicts = 0;
           versioning = {
             type = "staggered";
             params.maxAge = "604800";
