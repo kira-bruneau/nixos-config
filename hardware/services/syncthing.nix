@@ -106,9 +106,7 @@ in
           };
         };
       };
-    };
 
-    extraOptions = {
       options = {
         autoUpgradeIntervalH = 0;
         crashReportingEnabled = false;
