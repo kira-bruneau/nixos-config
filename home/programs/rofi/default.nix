@@ -7,7 +7,7 @@
 
 let
   rofi = pkgs.rofi-wayland;
-  rofimoji = pkgs.rofimoji.override { inherit rofi; };
+  rofimoji = pkgs.rofimoji;
 in
 {
   imports = [ ./themes.nix ];
