@@ -106,12 +106,12 @@ in
           };
         };
       };
+    };
 
-      extraOptions = {
-        options = {
-          urAccepted = -1;
-          maxConcurrentIncomingRequestKiB = 1024 * 1024;
-        };
+    extraOptions = {
+      options = {
+        maxConcurrentIncomingRequestKiB = 1024 * 1024;
+        urAccepted = -1;
       };
     };
   };
