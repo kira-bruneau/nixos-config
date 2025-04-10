@@ -59,6 +59,7 @@ in
     tokei
 
     # Debuggers
+    gdb
     strace
     tcpflow
     valgrind
