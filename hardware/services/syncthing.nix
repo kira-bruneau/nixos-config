@@ -110,6 +110,7 @@ in
 
     extraOptions = {
       options = {
+        crashReportingEnabled = false;
         maxConcurrentIncomingRequestKiB = 1024 * 1024;
         urAccepted = -1;
       };
