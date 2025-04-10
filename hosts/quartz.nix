@@ -1,6 +1,7 @@
 {
   imports = [
     ../environments/gaming.nix
+    ../environments/dev.nix
     ../environments/gui/sway.nix
     ../environments/media-server.nix
     ../services/firefox-syncserver.nix
