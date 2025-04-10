@@ -29,5 +29,6 @@
     firewall.allowedUDPPorts = lib.optional (config.networking.hostName == "jakira") 51820;
   };
 
-  programs.ssh.knownHosts.jakira.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGA1ahkvVffvxr4l/tXLOxOAa4RnenIY5PQjx0D+BaO";
+  programs.ssh.knownHosts.jakira.publicKey =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGA1ahkvVffvxr4l/tXLOxOAa4RnenIY5PQjx0D+BaO";
 }

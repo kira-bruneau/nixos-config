@@ -100,14 +100,16 @@
           "mail.account.account_rss.server" = "server_rss";
           "mail.server.server_rss.name" = "RSS";
           "mail.server.server_rss.type" = "rss";
-          "mail.server.server_rss.directory" = "${config.home.homeDirectory}/.thunderbird/${config.home.username}/Mail/Feeds";
+          "mail.server.server_rss.directory" =
+            "${config.home.homeDirectory}/.thunderbird/${config.home.username}/Mail/Feeds";
           "mail.server.server_rss.directory-rel" = "[ProfD]Mail/Feeds";
           "mail.server.server_rss.hostname" = "Feeds";
           "mail.server.server_rss.storeContractID" = "@mozilla.org/msgstore/maildirstore;1";
         };
 
         userChrome =
-          builtins.replaceStrings [ "https://upload.wikimedia.org/wikipedia/commons/0/05/UBlock_Origin.svg" ]
+          builtins.replaceStrings
+            [ "https://upload.wikimedia.org/wikipedia/commons/0/05/UBlock_Origin.svg" ]
             [
               "file://${
                 pkgs.fetchurl {
