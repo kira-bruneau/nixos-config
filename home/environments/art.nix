@@ -1,7 +1,6 @@
 {
   pkgs,
   pkgsKiraNur,
-  pkgsYabridgeWine,
   ...
 }:
 
@@ -15,12 +14,8 @@
     krita
     orca-slicer
     tenacity
-    (pkgsKiraNur.yabridge.override {
-      wine = pkgsYabridgeWine.wineWowPackages.staging;
-    })
-    (pkgsKiraNur.yabridgectl.override {
-      wine = pkgsYabridgeWine.wineWowPackages.staging;
-    })
+    pkgsKiraNur.yabridge
+    pkgsKiraNur.yabridgectl
     pkgsKiraNur.zynaddsubfx
   ];
 

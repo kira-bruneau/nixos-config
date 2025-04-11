@@ -13,8 +13,6 @@
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-yabridge-wine.url = "github:NixOS/nixpkgs/0e82ab234249d8eee3e8c91437802b32c74bb3fd";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nix-index-database = {
@@ -82,11 +80,6 @@
             let
               extraSpecialArgs = {
                 pkgsUnstable = import inputs.nixpkgs-unstable {
-                  system = pkgs.system;
-                  config = config.nixpkgs.config;
-                };
-
-                pkgsYabridgeWine = import inputs.nixpkgs-yabridge-wine {
                   system = pkgs.system;
                   config = config.nixpkgs.config;
                 };
