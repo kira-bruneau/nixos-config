@@ -381,6 +381,7 @@
             newElementCount = 2;
           };
 
+          "browser.urlbar.scotchBonnet.enableOverride" = true; # Unified search button
           "browser.warnOnQuit" = false;
           "devtools.selfxss.count" = 5; # Allow pasting into console
           "dom.security.https_only_mode" = true;
