@@ -6,7 +6,7 @@
   xdg.configFile."anytype/devconfig.json".text = builtins.toJSON {
     sudo = true; # Disables analytics
     hideTray = true;
-    hideMenuBar = true;
+    showMenuBar = false;
     languages = [ "en-CA" ];
   };
 
