@@ -118,6 +118,69 @@
               definedAliases = [ "@gh" ];
             };
 
+            "GitHub Code" = {
+              urls = [
+                {
+                  template = "https://github.com/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                    {
+                      name = "type";
+                      value = "code";
+                    }
+                  ];
+                }
+              ];
+
+              iconMapObj."16" = "https://github.githubassets.com/favicons/favicon.svg";
+              definedAliases = [ "@ghx" ];
+            };
+
+            "GitHub Commits" = {
+              urls = [
+                {
+                  template = "https://github.com/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                    {
+                      name = "type";
+                      value = "commits";
+                    }
+                  ];
+                }
+              ];
+
+              iconMapObj."16" = "https://github.githubassets.com/favicons/favicon.svg";
+              definedAliases = [ "@ghc" ];
+            };
+
+            "GitHub Repositories" = {
+              urls = [
+                {
+                  template = "https://github.com/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                    {
+                      name = "type";
+                      value = "repositories";
+                    }
+                  ];
+                }
+              ];
+
+              iconMapObj."16" = "https://github.githubassets.com/favicons/favicon.svg";
+              definedAliases = [ "@ghr" ];
+            };
+
             "Nixhub.io" = {
               urls = [
                 {
