@@ -1,5 +1,9 @@
 (use-package magit
-  :bind* ("<f8>" . magit-file-dispatch)
+  :bind* (("<f8>" . magit-file-dispatch)
+          :map magit-mode-map
+          ;; Override binding for sparse checkouts
+          ;; I've accidentally ran magit-sparse-checkout instead of end-of-buffer too many times
+          (">" . end-of-buffer))
   :init
   (setq magit-bind-magit-project-status nil)
 
