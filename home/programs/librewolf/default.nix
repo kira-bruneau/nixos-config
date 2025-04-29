@@ -540,8 +540,8 @@
           "media.eme.enabled" = false;
           "media.gmp-widevinecdm.enabled" = false;
 
-          # Trusted Recursive Resolver: I use dnscrypt-proxy instead
-          "network.trr.mode" = 5;
+          # Disable DNS proxy
+          "network.proxy.type" = 0;
         };
       };
 
