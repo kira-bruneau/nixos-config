@@ -6,5 +6,10 @@ lib.mkDefault {
     longitude = -75.695;
   };
 
+  services.geoclue2 = {
+    staticAltitude = 100;
+    staticAccuracy = 50000;
+  };
+
   time.timeZone = "Canada/Eastern";
 }
