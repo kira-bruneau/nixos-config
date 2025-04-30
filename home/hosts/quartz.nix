@@ -51,6 +51,7 @@
                 }
 
                 git switch --detach HEAD
+                git pull --rebase all main
                 trap cleanup EXIT
                 nix flake update --commit-lock-file --option commit-lockfile-summary "flake.lock: update"
                 nixos-rebuild build --flake .
