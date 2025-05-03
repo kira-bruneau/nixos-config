@@ -18,27 +18,10 @@
         };
       };
 
-      bridge = {
-        backfill = {
-          forward_limits = {
-            initial = {
-              dm = 2147483646;
-              channel = 2147483646;
-              thread = 2147483646;
-            };
-            missed = {
-              dm = 2147483646;
-              channel = 2147483646;
-              thread = 2147483646;
-            };
-          };
-        };
-
-        permissions = {
-          "*" = "relay";
-          "jakira.space" = "user";
-          "@kira:jakira.space" = "admin";
-        };
+      bridge.permissions = {
+        "*" = "relay";
+        "jakira.space" = "user";
+        "@kira:jakira.space" = "admin";
       };
 
       logging.writers = [
