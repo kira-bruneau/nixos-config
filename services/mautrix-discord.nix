@@ -21,6 +21,7 @@
       bridge.permissions = {
         "*" = "relay";
         "jakira.space" = "user";
+        "@jack:jakira.space" = "admin";
         "@kira:jakira.space" = "admin";
       };
 
