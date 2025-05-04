@@ -95,6 +95,7 @@ let
       "Dropout" = -1539404924;
       "Element" = -1815128494;
       "Jellyfin Media Player" = -567380782;
+      "Kodi" = -567380783;
       "Librewolf" = -1974293946;
       "Mario Kart 8 Deluxe" = -1565192715;
       "Mario Kart 8" = -1565192714;
@@ -138,8 +139,9 @@ let
     "Dolphin Emulator".LaunchOptions = "QT_QPA_PLATFORM=xcb dolphin-emu";
     "Dropout".LaunchOptions =
       "GDK_SCALE=2 librewolf --new-window --kiosk https://www.dropout.tv -P Jackwolf";
-    "Librewolf".LaunchOptions = "librewolf";
     "Jellyfin Media Player".LaunchOptions = "jellyfinmediaplayer --tv --scale-factor 2";
+    "Kodi".LaunchOptions = "kodi";
+    "Librewolf".LaunchOptions = "librewolf";
     "Mario Kart 8 Deluxe".LaunchOptions =
       "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
     "Mario Kart 8".LaunchOptions = "Cemu --fullscreen --title-id 000500001010ec00";
@@ -171,6 +173,7 @@ in
     ../environments/bluetooth.nix
     ../environments/gaming.nix
     ../environments/gui/gnome.nix
+    ../programs/kodi
   ];
 
   home.stateVersion = "24.05";
