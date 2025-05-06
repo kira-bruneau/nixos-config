@@ -94,8 +94,6 @@
     };
   };
 
-  environment.persistence."/persist".directories = [ "/var/lib/minecraft" ];
-
   swapDevices = [
     {
       device = "/persist/swapfile";

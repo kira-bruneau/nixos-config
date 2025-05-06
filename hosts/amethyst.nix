@@ -1,7 +1,6 @@
 {
   imports = [
     ../environments/default.nix
-    ../services/minecraft/Jakira
     ../users/kira.nix
   ];
 

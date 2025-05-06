@@ -330,7 +330,7 @@ in
               icon = "minecraft.svg";
               widget = {
                 type = "minecraft";
-                url = "udp://amethyst:25565";
+                url = "udp://100.64.0.12:25565";
                 fields = [
                   "players"
                   "status"

@@ -13,7 +13,6 @@
       "clonehero-unwrapped"
       "data.zip" # vvvvvv
       "discord"
-      "minecraft-server"
       "nvidia-settings"
       "nvidia-x11"
       "sm64ex"
