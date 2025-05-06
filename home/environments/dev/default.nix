@@ -28,6 +28,7 @@ in
   imports = [
     ../../programs/direnv
     ../../programs/emacs
+    ../../programs/go
     ../../programs/nix-init
   ];
 
