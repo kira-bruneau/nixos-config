@@ -1,6 +1,7 @@
 {
   imports = [
     ../environments/dev.nix
+    ../environments/gaming.nix
     ../environments/gui/sway.nix
     ../users/kira.nix
   ];
