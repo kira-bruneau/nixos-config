@@ -21,9 +21,10 @@
       ];
     };
 
-    settings.trusted-public-keys = [
-      "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8="
-    ];
+    settings = {
+      substituters = [ "ssh-ng://builder@quartz" ];
+      trusted-public-keys = [ "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8=" ];
+    };
   };
 
   networking = {
