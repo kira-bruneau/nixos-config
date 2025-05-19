@@ -13,7 +13,7 @@
     defaultCacheTtl = 240;
     defaultCacheTtlSsh = 240;
 
-    pinentryPackage = pkgs.writeShellScriptBin "pinentry" ''
+    pinentry.package = pkgs.writeShellScriptBin "pinentry" ''
       if [ -n "$DISPLAY" ]; then
         exec ${pkgs.pinentry.gnome3}/bin/pinentry-gnome3 "$@"
       fi
