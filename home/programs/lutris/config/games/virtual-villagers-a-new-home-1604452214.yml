@@ -1,6 +1,0 @@
-game:
-  exe: VirtualVillagers.exe
-  prefix: ~/Games/Virtual Villagers A New Home
-system:
-  prefix_command: ''
-wine: {}

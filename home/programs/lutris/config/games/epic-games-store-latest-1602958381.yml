@@ -1,8 +1,0 @@
-game:
-  args: -opengl -SkipBuildPatchPrereq
-  exe: EpicGamesLauncher.exe
-  prefix: ~/Games/Epic Games Store
-system:
-  gamemode: false
-  prefix_command: ''
-wine: {}

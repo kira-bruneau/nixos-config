@@ -8,7 +8,6 @@ let
 in
 {
   imports = [
-    ../programs/lutris
     ../programs/prismlauncher
     ../programs/rmg
   ];

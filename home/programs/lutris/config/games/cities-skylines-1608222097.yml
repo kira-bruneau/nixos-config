@@ -1,5 +1,0 @@
-game:
-  exe: Cities.exe
-  prefix: ~/Games/Cities Skylines
-system: {}
-wine: {}

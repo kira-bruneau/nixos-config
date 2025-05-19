@@ -23,14 +23,4 @@
       };
     };
   };
-
-  # Set higher file limit for wine esync support
-  security.pam.loginLimits = [
-    {
-      domain = "*";
-      type = "-";
-      item = "nofile";
-      value = "524288";
-    }
-  ];
 }
