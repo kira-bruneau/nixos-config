@@ -94,10 +94,13 @@
 
   environment.systemPackages = with pkgs; [ steamdeck-firmware ];
 
+  programs.captive-browser.interface = "wlo1";
+
   systemd.user.services.cec-sync.environment.WAYLAND_DISPLAY = "gamescope-0";
 
   # Wakehook is redundant when using cec-sync
   systemd.user.services.wakehook.enable = false;
 
-  programs.captive-browser.interface = "wlo1";
+  # Disable wifi powersave
+  networking.networkmanager.settings.connection."wifi.powersave" = 2;
 }
