@@ -8,27 +8,24 @@ in
 {
   services.mako = {
     enable = true;
-
-    defaultTimeout = 10000;
-    groupBy = "app-name,summary";
-
-    anchor = "bottom-right";
-    padding = "20";
-    margin = "0";
-    width = 320;
-    borderSize = 0;
-    backgroundColor = "#2b303b99";
-    font = "sans-serif 10";
-    textColor = "#eeeeee";
-
-    extraConfig = ''
-      outer-margin=20
-
-      [mode=do-not-disturb]
-      invisible=1
-      ignore-timeout=true
-      default-timeout=0
-    '';
+    settings = {
+      default-timeout = 10000;
+      group-by = "app-name,summary";
+      anchor = "bottom-right";
+      padding = "20";
+      margin = "0";
+      width = 320;
+      border-size = 0;
+      background-color = "#2b303b99";
+      font = "sans-serif 10";
+      text-color = "#eeeeee";
+      outer-margin = 20;
+      "mode=do-not-disturb" = {
+        invisible = 1;
+        ignore-timeout = true;
+        default-timeout = 0;
+      };
+    };
   };
 
   wayland.windowManager.sway.extraConfig = ''
