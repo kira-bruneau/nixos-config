@@ -47,11 +47,22 @@ in
     vkBasalt
   ];
 
-  wayland.windowManager.sway.config.assigns."5" = [
-    { class = "^cemu.exe$"; }
-    { class = "^dolphin-emu$"; }
-    { class = "^steam$"; }
-  ];
+  programs.niri.settings = {
+    window-rules = [
+      {
+        matches = [ { app-id = "^info.cemu.Cemu$"; } ];
+        open-on-workspace = "5-gaming";
+      }
+      {
+        matches = [ { app-id = "^dolphin-emu$"; } ];
+        open-on-workspace = "5-gaming";
+      }
+      {
+        matches = [ { app-id = "^steam$"; } ];
+        open-on-workspace = "5-gaming";
+      }
+    ];
+  };
 
   home.file = {
     "Games/ROMs/Super Mario 64.z64".source = mario64Rom;

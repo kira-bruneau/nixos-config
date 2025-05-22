@@ -14,8 +14,4 @@
       "-display gtk,gl=on,grab-on-hover=on"
     ];
   };
-
-  environment.etc."sway/config.d/io.conf".text = ''
-    output "*" scale 2
-  '';
 }

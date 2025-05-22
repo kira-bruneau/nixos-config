@@ -1,12 +1,6 @@
 { config, lib, ... }:
 
 {
-  environment.etc."sway/config.d/colemak.conf".text = ''
-    input * xkb_layout "${config.services.xserver.xkb.layout}"
-    input * xkb_variant "${config.services.xserver.xkb.variant}"
-    input * xkb_options "${config.services.xserver.xkb.options}"
-  '';
-
   programs.dconf.profiles = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
     user.databases = [
       {

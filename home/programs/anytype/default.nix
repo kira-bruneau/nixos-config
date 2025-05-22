@@ -10,8 +10,14 @@
     languages = [ "en-CA" ];
   };
 
-  wayland.windowManager.sway.config = {
-    startup = [ { command = "anytype"; } ];
-    assigns."8" = [ { app_id = "^anytype$"; } ];
+  programs.niri.settings = {
+    spawn-at-startup = [ { command = [ "anytype" ]; } ];
+    window-rules = [
+      {
+        matches = [ { app-id = "^anytype$"; } ];
+        open-on-workspace = "3-planning";
+        open-maximized = true;
+      }
+    ];
   };
 }

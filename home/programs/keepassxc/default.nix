@@ -34,7 +34,9 @@ in
     };
   };
 
-  wayland.windowManager.sway.config.startup = [ { command = "${keepassxc}/bin/keepassxc"; } ];
+  programs.niri.settings = {
+    spawn-at-startup = [ { command = [ "keepassxc" ]; } ];
+  };
 
   # Librewolf integration
   programs.librewolf = {

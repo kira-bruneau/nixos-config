@@ -19,14 +19,38 @@
     pkgsKiraNur.zynaddsubfx
   ];
 
-  wayland.windowManager.sway.config = {
-    assigns."4" = [
-      { app_id = "^org.inkscape.Inkscape$"; }
-      { app_id = "^org.kde.kdenlive$"; }
-      { app_id = "^tenacity$"; }
-      { class = "^Gimp"; }
-      { class = "^krita$"; }
-      { title = "^ZynAddSubFX"; }
+  programs.niri.settings = {
+    window-rules = [
+      {
+        matches = [ { app-id = "^org.inkscape.Inkscape$"; } ];
+        open-on-workspace = "2-working";
+        open-maximized = true;
+      }
+      {
+        matches = [ { app-id = "^org.kde.kdenlive$"; } ];
+        open-on-workspace = "2-working";
+        open-maximized = true;
+      }
+      {
+        matches = [ { app-id = "^tenacity$"; } ];
+        open-on-workspace = "2-working";
+        open-maximized = true;
+      }
+      {
+        matches = [ { app-id = "^Gimp"; } ];
+        open-on-workspace = "2-working";
+        open-maximized = true;
+      }
+      {
+        matches = [ { app-id = "^krita$"; } ];
+        open-on-workspace = "2-working";
+        open-maximized = true;
+      }
+      {
+        matches = [ { title = "^ZynAddSubFX"; } ];
+        open-on-workspace = "2-working";
+        open-floating = true;
+      }
     ];
   };
 }

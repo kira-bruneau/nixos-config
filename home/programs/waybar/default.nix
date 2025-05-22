@@ -27,8 +27,7 @@ in
         height = 32;
 
         modules-left = [
-          "sway/workspaces"
-          "sway/mode"
+          "niri/workspaces"
         ];
 
         modules-center = [
@@ -49,25 +48,16 @@ in
           "tray"
         ];
 
-        "sway/workspaces" = {
-          all-outputs = true;
+        "niri/workspaces" = {
           format = "{icon}";
           format-icons = {
-            "1" = ''<span font="Font Awesome 6 Brands"></span>'';
-            "2" = "";
-            "3" = "";
-            "4" = "";
-            "5" = "";
-            "7" = "";
-            "8" = "";
-            "9" = "";
-            "10" = "";
+            "1-browsing" = "";
+            "2-working" = "";
+            "3-planning" = "";
+            "4-communicating" = "";
+            "5-gaming" = "";
             default = "";
           };
-        };
-
-        "sway/mode" = {
-          format = "<span style=\"italic\">{}</span>";
         };
 
         "idle_inhibitor" = {
@@ -172,11 +162,13 @@ in
 
   home.packages = with pkgs; [ font-awesome_6 ];
 
-  wayland.windowManager.sway = {
-    config.bars = [ { command = exe; } ];
-    extraConfig = ''
-      layer_effects 'waybar' 'blur enable; shadows enable'
-    '';
+  programs.niri.settings = {
+    layer-rules = [
+      {
+        matches = [ { namespace = "waybar"; } ];
+        shadow.enable = true;
+      }
+    ];
   };
 
   programs.gnome-pomodoro-swayidle = {

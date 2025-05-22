@@ -369,7 +369,6 @@
         settings = {
           "accessibility.typeaheadfind.flashBar" = 0;
           "apz.gtk.pangesture.delta_mode" = 2; # pixel mode
-          "apz.gtk.pangesture.pixel_delta_mode_multiplier" = "80"; # default is 40
           "apz.overscroll.enabled" = true;
           "browser.aboutConfig.showWarning" = false;
           "browser.aboutwelcome.enabled" = false;
@@ -721,114 +720,44 @@
       '';
   };
 
-  wayland.windowManager.sway.config = {
-    startup = [ { command = "librewolf"; } ];
-    assigns."1" = [ { app_id = "^librewolf$"; } ];
-    window.commands = [
+  programs.niri.settings = {
+    spawn-at-startup = [ { command = [ "librewolf" ]; } ];
+    window-rules = [
       {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://www.youtube.com";
-        };
-
-        command = "move container to workspace 4";
+        matches = [ { app-id = "^librewolf$"; } ];
+        open-on-workspace = "1-browsing";
+        open-maximized = true;
       }
       {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://music.youtube.com";
-        };
+        matches = [
+          {
+            app-id = "^librewolf$";
+            title = "^Picture-in-Picture$";
+          }
+        ];
 
-        command = "move container to workspace 4";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "YouTube Music";
+        open-floating = true;
+        default-window-height.proportion = 0.25;
+        default-column-width.proportion = 0.25;
+        opacity = 0.95;
+        default-floating-position = {
+          relative-to = "bottom-right";
+          x = 16;
+          y = 16;
         };
-
-        command = "move container to workspace 4";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://calendar.google.com";
-        };
-
-        command = "move container to workspace 7";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://calendar.proton.me";
-        };
-
-        command = "move container to workspace 7";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "http://habitica.jakira.space";
-        };
-
-        command = "move container to workspace 7";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://mail.google.com";
-        };
-
-        command = "move container to workspace 9";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://mail.proton.me";
-        };
-
-        command = "move container to workspace 9";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://outlook.office.com";
-        };
-
-        command = "move container to workspace 9";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://app.cinny.in";
-        };
-
-        command = "move container to workspace 10";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://app.element.io";
-        };
-
-        command = "move container to workspace 10";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "https://chat.jakira.space";
-        };
-
-        command = "move container to workspace 10";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
-          title = "^Picture-in-Picture$";
-        };
-
-        command = "floating enable, sticky enable, border pixel 0, move position 1340 722, opacity 0.95";
       }
     ];
+  };
+
+  systemd.user.services.librewolf-move-popout-windows = {
+    Unit = {
+      Description = "Move librewolf popout windows to specific niri workspaces";
+      After = [ "niri.service" ];
+    };
+
+    Install.WantedBy = [ "niri.service" ];
+    Service.ExecStart =
+      pkgs.writers.writePython3 "librewolf-move-popout-windows.py" { }
+        ./move-popout-windows.py;
   };
 }

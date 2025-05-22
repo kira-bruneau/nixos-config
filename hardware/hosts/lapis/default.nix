@@ -115,18 +115,6 @@
   # Compress hibernation image as much as possible
   systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];
 
-  # Sway I/O configuration
-  environment.etc."sway/config.d/io.conf".text = ''
-    input "1133:16461:Logitech_K400_Plus" {
-      natural_scroll enabled
-      scroll_factor 0.25
-    }
-
-    output "BOE 0x095F Unknown" scale 1.5 pos 208 1080
-    output "LG Electronics LG HDR 4K 0x0005B621" scale 2 pos 1712 1002
-    output "Technical Concepts Ltd 65S535CA Unknown" scale 2 pos 0 0
-  '';
-
   programs.captive-browser.interface = "wlan0";
 
   # WirePlumber device configuration

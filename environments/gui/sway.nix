@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
-  imports = [ ./. ];
+  imports = [
+    ./.
+    inputs.niri.nixosModules.niri
+  ];
 
   environment = {
     systemPackages = with pkgs; [
@@ -27,17 +30,21 @@
       '';
 
       "greetd/environments".text = ''
-        sway
+        niri-session
       '';
     };
   };
 
-  # Enable Sway Wayland compositor
   programs.sway = {
     enable = true;
     package = pkgs.swayfx;
     extraPackages = [ ];
     wrapperFeatures.gtk = true;
+  };
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
   };
 
   security.pam.loginLimits = [

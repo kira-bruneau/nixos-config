@@ -4,7 +4,7 @@
   imports = [
     ../environments/art.nix
     ../environments/dev
-    ../environments/gui/sway.nix
+    ../environments/gui/niri.nix
     ../environments/laptop.nix
     ../environments/office.nix
     ../programs/prismlauncher

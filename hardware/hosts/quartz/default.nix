@@ -131,16 +131,6 @@
     "/var/lib/qBittorrent"
   ];
 
-  # Sway I/O configuration
-  environment.etc."sway/config.d/io.conf".text = ''
-    output "HAT Kamvas Pro 16 0x01010101" scale 1.25 pos 0 553
-    output "LG Electronics LG HDR 4K 0x0005B621" scale 2 pos 1536 0
-
-    input "9580:109:HID_256c:006d_Pen" {
-        map_to_output "HAT Kamvas Pro 16 "
-    }
-  '';
-
   # WirePlumber device configuration
   services.pipewire.wireplumber.extraConfig = {
     alsa = {

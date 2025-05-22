@@ -15,8 +15,14 @@
     "text/plain" = "emacsclient.desktop";
   };
 
-  wayland.windowManager.sway.config = {
-    startup = [ { command = "emacs"; } ];
-    assigns."2" = [ { app_id = "^emacs"; } ];
+  programs.niri.settings = {
+    spawn-at-startup = [ { command = [ "emacs" ]; } ];
+    window-rules = [
+      {
+        matches = [ { app-id = "^emacs"; } ];
+        open-on-workspace = "2-working";
+        open-maximized = true;
+      }
+    ];
   };
 }

@@ -85,22 +85,15 @@
   #   })
   # '';
 
-  wayland.windowManager.sway.config = {
-    assigns = {
-      "4" = [ { app_id = "^org.qbittorrent.qBittorrent$"; } ];
-      "10" = [
-        { app_id = "^Caprine$"; }
-        { app_id = "^discord$"; }
-      ];
-    };
-
-    window.commands = [
+  programs.niri.settings = {
+    window-rules = [
       {
-        criteria = {
-          app_id = "^discord$";
-          title = "^$";
-        };
-        command = "floating enable, sticky enable, border pixel 0, resize set 480 270, move position 1004 680, opacity 0.8";
+        matches = [ { app-id = "^org.qbittorrent.qBittorrent$"; } ];
+        open-on-workspace = "1-browsing";
+      }
+      {
+        matches = [ { app-id = "^discord$"; } ];
+        open-on-workspace = "4-communicating";
       }
     ];
   };

@@ -135,8 +135,18 @@
     "video/x-theora+ogg" = "celluloid.desktop";
   };
 
-  wayland.windowManager.sway.config.assigns."4" = [
-    { app_id = "^mpv$"; }
-    { app_id = "^io.github.celluloid_player.Celluloid$"; }
-  ];
+  programs.niri.settings = {
+    window-rules = [
+      {
+        matches = [ { app-id = "^mpv$"; } ];
+        open-on-workspace = "1-browsing";
+        open-fullscreen = true;
+      }
+      {
+        matches = [ { app-id = "^io.github.celluloid_player.Celluloid$"; } ];
+        open-on-workspace = "1-browsing";
+        open-fullscreen = true;
+      }
+    ];
+  };
 }

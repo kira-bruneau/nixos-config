@@ -1,3 +1,11 @@
+- Compare sway config directly
+- Global config
+- Use niri for gtkgreet
+
+- Fix gnome pomodoro idler
+- iwgtk indicator
+- Steam is black
+
 nixos:
 - shutdown terrible using greetd
 - I want to disable pipewire, wireplumber, bluetoothd in greetd

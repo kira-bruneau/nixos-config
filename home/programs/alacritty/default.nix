@@ -48,5 +48,5 @@
     };
   };
 
-  wayland.windowManager.sway.config.terminal = "${config.programs.alacritty.package}/bin/alacritty";
+  programs.niri.settings.binds."Mod+T".action.spawn = "alacritty";
 }

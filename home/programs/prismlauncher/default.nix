@@ -3,8 +3,17 @@
 {
   home.packages = with pkgs; [ prismlauncher ];
 
-  wayland.windowManager.sway.config.assigns."5" = [
-    { app_id = "^org.prismlauncher.PrismLauncher$"; }
-    { class = "^Minecraft"; }
-  ];
+  programs.niri.settings = {
+    window-rules = [
+      {
+        matches = [ { app-id = "^org.prismlauncher.PrismLauncher$"; } ];
+        open-on-workspace = "5-gaming";
+      }
+      {
+        matches = [ { app-id = "^Minecraft"; } ];
+        open-on-workspace = "5-gaming";
+        open-fullscreen = true;
+      }
+    ];
+  };
 }

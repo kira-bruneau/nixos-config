@@ -11,7 +11,7 @@
     ../environments/bluetooth.nix
     ../environments/dev
     ../environments/gaming.nix
-    ../environments/gui/sway.nix
+    ../environments/gui/niri.nix
     ../environments/office.nix
   ];
 

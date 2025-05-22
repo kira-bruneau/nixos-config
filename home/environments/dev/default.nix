@@ -66,8 +66,14 @@ in
     valgrind
   ];
 
-  wayland.windowManager.sway.config = {
-    assigns."1" = [ { app_id = "^chromium-browser$"; } ];
+  programs.niri.settings = {
+    window-rules = [
+      {
+        matches = [ { app-id = "^chromium-browser$"; } ];
+        open-on-workspace = "1-browsing";
+        open-maximized = true;
+      }
+    ];
   };
 
   programs.nix-index = {

@@ -125,9 +125,13 @@
     };
   };
 
-  wayland.windowManager.sway.config = {
-    startup = [ { command = "thunderbird"; } ];
-    assigns."9" = [ { app_id = "^thunderbird$"; } ];
+  programs.niri.settings = {
+    window-rules = [
+      {
+        matches = [ { app-id = "^thunderbird$"; } ];
+        open-on-workspace = "4-communicating";
+      }
+    ];
   };
 
   xdg.mimeApps.defaultApplications = {

@@ -1,14 +1,8 @@
 {
-  lib,
-  config,
   pkgs,
   ...
 }:
 
-let
-  rofi = pkgs.rofi-wayland;
-  rofimoji = pkgs.rofimoji;
-in
 {
   imports = [ ./themes.nix ];
 
@@ -17,25 +11,45 @@ in
     package = pkgs.rofi-wayland;
   };
 
-  home.packages = [ rofimoji ];
+  home.packages = with pkgs; [ rofimoji ];
 
-  wayland.windowManager.sway = {
-    config =
-      let
-        cfg = config.wayland.windowManager.sway.config;
-      in
-      {
-        menu = "${rofi}/bin/rofi -show drun -theme icon-grid -matching fuzzy";
-        keybindings = lib.mkOptionDefault {
-          "${cfg.modifier}+x" = "exec ${rofi}/bin/rofi -show run -matching fuzzy";
-          "${cfg.modifier}+w" = "exec ${rofi}/bin/rofi -show window -matching fuzzy";
-          "${cfg.modifier}+c" = "exec ${rofi}/bin/rofi -show ssh -matching fuzzy";
-          "${cfg.modifier}+m" = "exec ${rofimoji}/bin/rofimoji";
-        };
-      };
+  programs.niri.settings = {
+    binds = {
+      "Mod+A".action.spawn = [
+        "rofi"
+        "-show"
+        "drun"
+        "-theme"
+        "icon-grid"
+        "-matching"
+        "fuzzy"
+      ];
 
-    extraConfig = ''
-      layer_effects 'rofi' 'blur enable'
-    '';
+      "Mod+X".action.spawn = [
+        "rofi"
+        "-show"
+        "run"
+        "-matching"
+        "fuzzy"
+      ];
+
+      "Mod+W".action.spawn = [
+        "rofi"
+        "-show"
+        "window"
+        "-matching"
+        "fuzzy"
+      ];
+
+      "Mod+S".action.spawn = [
+        "rofi"
+        "-show"
+        "ssh"
+        "-matching"
+        "fuzzy"
+      ];
+
+      "Mod+M".action.spawn = "rofimoji";
+    };
   };
 }
