@@ -28,7 +28,6 @@ let
     port = "8989";
     apiKey = "00000000000000000000000000000000";
     rootFolders = [
-      { path = "/srv/media-hdd/shows"; }
       { path = "/srv/media-ssd/shows"; }
     ];
 
@@ -39,7 +38,6 @@ let
     port = "7878";
     apiKey = "00000000000000000000000000000000";
     rootFolders = [
-      { path = "/srv/media-hdd/movies"; }
       { path = "/srv/media-ssd/movies"; }
     ];
 
@@ -131,7 +129,7 @@ let
     };
 
     BitTorrent = {
-      "Session\\DefaultSavePath" = "/srv/media-hdd/downloads";
+      "Session\\DefaultSavePath" = "/srv/media-ssd/downloads";
       "Session\\Port" = 15982;
       "Session\\GlobalMaxRatio" = 2;
       "Session\\ExcludedFileNames" = [ "*.lnk" ];
@@ -405,7 +403,6 @@ in
           disk = [
             "/persist"
             "/srv/media-ssd"
-            "/srv/media-hdd"
           ];
         };
       }

@@ -112,27 +112,6 @@
           };
         };
       };
-
-      media-hdd = {
-        device = "/dev/disk/by-id/usb-WD_Game_Drive_57585132453630385A544137-0:0";
-        content = {
-          type = "gpt";
-          partitions = {
-            Jackflix = {
-              label = "Jackflix";
-              size = "100%";
-              content = {
-                type = "btrfs";
-                mountpoint = "/srv/media-hdd";
-                mountOptions = [
-                  "noatime"
-                  "nofail"
-                ];
-              };
-            };
-          };
-        };
-      };
     };
 
     nodev = {
