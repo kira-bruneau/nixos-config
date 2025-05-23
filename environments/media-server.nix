@@ -630,6 +630,7 @@ in
                   id = 1;
                   importExtraFiles = true;
                   extraFileExtensions = "srt";
+                  deleteEmptyFolders = true;
 
                   # GUI defaults
                   copyUsingHardlinks = true;
@@ -747,6 +748,7 @@ in
                 jsonFormat.generate "mediamanagement.json" {
                   importExtraFiles = true;
                   extraFileExtensions = "srt";
+                  deleteEmptyFolders = true;
 
                   # GUI defaults
                   copyUsingHardlinks = true;
