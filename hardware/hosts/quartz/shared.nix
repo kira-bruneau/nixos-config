@@ -48,7 +48,6 @@
         "prowlarr.jakira.space"
         "qbittorrent.jakira.space"
         "radarr.jakira.space"
-        "readarr.jakira.space"
         "sonarr.jakira.space"
       ];
 

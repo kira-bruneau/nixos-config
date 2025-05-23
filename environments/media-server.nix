@@ -46,19 +46,6 @@ let
     inherit downloadClients;
   };
 
-  readarr = {
-    port = "8787";
-    apiKey = "00000000000000000000000000000000";
-    rootFolders = [
-      {
-        name = "Books";
-        path = "/srv/media-hdd/books";
-      }
-    ];
-
-    inherit downloadClients;
-  };
-
   prowlarr = {
     port = "9696";
     apiKey = "00000000000000000000000000000000";
@@ -73,11 +60,6 @@ let
         syncLevel = "fullSync";
         implementation = "Radarr";
         fields.apiKey = radarr.apiKey;
-      };
-      "Readarr" = {
-        syncLevel = "fullSync";
-        implementation = "Readarr";
-        fields.apiKey = readarr.apiKey;
       };
     };
 
@@ -171,12 +153,6 @@ let
       Movies = {
         type = "movies";
         folders = radarr.rootFolders;
-        options.EnableRealtimeMonitor = true;
-      };
-
-      Books = {
-        type = "books";
-        folders = readarr.rootFolders;
         options.EnableRealtimeMonitor = true;
       };
 
@@ -296,9 +272,6 @@ in
         "radarr.jakira.space".locations."/" = sharedSettings // {
           proxyPass = "http://127.0.0.1:${radarr.port}";
         };
-        "readarr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:${readarr.port}";
-        };
         "sonarr.jakira.space".locations."/" = sharedSettings // {
           proxyPass = "http://127.0.0.1:${sonarr.port}";
         };
@@ -362,18 +335,6 @@ in
                 type = "radarr";
                 url = "http://localhost:${radarr.port}";
                 key = radarr.apiKey;
-                # enableQueue = true;
-              };
-            };
-          }
-          {
-            "Readarr" = {
-              icon = "readarr.svg";
-              href = "http://readarr.jakira.space";
-              widget = {
-                type = "readarr";
-                url = "http://localhost:${readarr.port}";
-                key = readarr.apiKey;
                 # enableQueue = true;
               };
             };
@@ -816,131 +777,6 @@ in
               )
             }"
           '') (builtins.attrNames radarr.downloadClients))
-        )
-      }
-    '';
-  };
-
-  services.readarr = {
-    enable = true;
-    package = pkgsUnstable.readarr;
-  };
-
-  users.users.readarr.extraGroups = [ "qbittorrent" ];
-
-  # Configure books directory to be shared by readarr group
-  systemd.tmpfiles.settings.readarr = builtins.listToAttrs (
-    builtins.map (folder: {
-      name = folder.path;
-      value = {
-        d = {
-          mode = "2775";
-          user = config.services.readarr.user;
-          group = config.services.readarr.group;
-        };
-
-        a = {
-          argument = "default:group::rwx";
-        };
-      };
-    }) readarr.rootFolders
-  );
-
-  systemd.services.readarr = {
-    preStart = ''
-      ${pkgs.coreutils}/bin/cp --no-preserve=mode,ownership ${
-        xmlFormat.generate "config.xml" {
-          Config = {
-            BindAddress = "*";
-            AuthenticationMethod = "External";
-            AnalyticsEnabled = false;
-            LogDbEnabled = false;
-            ApiKey = readarr.apiKey;
-          };
-        }
-      } "${config.services.readarr.dataDir}/config.xml"
-    '';
-
-    postStart = ''
-      ${makeCurlScript "readarr-curl-script"
-        ''
-          silent
-          show-error
-          parallel
-        ''
-        ''
-          header = "X-Api-Key: ${readarr.apiKey}"
-          header = "Content-Type: application/json"
-          retry = 3
-          retry-connrefused
-        ''
-        (
-          let
-            naming = ''
-              fail-with-body
-              url = "http://localhost:${readarr.port}/api/v1/config/naming/1"
-              request = "PUT"
-              data = "@${
-                jsonFormat.generate "naming.json" {
-                  renameBooks = true;
-                  replaceIllegalCharacters = true;
-                  colonReplacementFormat = 4;
-                  standardBookFormat = "{Book Title}/{Author Name} - {Book Title}{ (PartNumber)}";
-                  authorFolderFormat = "{Author Name}";
-                }
-              }"
-            '';
-          in
-          [
-            # PUT naming twice - first PUT doesn't work???
-            naming
-            naming
-            ''
-              fail-with-body
-              url = "http://localhost:${readarr.port}/api/v1/config/mediamanagement/1"
-              request = "PUT"
-              data = "@${
-                jsonFormat.generate "mediamanagement.json" {
-                  importExtraFiles = true;
-                  extraFileExtensions = "srt";
-
-                  # GUI defaults
-                  copyUsingHardlinks = true;
-                  recycleBinCleanupDays = 7;
-                  minimumFreeSpaceWhenImporting = 100;
-                  enableMediaInfo = true;
-                }
-              }"
-            ''
-          ]
-          ++ (builtins.map (folder: ''
-            url = "http://localhost:${readarr.port}/api/v1/rootfolder"
-            request = "POST"
-            data = "@${
-              jsonFormat.generate "rootfolder.json" (
-                {
-                  defaultQualityProfileId = 1;
-                  defaultMetadataProfileId = 1;
-                }
-                // folder
-              )
-            }"
-          '') readarr.rootFolders)
-          ++ (builtins.map (name: ''
-            url = "http://localhost:${readarr.port}/api/v1/downloadclient"
-            request = "POST"
-            data = "@${
-              jsonFormat.generate "${name}.json" (
-                {
-                  inherit name;
-                  enable = true;
-                  removeCompletedDownloads = true;
-                  removeFailedDownloads = true;
-                }
-                // makeArrConfig readarr.downloadClients.${name}
-              )
-            }"
-          '') (builtins.attrNames readarr.downloadClients))
         )
       }
     '';

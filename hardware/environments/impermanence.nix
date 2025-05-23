@@ -82,7 +82,6 @@
       ++ lib.optional config.services.power-profiles-daemon.enable "/var/lib/power-profiles-daemon"
       ++ lib.optional config.services.prowlarr.enable "/var/lib/private/prowlarr"
       ++ lib.optional config.services.radarr.enable config.services.radarr.dataDir
-      ++ lib.optional config.services.readarr.enable config.services.readarr.dataDir
       ++ lib.optional (
         config.services.mastodon.enable && config.services.mastodon.redis.createLocally
       ) "/var/lib/redis-mastodon"
