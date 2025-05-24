@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.steam = {
@@ -7,7 +12,14 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  environment.sessionVariables.STEAMOS = "1";
+  environment.sessionVariables = {
+    STEAMOS = "1";
+
+    # Fix keyboard layout in gamescope
+    # Source: https://github.com/ValveSoftware/gamescope/issues/203
+    XKB_DEFAULT_LAYOUT = builtins.head (lib.splitString "," config.services.xserver.xkb.layout);
+    XKB_DEFAULT_VARIANT = builtins.head (lib.splitString "," config.services.xserver.xkb.variant);
+  };
 
   # Enable GameMode to optimise system performance on-demand
   programs.gamemode = {
