@@ -9,10 +9,7 @@ in
       builtins.attrValues cfg.interfaces
     );
 
-    interfaces.wg0 = {
-      privateKeyFile = "/var/lib/wireguard/wg0_key";
-      generatePrivateKeyFile = true;
-    };
+    interfaces.wg0.privateKeyFile = "/var/lib/wireguard/wg0_key";
   };
 
   systemd.network.wait-online.ignoredInterfaces = lib.mkIf cfg.enable [ "wg0" ];
