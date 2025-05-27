@@ -13,7 +13,7 @@ let
     listToValue = lib.concatMapStringsSep ", " (lib.generators.mkValueStringDefault { });
   };
 
-  xmlFormat = pkgsUnstable.formats.xml { };
+  xmlFormat = pkgs.formats.xml { };
 
   downloadClients = {
     "qBittorrent" = {
