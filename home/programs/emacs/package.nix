@@ -1,9 +1,7 @@
 {
-  inputs,
   lib,
-  pkgs,
-  pkgsKiraNur,
   stdenv,
+  emacs,
   emacs-pgtk,
   callPackage,
   buildEnv,
@@ -13,6 +11,7 @@
   cargo-edit,
   clang-tools,
   cmake,
+  cmake-language-server,
   coreutils,
   dejavu_fonts,
   diffutils,
@@ -60,106 +59,104 @@ let
   emacs = if stdenv.hostPlatform.isDarwin then emacs else emacs-pgtk;
 in
 callPackage ./wrapper.nix {
-  emacs =
-    (emacs.pkgs.overrideScope (final: prev: pkgsKiraNur.emacsPackages.packages final)).emacsWithPackages
-      (epkgs: [
-        epkgs.all-the-icons-dired
-        epkgs.acm-terminal
-        epkgs.adaptive-wrap
-        epkgs.apheleia
-        epkgs.arduino-mode
-        epkgs.async
-        epkgs.avy
-        epkgs.browse-at-remote
-        epkgs.buffer-move
-        epkgs.cmake-font-lock
-        epkgs.cmake-mode
-        epkgs.consult
-        epkgs.difftastic
-        epkgs.direnv
-        epkgs.doom-themes
-        epkgs.drag-stuff
-        epkgs.dtrt-indent
-        epkgs.ellama
-        epkgs.embark
-        epkgs.embark-consult
-        epkgs.evil
-        epkgs.evil-collection
-        epkgs.evil-mc
-        epkgs.evil-textobj-tree-sitter
-        epkgs.flx
-        epkgs.flycheck
-        epkgs.forge
-        epkgs.gcmh
-        epkgs.git-modes
-        epkgs.graphql-ts-mode
-        epkgs.haskell-mode
-        epkgs.journalctl-mode
-        epkgs.kotlin-ts-mode
-        epkgs.latex-preview-pane
-        epkgs.lsp-bridge
-        epkgs.macrostep
-        epkgs.magit
-        epkgs.marginalia
-        epkgs.markdown-mode
-        epkgs.mermaid-mode
-        epkgs.nameless
-        epkgs.nix-ts-mode
-        epkgs.orderless
-        epkgs.org-download
-        epkgs.page-break-lines
-        epkgs.pdf-tools
-        epkgs.php-mode
-        epkgs.pkgbuild-mode
-        epkgs.powerline
-        epkgs.powershell
-        epkgs.presentation
-        epkgs.pretty-sha-path
-        epkgs.projection
-        epkgs.projection-multi
-        epkgs.projection-multi-embark
-        epkgs.rainbow-delimiters
-        epkgs.restclient
-        epkgs.smartparens
-        epkgs.sudo-edit
-        epkgs.suggest
-        epkgs.tree-sitter-ispell
-        (epkgs.treesit-grammars.with-grammars (ts: [
-          ts.tree-sitter-bash
-          ts.tree-sitter-c
-          ts.tree-sitter-c-sharp
-          ts.tree-sitter-cmake
-          ts.tree-sitter-cpp
-          ts.tree-sitter-css
-          ts.tree-sitter-dockerfile
-          ts.tree-sitter-go
-          ts.tree-sitter-gomod
-          ts.tree-sitter-graphql
-          ts.tree-sitter-java
-          ts.tree-sitter-javascript
-          ts.tree-sitter-json
-          ts.tree-sitter-kotlin
-          ts.tree-sitter-lua
-          ts.tree-sitter-nix
-          ts.tree-sitter-python
-          ts.tree-sitter-ruby
-          ts.tree-sitter-rust
-          ts.tree-sitter-toml
-          ts.tree-sitter-tsx
-          ts.tree-sitter-typescript
-          ts.tree-sitter-yaml
-        ]))
-        epkgs.undo-tree
-        epkgs.vala-mode
-        epkgs.vertico
-        epkgs.visual-regexp
-        epkgs.visual-regexp-steroids
-        epkgs.vlf
-        epkgs.web-mode
-        epkgs.wgrep
-        epkgs.whitespace-cleanup-mode
-        epkgs.xterm-color
-      ]);
+  emacs = emacs.pkgs.emacsWithPackages (epkgs: [
+    epkgs.all-the-icons-dired
+    epkgs.acm-terminal
+    epkgs.adaptive-wrap
+    epkgs.apheleia
+    epkgs.arduino-mode
+    epkgs.async
+    epkgs.avy
+    epkgs.browse-at-remote
+    epkgs.buffer-move
+    epkgs.cmake-font-lock
+    epkgs.cmake-mode
+    epkgs.consult
+    epkgs.difftastic
+    epkgs.direnv
+    epkgs.doom-themes
+    epkgs.drag-stuff
+    epkgs.dtrt-indent
+    epkgs.ellama
+    epkgs.embark
+    epkgs.embark-consult
+    epkgs.evil
+    epkgs.evil-collection
+    epkgs.evil-mc
+    epkgs.evil-textobj-tree-sitter
+    epkgs.flx
+    epkgs.flycheck
+    epkgs.forge
+    epkgs.gcmh
+    epkgs.git-modes
+    epkgs.graphql-ts-mode
+    epkgs.haskell-mode
+    epkgs.journalctl-mode
+    epkgs.kotlin-ts-mode
+    epkgs.latex-preview-pane
+    epkgs.lsp-bridge
+    epkgs.macrostep
+    epkgs.magit
+    epkgs.marginalia
+    epkgs.markdown-mode
+    epkgs.mermaid-mode
+    epkgs.nameless
+    epkgs.nix-ts-mode
+    epkgs.orderless
+    epkgs.org-download
+    epkgs.page-break-lines
+    epkgs.pdf-tools
+    epkgs.php-mode
+    epkgs.pkgbuild-mode
+    epkgs.powerline
+    epkgs.powershell
+    epkgs.presentation
+    epkgs.pretty-sha-path
+    epkgs.projection
+    epkgs.projection-multi
+    epkgs.projection-multi-embark
+    epkgs.rainbow-delimiters
+    epkgs.restclient
+    epkgs.smartparens
+    epkgs.sudo-edit
+    epkgs.suggest
+    epkgs.tree-sitter-ispell
+    (epkgs.treesit-grammars.with-grammars (ts: [
+      ts.tree-sitter-bash
+      ts.tree-sitter-c
+      ts.tree-sitter-c-sharp
+      ts.tree-sitter-cmake
+      ts.tree-sitter-cpp
+      ts.tree-sitter-css
+      ts.tree-sitter-dockerfile
+      ts.tree-sitter-go
+      ts.tree-sitter-gomod
+      ts.tree-sitter-graphql
+      ts.tree-sitter-java
+      ts.tree-sitter-javascript
+      ts.tree-sitter-json
+      ts.tree-sitter-kotlin
+      ts.tree-sitter-lua
+      ts.tree-sitter-nix
+      ts.tree-sitter-python
+      ts.tree-sitter-ruby
+      ts.tree-sitter-rust
+      ts.tree-sitter-toml
+      ts.tree-sitter-tsx
+      ts.tree-sitter-typescript
+      ts.tree-sitter-yaml
+    ]))
+    epkgs.undo-tree
+    epkgs.vala-mode
+    epkgs.vertico
+    epkgs.visual-regexp
+    epkgs.visual-regexp-steroids
+    epkgs.vlf
+    epkgs.web-mode
+    epkgs.wgrep
+    epkgs.whitespace-cleanup-mode
+    epkgs.xterm-color
+  ]);
 
   profile = buildEnv {
     name = "emacs-profile";
@@ -177,7 +174,7 @@ callPackage ./wrapper.nix {
         cargo-edit
         clang-tools
         cmake
-        pkgsKiraNur.cmake-language-server
+        cmake-language-server
         coreutils
         dejavu_fonts
         diffutils
@@ -211,7 +208,7 @@ callPackage ./wrapper.nix {
         prettierd
         (python3.withPackages (
           ps: with ps; [
-            pkgsKiraNur.python312Packages.debugpy
+            debugpy
             python-lsp-server
           ]
         ))

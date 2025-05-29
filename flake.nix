@@ -88,7 +88,7 @@
 
                 pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.system};
 
-                pkgsKiraNur = inputs.kira-nur.legacyPackages.${pkgs.system};
+                pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
               };
             in
             {
@@ -147,8 +147,6 @@
           config = import ./nixpkgs-config.nix { inherit lib; };
         };
 
-        pkgsKiraNur = inputs.kira-nur.legacyPackages.${pkgs.system};
-
         flake-linter-lib = flake-linter.lib.${system};
 
         paths = flake-linter-lib.partitionToAttrs flake-linter-lib.commonPaths (
@@ -198,9 +196,7 @@
 
         packages =
           {
-            emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
-              inherit inputs pkgsKiraNur;
-            };
+            emacs = pkgs.callPackage ./home/programs/emacs/package.nix { };
           }
           // builtins.foldl' (
             packages: host:
