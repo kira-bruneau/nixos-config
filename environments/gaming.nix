@@ -12,6 +12,12 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  programs.gamescope.package = pkgs.gamescope.overrideAttrs (attrs: {
+    patches = attrs.patches ++ [
+      ./fix-touchpad-scrolling.patch
+    ];
+  });
+
   environment.sessionVariables = {
     STEAMOS = "1";
 

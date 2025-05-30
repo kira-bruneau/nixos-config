@@ -1,0 +1,48 @@
+diff --git a/src/Backends/WaylandBackend.cpp b/src/Backends/WaylandBackend.cpp
+index 7abb87f..309d3bb 100644
+--- a/src/Backends/WaylandBackend.cpp
++++ b/src/Backends/WaylandBackend.cpp
+@@ -525,7 +525,6 @@ namespace gamescope
+         uint32_t m_uModMask[ GAMESCOPE_WAYLAND_MOD_COUNT ];
+ 
+         double m_flScrollAccum[2] = { 0.0, 0.0 };
+-        uint32_t m_uAxisSource = WL_POINTER_AXIS_SOURCE_WHEEL;
+ 
+         CWaylandPlane *m_pCurrentCursorPlane = nullptr;
+ 
+@@ -3041,10 +3040,16 @@ namespace gamescope
+     }
+     void CWaylandInputThread::Wayland_Pointer_Axis( wl_pointer *pPointer, uint32_t uTime, uint32_t uAxis, wl_fixed_t fValue )
+     {
++        if ( !cv_wayland_mouse_warp_without_keyboard_focus && !m_bKeyboardEntered )
++            return;
++
++        assert( uAxis == WL_POINTER_AXIS_VERTICAL_SCROLL || uAxis == WL_POINTER_AXIS_HORIZONTAL_SCROLL );
++
++        // Vertical is first in the wl_pointer_axis enum, flip y,x -> x,y
++        m_flScrollAccum[ !uAxis ] += fValue / 120.0 / 120.0;
+     }
+     void CWaylandInputThread::Wayland_Pointer_Axis_Source( wl_pointer *pPointer, uint32_t uAxisSource )
+     {
+-        m_uAxisSource = uAxisSource;
+     }
+     void CWaylandInputThread::Wayland_Pointer_Axis_Stop( wl_pointer *pPointer, uint32_t uTime, uint32_t uAxis )
+     {
+@@ -3064,7 +3069,6 @@ namespace gamescope
+     }
+     void CWaylandInputThread::Wayland_Pointer_Frame( wl_pointer *pPointer )
+     {
+-        defer( m_uAxisSource = WL_POINTER_AXIS_SOURCE_WHEEL );
+         double flX = m_flScrollAccum[0];
+         double flY = m_flScrollAccum[1];
+         m_flScrollAccum[0] = 0.0;
+@@ -3073,9 +3077,6 @@ namespace gamescope
+         if ( !cv_wayland_mouse_warp_without_keyboard_focus && !m_bKeyboardEntered )
+             return;
+ 
+-        if ( m_uAxisSource != WL_POINTER_AXIS_SOURCE_WHEEL )
+-            return;
+-
+         if ( flX == 0.0 && flY == 0.0 )
+             return;
+ 
