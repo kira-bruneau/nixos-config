@@ -745,9 +745,6 @@
         # Ignore errors, librewolf enforces an exclusive lock on the db while running
         $DRY_RUN_CMD ${pkgs.sqlite}/bin/sqlite3 ${db} < ${dataSQL} || :
       '';
-
-    file.".librewolf/native-messaging-hosts".source =
-      config.home.file.".mozilla/native-messaging-hosts".source;
   };
 
   wayland.windowManager.sway.config = {
