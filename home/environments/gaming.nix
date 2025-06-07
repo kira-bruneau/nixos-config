@@ -10,6 +10,7 @@ in
   imports = [
     ../programs/prismlauncher
     ../programs/rmg
+    ../programs/steam
   ];
 
   home.packages = with pkgs; [
@@ -50,7 +51,6 @@ in
   wayland.windowManager.sway.config.assigns."5" = [
     { class = "^cemu.exe$"; }
     { class = "^dolphin-emu$"; }
-    { class = "^steam$"; }
   ];
 
   home.file = {

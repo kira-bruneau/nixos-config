@@ -8,6 +8,7 @@
     ../environments/laptop.nix
     ../environments/office.nix
     ../programs/prismlauncher
+    ../programs/steam
   ];
 
   home = {
