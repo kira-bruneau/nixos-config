@@ -281,6 +281,8 @@ in
 
   services.homepage-dashboard = {
     enable = true;
+    allowedHosts = "*";
+
     services = [
       {
         "Public" = [
