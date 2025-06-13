@@ -16,7 +16,6 @@
       "Dev".devices = [ "lapis" ];
       "Documents".devices = [ "lapis" ];
       "Pictures".devices = [ "lapis" ];
-      "RSS".devices = [ "lapis" ];
       "Videos".devices = [ "lapis" ];
     };
   };

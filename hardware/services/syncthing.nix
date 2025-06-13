@@ -81,19 +81,6 @@ in
           };
         };
 
-        RSS = {
-          enable = builtins.elem hostName settings.folders.RSS.devices;
-          path = "~/.thunderbird/kira/Mail/Feeds";
-          caseSensitiveFS = true;
-          rescanIntervalS = 86400;
-          fsWatcherDelayS = 1;
-          maxConflicts = 0;
-          versioning = {
-            type = "staggered";
-            params.maxAge = "604800";
-          };
-        };
-
         Videos = {
           enable = builtins.elem hostName settings.folders.Videos.devices;
           path = "~/Videos";

@@ -16,7 +16,6 @@
       "Dev".devices = [ "amethyst" ];
       "Documents".devices = [ "amethyst" ];
       "Pictures".devices = [ "amethyst" ];
-      "RSS".devices = [ "amethyst" ];
       "Videos".devices = [ "amethyst" ];
     };
   };

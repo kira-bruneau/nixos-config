@@ -66,7 +66,6 @@
       "Dev".devices = [ "quartz" ];
       "Documents".devices = [ "quartz" ];
       "Pictures".devices = [ "quartz" ];
-      "RSS".devices = [ "quartz" ];
       "Videos".devices = [ "quartz" ];
     };
   };
