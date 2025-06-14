@@ -41,6 +41,8 @@
       timeout = 0;
     };
 
+    initrd.systemd.enable = true;
+
     kernelPackages = pkgs.linuxPackages_latest;
     resumeDevice = config.fileSystems."/swap".device or "";
     kernelParams = [ "resume_offset=10042260" ]; # sudo btrfs inspect-internal map-swapfile /swap/swapfile -r
