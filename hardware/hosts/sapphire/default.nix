@@ -42,6 +42,7 @@
     };
 
     initrd.systemd.enable = true;
+    plymouth.enable = true;
 
     kernelPackages = pkgs.linuxPackages_latest;
     resumeDevice = config.fileSystems."/swap".device or "";
