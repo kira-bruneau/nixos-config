@@ -142,7 +142,7 @@
           };
         }
         {
-          matches = [ { "node.name" = "alsa_output.pci-0000_00_1f.3.hdmi-stereo"; } ];
+          matches = [ { "node.name" = "alsa_output.pci-0000_00_1f.3.analog-stereo"; } ];
           actions = {
             update-props = {
               "node.nick" = "Speaker";
@@ -151,7 +151,7 @@
           };
         }
         {
-          matches = [ { "node.name" = "alsa_input.pci-0000_00_1f.3.analog-stereo.2"; } ];
+          matches = [ { "node.name" = "alsa_input.pci-0000_00_1f.3.analog-stereo"; } ];
           actions = {
             update-props = {
               "node.nick" = "Microphone";
