@@ -1,7 +1,10 @@
 { config, lib, ... }:
 
 {
-  services.getty.autologinUser = config.users.defaultUser;
+  services.getty = {
+    autologinUser = config.users.defaultUser;
+    autologinOnce = true;
+  };
 
   services.greetd.settings.initial_session = lib.mkIf config.programs.sway.enable {
     command = "sway";
