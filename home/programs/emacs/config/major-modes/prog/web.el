@@ -1,7 +1,8 @@
 (use-package web-mode
   :mode ("\\.html?\\'"
          "\\.vue\\'"
-         "\\.ejs\\'")
+         "\\.ejs\\'"
+         "\\.handlebars\\'")
   :init
   (with-eval-after-load 'flycheck
     (flycheck-add-mode 'javascript-eslint 'web-mode))
