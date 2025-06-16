@@ -38,7 +38,9 @@ in
 
     # Media & Documents
     poke
-    sqlitebrowser
+
+    # Databases
+    dbeaver-bin
 
     # Nix development
     cachix
