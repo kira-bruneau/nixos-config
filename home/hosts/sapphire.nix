@@ -14,6 +14,7 @@
 
     packages = with pkgs; [
       teams-for-linux
+      vscodium
     ];
   };
 
