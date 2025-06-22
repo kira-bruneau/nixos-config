@@ -12,7 +12,6 @@
       diff.algorithm = "histogram";
       pull.rebase = "merges";
       rebase.autostash = true;
-      rerere.enabled = true;
 
       "url \"git@gitlab.com:\"" = {
         pushInsteadOf = [
