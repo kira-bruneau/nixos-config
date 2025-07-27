@@ -21,9 +21,13 @@
     ]
   );
 
-  nix = {
-    package = pkgsUnstable.lix;
+  nixpkgs.overlays = [
+    (final: prev: {
+      nix = final.lix;
+    })
+  ];
 
+  nix = {
     # Pin flake inputs to the registry
     registry = (builtins.mapAttrs (_name: input: { flake = input; }) inputs) // {
       n.flake = inputs.nixpkgs;
