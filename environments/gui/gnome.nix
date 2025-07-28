@@ -3,12 +3,12 @@
 {
   imports = [ ./. ];
 
-  services.xserver = {
+  services = {
+    xserver.excludePackages = with pkgs; [ xterm ];
     desktopManager.gnome.enable = true;
-    excludePackages = with pkgs; [ xterm ];
+    gnome.core-utilities.enable = false;
   };
 
-  services.gnome.core-utilities.enable = false;
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
   networking.networkmanager.wifi.backend = "iwd";
 }

@@ -7,7 +7,7 @@
     input * xkb_options "${config.services.xserver.xkb.options}"
   '';
 
-  programs.dconf.profiles = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
+  programs.dconf.profiles = lib.mkIf config.services.desktopManager.gnome.enable {
     user.databases = [
       {
         settings = {

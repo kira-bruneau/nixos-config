@@ -30,7 +30,7 @@ in
     }
   '';
 
-  programs.dconf.profiles = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
+  programs.dconf.profiles = lib.mkIf config.services.desktopManager.gnome.enable {
     user.databases = [
       {
         settings = {
