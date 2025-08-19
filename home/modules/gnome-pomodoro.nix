@@ -47,6 +47,7 @@ in
       "org/gnome/pomodoro/plugins/actions" = {
         actions-list = (builtins.map (action: "/${action.name}/") actions);
       };
-    } // builtins.listToAttrs actions;
+    }
+    // builtins.listToAttrs actions;
   };
 }

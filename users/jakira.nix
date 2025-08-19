@@ -7,14 +7,13 @@ in
   users.users.jakira = {
     isNormalUser = true;
     description = "Jakira";
-    extraGroups =
-      [
-        "dialout" # access to serial devices (eg. CEC)
-        "wheel" # admin privileges
-      ]
-      ++ lib.optional config.networking.networkmanager.enable "networkmanager"
-      ++ lib.optional config.programs.adb.enable "adbusers"
-      ++ lib.optional config.services.kubo.enable "ipfs";
+    extraGroups = [
+      "dialout" # access to serial devices (eg. CEC)
+      "wheel" # admin privileges
+    ]
+    ++ lib.optional config.networking.networkmanager.enable "networkmanager"
+    ++ lib.optional config.programs.adb.enable "adbusers"
+    ++ lib.optional config.services.kubo.enable "ipfs";
 
     hashedPasswordFile = "/persist/var/lib/secrets/login/jakira";
     openssh.authorizedKeys.keys = [

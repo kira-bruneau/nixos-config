@@ -8,7 +8,8 @@
 {
   imports = [
     ../../environments/laptop.nix
-  ] ++ (with inputs.nixos-hardware.nixosModules; [ framework-11th-gen-intel ]);
+  ]
+  ++ (with inputs.nixos-hardware.nixosModules; [ framework-11th-gen-intel ]);
 
   hardware = {
     enableRedistributableFirmware = false;

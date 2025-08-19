@@ -56,10 +56,10 @@
 }:
 
 let
-  emacs = if stdenv.hostPlatform.isDarwin then emacs else emacs-pgtk;
+  baseEmacs = if stdenv.hostPlatform.isDarwin then emacs else emacs-pgtk;
 in
 callPackage ./wrapper.nix {
-  emacs = emacs.pkgs.emacsWithPackages (epkgs: [
+  emacs = baseEmacs.pkgs.emacsWithPackages (epkgs: [
     epkgs.all-the-icons-dired
     epkgs.acm-terminal
     epkgs.adaptive-wrap
@@ -160,74 +160,73 @@ callPackage ./wrapper.nix {
 
   profile = buildEnv {
     name = "emacs-profile";
-    paths =
-      [
-        (aspellWithDicts (
-          dicts: with dicts; [
-            en
-            en-computers
-            en-science
-          ]
-        ))
-        bear
-        cargo
-        cargo-edit
-        clang-tools
-        cmake
-        cmake-language-server
-        coreutils
-        dejavu_fonts
-        diffutils
-        direnv
-        dockerfile-language-server-nodejs
-        emacs-all-the-icons-fonts
-        eslint_d
-        fd
-        fzf
-        gcc
-        gdb
-        git
-        go
-        godef
-        gopls
-        imagemagick
-        jdk
-        jdt-language-server
-        kotlin-language-server
-        libnotify
-        marksman
-        nixd
-        nixfmt-rfc-style
-        nodejs
-        nodePackages.bash-language-server
-        nodePackages.typescript
-        nodePackages.typescript-language-server
-        nodePackages.yaml-language-server
-        pandoc
-        perl
-        prettierd
-        (python3.withPackages (
-          ps: with ps; [
-            debugpy
-            python-lsp-server
-          ]
-        ))
-        ripgrep
-        rust-analyzer
-        rustc
-        rustfmt
-        solargraph
-        texlab
-        texliveBasic
-        vala-language-server
-        vscode-langservers-extracted
-        yarn
-      ]
-      ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-        # Currently doesn't built on Darwin
-        (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
-        omnisharp-roslyn
-      ];
+    paths = [
+      (aspellWithDicts (
+        dicts: with dicts; [
+          en
+          en-computers
+          en-science
+        ]
+      ))
+      bear
+      cargo
+      cargo-edit
+      clang-tools
+      cmake
+      cmake-language-server
+      coreutils
+      dejavu_fonts
+      diffutils
+      direnv
+      dockerfile-language-server-nodejs
+      emacs-all-the-icons-fonts
+      eslint_d
+      fd
+      fzf
+      gcc
+      gdb
+      git
+      go
+      godef
+      gopls
+      imagemagick
+      jdk
+      jdt-language-server
+      kotlin-language-server
+      libnotify
+      marksman
+      nixd
+      nixfmt-rfc-style
+      nodejs
+      nodePackages.bash-language-server
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+      nodePackages.yaml-language-server
+      pandoc
+      perl
+      prettierd
+      (python3.withPackages (
+        ps: with ps; [
+          debugpy
+          python-lsp-server
+        ]
+      ))
+      ripgrep
+      rust-analyzer
+      rustc
+      rustfmt
+      solargraph
+      texlab
+      texliveBasic
+      vala-language-server
+      vscode-langservers-extracted
+      yarn
+    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+      # Currently doesn't built on Darwin
+      (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
+      omnisharp-roslyn
+    ];
   };
 
   config = ./config;

@@ -1,16 +1,15 @@
 { inputs, pkgs, ... }:
 
 {
-  imports =
-    [
-      ../../environments/bluetooth.nix
-      ../../environments/gaming.nix
-    ]
-    ++ (with inputs.nixos-hardware.nixosModules; [
-      common-cpu-amd
-      common-gpu-amd
-      common-pc-ssd
-    ]);
+  imports = [
+    ../../environments/bluetooth.nix
+    ../../environments/gaming.nix
+  ]
+  ++ (with inputs.nixos-hardware.nixosModules; [
+    common-cpu-amd
+    common-gpu-amd
+    common-pc-ssd
+  ]);
 
   hardware = {
     enableRedistributableFirmware = false;

@@ -8,7 +8,8 @@
 {
   imports = [
     ../../environments/laptop.nix
-  ] ++ (with inputs.nixos-hardware.nixosModules; [ framework-13-7040-amd ]);
+  ]
+  ++ (with inputs.nixos-hardware.nixosModules; [ framework-13-7040-amd ]);
 
   hardware = {
     enableRedistributableFirmware = false;

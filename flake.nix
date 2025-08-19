@@ -104,11 +104,12 @@
             };
 
           hardwareModule = {
-            imports =
-              [ ./hardware/environments/default.nix ]
-              ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix) ./hardware/hosts/${name}/default.nix
-              ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix) ./hardware/hosts/${name}/generated.nix
-              ++ builtins.concatMap (host: host.sharedModules) hosts;
+            imports = [
+              ./hardware/environments/default.nix
+            ]
+            ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix) ./hardware/hosts/${name}/default.nix
+            ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix) ./hardware/hosts/${name}/generated.nix
+            ++ builtins.concatMap (host: host.sharedModules) hosts;
           };
 
           sharedModules = lib.optional (builtins.pathExists ./hardware/hosts/${name}/shared.nix) ./hardware/hosts/${name}/shared.nix;
@@ -177,7 +178,7 @@
               };
             };
 
-            nixfmt-rfc-style.paths = paths.nix;
+            nixfmt.paths = paths.nix;
 
             prettier.paths = paths.markdown;
           };
@@ -194,43 +195,42 @@
 
         devShells.default = pkgs.mkShell { nativeBuildInputs = linter.nativeBuildInputs; };
 
-        packages =
-          {
-            emacs = pkgs.callPackage ./home/programs/emacs/package.nix { };
+        packages = {
+          emacs = pkgs.callPackage ./home/programs/emacs/package.nix { };
+        }
+        // builtins.foldl' (
+          packages: host:
+          let
+            nixosGenerate =
+              output: attrs:
+              (host.inputs.nixpkgs.lib.nixosSystem (
+                attrs
+                // {
+                  inherit system;
+                  specialArgs = {
+                    inherit (host) inputs;
+                  };
+                  modules = [ host.module ] ++ attrs.modules;
+                }
+              )).config.system.build.${output};
+          in
+          packages
+          // {
+            "${host.name}/digital-ocean-image" = nixosGenerate "digitalOceanImage" {
+              modules = [
+                host.hardwareModule
+                ./environments/digital-ocean-image.nix
+              ];
+            };
+            "${host.name}/install-iso" = nixosGenerate "isoImage" {
+              modules = [
+                host.hardwareModule
+                ./environments/install-iso.nix
+              ];
+            };
+            "${host.name}/vm" = nixosGenerate "vm" { modules = [ ./environments/vm.nix ]; };
           }
-          // builtins.foldl' (
-            packages: host:
-            let
-              nixosGenerate =
-                output: attrs:
-                (host.inputs.nixpkgs.lib.nixosSystem (
-                  attrs
-                  // {
-                    inherit system;
-                    specialArgs = {
-                      inherit (host) inputs;
-                    };
-                    modules = [ host.module ] ++ attrs.modules;
-                  }
-                )).config.system.build.${output};
-            in
-            packages
-            // {
-              "${host.name}/digital-ocean-image" = nixosGenerate "digitalOceanImage" {
-                modules = [
-                  host.hardwareModule
-                  ./environments/digital-ocean-image.nix
-                ];
-              };
-              "${host.name}/install-iso" = nixosGenerate "isoImage" {
-                modules = [
-                  host.hardwareModule
-                  ./environments/install-iso.nix
-                ];
-              };
-              "${host.name}/vm" = nixosGenerate "vm" { modules = [ ./environments/vm.nix ]; };
-            }
-          ) { } hosts;
+        ) { } hosts;
       }
     );
 }
