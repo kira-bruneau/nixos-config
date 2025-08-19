@@ -11,7 +11,6 @@
     inputs.home-manager.nixosModules.default
     ../cachix.nix
     ../modules
-    ../services/dnscrypt.nix
     ./custom-nixos-generate-config.nix
     ./lix.nix
     ./locale

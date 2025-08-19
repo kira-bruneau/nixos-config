@@ -24,7 +24,6 @@
     ++ lib.optional config.services.blueman.enable "/var/lib/blueman"
     ++ lib.optional config.hardware.bluetooth.enable "/var/lib/bluetooth"
     ++ lib.optional config.services.colord.enable "/var/lib/colord"
-    ++ lib.optional config.services.dnscrypt-proxy2.enable "/var/cache/private/dnscrypt-proxy"
     ++ lib.optional config.virtualisation.docker.enable "/var/lib/docker"
     ++ lib.optional config.services.firefox-syncserver.enable "/var/lib/private/firefox-syncserver"
     ++ lib.optional config.services.fprintd.enable "/var/lib/fprint"
