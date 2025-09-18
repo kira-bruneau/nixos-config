@@ -33,6 +33,7 @@
 
       # Media & Documents
       file-roller
+      foliate
 
       # Utils
       gnome-console

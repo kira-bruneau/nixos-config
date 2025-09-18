@@ -328,6 +328,7 @@ in
 
     # Media & Documents
     file-roller
+    foliate
 
     # Utils
     gnome-clocks
