@@ -160,7 +160,10 @@
           ExecStart = lib.getExe (
             pkgs.writeShellApplication {
               name = "update-nur";
-              runtimeInputs = with pkgs; [ nix ];
+              runtimeInputs = with pkgs; [
+                git
+                nix
+              ];
               text = ''
                 nix run .#sync ~/Dev/nixpkgs/nur
               '';
