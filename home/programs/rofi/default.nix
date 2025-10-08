@@ -6,7 +6,7 @@
 }:
 
 let
-  rofi = pkgs.rofi-wayland;
+  rofi = pkgs.rofi;
   rofimoji = pkgs.rofimoji;
 in
 {
@@ -14,7 +14,7 @@ in
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = rofi;
   };
 
   home.packages = [ rofimoji ];
