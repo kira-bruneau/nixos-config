@@ -9,7 +9,7 @@
   environment = {
     systemPackages = with pkgs; [
       adwaita-icon-theme
-      greetd.gtkgreet
+      gtkgreet
     ];
 
     etc = {
