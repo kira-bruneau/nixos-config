@@ -16,7 +16,7 @@
   dejavu_fonts,
   diffutils,
   direnv,
-  dockerfile-language-server-nodejs,
+  dockerfile-language-server,
   emacs-all-the-icons-fonts,
   eslint_d,
   fd,
@@ -178,7 +178,7 @@ callPackage ./wrapper.nix {
       dejavu_fonts
       diffutils
       direnv
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       emacs-all-the-icons-fonts
       eslint_d
       fd
