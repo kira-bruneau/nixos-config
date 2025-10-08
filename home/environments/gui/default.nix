@@ -5,7 +5,6 @@
     ../../environments/wallpapers.nix
 
     # Web
-    ../../programs/jellyfin
     ../../programs/librewolf
 
     # Media & Documents

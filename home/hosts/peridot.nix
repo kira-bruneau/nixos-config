@@ -174,6 +174,7 @@ in
     ../environments/gaming.nix
     ../environments/gui/gnome.nix
     ../programs/kodi
+    ../programs/jellyfin
   ];
 
   home.stateVersion = "24.05";

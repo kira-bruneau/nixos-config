@@ -9,6 +9,7 @@
     ../environments/office.nix
     ../programs/prismlauncher
     ../programs/steam
+    ../programs/tsukimi
   ];
 
   home = {

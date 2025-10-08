@@ -13,6 +13,7 @@
     ../environments/gaming.nix
     ../environments/gui/sway.nix
     ../environments/office.nix
+    ../programs/tsukimi
   ];
 
   home.stateVersion = "24.05";
