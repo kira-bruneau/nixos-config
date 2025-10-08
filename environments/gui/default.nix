@@ -41,7 +41,7 @@
   };
 
   # Let the desktop environment handle the power key
-  services.logind.extraConfig = "HandlePowerKey=ignore";
+  services.logind.settings.Login.HandlePowerKey = "ignore";
 
   # Enable GUI for managing bluetooth
   services.blueman.enable = config.hardware.bluetooth.enable;
