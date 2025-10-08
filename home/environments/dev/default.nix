@@ -58,7 +58,7 @@ in
     difftastic
     file
     gitAndTools.git-bug
-    linuxPackages.perf
+    perf
     tokei
 
     # Debuggers
