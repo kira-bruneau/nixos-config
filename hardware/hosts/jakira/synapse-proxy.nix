@@ -1,4 +1,4 @@
-{ pkgs, pkgsUnstable, ... }:
+{ pkgs, ... }:
 
 let
   clientConfig."m.homeserver".base_url = "https://matrix.jakira.space";
@@ -34,7 +34,7 @@ in
     "chat.jakira.space" = {
       enableACME = true;
       forceSSL = true;
-      root = pkgsUnstable.cinny.override {
+      root = pkgs.cinny.override {
         conf = {
           defaultHomeserver = 0;
           homeserverList = [ "jakira.space" ];
