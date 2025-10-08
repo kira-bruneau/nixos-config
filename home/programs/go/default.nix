@@ -1,6 +1,6 @@
 {
   programs.go = {
     enable = true;
-    goPath = ".local/state/go";
+    env.GOPATH = ".local/state/go";
   };
 }
