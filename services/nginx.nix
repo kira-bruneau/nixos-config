@@ -6,7 +6,7 @@
     recommendedGzipSettings = true;
     recommendedProxySettings = true;
     commonHttpConfig = ''
-      log_format systemd '$remote_addr - $remote_user '
+      log_format systemd '$remote_addr - $remote_user - $http_host '
                          '"$request" $status $body_bytes_sent '
                          '"$http_referer" "$http_user_agent"';
 
