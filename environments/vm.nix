@@ -15,6 +15,10 @@
     ];
   };
 
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
+
   environment.etc."sway/config.d/io.conf".text = ''
     output "*" scale 2
   '';
