@@ -67,10 +67,7 @@
         [
           "/etc/NetworkManager/system-connections"
         ]
-    ++ lib.optionals config.services.nginx.enable [
-      "/var/cache/nginx"
-      "/var/log/nginx"
-    ]
+    ++ lib.optional config.services.nginx.enable "/var/cache/nginx"
     ++ builtins.map (container: "/var/lib/nixos-containers/${container}") (
       builtins.attrNames config.containers
     )
