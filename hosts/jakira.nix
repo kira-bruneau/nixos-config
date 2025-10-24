@@ -15,11 +15,6 @@
 
   users.defaultUser = "kira";
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "kira.bruneau@pm.me";
-  };
-
   services.mastodon = {
     enable = true;
     localDomain = "mastodon.jakira.space";
@@ -70,15 +65,6 @@
     settings = {
       server_url = "https://headscale.jakira.space";
       dns.magic_dns = false;
-    };
-  };
-
-  services.nginx.virtualHosts."headscale.jakira.space" = {
-    forceSSL = true;
-    enableACME = true;
-    locations."/" = {
-      proxyPass = "http://localhost:${toString config.services.headscale.port}";
-      proxyWebsockets = true;
     };
   };
 }
