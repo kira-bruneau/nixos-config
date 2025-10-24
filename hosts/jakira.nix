@@ -7,6 +7,7 @@
 {
   imports = [
     ../environments/default.nix
+    ../services/nginx.nix
     ../users/kira.nix
   ];
 

@@ -1,5 +1,6 @@
 {
   imports = [
+    ../services/nginx.nix
     ../users/builder.nix
     ../users/kira.nix
   ];

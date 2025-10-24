@@ -1,13 +1,14 @@
 {
   imports = [
-    ../environments/gaming.nix
     ../environments/dev.nix
+    ../environments/gaming.nix
     ../environments/gui/sway.nix
     ../environments/media-server.nix
     ../services/firefox-syncserver.nix
     ../services/habitica.nix
     ../services/home-assistant.nix
     ../services/kubo.nix
+    ../services/nginx.nix
     ../services/ollama.nix
     ../services/synapse.nix
     ../users/builder.nix

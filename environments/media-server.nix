@@ -241,44 +241,41 @@ let
     };
 in
 {
-  services.nginx = {
-    enable = true;
-    virtualHosts =
-      let
-        sharedSettings = {
-          recommendedProxySettings = true;
+  services.nginx.virtualHosts =
+    let
+      sharedSettings = {
+        recommendedProxySettings = true;
 
-          extraConfig = ''
-            allow 127.0.0.1;
-            allow 100.64.0.0/10; # tailscale
-            deny all;
-          '';
-        };
-      in
-      {
-        "home.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:${toString config.services.homepage-dashboard.listenPort}";
-        };
-        "jellyfin.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:8096";
-        };
-        "jellyseerr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:5055";
-        };
-        "prowlarr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:${prowlarr.port}";
-        };
-        "radarr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:${radarr.port}";
-        };
-        "sonarr.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:${sonarr.port}";
-        };
-        "qbittorrent.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:${toString qBittorrent.Preferences."WebUI\\Port"}";
-        };
+        extraConfig = ''
+          allow 127.0.0.1;
+          allow 100.64.0.0/10; # tailscale
+          deny all;
+        '';
       };
-  };
+    in
+    {
+      "home.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:${toString config.services.homepage-dashboard.listenPort}";
+      };
+      "jellyfin.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:8096";
+      };
+      "jellyseerr.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:5055";
+      };
+      "prowlarr.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:${prowlarr.port}";
+      };
+      "radarr.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:${radarr.port}";
+      };
+      "sonarr.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:${sonarr.port}";
+      };
+      "qbittorrent.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:${toString qBittorrent.Preferences."WebUI\\Port"}";
+      };
+    };
 
   services.homepage-dashboard = {
     enable = true;

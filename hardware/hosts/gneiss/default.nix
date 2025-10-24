@@ -317,16 +317,13 @@
 
   security.polkit.enable = true;
 
-  services.nginx = {
-    enable = true;
-    virtualHosts = {
-      "fluidd.jakira.space".extraConfig = ''
-        client_max_body_size 50M;
-      '';
+  services.nginx.virtualHosts = {
+    "fluidd.jakira.space".extraConfig = ''
+      client_max_body_size 50M;
+    '';
 
-      "mainsail.jakira.space".extraConfig = ''
-        client_max_body_size 50M;
-      '';
-    };
+    "mainsail.jakira.space".extraConfig = ''
+      client_max_body_size 50M;
+    '';
   };
 }
