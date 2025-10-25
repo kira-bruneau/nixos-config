@@ -38,12 +38,21 @@ in
         conf = {
           defaultHomeserver = 0;
           homeserverList = [ "jakira.space" ];
-          hashRouter = {
-            enabled = true;
-            basename = "/";
-          };
         };
       };
+
+      extraConfig = ''
+        rewrite ^/config.json$ /config.json break;
+        rewrite ^/manifest.json$ /manifest.json break;
+
+        rewrite ^/sw.js$ /sw.js break;
+        rewrite ^/pdf.worker.min.js$ /pdf.worker.min.js break;
+
+        rewrite ^/public/(.*)$ /public/$1 break;
+        rewrite ^/assets/(.*)$ /assets/$1 break;
+
+        rewrite ^(.+)$ /index.html break;
+      '';
     };
     "element.jakira.space" = {
       enableACME = true;
