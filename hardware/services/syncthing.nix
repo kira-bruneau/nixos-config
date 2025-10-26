@@ -27,14 +27,9 @@ in
     overrideFolders = true;
 
     settings = {
-      devices = {
-        luna.id = "O4NQTDT-NWV3GEZ-67BW33I-BQ454SI-42G2RK3-F53W4L4-RUG47VK-5VXLFA7";
-      };
-
       folders = {
         Auth = {
           enable = builtins.elem hostName settings.folders.Auth.devices;
-          devices = [ "luna" ];
           path = "~/Auth";
           caseSensitiveFS = true;
           rescanIntervalS = 86400;

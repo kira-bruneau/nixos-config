@@ -16,8 +16,4 @@ in
 
     network.wait-online.ignoredInterfaces = [ config.services.tailscale.interfaceName ];
   };
-
-  networking.hosts = lib.mkIf cfg.enable {
-    "100.64.0.4" = [ "luna" ];
-  };
 }
