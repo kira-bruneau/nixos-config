@@ -8,6 +8,7 @@
   imports = [
     "${toString modulesPath}/virtualisation/digital-ocean-config.nix"
     ./firefox-syncserver-proxy.nix
+    ./foundry-vtt-proxy.nix
     ./synapse-proxy.nix
   ];
 
