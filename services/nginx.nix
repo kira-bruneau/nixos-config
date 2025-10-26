@@ -11,7 +11,7 @@
                          '"$http_referer" "$http_user_agent"';
 
       access_log syslog:server=unix:/dev/log systemd;
-      error_log syslog:server=unix:/dev/log;
+      error_log syslog:server=unix:/dev/log warn;
     '';
   };
 }
