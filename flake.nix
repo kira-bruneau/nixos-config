@@ -109,12 +109,15 @@
             ]
             ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix) ./hardware/hosts/${name}/default.nix
             ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix) ./hardware/hosts/${name}/generated.nix
-            ++ builtins.concatMap (host: host.sharedModules) hosts;
+            ++ sharedModules;
           };
-
-          sharedModules = lib.optional (builtins.pathExists ./hardware/hosts/${name}/shared.nix) ./hardware/hosts/${name}/shared.nix;
         }
       ) (builtins.attrNames (builtins.readDir ./hosts));
+
+      sharedModules = builtins.concatMap (
+        name:
+        lib.optional (builtins.pathExists ./hardware/hosts/${name}/shared.nix) ./hardware/hosts/${name}/shared.nix
+      ) (builtins.attrNames (builtins.readDir ./hardware/hosts));
     in
     {
       nixosConfigurations = builtins.listToAttrs (
