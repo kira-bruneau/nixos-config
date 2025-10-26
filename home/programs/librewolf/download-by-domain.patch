@@ -1,0 +1,135 @@
+diff -ur a/chrome/toolkit/content/extensions/parent/ext-downloads.js b/chrome/toolkit/content/extensions/parent/ext-downloads.js
+--- a/chrome/toolkit/content/extensions/parent/ext-downloads.js	2010-01-01 00:00:00.000000000 -0500
++++ b/chrome/toolkit/content/extensions/parent/ext-downloads.js	2025-10-26 17:41:36.829431877 -0400
+@@ -829,20 +829,19 @@
+           }
+ 
+           async function createTarget(downloadsDir) {
++            let uri = Services.io.newURI(options.url);
+             if (!filename) {
+-              let uri = Services.io.newURI(options.url);
+-              if (uri instanceof Ci.nsIURL) {
+-                filename = DownloadPaths.sanitize(
+-                  Services.textToSubURI.unEscapeURIForUI(
+-                    uri.fileName,
+-                    /* dontEscape = */ true
+-                  )
+-                );
+-              }
++              filename = DownloadPaths.sanitize(
++                Services.textToSubURI.unEscapeURIForUI(
++                  uri.fileName,
++                  /* dontEscape = */ true
++                )
++              );
+             }
+ 
+-            let target = PathUtils.joinRelative(
++            let target = PathUtils.join(
+               downloadsDir,
++              uri.host,
+               filename || "download"
+             );
+ 
+@@ -862,7 +861,7 @@
+ 
+             // Create any needed subdirectories if required by filename.
+             const dir = PathUtils.parent(target);
+-            await IOUtils.makeDirectory(dir);
++            await IOUtils.makeDirectory(dir, { createAncestors: true });
+ 
+             if (await IOUtils.exists(target)) {
+               // This has a race, something else could come along and create
+diff -ur a/chrome/toolkit/content/global/contentAreaUtils.js b/chrome/toolkit/content/global/contentAreaUtils.js
+--- a/chrome/toolkit/content/global/contentAreaUtils.js	2010-01-01 00:00:00.000000000 -0500
++++ b/chrome/toolkit/content/global/contentAreaUtils.js	2025-10-26 21:10:02.659422114 -0400
+@@ -695,6 +695,25 @@
+     let dir = new FileUtils.File(dirPath);
+ 
+     if (useDownloadDir && dirExists) {
++      let host;
++      try {
++        host = aRelatedURI?.host;
++      } catch {
++        // nsIURI.host can throw if the URI scheme doesn't have a host
++      }
++
++      if (!host) {
++        try {
++          host = aFpP.fileInfo.uri.host;
++        } catch {
++          // nsIURI.host can throw if the URI scheme doesn't have a host
++        }
++      }
++
++      if (host) {
++        dir.append(host);
++      }
++
+       dir.append(aFpP.fileInfo.fileName);
+       aFpP.file = uniqueFile(dir);
+       return true;
+diff -ur a/modules/HelperAppDlg.sys.mjs b/modules/HelperAppDlg.sys.mjs
+--- a/modules/HelperAppDlg.sys.mjs	2010-01-01 00:00:00.000000000 -0500
++++ b/modules/HelperAppDlg.sys.mjs	2025-10-26 21:07:55.902680335 -0400
+@@ -267,7 +267,7 @@
+     }
+ 
+     (async () => {
+-      if (!aForcePrompt) {
++      if (aDefaultFileName && !aForcePrompt) {
+         // Check to see if the user wishes to auto save to the default download
+         // folder without prompting. Note that preference might not be set.
+         let autodownload = Services.prefs.getBoolPref(
+@@ -280,14 +280,31 @@
+           let preferredDir = await Downloads.getPreferredDownloadsDirectory();
+           let defaultFolder = new FileUtils.File(preferredDir);
+ 
++          let host;
+           try {
+-            if (aDefaultFileName) {
+-              result = this.validateLeafName(
+-                defaultFolder,
+-                aDefaultFileName,
+-                aSuggestedFileExtension
+-              );
++            host = aLauncher.source.host;
++          } catch {
++            // nsIURI.host can throw if the URI scheme doesn't have a host
++          }
++
++          if (!host) {
++            try {
++              host = BrowsingContext.get(aLauncher.browsingContextId)?.currentURI?.host;
++            } catch {
++              // nsIURI.host can throw if the URI scheme doesn't have a host
+             }
++          }
++
++          if (host) {
++            defaultFolder.append(host);
++          }
++
++          try {
++            result = this.validateLeafName(
++              defaultFolder,
++              aDefaultFileName,
++              aSuggestedFileExtension
++            );
+           } catch (ex) {
+             // When the default download directory is write-protected,
+             // prompt the user for a different target file.
+@@ -442,13 +459,6 @@
+     aAllowExisting = false,
+     aAfterFilePicker = false
+   ) {
+-    if (!(aLocalFolder && isUsableDirectory(aLocalFolder))) {
+-      throw new Components.Exception(
+-        "Destination directory non-existing or permission error",
+-        Cr.NS_ERROR_FILE_ACCESS_DENIED
+-      );
+-    }
+-
+     aLeafName = this.getFinalLeafName(aLeafName, aFileExt, aAfterFilePicker);
+     aLocalFolder.append(aLeafName);
+ 

@@ -9,6 +9,25 @@
   programs.librewolf = {
     enable = true;
 
+    package = pkgs.librewolf.overrideAttrs (attrs: {
+      nativeBuildInputs =
+        attrs.nativeBuildInputs
+        ++ (with pkgs; [
+          unzip
+          zip
+        ]);
+
+      buildCommand = ''
+        ${attrs.buildCommand}
+        unzip -qd "$NIX_BUILD_TOP/omni" "$out/lib/librewolf/omni.ja" || :
+        rm "$out/lib/librewolf/omni.ja"
+        pushd "$NIX_BUILD_TOP/omni"
+        patch -p 1 < ${./download-by-domain.patch}
+        zip -0 --no-dir-entries --quiet --recurse-paths --strip-extra "$out/lib/librewolf/omni.ja" *
+        popd
+      '';
+    });
+
     policies = {
       ExtensionSettings = {
         "@testpilot-containers" = {
@@ -386,9 +405,10 @@
             "T9nJot5PurhJSy8n038xGA==" = 1; # twitter.com
           };
 
-          "browser.newtabpage.enabled" = true;
           "browser.crashReports.unsubmittedCheck.enabled" = false;
+          "browser.download.useDownloadDir" = true;
           "browser.newtabpage.activity-stream.showWeather" = false;
+          "browser.newtabpage.enabled" = true;
           "browser.newtabpage.pinned" = builtins.toJSON [ ];
           "browser.places.importBookmarksHTML" = true;
           "browser.shell.checkDefaultBrowser" = false;
