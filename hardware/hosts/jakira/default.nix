@@ -50,4 +50,13 @@
   zramSwap.enable = true;
 
   services.tailscale.enable = false;
+
+  services.fail2ban = {
+    enable = true;
+
+    ignoreIP = [
+      "10.100.0.0/24" # wireguard
+      "100.64.0.0/10" # tailscale
+    ];
+  };
 }

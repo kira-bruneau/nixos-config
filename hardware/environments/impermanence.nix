@@ -25,6 +25,7 @@
     ++ lib.optional config.hardware.bluetooth.enable "/var/lib/bluetooth"
     ++ lib.optional config.services.colord.enable "/var/lib/colord"
     ++ lib.optional config.virtualisation.docker.enable "/var/lib/docker"
+    ++ lib.optional config.services.fail2ban.enable "/var/lib/fail2ban"
     ++ lib.optional config.services.firefox-syncserver.enable "/var/lib/private/firefox-syncserver"
     ++ lib.optional config.services.fprintd.enable "/var/lib/fprint"
     ++ lib.optionals config.services.fwupd.enable [
