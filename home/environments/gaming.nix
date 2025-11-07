@@ -45,7 +45,7 @@ in
     # Overlay / Post-processing
     goverlay
     mangohud
-    vkBasalt
+    vkbasalt
   ];
 
   wayland.windowManager.sway.config.assigns."5" = [
