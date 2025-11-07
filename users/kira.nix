@@ -35,13 +35,14 @@
         "services.sync.username" = "kira.bruneau@pm.me";
       };
 
-      git = {
-        userName = "Kira Bruneau";
-        userEmail = "kira.bruneau@pm.me";
-        extraConfig = {
-          gitlab.user = "kira-bruneau";
-          github.user = "kira-bruneau";
+      git.settings = {
+        user = {
+          name = "Kira Bruneau";
+          email = "kira.bruneau@pm.me";
         };
+
+        gitlab.user = "kira-bruneau";
+        github.user = "kira-bruneau";
       };
 
       ssh.matchBlocks = {
