@@ -8,11 +8,15 @@
       "jakira"
       "jakira.space"
       "chat.jakira.space"
-      "cptjackl.quest"
       "firefox-syncserver.jakira.space"
       "headscale.jakira.space"
       "mastodon.jakira.space"
       "matrix.jakira.space"
+
+      "cptjackl.quest"
+      "foundry.cptjackl.quest"
+      "lore.cptjackl.quest"
+      "mine.cptjackl.quest"
     ];
 
     wireguard.interfaces.wg0 = {

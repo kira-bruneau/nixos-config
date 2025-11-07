@@ -4,15 +4,36 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://spinel:30000";
+        proxyPass = "http://jasper:5225";
         recommendedProxySettings = true;
         proxyWebsockets = true;
       };
     };
-    "www.cptjackl.quest" = {
+    "foundry.cptjackl.quest" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".return = "301 $scheme://cptjackl.quest$request_uri";
+      locations."/" = {
+        proxyPass = "http://jasper:30000";
+        recommendedProxySettings = true;
+        proxyWebsockets = true;
+      };
+    };
+    "lore.cptjackl.quest" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://jasper:30001";
+        recommendedProxySettings = true;
+        proxyWebsockets = true;
+      };
+    };
+    "mine.cptjackl.quest" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://jasper:25565";
+        recommendedProxySettings = true;
+      };
     };
   };
 }
