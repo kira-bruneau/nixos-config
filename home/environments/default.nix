@@ -66,7 +66,7 @@ in
     zip
 
     # Coreutils alternatives
-    du-dust
+    dust
     fd
     ripgrep
     sd
