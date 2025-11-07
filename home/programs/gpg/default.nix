@@ -15,10 +15,10 @@
 
     pinentry.package = pkgs.writeShellScriptBin "pinentry" ''
       if [ -n "$DISPLAY" ]; then
-        exec ${pkgs.pinentry.gnome3}/bin/pinentry-gnome3 "$@"
+        exec ${pkgs.pinentry-gnome3}/bin/pinentry-gnome3 "$@"
       fi
 
-      exec ${pkgs.pinentry.tty}/bin/pinentry-tty "$@"
+      exec ${pkgs.pinentry-tty}/bin/pinentry-tty "$@"
     '';
 
     extraConfig = ''
