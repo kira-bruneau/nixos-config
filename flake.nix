@@ -80,15 +80,15 @@
             let
               extraSpecialArgs = {
                 pkgsUnstable = import inputs.nixpkgs-unstable {
-                  system = pkgs.system;
+                  system = pkgs.stdenv.hostPlatform.system;
                   config = config.nixpkgs.config;
                 };
 
-                pkgsDisko = inputs.disko.packages.${pkgs.system};
+                pkgsDisko = inputs.disko.packages.${pkgs.stdenv.hostPlatform.system};
 
-                pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.system};
+                pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.stdenv.hostPlatform.system};
 
-                pkgsKiraNur = inputs.kira-nur.packages.${pkgs.system};
+                pkgsKiraNur = inputs.kira-nur.packages.${pkgs.stdenv.hostPlatform.system};
               };
             in
             {
@@ -100,7 +100,9 @@
               networking.hostName = name;
               _module.args = extraSpecialArgs;
               home-manager.extraSpecialArgs = extraSpecialArgs;
-              nixpkgs.overlays = [ (final: prev: { emacs = inputs.self.packages.${pkgs.system}.emacs; }) ];
+              nixpkgs.overlays = [
+                (final: prev: { emacs = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.emacs; })
+              ];
             };
 
           hardwareModule = {
