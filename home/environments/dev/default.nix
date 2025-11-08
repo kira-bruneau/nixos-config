@@ -57,7 +57,7 @@ in
     binutils
     difftastic
     file
-    gitAndTools.git-bug
+    git-bug
     perf
     tokei
 
