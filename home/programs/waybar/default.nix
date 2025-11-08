@@ -7,6 +7,16 @@
 
 let
   exe = lib.getExe config.programs.waybar.package;
+  waybar = pkgs.waybar.overrideAttrs (attrs: {
+    patches = (attrs.patches or [ ]) ++ [
+      # Fix battery status updating on plug/unplug
+      # https://github.com/Alexays/Waybar/pull/4616
+      (pkgs.fetchpatch2 {
+        url = "https://github.com/Alexays/Waybar/commit/f4608b3e312448b37a8f9d6351154026e67c680a.patch";
+        hash = "sha256-daJN4eiCTq+maA9HDFxnHIYIWXr77QXVC6NWucFj500=";
+      })
+    ];
+  });
 in
 {
   programs.waybar = {
@@ -14,7 +24,7 @@ in
 
     package = pkgs.writeShellScriptBin "waybar" ''
       echo "" > ~/.config/waybar/dynamic.css
-      exec ${lib.getExe pkgs.waybar}
+      exec ${lib.getExe waybar}
     '';
 
     settings = {
