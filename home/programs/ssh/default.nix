@@ -6,6 +6,10 @@
     enableDefaultConfig = false;
 
     matchBlocks."*" = {
+      # Keep connection alive
+      serverAliveInterval = 60;
+      serverAliveCountMax = 2;
+
       # Share SSH connections
       controlMaster = "auto";
       controlPath = "~/.ssh/master-%r@%n:%p";
@@ -15,12 +19,10 @@
       userKnownHostsFile = builtins.toString (
         config.lib.file.mkOutOfStoreSymlink "${config.home.configDirectory}/programs/ssh/known_hosts"
       );
-    };
 
-    extraConfig = ''
-      ConnectTimeout 3
-      ServerAliveInterval 60
-      ServerAliveCountMax 2
-    '';
+      extraOptions = {
+        ConnectTimeout = "3";
+      };
+    };
   };
 }
