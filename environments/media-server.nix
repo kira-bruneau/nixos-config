@@ -132,6 +132,8 @@ let
       "Session\\DefaultSavePath" = "/srv/media-ssd/downloads";
       "Session\\Port" = 15982;
       "Session\\GlobalMaxRatio" = 2;
+
+      "ExcludedFileNamesEnabled" = true;
       "Session\\ExcludedFileNames" = [ "*.lnk" ];
     };
 
