@@ -160,9 +160,18 @@ cd "$NID_OUT"
 cmakeFlags="-Cnix-instant-dev.cmake $cmakeFlags"
 phases="patchPhase ${preConfigurePhases[*]:-} configurePhase" genericBuild
 
-if [ -e compile_commands.json ]; then
-  ln -rs compile_commands.json "$NIX_BUILD_TOP/$sourceRoot"
+if [ ! -e compile_commands.json ]; then
+  if [ -n "$CC" ] || [ -n "$CXX" ]; then
+    bear=$(nix build nixpkgs#bear --print-out-paths | tr -d '\n')/bin/bear
+
+    function make() {
+      "$bear" -- make "$@"
+    }
+
+    phases="${preBuildPhases[*]:-} buildPhase" genericBuild
+  fi
 fi
 
+ln -rs compile_commands.json "$NIX_BUILD_TOP/$sourceRoot" 2>/dev/null
 rm -rf "$NIX_BUILD_TOP"
 wait
