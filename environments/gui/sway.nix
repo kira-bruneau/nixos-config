@@ -147,6 +147,15 @@
 
   # Enable GNOME virtual file system
   services.gvfs.enable = true;
+  systemd.user.services = {
+    gvfs-afc-volume-monitor.environment.GVFS_DEBUG = "1";
+    gvfs-daemon.environment.GVFS_DEBUG = "1";
+    gvfs-goa-volume-monitor.environment.GVFS_DEBUG = "1";
+    gvfs-gphoto2-volume-monitor.environment.GVFS_DEBUG = "1";
+    gvfs-metadata.environment.GVFS_DEBUG = "1";
+    gvfs-mtp-volume-monitor.environment.GVFS_DEBUG = "1";
+    gvfs-udisks2-volume-monitor.environment.GVFS_DEBUG = "1";
+  };
 
   # Enable GNOME password manager
   services.gnome.gnome-keyring.enable = true;
