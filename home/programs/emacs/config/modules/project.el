@@ -25,6 +25,10 @@
      (project-async-shell-command "Execute")
      (project-shell "Shell")))
 
+  (project-vc-extra-root-markers
+   '("compile_commands.json"
+     "package.json"))
+
   :config
   (defun project-consult-switch-project (&optional arg initial)
     (interactive "P")
