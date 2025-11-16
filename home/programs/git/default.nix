@@ -56,4 +56,6 @@
       ".factorypath"
     ];
   };
+
+  programs.mergiraf.enable = true;
 }
