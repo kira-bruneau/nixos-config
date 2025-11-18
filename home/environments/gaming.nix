@@ -32,7 +32,7 @@ in
     # Emulators
     cemu
     dolphin-emu
-    pkgsKiraNur.sudachi
+    pkgsKiraNur.eden
     winetricks
     wineWowPackages.staging
 

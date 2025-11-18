@@ -106,7 +106,7 @@ let
       "Prism Launcher" = -812576484;
       "qBittorrent" = -909108272;
       "Rosalie's Mupen GUI" = -1234567891;
-      "sudachi" = -592608668;
+      "Eden" = -592608668;
       "Super Smash Bros. Ultimate" = -1737320186;
       "The Legend of Zelda: Echoes of Wisdom" = -1565192717;
       "The Legend Of Zelda: Majora's Mask" = -1234567890;
@@ -143,7 +143,7 @@ let
     "Kodi".LaunchOptions = "kodi";
     "Librewolf".LaunchOptions = "librewolf";
     "Mario Kart 8 Deluxe".LaunchOptions =
-      "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
+      "eden -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
     "Mario Kart 8".LaunchOptions = "Cemu --fullscreen --title-id 000500001010ec00";
     "Mario Kart: Double Dash".LaunchOptions =
       "dolphin-emu -b -e '${config.home.homeDirectory}/Games/Dolphin/Mario Kart - Double Dash.gcm'";
@@ -151,15 +151,15 @@ let
       "dolphin-emu -b -e '${config.home.homeDirectory}/Games/Dolphin/MarioParty4.iso'";
     "Moonlight".LaunchOptions = "moonlight";
     "Pikmin 3 Deluxe".LaunchOptions =
-      "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
+      "eden -f -g '${config.home.homeDirectory}/Games/Sudachi/Pikmin 3 Deluxe [0100F4C009322000][US][v0].nsp'";
     "Prism Launcher".LaunchOptions = "prismlauncher";
     "qBittorrent".LaunchOptions = "qbittorrent";
     "Rosalie's Mupen GUI".LaunchOptions = "RMG --fullscreen";
-    "sudachi".LaunchOptions = "sudachi -f";
+    "Eden".LaunchOptions = "eden -f";
     "Super Smash Bros. Ultimate".LaunchOptions =
-      "sudachi -f -g ${config.home.homeDirectory}/Games/Sudachi/50e90d167d20f348cd4793aad9401283.nca";
+      "eden -f -g ${config.home.homeDirectory}/Games/Sudachi/50e90d167d20f348cd4793aad9401283.nca";
     "The Legend of Zelda: Echoes of Wisdom".LaunchOptions =
-      "sudachi -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
+      "eden -f -g '${config.home.homeDirectory}/Games/Sudachi/The Legend of Zelda Echoes of Wisdom [01008CF01BAAC000][v0].nsp'";
     "The Legend Of Zelda: Majora's Mask".LaunchOptions = "2s2h";
     "The Legend Of Zelda: The Wind Waker".LaunchOptions =
       "Cemu --fullscreen --title-id 0005000010143500";
