@@ -262,6 +262,10 @@ in
       "jellyfin.jakira.space".locations."/" = sharedSettings // {
         proxyPass = "http://127.0.0.1:8096";
       };
+      "books.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:${toString config.services.audiobookshelf.port}";
+        proxyWebsockets = true;
+      };
       "jellyseerr.jakira.space".locations."/" = sharedSettings // {
         proxyPass = "http://127.0.0.1:5055";
       };
@@ -518,6 +522,12 @@ in
         ) (builtins.attrNames jellyfin.mediaLibraries)
       )}
     '';
+  };
+
+  services.audiobookshelf = {
+    enable = true;
+    openFirewall = true;
+    port = 8001;
   };
 
   services.jellyseerr = {

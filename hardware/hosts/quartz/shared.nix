@@ -43,6 +43,7 @@
         "habitica.jakira.space"
         "home-assistant.jakira.space"
         "home.jakira.space"
+        "books.jakira.space"
         "jellyfin.jakira.space"
         "jellyseerr.jakira.space"
         "prowlarr.jakira.space"
