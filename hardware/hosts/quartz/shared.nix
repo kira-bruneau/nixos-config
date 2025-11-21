@@ -1,31 +1,35 @@
 { config, lib, ... }:
 
 {
-  nix = {
-    buildMachines = lib.optional (config.networking.hostName != "quartz") {
-      protocol = "ssh-ng";
-      sshUser = "builder";
-      hostName = "quartz";
+  nix = lib.mkMerge [
+    (lib.mkIf (config.networking.hostName != "quartz") {
+      buildMachines = [
+        {
+          protocol = "ssh-ng";
+          sshUser = "builder";
+          hostName = "quartz";
 
-      maxJobs = 12; # 6 cores, each with 2 threads
-      speedFactor = 3400; # MHz, max "boost" clock speed
+          maxJobs = 12; # 6 cores, each with 2 threads
+          speedFactor = 3400; # MHz, max "boost" clock speed
 
-      systems = [
-        "x86_64-linux"
-        "i686-linux"
+          systems = [
+            "x86_64-linux"
+            "i686-linux"
+          ];
+
+          supportedFeatures = [
+            "big-parallel"
+            "kvm"
+          ];
+        }
       ];
 
-      supportedFeatures = [
-        "big-parallel"
-        "kvm"
-      ];
-    };
-
-    settings = {
-      substituters = [ "ssh-ng://builder@quartz" ];
-      trusted-public-keys = [ "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8=" ];
-    };
-  };
+      settings.substituters = [ "ssh-ng://builder@quartz" ];
+    })
+    {
+      settings.trusted-public-keys = [ "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8=" ];
+    }
+  ];
 
   networking = {
     wireguard.interfaces.wg0 = {
