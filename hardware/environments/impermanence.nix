@@ -21,6 +21,7 @@
     ]
     ++ lib.optional config.services.accounts-daemon.enable "/var/lib/AccountsService"
     ++ lib.optional (config.security.acme.certs != { }) "/var/lib/acme"
+    ++ lib.optional (config.services.audiobookshelf.enable) "/var/lib/${config.services.audiobookshelf.dataDir}"
     ++ lib.optional config.services.blueman.enable "/var/lib/blueman"
     ++ lib.optional config.hardware.bluetooth.enable "/var/lib/bluetooth"
     ++ lib.optional config.services.colord.enable "/var/lib/colord"
