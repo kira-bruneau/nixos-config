@@ -38,6 +38,7 @@
       package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
       size = 24;
+      dotIcons.enable = false;
     };
 
     sessionVariables = {
