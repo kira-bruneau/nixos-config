@@ -79,6 +79,7 @@ in
     ../../programs/alacritty
     ../../programs/mako
     ../../programs/rofi
+    ../../programs/valent
     ../../programs/waybar
 
     # Themes

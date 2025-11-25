@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./. ];
+  imports = [
+    ./.
+    ../../services/valent.nix
+  ];
 
   environment = {
     systemPackages = with pkgs; [

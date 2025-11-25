@@ -3,6 +3,7 @@
     ../environments/dev.nix
     ../environments/gaming.nix
     ../environments/gui/sway.nix
+    ../services/valent.nix
     ../users/kira.nix
   ];
 
