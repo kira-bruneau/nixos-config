@@ -54,7 +54,7 @@ in
   networking.firewall.allowedTCPPorts = [ 8008 ];
 
   systemd.services.postgresql.postStart = lib.mkAfter ''
-    $PSQL -f ${pkgs.writeText "matrix-synapse-init.sql" ''
+    psql -f ${pkgs.writeText "matrix-synapse-init.sql" ''
       CREATE ROLE "${dbUser}";
       CREATE DATABASE "${dbName}" WITH OWNER "${dbUser}"
         TEMPLATE template0
