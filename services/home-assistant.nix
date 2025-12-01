@@ -11,8 +11,15 @@ in
 {
   services.home-assistant = {
     enable = true;
-    extraComponents = [ "vesync" ];
-    extraPackages = ps: with ps; [ numpy ];
+
+    extraComponents = [
+      # Base components from core/homeassistant/helpers/service.py
+      "ai_task"
+      "assist_satellite"
+
+      "vesync"
+    ];
+
     config = {
       frontend.themes = "!include ${waves}/themes/waves.yaml";
 
