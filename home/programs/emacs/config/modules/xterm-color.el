@@ -4,10 +4,8 @@
   (setq comint-output-filter-functions
         (remove 'ansi-color-process-output comint-output-filter-functions))
 
-  (defun xterm-color-comint-term-environment (environment)
+  (define-advice comint-term-environment (:filter-return (environment) append)
     (append '("TERM=xterm-256color" "PAGER=") environment))
-
-  (advice-add 'comint-term-environment :filter-return #'xterm-color-comint-term-environment)
 
   (add-hook 'comint-mode-hook
             (lambda ()
@@ -23,10 +21,8 @@
   ;; Compilation buffers
   (setq compilation-environment '("TERM=xterm-256color" "PAGER="))
 
-  (defun xterm-color-compilation-filter (f proc string)
+  (define-advice compilation-filter (:around (f proc string) xterm-color)
     (funcall f proc (xterm-color-filter string)))
-
-  (advice-add 'compilation-filter :around #'xterm-color-compilation-filter)
 
   ;; Eshell
   (with-eval-after-load 'eshell
