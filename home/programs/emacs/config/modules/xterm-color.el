@@ -1,13 +1,10 @@
 (use-package xterm-color
   :init
   ;; Comint
-  (setq comint-output-filter-functions
-        (remove 'ansi-color-process-output comint-output-filter-functions))
-
   (define-advice comint-term-environment (:filter-return (environment) append)
     (append '("TERM=xterm-256color" "PAGER=") environment))
 
-  (add-hook 'comint-mode-hook
+  (add-hook 'shell-mode-hook
             (lambda ()
               ;; Disable font-locking in this buffer to improve performance
               (font-lock-mode -1)
@@ -16,6 +13,9 @@
               (make-local-variable 'font-lock-function)
               (setq font-lock-function (lambda (_) nil))
 
+              ;; Replace ansi-color-process-output with xterm-color-filter
+              (make-local-variable 'comint-output-filter-functions)
+              (remove-hook 'comint-output-filter-functions 'ansi-color-process-output t)
               (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
 
   ;; Compilation buffers
