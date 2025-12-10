@@ -58,6 +58,7 @@ in
     difftastic
     file
     git-bug
+    jujutsu
     perf
     tokei
 
