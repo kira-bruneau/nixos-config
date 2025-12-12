@@ -37,9 +37,12 @@
       };
     };
 
-    # Unbind network-online from multi-user.target to speed up boot
-    # https://github.com/NixOS/nixpkgs/pull/282795
-    systemd.targets.network-online.wantedBy = lib.mkForce [ ];
+    systemd = {
+      # Unbind network-online from multi-user.target to speed up boot
+      # https://github.com/NixOS/nixpkgs/pull/282795
+      targets.network-online.wantedBy = lib.mkForce [ ];
+      oomd.enableUserSlices = true;
+    };
 
     # Prefer nftables over iptables
     networking = {
