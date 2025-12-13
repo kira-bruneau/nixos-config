@@ -26,7 +26,7 @@
       RestartSteps = "10";
 
       ExecStart = ''
-        ${lib.getExe config.services.ollama.package} run qwen2.5-coder:32b-instruct-q4_K_M ""
+        ${lib.getExe config.services.ollama.package} run qwen3-coder:30b ""
       '';
     };
   };

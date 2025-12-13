@@ -7,8 +7,8 @@
   (setopt ellama-provider
           (make-llm-ollama
            :host "quartz"
-           :chat-model "qwen2.5-coder:32b-instruct-q4_K_M"
-           :embedding-model "qwen2.5-coder:32b-instruct-q4_K_M"))
+           :chat-model "qwen3-coder:30b"
+           :embedding-model "qwen3-coder:30b"))
 
   (define-derived-mode ellama-mode org-mode "Ellama"
     "Major mode for Ellama buffers"
