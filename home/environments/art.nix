@@ -11,13 +11,20 @@
   ];
 
   home.packages = with pkgs; [
-    kdePackages.kdenlive
+    # 2d
     krita
+
+    # 3d
     orca-slicer
+
+    # audio
     tenacity
     pkgsKiraNur.yabridge
     pkgsKiraNur.yabridgectl
     pkgsKiraNur.zynaddsubfx
+
+    # video
+    kdePackages.kdenlive
   ];
 
   wayland.windowManager.sway.config = {
