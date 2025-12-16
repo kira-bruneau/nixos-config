@@ -26,6 +26,7 @@ in
 {
 
   imports = [
+    ./graphics.nix
     ../../programs/direnv
     ../../programs/emacs
     ../../programs/go
