@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../environments/art.nix
     ../environments/dev
     ../environments/gui/sway.nix
     ../environments/laptop.nix
