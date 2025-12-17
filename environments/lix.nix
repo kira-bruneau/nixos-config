@@ -66,17 +66,28 @@
     '';
   };
 
-  systemd.services.nix-daemon = {
-    serviceConfig.StateDirectory = "nix";
-    preStart = ''
-      (
-        cd /var/lib/nix
-        if [ ! -e private-key ] || [ ! -e public-key ]; then
-          ${config.nix.package}/bin/nix-store --generate-binary-cache-key \
-            ${config.networking.hostName} private-key public-key
-        fi
-      )
-    '';
+  systemd = {
+    services.nix-daemon = {
+      serviceConfig = {
+        Slice = "system-nix.slice";
+        StateDirectory = "nix";
+      };
+
+      preStart = ''
+        (
+          cd /var/lib/nix
+          if [ ! -e private-key ] || [ ! -e public-key ]; then
+            ${config.nix.package}/bin/nix-store --generate-binary-cache-key \
+              ${config.networking.hostName} private-key public-key
+          fi
+        )
+      '';
+    };
+
+    slices.system-nix.sliceConfig = lib.mkIf config.systemd.oomd.enable {
+      ManagedOOMMemoryPressure = "kill";
+      ManagedOOMMemoryPressureLimit = lib.mkDefault "80%";
+    };
   };
 
   programs.git.enable = true;
