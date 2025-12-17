@@ -38,8 +38,9 @@
       (lsp-bridge-rename)))
 
   (defun embark-find-references (thing)
-    (when (bound-and-true-p lsp-bridge-mode)
-      (lsp-bridge-find-references)))
+    (cond
+     ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-find-references))
+     (t (xref-find-references thing))))
 
   (defun embark-find-impl (thing)
     (when (bound-and-true-p lsp-bridge-mode)
