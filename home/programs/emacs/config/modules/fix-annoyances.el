@@ -118,7 +118,7 @@
 
 (use-package comint
   :config
-  (setq
+  (setopt
    comint-password-prompt-regexp
    (concat
     comint-password-prompt-regexp

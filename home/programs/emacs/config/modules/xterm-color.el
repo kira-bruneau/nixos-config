@@ -19,7 +19,7 @@
               (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
 
   ;; Compilation buffers
-  (setq compilation-environment '("TERM=xterm-256color" "PAGER="))
+  (setopt compilation-environment '("TERM=xterm-256color" "PAGER="))
 
   (define-advice compilation-filter (:around (f proc string) xterm-color)
     (funcall f proc (xterm-color-filter string)))
@@ -31,5 +31,5 @@
                 (setq xterm-color-preserve-properties t)))
 
     (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-    (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+    (setopt eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
     (setenv "TERM" "xterm-256color")))
