@@ -26,7 +26,8 @@
   (defun embark-find-definition (thing)
     (cond
      ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-find-def))
-     (t (xref-find-definitions thing))))
+     (t (let ((project-current-directory-override default-directory))
+          (xref-find-definitions thing)))))
 
   (defun embark-show-documentation (thing)
     (cond
@@ -40,7 +41,8 @@
   (defun embark-find-references (thing)
     (cond
      ((bound-and-true-p lsp-bridge-mode) (lsp-bridge-find-references))
-     (t (xref-find-references thing))))
+     (t (let ((project-current-directory-override default-directory))
+          (xref-find-references thing)))))
 
   (defun embark-find-impl (thing)
     (when (bound-and-true-p lsp-bridge-mode)
