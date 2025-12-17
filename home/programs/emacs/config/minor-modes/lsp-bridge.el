@@ -63,6 +63,13 @@
   (acm-backend-lsp-show-progress t)
 
   :config
+  ;; Don't run on lisp modes without a backing language server
+  (setopt
+   lsp-bridge-default-mode-hooks
+   (cl-set-difference
+    lsp-bridge-default-mode-hooks
+    '(emacs-lisp-mode-hook lisp-interaction-mode-hook)))
+
   (defun lsp-bridge-get-project-path-by-filepath (filename)
     (if-let ((project (project-current filename)))
         (expand-file-name (project-root project))))
