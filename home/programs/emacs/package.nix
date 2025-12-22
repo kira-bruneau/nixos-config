@@ -144,6 +144,7 @@ callPackage ./wrapper.nix {
       ts.tree-sitter-toml
       ts.tree-sitter-tsx
       ts.tree-sitter-typescript
+      ts.tree-sitter-wgsl
       ts.tree-sitter-yaml
     ]))
     epkgs.undo-tree
