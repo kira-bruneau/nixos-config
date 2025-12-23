@@ -122,7 +122,8 @@
     :language wgsl
     :override t
     :feature funcall
-    ((type_constructor_or_function_call_expression) @font-lock-function-call-face)
+    ((type_constructor_or_function_call_expression
+      (type_declaration (identifier) @font-lock-function-call-face)))
 
     :language wgsl
     :override t
