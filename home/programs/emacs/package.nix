@@ -52,6 +52,7 @@
   texliveBasic,
   vala-language-server,
   vscode-langservers-extracted,
+  wgsl-analyzer,
   yarn,
 }:
 
@@ -221,6 +222,7 @@ callPackage ./wrapper.nix {
       texliveBasic
       vala-language-server
       vscode-langservers-extracted
+      wgsl-analyzer
       yarn
     ]
     ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [

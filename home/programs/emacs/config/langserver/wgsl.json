@@ -1,0 +1,6 @@
+{
+  "name": "wgsl",
+  "languageId": "wgsl",
+  "command": ["wgsl-analyzer"],
+  "settings": {}
+}
