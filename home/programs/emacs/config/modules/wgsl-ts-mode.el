@@ -129,7 +129,9 @@
     :override t
     :feature definition
     ((function_declaration name: (identifier) @font-lock-function-name-face)
-     (variable_identifier_declaration name: (identifier) @font-lock-property-name-face))
+     (variable_identifier_declaration name: (identifier) @font-lock-property-name-face)
+     (variable_declaration (identifier) @font-lock-variable-name-face)
+     (variable_statement (identifier) @font-lock-variable-name-face))
 
     :language wgsl
     :override t
