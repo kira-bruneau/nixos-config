@@ -115,7 +115,8 @@
     :language wgsl
     :override t
     :feature type
-    ((type_declaration) @font-lock-type-face)
+    ((struct_declaration name: (identifier) @font-lock-type-face)
+     ((type_declaration) @font-lock-type-face))
 
     :language wgsl
     :override t
