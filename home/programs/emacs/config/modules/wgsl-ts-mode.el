@@ -135,6 +135,11 @@
 
     :language wgsl
     :override t
+    :feature assignment
+    ((assignment_statement left: (lhs_expression (identifier) @font-lock-variable-name-face)))
+
+    :language wgsl
+    :override t
     :feature bracket
     ((["(" ")" "[" "]" "{" "}"]) @font-lock-bracket-face)
 
