@@ -149,11 +149,6 @@
 
     :language wgsl
     :override t
-    :feature declaration
-    ((struct_declaration) @font-lock-keyword-face)
-
-    :language wgsl
-    :override t
     :feature keyword
     (([,@wgsl-ts-mode--keywords]) @font-lock-keyword-face)
 
