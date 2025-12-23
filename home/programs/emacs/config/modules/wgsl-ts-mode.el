@@ -44,11 +44,12 @@
     "type" "while")
   "WGSL keywords for tree-sitter font-locking.")
 
+(defvar wgsl-ts-mode--builtin-types
+  '("array" "bool" "f16" "f32" "i32" "mat2x2" "mat2x3" "mat2x4" "mat3x3"
+    "mat3x3" "mat3x4" "mat4x2" "mat4x3" "mat4x4" "u32" "vec2" "vec3" "vec4"))
+
 (defvar wgsl-ts-mode--builtins
-  '(;; Constructor built-in functions
-    ;"array" "bool" "f16" "f32" "i32" "mat2x2" "mat2x3" "mat2x4" "mat3x3"
-    ;"mat3x3" "mat3x4" "mat4x2" "mat4x3" "mat4x4" "u32" "vec2" "vec3" "vec4"
-    ;; Bit reinterpretation built-in functions
+  '(;; Bit reinterpretation built-in functions
     "bitcast"
     ;; Logical built-in functions
     "all" "any" "select"
@@ -116,7 +117,7 @@
     :override t
     :feature type
     ((struct_declaration name: (identifier) @font-lock-type-face)
-     ((type_declaration) @font-lock-type-face))
+     (type_declaration [,@wgsl-ts-mode--builtin-types (identifier)] @font-lock-type-face))
 
     :language wgsl
     :override t
