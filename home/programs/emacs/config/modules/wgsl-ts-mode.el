@@ -80,19 +80,8 @@
     "unpack4x8snorm" "unpack4x8unorm" "unpack2x16snorm" "unpack2x16unorm"
     "unpack2x16float"
     ;; Synchronization built-in functions
-    "storageBarrier" "textureBarrier" "workgroupBarrier" "workgroupUniformLoad"
-    ;; Built-in inputs and outputs
-    "frag_depth" "front_facing" "global_invocation_id" "instance_index"
-    "local_invocation_id" "local_invocation_index" "num_workgroups"
-    "position" "sample_index" "sample_mask" "vertex_index" "workgroup_id"
-    )
+    "storageBarrier" "textureBarrier" "workgroupBarrier" "workgroupUniformLoad")
   "WGSL built-in functions from https://www.w3.org/TR/WGSL/")
-
-;; Note: The built-in inputs and outputs should perhaps not be lumped
-;; in with the other built-in keywords. They are used in attributes,
-;; but classifying them as general built-ins means that any use of
-;; these identifiers receives the syntax highlighting of a built-in
-;; value rather than a regular identifier.
 
 (setq wgsl-ts-mode--builtins-hash-table
       (let ((tbl (make-hash-table :test 'equal)))
@@ -157,7 +146,6 @@
     :language wgsl
     :override t
     :feature builtin
-    ;; (([,@wgsl-ts-mode--builtins]) @font-lock-builtin-face)
     (((identifier) @font-lock-builtin-face
       (:pred wgsl-ts-mode--is-builtin? @font-lock-builtin-face)))
 
