@@ -109,11 +109,6 @@
 
     :language wgsl
     :override t
-    :feature constant
-    ((identifier) @font-lock-constant-face)
-
-    :language wgsl
-    :override t
     :feature attribute
     ((attribute) @font-lock-preprocessor-face)
 
