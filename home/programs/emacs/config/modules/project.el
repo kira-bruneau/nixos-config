@@ -26,7 +26,8 @@
      (project-shell "Shell")))
 
   (project-vc-extra-root-markers
-   '("compile_commands.json"
+   '("Cargo.toml"
+     "compile_commands.json"
      "package.json"))
 
   :config
