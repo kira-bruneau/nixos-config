@@ -174,7 +174,7 @@ let
       text = ''
         #!${pkgs.curl}/bin/curl -K
         ${options}
-        ${builtins.concatStringsSep "\nnext\n" (builtins.map (request: "${ctx}\n${request}") requests)}
+        ${builtins.concatStringsSep "\nnext\n" (map (request: "${ctx}\n${request}") requests)}
       '';
     };
 
@@ -188,7 +188,7 @@ let
     pkgs.runCommand name
       {
         inherit type;
-        folders = builtins.map (folder: folder.path) folders;
+        folders = map (folder: folder.path) folders;
         options =
           if options != { } then
             xmlFormat.generate "options.xml" {
@@ -236,7 +236,7 @@ let
     }
     // config
     // {
-      fields = builtins.map (name: {
+      fields = map (name: {
         inherit name;
         value = fields.${name};
       }) (builtins.attrNames fields);
@@ -440,7 +440,7 @@ in
     };
 
     unitConfig = {
-      RequiresMountsFor = builtins.concatMap (lib: builtins.map (folder: folder.path) lib.folders) (
+      RequiresMountsFor = builtins.concatMap (lib: map (folder: folder.path) lib.folders) (
         builtins.attrValues jellyfin.mediaLibraries
       );
     };
@@ -513,7 +513,7 @@ in
 
       ${pkgs.coreutils}/bin/mkdir -p "${config.services.jellyfin.dataDir}/root/default"
       ${builtins.concatStringsSep "\n" (
-        builtins.map (
+        map (
           name:
           let
             lib = makeMediaLibrary name jellyfin.mediaLibraries.${name};
@@ -553,7 +553,7 @@ in
 
   # Configure shows directory to be shared by sonarr group
   systemd.tmpfiles.settings.sonarr = builtins.listToAttrs (
-    builtins.map (folder: {
+    map (folder: {
       name = folder.path;
       value = {
         d = {
@@ -645,12 +645,12 @@ in
               }"
             ''
           ]
-          ++ (builtins.map (folder: ''
+          ++ (map (folder: ''
             url = "http://localhost:${sonarr.port}/api/v3/rootfolder"
             request = "POST"
             data = "@${jsonFormat.generate "rootfolder.json" folder}"
           '') sonarr.rootFolders)
-          ++ (builtins.map (name: ''
+          ++ (map (name: ''
             url = "http://localhost:${sonarr.port}/api/v3/downloadclient"
             request = "POST"
             data = "@${
@@ -680,7 +680,7 @@ in
 
   # Configure movies directory to be shared by radarr group
   systemd.tmpfiles.settings.radarr = builtins.listToAttrs (
-    builtins.map (folder: {
+    map (folder: {
       name = folder.path;
       value = {
         d = {
@@ -763,12 +763,12 @@ in
               }"
             ''
           ]
-          ++ (builtins.map (folder: ''
+          ++ (map (folder: ''
             url = "http://localhost:${radarr.port}/api/v3/rootfolder"
             request = "POST"
             data = "@${jsonFormat.generate "rootfolder.json" folder}"
           '') radarr.rootFolders)
-          ++ (builtins.map (name: ''
+          ++ (map (name: ''
             url = "http://localhost:${radarr.port}/api/v3/downloadclient"
             request = "POST"
             data = "@${
@@ -822,7 +822,7 @@ in
           retry-connrefused
         ''
         (
-          (builtins.map (name: ''
+          (map (name: ''
             url = "http://localhost:${prowlarr.port}/api/v1/applications"
             request = "POST"
             data = "@${
@@ -836,7 +836,7 @@ in
               )
             }"
           '') (builtins.attrNames prowlarr.applications))
-          ++ (builtins.map (name: ''
+          ++ (map (name: ''
             url = "http://localhost:${prowlarr.port}/api/v1/indexer"
             request = "POST"
             data = "@${
@@ -851,7 +851,7 @@ in
               )
             }"
           '') (builtins.attrNames prowlarr.indexers))
-          ++ (builtins.map (name: ''
+          ++ (map (name: ''
             url = "http://localhost:${prowlarr.port}/api/v1/downloadclient"
             request = "POST"
             data = "@${

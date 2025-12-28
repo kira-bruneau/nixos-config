@@ -45,7 +45,7 @@ in
     dconf.settings = {
       "org/gnome/pomodoro/preferences" = cfg.settings;
       "org/gnome/pomodoro/plugins/actions" = {
-        actions-list = (builtins.map (action: "/${action.name}/") actions);
+        actions-list = (map (action: "/${action.name}/") actions);
       };
     }
     // builtins.listToAttrs actions;

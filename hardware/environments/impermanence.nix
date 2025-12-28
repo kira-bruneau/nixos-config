@@ -70,9 +70,7 @@
           "/etc/NetworkManager/system-connections"
         ]
     ++ lib.optional config.services.nginx.enable "/var/cache/nginx"
-    ++ builtins.map (container: "/var/lib/nixos-containers/${container}") (
-      builtins.attrNames config.containers
-    )
+    ++ map (container: "/var/lib/nixos-containers/${container}") (builtins.attrNames config.containers)
     ++ lib.optional config.services.ollama.enable "/var/lib/private/ollama"
     ++ lib.optional config.services.opendkim.enable "/var/lib/opendkim"
     ++ lib.optional config.services.postfix.enable "/var/lib/postfix"

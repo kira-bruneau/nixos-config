@@ -53,7 +53,7 @@
     let
       lib = inputs.nixpkgs.lib;
 
-      hosts = builtins.map (
+      hosts = map (
         file:
         let
           name = lib.removeSuffix ".nix" file;

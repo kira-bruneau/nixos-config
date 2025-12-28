@@ -718,7 +718,7 @@
                 let
                   originPermissions = permissions.${origin};
                 in
-                (builtins.map (
+                (map (
                   type:
                   let
                     permission = permissionValue.${originPermissions.${type}};
