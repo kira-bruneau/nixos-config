@@ -135,6 +135,7 @@ callPackage ./wrapper.nix {
       ts.tree-sitter-graphql
       ts.tree-sitter-java
       ts.tree-sitter-javascript
+      ts.tree-sitter-jsdoc
       ts.tree-sitter-json
       ts.tree-sitter-kotlin
       ts.tree-sitter-lua
