@@ -1,9 +1,10 @@
 (use-package ellama
   :custom
-  (ellama-major-mode 'ellama-mode)
   (ellama-auto-scroll t)
+  (ellama-major-mode 'ellama-mode)
 
   :config
+  (require 'llm-ollama)
   (setopt ellama-provider
           (make-llm-ollama
            :host "quartz"
