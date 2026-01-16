@@ -34,7 +34,7 @@
   marksman,
   lldb,
   nixd,
-  nixfmt-rfc-style,
+  nixfmt,
   nodejs,
   nodePackages,
   omnisharp-roslyn,
@@ -197,7 +197,7 @@ callPackage ./wrapper.nix {
       libnotify
       marksman
       nixd
-      nixfmt-rfc-style
+      nixfmt
       nodejs
       nodePackages.bash-language-server
       nodePackages.typescript
