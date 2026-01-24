@@ -75,4 +75,6 @@
       TimeoutStopSec = 10;
     };
   };
+
+  services.flatpak.enable = true;
 }
