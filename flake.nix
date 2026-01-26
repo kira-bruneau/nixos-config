@@ -162,8 +162,8 @@
 
         paths = flake-linter-lib.partitionToAttrs flake-linter-lib.commonPaths (
           builtins.filter (
-            path:
-            (builtins.all (ignore: !(lib.hasSuffix ignore path)) [
+            p:
+            (builtins.all (ignore: !(lib.hasSuffix ignore p)) [
               "cachix.nix"
               "generated.nix"
             ])
@@ -185,7 +185,6 @@
               paths = paths.nix;
               settings = {
                 variable-lookup = true;
-                suppress = [ "sema-primop-overridden" ];
               };
             };
 
