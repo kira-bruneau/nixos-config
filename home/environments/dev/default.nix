@@ -54,6 +54,9 @@ in
     nurl
     patchelf
 
+    # Android development
+    android-tools
+
     # General development
     binutils
     difftastic
