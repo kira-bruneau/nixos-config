@@ -260,14 +260,7 @@ in
 
   services.swayidle = {
     enable = true;
-
-    events = [
-      {
-        event = "before-sleep";
-        command = "${lock}";
-      }
-    ];
-
+    events.before-sleep = "${lock}";
     timeouts = [
       {
         timeout = 300;
