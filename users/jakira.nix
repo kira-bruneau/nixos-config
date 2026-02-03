@@ -12,7 +12,6 @@ in
       "wheel" # admin privileges
     ]
     ++ lib.optional config.networking.networkmanager.enable "networkmanager"
-    ++ lib.optional config.programs.adb.enable "adbusers"
     ++ lib.optional config.services.kubo.enable "ipfs";
 
     hashedPasswordFile = "/persist/var/lib/secrets/login/jakira";

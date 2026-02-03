@@ -12,7 +12,6 @@
       "wheel" # admin privileges
     ]
     ++ lib.optional config.networking.networkmanager.enable "networkmanager"
-    ++ lib.optional config.programs.adb.enable "adbusers"
     ++ lib.optional config.programs.gamemode.enable "gamemode"
     ++ lib.optional config.virtualisation.docker.enable "docker"
     ++ lib.optional config.services.kubo.enable "ipfs";
