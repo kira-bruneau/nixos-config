@@ -589,7 +589,6 @@ in
         ''
           silent
           show-error
-          parallel
         ''
         ''
           header = "X-Api-Key: ${sonarr.apiKey}"
@@ -716,7 +715,6 @@ in
         ''
           silent
           show-error
-          parallel
         ''
         ''
           header = "X-Api-Key: ${radarr.apiKey}"
@@ -813,7 +811,6 @@ in
         ''
           silent
           show-error
-          parallel
         ''
         ''
           header = "X-Api-Key: ${prowlarr.apiKey}"
