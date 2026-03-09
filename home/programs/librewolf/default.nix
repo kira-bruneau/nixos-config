@@ -850,6 +850,14 @@
       {
         criteria = {
           app_id = "^librewolf$";
+          title = "https://web.fluxer.app";
+        };
+
+        command = "move container to workspace 10";
+      }
+      {
+        criteria = {
+          app_id = "^librewolf$";
           title = "https://teams.microsoft.com";
         };
 
