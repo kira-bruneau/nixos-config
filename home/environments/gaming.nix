@@ -1,4 +1,9 @@
-{ pkgs, pkgsKiraNur, ... }:
+{
+  pkgs,
+  pkgsUnstable,
+  pkgsKiraNur,
+  ...
+}:
 
 let
   mario64Rom = pkgs.fetchurl {
@@ -32,7 +37,7 @@ in
     # Emulators
     cemu
     dolphin-emu
-    pkgsKiraNur.eden
+    pkgsUnstable.eden
     winetricks
     wineWowPackages.staging
 
