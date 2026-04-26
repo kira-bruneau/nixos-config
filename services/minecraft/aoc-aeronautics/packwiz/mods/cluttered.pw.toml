@@ -1,0 +1,13 @@
+name = "Cluttered"
+filename = "cluttered-[NeoForge]-3.0.3-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/UnAEo77V/versions/xzERbfOO/cluttered-%5BNeoForge%5D-3.0.3-1.21.1.jar"
+hash-format = "sha512"
+hash = "90f88b9fe70bc37d6d36b574fc5bd90d13e3b440717c1a468104bc8d6a3b55a221e117a8273620ecfc3d90dd5f2f9fc182acb1021995bb5cb54e47217919d32e"
+
+[update]
+[update.modrinth]
+mod-id = "UnAEo77V"
+version = "xzERbfOO"

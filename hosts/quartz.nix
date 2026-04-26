@@ -8,6 +8,7 @@
     ../services/habitica.nix
     ../services/home-assistant.nix
     ../services/kubo.nix
+    ../services/minecraft/aoc-aeronautics
     ../services/nginx.nix
     ../services/ollama.nix
     ../services/synapse.nix

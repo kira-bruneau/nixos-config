@@ -1,0 +1,13 @@
+name = "Arts & Crafts"
+filename = "arts_and_crafts-neoforge-1.21.1-1.5.3.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/JI9mEkvq/versions/61y93vG7/arts_and_crafts-neoforge-1.21.1-1.5.3.jar"
+hash-format = "sha512"
+hash = "6eeff8da44598bf573d8e44b2ece1b70b1a6f17462c43a1294830db11ea8905b5f01f54b2a90b369d65f5458ae0465656bcc158c5cd37a23bdde719d57e57ab2"
+
+[update]
+[update.modrinth]
+mod-id = "JI9mEkvq"
+version = "61y93vG7"

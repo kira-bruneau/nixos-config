@@ -1,0 +1,13 @@
+name = "AutoModpack"
+filename = "automodpack-mc1.21.1-neoforge-4.0.5.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/k68glP2e/versions/ET2mE920/automodpack-mc1.21.1-neoforge-4.0.5.jar"
+hash-format = "sha512"
+hash = "b0df055ffe4b9549a2e7f1e29764b1ef19b5a0a88b57e62c73a9ddc358010fbf1f2436876c57aedc97f65805066e3bd86e6a51bcf9618a7fee5fec0eb3fe4b7f"
+
+[update]
+[update.modrinth]
+mod-id = "k68glP2e"
+version = "ET2mE920"

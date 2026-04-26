@@ -127,6 +127,7 @@
   environment.persistence."/persist".directories = [
     "/home"
     "/nix"
+    "/var/lib/minecraft"
     "/var/lib/qBittorrent"
   ];
 

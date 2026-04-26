@@ -52,6 +52,13 @@
     };
 
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs =
@@ -95,6 +102,8 @@
                 pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.stdenv.hostPlatform.system};
 
                 pkgsKiraNur = inputs.kira-nur.packages.${pkgs.stdenv.hostPlatform.system};
+
+                pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.system};
               };
             in
             {

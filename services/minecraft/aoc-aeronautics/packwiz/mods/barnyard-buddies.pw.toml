@@ -1,0 +1,13 @@
+name = "Barnyard Buddies"
+filename = "BarnyardBuddies_1.21.1Neoforge_V0.6.4.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/3lBMOcwT/versions/bZM7o2nn/BarnyardBuddies_1.21.1Neoforge_V0.6.4.jar"
+hash-format = "sha512"
+hash = "5b337f38d6b0d48a077f6c5f9ee71454f721117aeb3283cd5d260ebaf1198b9916222dee502f3f431c763d63a4475b1877a68f43564732419674da13dae142d5"
+
+[update]
+[update.modrinth]
+mod-id = "3lBMOcwT"
+version = "bZM7o2nn"
