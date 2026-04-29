@@ -6,11 +6,11 @@
   :init
   (add-to-list 'compilation-error-regexp-alist 'node-stack)
   (add-to-list 'compilation-error-regexp-alist-alist
-               '(node-stack "[ \t]+at \\(.* (\\(/.+?\\):\\([0-9]+\\):\\([0-9]+\\))\\)" 2 3 4 2 1))
+               '(node-stack "[ \t]+at \\(.* (\\(?:file://\\)?\\(/.+?\\):\\([0-9]+\\):\\([0-9]+\\))\\)" 2 3 4 2 1))
 
   (add-to-list 'compilation-error-regexp-alist 'node-stack-unamed)
   (add-to-list 'compilation-error-regexp-alist-alist
-               '(node-stack-unamed "[ \t]+at \\(\\(/.+?\\):\\([0-9]+\\):\\([0-9]+\\)\\)" 2 3 4 2 1))
+               '(node-stack-unamed "[ \t]+at \\(\\(?:file://\\)?\\(/.+?\\):\\([0-9]+\\):\\([0-9]+\\)\\)" 2 3 4 2 1))
 
   ;; Java compilation error regexp conflicts with node-stack
   (add-to-list 'compilation-error-regexp-alist-alist
