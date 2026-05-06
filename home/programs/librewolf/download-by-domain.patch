@@ -1,10 +1,11 @@
-diff -ur a/chrome/toolkit/content/extensions/parent/ext-downloads.js b/chrome/toolkit/content/extensions/parent/ext-downloads.js
---- a/chrome/toolkit/content/extensions/parent/ext-downloads.js	2010-01-01 00:00:00.000000000 -0500
-+++ b/chrome/toolkit/content/extensions/parent/ext-downloads.js	2025-10-26 17:41:36.829431877 -0400
-@@ -829,20 +829,19 @@
+diff --git a/chrome/toolkit/content/extensions/parent/ext-downloads.js b/chrome/toolkit/content/extensions/parent/ext-downloads.js
+index de38a11..9f1b676 100644
+--- a/chrome/toolkit/content/extensions/parent/ext-downloads.js
++++ b/chrome/toolkit/content/extensions/parent/ext-downloads.js
+@@ -829,20 +829,19 @@ this.downloads = class extends ExtensionAPIPersistent {
            }
  
-           async function createTarget(downloadsDir) {
+           async function createTarget() {
 +            let uri = Services.io.newURI(options.url);
              if (!filename) {
 -              let uri = Services.io.newURI(options.url);
@@ -26,12 +27,12 @@ diff -ur a/chrome/toolkit/content/extensions/parent/ext-downloads.js b/chrome/to
  
 -            let target = PathUtils.joinRelative(
 +            let target = PathUtils.join(
-               downloadsDir,
+               await Downloads.getPreferredDownloadsDirectory(),
 +              uri.host,
                filename || "download"
              );
  
-@@ -862,7 +861,7 @@
+@@ -862,7 +861,7 @@ this.downloads = class extends ExtensionAPIPersistent {
  
              // Create any needed subdirectories if required by filename.
              const dir = PathUtils.parent(target);
@@ -40,10 +41,11 @@ diff -ur a/chrome/toolkit/content/extensions/parent/ext-downloads.js b/chrome/to
  
              if (await IOUtils.exists(target)) {
                // This has a race, something else could come along and create
-diff -ur a/chrome/toolkit/content/global/contentAreaUtils.js b/chrome/toolkit/content/global/contentAreaUtils.js
---- a/chrome/toolkit/content/global/contentAreaUtils.js	2010-01-01 00:00:00.000000000 -0500
-+++ b/chrome/toolkit/content/global/contentAreaUtils.js	2025-10-26 21:10:02.659422114 -0400
-@@ -695,6 +695,25 @@
+diff --git a/chrome/toolkit/content/global/contentAreaUtils.js b/chrome/toolkit/content/global/contentAreaUtils.js
+index 9b8689a..7cfd4b3 100644
+--- a/chrome/toolkit/content/global/contentAreaUtils.js
++++ b/chrome/toolkit/content/global/contentAreaUtils.js
+@@ -700,6 +700,25 @@ function promiseTargetFile(
      let dir = new FileUtils.File(dirPath);
  
      if (useDownloadDir && dirExists) {
@@ -69,10 +71,11 @@ diff -ur a/chrome/toolkit/content/global/contentAreaUtils.js b/chrome/toolkit/co
        dir.append(aFpP.fileInfo.fileName);
        aFpP.file = uniqueFile(dir);
        return true;
-diff -ur a/modules/HelperAppDlg.sys.mjs b/modules/HelperAppDlg.sys.mjs
---- a/modules/HelperAppDlg.sys.mjs	2010-01-01 00:00:00.000000000 -0500
-+++ b/modules/HelperAppDlg.sys.mjs	2025-10-26 21:07:55.902680335 -0400
-@@ -267,7 +267,7 @@
+diff --git a/modules/HelperAppDlg.sys.mjs b/modules/HelperAppDlg.sys.mjs
+index 2a7ba87..2f5dc3b 100644
+--- a/modules/HelperAppDlg.sys.mjs
++++ b/modules/HelperAppDlg.sys.mjs
+@@ -288,7 +288,7 @@ export class nsUnknownContentTypeDialog {
      }
  
      (async () => {
@@ -81,7 +84,7 @@ diff -ur a/modules/HelperAppDlg.sys.mjs b/modules/HelperAppDlg.sys.mjs
          // Check to see if the user wishes to auto save to the default download
          // folder without prompting. Note that preference might not be set.
          let autodownload = Services.prefs.getBoolPref(
-@@ -280,14 +280,31 @@
+@@ -301,14 +301,31 @@ export class nsUnknownContentTypeDialog {
            let preferredDir = await Downloads.getPreferredDownloadsDirectory();
            let defaultFolder = new FileUtils.File(preferredDir);
  
@@ -119,7 +122,7 @@ diff -ur a/modules/HelperAppDlg.sys.mjs b/modules/HelperAppDlg.sys.mjs
            } catch (ex) {
              // When the default download directory is write-protected,
              // prompt the user for a different target file.
-@@ -442,13 +459,6 @@
+@@ -463,13 +480,6 @@ export class nsUnknownContentTypeDialog {
      aAllowExisting = false,
      aAfterFilePicker = false
    ) {
