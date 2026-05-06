@@ -40,9 +40,9 @@ let
   pack = importPackwizModpack ./packwiz;
 
   modpack = pkgs.fetchzip {
-    url = "https://mediafilez.forgecdn.net/files/8005/636/Aoc_Aeronautics_v1.3_serverpack.zip";
+    url = "https://mediafilez.forgecdn.net/files/8026/776/Aoc_Aeronautics_v1.4_serverpack.zip";
     stripRoot = false;
-    hash = "sha256-GPQNxPF5LhneOzBcqEGKpaRBKx/5AYnQ2YG9MM4mm1A=";
+    hash = "sha256-P0O13qAYJkf85AxUpLjkeeSsmRYay4XrETrfrJ+EHtc=";
   };
 
   serverVersion = "neoforge-1_21_1-21_1_228";
