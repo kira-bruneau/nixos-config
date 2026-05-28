@@ -44,15 +44,15 @@
     hosts = {
       "100.64.0.1" = lib.optionals config.services.tailscale.enable [
         "quartz"
+        "books.jakira.space"
         "habitica.jakira.space"
         "home-assistant.jakira.space"
         "home.jakira.space"
-        "books.jakira.space"
         "jellyfin.jakira.space"
-        "jellyseerr.jakira.space"
         "prowlarr.jakira.space"
         "qbittorrent.jakira.space"
         "radarr.jakira.space"
+        "seerr.jakira.space"
         "sonarr.jakira.space"
       ];
 

@@ -43,7 +43,6 @@
         logDir
       ]
     )
-    ++ lib.optional config.services.jellyseerr.enable "/var/lib/private/jellyseerr"
     ++ lib.optional config.networking.wireless.iwd.enable "/var/lib/iwd"
     ++ lib.optional config.services.klipper.enable "/var/lib/private/klipper"
     ++ lib.optional config.services.kubo.enable config.services.kubo.dataDir
@@ -81,6 +80,7 @@
     ++ lib.optional (
       config.services.mastodon.enable && config.services.mastodon.redis.createLocally
     ) "/var/lib/redis-mastodon"
+    ++ lib.optional config.services.seerr.enable "/var/lib/private/jellyseerr"
     ++ lib.optional config.services.sonarr.enable config.services.sonarr.dataDir
     ++ lib.optional (config.services.tailscale.enable) "/var/lib/tailscale"
     ++ lib.optional config.services.upower.enable "/var/lib/upower"

@@ -266,14 +266,14 @@ in
         proxyPass = "http://127.0.0.1:${toString config.services.audiobookshelf.port}";
         proxyWebsockets = true;
       };
-      "jellyseerr.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:5055";
-      };
       "prowlarr.jakira.space".locations."/" = sharedSettings // {
         proxyPass = "http://127.0.0.1:${prowlarr.port}";
       };
       "radarr.jakira.space".locations."/" = sharedSettings // {
         proxyPass = "http://127.0.0.1:${radarr.port}";
+      };
+      "seerr.jakira.space".locations."/" = sharedSettings // {
+        proxyPass = "http://127.0.0.1:5055";
       };
       "sonarr.jakira.space".locations."/" = sharedSettings // {
         proxyPass = "http://127.0.0.1:${sonarr.port}";
@@ -297,9 +297,9 @@ in
             };
           }
           {
-            "Jellyseerr" = {
-              icon = "jellyseerr.svg";
-              href = "http://jellyseerr.jakira.space";
+            "Seerr" = {
+              icon = "seerr.svg";
+              href = "http://seerr.jakira.space";
             };
           }
           {
@@ -530,12 +530,12 @@ in
     port = 8001;
   };
 
-  services.jellyseerr = {
+  services.seerr = {
     enable = true;
     openFirewall = true;
   };
 
-  systemd.services.jellyseerr.serviceConfig = {
+  systemd.services.seerr.serviceConfig = {
     CapabilityBoundingSet = "";
     ProcSubset = "pid";
     ProtectClock = true;
