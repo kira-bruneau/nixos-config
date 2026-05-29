@@ -436,7 +436,7 @@ in
       ProtectClock = true;
       ProtectHome = true;
       ProtectProc = "invisible";
-      ProtectSystem = "full"; # strict doesn't work: Failed to create CoreCLR, HRESULT: 0x80004005
+      ProtectSystem = lib.mkForce "full"; # strict doesn't work: Failed to create CoreCLR, HRESULT: 0x80004005
     };
 
     unitConfig = {
