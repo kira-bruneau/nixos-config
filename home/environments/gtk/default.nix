@@ -22,5 +22,7 @@
       name = "sans-serif";
       size = 10;
     };
+
+    gtk4.theme = null; # This is default in stateVersion >= 26.05
   };
 }
