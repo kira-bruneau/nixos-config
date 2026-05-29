@@ -44,9 +44,9 @@
         github.user = "kira-bruneau";
       };
 
-      ssh.matchBlocks = {
-        "peridot".user = "jakira";
-        "peridot.lan".user = "jakira";
+      ssh.settings = {
+        "peridot".User = "jakira";
+        "peridot.lan".User = "jakira";
       };
     };
   };

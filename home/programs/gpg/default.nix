@@ -30,7 +30,7 @@
 
   programs.ssh = {
     enable = true;
-    matchBlocks."*".match = ''
+    settings."*".Match = ''
       host * exec "${config.programs.gpg.package}/bin/gpg-connect-agent updatestartuptty /bye"
     '';
   };

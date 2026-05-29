@@ -4,25 +4,22 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
+    settings."*" = {
+      ConnectTimeout = 3;
 
-    matchBlocks."*" = {
       # Keep connection alive
-      serverAliveInterval = 60;
-      serverAliveCountMax = 2;
+      ServerAliveInterval = 60;
+      ServerAliveCountMax = 2;
 
       # Share SSH connections
-      controlMaster = "auto";
-      controlPath = "~/.ssh/master-%r@%n:%p";
-      controlPersist = "5m";
+      ControlMaster = "auto";
+      ControlPath = "~/.ssh/master-%r@%n:%p";
+      ControlPersist = "5m";
 
       # Manage known_hosts outside of home-manager (synced with Syncthing)
-      userKnownHostsFile = toString (
+      UserKnownHostsFile = toString (
         config.lib.file.mkOutOfStoreSymlink "${config.home.configDirectory}/programs/ssh/known_hosts"
       );
-
-      extraOptions = {
-        ConnectTimeout = "3";
-      };
     };
   };
 }
