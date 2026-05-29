@@ -39,7 +39,7 @@ in
     dolphin-emu
     pkgsUnstable.eden
     winetricks
-    wineWowPackages.staging
+    wineWow64Packages.staging
 
     # Modding
     packwiz
