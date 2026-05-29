@@ -431,11 +431,7 @@ in
   systemd.services.jellyfin = {
     serviceConfig = {
       UMask = lib.mkForce "0022";
-      CapabilityBoundingSet = "";
-      ProcSubset = "pid";
-      ProtectClock = true;
       ProtectHome = true;
-      ProtectProc = "invisible";
       ProtectSystem = lib.mkForce "full"; # strict doesn't work: Failed to create CoreCLR, HRESULT: 0x80004005
     };
 
@@ -538,7 +534,6 @@ in
   systemd.services.seerr.serviceConfig = {
     CapabilityBoundingSet = "";
     ProcSubset = "pid";
-    ProtectClock = true;
     ProtectProc = "invisible";
     RestrictNamespaces = true;
   };
