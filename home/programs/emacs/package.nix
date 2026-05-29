@@ -6,6 +6,7 @@
   callPackage,
   buildEnv,
   aspellWithDicts,
+  bash-language-server,
   bear,
   cargo,
   cargo-edit,
@@ -36,7 +37,6 @@
   nixd,
   nixfmt,
   nodejs,
-  nodePackages,
   omnisharp-roslyn,
   pandoc,
   perl,
@@ -49,9 +49,12 @@
   solargraph,
   texlab,
   texliveBasic,
+  typescript,
+  typescript-language-server,
   vala-language-server,
   vscode-langservers-extracted,
   wgsl-analyzer,
+  yaml-language-server,
   yarn,
 }:
 
@@ -170,6 +173,7 @@ callPackage ./wrapper.nix {
           en-science
         ]
       ))
+      bash-language-server
       bear
       cargo
       cargo-edit
@@ -199,10 +203,6 @@ callPackage ./wrapper.nix {
       nixd
       nixfmt
       nodejs
-      nodePackages.bash-language-server
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.yaml-language-server
       pandoc
       perl
       prettierd
@@ -219,9 +219,12 @@ callPackage ./wrapper.nix {
       solargraph
       texlab
       texliveBasic
+      typescript
+      typescript-language-server
       vala-language-server
       vscode-langservers-extracted
       wgsl-analyzer
+      yaml-language-server
       yarn
     ]
     ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
