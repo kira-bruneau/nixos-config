@@ -212,11 +212,5 @@
     amd_performance_level = "high";
   };
 
-  services.ollama = {
-    acceleration = "rocm";
-    environmentVariables = {
-      ROCR_VISIBLE_DEVICES = "0";
-      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
-    };
-  };
+  services.ollama.package = pkgs.ollama-vulkan;
 }
