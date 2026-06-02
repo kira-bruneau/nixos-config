@@ -37,7 +37,7 @@ in
     # Emulators
     cemu
     dolphin-emu
-    pkgsUnstable.eden
+    eden
     winetricks
     wineWow64Packages.staging
 
