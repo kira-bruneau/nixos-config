@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgsUnstable,
   pkgsKiraNur,
   ...
 }:
@@ -293,7 +294,7 @@ in
 
     wireplumber = {
       on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-      on-click-right = "${pkgs.helvum}/bin/helvum";
+      on-click-right = "${pkgsUnstable.helvum}/bin/helvum";
     };
   };
 
@@ -315,7 +316,7 @@ in
     baobab
     bustle
     d-spy
-    helvum
+    pkgsUnstable.helvum
     pavucontrol
     resources
     wl-mirror
