@@ -53,9 +53,6 @@
       ];
     };
 
-    # Use dbus-broker since it's designed for high performance
-    services.dbus.implementation = "broker";
-
     nixpkgs.config = import ../nixpkgs-config.nix { inherit lib; };
   };
 }
