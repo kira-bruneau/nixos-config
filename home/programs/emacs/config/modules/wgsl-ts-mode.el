@@ -89,7 +89,7 @@
         (mapc (lambda (x) (puthash x t tbl)) wgsl-ts-mode--builtins)
         tbl))
 
-(defun wgsl-ts-mode--is-builtin? (x)
+(defun wgsl-ts-mode--is-builtin (x)
   (gethash (treesit-node-text x) wgsl-ts-mode--builtins-hash-table))
 
 (defvar wgsl-ts-mode--font-lock-rules
@@ -152,7 +152,7 @@
     :override t
     :feature builtin
     (((identifier) @font-lock-builtin-face
-      (:pred wgsl-ts-mode--is-builtin? @font-lock-builtin-face)))
+      (:pred wgsl-ts-mode--is-builtin @font-lock-builtin-face)))
 
     :language wgsl
     :override t
