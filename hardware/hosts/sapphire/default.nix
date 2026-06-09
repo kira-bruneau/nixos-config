@@ -43,7 +43,13 @@
     };
 
     initrd.systemd.enable = true;
-    plymouth.enable = true;
+
+    plymouth = {
+      enable = true;
+      extraConfig = ''
+        DeviceScale=2
+      '';
+    };
 
     kernelPackages = pkgs.linuxPackages_latest;
     resumeDevice = config.fileSystems."/swap".device or "";
