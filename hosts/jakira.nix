@@ -64,7 +64,10 @@
     enable = true;
     settings = {
       server_url = "https://headscale.jakira.space";
-      dns.magic_dns = false;
+      dns = {
+        magic_dns = false;
+        override_local_dns = false;
+      };
     };
   };
 }
