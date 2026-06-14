@@ -94,7 +94,7 @@ let
       "Dolphin Emulator" = -1761564564;
       "Dropout" = -1539404924;
       "Element" = -1815128494;
-      "Jellyfin Media Player" = -567380782;
+      "Jellyfin Desktop" = -567380782;
       "Kodi" = -567380783;
       "Librewolf" = -1974293946;
       "Mario Kart 8 Deluxe" = -1565192715;
@@ -139,7 +139,7 @@ let
     "Dolphin Emulator".LaunchOptions = "QT_QPA_PLATFORM=xcb dolphin-emu";
     "Dropout".LaunchOptions =
       "GDK_SCALE=2 librewolf --new-window --kiosk https://www.dropout.tv -P Jackwolf";
-    "Jellyfin Media Player".LaunchOptions = "jellyfinmediaplayer --tv --scale-factor 2";
+    "Jellyfin Desktop".LaunchOptions = "jellyfin-desktop --tv --scale-factor 2";
     "Kodi".LaunchOptions = "kodi";
     "Librewolf".LaunchOptions = "librewolf";
     "Mario Kart 8 Deluxe".LaunchOptions =
@@ -174,7 +174,7 @@ in
     ../environments/gaming.nix
     ../environments/gui/gnome.nix
     ../programs/kodi
-    ../programs/jellyfin
+    ../programs/jellyfin-desktop
   ];
 
   home.stateVersion = "24.05";
@@ -222,7 +222,7 @@ in
         "librewolf.desktop"
         "jackwolf.desktop"
         "steam.desktop"
-        "com.github.iwalton3.jellyfin-media-player.desktop"
+        "org.jellyfin.JellyfinDesktop"
         "org.gnome.Console.desktop"
         "dev.vlinkz.NixSoftwareCenter.desktop"
       ];
