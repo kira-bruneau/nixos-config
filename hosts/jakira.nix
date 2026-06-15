@@ -47,7 +47,7 @@
   # Allow users in opendkim group to read & write
   systemd.services.opendkim.serviceConfig.UMask = lib.mkForce "0017";
 
-  services.postfix.config = {
+  services.postfix.settings.main = {
     milter_protocol = "6";
     smtpd_milters = [ "unix:/run/opendkim/opendkim.sock" ];
     non_smtpd_milters = [ "unix:/run/opendkim/opendkim.sock" ];
