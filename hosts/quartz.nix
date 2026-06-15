@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   imports = [
     ../environments/dev.nix
@@ -19,4 +21,8 @@
   system.stateVersion = "24.05";
 
   users.defaultUser = "kira";
+
+  services.postgresql = {
+    package = pkgs.postgresql_18;
+  };
 }
