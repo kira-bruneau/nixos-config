@@ -97,17 +97,14 @@
 
 (defvar wgsl-ts-mode--font-lock-rules
   `(:language wgsl
-    :override t
     :feature comment
     (([(line_comment) (block_comment)]) @font-lock-comment-face)
 
     :language wgsl
-    :override t
     :feature bitcast
     ((bitcast_expression) @font-lock-builtin-face)
 
     :language wgsl
-    :override t
     :feature operator
     ((unary_expression [,@wgsl-ts-mode--unary-operators] @font-lock-operator-face)
      (binary_expression [,@wgsl-ts-mode--binary-operators] @font-lock-operator-face)
@@ -116,12 +113,10 @@
      (function_return_type_declaration "->" @font-lock-operator-face))
 
     :language wgsl
-    :override t
     :feature attribute
-    ((attribute) @font-lock-preprocessor-face)
+    ((attribute ["@" (identifier)] @font-lock-preprocessor-face))
 
     :language wgsl
-    :override t
     :feature type
     ((struct_declaration name: (identifier) @font-lock-type-face)
      (type_declaration [,@wgsl-ts-mode--builtin-types (identifier)] @font-lock-type-face))
@@ -133,7 +128,6 @@
       (type_declaration (identifier) @font-lock-function-call-face)))
 
     :language wgsl
-    :override t
     :feature definition
     ((function_declaration name: (identifier) @font-lock-function-name-face)
      (struct_member (variable_identifier_declaration name: (identifier) @font-lock-property-name-face))
@@ -144,17 +138,14 @@
      (variable_statement (identifier) @font-lock-variable-name-face))
 
     :language wgsl
-    :override t
     :feature assignment
     ((assignment_statement left: (lhs_expression (identifier) @font-lock-variable-name-face)))
 
     :language wgsl
-    :override t
     :feature bracket
     ((["(" ")" "[" "]" "{" "}"]) @font-lock-bracket-face)
 
     :language wgsl
-    :override t
     :feature texel_format
     ((texel_format) @font-lock-builtin-face)
 
@@ -165,27 +156,22 @@
       (:pred wgsl-ts-mode--is-builtin @font-lock-builtin-face)))
 
     :language wgsl
-    :override t
     :feature keyword
     (([,@wgsl-ts-mode--keywords]) @font-lock-keyword-face)
 
     :language wgsl
-    :override t
     :feature address_space
     (([(address_space) (access_mode)]) @font-lock-builtin-face)
 
     :language wgsl
-    :override t
     :feature number
     (([(float_literal) (int_literal)]) @font-lock-number-face)
 
     :language wgsl
-    :override t
     :feature constant
     ((bool_literal) @font-lock-constant-face)
 
     :language wgsl
-    :override t
     :feature delimiter
     ((["," "." ";" ":"]) @font-lock-delimiter-face)
 ))
