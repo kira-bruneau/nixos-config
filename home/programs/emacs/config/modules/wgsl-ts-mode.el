@@ -32,11 +32,14 @@
 (require 'treesit)
 (require 'c-ts-common)
 
-(defvar wgsl-ts-mode--operators
-  '("!"  "!=" "%" "%=" "&" "&=" "&&" "*" "*=" "+" "+=" "," "-" "-="
-    "->" "." "/" "/=" ":" ";" "<<" "<" "<="
-    "=" "==" ">" ">=" ">>" "@" "^" "^=" "|" "|=" "||")
-  "WGSL operators for tree-sitter font-locking.")
+(defvar wgsl-ts-mode--unary-operators
+  '("-" "!" "~" "*" "&")
+  "WGSL unary operators for tree-sitter font-locking.")
+
+(defvar wgsl-ts-mode--binary-operators
+  '("||" "&&" "|" "^" "&" "==" "!=" "<" ">" "<=" ">=" "<<" ">>" "+"
+  "-" "*" "/" "%")
+  "WGSL bianry operators for tree-sitter font-locking.")
 
 (defvar wgsl-ts-mode--keywords
   '("if" "else" "fn" "switch" "case" "break" "default" "loop"
@@ -106,7 +109,11 @@
     :language wgsl
     :override t
     :feature operator
-    (([,@wgsl-ts-mode--operators]) @font-lock-operator-face)
+    ((unary_expression [,@wgsl-ts-mode--unary-operators] @font-lock-operator-face)
+     (binary_expression [,@wgsl-ts-mode--binary-operators] @font-lock-operator-face)
+     (variable_statement "=" @font-lock-operator-face)
+     (assignment_statement "=" @font-lock-operator-face)
+     (function_return_type_declaration "->" @font-lock-operator-face))
 
     :language wgsl
     :override t
