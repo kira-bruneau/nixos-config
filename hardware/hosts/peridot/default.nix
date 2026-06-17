@@ -87,9 +87,14 @@
     files = [ "/var/log/jupiter-fan-control.log" ];
   };
 
-  jovian.devices.steamdeck = {
-    enable = true;
-    autoUpdate = true;
+  jovian = {
+    # Prefer cec-sync
+    steamos.enableHdmiCecIntegration = false;
+
+    devices.steamdeck = {
+      enable = true;
+      autoUpdate = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [ steamdeck-firmware ];
