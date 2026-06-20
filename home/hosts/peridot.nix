@@ -139,7 +139,7 @@ let
     "Dolphin Emulator".LaunchOptions = "QT_QPA_PLATFORM=xcb dolphin-emu";
     "Dropout".LaunchOptions =
       "GDK_SCALE=2 librewolf --new-window --kiosk https://www.dropout.tv -P Jackwolf";
-    "Jellyfin Desktop".LaunchOptions = "jellyfin-desktop --tv --scale-factor 2";
+    "Jellyfin Desktop".LaunchOptions = "GDK_SCALE=2 librewolf --new-window --kiosk http://jasper:8096";
     "Kodi".LaunchOptions = "kodi";
     "Librewolf".LaunchOptions = "librewolf";
     "Mario Kart 8 Deluxe".LaunchOptions =
@@ -174,7 +174,6 @@ in
     ../environments/gaming.nix
     ../environments/gui/gnome.nix
     ../programs/kodi
-    ../programs/jellyfin-desktop
   ];
 
   home.stateVersion = "24.05";
