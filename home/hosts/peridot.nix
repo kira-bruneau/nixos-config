@@ -95,7 +95,6 @@ let
       "Dropout" = -1539404924;
       "Element" = -1815128494;
       "Jellyfin Desktop" = -567380782;
-      "Kodi" = -567380783;
       "Librewolf" = -1974293946;
       "Mario Kart 8 Deluxe" = -1565192715;
       "Mario Kart 8" = -1565192714;
@@ -140,7 +139,6 @@ let
     "Dropout".LaunchOptions =
       "GDK_SCALE=2 librewolf --new-window --kiosk https://www.dropout.tv -P Jackwolf";
     "Jellyfin Desktop".LaunchOptions = "GDK_SCALE=2 librewolf --new-window --kiosk http://jasper:8096";
-    "Kodi".LaunchOptions = "kodi";
     "Librewolf".LaunchOptions = "librewolf";
     "Mario Kart 8 Deluxe".LaunchOptions =
       "eden -f -g '${config.home.homeDirectory}/Games/Sudachi/Mario Kart 8 Deluxe[0100152000022000][US][v0].nsp'";
@@ -173,7 +171,6 @@ in
     ../environments/bluetooth.nix
     ../environments/gaming.nix
     ../environments/gui/gnome.nix
-    ../programs/kodi
   ];
 
   home.stateVersion = "24.05";
