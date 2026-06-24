@@ -14,8 +14,9 @@
       "wheel" # admin privileges
     ]
     ++ lib.optional config.programs.gamemode.enable "gamemode"
+    ++ lib.optional config.services.kubo.enable "ipfs"
     ++ lib.optional config.networking.networkmanager.enable "networkmanager"
-    ++ lib.optional config.services.kubo.enable "ipfs";
+    ++ lib.optional config.hardware.uinput.enable "uinput";
 
     hashedPasswordFile = "/persist/var/lib/secrets/login/jakira";
     openssh.authorizedKeys.keys = [

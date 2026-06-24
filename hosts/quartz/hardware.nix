@@ -4,6 +4,7 @@
   imports = [
     ../../hardware/environments/bluetooth.nix
     ../../hardware/environments/gaming.nix
+    ../../hardware/services/sunshine.nix
   ]
   ++ (with inputs.nixos-hardware.nixosModules; [
     common-cpu-amd

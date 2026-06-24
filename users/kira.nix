@@ -11,10 +11,11 @@
       "dialout" # access to serial devices (eg. CEC)
       "wheel" # admin privileges
     ]
-    ++ lib.optional config.networking.networkmanager.enable "networkmanager"
-    ++ lib.optional config.programs.gamemode.enable "gamemode"
     ++ lib.optional config.virtualisation.docker.enable "docker"
-    ++ lib.optional config.services.kubo.enable "ipfs";
+    ++ lib.optional config.programs.gamemode.enable "gamemode"
+    ++ lib.optional config.services.kubo.enable "ipfs"
+    ++ lib.optional config.networking.networkmanager.enable "networkmanager"
+    ++ lib.optional config.hardware.uinput.enable "uinput";
 
     hashedPasswordFile = "/persist/var/lib/secrets/login/kira";
     openssh.authorizedKeys.keys = [
