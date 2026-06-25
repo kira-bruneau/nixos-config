@@ -30,5 +30,8 @@
   permittedInsecurePackages = [
     # mautrix-discord, mautrix-whatsapp
     "olm-3.2.16"
+
+    # WiFi drivers (amethyst)
+    "broadcom-sta-6.30.223.271-59-6.18.35"
   ];
 }
