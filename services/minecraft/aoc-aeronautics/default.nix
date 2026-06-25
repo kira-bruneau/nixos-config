@@ -4,10 +4,10 @@ let
   importPackwizMetaFile =
     root: path:
     let
-      meta = builtins.fromTOML (builtins.readFile (root + "/${path}"));
+      meta = fromTOML (builtins.readFile (root + "/${path}"));
     in
     {
-      name = (builtins.dirOf path) + "/${meta.filename}";
+      name = (dirOf path) + "/${meta.filename}";
       value = pkgs.fetchurl {
         url = meta.download.url;
         outputHash = meta.download.hash;
@@ -18,7 +18,7 @@ let
   importPackwizIndex =
     root: path:
     builtins.listToAttrs (
-      builtins.map (
+      map (
         file:
         if file.metafile or false == true then
           importPackwizMetaFile root file.file
@@ -27,13 +27,13 @@ let
             name = file.file;
             value = root + "/${file.file}";
           }
-      ) (builtins.fromTOML (builtins.readFile (root + "/${path}"))).files
+      ) (fromTOML (builtins.readFile (root + "/${path}"))).files
     );
 
   importPackwizModpack =
     root:
     let
-      pack = builtins.fromTOML (builtins.readFile (root + "/pack.toml"));
+      pack = fromTOML (builtins.readFile (root + "/pack.toml"));
     in
     pack // { files = importPackwizIndex root pack.index.file; };
 
