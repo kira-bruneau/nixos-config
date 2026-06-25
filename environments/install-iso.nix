@@ -34,9 +34,6 @@
     })
   ];
 
-  # Disable wpa_supplicant (I use iwd)
-  networking.wireless.enable = false;
-
   # Resolve conflict between install iso config and my host configs
   services.getty.autologinUser = lib.mkImageMediaOverride config.users.defaultUser;
 
