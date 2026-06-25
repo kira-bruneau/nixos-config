@@ -1,7 +1,7 @@
 {
   imports = [
-    ../environments/default.nix
-    ../users/kira.nix
+    ../../environments/default.nix
+    ../../users/kira.nix
   ];
 
   system.stateVersion = "24.05";

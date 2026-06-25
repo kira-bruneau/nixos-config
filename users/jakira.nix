@@ -31,7 +31,7 @@ in
       ...
     }:
     {
-      imports = [ ../home/hosts/${system-name}.nix ];
+      imports = [ ../hosts/${system-name}/home.nix ];
 
       # Add librewolf profile for Jack
       programs.librewolf.profiles = {

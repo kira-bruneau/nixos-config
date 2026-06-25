@@ -68,7 +68,7 @@ let
           fresh=0
         fi
 
-        out="$dir/hardware/hosts/$(hostname)/generated.nix"
+        out="$dir/hosts/$(hostname)/generated.nix"
         echo "writing $out..." >&2
         mkdir -p "$(dirname "$out")"
         nixos-generate-config "''${args[@]}" > "$out"

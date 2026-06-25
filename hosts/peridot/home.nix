@@ -168,9 +168,9 @@ let
 in
 {
   imports = [
-    ../environments/bluetooth.nix
-    ../environments/gaming.nix
-    ../environments/gui/gnome.nix
+    ../../home/environments/bluetooth.nix
+    ../../home/environments/gaming.nix
+    ../../home/environments/gui/gnome.nix
   ];
 
   home.stateVersion = "24.05";

@@ -26,7 +26,7 @@
   };
 
   home-manager.users.kira = {
-    imports = [ ../home/hosts/${config.system.name}.nix ];
+    imports = [ ../hosts/${config.system.name}/home.nix ];
 
     programs = {
       librewolf.profiles.librewolf.settings = {

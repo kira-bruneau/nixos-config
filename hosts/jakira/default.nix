@@ -6,9 +6,9 @@
 
 {
   imports = [
-    ../environments/default.nix
-    ../services/nginx.nix
-    ../users/kira.nix
+    ../../environments/default.nix
+    ../../services/nginx.nix
+    ../../users/kira.nix
   ];
 
   system.stateVersion = "24.11";

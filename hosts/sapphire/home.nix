@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ../environments/dev
-    ../environments/gui/sway.nix
-    ../environments/laptop.nix
-    ../environments/office.nix
+    ../../home/environments/dev
+    ../../home/environments/gui/sway.nix
+    ../../home/environments/laptop.nix
+    ../../home/environments/office.nix
   ];
 
   home = {

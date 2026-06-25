@@ -66,12 +66,11 @@
     let
       lib = inputs.nixpkgs.lib;
 
-      hosts = map (
-        file:
-        let
-          name = lib.removeSuffix ".nix" file;
-        in
-        {
+      hostNames = builtins.attrNames (builtins.readDir ./hosts);
+
+      hosts = builtins.concatMap (
+        name:
+        lib.optional (builtins.pathExists ./hosts/${name}/default.nix) {
           inherit name;
 
           inputs =
@@ -109,7 +108,7 @@
             {
               imports = [
                 ./environments/default.nix
-                ./hosts/${file}
+                ./hosts/${name}/default.nix
               ];
 
               networking.hostName = name;
@@ -124,23 +123,23 @@
             imports = [
               ./hardware/environments/default.nix
             ]
-            ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/default.nix) ./hardware/hosts/${name}/default.nix
-            ++ lib.optional (builtins.pathExists ./hardware/hosts/${name}/generated.nix) ./hardware/hosts/${name}/generated.nix
+            ++ lib.optional (builtins.pathExists ./hosts/${name}/hardware.nix) ./hosts/${name}/hardware.nix
+            ++ lib.optional (builtins.pathExists ./hosts/${name}/generated.nix) ./hosts/${name}/generated.nix
             ++ sharedModules;
           };
         }
-      ) (builtins.attrNames (builtins.readDir ./hosts));
+
+      ) hostNames;
 
       sharedModules = builtins.concatMap (
-        name:
-        lib.optional (builtins.pathExists ./hardware/hosts/${name}/shared.nix) ./hardware/hosts/${name}/shared.nix
-      ) (builtins.attrNames (builtins.readDir ./hardware/hosts));
+        name: lib.optional (builtins.pathExists ./hosts/${name}/shared.nix) ./hosts/${name}/shared.nix
+      ) hostNames;
     in
     {
       nixosConfigurations = builtins.listToAttrs (
         builtins.concatMap (
           host:
-          if builtins.pathExists ./hardware/hosts/${host.name}/default.nix then
+          if builtins.pathExists ./hosts/${host.name}/hardware.nix then
             [
               {
                 inherit (host) name;

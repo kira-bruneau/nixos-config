@@ -7,13 +7,13 @@
 
 {
   imports = [
-    ../environments/art.nix
-    ../environments/bluetooth.nix
-    ../environments/dev
-    ../environments/gaming.nix
-    ../environments/gui/sway.nix
-    ../environments/office.nix
-    ../programs/tsukimi
+    ../../home/environments/art.nix
+    ../../home/environments/bluetooth.nix
+    ../../home/environments/dev
+    ../../home/environments/gaming.nix
+    ../../home/environments/gui/sway.nix
+    ../../home/environments/office.nix
+    ../../home/programs/tsukimi
   ];
 
   home.stateVersion = "24.05";

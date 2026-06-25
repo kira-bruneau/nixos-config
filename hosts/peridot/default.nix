@@ -8,10 +8,10 @@
 
 {
   imports = [
-    ../environments/autologin.nix
-    ../environments/gaming.nix
-    ../environments/gui/gnome.nix
-    ../users/jakira.nix
+    ../../environments/autologin.nix
+    ../../environments/gaming.nix
+    ../../environments/gui/gnome.nix
+    ../../users/jakira.nix
     inputs.jovian.nixosModules.default
   ];
 

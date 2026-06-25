@@ -1,0 +1,28 @@
+{ pkgs, ... }:
+
+{
+  imports = [
+    ../../environments/dev.nix
+    ../../environments/gaming.nix
+    ../../environments/gui/sway.nix
+    ../../environments/media-server.nix
+    ../../services/firefox-syncserver.nix
+    ../../services/habitica.nix
+    ../../services/home-assistant.nix
+    ../../services/kubo.nix
+    ../../services/minecraft/aoc-aeronautics
+    ../../services/nginx.nix
+    ../../services/ollama.nix
+    ../../services/synapse.nix
+    ../../users/builder.nix
+    ../../users/kira.nix
+  ];
+
+  system.stateVersion = "24.05";
+
+  users.defaultUser = "kira";
+
+  services.postgresql = {
+    package = pkgs.postgresql_18;
+  };
+}

@@ -1,6 +1,6 @@
 {
   imports = [
-    ../environments/default.nix
+    ../../home/environments/default.nix
   ];
 
   home.stateVersion = "24.11";

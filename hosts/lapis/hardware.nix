@@ -7,9 +7,9 @@
 
 {
   imports = [
-    ../../drivers/logitech-wireless.nix
-    ../../environments/gaming.nix
-    ../../environments/laptop.nix
+    ../../hardware/drivers/logitech-wireless.nix
+    ../../hardware/environments/gaming.nix
+    ../../hardware/environments/laptop.nix
   ]
   ++ (with inputs.nixos-hardware.nixosModules; [ framework-11th-gen-intel ]);
 

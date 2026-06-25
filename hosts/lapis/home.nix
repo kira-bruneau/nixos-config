@@ -2,14 +2,14 @@
 
 {
   imports = [
-    ../environments/art.nix
-    ../environments/dev
-    ../environments/gui/sway.nix
-    ../environments/laptop.nix
-    ../environments/office.nix
-    ../programs/prismlauncher
-    ../programs/steam
-    ../programs/tsukimi
+    ../../home/environments/art.nix
+    ../../home/environments/dev
+    ../../home/environments/gui/sway.nix
+    ../../home/environments/laptop.nix
+    ../../home/environments/office.nix
+    ../../home/programs/prismlauncher
+    ../../home/programs/steam
+    ../../home/programs/tsukimi
   ];
 
   home = {

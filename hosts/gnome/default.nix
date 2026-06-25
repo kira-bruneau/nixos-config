@@ -1,7 +1,7 @@
 {
   imports = [
-    ../environments/gui/gnome.nix
-    ../users/kira.nix
+    ../../environments/gui/gnome.nix
+    ../../users/kira.nix
   ];
 
   system.stateVersion = "24.05";
