@@ -101,7 +101,7 @@
     }
   ];
 
-  services.logind.lidSwitch = "ignore";
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
 
   programs.captive-browser.interface = "eth0";
 }
