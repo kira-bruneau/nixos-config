@@ -858,14 +858,6 @@
       {
         criteria = {
           app_id = "^librewolf$";
-          title = "https://teams.microsoft.com";
-        };
-
-        command = "move container to workspace 10";
-      }
-      {
-        criteria = {
-          app_id = "^librewolf$";
           title = "^Picture-in-Picture$";
         };
 
