@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgsKiraNur,
@@ -10,11 +9,6 @@
 {
   imports = [
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
-    (inputs.nixpkgs-unstable + "/nixos/modules/services/misc/klipper.nix")
-  ];
-
-  disabledModules = [
-    "services/misc/klipper.nix"
   ];
 
   fileSystems = {
