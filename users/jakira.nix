@@ -13,6 +13,7 @@
       "dialout" # access to serial devices (eg. CEC)
       "wheel" # admin privileges
     ]
+    ++ lib.optional config.programs.gamemode.enable "gamemode"
     ++ lib.optional config.networking.networkmanager.enable "networkmanager"
     ++ lib.optional config.services.kubo.enable "ipfs";
 
