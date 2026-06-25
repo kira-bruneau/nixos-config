@@ -1,8 +1,10 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let
-  system-name = config.system.name;
-in
 {
   users.users.jakira = {
     isNormalUser = true;
@@ -23,46 +25,39 @@ in
     linger = true;
   };
 
-  home-manager.users.jakira =
-    {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
-    {
-      imports = [ ../hosts/${system-name}/home.nix ];
+  home-manager.users.jakira = home: {
+    imports = [ ../hosts/${config.system.name}/home.nix ];
 
-      # Add librewolf profile for Jack
-      programs.librewolf.profiles = {
-        librewolf = {
-          name = lib.mkForce "Kirawolf";
-          path = lib.mkForce "kira";
-        };
-        jackwolf =
-          let
-            base = config.programs.librewolf.profiles.librewolf;
-          in
-          {
-            id = config.programs.librewolf.profiles.youtube-music.id + 1;
-            name = "Jackwolf";
-            path = "jack";
-            settings = base.settings // {
-              "extensions.activeThemeID" = "{d26a3404-d978-4bd6-93cf-f9749f57b923}";
-              "services.sync.username" = "jack.loder@outlook.com";
-            };
+    # Add librewolf profile for Jack
+    programs.librewolf.profiles = {
+      librewolf = {
+        name = lib.mkForce "Kirawolf";
+        path = lib.mkForce "kira";
+      };
+      jackwolf =
+        let
+          base = home.config.programs.librewolf.profiles.librewolf;
+        in
+        {
+          id = home.config.programs.librewolf.profiles.youtube-music.id + 1;
+          name = "Jackwolf";
+          path = "jack";
+          settings = base.settings // {
+            "extensions.activeThemeID" = "{d26a3404-d978-4bd6-93cf-f9749f57b923}";
+            "services.sync.username" = "jack.loder@outlook.com";
           };
-      };
-
-      xdg.desktopEntries = {
-        librewolf.icon = lib.mkForce (
-          pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/chunkyhairball/cute-icons/refs/heads/main/librewoof/Librewoof.svg";
-            hash = "sha256-V0yN2cMm07zNilfRWJdxASSxBOF2yNb9Bsd0kQi11Ms=";
-          }
-        );
-
-        jackwolf.icon = lib.mkForce "librewolf";
-      };
+        };
     };
+
+    xdg.desktopEntries = {
+      librewolf.icon = lib.mkForce (
+        pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/chunkyhairball/cute-icons/refs/heads/main/librewoof/Librewoof.svg";
+          hash = "sha256-V0yN2cMm07zNilfRWJdxASSxBOF2yNb9Bsd0kQi11Ms=";
+        }
+      );
+
+      jackwolf.icon = lib.mkForce "librewolf";
+    };
+  };
 }
