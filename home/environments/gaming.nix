@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgsUnstable,
   pkgsKiraNur,
   ...
 }:
