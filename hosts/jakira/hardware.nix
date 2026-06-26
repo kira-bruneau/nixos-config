@@ -52,11 +52,6 @@
 
   services.tailscale.enable = false;
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "kira.bruneau@pm.me";
-  };
-
   services.nginx.virtualHosts."headscale.jakira.space" = {
     forceSSL = true;
     enableACME = true;
