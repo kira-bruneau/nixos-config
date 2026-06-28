@@ -1,6 +1,3 @@
-(use-package direnv :demand
-  :custom
-  (direnv-always-show-summary nil)
-
+(use-package ben :demand
   :config
-  (direnv-mode))
+  (ben-global-mode))

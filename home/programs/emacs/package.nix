@@ -4,6 +4,7 @@
   emacs,
   emacs-pgtk,
   callPackage,
+  fetchFromCodeberg,
   tree-sitter,
   fetchFromGitHub,
   buildEnv,
@@ -79,7 +80,17 @@ callPackage ./wrapper.nix {
     epkgs.cmake-mode
     epkgs.consult
     epkgs.difftastic
-    epkgs.direnv
+    (
+      assert lib.versionOlder emacs.version "31";
+      epkgs.ben.overrideAttrs (attrs: {
+        src = fetchFromCodeberg {
+          owner = "pastor";
+          repo = "ben.el";
+          rev = "v0.12.13";
+          hash = "sha256-hgLmP0e0Gr0y6jLBWyHFf654fBeQqoP9ZVyJAWgQ+uc=";
+        };
+      })
+    )
     epkgs.doom-themes
     epkgs.drag-stuff
     epkgs.dtrt-indent
