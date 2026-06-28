@@ -4,6 +4,8 @@
   emacs,
   emacs-pgtk,
   callPackage,
+  tree-sitter,
+  fetchFromGitHub,
   buildEnv,
   aspellWithDicts,
   bash-language-server,
@@ -109,7 +111,6 @@ callPackage ./wrapper.nix {
     epkgs.org-download
     epkgs.page-break-lines
     epkgs.pdf-tools
-    epkgs.php-mode
     epkgs.pkgbuild-mode
     epkgs.powerline
     epkgs.powershell
@@ -135,6 +136,7 @@ callPackage ./wrapper.nix {
       ts.tree-sitter-go
       ts.tree-sitter-gomod
       ts.tree-sitter-graphql
+      ts.tree-sitter-html
       ts.tree-sitter-java
       ts.tree-sitter-javascript
       ts.tree-sitter-jsdoc
@@ -142,6 +144,21 @@ callPackage ./wrapper.nix {
       ts.tree-sitter-kotlin
       ts.tree-sitter-lua
       ts.tree-sitter-nix
+      (
+        assert lib.versionOlder emacs.version "31";
+        tree-sitter.buildGrammar {
+          language = "php";
+          version = "0.23.12";
+          src = fetchFromGitHub {
+            owner = "tree-sitter";
+            repo = "tree-sitter-php";
+            rev = "v0.23.12";
+            hash = "sha256-UWYKrC0mpWO86V52Phj/gYCdH586ZNdev/zhvUn4EBc=";
+          };
+          location = "php";
+        }
+      )
+      ts.tree-sitter-phpdoc
       ts.tree-sitter-python
       ts.tree-sitter-ruby
       ts.tree-sitter-rust
