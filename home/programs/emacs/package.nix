@@ -42,6 +42,7 @@
   omnisharp-roslyn,
   pandoc,
   perl,
+  phpactor,
   prettierd,
   python3,
   ripgrep,
@@ -222,6 +223,7 @@ callPackage ./wrapper.nix {
       nodejs
       pandoc
       perl
+      phpactor
       prettierd
       (python3.withPackages (
         ps: with ps; [
