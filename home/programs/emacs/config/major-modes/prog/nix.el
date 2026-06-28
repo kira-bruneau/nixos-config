@@ -1,11 +1,5 @@
 (use-package nix-ts-mode
-  :mode "\\.nix\\'"
-  :init
-  (with-eval-after-load 'lsp-bridge
-    (setopt lsp-bridge-nix-lsp-server "nixd")
-    (add-to-list 'lsp-bridge-single-lang-server-mode-list '(nix-ts-mode . lsp-bridge-nix-lsp-server))
-    (add-to-list 'lsp-bridge-default-mode-hooks 'nix-ts-mode-hook)
-    (add-to-list 'lsp-bridge-formatting-indent-alist '(nix-ts-mode . nix-ts-mode-indent-offset))))
+  :mode "\\.nix\\'")
 
 ;; Derived from https://github.com/NixOS/nix-mode/blob/719feb7868fb567ecfe5578f6119892c771ac5e5/nix-drv-mode.el
 (define-derived-mode nix-drv-mode json-ts-mode "Nix-Derivation"
