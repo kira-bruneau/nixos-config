@@ -3,6 +3,8 @@
          "\\.vue\\'"
          "\\.ejs\\'"
          "\\.handlebars\\'")
+  :hook (web-mode . sgml-electric-tag-pair-mode)
+
   :init
   (with-eval-after-load 'flycheck
     (flycheck-add-mode 'javascript-eslint 'web-mode))

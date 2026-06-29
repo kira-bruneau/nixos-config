@@ -31,4 +31,5 @@
 
 (use-package typescript-ts-mode
   :mode ("\\.ts\\'"
-         ("\\.tsx\\'" . tsx-ts-mode)))
+         ("\\.tsx\\'" . tsx-ts-mode))
+  :hook (tsx-ts-mode . sgml-electric-tag-pair-mode))
