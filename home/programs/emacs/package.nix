@@ -34,6 +34,7 @@
   jdk,
   jdt-language-server,
   kotlin-language-server,
+  lemminx,
   libnotify,
   marksman,
   lldb,
@@ -227,6 +228,7 @@ callPackage ./wrapper.nix {
       jdk
       jdt-language-server
       kotlin-language-server
+      lemminx
       libnotify
       marksman
       nixd
