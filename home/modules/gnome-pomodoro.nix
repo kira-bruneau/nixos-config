@@ -35,7 +35,7 @@ in
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     home.packages = [ cfg.package ];
 
     programs.gnome-pomodoro.settings = lib.mkIf (cfg.actions != [ ]) {
