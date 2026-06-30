@@ -29,11 +29,6 @@
     imports = [ ../hosts/${config.system.name}/home.nix ];
 
     programs = {
-      librewolf.profiles.librewolf.settings = {
-        "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
-        "services.sync.username" = "kira.bruneau@pm.me";
-      };
-
       git.settings = {
         user = {
           name = "Kira Bruneau";
@@ -43,6 +38,13 @@
         gitlab.user = "kira-bruneau";
         github.user = "kira-bruneau";
       };
+
+      librewolf.profiles.librewolf.settings = {
+        "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+        "services.sync.username" = "kira.bruneau@pm.me";
+      };
+
+      nix-init.settings.maintainers = [ "kira-bruneau" ];
 
       ssh.settings = {
         "peridot".User = "jakira";
