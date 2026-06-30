@@ -56,5 +56,6 @@
     nixpkgs.config = import ../nixpkgs-config.nix { inherit lib; };
 
     fonts.fontconfig.enable = lib.mkDefault false;
+    xdg.sounds.enable = lib.mkDefault false;
   };
 }

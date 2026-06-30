@@ -55,6 +55,9 @@
     allowBitmaps = false;
   };
 
+  # Enable XDG sound theme
+  xdg.sounds.enable = true;
+
   # Reduce priority of nix daemon on desktop systems so the system is
   # still usable while a nix build is running
   nix = {
