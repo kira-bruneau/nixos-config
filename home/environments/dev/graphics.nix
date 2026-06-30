@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    ffmpeg
     gimp
     inkscape
   ];
