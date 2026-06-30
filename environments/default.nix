@@ -54,5 +54,7 @@
     };
 
     nixpkgs.config = import ../nixpkgs-config.nix { inherit lib; };
+
+    fonts.fontconfig.enable = lib.mkDefault false;
   };
 }

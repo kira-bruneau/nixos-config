@@ -49,8 +49,11 @@
   # Enable automatic device mounting
   services.devmon.enable = true;
 
-  # Disable bitmap fonts
-  fonts.fontconfig.allowBitmaps = false;
+  # Enable fonts
+  fonts.fontconfig = {
+    enable = true;
+    allowBitmaps = false;
+  };
 
   # Reduce priority of nix daemon on desktop systems so the system is
   # still usable while a nix build is running
