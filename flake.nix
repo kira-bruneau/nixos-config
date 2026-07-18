@@ -108,7 +108,7 @@
 
                 pkgsKiraNur = inputs.kira-nur.packages.${pkgs.stdenv.hostPlatform.system};
 
-                pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.system};
+                pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.stdenv.hostPlatform.system};
               };
             in
             {
