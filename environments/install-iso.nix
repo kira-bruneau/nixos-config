@@ -42,4 +42,7 @@
 
   # Resolve conflict between sudo & sudo-rs
   security.sudo.enable = lib.mkImageMediaOverride false;
+
+  # Resolve conflict between install iso and redis
+  boot.kernel.sysctl."vm.overcommit_memory" = lib.mkImageMediaOverride "1";
 }
