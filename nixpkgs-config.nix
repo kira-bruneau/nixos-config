@@ -8,7 +8,6 @@
       "anytype"
       "anytype-heart"
       "aspell-dict-en-science"
-      "broadcom-sta"
       "clonehero"
       "clonehero-unwrapped"
       "data.zip" # vvvvvv
@@ -30,8 +29,5 @@
   permittedInsecurePackages = [
     # mautrix-discord, mautrix-whatsapp
     "olm-3.2.16"
-
-    # WiFi drivers (amethyst)
-    "broadcom-sta-6.30.223.271-59-6.18.35"
   ];
 }
