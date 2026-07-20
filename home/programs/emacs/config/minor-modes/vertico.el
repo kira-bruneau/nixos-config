@@ -29,6 +29,14 @@
               (insert cand))))
       (self-insert-command (prefix-numeric-value arg) c)))
 
-  (defun vertico-directory-home ()
-    (interactive)
-    (insert "~/")))
+  (defun vertico-directory-home (&optional arg c)
+    (interactive "P")
+    (if (and
+         (not arg)
+         (eq (vertico--metadata-get 'category) 'file)
+         (eq (point) (point-max)))
+        (insert
+         (if (or (= (point) (minibuffer-prompt-end)) (eq (char-before) ?/))
+             "~/"
+           "/~/"))
+      (self-insert-command (prefix-numeric-value arg) c))))
