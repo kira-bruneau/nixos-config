@@ -36,23 +36,29 @@
     (if (not (null arg)) (call-interactively #'project-switch-project)
       (require 'consult)
       (project-switch-project
-       (expand-file-name
-        (let ((default-directory "~/Dev")
-              (consult-fd-args
-               (append
-                (eval (car (get 'consult-fd-args 'standard-value)))
-                '("--hidden"
-                  "--exclude" "archive"
-                  "--exclude" ".stversions"
-                  "--max-depth" "5"
-                  "--format" "{//}"
-                  "--prune"
-                  "/\\.git$"))))
-          (consult--find
-           "Select project: "
-           (consult--fd-make-builder '("."))
-           initial))
-        "~/Dev"))))
+       (let ((default-directory "~/Dev")
+             (consult-fd-args
+              (append
+               (eval (car (get 'consult-fd-args 'standard-value)))
+               '("--hidden"
+                 "--exclude" "archive"
+                 "--exclude" ".stversions"
+                 "--prune"
+                 "--max-depth" "5"
+                 "--absolute-path"
+                 "--format" "{//}"
+                 "/\\.git$"))))
+         (consult--read
+          (consult--process-collection (consult--fd-make-builder '("."))
+            :transform (consult--async-map #'abbreviate-file-name)
+            :highlight t :file-handler t) ;; allow tramp
+          :prompt "Select project: "
+          :sort nil
+          :require-match t
+          :initial initial
+          :add-history (thing-at-point 'filename)
+          :category 'file
+          :history '(:input consult--find-history))))))
 
   (defun project-consult-ripgrep (&optional dir initial)
     (interactive "P" (list (project-root (project-current))))
