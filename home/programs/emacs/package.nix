@@ -22,7 +22,7 @@
   dockerfile-language-server,
   emacs-all-the-icons-fonts,
   eslint_d,
-  fd,
+  fd-relative-full-path,
   fzf,
   gcc,
   gdb,
@@ -216,7 +216,7 @@ callPackage ./wrapper.nix {
       dockerfile-language-server
       emacs-all-the-icons-fonts
       eslint_d
-      fd
+      fd-relative-full-path
       fzf
       gcc
       gdb

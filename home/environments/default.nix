@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  pkgsKiraNur,
+  ...
+}:
 
 let
   jb = pkgs.writeShellApplication {
@@ -66,7 +71,7 @@ in
 
     # Coreutils alternatives
     dust
-    fd
+    pkgsKiraNur.fd-relative-full-path
     ripgrep
     sd
 

@@ -175,6 +175,8 @@
           config = import ./nixpkgs-config.nix { inherit lib; };
         };
 
+        pkgsKiraNur = inputs.kira-nur.packages.${pkgs.stdenv.hostPlatform.system};
+
         flake-linter-lib = flake-linter.lib.${system};
 
         paths = flake-linter-lib.partitionToAttrs flake-linter-lib.commonPaths (
@@ -223,8 +225,13 @@
         devShells.default = pkgs.mkShell { nativeBuildInputs = linter.nativeBuildInputs; };
 
         packages = {
-          emacs = pkgs.callPackage ./home/programs/emacs/package.nix { };
-          emacsUnstable = pkgsUnstable.callPackage ./home/programs/emacs/package.nix { };
+          emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
+            inherit (pkgsKiraNur) fd-relative-full-path;
+          };
+
+          emacsUnstable = pkgsUnstable.callPackage ./home/programs/emacs/package.nix {
+            inherit (pkgsKiraNur) fd-relative-full-path;
+          };
         }
         // builtins.foldl' (
           packages: host:
