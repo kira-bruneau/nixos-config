@@ -192,11 +192,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1784747638,
-        "narHash": "sha256-nk+5CdLGybHuMcRM3pMy+zBwGS72RbeuIFiMg4MaZAU=",
+        "lastModified": 1784748384,
+        "narHash": "sha256-D36SD7EZXhF1QrBW3g4+z6GBIZg/P5XIJtE6aZA3cUI=",
         "owner": "kira-bruneau",
         "repo": "nur-packages",
-        "rev": "393847cddfb68c569a784127356aede8dcff85b6",
+        "rev": "0f7d981e10f66b28ea9ddc7eda6314625f5c994d",
         "type": "gitlab"
       },
       "original": {
