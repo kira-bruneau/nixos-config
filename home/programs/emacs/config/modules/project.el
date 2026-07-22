@@ -79,7 +79,7 @@
 Argument COMPILATION-MODE is the name of the major mode used for the
 compilation buffer."
     (concat "*" (downcase compilation-mode) "*"
-            (if-let ((project (project-current))) (concat "<" (project-name project) ">") "")))
+            (if-let ((project (project-current))) (concat "<" (project-root project) ">") "")))
 
   (defun project-current-project-buffer-p ()
     "Meant to be used for `compilation-save-buffers-predicate`.
