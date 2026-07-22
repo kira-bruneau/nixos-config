@@ -124,6 +124,8 @@
     };
   };
 
+  fileSystems."/persist".neededForBoot = true;
+
   environment.persistence."/persist".directories = [
     "/home"
     "/nix"

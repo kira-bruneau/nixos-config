@@ -94,6 +94,8 @@
     };
   };
 
+  fileSystems."/persist".neededForBoot = true;
+
   swapDevices = [
     {
       device = "/persist/swapfile";
