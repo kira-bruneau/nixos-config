@@ -45,12 +45,11 @@
                  "--exclude" ".stversions"
                  "--prune"
                  "--max-depth" "5"
-                 "--absolute-path"
                  "--format" "{//}"
                  "/\\.git$"))))
          (consult--read
           (consult--process-collection (consult--fd-make-builder '("."))
-            :transform (consult--async-map #'abbreviate-file-name)
+            :transform (consult--async-map (lambda (p) (abbreviate-file-name (expand-file-name p "~/Dev"))))
             :highlight t :file-handler t) ;; allow tramp
           :prompt "Select project: "
           :sort nil
