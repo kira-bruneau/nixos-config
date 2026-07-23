@@ -2,8 +2,8 @@
   "name": "rust-analyzer",
   "languageId": "rust",
   "command": ["rust-analyzer"],
-  "project-files": ["package.json"],
   "settings": {},
+  "projectFiles": ["Cargo.toml"],
   "capabilities": {
     "textDocument": {
       "hover": {
@@ -16,15 +16,7 @@
       "enable": false
     },
     "cargo": {
-      "features": "all",
-      "buildScripts": {
-        "invocationStrategy": "once"
-      }
-    },
-    "check": {
-      "allTargets": true,
-      "features": "all",
-      "invocationStrategy": "once"
+      "features": "all"
     },
     "completion": {
       "postfix": {

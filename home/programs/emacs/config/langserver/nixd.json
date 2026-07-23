@@ -2,6 +2,6 @@
   "name": "nixd",
   "languageId": "nix",
   "command": ["nixd"],
-  "project-files": ["flake.nix"],
+  "projectFiles": ["flake.nix"],
   "settings": {}
 }
