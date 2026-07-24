@@ -419,7 +419,6 @@ in
     enable = true;
     package = pkgsUnstable.jellyfin;
     logDir = "/var/log/jellyfin";
-    openFirewall = true;
   };
 
   users.users.jellyfin.extraGroups = [
@@ -522,14 +521,10 @@ in
 
   services.audiobookshelf = {
     enable = true;
-    openFirewall = true;
     port = 8001;
   };
 
-  services.seerr = {
-    enable = true;
-    openFirewall = true;
-  };
+  services.seerr.enable = true;
 
   systemd.services.seerr.serviceConfig = {
     CapabilityBoundingSet = "";
