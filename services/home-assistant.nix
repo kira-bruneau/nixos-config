@@ -41,12 +41,4 @@ in
     mkdir -p ${config.services.home-assistant.configDir}/www
     ln -fns ${waves}/themes ${config.services.home-assistant.configDir}/www/waves
   '';
-
-  services.nginx.virtualHosts = {
-    "home-assistant.jakira.space".locations."/" = {
-      proxyPass = "http://127.0.0.1:8123";
-      recommendedProxySettings = true;
-      proxyWebsockets = true;
-    };
-  };
 }

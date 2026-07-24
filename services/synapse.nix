@@ -14,8 +14,6 @@ in
   services.matrix-synapse = {
     enable = true;
     settings = {
-      server_name = "jakira.space";
-      public_baseurl = "https://matrix.jakira.space";
       listeners = [
         {
           port = 8008;
@@ -41,8 +39,6 @@ in
       default_room_version = "12";
     };
   };
-
-  networking.firewall.allowedTCPPorts = [ 8008 ];
 
   services.postgresql = {
     enable = true;

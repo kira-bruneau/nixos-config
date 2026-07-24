@@ -25,7 +25,7 @@ let
   };
 
   sonarr = {
-    port = "8989";
+    port = toString config.services.sonarr.settings.server.port;
     apiKey = "00000000000000000000000000000000";
     rootFolders = [
       { path = "/srv/media-ssd/shows"; }
@@ -35,7 +35,7 @@ let
   };
 
   radarr = {
-    port = "7878";
+    port = toString config.services.radarr.settings.server.port;
     apiKey = "00000000000000000000000000000000";
     rootFolders = [
       { path = "/srv/media-ssd/movies"; }
@@ -45,7 +45,7 @@ let
   };
 
   prowlarr = {
-    port = "9696";
+    port = toString config.services.prowlarr.settings.server.port;
     apiKey = "00000000000000000000000000000000";
 
     applications = {
@@ -243,178 +243,6 @@ let
     };
 in
 {
-  services.nginx.virtualHosts =
-    let
-      sharedSettings = {
-        recommendedProxySettings = true;
-
-        extraConfig = ''
-          allow 127.0.0.1;
-          allow 100.64.0.0/10; # tailscale
-          deny all;
-        '';
-      };
-    in
-    {
-      "home.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:${toString config.services.homepage-dashboard.listenPort}";
-      };
-      "jellyfin.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:8096";
-      };
-      "books.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:${toString config.services.audiobookshelf.port}";
-        proxyWebsockets = true;
-      };
-      "prowlarr.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:${prowlarr.port}";
-      };
-      "radarr.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:${radarr.port}";
-      };
-      "seerr.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:5055";
-      };
-      "sonarr.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:${sonarr.port}";
-      };
-      "qbittorrent.jakira.space".locations."/" = sharedSettings // {
-        proxyPass = "http://127.0.0.1:${toString qBittorrent.Preferences."WebUI\\Port"}";
-      };
-    };
-
-  services.homepage-dashboard = {
-    enable = true;
-    allowedHosts = "*";
-
-    services = [
-      {
-        "Public" = [
-          {
-            "Jellyfin" = {
-              icon = "jellyfin.svg";
-              href = "http://jellyfin.jakira.space";
-            };
-          }
-          {
-            "Seerr" = {
-              icon = "seerr.svg";
-              href = "http://seerr.jakira.space";
-            };
-          }
-          {
-            "Minecraft" = {
-              icon = "minecraft.svg";
-              widget = {
-                type = "minecraft";
-                url = "udp://100.64.0.12:25565";
-                fields = [
-                  "players"
-                  "status"
-                ];
-              };
-            };
-          }
-        ];
-      }
-      {
-        "Internal" = [
-          {
-            "Sonarr" = {
-              icon = "sonarr.svg";
-              href = "http://sonarr.jakira.space";
-              widget = {
-                type = "sonarr";
-                url = "http://localhost:${sonarr.port}";
-                key = sonarr.apiKey;
-                # enableQueue = true;
-              };
-            };
-          }
-          {
-            "Radarr" = {
-              icon = "radarr.svg";
-              href = "http://radarr.jakira.space";
-              widget = {
-                type = "radarr";
-                url = "http://localhost:${radarr.port}";
-                key = radarr.apiKey;
-                # enableQueue = true;
-              };
-            };
-          }
-          {
-            "Prowlarr" = {
-              icon = "prowlarr.svg";
-              href = "http://prowlarr.jakira.space";
-              widget = {
-                type = "prowlarr";
-                url = "http://localhost:${prowlarr.port}";
-                key = prowlarr.apiKey;
-              };
-            };
-          }
-          {
-            "qBittorrent" = {
-              icon = "qbittorrent.svg";
-              href = "http://qbittorrent.jakira.space";
-              widget = {
-                type = "qbittorrent";
-                url = "http://localhost:${toString qBittorrent.Preferences."WebUI\\Port"}";
-              };
-            };
-          }
-        ];
-      }
-      {
-        "Calendar" = [
-          {
-            "" = {
-              widget = {
-                type = "calendar";
-                firstDayInWeek = "sunday";
-                view = "monthly";
-                showTime = true;
-                integrations = [
-                  {
-                    type = "sonarr";
-                    service_group = "Internal";
-                    service_name = "Sonarr";
-                    params = {
-                      unmonitored = true;
-                    };
-                  }
-                  {
-                    type = "radarr";
-                    service_group = "Internal";
-                    service_name = "Radarr";
-                    params = {
-                      unmonitored = true;
-                    };
-                  }
-                ];
-              };
-            };
-          }
-        ];
-      }
-    ];
-
-    widgets = [
-      {
-        resources = {
-          cpu = true;
-          memory = true;
-          expanded = true;
-          disk = [
-            "/persist"
-            "/srv/media-ssd"
-          ];
-        };
-      }
-    ];
-  };
-
   services.jellyfin = {
     enable = true;
     package = pkgsUnstable.jellyfin;
@@ -519,10 +347,7 @@ in
     '';
   };
 
-  services.audiobookshelf = {
-    enable = true;
-    port = 8001;
-  };
+  services.audiobookshelf.enable = true;
 
   services.seerr.enable = true;
 
@@ -866,11 +691,6 @@ in
     group = "qbittorrent";
     home = "/var/lib/qBittorrent";
     isSystemUser = true;
-  };
-
-  networking.firewall = {
-    allowedTCPPorts = [ qBittorrent.BitTorrent."Session\\Port" ];
-    allowedUDPPorts = [ qBittorrent.BitTorrent."Session\\Port" ];
   };
 
   users.groups.qbittorrent = {

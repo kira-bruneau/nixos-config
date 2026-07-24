@@ -15,7 +15,7 @@
 
     singleNode = {
       enable = true;
-      url = "https://firefox-syncserver.jakira.space";
+      hostname = lib.mkDefault "localhost";
       capacity = 1;
     };
 
@@ -46,6 +46,4 @@
       '';
     };
   };
-
-  networking.firewall.allowedTCPPorts = [ config.services.firefox-syncserver.settings.port ];
 }

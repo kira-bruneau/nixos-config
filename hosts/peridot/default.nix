@@ -36,6 +36,8 @@
     '';
   };
 
+  programs.steam.localNetworkGameTransfers.openFirewall = true;
+
   services.xserver.xkb = {
     layout = lib.mkForce "us,us";
     variant = lib.mkForce ",colemak";
