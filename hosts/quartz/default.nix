@@ -28,7 +28,7 @@
   };
 
   services = {
-    audiobookshelf.port = 8001;
+    audiobookshelf.host = "unix//run/audiobookshelf/socket";
 
     firefox-syncserver.singleNode.url = "https://firefox-syncserver.jakira.space";
 
@@ -61,11 +61,12 @@
       in
       {
         "books.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:${toString config.services.audiobookshelf.port}";
+          proxyPass = "http://unix:/run/audiobookshelf/socket";
           proxyWebsockets = true;
         };
         "habitica.jakira.space".locations."/" = sharedSettings;
         "home.jakira.space".locations."/" = sharedSettings // {
+          # homepage doesn't support unix sockets (it uses nodejs's http server, but only takes a numeric listen port)
           proxyPass = "http://127.0.0.1:${toString config.services.homepage-dashboard.listenPort}";
         };
         "home-assistant.jakira.space".locations."/" = {
@@ -73,26 +74,41 @@
           proxyWebsockets = true;
         };
         "jellyfin.jakira.space".locations."/" = sharedSettings // {
-          proxyPass = "http://127.0.0.1:8096";
+          proxyPass = "http://unix:/run/jellyfin/socket";
         };
         "prowlarr.jakira.space".locations."/" = sharedSettings // {
           proxyPass = "http://127.0.0.1:${toString config.services.prowlarr.settings.server.port}";
         };
         "qbittorrent.jakira.space".locations."/" = sharedSettings // {
+          # qbittorrent doesn't support unix sockets: https://github.com/qbittorrent/qBittorrent/issues/14763
           proxyPass = "http://127.0.0.1:8000";
         };
         "radarr.jakira.space".locations."/" = sharedSettings // {
           proxyPass = "http://127.0.0.1:${toString config.services.radarr.settings.server.port}";
         };
         "seerr.jakira.space".locations."/" = sharedSettings // {
+          # seerr doesn't support unix sockets (it uses express, but only takes a numeric listen port)
           proxyPass = "http://127.0.0.1:${toString config.services.seerr.port}";
         };
         "sonarr.jakira.space".locations."/" = sharedSettings // {
+          # sonarr doesn't support unix sockets: https://github.com/Sonarr/Sonarr/issues/4427
           proxyPass = "http://127.0.0.1:${toString config.services.sonarr.settings.server.port}";
         };
       };
 
     postgresql.package = pkgs.postgresql_18;
+  };
+
+  systemd.services = {
+    audiobookshelf.serviceConfig.RuntimeDirectory = "audiobookshelf";
+    jellyfin = {
+      serviceConfig.RuntimeDirectory = "jellyfin";
+      environment = {
+        JELLYFIN_kestrel__socket = "true";
+        JELLYFIN_kestrel__socketPath = "/run/jellyfin/socket";
+        JELLYFIN_kestrel__socketPermissions = "0666";
+      };
+    };
   };
 
   networking.firewall = {
