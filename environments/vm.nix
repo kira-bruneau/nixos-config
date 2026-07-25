@@ -1,4 +1,9 @@
-{ pkgs, modulesPath, ... }:
+{
+  config,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
   imports = [
@@ -8,6 +13,7 @@
 
   virtualisation = {
     memorySize = 1024 * 4;
+    diskImage = "/tmp/${config.system.name}.qcow2";
     qemu.options = [
       "-smp $(${pkgs.coreutils}/bin/nproc)"
       "-device virtio-vga-gl"
