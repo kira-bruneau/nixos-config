@@ -34,6 +34,15 @@
 
     habitica.hostName = "habitica.jakira.space";
 
+    home-assistant.config.homeassistant.auth_providers = {
+      type = "trusted_networks";
+      allow_bypass_login = true;
+      trusted_networks = [
+        "127.0.0.1"
+        "100.64.0.0/10" # tailscale
+      ];
+    };
+
     matrix-synapse.settings = {
       server_name = "jakira.space";
       public_baseurl = "https://matrix.jakira.space";
