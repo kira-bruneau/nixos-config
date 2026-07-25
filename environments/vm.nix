@@ -25,4 +25,5 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
+  documentation.nixos.enable = false;
 }
