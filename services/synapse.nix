@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, ... }:
 
 let
   settings = config.services.matrix-synapse.settings;
@@ -16,51 +11,46 @@ in
     ./mautrix-whatsapp.nix
   ];
 
-  services = {
-    matrix-synapse = {
-      enable = true;
+  services.matrix-synapse = {
+    enable = true;
+    settings = {
+      server_name = "jakira.space";
+      public_baseurl = "https://matrix.jakira.space";
+      listeners = [
+        {
+          port = 8008;
+          bind_addresses = [ "0.0.0.0" ];
+          type = "http";
+          tls = false;
+          x_forwarded = true;
+          resources = [
+            {
+              names = [
+                "client"
+                "federation"
+              ];
 
-      settings = {
-        server_name = "jakira.space";
-        public_baseurl = "https://matrix.jakira.space";
-        listeners = [
-          {
-            port = 8008;
-            bind_addresses = [ "0.0.0.0" ];
-            type = "http";
-            tls = false;
-            x_forwarded = true;
-            resources = [
-              {
-                names = [
-                  "client"
-                  "federation"
-                ];
+              compress = true;
+            }
+          ];
+        }
+      ];
 
-                compress = true;
-              }
-            ];
-          }
-        ];
-
-        forgotten_room_retention_period = "28d";
-        media_retention.remote_media_lifetime = "14d";
-        default_room_version = "12";
-      };
+      forgotten_room_retention_period = "28d";
+      media_retention.remote_media_lifetime = "14d";
+      default_room_version = "12";
     };
-
-    postgresql.enable = true;
   };
 
   networking.firewall.allowedTCPPorts = [ 8008 ];
 
-  systemd.services.postgresql.postStart = lib.mkAfter ''
-    psql -f ${pkgs.writeText "matrix-synapse-init.sql" ''
-      CREATE ROLE "${dbUser}";
-      CREATE DATABASE "${dbName}" WITH OWNER "${dbUser}"
-        TEMPLATE template0
-        LC_COLLATE = "C"
-        LC_CTYPE = "C";
-    ''}
+  services.postgresql = {
+    enable = true;
+    ensureUsers = [ { name = dbUser; } ];
+  };
+
+  systemd.services.postgresql-setup.script = ''
+    psql -tAc "SELECT 1 FROM pg_database WHERE datname = '${dbName}'" | grep -q 1 || \
+      psql -tAc 'CREATE DATABASE "${dbName}" OWNER "${dbUser}" TEMPLATE template0 LC_COLLATE = "C" LC_CTYPE = "C"'
   '';
 }
