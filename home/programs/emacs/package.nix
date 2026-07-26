@@ -95,7 +95,6 @@ callPackage ./wrapper.nix {
     epkgs.doom-themes
     epkgs.drag-stuff
     epkgs.dtrt-indent
-    epkgs.ellama
     epkgs.embark
     epkgs.embark-consult
     epkgs.evil
