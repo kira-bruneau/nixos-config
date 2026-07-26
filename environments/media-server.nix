@@ -539,6 +539,8 @@ in
     dataDir = "/var/lib/sonarr";
   };
 
+  systemd.services.sonarr.serviceConfig.StateDirectory = "sonarr";
+
   users.users.sonarr.extraGroups = [ "qbittorrent" ];
 
   # Configure shows directory to be shared by sonarr group
