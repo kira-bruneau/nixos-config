@@ -214,5 +214,8 @@
     amd_performance_level = "high";
   };
 
-  services.ollama.package = pkgs.ollama-vulkan;
+  services.llama-cpp.extraFlags = [
+    "--hf-repo"
+    "unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:UD-Q4_K_XL"
+  ];
 }

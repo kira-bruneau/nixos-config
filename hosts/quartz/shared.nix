@@ -45,6 +45,7 @@
       "100.64.0.1" = lib.optionals config.services.tailscale.enable [
         "quartz"
         "books.jakira.space"
+        "bot.jakira.space"
         "habitica.jakira.space"
         "home-assistant.jakira.space"
         "home.jakira.space"

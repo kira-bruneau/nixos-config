@@ -10,9 +10,9 @@
     ../../services/habitica.nix
     ../../services/home-assistant.nix
     ../../services/kubo.nix
+    ../../services/llama-cpp.nix
     ../../services/minecraft/aoc-aeronautics
     ../../services/nginx.nix
-    ../../services/ollama.nix
     ../../services/synapse.nix
     ../../users/builder.nix
     ../../users/kira.nix
@@ -43,6 +43,8 @@
       ];
     };
 
+    llama-cpp.host = "/run/llama-cpp/llama-cpp.sock";
+
     matrix-synapse.settings = {
       server_name = "jakira.space";
       public_baseurl = "https://matrix.jakira.space";
@@ -62,6 +64,10 @@
       {
         "books.jakira.space".locations."/" = sharedSettings // {
           proxyPass = "http://unix:/run/audiobookshelf/socket";
+          proxyWebsockets = true;
+        };
+        "bot.jakira.space".locations."/" = sharedSettings // {
+          proxyPass = "http://unix:/run/llama-cpp/llama-cpp.sock";
           proxyWebsockets = true;
         };
         "habitica.jakira.space".locations."/" = sharedSettings;
@@ -101,6 +107,11 @@
 
   systemd.services = {
     audiobookshelf.serviceConfig.RuntimeDirectory = "audiobookshelf";
+    llama-cpp.serviceConfig = {
+      Group = [ config.services.nginx.group ];
+      RuntimeDirectory = "llama-cpp";
+      UMask = "0007";
+    };
     jellyfin = {
       serviceConfig.RuntimeDirectory = "jellyfin";
       environment = {

@@ -61,6 +61,10 @@
     ++ lib.optional config.services.nginx.enable "/var/cache/nginx"
     ++ map (container: "/var/lib/nixos-containers/${container}") (builtins.attrNames config.containers)
     ++ lib.optional config.services.ollama.enable "/var/lib/private/ollama"
+    ++ lib.optionals config.services.llama-cpp.enable [
+      "/var/cache/private/llama-cpp"
+      "/var/lib/private/llama-cpp"
+    ]
     ++ lib.optional config.services.opendkim.enable "/var/lib/opendkim"
     ++ lib.optional config.services.postfix.enable "/var/lib/postfix"
     ++ lib.optional config.services.postgresql.enable "/var/lib/postgresql"
