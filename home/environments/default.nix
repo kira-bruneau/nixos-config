@@ -12,7 +12,11 @@ let
     runtimeInputs = with pkgs; [ systemd ];
 
     text = ''
-      journalctl -b -u "$@"
+      if [ $# -gt 0 ]; then
+        journalctl -b -u "$@"
+      else
+        journalctl -b
+      fi
     '';
   };
 
