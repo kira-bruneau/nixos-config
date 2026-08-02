@@ -27,4 +27,13 @@
   };
 
   documentation.nixos.enable = false;
+
+  # Disable restarting services
+  systemd.units."service" = {
+    overrideStrategy = "asDropin";
+    text = ''
+      [Service]
+      Restart=no
+    '';
+  };
 }
