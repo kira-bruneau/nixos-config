@@ -16,13 +16,13 @@ let
     '';
   };
 
-  jn = pkgs.writeShellApplication {
-    name = "jn";
+  ji = pkgs.writeShellApplication {
+    name = "ji";
 
     runtimeInputs = with pkgs; [ systemd ];
 
     text = ''
-      journalctl -u "$@" --since "$(systemctl show --value -p ActiveEnterTimestamp "$@")"
+      journalctl -I -u "$@"
     '';
   };
 
@@ -77,7 +77,7 @@ in
 
     # Custom utils
     jb
-    jn
+    ji
     wf
   ];
 
