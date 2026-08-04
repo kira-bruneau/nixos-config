@@ -284,7 +284,7 @@ in
             PluginRepositories = {
               RepositoryInfo = {
                 Name = "Jellyfin Stable";
-                Url = "https://repo.jellyfin.org/releases/plugin/manifest-stable.json";
+                Url = "https://repo.jellyfin.org/files/plugin/manifest.json";
                 Enabled = true;
               };
             };
