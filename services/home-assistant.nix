@@ -6,6 +6,7 @@ let
     repo = "waves";
     rev = "refs/tags/v2.4.1";
     hash = "sha256-JWMUf6WNBmFcV9HjdHLsmeLLm+5VqxcdxGDsmtpLnmM=";
+    passthru.isHomeAssistantTheme = true;
   };
 in
 {
@@ -20,9 +21,9 @@ in
       "vesync"
     ];
 
-    config = {
-      frontend.themes = "!include ${waves}/themes/waves.yaml";
+    themes = [ waves ];
 
+    config = {
       homeassistant = {
         name = "Home";
         latitude = config.location.latitude;
@@ -36,9 +37,4 @@ in
       };
     };
   };
-
-  systemd.services.home-assistant.preStart = ''
-    mkdir -p ${config.services.home-assistant.configDir}/www
-    ln -fns ${waves}/themes ${config.services.home-assistant.configDir}/www/waves
-  '';
 }
