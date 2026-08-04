@@ -34,25 +34,16 @@ in
     "chat.jakira.space" = {
       enableACME = true;
       forceSSL = true;
-      root = pkgsKiraNur.cinny-butter-theme.override {
-        conf = {
-          defaultHomeserver = 0;
-          homeserverList = [ "jakira.space" ];
+      locations."/" = {
+        root = pkgsKiraNur.cinny-butter-theme.override {
+          conf = {
+            defaultHomeserver = 0;
+            homeserverList = [ "jakira.space" ];
+          };
         };
+
+        tryFiles = "$uri /index.html";
       };
-
-      extraConfig = ''
-        rewrite ^/config.json$ /config.json break;
-        rewrite ^/manifest.json$ /manifest.json break;
-
-        rewrite ^/sw.js$ /sw.js break;
-        rewrite ^/pdf.worker.min.js$ /pdf.worker.min.js break;
-
-        rewrite ^/public/(.*)$ /public/$1 break;
-        rewrite ^/assets/(.*)$ /assets/$1 break;
-
-        rewrite ^(.+)$ /index.html break;
-      '';
     };
     "element.jakira.space" = {
       enableACME = true;
