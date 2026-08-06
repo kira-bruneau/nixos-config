@@ -505,7 +505,6 @@
           "services.sync.engine.passwords" = false;
           "services.sync.engine.prefs" = false;
           "signon.rememberSignons" = false; # Use keepassxc instead
-          "widget.wayland.fractional-scale.enabled" = true;
 
           # Loosen librewolf-specific security settings
           "identity.fxaccounts.enabled" = true;
