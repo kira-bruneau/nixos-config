@@ -33,7 +33,7 @@ let
   sudir = pkgs.writeShellApplication {
     name = "sudir";
     text = ''
-      exec sudo -u "$(stat -c "%U" "$1")" sh -c 'cd $0 && exec env HOME=/var/empty $1' "$1" "$SHELL"
+      exec sudo -u "$(stat -c "%U" "$1" 2>/dev/null || echo 'root')" sh -c 'cd $0 && exec env HOME=/var/empty $1' "$1" "$SHELL"
     '';
   };
 
