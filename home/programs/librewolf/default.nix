@@ -499,6 +499,7 @@
           "extensions.formautofill.creditCards.enabled" = false;
           "extensions.unifiedExtensions.enabled" = false;
           "identity.sync.tokenserver.uri" = "https://firefox-syncserver.jakira.space/1.0/sync/1.5";
+          "layout.css.fake-webkit-scrollbar.enabled" = false;
           "layout.spellcheckDefault" = 1;
           "services.sync.engine.creditcards" = false;
           "services.sync.engine.passwords" = false;
