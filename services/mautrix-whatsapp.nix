@@ -9,15 +9,13 @@
   services.mautrix-whatsapp = {
     enable = true;
 
-    settings = lib.mkForce {
+    settings = {
       network.history_sync.request_full_sync = true;
 
-      bridge = {
-        permissions = {
-          "*" = "relay";
-          "jakira.space" = "user";
-          "@kira:jakira.space" = "admin";
-        };
+      bridge.permissions = {
+        "*" = "relay";
+        "jakira.space" = "user";
+        "@kira:jakira.space" = "admin";
       };
 
       database = {
@@ -25,11 +23,7 @@
         uri = "postgresql:///mautrix-whatsapp?host=/var/run/postgresql";
       };
 
-      homeserver = {
-        address = "http://localhost:8008";
-        domain = config.services.matrix-synapse.settings.server_name;
-        async_media = true;
-      };
+      homeserver.async_media = true;
 
       backfill = {
         enabled = true;
@@ -45,11 +39,7 @@
         pickle_key = "$ENCRYPTION_PICKLE_KEY";
       };
 
-      logging.writers = [
-        {
-          type = "journald";
-        }
-      ];
+      logging.writers = [ { type = "journald"; } ];
     };
   };
 

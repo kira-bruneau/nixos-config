@@ -49,4 +49,9 @@ in
     psql -tAc "SELECT 1 FROM pg_database WHERE datname = '${dbName}'" | grep -q 1 || \
       psql -tAc 'CREATE DATABASE "${dbName}" OWNER "${dbUser}" TEMPLATE template0 LC_COLLATE = "C" LC_CTYPE = "C"'
   '';
+
+  services.mautrix-whatsapp.settings.homeserver = {
+    address = "http://localhost:${toString (builtins.head config.services.matrix-synapse.settings.listeners).port}";
+    domain = config.services.matrix-synapse.settings.server_name;
+  };
 }
