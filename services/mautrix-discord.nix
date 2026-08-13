@@ -4,18 +4,12 @@
   services.mautrix-discord = {
     enable = true;
 
-    settings = lib.mkForce {
-      homeserver = {
-        address = "http://localhost:8008";
-        domain = config.services.matrix-synapse.settings.server_name;
-        async_media = true;
-      };
+    settings = {
+      homeserver.async_media = true;
 
-      appservice = {
-        database = {
-          type = "postgres";
-          uri = "postgresql:///mautrix-discord?host=/var/run/postgresql";
-        };
+      appservice.database = {
+        type = "postgres";
+        uri = "postgresql:///mautrix-discord?host=/var/run/postgresql";
       };
 
       bridge = {
@@ -51,11 +45,7 @@
         };
       };
 
-      logging.writers = [
-        {
-          type = "journald";
-        }
-      ];
+      logging.writers = [ { type = "journald"; } ];
     };
   };
 

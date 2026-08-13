@@ -50,6 +50,11 @@ in
       psql -tAc 'CREATE DATABASE "${dbName}" OWNER "${dbUser}" TEMPLATE template0 LC_COLLATE = "C" LC_CTYPE = "C"'
   '';
 
+  services.mautrix-discord.settings.homeserver = {
+    address = "http://localhost:${toString (builtins.head config.services.matrix-synapse.settings.listeners).port}";
+    domain = config.services.matrix-synapse.settings.server_name;
+  };
+
   services.mautrix-whatsapp.settings.homeserver = {
     address = "http://localhost:${toString (builtins.head config.services.matrix-synapse.settings.listeners).port}";
     domain = config.services.matrix-synapse.settings.server_name;
