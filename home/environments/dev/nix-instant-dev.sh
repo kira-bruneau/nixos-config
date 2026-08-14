@@ -45,12 +45,14 @@ if [ -z "$name" ]; then
   } | to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
 
   if [ -n "$src" ]; then
-    eval "$(nix derivation show "$src" 2>/dev/null | jq -r 'to_entries[].value | {
-      srcName: .name,
-      srcGitRepoUrl: (if .env.fetcher // "" | endswith("nix-prefetch-git") then .env.url else "" end),
-      srcRev: (.env.rev // if .env.tag != null then "refs/tags/" + .env.tag else "" end),
-      srcFetchSubmodules: (.env.fetchSubmodules // false),
-    } | to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
+    eval "$(nix derivation show "$src" 2>/dev/null | jq -r 'to_entries[].value
+      | .env |= if .__json != null then (.__json | fromjson) + . else . end
+      | {
+        srcName: .name,
+        srcGitRepoUrl: (if .env.fetcher // "" | endswith("nix-prefetch-git") then .env.url else "" end),
+        srcRev: (.env.rev // if .env.tag != null then "refs/tags/" + .env.tag else "" end),
+        srcFetchSubmodules: (.env.fetchSubmodules // false),
+      } | to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
   fi
 
   if [ -z "$name" ]; then
