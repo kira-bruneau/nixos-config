@@ -5,12 +5,13 @@
     pkg:
     builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
       "2ship2harkinian"
-      "anytype"
-      "anytype-heart"
-      "aspell-dict-en-science"
+      "anytype" # anytype license (non-commercial, source-available)
+      "anytype-heart" # anytype license (non-commercial, source-available)
+      "aspell-dict-en-science" # no explicit license
       "clonehero"
       "data.zip" # vvvvvv
       "discord"
+      "mongodb-ce" # sspl license (AGPL + source of all software used in hosting must be made available)
       "sm64ex"
       "steam"
       "steam-jupiter-original"
@@ -18,9 +19,8 @@
       "steam-original"
       "steam-unwrapped"
       "steamdeck-hw-theme"
-      "unrar"
+      "unrar" # unrar license (source may not be used to develop a compatible archiver)
       "vvvvvv"
-      "mongodb-ce"
     ];
 
   permittedInsecurePackages = [
