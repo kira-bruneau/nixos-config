@@ -21,7 +21,7 @@ for NID_INSTALLABLE in "$1-unwrapped" "$1"; do
       name = p.pname or (builtins.parseDrvName p.name).name;
       srcName = p.src.name or "";
       srcGitRepoUrl = p.src.gitRepoUrl or "";
-      srcRev = if p.src.rev or null != null then p.src.rev else (if p.src.tag or null != null then "refs/tags/${p.src.tag}" else "");
+      srcRev = p.src.rev or (if p.src.tag or null != null then "refs/tags/${p.src.tag}" else "");
       srcFetchSubmodules = p.src.fetchSubmodules or false;
       unpackPhase = p.unpackPhase or "";
     }' 2>/dev/null | jq -r 'to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
@@ -45,11 +45,11 @@ if [ -z "$name" ]; then
   } | to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
 
   if [ -n "$src" ]; then
-    eval "$(nix derivation show "$src" 2>/dev/null | jq -r 'to_entries[] | {
-      srcName: .value.name,
-      srcGitRepoUrl: (if .value.env.fetcher // "" | endswith("nix-prefetch-git") then .value.env.url else "" end),
-      srcRev: (.value.env.rev // if .value.env.tag != null then "refs/tags/" + .value.env.tag else "" end),
-      srcFetchSubmodules: (.value.env.fetchSubmodules // false),
+    eval "$(nix derivation show "$src" 2>/dev/null | jq -r 'to_entries[].value | {
+      srcName: .name,
+      srcGitRepoUrl: (if .env.fetcher // "" | endswith("nix-prefetch-git") then .env.url else "" end),
+      srcRev: (.env.rev // if .env.tag != null then "refs/tags/" + .env.tag else "" end),
+      srcFetchSubmodules: (.env.fetchSubmodules // false),
     } | to_entries[] | "export " + @sh "\(.key)=\(.value)"')"
   fi
 
