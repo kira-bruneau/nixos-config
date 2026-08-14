@@ -9,7 +9,6 @@
       "anytype-heart"
       "aspell-dict-en-science"
       "clonehero"
-      "clonehero-unwrapped"
       "data.zip" # vvvvvv
       "discord"
       "nvidia-settings"
