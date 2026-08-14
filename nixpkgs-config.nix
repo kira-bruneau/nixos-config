@@ -11,8 +11,6 @@
       "clonehero"
       "data.zip" # vvvvvv
       "discord"
-      "nvidia-settings"
-      "nvidia-x11"
       "sm64ex"
       "steam"
       "steam-jupiter-original"
