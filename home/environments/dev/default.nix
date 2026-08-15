@@ -83,4 +83,8 @@ in
     enable = true;
     package = pkgsNixIndexDatabase.nix-index-with-db;
   };
+
+  programs.nushell.plugins = with pkgs.nushellPlugins; [
+    polars
+  ];
 }

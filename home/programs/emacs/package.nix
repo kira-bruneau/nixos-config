@@ -102,6 +102,7 @@ callPackage ./wrapper.nix {
       epkgs.marginalia
       epkgs.nameless
       epkgs.nix-ts-mode
+      epkgs.nu-mode
       epkgs.orderless
       epkgs.page-break-lines
       epkgs.powerline

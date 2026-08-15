@@ -55,6 +55,7 @@ in
     ../modules
     ../programs/bash
     ../programs/fish
+    ../programs/nushell
     ../programs/skim
     ../programs/git
     ../programs/htop
