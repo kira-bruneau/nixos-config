@@ -57,13 +57,16 @@
     serviceConfig.IgnoreSIGPIPE = false; # https://stackoverflow.com/a/44376786
     preStart = lib.mkBefore ''
       if [ -e /var/lib/mautrix-whatsapp/config.yaml ]; then
-        export ENCRYPTION_PICKLE_KEY=$(${pkgs.yq}/bin/yq -er .encryption.pickle_key /var/lib/mautrix-whatsapp/config.yaml)
-        export DOUBLE_PUPPET_SECRET_JAKIRA=$(${pkgs.yq}/bin/yq -er '.double_puppet.secrets."jakira.space"' /var/lib/mautrix-whatsapp/config.yaml)
+        ENCRYPTION_PICKLE_KEY="$(${pkgs.yq}/bin/yq -er .encryption.pickle_key /var/lib/mautrix-whatsapp/config.yaml)"
+        DOUBLE_PUPPET_SECRET_JAKIRA="$(${pkgs.yq}/bin/yq -er '.double_puppet.secrets."jakira.space"' /var/lib/mautrix-whatsapp/config.yaml)"
       fi
 
       if [ -z "$ENCRYPTION_PICKLE_KEY" ]; then
-        export ENCRYPTION_PICKLE_KEY=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 64)
+        ENCRYPTION_PICKLE_KEY="$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 64)"
       fi
+
+      export ENCRYPTION_PICKLE_KEY
+      export DOUBLE_PUPPET_SECRET_JAKIRA
     '';
   };
 }
