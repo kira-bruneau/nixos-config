@@ -34,10 +34,32 @@ in
         }
       ];
 
+      app_service_config_files = [ "/var/lib/matrix-synapse/services/doublepuppet.yaml" ];
       forgotten_room_retention_period = "28d";
       media_retention.remote_media_lifetime = "14d";
       default_room_version = "12";
     };
+  };
+
+  systemd.services.matrix-synapse = {
+    serviceConfig.IgnoreSIGPIPE = false; # https://stackoverflow.com/a/44376786
+    preStart = ''
+      mkdir -p /var/lib/matrix-synapse/services
+      if [ ! -e /var/lib/matrix-synapse/services/doublepuppet.yaml ]; then
+        cat << EOF > /var/lib/matrix-synapse/services/doublepuppet.yaml
+      id: doublepuppet
+      url:
+      as_token: $(tr -dc A-Za-z0-9 < /dev/urandom | head -c 64)
+      hs_token: $(tr -dc A-Za-z0-9 < /dev/urandom | head -c 64)
+      sender_localpart: $(tr -dc A-Za-z0-9 < /dev/urandom | head -c 64)
+      rate_limited: false
+      namespaces:
+        users:
+        - regex: '@.*:${config.services.matrix-synapse.settings.server_name}'
+          exclusive: false
+      EOF
+      fi
+    '';
   };
 
   services.postgresql = {
