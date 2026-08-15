@@ -101,6 +101,7 @@ callPackage ./wrapper.nix {
     epkgs.evil-collection
     epkgs.evil-mc
     epkgs.evil-textobj-tree-sitter
+    epkgs.fish-mode
     epkgs.flx
     epkgs.flycheck
     epkgs.forge
