@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 
 {
   services.mautrix-whatsapp = {
@@ -31,6 +26,8 @@
         max_catchup_messages = 2147483646;
         threads.max_initial_messages = 2147483646;
       };
+
+      double_puppet.secrets."jakira.space" = "$DOUBLE_PUPPET_SECRET_JAKIRA";
 
       encryption = {
         allow = true;
@@ -61,6 +58,7 @@
     preStart = lib.mkBefore ''
       if [ -e /var/lib/mautrix-whatsapp/config.yaml ]; then
         export ENCRYPTION_PICKLE_KEY=$(${pkgs.yq}/bin/yq -er .encryption.pickle_key /var/lib/mautrix-whatsapp/config.yaml)
+        export DOUBLE_PUPPET_SECRET_JAKIRA=$(${pkgs.yq}/bin/yq -er '.double_puppet.secrets."jakira.space"' /var/lib/mautrix-whatsapp/config.yaml)
       fi
 
       if [ -z "$ENCRYPTION_PICKLE_KEY" ]; then
