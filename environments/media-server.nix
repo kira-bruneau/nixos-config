@@ -87,26 +87,10 @@ let
           sort = 0; # created
         };
       };
-      "Solid Torrents" = {
-        implementation = "Cardigann";
-        fields = {
-          definitionFile = "solidtorrents";
-          prefer_magnet_links = true;
-          sort = 0; # created
-          type = 1; # desc
-        };
-      };
       "The Pirate Bay" = {
         implementation = "Cardigann";
         fields = {
           definitionFile = "thepiratebay";
-        };
-      };
-      "TheRARBG" = {
-        implementation = "Cardigann";
-        fields = {
-          definitionFile = "therarbg";
-          sort = 0; # created desc
         };
       };
       "YTS" = {
