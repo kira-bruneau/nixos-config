@@ -40,19 +40,6 @@
     };
   };
 
-  services.postgresql = {
-    enable = true;
-
-    ensureUsers = [
-      {
-        name = "mautrix-whatsapp";
-        ensureDBOwnership = true;
-      }
-    ];
-
-    ensureDatabases = [ "mautrix-whatsapp" ];
-  };
-
   systemd.services.mautrix-whatsapp = {
     serviceConfig.IgnoreSIGPIPE = false; # https://stackoverflow.com/a/44376786
     preStart = lib.mkBefore ''
@@ -68,5 +55,18 @@
       export ENCRYPTION_PICKLE_KEY
       export DOUBLE_PUPPET_SECRET_JAKIRA
     '';
+  };
+
+  services.postgresql = {
+    enable = true;
+
+    ensureUsers = [
+      {
+        name = "mautrix-whatsapp";
+        ensureDBOwnership = true;
+      }
+    ];
+
+    ensureDatabases = [ "mautrix-whatsapp" ];
   };
 }
