@@ -51,16 +51,13 @@
     };
   };
 
-  systemd.services.mautrix-discord-registration = {
-    serviceConfig.IgnoreSIGPIPE = false; # https://stackoverflow.com/a/44376786
-    script = lib.mkBefore ''
-      if [ -e /var/lib/mautrix-discord/config.yaml ]; then
-        DOUBLE_PUPPET_SECRET_JAKIRA="$(${pkgs.yq}/bin/yq -er '.bridge.login_shared_secret_map."jakira.space"' /var/lib/mautrix-discord/config.yaml)"
-      fi
+  systemd.services.mautrix-discord-registration.script = lib.mkBefore ''
+    if [ -e /var/lib/mautrix-discord/config.yaml ]; then
+      DOUBLE_PUPPET_SECRET_JAKIRA="$(${pkgs.yq}/bin/yq -er '.bridge.login_shared_secret_map."jakira.space"' /var/lib/mautrix-discord/config.yaml)"
+    fi
 
-      export DOUBLE_PUPPET_SECRET_JAKIRA
-    '';
-  };
+    export DOUBLE_PUPPET_SECRET_JAKIRA
+  '';
 
   services.postgresql = {
     enable = true;
