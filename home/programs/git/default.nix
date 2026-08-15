@@ -45,8 +45,6 @@
       # Project Management
       ".cache/clangd"
       ".direnv"
-      ".idea"
-      ".mypy_cache"
       "compile_commands.json"
 
       ## Eclipse JDT Language Server
