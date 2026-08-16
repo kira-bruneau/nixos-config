@@ -23,7 +23,6 @@
   emacs-all-the-icons-fonts,
   eslint_d,
   fd-relative-full-path,
-  fzf,
   gcc,
   gdb,
   git,
@@ -216,7 +215,6 @@ callPackage ./wrapper.nix {
       emacs-all-the-icons-fonts
       eslint_d
       fd-relative-full-path
-      fzf
       gcc
       gdb
       git
