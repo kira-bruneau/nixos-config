@@ -55,7 +55,7 @@ in
     ../modules
     ../programs/bash
     ../programs/fish
-    ../programs/fzf
+    ../programs/skim
     ../programs/git
     ../programs/htop
     ../programs/ssh
