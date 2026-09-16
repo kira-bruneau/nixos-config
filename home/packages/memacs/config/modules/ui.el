@@ -6,6 +6,9 @@
 (setopt initial-major-mode 'fundamental-mode)
 (setopt initial-scratch-message nil)
 
+;; Remove titlebar
+(add-to-list 'default-frame-alist '(undecorated . t))
+
 ;; Maximize window
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
