@@ -58,6 +58,9 @@
   # Enable XDG sound theme
   xdg.sounds.enable = true;
 
+  # Enable CUPS to print documents
+  services.printing.enable = true;
+
   # Reduce priority of nix daemon on desktop systems so the system is
   # still usable while a nix build is running
   nix = {
