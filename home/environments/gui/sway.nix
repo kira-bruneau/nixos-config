@@ -71,9 +71,9 @@ in
     ../../programs/dconf-editor
 
     # Media & Documents
+    ../../programs/celluloid
     ../../programs/evince
     ../../programs/loupe
-    ../../programs/mpv
     ../../programs/nautilus
 
     # Utils
