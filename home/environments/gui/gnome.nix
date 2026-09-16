@@ -74,7 +74,6 @@
     # Dash to Dock settings for a better touch screen experience
     "org/gnome/shell/extensions/dash-to-dock" = {
       background-opacity = 0.8;
-      custom-theme-shrink = true;
       dash-max-icon-size = 48;
       dock-fixed = false;
       dock-position = "LEFT";
