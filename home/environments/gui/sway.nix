@@ -292,6 +292,8 @@ in
 
     # Utils
     gnome-clocks
+    gnome-tecla
+    gnome-weather
     sway-audio-idle-inhibit
     wdisplays
     wlprop

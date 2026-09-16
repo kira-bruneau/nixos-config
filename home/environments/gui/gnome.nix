@@ -36,8 +36,10 @@
       foliate
 
       # Utils
-      gnome-console
       gnome-clocks
+      gnome-console
+      gnome-tecla
+      gnome-weather
       seahorse
     ])
     ++ (with pkgsUnstable; [
