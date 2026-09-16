@@ -30,17 +30,15 @@ in
     }
   '';
 
-  programs.dconf.profiles = lib.mkIf config.services.desktopManager.gnome.enable {
-    user.databases = [
-      {
-        settings = {
-          "org/gnome/desktop/peripherals/touchpad" = {
-            natural-scroll = true;
-          };
+  programs.dconf.profiles.user.databases = [
+    (lib.mkIf config.services.desktopManager.gnome.enable {
+      settings = {
+        "org/gnome/desktop/peripherals/touchpad" = {
+          natural-scroll = true;
         };
-      }
-    ];
-  };
+      };
+    })
+  ];
 
   # Use brightnessctl for controlling backlight
   environment.etc."sway/config.d/backlight-controls.conf".text = ''
