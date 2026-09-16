@@ -1,6 +1,6 @@
 { lib, ... }:
 
-lib.mkDefault {
+{
   location = {
     latitude = 45.424721;
     longitude = -75.695;
@@ -11,5 +11,6 @@ lib.mkDefault {
     staticAccuracy = 50000;
   };
 
-  time.timeZone = "Canada/Eastern";
+  # automatic-timezoned annoyingly sets this to null by default
+  time.timeZone = lib.mkOverride 99 "Canada/Eastern";
 }

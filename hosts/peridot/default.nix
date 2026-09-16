@@ -46,5 +46,5 @@
   # Steam only supports very specific timezones:
   # https://github.com/Jovian-Experiments/Jovian-NixOS/issues/128
   services.automatic-timezoned.enable = lib.mkForce false;
-  time.timeZone = "America/New_York";
+  time.timeZone = lib.mkForce "America/New_York";
 }
