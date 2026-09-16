@@ -191,6 +191,10 @@ in
       screen-keyboard-enabled = true;
     };
 
+    "org/gnome/desktop/session" = {
+      idle-delay = lib.gvariant.mkUint32 0;
+    };
+
     "org/gnome/shell" = {
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
