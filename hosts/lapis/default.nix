@@ -10,4 +10,8 @@
   system.stateVersion = "24.05";
 
   users.defaultUser = "kira";
+
+  boot.plymouth.extraConfig = ''
+    DeviceScale=2
+  '';
 }
