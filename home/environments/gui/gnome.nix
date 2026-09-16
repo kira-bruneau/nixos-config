@@ -76,7 +76,7 @@
       background-opacity = 0.8;
       custom-theme-shrink = true;
       dash-max-icon-size = 48;
-      dock-fixed = true;
+      dock-fixed = false;
       dock-position = "LEFT";
       extend-height = true;
       height-fraction = 0.61;
