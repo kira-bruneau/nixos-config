@@ -53,6 +53,9 @@
   };
 
   dconf.settings = {
+    "org/gnome/settings-daemon/plugins/housekeeping" = {
+      donation-reminder-enabled = false;
+    };
     "org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
       hide-panel-icon = true;
       fetch-on-startup = true;
