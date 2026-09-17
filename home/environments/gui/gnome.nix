@@ -47,6 +47,7 @@
     ])
     ++ (with pkgsUnstable.gnomeExtensions; [
       # Extensions
+      compiz-windows-effect
       dash-to-dock
       random-wallpaper
       syncthing-indicator
@@ -95,6 +96,7 @@
     };
     "org/gnome/shell" = {
       enabled-extensions = [
+        "compiz-windows-effect@hermes83.github.com"
         "dash-to-dock@micxgx.gmail.com"
         "randomwallpaper@iflow.space"
         "syncthing@gnome.2nv2u.com"
@@ -102,6 +104,9 @@
         "Vitals@CoreCoding.com"
         "weatheroclock@CleoMenezesJr.github.io"
       ];
+    };
+    "org/gnome/shell/extensions/com/github/hermes83/compiz-windows-effect" = {
+      maximize-effect = false;
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
       background-opacity = 0.8;
