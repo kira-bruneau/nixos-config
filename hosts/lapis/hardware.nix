@@ -30,6 +30,9 @@
 
     # Support MangoHud GPU utilization
     intel-gpu-tools.enable = true;
+
+    # Auto screen brightness not used
+    sensor.iio.enable = false;
   };
 
   boot = {
