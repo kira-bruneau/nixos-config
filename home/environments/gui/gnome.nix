@@ -51,6 +51,7 @@
       dash-to-dock
       in-picture
       random-wallpaper
+      ssh-search-provider-reborn
       syncthing-indicator
       tailscale-status
       vitals
@@ -101,6 +102,7 @@
         "dash-to-dock@micxgx.gmail.com"
         "in-picture@filiprund.cz"
         "randomwallpaper@iflow.space"
+        "ssh-search-provider@extensions.gnome-shell.fifi.org"
         "syncthing@gnome.2nv2u.com"
         "tailscale-status@maxgallup.github.com"
         "Vitals@CoreCoding.com"
@@ -141,6 +143,9 @@
     };
     "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/localFolder/0" = {
       folder = "${config.home.homeDirectory}/Pictures/Wallpapers";
+    };
+    "org/gnome/shell/extensions/ssh-search-provider" = {
+      terminal-application = "org.gnome.Console.desktop";
     };
     "org/gnome/shell/extensions/syncthing" = {
       menu = 1; # Main panel
