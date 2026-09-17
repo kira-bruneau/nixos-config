@@ -31,6 +31,7 @@
       bustle
       d-spy
       gnome-disk-utility
+      pkgsUnstable.helvum
       resources
 
       # Media & Documents
