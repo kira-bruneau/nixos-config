@@ -49,4 +49,17 @@
 
     nativeMessagingHosts = [ config.programs.keepassxc.package ];
   };
+
+  dconf.settings = {
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/keepassxc/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/keepassxc" = {
+      name = "Open KeePassXC";
+      command = lib.getExe config.programs.keepassxc.package;
+      binding = "<Super>k";
+    };
+  };
 }

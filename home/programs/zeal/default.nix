@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   ...
 }:
@@ -22,5 +23,18 @@ in
     };
 
     ui.hide_menu_bar = true;
+  };
+
+  dconf.settings = {
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/zeal/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/zeal" = {
+      name = "Open Zeal";
+      command = lib.getExe pkgs.zeal;
+      binding = "<Super>Z";
+    };
   };
 }

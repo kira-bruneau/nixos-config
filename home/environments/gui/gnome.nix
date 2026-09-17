@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   pkgsUnstable,
   ...
@@ -59,11 +60,30 @@
     "org/gnome/desktop/interface" = {
       show-battery-percentage = true;
     };
+    "org/gnome/desktop/wm/keybindings" = {
+      close = [ "<Super>q" ];
+      maximize = [ "<Super>equal" ];
+      switch-windows = [ "<Super>w" ];
+      switch-windows-backward = [ "<Shift><Super>w" ];
+      unmaximize = [ "<Super>minus" ];
+    };
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
     };
     "org/gnome/settings-daemon/plugins/housekeeping" = {
       donation-reminder-enabled = false;
+    };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      control-center = [ "<Super>comma" ];
+      home = [ "<Super>f" ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
+      name = "Open Terminal";
+      command = lib.getExe pkgs.gnome-console;
+      binding = "<Super>Return";
     };
     "org/gnome/settings-daemon/plugins/power" = {
       ambient-enabled = false;
