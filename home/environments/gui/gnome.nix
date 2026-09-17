@@ -49,6 +49,7 @@
       dash-to-dock
       random-wallpaper
       syncthing-indicator
+      tailscale-status
       weather-oclock
     ]);
 
@@ -95,6 +96,7 @@
         "dash-to-dock@micxgx.gmail.com"
         "randomwallpaper@iflow.space"
         "syncthing@gnome.2nv2u.com"
+        "tailscale-status@maxgallup.github.com"
         "weatheroclock@CleoMenezesJr.github.io"
       ];
     };
