@@ -49,6 +49,7 @@
       # Extensions
       compiz-windows-effect
       dash-to-dock
+      in-picture
       random-wallpaper
       syncthing-indicator
       tailscale-status
@@ -98,6 +99,7 @@
       enabled-extensions = [
         "compiz-windows-effect@hermes83.github.com"
         "dash-to-dock@micxgx.gmail.com"
+        "in-picture@filiprund.cz"
         "randomwallpaper@iflow.space"
         "syncthing@gnome.2nv2u.com"
         "tailscale-status@maxgallup.github.com"
@@ -123,6 +125,10 @@
       show-mounts = true;
       show-show-apps-button = true;
       show-trash = false;
+    };
+    "org/gnome/shell/extensions/in-picture" = {
+      hide = true;
+      stick = true;
     };
     "org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
       hide-panel-icon = true;
