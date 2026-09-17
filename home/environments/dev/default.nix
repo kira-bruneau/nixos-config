@@ -31,6 +31,7 @@ in
     ../../programs/emacs
     ../../programs/go
     ../../programs/nix-init
+    ../../programs/zeal
   ];
 
   home.packages = with pkgs; [
