@@ -48,6 +48,7 @@
       # Extensions
       dash-to-dock
       random-wallpaper
+      syncthing-indicator
       weather-oclock
     ]);
 
@@ -93,6 +94,7 @@
       enabled-extensions = [
         "dash-to-dock@micxgx.gmail.com"
         "randomwallpaper@iflow.space"
+        "syncthing@gnome.2nv2u.com"
         "weatheroclock@CleoMenezesJr.github.io"
       ];
     };
@@ -123,6 +125,10 @@
     };
     "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/localFolder/0" = {
       folder = "${config.home.homeDirectory}/Pictures/Wallpapers";
+    };
+    "org/gnome/shell/extensions/syncthing" = {
+      menu = 1; # Main panel
+      use-systemd = false; # SystemD integration doesn't work
     };
     "org/gnome/shell/extensions/weather-oclock" = {
       weather-after-clock = true;
