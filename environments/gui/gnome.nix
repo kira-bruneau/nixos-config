@@ -6,7 +6,10 @@
   services = {
     xserver.excludePackages = with pkgs; [ xterm ];
     desktopManager.gnome.enable = true;
-    gnome.core-apps.enable = false;
+    gnome = {
+      core-apps.enable = false;
+      gcr-ssh-agent.enable = false;
+    };
   };
 
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
