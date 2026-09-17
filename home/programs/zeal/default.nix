@@ -22,6 +22,15 @@ in
       serif_font_family = "system-ui";
     };
 
+    internal.version = "0.8.1";
+
+    # Fullscreen & widen sidebar
+    state = {
+      splitter_geometry = ''@ByteArray(\0\0\0\xff\0\0\0\x1\0\0\0\x2\0\0\x1!\0\0\x5q\0\xff\xff\xff\xff\x1\0\0\0\x1\0)'';
+      toc_splitter_state = "@ByteArray()";
+      window_geometry = ''@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x6\x95\0\0\x4)\0\0\0\0\0\0\0\0\0\0\x6\x95\0\0\x4)\0\0\0\0\x2\0\0\0\x6\x9c\0\0\0\0\0\0\0\0\0\0\x6\x95\0\0\x4))'';
+    };
+
     ui.hide_menu_bar = true;
   };
 
