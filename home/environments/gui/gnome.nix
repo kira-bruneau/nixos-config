@@ -44,10 +44,11 @@
       gnome-weather
       seahorse
     ])
-    ++ (with pkgsUnstable; [
+    ++ (with pkgsUnstable.gnomeExtensions; [
       # Extensions
-      gnomeExtensions.dash-to-dock
-      gnomeExtensions.random-wallpaper
+      dash-to-dock
+      random-wallpaper
+      weather-oclock
     ]);
 
   programs = {
@@ -92,6 +93,7 @@
       enabled-extensions = [
         "dash-to-dock@micxgx.gmail.com"
         "randomwallpaper@iflow.space"
+        "weatheroclock@CleoMenezesJr.github.io"
       ];
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
@@ -121,6 +123,9 @@
     };
     "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/localFolder/0" = {
       folder = "${config.home.homeDirectory}/Pictures/Wallpapers";
+    };
+    "org/gnome/shell/extensions/weather-oclock" = {
+      weather-after-clock = true;
     };
   };
 
