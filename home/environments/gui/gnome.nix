@@ -56,6 +56,9 @@
   };
 
   dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      show-battery-percentage = true;
+    };
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
     };
