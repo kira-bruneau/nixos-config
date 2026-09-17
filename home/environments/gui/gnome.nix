@@ -68,6 +68,9 @@
     "org/gnome/desktop/interface" = {
       show-battery-percentage = true;
     };
+    "org/gnome/desktop/notifications" = {
+      show-in-lock-screen = false;
+    };
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
       maximize = [ "<Super>equal" ];
