@@ -13,7 +13,7 @@
     ../../programs/dconf-editor
 
     # Media & Documents
-    ../../programs/evince
+    ../../programs/papers
     ../../programs/loupe
     ../../programs/nautilus
 

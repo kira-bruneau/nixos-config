@@ -72,7 +72,7 @@ in
 
     # Media & Documents
     ../../programs/celluloid
-    ../../programs/evince
+    ../../programs/papers
     ../../programs/loupe
     ../../programs/nautilus
 
