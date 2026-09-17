@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -147,6 +147,9 @@
     wlr.enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
+
+  # Enable GUI for managing bluetooth
+  services.blueman.enable = config.hardware.bluetooth.enable;
 
   # Enable GNOME virtual file system
   services.gvfs.enable = true;

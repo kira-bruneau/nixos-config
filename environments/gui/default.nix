@@ -43,9 +43,6 @@
   # Let the desktop environment handle the power key
   services.logind.settings.Login.HandlePowerKey = "ignore";
 
-  # Enable GUI for managing bluetooth
-  services.blueman.enable = config.hardware.bluetooth.enable;
-
   # Enable automatic device mounting
   services.devmon.enable = true;
 
