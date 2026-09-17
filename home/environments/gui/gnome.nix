@@ -50,6 +50,7 @@
       random-wallpaper
       syncthing-indicator
       tailscale-status
+      vitals
       weather-oclock
     ]);
 
@@ -97,6 +98,7 @@
         "randomwallpaper@iflow.space"
         "syncthing@gnome.2nv2u.com"
         "tailscale-status@maxgallup.github.com"
+        "Vitals@CoreCoding.com"
         "weatheroclock@CleoMenezesJr.github.io"
       ];
     };
@@ -131,6 +133,10 @@
     "org/gnome/shell/extensions/syncthing" = {
       menu = 1; # Main panel
       use-systemd = false; # SystemD integration doesn't work
+    };
+    "org/gnome/shell/extensions/vitals" = {
+      icon-style = 1; # GNOME
+      position-in-panel = 0; # Left
     };
     "org/gnome/shell/extensions/weather-oclock" = {
       weather-after-clock = true;

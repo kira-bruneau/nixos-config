@@ -17,4 +17,10 @@
       }
     ];
   };
+
+  dconf.settings = {
+    "org/gnome/shell/extensions/vitals" = {
+      show-battery = true;
+    };
+  };
 }
