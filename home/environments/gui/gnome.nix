@@ -50,6 +50,7 @@
       compiz-windows-effect
       dash-to-dock
       in-picture
+      just-perfection
       random-wallpaper
       ssh-search-provider-reborn
       syncthing-indicator
@@ -104,6 +105,7 @@
         "compiz-windows-effect@hermes83.github.com"
         "dash-to-dock@micxgx.gmail.com"
         "in-picture@filiprund.cz"
+        "just-perfection-desktop@just-perfection"
         "randomwallpaper@iflow.space"
         "ssh-search-provider@extensions.gnome-shell.fifi.org"
         "syncthing@gnome.2nv2u.com"
@@ -134,6 +136,11 @@
     "org/gnome/shell/extensions/in-picture" = {
       hide = true;
       stick = true;
+    };
+    "org/gnome/shell/extensions/just-perfection" = {
+      support-notifier-type = 0;
+      workspace-switcher-should-show = true;
+      world-clock = false;
     };
     "org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
       hide-panel-icon = true;
