@@ -31,7 +31,7 @@
       useGlobalPkgs = true;
       sharedModules = [ ../home/environments/default.nix ];
       users.root = {
-        home.stateVersion = lib.mkDefault "24.05";
+        home.stateVersion = lib.mkDefault "26.05";
       };
     };
 
