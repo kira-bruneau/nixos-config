@@ -187,7 +187,6 @@ callPackage ./wrapper.nix {
       epkgs.lsp-bridge
       epkgs.macrostep
       epkgs.markdown-mode
-      epkgs.mermaid-mode
       epkgs.org-download
       epkgs.pdf-tools
       epkgs.pkgbuild-mode
