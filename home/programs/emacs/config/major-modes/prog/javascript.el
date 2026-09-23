@@ -4,21 +4,22 @@
   :interpreter (("node" . js-ts-mode)
                 ("zx" . js-ts-mode))
   :init
-  (add-to-list 'compilation-error-regexp-alist 'node-stack)
-  (add-to-list 'compilation-error-regexp-alist-alist
-               '(node-stack "[ \t]+at \\(.* (\\(?:file://\\)?\\(/.+?\\):\\([0-9]+\\):\\([0-9]+\\))\\)" 2 3 4 2 1))
+  (with-eval-after-load 'compile
+    (add-to-list 'compilation-error-regexp-alist 'node-stack)
+    (add-to-list 'compilation-error-regexp-alist-alist
+                 '(node-stack "[ \t]+at \\(.* (\\(?:file://\\)?\\(/.+?\\):\\([0-9]+\\):\\([0-9]+\\))\\)" 2 3 4 2 1))
 
-  (add-to-list 'compilation-error-regexp-alist 'node-stack-unamed)
-  (add-to-list 'compilation-error-regexp-alist-alist
-               '(node-stack-unamed "[ \t]+at \\(\\(?:file://\\)?\\(/.+?\\):\\([0-9]+\\):\\([0-9]+\\)\\)" 2 3 4 2 1))
+    (add-to-list 'compilation-error-regexp-alist 'node-stack-unamed)
+    (add-to-list 'compilation-error-regexp-alist-alist
+                 '(node-stack-unamed "[ \t]+at \\(\\(?:file://\\)?\\(/.+?\\):\\([0-9]+\\):\\([0-9]+\\)\\)" 2 3 4 2 1))
 
-  ;; Java compilation error regexp conflicts with node-stack
-  (add-to-list 'compilation-error-regexp-alist-alist
-               '(java nil))
+    ;; Java compilation error regexp conflicts with node-stack
+    (add-to-list 'compilation-error-regexp-alist-alist
+                 '(java nil))
 
-  ;; Ada compilation error regexp conflicts with node-stack-unamed
-  (add-to-list 'compilation-error-regexp-alist-alist
-               '(ada nil))
+    ;; Ada compilation error regexp conflicts with node-stack-unamed
+    (add-to-list 'compilation-error-regexp-alist-alist
+                 '(ada nil)))
 
   (with-eval-after-load 'flycheck
     (setopt flycheck-javascript-eslint-executable "eslint_d"))
