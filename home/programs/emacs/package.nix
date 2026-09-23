@@ -6,6 +6,17 @@
   tree-sitter,
   fetchFromGitHub,
   buildEnv,
+
+  coreutils,
+  diffutils,
+  fd-relative-full-path,
+  git,
+  libnotify,
+  nixd,
+  nixfmt,
+  ripgrep,
+
+  minimal ? false,
   aspellWithDicts,
   bash-language-server,
   bear,
@@ -14,16 +25,12 @@
   clang-tools,
   cmake,
   cmake-language-server,
-  coreutils,
-  diffutils,
   direnv,
   dockerfile-language-server,
   emacs-all-the-icons-fonts,
   eslint_d,
-  fd-relative-full-path,
   gcc,
   gdb,
-  git,
   go,
   godef,
   gopls,
@@ -32,11 +39,8 @@
   jdt-language-server,
   kotlin-language-server,
   lemminx,
-  libnotify,
   marksman,
   lldb,
-  nixd,
-  nixfmt,
   nodejs,
   omnisharp-roslyn,
   pandoc,
@@ -44,7 +48,6 @@
   phpactor,
   prettierd,
   python3,
-  ripgrep,
   rust-analyzer,
   rustc,
   rustfmt,
@@ -64,134 +67,153 @@ let
   emacs = emacs-pgtk;
 in
 callPackage ./wrapper.nix {
-  emacs = emacs.pkgs.emacsWithPackages (epkgs: [
-    epkgs.all-the-icons-dired
-    epkgs.acm-terminal
-    epkgs.adaptive-wrap
-    epkgs.apheleia
-    epkgs.arduino-mode
-    epkgs.async
-    epkgs.avy
-    epkgs.browse-at-remote
-    epkgs.buffer-move
-    epkgs.cmake-font-lock
-    epkgs.cmake-mode
-    epkgs.consult
-    epkgs.difftastic
-    (
-      assert lib.versionOlder emacs.version "31";
-      epkgs.ben.overrideAttrs (attrs: {
-        src = fetchFromCodeberg {
-          owner = "pastor";
-          repo = "ben.el";
-          rev = "v0.12.13";
-          hash = "sha256-hgLmP0e0Gr0y6jLBWyHFf654fBeQqoP9ZVyJAWgQ+uc=";
-        };
-      })
-    )
-    epkgs.doom-themes
-    epkgs.drag-stuff
-    epkgs.dtrt-indent
-    epkgs.embark
-    epkgs.embark-consult
-    epkgs.evil
-    epkgs.evil-collection
-    epkgs.evil-mc
-    epkgs.evil-textobj-tree-sitter
-    epkgs.fish-mode
-    epkgs.flx
-    epkgs.flycheck
-    epkgs.forge
-    epkgs.gcmh
-    epkgs.git-modes
-    epkgs.graphql-ts-mode
-    epkgs.haskell-mode
-    epkgs.journalctl-mode
-    epkgs.kotlin-ts-mode
-    epkgs.latex-preview-pane
-    epkgs.lsp-bridge
-    epkgs.macrostep
-    epkgs.magit
-    epkgs.marginalia
-    epkgs.markdown-mode
-    epkgs.mermaid-mode
-    epkgs.nameless
-    epkgs.nix-ts-mode
-    epkgs.orderless
-    epkgs.org-download
-    epkgs.page-break-lines
-    epkgs.pdf-tools
-    epkgs.pkgbuild-mode
-    epkgs.powerline
-    epkgs.powershell
-    epkgs.presentation
-    epkgs.pretty-sha-path
-    epkgs.projection
-    epkgs.projection-multi
-    epkgs.projection-multi-embark
-    epkgs.rainbow-delimiters
-    epkgs.restclient
-    epkgs.smartparens
-    epkgs.sudo-edit
-    epkgs.suggest
-    epkgs.tree-sitter-ispell
-    (epkgs.treesit-grammars.with-grammars (ts: [
-      ts.tree-sitter-bash
-      ts.tree-sitter-c
-      ts.tree-sitter-c-sharp
-      ts.tree-sitter-cmake
-      ts.tree-sitter-cpp
-      ts.tree-sitter-css
-      ts.tree-sitter-dockerfile
-      ts.tree-sitter-go
-      ts.tree-sitter-gomod
-      ts.tree-sitter-graphql
-      ts.tree-sitter-html
-      ts.tree-sitter-java
-      ts.tree-sitter-javascript
-      ts.tree-sitter-jsdoc
-      ts.tree-sitter-json
-      ts.tree-sitter-kotlin
-      ts.tree-sitter-lua
-      ts.tree-sitter-nix
+  emacs = emacs.pkgs.emacsWithPackages (
+    epkgs:
+    [
+      epkgs.adaptive-wrap
+      epkgs.apheleia
+      epkgs.async
+      epkgs.avy
+      epkgs.buffer-move
       (
         assert lib.versionOlder emacs.version "31";
-        tree-sitter.buildGrammar {
-          language = "php";
-          version = "0.23.12";
-          src = fetchFromGitHub {
-            owner = "tree-sitter";
-            repo = "tree-sitter-php";
-            rev = "v0.23.12";
-            hash = "sha256-UWYKrC0mpWO86V52Phj/gYCdH586ZNdev/zhvUn4EBc=";
+        epkgs.ben.overrideAttrs (attrs: {
+          src = fetchFromCodeberg {
+            owner = "pastor";
+            repo = "ben.el";
+            rev = "v0.12.13";
+            hash = "sha256-hgLmP0e0Gr0y6jLBWyHFf654fBeQqoP9ZVyJAWgQ+uc=";
           };
-          location = "php";
-        }
+        })
       )
-      ts.tree-sitter-phpdoc
-      ts.tree-sitter-python
-      ts.tree-sitter-ruby
-      ts.tree-sitter-rust
-      ts.tree-sitter-tsx
-      ts.tree-sitter-typescript
-      ts.tree-sitter-wgsl
-      ts.tree-sitter-yaml
-    ]))
-    epkgs.undo-tree
-    epkgs.vala-mode
-    epkgs.vertico
-    epkgs.visual-regexp
-    epkgs.visual-regexp-steroids
-    epkgs.vlf
-    epkgs.web-mode
-    epkgs.wgrep
-    epkgs.whitespace-cleanup-mode
-    epkgs.xterm-color
-  ]);
+      epkgs.consult
+      epkgs.doom-themes
+      epkgs.drag-stuff
+      epkgs.dtrt-indent
+      epkgs.embark
+      epkgs.embark-consult
+      epkgs.evil
+      epkgs.evil-collection
+      epkgs.evil-mc
+      epkgs.evil-textobj-tree-sitter
+      epkgs.gcmh
+      epkgs.git-modes
+      epkgs.magit
+      epkgs.marginalia
+      epkgs.nameless
+      epkgs.nix-ts-mode
+      epkgs.orderless
+      epkgs.page-break-lines
+      epkgs.powerline
+      epkgs.pretty-sha-path
+      epkgs.projection
+      epkgs.projection-multi
+      epkgs.projection-multi-embark
+      epkgs.rainbow-delimiters
+      epkgs.smartparens
+      epkgs.sudo-edit
+      epkgs.tree-sitter-ispell
+      (epkgs.treesit-grammars.with-grammars (
+        ts:
+        [
+          ts.tree-sitter-bash
+          ts.tree-sitter-c
+          ts.tree-sitter-c-sharp
+          ts.tree-sitter-cmake
+          ts.tree-sitter-cpp
+          ts.tree-sitter-css
+          ts.tree-sitter-dockerfile
+          ts.tree-sitter-go
+          ts.tree-sitter-gomod
+          ts.tree-sitter-html
+          ts.tree-sitter-java
+          ts.tree-sitter-javascript
+          ts.tree-sitter-jsdoc
+          ts.tree-sitter-json
+          ts.tree-sitter-lua
+          ts.tree-sitter-nix
+          (
+            assert lib.versionOlder emacs.version "31";
+            tree-sitter.buildGrammar {
+              language = "php";
+              version = "0.23.12";
+              src = fetchFromGitHub {
+                owner = "tree-sitter";
+                repo = "tree-sitter-php";
+                rev = "v0.23.12";
+                hash = "sha256-UWYKrC0mpWO86V52Phj/gYCdH586ZNdev/zhvUn4EBc=";
+              };
+              location = "php";
+            }
+          )
+          ts.tree-sitter-phpdoc
+          ts.tree-sitter-python
+          ts.tree-sitter-ruby
+          ts.tree-sitter-rust
+          ts.tree-sitter-tsx
+          ts.tree-sitter-typescript
+          ts.tree-sitter-wgsl
+          ts.tree-sitter-yaml
+        ]
+        ++ lib.optionals (!minimal) [
+          ts.tree-sitter-kotlin
+          ts.tree-sitter-graphql
+        ]
+      ))
+      epkgs.undo-tree
+      epkgs.vertico
+      epkgs.visual-regexp
+      epkgs.visual-regexp-steroids
+      epkgs.vlf
+      epkgs.wgrep
+      epkgs.whitespace-cleanup-mode
+      epkgs.xterm-color
+    ]
+    ++ lib.optionals (!minimal) [
+      epkgs.acm-terminal
+      epkgs.all-the-icons-dired
+      epkgs.arduino-mode
+      epkgs.browse-at-remote
+      epkgs.cmake-font-lock
+      epkgs.cmake-mode
+      epkgs.difftastic
+      epkgs.fish-mode
+      epkgs.flx
+      epkgs.flycheck
+      epkgs.forge
+      epkgs.graphql-ts-mode
+      epkgs.haskell-mode
+      epkgs.journalctl-mode
+      epkgs.kotlin-ts-mode
+      epkgs.latex-preview-pane
+      epkgs.lsp-bridge
+      epkgs.macrostep
+      epkgs.markdown-mode
+      epkgs.mermaid-mode
+      epkgs.org-download
+      epkgs.pdf-tools
+      epkgs.pkgbuild-mode
+      epkgs.powershell
+      epkgs.presentation
+      epkgs.restclient
+      epkgs.suggest
+      epkgs.vala-mode
+      epkgs.web-mode
+    ]
+  );
 
   profile = buildEnv {
     name = "emacs-profile";
     paths = [
+      coreutils
+      diffutils
+      fd-relative-full-path
+      git
+      libnotify
+      nixfmt
+      ripgrep
+    ]
+    ++ lib.optionals (!minimal) [
       (aspellWithDicts (
         dicts: with dicts; [
           en
@@ -206,16 +228,12 @@ callPackage ./wrapper.nix {
       clang-tools
       cmake
       cmake-language-server
-      coreutils
-      diffutils
       direnv
       dockerfile-language-server
       emacs-all-the-icons-fonts
       eslint_d
-      fd-relative-full-path
       gcc
       gdb
-      git
       go
       godef
       gopls
@@ -224,11 +242,9 @@ callPackage ./wrapper.nix {
       jdt-language-server
       kotlin-language-server
       lemminx
-      libnotify
       lldb
       marksman
       nixd
-      nixfmt
       nodejs
       omnisharp-roslyn
       pandoc
@@ -241,7 +257,6 @@ callPackage ./wrapper.nix {
           python-lsp-server
         ]
       ))
-      ripgrep
       rust-analyzer
       rustc
       rustfmt

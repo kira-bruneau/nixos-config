@@ -229,7 +229,17 @@
             inherit (pkgsKiraNur) fd-relative-full-path;
           };
 
+          emacsMinimal = pkgs.callPackage ./home/programs/emacs/package.nix {
+            minimal = true;
+            inherit (pkgsKiraNur) fd-relative-full-path;
+          };
+
           emacsUnstable = pkgsUnstable.callPackage ./home/programs/emacs/package.nix {
+            inherit (pkgsKiraNur) fd-relative-full-path;
+          };
+
+          emacsMinimalUnstable = pkgsUnstable.callPackage ./home/programs/emacs/package.nix {
+            minimal = true;
             inherit (pkgsKiraNur) fd-relative-full-path;
           };
         }
