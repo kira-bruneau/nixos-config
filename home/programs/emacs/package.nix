@@ -177,7 +177,6 @@ callPackage ./wrapper.nix {
       epkgs.cmake-font-lock
       epkgs.cmake-mode
       epkgs.fish-mode
-      epkgs.flx
       epkgs.flycheck
       epkgs.forge
       epkgs.graphql-ts-mode
