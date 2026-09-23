@@ -85,5 +85,6 @@
     ];
   };
 
+  users.mutableUsers = false;
   services.logrotate.enable = false;
 }
