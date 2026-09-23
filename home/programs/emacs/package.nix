@@ -1,7 +1,5 @@
 {
   lib,
-  stdenv,
-  emacs,
   emacs-pgtk,
   callPackage,
   fetchFromCodeberg,
@@ -63,10 +61,10 @@
 }:
 
 let
-  baseEmacs = if stdenv.hostPlatform.isDarwin then emacs else emacs-pgtk;
+  emacs = emacs-pgtk;
 in
 callPackage ./wrapper.nix {
-  emacs = baseEmacs.pkgs.emacsWithPackages (epkgs: [
+  emacs = emacs.pkgs.emacsWithPackages (epkgs: [
     epkgs.all-the-icons-dired
     epkgs.acm-terminal
     epkgs.adaptive-wrap
@@ -227,10 +225,12 @@ callPackage ./wrapper.nix {
       kotlin-language-server
       lemminx
       libnotify
+      lldb
       marksman
       nixd
       nixfmt
       nodejs
+      omnisharp-roslyn
       pandoc
       perl
       phpactor
@@ -255,11 +255,6 @@ callPackage ./wrapper.nix {
       wgsl-analyzer
       yaml-language-server
       yarn
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      # Currently doesn't built on Darwin
-      (lib.lowPrio lldb) # collides with six.py required by python-lsp-server
-      omnisharp-roslyn
     ];
   };
 
