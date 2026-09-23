@@ -14,6 +14,7 @@
     (image-dired default-directory)))
 
 (use-package all-the-icons-dired
+  :if (package-installed-p 'all-the-icons-dired)
   :hook ((dired-mode . all-the-icons-dired-mode))
   :custom
   (all-the-icons-dired-monochrome nil))
