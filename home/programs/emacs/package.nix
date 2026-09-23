@@ -196,7 +196,6 @@ callPackage ./wrapper.nix {
       epkgs.powershell
       epkgs.presentation
       epkgs.restclient
-      epkgs.suggest
       epkgs.vala-mode
       epkgs.web-mode
     ]
