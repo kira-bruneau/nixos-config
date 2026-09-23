@@ -61,7 +61,6 @@
   (lsp-bridge-code-action-enable-popup-menu nil)
   (lsp-bridge-semantic-tokens-auto-update 'hook)
   (lsp-bridge-semantic-tokens-delay 0)
-  (acm-backend-lsp-show-progress t)
 
   :config
   ;; Don't run on lisp modes without a backing language server
@@ -83,6 +82,12 @@
 
   (define-advice lsp-bridge-restart-process (:after () revert-buffer)
     (revert-buffer)))
+
+(use-package acm
+  :if (package-installed-p 'acm)
+  :custom
+  (acm-backend-lsp-show-progress t)
+  (acm-enable-yas nil))
 
 (unless (display-graphic-p)
   (use-package acm-terminal
