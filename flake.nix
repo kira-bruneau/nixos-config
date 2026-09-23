@@ -110,15 +110,16 @@
             in
             {
               imports = [
+                {
+                  networking.hostName = name;
+                  _module.args = extraSpecialArgs;
+                  home-manager.extraSpecialArgs = extraSpecialArgs;
+                  nixpkgs.overlays = [
+                    (final: prev: { emacs = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.emacs; })
+                  ];
+                }
                 ./environments/default.nix
                 ./hosts/${name}/default.nix
-              ];
-
-              networking.hostName = name;
-              _module.args = extraSpecialArgs;
-              home-manager.extraSpecialArgs = extraSpecialArgs;
-              nixpkgs.overlays = [
-                (final: prev: { emacs = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.emacs; })
               ];
             };
 

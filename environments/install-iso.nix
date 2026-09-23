@@ -39,4 +39,13 @@
 
   # Generate ISO with faster squashfs compression
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+
+  # Prefer minimal emacs
+  nixpkgs.overlays = lib.mkAfter [
+    (final: prev: {
+      emacs = prev.emacs.override {
+        minimal = true;
+      };
+    })
+  ];
 }
