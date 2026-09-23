@@ -59,7 +59,6 @@ in
 
     # General development
     binutils
-    difftastic
     file
     git-bug
     jujutsu
