@@ -176,7 +176,6 @@ callPackage ./wrapper.nix {
       epkgs.browse-at-remote
       epkgs.cmake-font-lock
       epkgs.cmake-mode
-      epkgs.difftastic
       epkgs.fish-mode
       epkgs.flx
       epkgs.flycheck
