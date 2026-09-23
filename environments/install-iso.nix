@@ -23,13 +23,7 @@
 
   # Disable ZFS support, it may not be compatible
   # with the configured kernel version
-  nixpkgs.overlays = [
-    (final: prev: {
-      zfs = prev.zfs.overrideAttrs (_: {
-        meta.platforms = [ ];
-      });
-    })
-  ];
+  boot.supportedFilesystems.zfs = false;
 
   # Resolve conflict between install iso config and my host configs
   services.getty.autologinUser = lib.mkImageMediaOverride config.users.defaultUser;
