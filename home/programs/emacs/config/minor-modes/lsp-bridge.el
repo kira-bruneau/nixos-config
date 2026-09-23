@@ -1,4 +1,5 @@
 (use-package lsp-bridge
+  :if (package-installed-p 'lsp-bridge)
   :commands (lsp-bridge-find-def
              lsp-bridge-find-references
              lsp-bridge-rename
@@ -84,4 +85,6 @@
     (revert-buffer)))
 
 (unless (display-graphic-p)
-  (use-package acm-terminal :demand))
+  (use-package acm-terminal
+    :if (package-installed-p 'acm-terminal)
+    :demand))
