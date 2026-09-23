@@ -42,4 +42,7 @@
 
   # Resolve conflict between install iso and redis
   boot.kernel.sysctl."vm.overcommit_memory" = lib.mkImageMediaOverride "1";
+
+  # Generate ISO with faster squashfs compression
+  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }
