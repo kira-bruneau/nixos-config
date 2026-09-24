@@ -1,6 +1,6 @@
 {
   services.nginx.virtualHosts = {
-    "cptjackl.quest" = {
+    "cptjackl.com" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
@@ -9,7 +9,7 @@
         proxyWebsockets = true;
       };
     };
-    "foundry.cptjackl.quest" = {
+    "foundry.cptjackl.com" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
@@ -18,7 +18,7 @@
         proxyWebsockets = true;
       };
     };
-    "lore.cptjackl.quest" = {
+    "lore.cptjackl.com" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
@@ -27,7 +27,7 @@
         proxyWebsockets = true;
       };
     };
-    "mine.cptjackl.quest" = {
+    "mine.cptjackl.com" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {

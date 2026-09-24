@@ -13,10 +13,10 @@
       "mastodon.jakira.space"
       "matrix.jakira.space"
 
-      "cptjackl.quest"
-      "foundry.cptjackl.quest"
-      "lore.cptjackl.quest"
-      "mine.cptjackl.quest"
+      "cptjackl.com"
+      "foundry.cptjackl.com"
+      "lore.cptjackl.com"
+      "mine.cptjackl.com"
     ];
 
     wireguard.interfaces.wg0 = {
