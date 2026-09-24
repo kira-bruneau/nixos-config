@@ -1,8 +1,15 @@
 { config, lib, ... }:
 
+let
+  authorizedBuilderHosts = [
+    "lapis"
+    "amethyst"
+    "peridot"
+  ];
+in
 {
   nix = lib.mkMerge [
-    (lib.mkIf (config.networking.hostName != "quartz") {
+    (lib.mkIf (builtins.elem config.networking.hostName authorizedBuilderHosts) {
       buildMachines = [
         {
           protocol = "ssh-ng";
@@ -30,6 +37,12 @@
       settings.trusted-public-keys = [ "quartz:5ihtRHWq3L8mirx1UEy2uDAkb12NQUN+t+OT4NAnEp8=" ];
     }
   ];
+
+  users.users.builder = lib.mkIf (config.networking.hostName == "quartz") {
+    openssh.authorizedKeys.keys = builtins.map (
+      host: config.programs.ssh.knownHosts.${host}.publicKey
+    ) authorizedBuilderHosts;
+  };
 
   networking = {
     wireguard.interfaces.wg0 = {
