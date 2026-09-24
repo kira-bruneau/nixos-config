@@ -28,9 +28,6 @@
   # Resolve conflict between install iso config and my host configs
   services.getty.autologinUser = lib.mkImageMediaOverride config.users.defaultUser;
 
-  # Resolve conflict between install iso config and my host configs
-  services.openssh.settings.PermitRootLogin = lib.mkImageMediaOverride "no";
-
   # Resolve conflict between sudo & sudo-rs
   security.sudo.enable = lib.mkImageMediaOverride false;
 
