@@ -18,7 +18,7 @@
   # Resolve conflict between install iso config and my host configs
   boot.loader.timeout = lib.mkImageMediaOverride 10;
 
-  # /etc/nixos is seeded with the contents of this flake
+  # /etc/nixos is cloned with custom nixos-generate-config
   installer.cloneConfig = false;
 
   # Disable ZFS support, it may not be compatible
@@ -28,10 +28,10 @@
   # Resolve conflict between install iso config and my host configs
   services.getty.autologinUser = lib.mkImageMediaOverride config.users.defaultUser;
 
-  # Resolve conflict between sudo & sudo-rs
+  # Resolve conflict between install iso config and sudo-rs
   security.sudo.enable = lib.mkImageMediaOverride false;
 
-  # Resolve conflict between install iso and redis
+  # Resolve conflict between install iso config and redis
   boot.kernel.sysctl."vm.overcommit_memory" = lib.mkImageMediaOverride "1";
 
   # Generate ISO with faster squashfs compression
