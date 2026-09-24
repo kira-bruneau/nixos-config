@@ -39,7 +39,7 @@ in
   ];
 
   users.users.builder = lib.mkIf (config.networking.hostName == "quartz") {
-    openssh.authorizedKeys.keys = builtins.map (
+    openssh.authorizedKeys.keys = map (
       host: config.programs.ssh.knownHosts.${host}.publicKey
     ) authorizedBuilderHosts;
   };
