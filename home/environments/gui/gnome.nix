@@ -68,25 +68,12 @@
     "org/gnome/settings-daemon/plugins/power" = {
       ambient-enabled = false;
     };
-    "org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
-      hide-panel-icon = true;
-      fetch-on-startup = true;
-      sources = [ "0" ];
-    };
-    "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/general/0" = {
-      name = "Wallpapers";
-      type = 4; # Local folder
-    };
-    "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/localFolder/0" = {
-      folder = "${config.home.homeDirectory}/Pictures/Wallpapers";
-    };
     "org/gnome/shell" = {
       enabled-extensions = [
         "dash-to-dock@micxgx.gmail.com"
         "randomwallpaper@iflow.space"
       ];
     };
-    # Dash to Dock settings for a better touch screen experience
     "org/gnome/shell/extensions/dash-to-dock" = {
       background-opacity = 0.8;
       dash-max-icon-size = 48;
@@ -102,6 +89,18 @@
       show-mounts = true;
       show-show-apps-button = true;
       show-trash = false;
+    };
+    "org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
+      hide-panel-icon = true;
+      fetch-on-startup = true;
+      sources = [ "0" ];
+    };
+    "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/general/0" = {
+      name = "Wallpapers";
+      type = 4; # Local folder
+    };
+    "org/gnome/shell/extensions/space-iflow-randomwallpaper/sources/localFolder/0" = {
+      folder = "${config.home.homeDirectory}/Pictures/Wallpapers";
     };
   };
 }
