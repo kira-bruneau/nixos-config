@@ -123,4 +123,6 @@
       folder = "${config.home.homeDirectory}/Pictures/Wallpapers";
     };
   };
+
+  xdg.autostart.enable = true;
 }

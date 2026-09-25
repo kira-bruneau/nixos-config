@@ -21,4 +21,8 @@
     startup = [ { command = "emacs"; } ];
     assigns."2" = [ { app_id = "^emacs"; } ];
   };
+
+  xdg.autostart.entries = [
+    "${config.services.emacs.package}/share/applications/emacs.desktop"
+  ];
 }

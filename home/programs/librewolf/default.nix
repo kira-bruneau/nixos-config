@@ -869,4 +869,8 @@
       }
     ];
   };
+
+  xdg.autostart.entries = [
+    "${config.programs.librewolf.package}/share/applications/librewolf.desktop"
+  ];
 }
