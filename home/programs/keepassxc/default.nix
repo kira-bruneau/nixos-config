@@ -1,40 +1,44 @@
-{ pkgs, ... }:
-
-let
-  settingsFormat = pkgs.formats.ini { };
-  keepassxc = pkgs.keepassxc;
-in
 {
-  home.packages = [ keepassxc ];
+  config,
+  lib,
+  ...
+}:
 
-  xdg.configFile."keepassxc/keepassxc.ini".source = settingsFormat.generate "keepassxc.ini" {
-    General.ConfigVersion = 2;
+{
+  programs.keepassxc = {
+    enable = true;
+    autostart = config.xdg.autostart.enable;
+    settings = {
+      General.ConfigVersion = 2;
 
-    Browser = {
-      Enabled = true;
-      UpdateBinaryPath = false;
-    };
+      Browser = {
+        Enabled = true;
+        UpdateBinaryPath = false;
+      };
 
-    GUI = {
-      ApplicationTheme = "dark";
-      MinimizeOnClose = true;
-      MinimizeOnStartup = true;
-      MinimizeToTray = true;
-      ShowTrayIcon = true;
-    };
+      GUI = {
+        ApplicationTheme = "dark";
+        MinimizeOnClose = true;
+        MinimizeOnStartup = true;
+        MinimizeToTray = true;
+        ShowTrayIcon = true;
+      };
 
-    PasswordGenerator = {
-      Length = 20;
-      SpecialChars = true;
-    };
+      PasswordGenerator = {
+        Length = 20;
+        SpecialChars = true;
+      };
 
-    Security = {
-      IconDownloadFallback = true;
-      LockDatabaseIdle = true;
+      Security = {
+        IconDownloadFallback = true;
+        LockDatabaseIdle = true;
+      };
     };
   };
 
-  wayland.windowManager.sway.config.startup = [ { command = "${keepassxc}/bin/keepassxc"; } ];
+  wayland.windowManager.sway.config.startup = [
+    { command = lib.getExe config.programs.keepassxc.package; }
+  ];
 
   # Librewolf integration
   programs.librewolf = {
@@ -43,6 +47,6 @@ in
       install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
     };
 
-    nativeMessagingHosts = [ keepassxc ];
+    nativeMessagingHosts = [ config.programs.keepassxc.package ];
   };
 }
