@@ -51,6 +51,7 @@
       dash-to-dock
       in-picture
       just-perfection
+      middle-click-to-close-in-overview
       random-wallpaper
       ssh-search-provider-reborn
       syncthing-indicator
@@ -106,6 +107,7 @@
         "dash-to-dock@micxgx.gmail.com"
         "in-picture@filiprund.cz"
         "just-perfection-desktop@just-perfection"
+        "middleclickclose@paolo.tranquilli.gmail.com"
         "randomwallpaper@iflow.space"
         "ssh-search-provider@extensions.gnome-shell.fifi.org"
         "syncthing@gnome.2nv2u.com"
