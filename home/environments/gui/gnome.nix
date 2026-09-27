@@ -73,6 +73,11 @@
     "org/gnome/desktop/notifications" = {
       show-in-lock-screen = false;
     };
+    "org/gnome/desktop/peripherals/touchpad" = {
+      # Despite this being an enum, setting this to "areas" doesn't
+      # disable two-finger clicking (which is exactly what I want)
+      click-method = "areas";
+    };
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
       maximize = [ "<Super>equal" ];
