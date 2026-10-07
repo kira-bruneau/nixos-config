@@ -39,6 +39,7 @@ in
     wget2
 
     # Media & Documents
+    libxslt # xsltproc
     poke
 
     # Databases
