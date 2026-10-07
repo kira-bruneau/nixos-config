@@ -25,25 +25,6 @@ let
     fi
   '';
 
-  desktopApplicationFile = writeTextFile {
-    name = "emacsclient.desktop";
-    destination = "/share/applications/emacsclient.desktop";
-    text = ''
-      [Desktop Entry]
-      Name=Emacs (Client)
-      GenericName=Text Editor
-      Comment=Edit text
-      MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
-      Exec=emacseditor %F
-      Icon=emacs
-      Type=Application
-      Terminal=false
-      Categories=Development;TextEditor;
-      StartupWMClass=Emacsd
-      Keywords=Text;Editor;
-    '';
-  };
-
   # Export environment variables defined in interactive & login
   # shells. Needed for macOS Emacs.app package.
   shellEnv = ''
@@ -87,7 +68,9 @@ runCommand "${emacs.name}-profile-wrapper"
 
     rm "$out"/share/applications; mkdir "$out"/share/applications
     ln -s ${emacs}/share/applications/* "$out"/share/applications
-    cp -f ${desktopApplicationFile}/share/applications/emacsclient.desktop "$out"/share/applications
+    rm "$out"/share/applications/emacsclient.desktop
+    sed 's/Exec=.*/Exec=emacseditor %F/' \
+      ${emacs}/share/applications/emacsclient.desktop > "$out"/share/applications/emacsclient.desktop
 
     if [ -d ${emacs}/Applications/Emacs.app ]; then
       rm "$out"/Applications; mkdir "$out"/Applications
