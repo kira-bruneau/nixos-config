@@ -36,6 +36,7 @@ in
   home.packages = with pkgs; [
     # Web
     ungoogled-chromium
+    wget2
 
     # Media & Documents
     poke
