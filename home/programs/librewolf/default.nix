@@ -501,6 +501,8 @@
           "services.sync.engine.creditcards" = false;
           "services.sync.engine.passwords" = false;
           "services.sync.engine.prefs" = false;
+          "sidebar.backupState" = builtins.toJSON { launcherExpanded = false; };
+          "sidebar.verticalTabs" = true;
           "signon.rememberSignons" = false; # Use keepassxc instead
 
           # Loosen librewolf-specific security settings
