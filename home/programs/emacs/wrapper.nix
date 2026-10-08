@@ -13,15 +13,13 @@
 }:
 
 let
-  # Create emacseditor script and desktop file for emacsclient
-  # Taken from nixpkgs/nixos/modules/services/editors/emacs.nix
+  # Editor script derived from emacsclient.desktop
   editorScript = writeScriptBin "emacseditor" ''
     #!${runtimeShell}
-    emacs="$(dirname "''${BASH_SOURCE[0]}")/emacs"
-    if [ -z "$1" ]; then
-      exec emacsclient --create-frame --alternate-editor "$emacs"
+    if [ $# -eq 0 ]; then
+      exec emacsclient --alternate-editor= --create-frame
     else
-      exec emacsclient --alternate-editor "$emacs" "$@"
+      exec emacsclient --alternate-editor= --reuse-frame "$@"
     fi
   '';
 
