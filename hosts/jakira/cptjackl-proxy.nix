@@ -27,13 +27,5 @@
         proxyWebsockets = true;
       };
     };
-    "mine.cptjackl.com" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://jasper:25565";
-        recommendedProxySettings = true;
-      };
-    };
   };
 }

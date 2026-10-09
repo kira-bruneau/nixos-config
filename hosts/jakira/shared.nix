@@ -16,7 +16,6 @@
       "cptjackl.com"
       "foundry.cptjackl.com"
       "lore.cptjackl.com"
-      "mine.cptjackl.com"
     ];
 
     wireguard.interfaces.wg0 = {
