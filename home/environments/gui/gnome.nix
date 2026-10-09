@@ -131,7 +131,7 @@
       dock-position = "LEFT";
       extend-height = true;
       height-fraction = 0.61;
-      hot-keys = false;
+      hotkeys-show-dock = false;
       preferred-monitor = -2;
       preferred-monitor-by-connector = "eDP-1";
       scroll-to-focused-application = true;
