@@ -11,7 +11,6 @@
     ../../services/home-assistant.nix
     ../../services/kubo.nix
     ../../services/llama-cpp.nix
-    ../../services/minecraft/aoc-aeronautics
     ../../services/nginx.nix
     ../../services/synapse.nix
     ../../users/builder.nix
