@@ -99,8 +99,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ steamdeck-firmware ];
-
   programs.captive-browser.interface = "wlo1";
 
   systemd.user.services.cec-sync.environment.WAYLAND_DISPLAY = "gamescope-0";
