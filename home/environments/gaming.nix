@@ -21,7 +21,6 @@ in
     # Games & Launchers
     _2ship2harkinian
     clonehero
-    pkgsKiraNur.pokemmo-installer
     pkgsKiraNur.protontricks
     (sm64ex.overrideAttrs (attrs: {
       makeFlags = attrs.makeFlags ++ [ "BETTERCAMERA=1" ];
