@@ -2,6 +2,7 @@
   inputs,
   config,
   lib,
+  pkgsUnstable,
   ...
 }:
 
@@ -22,11 +23,18 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      nix = final.lix;
+      inherit (pkgsUnstable.lixPackageSets.lix_2_96)
+        nixpkgs-review
+        nix-eval-jobs
+        nix-fast-build
+        colmena
+        ;
     })
   ];
 
   nix = {
+    package = pkgsUnstable.lixPackageSets.lix_2_96.lix;
+
     # Pin flake inputs to the registry
     registry = (builtins.mapAttrs (_name: input: { flake = input; }) inputs) // {
       n.flake = inputs.nixpkgs;
