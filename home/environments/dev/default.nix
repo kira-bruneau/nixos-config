@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsUnstable,
   pkgsNixIndexDatabase,
   pkgsCustom,
   ...
@@ -67,7 +68,7 @@
     package = pkgsNixIndexDatabase.nix-index-with-db;
   };
 
-  programs.nushell.plugins = with pkgs.nushellPlugins; [
+  programs.nushell.plugins = with pkgsUnstable.nushellPlugins; [
     polars
   ];
 }
