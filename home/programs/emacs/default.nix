@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgsCustom, ... }:
 
 {
   imports = [
@@ -6,8 +6,10 @@
     ../gpg
   ];
 
+  services.emacs.package = pkgsCustom.memacs;
+
   home = {
-    packages = [ pkgs.emacs ];
+    packages = [ config.services.emacs.package ];
     sessionVariables.EDITOR = "emacseditor";
   };
 

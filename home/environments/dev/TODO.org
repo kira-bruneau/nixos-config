@@ -1,4 +1,4 @@
-* nix-instant-dev
+* nid
 ** TODO Add gitRepoUrl to all git forges in nixpkgs
 ** TODO Support other vcs
 *** TODO Mercurial

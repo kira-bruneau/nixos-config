@@ -65,118 +65,167 @@
   };
 
   outputs =
-    { flake-utils, flake-linter, ... }@inputs:
+    {
+      self,
+      flake-utils,
+      flake-linter,
+      ...
+    }@inputs:
     let
       lib = inputs.nixpkgs.lib;
 
-      hostNames = builtins.attrNames (builtins.readDir ./hosts);
+      nixpkgsConfig = import ./nixpkgs-config.nix {
+        inherit lib;
+      };
 
-      hosts = builtins.concatMap (
-        name:
-        lib.optional (builtins.pathExists ./hosts/${name}/default.nix) {
-          inherit name;
+      hostInputs = {
+        peridot = inputs // {
+          nixpkgs = inputs.jovian.inputs.nixpkgs;
+          home-manager = inputs.home-manager-jovian;
+        };
+      };
 
-          inputs =
-            {
-              peridot = inputs // {
-                nixpkgs = inputs.jovian.inputs.nixpkgs;
-                home-manager = inputs.home-manager-jovian;
-              };
-            }
-            .${name} or inputs;
-
-          module =
-            {
-              inputs,
-              config,
-              pkgs,
-              ...
-            }:
-            let
-              extraSpecialArgs = {
-                pkgsUnstable = import inputs.nixpkgs-unstable {
-                  system = pkgs.stdenv.hostPlatform.system;
-                  config = config.nixpkgs.config;
-                };
-
-                pkgsDisko = inputs.disko.packages.${pkgs.stdenv.hostPlatform.system};
-
-                pkgsNixIndexDatabase = inputs.nix-index-database.packages.${pkgs.stdenv.hostPlatform.system};
-
-                pkgsKiraNur = inputs.kira-nur.packages.${pkgs.stdenv.hostPlatform.system};
-
-                pkgsNixMinecraft = inputs.nix-minecraft.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-              };
-            in
-            {
-              imports = [
-                {
-                  networking.hostName = name;
-                  _module.args = extraSpecialArgs;
-                  home-manager.extraSpecialArgs = extraSpecialArgs;
-                  nixpkgs.overlays = [
-                    (final: prev: { emacs = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.emacs; })
-                  ];
-                }
-                ./environments/default.nix
-                ./hosts/${name}/default.nix
-              ];
+      hosts = builtins.mapAttrs (
+        name: value:
+        if builtins.pathExists ./hosts/${name}/default.nix then
+          let
+            args = {
+              inputs = hostInputs.${name} or inputs;
             };
+          in
+          {
+            inherit name args;
 
-          hardwareModule = {
-            imports = [
-              ./hardware/environments/default.nix
-            ]
-            ++ lib.optional (builtins.pathExists ./hosts/${name}/hardware.nix) ./hosts/${name}/hardware.nix
-            ++ lib.optional (builtins.pathExists ./hosts/${name}/generated.nix) ./hosts/${name}/generated.nix
-            ++ sharedModules;
-          };
-        }
+            module =
+              { pkgs, ... }:
+              let
+                system = pkgs.stdenv.hostPlatform.system;
 
-      ) hostNames;
+                systemArgs = {
+                  # For some reason, not manually unpacking causes an
+                  # infinite recursion error, even though the
+                  # resulting set is equivalent. Is this a Lix/Nix bug?
+                  inherit ((self.legacyPackages.${system}.scope.overrideScope (final: prev: args)).args)
+                    pkgsUnstable
+                    pkgsCustom
+                    pkgsDisko
+                    pkgsNixIndexDatabase
+                    pkgsKiraNur
+                    pkgsNixMinecraft
+                    ;
+                };
+              in
+              {
+                imports = [
+                  {
+                    networking.hostName = name;
+                    _module.args = systemArgs;
+                    home-manager.extraSpecialArgs = systemArgs;
+                    nixpkgs.config = nixpkgsConfig;
+                  }
+                  ./environments/default.nix
+                  ./hosts/${name}/default.nix
+                ];
+              };
+
+            hardwareModule = {
+              imports = [
+                ./hardware/environments/default.nix
+              ]
+              ++ lib.optional (builtins.pathExists ./hosts/${name}/hardware.nix) ./hosts/${name}/hardware.nix
+              ++ lib.optional (builtins.pathExists ./hosts/${name}/generated.nix) ./hosts/${name}/generated.nix
+              ++ sharedModules;
+            };
+          }
+        else
+          null
+      ) (builtins.readDir ./hosts);
 
       sharedModules = builtins.concatMap (
         name: lib.optional (builtins.pathExists ./hosts/${name}/shared.nix) ./hosts/${name}/shared.nix
-      ) hostNames;
+      ) (builtins.attrNames hosts);
     in
     {
       nixosConfigurations = builtins.listToAttrs (
         builtins.concatMap (
           host:
-          if builtins.pathExists ./hosts/${host.name}/hardware.nix then
-            [
-              {
-                inherit (host) name;
-                value = host.inputs.nixpkgs.lib.nixosSystem {
-                  specialArgs = {
-                    inherit (host) inputs;
-                  };
-                  modules = [
-                    host.hardwareModule
-                    host.module
-                  ];
-                };
+          lib.optional (host != null && builtins.pathExists ./hosts/${host.name}/hardware.nix) (
+            lib.nameValuePair host.name (
+              lib.nixosSystem {
+                specialArgs = host.args;
+                modules = [
+                  host.hardwareModule
+                  host.module
+                ];
               }
-            ]
-          else
-            [ ]
-        ) hosts
+            )
+          )
+        ) (builtins.attrValues hosts)
       );
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          config = import ./nixpkgs-config.nix { inherit lib; };
-        };
+        scope = lib.makeScope lib.callPackageWith (final: {
+          inherit inputs;
 
-        pkgsUnstable = import inputs.nixpkgs-unstable {
-          inherit system;
-          config = import ./nixpkgs-config.nix { inherit lib; };
-        };
+          pkgs = import final.inputs.nixpkgs {
+            inherit system;
+            config = nixpkgsConfig;
+          };
 
-        pkgsKiraNur = inputs.kira-nur.packages.${pkgs.stdenv.hostPlatform.system};
+          args = {
+            pkgsUnstable = import final.inputs.nixpkgs-unstable {
+              inherit system;
+              config = nixpkgsConfig;
+            };
+
+            pkgsCustom = lib.packagesFromDirectoryRecursive {
+              inherit
+                (lib.makeScope (final.pkgs.newScope) (self: {
+                  fd = final.args.pkgsKiraNur.fd-relative-full-path;
+
+                  nix =
+                    (import ./environments/lix.nix (
+                      {
+                        inherit (final) inputs;
+                        config = { };
+                        inherit (final.nixpkgs) lib;
+                      }
+                      // final.args
+                    )).nix.package;
+
+                  nixos-rebuild = final.pkgs.nixos-rebuild.override {
+                    nix = self.nix;
+                  };
+
+                  swaylock = final.args.pkgsKiraNur.swaylock-fprintd;
+                }))
+                callPackage
+                newScope
+                ;
+
+              directory = ./home/packages;
+            };
+
+            pkgsDisko = final.inputs.disko.packages.${system};
+
+            pkgsNixIndexDatabase = final.inputs.nix-index-database.packages.${system};
+
+            pkgsKiraNur = final.inputs.kira-nur.packages.${system};
+
+            pkgsNixMinecraft = final.inputs.nix-minecraft.legacyPackages.${system};
+          };
+        });
+
+        scopeUnstable = scope.overrideScope (
+          final: prev: {
+            inputs = {
+              pkgs = prev.inputs.pkgsUnstable;
+            }
+            // prev.inputs;
+          }
+        );
 
         flake-linter-lib = flake-linter.lib.${system};
 
@@ -223,60 +272,50 @@
           inherit (linter) fix;
         };
 
-        devShells.default = pkgs.mkShell { nativeBuildInputs = linter.nativeBuildInputs; };
+        devShells.default = scope.pkgs.mkShell {
+          nativeBuildInputs = linter.nativeBuildInputs;
+        };
 
-        packages = {
-          emacs = pkgs.callPackage ./home/programs/emacs/package.nix {
-            inherit (pkgsKiraNur) fd-relative-full-path;
-          };
-
-          emacsMinimal = pkgs.callPackage ./home/programs/emacs/package.nix {
-            minimal = true;
-            inherit (pkgsKiraNur) fd-relative-full-path;
-          };
-
-          emacsUnstable = pkgsUnstable.callPackage ./home/programs/emacs/package.nix {
-            inherit (pkgsKiraNur) fd-relative-full-path;
-          };
-
-          emacsMinimalUnstable = pkgsUnstable.callPackage ./home/programs/emacs/package.nix {
-            minimal = true;
-            inherit (pkgsKiraNur) fd-relative-full-path;
-          };
+        legacyPackages = {
+          inherit scope;
+          unstable = lib.dontRecurseIntoAttrs scopeUnstable.args.pkgsCustom;
         }
-        // builtins.foldl' (
-          packages: host:
-          let
-            nixosGenerate =
-              output: attrs:
-              (host.inputs.nixpkgs.lib.nixosSystem (
-                attrs
-                // {
-                  inherit system;
-                  specialArgs = {
-                    inherit (host) inputs;
-                  };
-                  modules = [ host.module ] ++ attrs.modules;
-                }
-              )).config.system.build.${output};
-          in
-          packages
-          // {
-            "${host.name}/digital-ocean-image" = nixosGenerate "digitalOceanImage" {
-              modules = [
-                host.hardwareModule
-                ./environments/digital-ocean-image.nix
-              ];
-            };
-            "${host.name}/install-iso" = nixosGenerate "isoImage" {
-              modules = [
-                host.hardwareModule
-                ./environments/install-iso.nix
-              ];
-            };
-            "${host.name}/vm" = nixosGenerate "vm" { modules = [ ./environments/vm.nix ]; };
-          }
-        ) { } hosts;
+        // scope.args.pkgsCustom
+        // builtins.mapAttrs (
+          name: host:
+          if host != null then
+            let
+              nixosGenerate =
+                output: attrs:
+                (lib.nixosSystem (
+                  attrs
+                  // {
+                    inherit system;
+                    specialArgs = host.args;
+                    modules = [ host.module ] ++ attrs.modules;
+                  }
+                )).config.system.build.${output};
+            in
+            lib.recurseIntoAttrs {
+              "digital-ocean-image" = nixosGenerate "digitalOceanImage" {
+                modules = [
+                  host.hardwareModule
+                  ./environments/digital-ocean-image.nix
+                ];
+              };
+              "install-iso" = nixosGenerate "isoImage" {
+                modules = [
+                  host.hardwareModule
+                  ./environments/install-iso.nix
+                ];
+              };
+              "vm" = nixosGenerate "vm" {
+                modules = [ ./environments/vm.nix ];
+              };
+            }
+          else
+            null
+        ) hosts;
       }
     );
 }

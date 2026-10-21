@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgsCustom,
   ...
 }:
 
@@ -11,12 +12,7 @@ in
 {
   programs.waybar = {
     enable = true;
-
-    package = pkgs.writeShellScriptBin "waybar" ''
-      echo "" > ~/.config/waybar/dynamic.css
-      exec ${lib.getExe pkgs.waybar}
-    '';
-
+    package = pkgsCustom.waybar-dynamic-css;
     settings = {
       mainBar = {
         ipc = true;

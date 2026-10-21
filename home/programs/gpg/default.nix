@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgsCustom, ... }:
 
 {
   programs.gpg = {
@@ -17,13 +17,7 @@
     # Source: https://dev.gnupg.org/T3240
     noAllowExternalCache = true;
 
-    pinentry.package = pkgs.writeShellScriptBin "pinentry" ''
-      if [ -n "$DISPLAY" ]; then
-        exec ${pkgs.pinentry-gnome3}/bin/pinentry-gnome3 "$@"
-      fi
-
-      exec ${pkgs.pinentry-tty}/bin/pinentry-tty "$@"
-    '';
+    pinentry.package = pkgsCustom.pinentry;
   };
 
   programs.ssh = {

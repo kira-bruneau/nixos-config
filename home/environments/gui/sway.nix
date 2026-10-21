@@ -3,7 +3,7 @@
   lib,
   pkgs,
   pkgsUnstable,
-  pkgsKiraNur,
+  pkgsCustom,
   ...
 }:
 
@@ -16,52 +16,17 @@ let
   wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
-  # Randomly choose a wallpaper in ~/Pictures/Wallpapers
-  random-wallpaper = pkgs.writeShellScript "random-wallpaper" ''
-    ${pkgs.findutils}/bin/find -L ~/Pictures/Wallpapers -type f | ${pkgs.coreutils}/bin/shuf -n 1
-  '';
+  inherit (pkgsCustom)
+    random-wallpaper
+    sound
+    ;
 
-  lock = pkgs.writeShellScript "lock" ''
-    args=(--daemonize --image `${random-wallpaper}`)
-
-    ${pkgs.systemd}/bin/systemctl is-enabled fprintd.service
-    if [ $? -le 1 ]; then
-      args+=(--fingerprint)
-    fi
-
-    exec ${pkgsKiraNur.swaylock-fprintd}/bin/swaylock "''${args[@]}"
-  '';
-
-  # Turn off scaling on all displays
-  scale-off = pkgs.writeShellScript "scale-off" ''
-    rm -rf /tmp/scale-on
-    mkdir /tmp/scale-on
-
-    while read -r scale name; do
-      echo "$scale" > "/tmp/scale-on/$name";
-    done < <(${swaymsg} -r -t get_outputs | ${pkgs.jq}/bin/jq -r '.[] | "\(.scale) \(.make) \(.model) \(.serial)"')
-
-    ${swaymsg} 'output * scale 1'
-  '';
-
-  # Turn on scaling on all displays
-  scale-on = pkgs.writeShellScript "scale-on" ''
-    for scale_file in /tmp/scale-on/*; do
-      ${swaymsg} "output \"$(basename "$scale_file")\" scale $(${pkgs.coreutils}/bin/cat "$scale_file")"
-    done
-  '';
-
-  # Turn off scaling on all displays for the duration of the wrapped program
-  wrap-scale-off = pkgs.writeShellScriptBin "wrap-scale-off" ''
-    ${scale-off}
-    export MANGOHUD_CONFIGFILE=$HOME/.config/MangoHud/MangoHud-HiDPI.conf
-    "$1" "''${@:2}"
-    ${scale-on}
-  '';
-
-  sound = pkgs.writeShellScript "sound" ''
-    exec ${pkgs.vorbis-tools}/bin/ogg123 "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/$1.oga"
-  '';
+  inherit (pkgsCustom.sway-scripts)
+    lock
+    scale-off
+    scale-on
+    wrap-scale-off
+    ;
 in
 {
   imports = [

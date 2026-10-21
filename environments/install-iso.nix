@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgsCustom,
   modulesPath,
   ...
 }:
@@ -37,12 +38,14 @@
   # Generate ISO with faster squashfs compression
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
-  # Prefer minimal emacs
-  nixpkgs.overlays = lib.mkAfter [
-    (final: prev: {
-      emacs = prev.emacs.override {
-        minimal = true;
-      };
-    })
+  home-manager.sharedModules = [
+    {
+      # Prefer minimal emacs
+      services.emacs.package = lib.mkImageMediaOverride (
+        pkgsCustom.memacs.override {
+          minimal = true;
+        }
+      );
+    }
   ];
 }

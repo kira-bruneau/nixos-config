@@ -13,6 +13,7 @@ My NixOS configuration
 | `home`                       | [Home manager](https://github.com/nix-community/home-manager) configuration  |
 | `hosts`                      | Machine specific configuration                                               |
 | `modules`                    | Custom modules & module extensions                                           |
+| `packages`                   | Custom scripts, packages, wrappers                                           |
 | `programs`                   | Configuration for programs                                                   |
 | `services`                   | Configuration for self-contained services                                    |
 | `users`                      | Configuration for users on my system                                         |

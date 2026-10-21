@@ -159,7 +159,7 @@ function commitConfigurePhase() {
 postConfigureHooks+=(commitConfigurePhase)
 
 cd "$NID_OUT"
-cmakeFlags="-Cnix-instant-dev.cmake $cmakeFlags"
+cmakeFlags="-Cnid.cmake $cmakeFlags"
 phases="patchPhase ${preConfigurePhases[*]:-} configurePhase" genericBuild
 
 if [ ! -e compile_commands.json ]; then

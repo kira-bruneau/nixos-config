@@ -9,7 +9,7 @@
 
   coreutils,
   diffutils,
-  fd-relative-full-path,
+  fd,
   git,
   nixd,
   nixfmt,
@@ -203,7 +203,7 @@ callPackage ./wrapper.nix {
     paths = [
       coreutils
       diffutils
-      fd-relative-full-path
+      fd
       git
       nixfmt
       ripgrep

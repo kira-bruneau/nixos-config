@@ -1,30 +1,11 @@
 {
-  config,
   pkgs,
   pkgsNixIndexDatabase,
+  pkgsCustom,
   ...
 }:
 
-let
-  nix-instant-dev = pkgs.writeShellApplication {
-    name = "nid";
-
-    bashOptions = [ ];
-
-    runtimeInputs = with pkgs; [
-      config.nix.package
-      coreutils
-      git
-      jq
-    ];
-
-    text = builtins.replaceStrings [ "nix-instant-dev.cmake" ] [ "${./nix-instant-dev.cmake}" ] (
-      builtins.readFile ./nix-instant-dev.sh
-    );
-  };
-in
 {
-
   imports = [
     ./graphics.nix
     ../../programs/direnv
@@ -50,12 +31,12 @@ in
     cachix
     comma
     nix-bisect
-    nix-instant-dev
     nix-output-monitor
     nix-search
     nixpkgs-review
     nurl
     patchelf
+    pkgsCustom.nid
 
     # Android development
     android-tools
