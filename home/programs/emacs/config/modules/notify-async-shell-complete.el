@@ -1,3 +1,5 @@
+(require 'notifications)
+
 (defun notify-async-shell-complete (process signal)
   (when (and
          (memq (process-status process) '(exit signal))
@@ -6,13 +8,10 @@
           (and
            (frame-focus-state)
            (get-buffer-window (process-buffer process) 'visible))))
-    (make-process
-     :name "notify-async-shell-complete"
-     :command (list
-               "notify-send"
-               "--app-name" "Emacs"
-               (format "Emacs %s" (buffer-name (process-buffer process)))
-               (format "Exited with exit code %d" (process-exit-status process))))))
+    (notifications-notify
+     :title (format "Emacs %s" (buffer-name (process-buffer process)))
+     :body (format "Exited with exit code %d" (process-exit-status process))
+     :urgency "low")))
 
 (with-eval-after-load 'simple
   (add-function :before (symbol-function 'shell-command-sentinel)

@@ -11,7 +11,6 @@
   diffutils,
   fd-relative-full-path,
   git,
-  libnotify,
   nixd,
   nixfmt,
   ripgrep,
@@ -206,7 +205,6 @@ callPackage ./wrapper.nix {
       diffutils
       fd-relative-full-path
       git
-      libnotify
       nixfmt
       ripgrep
     ]
