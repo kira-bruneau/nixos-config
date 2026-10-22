@@ -134,6 +134,7 @@
       hotkeys-show-dock = false;
       preferred-monitor = -2;
       preferred-monitor-by-connector = "eDP-1";
+      scroll-action = "cycle-windows";
       scroll-to-focused-application = true;
       show-apps-at-top = true;
       show-mounts = true;
