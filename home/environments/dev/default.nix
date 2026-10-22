@@ -23,6 +23,8 @@
     # Media & Documents
     libxslt # xsltproc
     poke
+    pkgsCustom.ff-prefs
+    pkgsCustom.ff-search
 
     # Databases
     dbeaver-bin
