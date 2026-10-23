@@ -11,7 +11,6 @@
     ../../programs/keepassxc
 
     # Utils
-    ../../programs/gnome-pomodoro
     ../../programs/gpg
     ../../programs/speedcrunch
   ];

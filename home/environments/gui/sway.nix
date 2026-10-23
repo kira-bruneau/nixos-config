@@ -263,19 +263,6 @@ in
     };
   };
 
-  programs.gnome-pomodoro-swayidle = (
-    lib.fix (self: {
-      onstart = [
-        "${swaymsg} 'gaps inner all set 0, bar mode hide'"
-        "${sound} message-new-instant"
-      ];
-
-      onend = [ "${swaymsg} 'gaps inner all set 10, bar mode dock'" ];
-      onresume = self.onstart;
-      onpause = self.onend;
-    })
-  );
-
   home.packages = with pkgs; [
     # Administration
     baobab

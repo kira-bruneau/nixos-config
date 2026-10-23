@@ -174,12 +174,4 @@ in
       layer_effects 'waybar' 'blur enable; shadows enable'
     '';
   };
-
-  programs.gnome-pomodoro-swayidle = {
-    onpause = [
-      "echo 'window#waybar { border-bottom-color: #ffa000; }' > ~/.config/waybar/dynamic.css"
-    ];
-
-    onresume = [ "echo '' > ~/.config/waybar/dynamic.css" ];
-  };
 }

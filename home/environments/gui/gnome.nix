@@ -62,7 +62,6 @@
 
   programs = {
     bash.enableVteIntegration = true;
-    gnome-pomodoro.package = pkgsUnstable.gnome-pomodoro;
     zsh.enableVteIntegration = true;
   };
 
