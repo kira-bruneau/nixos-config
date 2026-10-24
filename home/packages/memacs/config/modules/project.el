@@ -75,14 +75,14 @@
   ;; Per-project compilation buffers
   ;; Adapted from: https://github.com/bbatsov/projectile/blob/0163b335a18af0f077a474d4dc6b36e22b5e3274/projectile.el#L5074-L5087
   (defun project-compilation-buffer-name (compilation-mode)
-    "Meant to be used for `compilation-buffer-name-function`.
+    "Meant to be used for `compilation-buffer-name-function'.
 Argument COMPILATION-MODE is the name of the major mode used for the
 compilation buffer."
     (concat "*" (downcase compilation-mode) "*"
             (if-let ((project (project-current))) (concat "<" (project-root project) ">") "")))
 
   (defun project-current-project-buffer-p ()
-    "Meant to be used for `compilation-save-buffers-predicate`.
+    "Meant to be used for `compilation-save-buffers-predicate'.
 This indicates whether the current buffer is in the same project as the current
 window (including returning true if neither is in a project)."
     (if-let ((project (with-current-buffer (window-buffer) (project-current))))
@@ -94,7 +94,42 @@ window (including returning true if neither is in a project)."
           (compilation-save-buffers-predicate #'project-current-project-buffer-p))
       (apply orig-fun args)))
 
-  (advice-add 'project-compile :around #'project-per-project-compilation-buffer-advice))
+  (advice-add 'project-compile :around #'project-per-project-compilation-buffer-advice)
+
+  (defun locate-root-file (file name)
+    "An alternative to `locate-dominating-file' that searches top-down
+instead of bottom-up"
+    (let* ((dir (if (file-directory-p file)
+                    (file-name-as-directory file)
+                  (file-name-directory file)))
+           (stop-dir-regexp (replace-regexp-in-string
+                             "\\\\'\\'$" "" ;; remove end-of-string anchor
+                             locate-dominating-stop-dir-regexp))
+           (stop-dir-match (string-match stop-dir-regexp dir))
+           (candidate (if stop-dir-match
+                          (file-name-as-directory (match-string 0 dir))
+                        "/"))
+           root)
+      (while (and candidate (not root))
+        (cond ((and
+                (if (stringp name)
+                    (file-exists-p (expand-file-name name candidate))
+                  (funcall name candidate)))
+               (setq root candidate))
+              ((and
+                (< (length candidate) (length dir))
+                (string-match "/" dir (length candidate)))
+               (setq candidate (substring dir 0 (match-end 0))))
+              (t
+               (setq candidate nil))))
+      (when root
+        (abbreviate-file-name root))))
+
+  (defun project-top-down-try-vc (orig-fun &rest args)
+    (cl-letf (((symbol-function #'locate-dominating-file) #'locate-root-file))
+      (apply orig-fun args)))
+
+  (advice-add 'project-try-vc :around #'project-top-down-try-vc))
 
 (use-package projection-core-cache
   :init
