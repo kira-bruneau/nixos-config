@@ -19,5 +19,5 @@ My NixOS configuration
 | `users`                      | Configuration for users on my system                                         |
 
 This repo used to only host my Emacs config, which can still be found
-under [./home/programs/emacs/config](./home/programs/emacs/config) and
-run with `nix run gitlab:kira-bruneau/nixos-config#emacs`.
+under [./home/packages/memacs/config](./home/packages/memacs/config) and
+run with `nix run gitlab:kira-bruneau/nixos-config#memacs`.
