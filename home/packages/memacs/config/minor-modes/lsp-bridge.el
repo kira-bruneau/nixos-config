@@ -86,8 +86,7 @@
 (use-package acm
   :if (package-installed-p 'acm)
   :custom
-  (acm-backend-lsp-show-progress t)
-  (acm-enable-yas nil))
+  (acm-backend-lsp-show-progress t))
 
 (unless (display-graphic-p)
   (use-package acm-terminal
