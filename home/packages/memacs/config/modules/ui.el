@@ -86,9 +86,6 @@
 
   (powerline-minimal-theme))
 
-;; Default font
-(set-face-attribute 'default nil :height 90)
-
 ;; Buffer settings
 (setq-default tab-width 2)
 
