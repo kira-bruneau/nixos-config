@@ -6,6 +6,7 @@
   tree-sitter,
   fetchFromGitHub,
   buildEnv,
+  writeShellScriptBin,
 
   coreutils,
   diffutils,
@@ -28,6 +29,7 @@
   dockerfile-language-server,
   emacs-all-the-icons-fonts,
   eslint_d,
+  expect,
   gcc,
   gdb,
   go,
@@ -47,6 +49,7 @@
   phpactor,
   prettierd,
   python3,
+  runtimeShell,
   rust-analyzer,
   rustc,
   rustfmt,
@@ -227,6 +230,7 @@ callPackage ./wrapper.nix {
       dockerfile-language-server
       emacs-all-the-icons-fonts
       eslint_d
+      expect
       gcc
       gdb
       go
@@ -260,6 +264,9 @@ callPackage ./wrapper.nix {
       texliveBasic
       typescript
       typescript-language-server
+      (writeShellScriptBin "unbuffer-sh" ''
+        exec ${expect}/bin/unbuffer -p ${runtimeShell} "$@"
+      '')
       vala-language-server
       vscode-langservers-extracted
       wgsl-analyzer

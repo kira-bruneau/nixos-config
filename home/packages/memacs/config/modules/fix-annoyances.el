@@ -51,10 +51,26 @@
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode)
 
-;; Hide M-x commands which do not work in the current mode
 (use-package simple
   :custom
-  (read-extended-command-predicate #'command-completion-default-include-p))
+  ;; Hide M-x commands which do not work in the current mode
+  (read-extended-command-predicate #'command-completion-default-include-p)
+
+  ; Increase buffering of process output
+  (read-process-output-max (* 64 1024 1024))
+  (process-adaptive-read-buffering nil)
+
+  :config
+  (defun with-external-pty-processing (fn &rest args)
+    "Handle pty communication of shell commands externally with
+unbuffer. This dramatically improves process output performance."
+    (let ((process-connection-type nil)
+          (shell-file-name "unbuffer-sh"))
+      (apply fn args)))
+
+  (advice-add 'shell-command :around #'with-external-pty-processing)
+  (advice-add 'shell-command-on-region :around #'with-external-pty-processing)
+  (advice-add 'compilation-start :around #'with-external-pty-processing))
 
 ;; Add prompt indicator to `completing-read-multiple'.
 ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
