@@ -7,7 +7,7 @@
 }:
 
 let
-  lixPackageSets = pkgsUnstable.lixPackageSets.lix_2_96;
+  lixPackageSets = pkgsUnstable.lixPackageSets.lix_2_95;
 in
 {
   system.nixos.label = builtins.concatStringsSep "-" (
