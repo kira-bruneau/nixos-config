@@ -6,6 +6,9 @@
   ...
 }:
 
+let
+  lixPackageSets = pkgsUnstable.lixPackageSets.lix_2_96;
+in
 {
   system.nixos.label = builtins.concatStringsSep "-" (
     config.system.nixos.tags
@@ -23,7 +26,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      inherit (pkgsUnstable.lixPackageSets.lix_2_96)
+      inherit (lixPackageSets)
         nixpkgs-review
         nix-eval-jobs
         nix-fast-build
@@ -33,7 +36,7 @@
   ];
 
   nix = {
-    package = pkgsUnstable.lixPackageSets.lix_2_96.lix;
+    package = lixPackageSets.lix;
 
     # Pin flake inputs to the registry
     registry = (builtins.mapAttrs (_name: input: { flake = input; }) inputs) // {
