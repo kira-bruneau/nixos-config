@@ -29,7 +29,7 @@
         Service = {
           Type = "oneshot";
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nixos-config/update";
-          ExecStart = lib.getExe pkgsCustom.update.nixos;
+          ExecStart = lib.getExe pkgsCustom.update.nixos.base;
         };
       };
 
@@ -76,7 +76,7 @@
         Service = {
           Type = "oneshot";
           WorkingDirectory = "${config.home.homeDirectory}/Dev/public/nur-packages/main";
-          ExecStart = lib.getExe pkgsCustom.update.nixos.nur;
+          ExecStart = lib.getExe pkgsCustom.update.nur;
         };
       };
     };
