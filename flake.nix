@@ -220,10 +220,9 @@
 
         scopeUnstable = scope.overrideScope (
           final: prev: {
-            inputs = {
-              pkgs = prev.inputs.pkgsUnstable;
-            }
-            // prev.inputs;
+            inputs = inputs // {
+              nixpkgs = inputs.nixpkgs-unstable;
+            };
           }
         );
 
