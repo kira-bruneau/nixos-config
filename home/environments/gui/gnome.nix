@@ -171,6 +171,12 @@
     "org/gnome/shell/extensions/vitals" = {
       icon-style = 1; # GNOME
       position-in-panel = 0; # Left
+      hot-sensors = [
+        "_memory_usage_"
+        "_system_load_1m_"
+        "_storage_used_%_"
+        "__network-rx_max__"
+      ];
     };
     "org/gnome/shell/extensions/weather-oclock" = {
       weather-after-clock = true;
