@@ -222,7 +222,6 @@
     "none"
     "--gpu-layers"
     "all"
-    "--hf-repo"
-    "unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:UD-Q4_K_XL"
+    "--no-models-autoload"
   ];
 }
