@@ -51,6 +51,7 @@
       ];
     };
 
+    documentation.nixos.enable = false;
     fonts.fontconfig.enable = lib.mkDefault false;
     xdg.sounds.enable = lib.mkDefault false;
   };

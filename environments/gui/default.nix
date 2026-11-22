@@ -67,9 +67,6 @@
     daemonIOSchedClass = "idle";
   };
 
-  # Generate documentation for all imported modules
-  documentation.nixos.includeAllModules = true;
-
   # Enable polkit
   security.polkit.enable = true;
   systemd.user.services.polkit-gnome-authentication-agent-1 = {

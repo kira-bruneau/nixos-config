@@ -26,8 +26,6 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
-  documentation.nixos.enable = false;
-
   # Disable restarting services
   systemd.units."service" = {
     overrideStrategy = "asDropin";
