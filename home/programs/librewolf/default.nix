@@ -241,10 +241,6 @@
                   template = "https://search.nixos.org/options";
                   params = [
                     {
-                      name = "channel";
-                      value = "unstable";
-                    }
-                    {
                       name = "query";
                       value = "{searchTerms}";
                     }
@@ -315,7 +311,7 @@
             };
 
             home-manager-issues = {
-              name = "Home Manager issues";
+              name = "Home Manager Issues";
 
               urls = [
                 {
@@ -331,6 +327,28 @@
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@hi" ];
+            };
+
+            home-manager-options = {
+              name = "Home Manager Options";
+              urls = [
+                {
+                  template = "https://search.nixos.org/options";
+                  params = [
+                    {
+                      name = "source";
+                      value = "home_manager";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@ho" ];
             };
 
             nixpkgs-issues = {
