@@ -6,9 +6,14 @@
   programs.nushell = {
     enable = true;
     package = pkgsKiraNur.nushell-colemak;
+
     plugins = with pkgsUnstable.nushellPlugins; [
       desktop_notifications
       skim
     ];
+
+    settings = {
+      show_banner = false;
+    };
   };
 }
