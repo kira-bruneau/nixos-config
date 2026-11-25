@@ -26,6 +26,8 @@
           "https://github.com/"
         ];
       };
+
+      worktree.useRelativePaths = true;
     };
 
     ignores = [
